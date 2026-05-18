@@ -1,0 +1,226 @@
+import type { Metadata } from 'next';
+import { Section } from '@/components/ui/Section';
+import { Eyebrow, Display, Heading, Lede, Body, EditorialAccent } from '@/components/ui/Typography';
+import { Photo } from '@/components/ui/Photo';
+import { Card } from '@/components/ui/Card';
+import { FinalCTA } from '@/components/sections/FinalCTA';
+import { FOUR_STEPS } from '@/content/education';
+
+export const metadata: Metadata = {
+  title: 'How it works',
+  description:
+    'From first water test to monthly service: the four-step UNIWATER process. Surveyed, designed, installed, and serviced by one team.',
+  openGraph: { images: ['/og/og-how-it-works.svg'] },
+  twitter: { images: ['/og/og-how-it-works.svg'] },
+};
+
+const STEP_DETAIL = [
+  {
+    label: 'Stage 01 — Survey',
+    headline: '30 minutes on site. 48 hours to a quote.',
+    paragraphs: [
+      'A UNIWATER engineer visits your home or site with a water-testing kit. The visit takes between 30 and 60 minutes. We take a sample, run the test, and walk you through what the numbers mean before any quote is written.',
+      'We also map the plumbing: where the inlet is, what the pressure runs at, what the storage looks like, and where the equipment could reasonably go without disrupting the architecture.',
+      'No quote is written until the survey is complete. If the survey reveals the system doesn\u2019t need to be as large as you thought, we say so.',
+    ],
+    aside: {
+      title: 'What the survey covers',
+      items: [
+        'On-site water test (TDS, hardness, iron, pH, FRC)',
+        'Plumbing and pressure map',
+        'Storage and draw audit',
+        'Install-location options',
+        'Architect / interior-design coordination notes',
+      ],
+    },
+  },
+  {
+    label: 'Stage 02 — Design',
+    headline: 'Configured from 100+ engineered options. Not pulled off a shelf.',
+    paragraphs: [
+      'Your survey readings go into the UNIWATER auto-suggest engine \u2014 a 17-rule system built from years of installation data. It generates a bill of materials specific to your water, your draw, and your install location.',
+      'The proposal includes the configuration name (Mono / Duo / Trio, or 2K / 4K / 6K LPH, etc.), the media selection, vessel grade, controls, install plan, and AMC terms.',
+      'For residential customers, the quote is presented as a clean single-line price. For B2B customers, we include the full itemised BOM.',
+    ],
+    aside: {
+      title: 'What\u2019s in the proposal',
+      items: [
+        'Configuration and capacity',
+        'Vessel material and media specification',
+        'Plumbing and electrical scope',
+        'Installation plan with location diagram',
+        'AMC tier options',
+        'Warranty terms',
+        'Single-line diagram on B2B quotes',
+      ],
+    },
+  },
+  {
+    label: 'Stage 03 — Install',
+    headline: 'In a day. Or three. Wherever it disappears.',
+    paragraphs: [
+      'Equipment goes in false ceilings, plumbing shafts, behind cabinets, under counters, or outside windows \u2014 wherever it disappears. The home keeps its lines. The architect\u2019s decisions stay intact.',
+      'Most residential installs complete in one to two days. Industrial and building-scale installs run one to four weeks depending on scope and site readiness. The engineer commissions every system before handover, with parameter readings filed and shared.',
+    ],
+    aside: {
+      title: 'On-site discipline',
+      items: [
+        'Branded uniform, named technician',
+        'Plumbing, electrical, mounting, commissioning',
+        'Photos of every install location',
+        'Pre-handover parameter test',
+        'Customer signature on the handover document',
+      ],
+    },
+  },
+  {
+    label: 'Stage 04 — Service',
+    headline: 'Every month. 24-hour notice. Same window. Same protocol.',
+    paragraphs: [
+      'Year one of AMC is included with every install. From month one, an engineer visits on a defined schedule. Comprehensive tier customers get monthly visits; Standard tier customers get quarterly.',
+      'Every visit follows the Before / On site / After protocol: 24-hour advance notice, parameter testing against design spec, written report filed before the engineer leaves your house.',
+      'If a flag is raised, the SLA is 24 hours for Comprehensive and 12 hours for Premium. The system isn\u2019t a sale we made; it\u2019s a relationship we maintain.',
+    ],
+    aside: {
+      title: 'What an engineer does',
+      items: [
+        'Parameter testing (TDS, hardness, iron, pH, FRC)',
+        'Backwash and regeneration verification',
+        'Salt top-up where applicable',
+        'Resin and media inspection',
+        'Pressure-gauge calibration',
+        'Leak and joint inspection',
+        'Same-day written report',
+      ],
+    },
+  },
+];
+
+export default function HowItWorksPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="bg-offwhite border-b border-hairline">
+        <div className="container-uw py-16 md:py-24 max-w-4xl">
+          <Eyebrow className="mb-6">How it works</Eyebrow>
+          <Display>How a UNIWATER system gets into your home.</Display>
+          <Lede className="text-mute mt-8">
+            One company. Four stages. From first water test to monthly service, the same UNIWATER team owns the system for the life of the contract.
+          </Lede>
+        </div>
+      </section>
+
+      {/* The one sentence — surfaces the competitive positioning claim
+          identified in the §6.2 marketing benchmark. The only differentiator
+          no Indian residential competitor can credibly match without
+          rebuilding their distribution model. */}
+      <Section tone="navy" padding="default">
+        <div className="max-w-4xl mx-auto">
+          <Eyebrow className="!text-soft mb-5">Why this matters</Eyebrow>
+          <EditorialAccent className="!text-offwhite text-h2-m md:text-h2 leading-snug font-light">
+            The only water-treatment company in India where the engineer who surveys your water is the same person who designs the system, installs it, and comes back every month &mdash; by name, for the life of the contract.
+          </EditorialAccent>
+          <p className="text-caption text-soft mt-6 max-w-2xl">
+            Most water companies sell systems and outsource service. We sell the four things a system actually needs over its lifetime &mdash; a survey, the right design, an install that fits the house, and a service crew that does not change.
+          </p>
+        </div>
+      </Section>
+
+      {/* Process overview strip */}
+      <Section padding="tight" tone="subtle">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+          {FOUR_STEPS.map((step) => (
+            <a
+              key={step.n}
+              href={`#stage-${step.n}`}
+              className="flex flex-col gap-3 group"
+            >
+              <div className="text-[40px] font-light text-teal leading-none">{step.n}</div>
+              <h3 className="text-h3 font-semibold text-navy group-hover:text-teal transition-colors duration-200 ease-calm">
+                {step.title}
+              </h3>
+              <Body className="text-mute">{step.body}</Body>
+            </a>
+          ))}
+        </div>
+      </Section>
+
+      {/* Customer journey timeline — SVG-004. 5 stages: Survey → Quote → Install → Handover → Service. */}
+      <Section padding="default">
+        <div className="mb-10 max-w-3xl">
+          <Eyebrow className="mb-4">The journey, on one line</Eyebrow>
+          <Heading level={2}>From the first survey to monthly service for life.</Heading>
+        </div>
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/infographics/portrait/customer-journey.svg"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/infographics/landscape/customer-journey.svg"
+            alt="Customer journey timeline — five stages from on-site survey within 24 hours, to quote within 48 hours, to install within seven days, to same-day handover, to monthly service for life"
+            className="block w-full h-auto"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </Section>
+
+      {/* Long-form stages */}
+      {STEP_DETAIL.map((stage, i) => (
+        <Section
+          key={i}
+          padding="default"
+          tone={i % 2 === 0 ? 'plain' : 'subtle'}
+          id={`stage-${String(i + 1).padStart(2, '0')}`}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-7 max-w-reading">
+              <Eyebrow className="mb-4">{stage.label}</Eyebrow>
+              <Heading level={2} className="mb-6 font-light">
+                {stage.headline}
+              </Heading>
+              <div className="flex flex-col gap-5">
+                {stage.paragraphs.map((p, j) => (
+                  <Body key={j} className="text-mute">{p}</Body>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-5">
+              <Photo
+                description={`${stage.label}: representative photograph (engineer at work / install in progress / monthly service visit)`}
+                assetRef={`how-${stage.label.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                aspect="four-five"
+              />
+              <div className="mt-6 border border-hairline p-6">
+                <div className="text-eyebrow font-medium uppercase text-teal mb-4">
+                  {stage.aside.title}
+                </div>
+                <ul className="flex flex-col gap-2">
+                  {stage.aside.items.map((item) => (
+                    <li key={item} className="text-caption text-ink flex gap-3">
+                      <span className="text-teal flex-shrink-0">&mdash;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Section>
+      ))}
+
+      {/* Editorial closer */}
+      <Section padding="default">
+        <div className="max-w-reading mx-auto text-center">
+          <EditorialAccent className="mx-auto">
+            From start to monthly service, the same UNIWATER team owns the system.
+          </EditorialAccent>
+        </div>
+      </Section>
+
+      <FinalCTA />
+    </>
+  );
+}

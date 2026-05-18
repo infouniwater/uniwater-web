@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">BATHROOM INSTALL · 2 of 7</text>
+  <text class="title" x="50" y="74">2. Wall-mounted install (visible)</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <!-- Bathroom wall (tile) -->
+  <rect class="tile-fill" x="80" y="110" width="740" height="500"/>
+  <line class="outline" x1="80" y1="110" x2="820" y2="110"/>
+
+  <!-- Floor -->
+  <rect class="tile-fill" x="80" y="560" width="740" height="50"/>
+  <line class="outline" x1="80" y1="560" x2="820" y2="560"/>
+
+  <rect class="vessel" x="340" y="210" width="80" height="280" rx="4"/>
+  <ellipse cx="380.0" cy="210" rx="40.0" ry="5" class="vessel"/>
+  <ellipse cx="380.0" cy="490" rx="40.0" ry="5" class="vessel"/>
+  <rect class="vessel" x="480" y="210" width="80" height="280" rx="4"/>
+  <ellipse cx="520.0" cy="210" rx="40.0" ry="5" class="vessel"/>
+  <ellipse cx="520.0" cy="490" rx="40.0" ry="5" class="vessel"/>
+
+  <!-- Wall brackets (visible mounting hardware) -->
+  <rect class="vessel-tint" x="335" y="240" width="10" height="20"/>
+  <rect class="vessel-tint" x="335" y="440" width="10" height="20"/>
+  <line class="secondary" x1="335" y1="250" x2="320" y2="250"/>
+  <line class="secondary" x1="335" y1="450" x2="320" y2="450"/>
+  <circle class="vessel" cx="320" cy="250" r="2"/>
+  <circle class="vessel" cx="320" cy="450" r="2"/>
+
+  <rect class="vessel-tint" x="555" y="240" width="10" height="20"/>
+  <rect class="vessel-tint" x="555" y="440" width="10" height="20"/>
+  <line class="secondary" x1="555" y1="250" x2="570" y2="250"/>
+  <line class="secondary" x1="555" y1="450" x2="570" y2="450"/>
+  <circle class="vessel" cx="570" cy="250" r="2"/>
+  <circle class="vessel" cx="570" cy="450" r="2"/>
+
+  <!-- Plumbing — visible because wall-mounted -->
+  <path class="pipe" d="M380 210 L380 180 L520 180 L520 210"/>
+  <path class="pipe" d="M250 180 L380 180"/>
+  <path class="pipe" d="M520 180 L650 180"/>
+  <path class="pipe" d="M380 490 L380 520 L520 520 L520 490"/>
+  <path class="pipe" d="M450 520 L450 560"/>
+
+  <g class="dim">
+    <line class="dim-line" x1="750" y1="210" x2="750" y2="490"/>
+    <line class="dim-line" x1="746" y1="210" x2="754" y2="210"/>
+    <line class="dim-line" x1="746" y1="490" x2="754" y2="490"/>
+    <text class="dim-text" x="756" y="353.0" text-anchor="start">Vessel 280 mm</text>
+  </g>
+  <g class="dim">
+    <line class="dim-line" x1="340" y1="540" x2="560" y2="540"/>
+    <line class="dim-line" x1="340" y1="536" x2="340" y2="544"/>
+    <line class="dim-line" x1="560" y1="536" x2="560" y2="544"/>
+    <text class="dim-text" x="450.0" y="554" text-anchor="middle">Twin module width</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M380 350 L284 347"/>
+    <circle cx="380" cy="350" r="1.5" fill="#05455F"/>
+    <text class="callout" x="280" y="350" text-anchor="end">Mounted on existing tile wall — no opening required</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M320 250 L224 227"/>
+    <circle cx="320" cy="250" r="1.5" fill="#05455F"/>
+    <text class="callout" x="220" y="230" text-anchor="end">Bracket + wall plug</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M380 180 L204 157"/>
+    <circle cx="380" cy="180" r="1.5" fill="#05455F"/>
+    <text class="callout" x="200" y="160" text-anchor="end">Inlet visible above vessels</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M450 540 L696 537"/>
+    <circle cx="450" cy="540" r="1.5" fill="#05455F"/>
+    <text class="callout" x="700" y="540" text-anchor="start">Drain to floor trap</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">ELEVATION · NTS</text>
+</svg>

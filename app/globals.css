@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tokens duplicated as CSS vars for non-Tailwind contexts */
+    --brand-navy: #05455F;
+    --brand-teal: #1B9BB4;
+    --brand-soft: #87D0CD;
+    --brand-tint: #D5EEF1;
+    --off-white: #FAFAF7;
+    --subtle: #F4F1ED;
+    --ink: #1F1F1F;
+    --mute: #555555;
+    --hairline: #E5E1DA;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--off-white);
+    color: var(--ink);
+    font-family: var(--font-signika), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  /* Selection — tint background, navy text per §3.10 */
+  ::selection {
+    background-color: var(--brand-tint);
+    color: var(--brand-navy);
+  }
+
+  /* Reset heading defaults — typography handled by components */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* Focus ring — accessible + on-brand */
+  :focus-visible {
+    outline: 2px solid var(--brand-teal);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Container — max-width 1280, fluid edge padding per §3.4 */
+  .container-uw {
+    @apply mx-auto w-full max-w-container;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-uw {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-uw {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  @media (min-width: 1440px) {
+    .container-uw {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+  /* Section vertical rhythm per §3.3 */
+  .section-tight { padding-top: 3rem; padding-bottom: 3rem; }
+  .section { padding-top: 4rem; padding-bottom: 4rem; }
+  .section-loose { padding-top: 6rem; padding-bottom: 6rem; }
+  @media (min-width: 768px) {
+    .section-tight { padding-top: 5rem; padding-bottom: 5rem; }
+    .section { padding-top: 7.5rem; padding-bottom: 7.5rem; }
+    .section-loose { padding-top: 10rem; padding-bottom: 10rem; }
+  }
+}
+
+@layer utilities {
+  /* Respect prefers-reduced-motion strictly per §3.5 */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

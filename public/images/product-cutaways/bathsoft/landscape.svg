@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1050" width="1800" height="1050">
+  <defs>
+    <pattern id="grid-bg" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#05455F" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+    <pattern id="media-sand" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="2" cy="2" r="0.8" fill="#7396A3" opacity="0.4"/>
+      <circle cx="6" cy="6" r="0.7" fill="#7396A3" opacity="0.35"/>
+      <circle cx="4" cy="5" r="0.6" fill="#7396A3" opacity="0.3"/>
+    </pattern>
+    <pattern id="media-iron" patternUnits="userSpaceOnUse" width="6" height="6">
+      <circle cx="2" cy="2" r="1.0" fill="#05455F" opacity="0.55"/>
+      <circle cx="4.5" cy="4.5" r="0.9" fill="#05455F" opacity="0.45"/>
+    </pattern>
+    <pattern id="media-carbon" patternUnits="userSpaceOnUse" width="6" height="6">
+      <rect x="1" y="1" width="1.8" height="1.8" fill="#05455F" opacity="0.55"/>
+      <rect x="3.5" y="3.5" width="1.6" height="1.6" fill="#05455F" opacity="0.45"/>
+    </pattern>
+    <pattern id="media-resin" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="3" cy="3" r="1.6" fill="#1B9BB4" opacity="0.45"/>
+      <circle cx="6" cy="6" r="1.4" fill="#1B9BB4" opacity="0.35"/>
+    </pattern>
+    <pattern id="media-sba" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="3" cy="3" r="1.6" fill="#87D0CD" opacity="0.6"/>
+      <circle cx="6" cy="6" r="1.4" fill="#87D0CD" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B9BB4"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#87D0CD"/>
+    </marker>
+    <style>
+      .bg          { fill: #FAF8F3; }
+      .grid        { fill: url(#grid-bg); }
+      .wordmark    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; font-weight: 700; letter-spacing: 0.01em; }
+      .wordmark-sub{ font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #7396A3; font-weight: 400; letter-spacing: 0.08em; }
+      .meta        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.55; letter-spacing: 0.20em; text-transform: uppercase; }
+
+      .eyebrow     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+      .h1          { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 30px; fill: #05455F; font-weight: 600; letter-spacing: -0.005em; }
+      .subhead     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 14px; fill: #05455F; opacity: 0.7; }
+      .h-section   { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 18px; fill: #05455F; font-weight: 600; }
+
+      .vessel-stroke { stroke: #05455F; stroke-width: 1.8; fill: #FFFFFF; }
+      .vessel-fill   { fill: #F2EEE6; }
+      .vessel-cap    { stroke: #05455F; stroke-width: 1.8; fill: #FFFFFF; }
+      .pipe          { stroke: #05455F; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .pipe-drain    { stroke: #7396A3; stroke-width: 2.0; fill: none; stroke-linecap: round; stroke-dasharray: 4 3; }
+      .arch-line     { stroke: #05455F; stroke-width: 1.0; fill: none; }
+      .hair          { stroke: #E5E1DA; stroke-width: 0.6; fill: none; }
+      .accent        { stroke: #1B9BB4; stroke-width: 2.5; fill: none; }
+
+      .label-stem    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+      .label-head    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 13px; fill: #05455F; font-weight: 600; }
+      .label-body    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; opacity: 0.75; }
+      .label-leader  { stroke: #1B9BB4; stroke-width: 1.0; fill: none; }
+
+      .stage-num     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.20em; text-transform: uppercase; }
+      .stage-name    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; }
+      .stage-detail  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; opacity: 0.75; }
+
+      .footer        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.55; }
+      .footer-it     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 11px; fill: #05455F; opacity: 0.75; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="1050"/>
+  <rect class="grid" width="1800" height="1050"/>
+  <text class="wordmark" x="50" y="70">UNIWATER</text>
+  <text class="wordmark-sub" x="210" y="70">SOLUTIONS</text>
+  <text class="meta" x="1750" y="70" text-anchor="end">SVG-006 · landscape</text>
+  <line class="hair" x1="50" y1="90" x2="1750" y2="90"/>
+  <text class="eyebrow" x="50" y="130">Product cutaway</text>
+  <text class="h1" x="50" y="160">BathSoft</text>
+  <text class="subhead" x="50" y="182">A bathroom filter has to do three things at once: treat the water, fit the space, not announce itself.</text>
+  <rect x="384.00000000000006" y="303.0" width="240.0" height="30" rx="3" class="vessel-cap"/>
+  <circle cx="504.00000000000006" cy="318.0" r="8" class="vessel-cap"/>
+  <circle cx="504.00000000000006" cy="318.0" r="2" fill="#05455F"/>
+  <path d="M 392.00000000000006 325.0 L 392.00000000000006 913.0 A 112.0 112.0 0 0 0 616.0 913.0 L 616.0 325.0 Z" class="vessel-stroke" fill="#F2EEE6"/>
+  <defs><clipPath id="vessel-clip-504-675"><path d="M 392.00000000000006 325.0 L 392.00000000000006 913.0 A 112.0 112.0 0 0 0 616.0 913.0 L 616.0 325.0 Z"/></clipPath></defs>
+  <rect x="392.00000000000006" y="465.0" width="224.0" height="455.0" fill="url(#media-iron)" clip-path="url(#vessel-clip-504-675)"/>
+  <line x1="504.00000000000006" y1="337.0" x2="504.00000000000006" y2="924.0" stroke="#05455F" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <path d="M 352.00000000000006 315.0 L 492.00000000000006 315.0 L 492.00000000000006 321.0" class="pipe"/>
+  <path d="M 342.00000000000006 315.0 L 352.00000000000006 315.0" class="pipe" marker-end="url(#arrow-teal)"/>
+  <path d="M 516.0 321.0 L 516.0 315.0 L 666.0 315.0" class="pipe"/>
+  <text class="label-stem" x="672.0" y="318.0">Soft water out</text>
+  <text class="label-stem" x="336.00000000000006" y="318.0" text-anchor="end">Hard in</text>
+  <path d="M 632.0 297.0 L 892.0 297.0 L 892.0 218" class="label-leader"/>
+  <circle cx="632.0" cy="297.0" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="900.0" y="222">01 · Control head</text>
+  <text class="label-head" x="900.0" y="242">Manual or automatic MPV</text>
+  <text class="label-body" x="900.0" y="260">Manual variants: weekly backwash by valve turn.</text>
+  <text class="label-body" x="900.0" y="275">Automatic: timer-triggered every 3–7 days.</text>
+  <path d="M 620.0 395.0 L 892.0 395.0 L 892.0 316" class="label-leader"/>
+  <circle cx="620.0" cy="395.0" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="900.0" y="320">02 · Freeboard</text>
+  <text class="label-head" x="900.0" y="340">Expansion space</text>
+  <text class="label-body" x="900.0" y="358">20% headroom for resin bed expansion</text>
+  <text class="label-body" x="900.0" y="373">during backwash cycle.</text>
+  <path d="M 620.0 692.5 L 892.0 692.5 L 892.0 414" class="label-leader"/>
+  <circle cx="620.0" cy="692.5" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="900.0" y="418">03 · Media bed</text>
+  <text class="label-head" x="900.0" y="438">Catalytic iron media</text>
+  <text class="label-body" x="900.0" y="456">or food-grade SAC resin for softener variants.</text>
+  <text class="label-body" x="900.0" y="471">Manganese-dioxide-coated alumino-silicate.</text>
+  <text class="label-body" x="900.0" y="486">No chemical pre-oxidation needed.</text>
+  <path d="M 508.00000000000006 910.0 L 1242.0 910.0 L 1242.0 218" class="label-leader"/>
+  <circle cx="508.00000000000006" cy="910.0" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="1250.0" y="222">04 · Distributor</text>
+  <text class="label-head" x="1250.0" y="242">Internal riser tube</text>
+  <text class="label-body" x="1250.0" y="260">Distributes flow across media bed.</text>
+  <text class="label-body" x="1250.0" y="275">Slotted bottom screen catches gravel.</text>
+  <path d="M 620.0 938.0 L 1242.0 938.0 L 1242.0 316" class="label-leader"/>
+  <circle cx="620.0" cy="938.0" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="1250.0" y="320">05 · Support layer</text>
+  <text class="label-head" x="1250.0" y="340">Graded gravel</text>
+  <text class="label-body" x="1250.0" y="358">Prevents media migration into outlet.</text>
+  <text class="label-body" x="1250.0" y="373">Underdrain plate distributes flow.</text>
+  <line class="hair" x1="50" y1="992" x2="1750" y2="992"/>
+  <text class="footer-it" x="50" y="1010">Sized to a single bathroom. Sized for fifteen years.</text>
+  <text class="footer" x="1750" y="1010" text-anchor="end">SVG-006 · bathsoft-landscape · uniwater.co.in</text>
+</svg>

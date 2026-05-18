@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy-stroke { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .navy-stroke-thin { stroke: #D5EEF1; stroke-width: 1; fill: none; }
+    .navy-fill { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .h-tier-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 46px; fill: #FFFFFF; }
+    .h-tier-range { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 37px; fill: #87D0CD; }
+    .h-tier-cities { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 31px; fill: #87D0CD; }
+    .h-tier-action { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 29px; fill: #D5EEF1; font-style: italic; }
+    .h-scale { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 25px; fill: #87D0CD; }
+    .h-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 28px; fill: #87D0CD; letter-spacing: 0.12em; text-transform: uppercase; }
+  </style>
+
+  <!-- Section header -->
+  <text x="120" y="140" class="h-tag">Hardness scale</text>
+  <text x="120" y="200" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="74" fill="#D5EEF1">Where does your home sit?</text>
+
+  <!-- Horizontal bar (the scale) -->
+  <g transform="translate(120, 350)">
+    <!-- Bar segments with progressive opacity -->
+    <rect x="0" y="0" width="420" height="60" fill="#D5EEF1" />
+    <rect x="420" y="0" width="420" height="60" fill="#87D0CD" />
+    <rect x="840" y="0" width="420" height="60" fill="#1B9BB4" />
+    <rect x="1260" y="0" width="420" height="60" fill="#1B9BB4" opacity="0.6" />
+
+    <!-- Scale markers -->
+    <g transform="translate(0, 80)">
+      <text x="0" class="h-scale">0 ppm</text>
+      <text x="420" text-anchor="middle" class="h-scale">60</text>
+      <text x="840" text-anchor="middle" class="h-scale">120</text>
+      <text x="1260" text-anchor="middle" class="h-scale">180</text>
+      <text x="1680" text-anchor="end" class="h-scale">300+ ppm</text>
+    </g>
+
+    <!-- Tick marks -->
+    <line x1="420" y1="-6" x2="420" y2="66" class="navy-stroke-thin" />
+    <line x1="840" y1="-6" x2="840" y2="66" class="navy-stroke-thin" />
+    <line x1="1260" y1="-6" x2="1260" y2="66" class="navy-stroke-thin" />
+  </g>
+
+  <!-- Four tier columns below -->
+  <g transform="translate(120, 540)">
+    <!-- TIER 1: SOFT -->
+    <g transform="translate(0, 0)">
+      <text class="h-tier-label">Soft</text>
+      <text y="40" class="h-tier-range">under 60 ppm</text>
+      <line x1="0" y1="65" x2="380" y2="65" class="navy-stroke-thin" />
+      <text y="105" class="h-tier-cities">Parts of Kolkata.</text>
+      <text y="135" class="h-tier-cities">Eastern corridor supply.</text>
+      <text y="190" class="h-tier-action">Sediment + carbon is sufficient.</text>
+    </g>
+
+    <!-- TIER 2: MODERATELY HARD -->
+    <g transform="translate(420, 0)">
+      <text class="h-tier-label">Moderately hard</text>
+      <text y="40" class="h-tier-range">60–120 ppm</text>
+      <line x1="0" y1="65" x2="380" y2="65" class="navy-stroke-thin" />
+      <text y="105" class="h-tier-cities">Most metropolitan supply.</text>
+      <text y="190" class="h-tier-action">Point-of-use softening at</text>
+      <text y="215" class="h-tier-action">bathrooms and kitchen.</text>
+    </g>
+
+    <!-- TIER 3: HARD -->
+    <g transform="translate(840, 0)">
+      <text class="h-tier-label">Hard</text>
+      <text y="40" class="h-tier-range">120–180 ppm</text>
+      <line x1="0" y1="65" x2="380" y2="65" class="navy-stroke-thin" />
+      <text y="105" class="h-tier-cities">NCR, Pune,</text>
+      <text y="135" class="h-tier-cities">parts of Bangalore.</text>
+      <text y="190" class="h-tier-action">Whole-house softening.</text>
+      <text y="215" class="h-tier-action">Pays back in 2–3 years.</text>
+    </g>
+
+    <!-- TIER 4: VERY HARD -->
+    <g transform="translate(1260, 0)">
+      <text class="h-tier-label">Very hard</text>
+      <text y="40" class="h-tier-range">over 180 ppm</text>
+      <line x1="0" y1="65" x2="380" y2="65" class="navy-stroke-thin" />
+      <text y="105" class="h-tier-cities">Borewell-fed homes.</text>
+      <text y="135" class="h-tier-cities">Chennai, Hyderabad, Rajasthan.</text>
+      <text y="190" class="h-tier-action">Multi-stage essential.</text>
+      <text y="215" class="h-tier-action">Softening alone won't carry it.</text>
+    </g>
+  </g>
+
+  <!-- Bottom callout -->
+  <g transform="translate(120, 940)">
+    <line x1="0" y1="0" x2="1680" y2="0" class="navy-stroke-thin" stroke-dasharray="3 5" />
+    <text y="50" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="34" fill="#D5EEF1">Don't know your hardness? We'll test it. Ten minutes. No charge.</text>
+  </g>
+</svg>

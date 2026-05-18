@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy-stroke { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .navy-stroke-thin { stroke: #D5EEF1; stroke-width: 1.5; fill: none; }
+    .navy-fill { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .h-stage-num { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 34px; fill: #87D0CD; letter-spacing: 0.1em; }
+    .h-stage-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 56px; fill: #D5EEF1; }
+    .h-stage-body { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 28px; fill: #87D0CD; }
+    .h-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 28px; fill: #87D0CD; letter-spacing: 0.12em; text-transform: uppercase; }
+    .h-flow-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 25px; fill: #87D0CD; font-style: italic; }
+  </style>
+
+  <!-- Section header -->
+  <text x="120" y="140" class="h-tag">The four-stage train</text>
+  <text x="120" y="200" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="65" fill="#D5EEF1">Every drop entering the house, treated in this order.</text>
+
+  <!-- Inflow label on left -->
+  <g transform="translate(120, 480)">
+    <text class="h-flow-label">Mains inflow</text>
+    <line x1="0" y1="20" x2="80" y2="20" class="navy-stroke" />
+    <polyline points="70,12 80,20 70,28" class="navy-stroke" />
+  </g>
+
+  <!-- Four stage boxes connected by arrows -->
+  <g transform="translate(220, 380)">
+    <!-- STAGE 1: SEDIMENT -->
+    <rect x="0" y="0" width="320" height="240" class="navy-stroke" />
+    <text x="20" y="50" class="h-stage-num">STAGE 01</text>
+    <text x="20" y="105" class="h-stage-label">Sediment</text>
+    <line x1="20" y1="130" x2="100" y2="130" class="navy-stroke-thin" />
+    <text x="20" y="170" class="h-stage-body">Removes particulate.</text>
+    <text x="20" y="195" class="h-stage-body">Protects everything</text>
+    <text x="20" y="220" class="h-stage-body">downstream.</text>
+
+    <!-- Arrow 1→2 -->
+    <line x1="320" y1="120" x2="380" y2="120" class="navy-stroke" />
+    <polyline points="368,112 380,120 368,128" class="navy-stroke" />
+
+    <!-- STAGE 2: IRON -->
+    <rect x="380" y="0" width="320" height="240" class="navy-stroke" />
+    <text x="400" y="50" class="h-stage-num">STAGE 02</text>
+    <text x="400" y="105" class="h-stage-label">Iron</text>
+    <line x1="400" y1="130" x2="480" y2="130" class="navy-stroke-thin" />
+    <text x="400" y="170" class="h-stage-body">Oxidation and media</text>
+    <text x="400" y="195" class="h-stage-body">filtration. Critical for</text>
+    <text x="400" y="220" class="h-stage-body">borewell-fed homes.</text>
+
+    <!-- Arrow 2→3 -->
+    <line x1="700" y1="120" x2="760" y2="120" class="navy-stroke" />
+    <polyline points="748,112 760,120 748,128" class="navy-stroke" />
+
+    <!-- STAGE 3: CARBON -->
+    <rect x="760" y="0" width="320" height="240" class="navy-stroke" />
+    <text x="780" y="50" class="h-stage-num">STAGE 03</text>
+    <text x="780" y="105" class="h-stage-label">Carbon</text>
+    <line x1="780" y1="130" x2="860" y2="130" class="navy-stroke-thin" />
+    <text x="780" y="170" class="h-stage-body">Removes residual</text>
+    <text x="780" y="195" class="h-stage-body">chlorine and the</text>
+    <text x="780" y="220" class="h-stage-body">summer chemical taste.</text>
+
+    <!-- Arrow 3→4 -->
+    <line x1="1080" y1="120" x2="1140" y2="120" class="navy-stroke" />
+    <polyline points="1128,112 1140,120 1128,128" class="navy-stroke" />
+
+    <!-- STAGE 4: SOFTENING -->
+    <rect x="1140" y="0" width="320" height="240" fill="#1B9BB4" />
+    <text x="1160" y="50" class="h-stage-num" fill="#87D0CD">STAGE 04</text>
+    <text x="1160" y="105" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="56" fill="white">Softening</text>
+    <line x1="1160" y1="130" x2="1240" y2="130" stroke="white" stroke-width="1.5" fill="none" />
+    <text x="1160" y="170" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="28" fill="white">Ion exchange removes</text>
+    <text x="1160" y="195" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="28" fill="white">calcium and magnesium.</text>
+    <text x="1160" y="220" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="28" fill="white" font-style="italic">The decisive stage.</text>
+  </g>
+
+  <!-- Outflow label on right -->
+  <g transform="translate(1700, 480)">
+    <line x1="0" y1="20" x2="80" y2="20" class="navy-stroke" />
+    <polyline points="70,12 80,20 70,28" class="navy-stroke" />
+    <text x="0" y="55" class="h-flow-label">Soft, treated water</text>
+    <text x="0" y="80" class="h-flow-label">to every tap</text>
+  </g>
+
+  <!-- Sizing strip at bottom -->
+  <g transform="translate(120, 800)">
+    <line x1="0" y1="0" x2="1680" y2="0" class="navy-stroke-thin" stroke-dasharray="3 5" />
+    <text y="50" class="h-tag">Sized for the home</text>
+    <g transform="translate(0, 100)">
+      <text x="0" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="50" fill="#D5EEF1">2K LPH</text>
+      <text x="0" y="35" class="h-stage-body">3–4 bathroom homes</text>
+
+      <text x="560" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="50" fill="#D5EEF1">4K LPH</text>
+      <text x="560" y="35" class="h-stage-body">5–6 bathrooms, small villas</text>
+
+      <text x="1120" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="50" fill="#D5EEF1">6K LPH</text>
+      <text x="1120" y="35" class="h-stage-body">Large villas, duplexes, garden draw</text>
+    </g>
+  </g>
+</svg>

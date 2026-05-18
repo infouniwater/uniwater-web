@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="t-brine-tank">
+  <title id="t-brine-tank">Brine tank</title>
+  <!-- tank body -->
+  <path d="M14 12 L14 38 Q14 42 19 42 L29 42 Q34 42 34 38 L34 12" />
+  <!-- top ellipse -->
+  <ellipse cx="24" cy="12" rx="10" ry="3" />
+  <!-- salt fill level (dashed-ish: render as two short segments) -->
+  <path d="M15 27 Q24 30 33 27" stroke-width="1.2" opacity="0.6" />
+  <!-- outlet pipe at lower right -->
+  <path d="M34 36 L40 36 L40 40" />
+</svg>

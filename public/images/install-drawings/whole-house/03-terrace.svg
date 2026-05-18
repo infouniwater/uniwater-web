@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">WHOLE-HOUSE INSTALL · 3 of 5</text>
+  <text class="title" x="50" y="74">3. Terrace install (rooftop, with weather protection)</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <!-- Terrace floor (textured tile) -->
+  <rect class="terrace-fill" x="60" y="450" width="780" height="160"/>
+  <line class="outline" x1="60" y1="450" x2="840" y2="450"/>
+
+  <!-- Parapet wall (right side) -->
+  <rect class="wall-fill" x="800" y="320" width="40" height="130"/>
+  <line class="outline" x1="800" y1="320" x2="800" y2="450"/>
+  <line class="outline" x1="840" y1="320" x2="840" y2="450"/>
+  <line class="outline" x1="800" y1="320" x2="840" y2="320"/>
+
+  <!-- Overhead water tank (suggested at upper left — gravity-feed source) -->
+  <rect class="vessel-tint" x="100" y="170" width="140" height="120" rx="4"/>
+  <line class="outline" x1="100" y1="170" x2="240" y2="170"/>
+  <!-- Tank stand legs -->
+  <line class="outline" x1="120" y1="290" x2="120" y2="450"/>
+  <line class="outline" x1="220" y1="290" x2="220" y2="450"/>
+  <line class="secondary" x1="120" y1="350" x2="220" y2="350"/>
+  <text class="axis-label" x="170" y="232" text-anchor="middle" opacity="0.6">OHT</text>
+
+  <!-- Gravity downfeed from tank -->
+  <path class="pipe-water" d="M170 290 L170 330 L350 330 L350 380"/>
+
+  <!-- Weather hood / canopy over the install -->
+  <path class="outline" d="M310 280 L600 280 L590 300 L320 300 Z" fill="#F2EEE6"/>
+  <line class="outline" x1="310" y1="280" x2="320" y2="300"/>
+  <line class="outline" x1="600" y1="280" x2="590" y2="300"/>
+  <!-- Hood supports -->
+  <line class="secondary" x1="330" y1="300" x2="330" y2="380"/>
+  <line class="secondary" x1="580" y1="300" x2="580" y2="380"/>
+
+
+  <rect class="vessel" x="340" y="380" width="70" height="70" rx="4"/>
+  <ellipse cx="375.0" cy="380" rx="35.0" ry="5" class="vessel"/>
+  <ellipse cx="375.0" cy="450" rx="35.0" ry="5" class="vessel"/>
+  <rect class="vessel" x="440" y="380" width="70" height="70" rx="4"/>
+  <ellipse cx="475.0" cy="380" rx="35.0" ry="5" class="vessel"/>
+  <ellipse cx="475.0" cy="450" rx="35.0" ry="5" class="vessel"/>
+  <!-- (Vessels look short here — they're partially below, deck-mounted; show base) -->
+  <line class="outline" x1="340" y1="430" x2="510" y2="430"/>
+
+  <!-- Pipework -->
+  <path class="pipe-water" d="M375 380 L375 350 L475 350 L475 380"/>
+  <path class="pipe" d="M510 415 L600 415 L600 380"/>
+
+  <!-- Brine tank on terrace floor beside -->
+  <rect class="vessel-tint" x="540" y="380" width="60" height="70" rx="3"/>
+  <ellipse cx="570" cy="380" rx="30" ry="4" class="vessel-tint"/>
+
+  <!-- Outlet down to building (going down through floor) -->
+  <path class="pipe" d="M600 415 L700 415 L700 450"/>
+
+  <!-- Floor drain on terrace -->
+  <circle class="secondary" cx="500" cy="490" r="10"/>
+  <path class="detail" d="M490 490 L510 490 M500 480 L500 500"/>
+
+  <!-- UV index / sun indicator (just visual cue this is outdoors) -->
+  <circle class="secondary" cx="730" cy="180" r="20" opacity="0.4"/>
+  <line class="detail" x1="730" y1="150" x2="730" y2="135" opacity="0.4"/>
+  <line class="detail" x1="730" y1="225" x2="730" y2="240" opacity="0.4"/>
+  <line class="detail" x1="700" y1="180" x2="685" y2="180" opacity="0.4"/>
+  <line class="detail" x1="760" y1="180" x2="775" y2="180" opacity="0.4"/>
+  <text class="axis-label" x="730" y="265" text-anchor="middle" opacity="0.3">SUN EXPOSURE</text>
+
+
+  <g class="dim">
+    <line class="dim-line" x1="310" y1="250" x2="600" y2="250"/>
+    <line class="dim-line" x1="310" y1="246" x2="310" y2="254"/>
+    <line class="dim-line" x1="600" y1="246" x2="600" y2="254"/>
+    <text class="dim-text" x="455.0" y="246" text-anchor="middle">Weather hood — 290 mm wide</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M170 230 L276 192"/>
+    <circle cx="170" cy="230" r="1.5" fill="#05455F"/>
+    <text class="callout" x="280" y="195" text-anchor="start">Existing OHT — gravity-feed source</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M450 290 L596 232"/>
+    <circle cx="450" cy="290" r="1.5" fill="#05455F"/>
+    <text class="callout" x="600" y="235" text-anchor="start">Weather hood: rain + UV protection</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M570 410 L696 527"/>
+    <circle cx="570" cy="410" r="1.5" fill="#05455F"/>
+    <text class="callout" x="700" y="530" text-anchor="start">Brine tank, weather-rated</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M500 490 L384 552"/>
+    <circle cx="500" cy="490" r="1.5" fill="#05455F"/>
+    <text class="callout" x="380" y="555" text-anchor="end">Terrace floor drain</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M700 445 L816 477"/>
+    <circle cx="700" cy="445" r="1.5" fill="#05455F"/>
+    <text class="callout" x="820" y="480" text-anchor="start">Treated outlet down to building</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">ELEVATION · NTS</text>
+</svg>

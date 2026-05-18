@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">BATHROOM INSTALL · 5 of 7</text>
+  <text class="title" x="50" y="74">5. Under-basin install</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <!-- Counter top (vanity) -->
+  <rect class="vessel-tint" x="180" y="200" width="600" height="20"/>
+  <line class="outline" x1="180" y1="200" x2="780" y2="200"/>
+  <line class="outline" x1="180" y1="220" x2="780" y2="220"/>
+
+  <!-- Counter fascia -->
+  <line class="outline" x1="180" y1="220" x2="180" y2="560"/>
+  <line class="outline" x1="780" y1="220" x2="780" y2="560"/>
+  <rect class="void-fill" x="180" y="220" width="600" height="340"/>
+
+  <!-- Floor -->
+  <line class="outline" x1="120" y1="560" x2="820" y2="560"/>
+
+  <!-- Cabinet door, hinged on left, open at ~70° -->
+  <g transform="rotate(60 180 220)">
+    <rect class="vessel-tint" x="180" y="220" width="200" height="340"/>
+    <line class="outline" x1="180" y1="220" x2="380" y2="220"/>
+    <line class="outline" x1="380" y1="220" x2="380" y2="560"/>
+    <line class="outline" x1="380" y1="560" x2="180" y2="560"/>
+    <line class="secondary" x1="365" y1="380" x2="365" y2="400" stroke-width="1.2"/>
+  </g>
+  <circle class="vessel" cx="180" cy="220" r="2.5"/>
+  <circle class="vessel" cx="180" cy="560" r="2.5"/>
+
+  <!-- Basin on counter -->
+  <path class="outline" d="M450 220 Q450 180 480 180 L580 180 Q610 180 610 220 Z" fill="#FFFFFF"/>
+  <!-- Tap on counter -->
+  <path class="pipe" d="M530 200 L530 150 L560 150"/>
+  <path class="outline" d="M548 148 L572 148 L570 158 L550 158 Z" fill="#FFFFFF"/>
+
+  <!-- P-trap below basin -->
+  <path class="pipe" d="M530 220 L530 380 L550 380 Q560 380 560 390 Q560 400 550 400 L530 400 L530 420 L530 560"/>
+
+  <rect class="vessel" x="610" y="290" width="60" height="240" rx="4"/>
+  <ellipse cx="640.0" cy="290" rx="30.0" ry="5" class="vessel"/>
+  <ellipse cx="640.0" cy="530" rx="30.0" ry="5" class="vessel"/>
+  <rect class="vessel" x="690" y="290" width="60" height="240" rx="4"/>
+  <ellipse cx="720.0" cy="290" rx="30.0" ry="5" class="vessel"/>
+  <ellipse cx="720.0" cy="530" rx="30.0" ry="5" class="vessel"/>
+
+  <!-- Pipework to vessels -->
+  <path class="pipe" d="M530 280 L580 280 L580 270 L640 270 L640 290"/>
+  <path class="pipe" d="M670 280 L690 280"/>
+  <path class="pipe" d="M750 320 L770 320 L770 220"/>
+
+
+  <g class="dim">
+    <line class="dim-line" x1="130" y1="220" x2="130" y2="560"/>
+    <line class="dim-line" x1="126" y1="220" x2="134" y2="220"/>
+    <line class="dim-line" x1="126" y1="560" x2="134" y2="560"/>
+    <text class="dim-text" x="124" y="393.0" text-anchor="end">Cabinet 340 mm</text>
+  </g>
+  <g class="dim">
+    <line class="dim-line" x1="610" y1="600" x2="750" y2="600"/>
+    <line class="dim-line" x1="610" y1="596" x2="610" y2="604"/>
+    <line class="dim-line" x1="750" y1="596" x2="750" y2="604"/>
+    <text class="dim-text" x="680.0" y="614" text-anchor="middle">RO twin</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M640 410 L544 467"/>
+    <circle cx="640" cy="410" r="1.5" fill="#05455F"/>
+    <text class="callout" x="540" y="470" text-anchor="end">Under-vanity RO twin</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M545 390 L414 437"/>
+    <circle cx="545" cy="390" r="1.5" fill="#05455F"/>
+    <text class="callout" x="410" y="440" text-anchor="end">Existing P-trap</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M770 200 L804 177"/>
+    <circle cx="770" cy="200" r="1.5" fill="#05455F"/>
+    <text class="callout" x="800" y="180" text-anchor="end">Dedicated drinking-water tap</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M260 290 L104 287"/>
+    <circle cx="260" cy="290" r="1.5" fill="#05455F"/>
+    <text class="callout" x="100" y="290" text-anchor="end">Door at 60° — service access</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">SECTION C–C · NTS</text>
+</svg>

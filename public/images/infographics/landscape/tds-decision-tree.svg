@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy-stroke { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .navy-stroke-thin { stroke: #D5EEF1; stroke-width: 1.5; fill: none; }
+    .navy-fill { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .h-question { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 50px; fill: #FFFFFF; }
+    .h-tds { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 40px; fill: #87D0CD; letter-spacing: 0.05em; }
+    .h-answer-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 50px; fill: #D5EEF1; }
+    .h-answer-body { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 29px; fill: #87D0CD; }
+    .h-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 28px; fill: #87D0CD; letter-spacing: 0.12em; text-transform: uppercase; }
+    .h-cities { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 26px; fill: #87D0CD; font-style: italic; }
+  </style>
+
+  <!-- Section header -->
+  <text x="120" y="140" class="h-tag">Drinking-water decision tree</text>
+  <text x="120" y="200" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="65" fill="#D5EEF1">Test the TDS first. The answer follows.</text>
+
+  <!-- Top question box -->
+  <g transform="translate(720, 290)">
+    <rect x="0" y="0" width="480" height="100" class="navy-stroke" />
+    <text x="240" y="42" text-anchor="middle" class="h-tag">Question</text>
+    <text x="240" y="78" text-anchor="middle" class="h-question">What is your TDS?</text>
+  </g>
+
+  <!-- Vertical line down from question -->
+  <line x1="960" y1="390" x2="960" y2="450" class="navy-stroke" />
+
+  <!-- Three branches: horizontal split line -->
+  <line x1="280" y1="450" x2="1640" y2="450" class="navy-stroke" />
+
+  <!-- Three vertical drops -->
+  <line x1="280" y1="450" x2="280" y2="540" class="navy-stroke" />
+  <line x1="960" y1="450" x2="960" y2="540" class="navy-stroke" />
+  <line x1="1640" y1="450" x2="1640" y2="540" class="navy-stroke" />
+
+  <!-- TDS labels at top of each branch -->
+  <text x="280" y="510" text-anchor="middle" class="h-tds">below 200 ppm</text>
+  <text x="960" y="510" text-anchor="middle" class="h-tds">200–500 ppm</text>
+  <text x="1640" y="510" text-anchor="middle" class="h-tds">above 500 ppm</text>
+
+  <!-- Three answer boxes -->
+  <!-- LEFT: UF + UV -->
+  <g transform="translate(80, 580)">
+    <rect x="0" y="0" width="400" height="320" class="navy-stroke" />
+    <g transform="translate(30, 30)">
+      <text class="h-tag">Answer</text>
+      <text y="55" class="h-answer-label">UF + UV</text>
+      <line x1="0" y1="80" x2="80" y2="80" class="navy-stroke-thin" />
+      <text y="125" class="h-answer-body">Ultrafiltration with UV.</text>
+      <text y="155" class="h-answer-body">Natural minerals stay.</text>
+      <text y="185" class="h-answer-body">Pathogens go.</text>
+      <text y="245" class="h-cities">Most of Kolkata.</text>
+      <text y="270" class="h-cities">Parts of Mumbai. Bengaluru's</text>
+      <text y="295" class="h-cities">Cauvery supply.</text>
+    </g>
+  </g>
+
+  <!-- MIDDLE: Consultation -->
+  <g transform="translate(760, 580)">
+    <rect x="0" y="0" width="400" height="320" class="navy-stroke" stroke-dasharray="6 4" />
+    <g transform="translate(30, 30)">
+      <text class="h-tag">Answer</text>
+      <text y="55" class="h-answer-label">Test &amp; consult</text>
+      <line x1="0" y1="80" x2="80" y2="80" class="navy-stroke-thin" />
+      <text y="125" class="h-answer-body">Borderline range.</text>
+      <text y="155" class="h-answer-body">Hardness, iron, and use</text>
+      <text y="185" class="h-answer-body">case decide RO vs UF.</text>
+      <text y="245" class="h-cities">A water test takes ten minutes</text>
+      <text y="270" class="h-cities">and answers the question.</text>
+    </g>
+  </g>
+
+  <!-- RIGHT: RO -->
+  <g transform="translate(1440, 580)">
+    <rect x="0" y="0" width="400" height="320" fill="#1B9BB4" />
+    <g transform="translate(30, 30)">
+      <text class="h-tag" fill="#87D0CD">Answer</text>
+      <text y="55" class="h-answer-label" fill="white">RO</text>
+      <line x1="0" y1="80" x2="80" y2="80" stroke="white" stroke-width="1.5" />
+      <text y="125" class="h-answer-body" fill="white">Reverse osmosis with</text>
+      <text y="155" class="h-answer-body" fill="white">post-RO mineral correction.</text>
+      <text y="185" class="h-answer-body" fill="white">Re-mineralised. Doesn't taste flat.</text>
+      <text y="245" class="h-cities" fill="#87D0CD">Borewell-fed homes.</text>
+      <text y="270" class="h-cities" fill="#87D0CD">Parts of Delhi. Western and</text>
+      <text y="295" class="h-cities" fill="#87D0CD">southern India.</text>
+    </g>
+  </g>
+
+  <!-- Bottom callout -->
+  <g transform="translate(120, 980)">
+    <line x1="0" y1="0" x2="1680" y2="0" class="navy-stroke-thin" stroke-dasharray="3 5" />
+    <text y="50" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="31" fill="#D5EEF1">From rupees eighteen thousand. Centralised systems on enquiry.</text>
+  </g>
+</svg>

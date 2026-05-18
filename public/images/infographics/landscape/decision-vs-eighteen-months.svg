@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .light-bg { fill: #1B9BB4; }
+    .accent-line { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .arrow-line { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .h-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 36px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .h-time { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 33px; letter-spacing: 0.04em; }
+    .h-effect { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 39px; }
+    .h-effect-small { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 33px; }
+    .h-cost { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 54px; letter-spacing: 0.02em; }
+    .h-section { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 30px; fill: #87D0CD; letter-spacing: 0.12em; text-transform: uppercase; }
+  </style>
+
+  <!-- Section header -->
+  <text x="120" y="160" class="h-section">The shape of the next ten years</text>
+  <line x1="120" y1="200" x2="1800" y2="200" class="accent-line" stroke-width="1" />
+
+  <!-- THE DECISION -->
+  <g transform="translate(120, 280)">
+    <text class="h-label navy">The decision</text>
+    <text y="50" class="h-time grey">Day one</text>
+    <text y="120" class="h-effect ink">Five minutes with the plumber.</text>
+    <text y="160" class="h-effect ink">Decided on price.</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(660, 380)">
+    <line x1="0" y1="0" x2="120" y2="0" class="arrow-line" />
+    <polyline points="105,-8 120,0 105,8" class="arrow-line" />
+  </g>
+
+  <!-- 18 MONTHS LATER -->
+  <g transform="translate(820, 280)">
+    <text class="h-label navy">Eighteen months later</text>
+    <text y="50" class="h-time grey">Symptoms appear</text>
+    <text y="110" class="h-effect-small ink">Geyser scaling.</text>
+    <text y="145" class="h-effect-small ink">CP fittings won't come clean.</text>
+    <text y="180" class="h-effect-small ink">Hair feels different.</text>
+    <text y="215" class="h-effect-small ink">Marble grout has an orange line.</text>
+    <text y="250" class="h-effect-small ink">Dishwasher on its second service call.</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(120, 720)">
+    <line x1="0" y1="0" x2="1680" y2="0" class="accent-line" stroke-dasharray="4 8" />
+  </g>
+
+  <!-- Light callout band at bottom -->
+  <rect x="120" y="780" width="1680" height="200" class="light-bg" opacity="0.18" />
+  <g transform="translate(180, 850)">
+    <text class="h-label navy">Ten years on</text>
+    <text x="0" y="80" class="h-cost navy">Lakhs in cumulative cost.</text>
+    <text x="900" y="42" class="h-effect-small ink">Geysers replaced. Washing machines failed.</text>
+    <text x="900" y="78" class="h-effect-small ink">Marble re-polished. Glass partitions hazed.</text>
+    <text x="900" y="114" class="h-effect-small ink">CP fittings dulled. Skin and hair degraded.</text>
+  </g>
+</svg>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy-stroke { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .navy-stroke-thin { stroke: #D5EEF1; stroke-width: 1.5; fill: none; }
+    .navy-fill { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .accent-stroke { stroke: #1B9BB4; stroke-width: 2; fill: none; }
+    .accent-fill { fill: #1B9BB4; }
+    .h-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 32px; fill: #87D0CD; letter-spacing: 0.14em; text-transform: uppercase; }
+    .h-system-num { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 28px; fill: #87D0CD; letter-spacing: 0.18em; text-transform: uppercase; }
+    .h-system-name { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 84px; fill: #D5EEF1; letter-spacing: -0.01em; }
+    .h-row-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 24px; fill: #87D0CD; letter-spacing: 0.14em; text-transform: uppercase; }
+    .h-row-primary { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 42px; fill: #FFFFFF; }
+    .h-row-detail { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 32px; fill: #87D0CD; }
+    .h-tail { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 32px; fill: #87D0CD; font-style: italic; }
+  </style>
+
+  <!-- =========================================== -->
+  <!-- LEFT COLUMN — COMMERCIAL RO                 -->
+  <!-- =========================================== -->
+  <g transform="translate(180, 130)">
+    <text class="h-system-num">System 01</text>
+    <text y="76" class="h-system-name">Commercial RO</text>
+    <line x1="0" y1="110" x2="80" y2="110" class="accent-stroke" />
+
+    <!-- Icon: RO membrane (cylinder with arrows) -->
+    <g transform="translate(0, 150)">
+      <!-- Cylindrical membrane -->
+      <rect x="0" y="14" width="160" height="60" class="navy-stroke-thin" rx="4" />
+      <ellipse cx="0" cy="44" rx="6" ry="30" class="navy-stroke-thin" />
+      <ellipse cx="160" cy="44" rx="6" ry="30" class="navy-stroke-thin" />
+      <!-- Internal layers -->
+      <line x1="40" y1="14" x2="40" y2="74" class="navy-stroke-thin" stroke-dasharray="3 3" />
+      <line x1="80" y1="14" x2="80" y2="74" class="navy-stroke-thin" stroke-dasharray="3 3" />
+      <line x1="120" y1="14" x2="120" y2="74" class="navy-stroke-thin" stroke-dasharray="3 3" />
+      <!-- Inflow arrow -->
+      <line x1="-50" y1="44" x2="-12" y2="44" class="accent-stroke" />
+      <polygon points="-12,44 -20,40 -20,48" class="accent-fill" />
+      <!-- Outflow arrow -->
+      <line x1="172" y1="44" x2="210" y2="44" class="accent-stroke" />
+      <polygon points="210,44 202,40 202,48" class="accent-fill" />
+      <!-- Reject downward arrow -->
+      <line x1="80" y1="84" x2="80" y2="116" class="navy-stroke-thin" stroke-dasharray="2 3" />
+      <text x="92" y="106" font-family="'Helvetica Neue', Arial, sans-serif" font-size="23" fill="#87D0CD">reject</text>
+    </g>
+
+    <!-- Row 1: What it removes -->
+    <g transform="translate(0, 320)">
+      <text class="h-row-label">What it removes</text>
+      <text y="40" class="h-row-primary">Dissolved solids. Salts.</text>
+      <text y="70" class="h-row-detail">Down to drinking-water quality.</text>
+    </g>
+
+    <!-- Row 2: Output spec -->
+    <g transform="translate(0, 460)">
+      <text class="h-row-label">Output</text>
+      <text y="40" class="h-row-primary">Drinking quality, at scale</text>
+      <text y="70" class="h-row-detail">25 to 2,000 LPH</text>
+    </g>
+
+    <!-- Row 3: Best for -->
+    <g transform="translate(0, 600)">
+      <text class="h-row-label">Best for</text>
+      <text y="40" class="h-row-primary">Hotels. F&amp;B. Schools.</text>
+      <text y="70" class="h-row-detail">Hospitals. Offices. Retail.</text>
+    </g>
+
+    <!-- Closing line for RO -->
+    <text y="760" class="h-tail">Water people drink.</text>
+  </g>
+
+  <!-- ===== Vertical divider ===== -->
+  <line x1="960" y1="180" x2="960" y2="900" stroke="#87D0CD" stroke-width="1" />
+
+  <!-- =========================================== -->
+  <!-- RIGHT COLUMN — DEMINERALISED WATER          -->
+  <!-- =========================================== -->
+  <g transform="translate(1040, 130)">
+    <text class="h-system-num">System 02</text>
+    <text y="76" class="h-system-name">Demineralised water</text>
+    <line x1="0" y1="110" x2="80" y2="110" class="accent-stroke" />
+
+    <!-- Icon: Two resin columns (cation + anion) -->
+    <g transform="translate(0, 150)">
+      <!-- Cation column -->
+      <rect x="0" y="0" width="60" height="100" class="navy-stroke-thin" rx="4" />
+      <rect x="0" y="20" width="60" height="60" class="accent-fill" opacity="0.5" />
+      <text x="30" y="118" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="23" fill="#87D0CD">CATION</text>
+      <!-- Connector pipe -->
+      <line x1="60" y1="50" x2="100" y2="50" class="navy-stroke-thin" />
+      <!-- Anion column -->
+      <rect x="100" y="0" width="60" height="100" class="navy-stroke-thin" rx="4" />
+      <rect x="100" y="20" width="60" height="60" class="accent-fill" opacity="0.5" />
+      <text x="130" y="118" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="23" fill="#87D0CD">ANION</text>
+      <!-- Inflow arrow -->
+      <line x1="-50" y1="50" x2="-2" y2="50" class="accent-stroke" />
+      <polygon points="-2,50 -10,46 -10,54" class="accent-fill" />
+      <!-- Outflow arrow -->
+      <line x1="162" y1="50" x2="210" y2="50" class="accent-stroke" />
+      <polygon points="210,50 202,46 202,54" class="accent-fill" />
+    </g>
+
+    <!-- Row 1: What it removes -->
+    <g transform="translate(0, 320)">
+      <text class="h-row-label">What it removes</text>
+      <text y="40" class="h-row-primary">Cations and anions. All ions.</text>
+      <text y="70" class="h-row-detail">Down to industrial purity.</text>
+    </g>
+
+    <!-- Row 2: Output spec -->
+    <g transform="translate(0, 460)">
+      <text class="h-row-label">Output</text>
+      <text y="40" class="h-row-primary">&lt; 5 ppm. &lt; 10 µS/cm</text>
+      <text y="70" class="h-row-detail">25 to 2,000 LPH</text>
+    </g>
+
+    <!-- Row 3: Best for -->
+    <g transform="translate(0, 600)">
+      <text class="h-row-label">Best for</text>
+      <text y="40" class="h-row-primary">Boiler feedwater. Pharma.</text>
+      <text y="70" class="h-row-detail">Labs. Process water. Plating.</text>
+    </g>
+
+    <!-- Closing line for DM -->
+    <text y="760" class="h-tail">Water machines need.</text>
+  </g>
+
+  <!-- =========================================== -->
+  <!-- BOTTOM CONNECTOR — both, in series          -->
+  <!-- =========================================== -->
+  <g transform="translate(0, 970)">
+    <line x1="180" y1="0" x2="900" y2="0" class="navy-stroke-thin" />
+    <line x1="1020" y1="0" x2="1740" y2="0" class="navy-stroke-thin" />
+    <text x="960" y="6" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="38" fill="#D5EEF1" font-style="italic">+</text>
+    <text x="960" y="50" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="300" fill="#87D0CD" letter-spacing="0.04em">Both, in series, when the application demands it.</text>
+  </g>
+</svg>

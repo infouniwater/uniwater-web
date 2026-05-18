@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">WHOLE-HOUSE INSTALL · 1 of 5</text>
+  <text class="title" x="50" y="74">1. Balcony install (apartment whole-house)</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <!-- Apartment interior wall (left) — tile/finish -->
+  <rect class="wall-fill" x="80" y="110" width="60" height="500"/>
+  <line class="outline" x1="80" y1="110" x2="80" y2="610"/>
+  <line class="outline" x1="140" y1="110" x2="140" y2="610"/>
+  <!-- Sliding door cutout in wall -->
+  <rect fill="#FAF8F3" x="140" y="250" width="0" height="280"/>
+  <!-- Sliding door track + glass -->
+  <line class="outline" x1="140" y1="250" x2="200" y2="250"/>
+  <line class="outline" x1="140" y1="530" x2="200" y2="530"/>
+  <line class="detail" x1="170" y1="250" x2="170" y2="530"/>
+
+  <!-- Balcony floor (tile / waterproof) -->
+  <rect class="tile-fill" x="140" y="540" width="600" height="60"/>
+  <line class="outline" x1="140" y1="540" x2="740" y2="540"/>
+
+  <!-- Balcony railing (right edge) -->
+  <rect class="wall-fill" x="740" y="280" width="20" height="260"/>
+  <line class="outline" x1="740" y1="280" x2="740" y2="600"/>
+  <line class="outline" x1="760" y1="280" x2="760" y2="600"/>
+  <line class="outline" x1="740" y1="280" x2="760" y2="280"/>
+
+  <!-- Sky above (just blank) -->
+  <text class="axis-label" x="450" y="180" text-anchor="middle" opacity="0.35">OPEN AIR · BALCONY</text>
+
+  <!-- Weatherproof cabinet enclosure -->
+  <rect class="vessel-tint" x="260" y="220" width="280" height="320" rx="4"/>
+  <line class="outline" x1="260" y1="220" x2="540" y2="220"/>
+  <line class="outline" x1="260" y1="540" x2="540" y2="540"/>
+  <line class="outline" x1="260" y1="220" x2="260" y2="540"/>
+  <line class="outline" x1="540" y1="220" x2="540" y2="540"/>
+
+  <!-- Slight roof overhang on cabinet (weather protection) -->
+  <line class="outline" x1="250" y1="220" x2="550" y2="220" stroke-width="2"/>
+  <line class="outline" x1="250" y1="220" x2="252" y2="225"/>
+  <line class="outline" x1="550" y1="220" x2="548" y2="225"/>
+
+  <!-- Ventilation louvres on cabinet front -->
+  <line class="detail" x1="280" y1="240" x2="520" y2="240"/>
+  <line class="detail" x1="280" y1="250" x2="520" y2="250"/>
+  <line class="detail" x1="280" y1="260" x2="520" y2="260"/>
+
+  <!-- FRP whole-house twin inside cabinet (shown as if cabinet is transparent for diagram) -->
+  <rect x="290" y="290" width="80" height="220" rx="4" fill="#FFFFFF" stroke="#05455F" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.85"/>
+  <ellipse cx="330" cy="290" rx="40" ry="6" fill="#FFFFFF" stroke="#05455F" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.85"/>
+  <rect class="vessel-tint" x="310" y="270" width="40" height="20" rx="2"/>
+
+  <rect x="380" y="290" width="80" height="220" rx="4" fill="#FFFFFF" stroke="#05455F" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.85"/>
+  <ellipse cx="420" cy="290" rx="40" ry="6" fill="#FFFFFF" stroke="#05455F" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.85"/>
+  <rect class="vessel-tint" x="400" y="270" width="40" height="20" rx="2"/>
+
+  <!-- Brine tank inside cabinet -->
+  <rect x="470" y="390" width="50" height="120" rx="4" fill="#F2EEE6" stroke="#05455F" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.85"/>
+
+  <!-- Inlet from inside building -->
+  <path class="pipe" d="M80 270 L260 270"/>
+  <!-- Outlet back inside -->
+  <path class="pipe" d="M260 500 L80 500"/>
+  <!-- Drain to balcony floor drain -->
+  <path class="pipe" d="M400 510 L400 540"/>
+
+  <!-- Floor drain on balcony -->
+  <circle class="secondary" cx="650" cy="555" r="8"/>
+  <path class="detail" d="M642 555 L658 555 M650 547 L650 563"/>
+
+
+  <g class="dim">
+    <line class="dim-line" x1="140" y1="100" x2="740" y2="100"/>
+    <line class="dim-line" x1="140" y1="96" x2="140" y2="104"/>
+    <line class="dim-line" x1="740" y1="96" x2="740" y2="104"/>
+    <text class="dim-text" x="440.0" y="114" text-anchor="middle">Balcony depth — 600 mm clear</text>
+  </g>
+  <g class="dim">
+    <line class="dim-line" x1="60" y1="220" x2="60" y2="540"/>
+    <line class="dim-line" x1="56" y1="220" x2="64" y2="220"/>
+    <line class="dim-line" x1="56" y1="540" x2="64" y2="540"/>
+    <text class="dim-text" x="54" y="383.0" text-anchor="end">Cabinet 320 mm</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M540 380 L696 347"/>
+    <circle cx="540" cy="380" r="1.5" fill="#05455F"/>
+    <text class="callout" x="700" y="350" text-anchor="start">Weatherproof enclosure with louvres</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M260 220 L204 197"/>
+    <circle cx="260" cy="220" r="1.5" fill="#05455F"/>
+    <text class="callout" x="200" y="200" text-anchor="end">Roof overhang — rain protection</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M80 280 L196 237"/>
+    <circle cx="80" cy="280" r="1.5" fill="#05455F"/>
+    <text class="callout" x="200" y="240" text-anchor="start">Inlet from apartment</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M80 490 L196 527"/>
+    <circle cx="80" cy="490" r="1.5" fill="#05455F"/>
+    <text class="callout" x="200" y="530" text-anchor="start">Treated outlet back to apartment</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M650 555 L716 587"/>
+    <circle cx="650" cy="555" r="1.5" fill="#05455F"/>
+    <text class="callout" x="720" y="590" text-anchor="start">Existing balcony floor drain</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">SECTION E–E · NTS</text>
+</svg>

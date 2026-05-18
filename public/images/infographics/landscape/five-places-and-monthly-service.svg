@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy-stroke { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .navy-stroke-thin { stroke: #D5EEF1; stroke-width: 1.5; fill: none; }
+    .navy-fill { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .accent-stroke { stroke: #1B9BB4; stroke-width: 2; fill: none; }
+    .accent-fill { fill: #1B9BB4; }
+    .h-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 30px; fill: #87D0CD; letter-spacing: 0.14em; text-transform: uppercase; }
+    .h-section { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 69px; fill: #D5EEF1; }
+    .h-loc-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 31px; fill: #D5EEF1; letter-spacing: 0.04em; }
+    .h-loc-detail { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 26px; fill: #87D0CD; }
+    .h-month { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 26px; fill: #D5EEF1; letter-spacing: 0.1em; }
+    .h-task-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 30px; fill: #D5EEF1; letter-spacing: 0.04em; }
+    .h-task-detail { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 28px; fill: #87D0CD; }
+  </style>
+
+  <!-- =========================================== -->
+  <!-- LEFT BLOCK: WHERE IT LIVES (install icons)  -->
+  <!-- =========================================== -->
+  <g transform="translate(120, 130)">
+    <text class="h-tag">Where it lives</text>
+    <text y="60" class="h-section">Five places it disappears.</text>
+    <line x1="0" y1="100" x2="80" y2="100" class="accent-stroke" />
+
+    <!-- 5 location icons stacked vertically -->
+    <!-- Each row: icon (60×60) | label + detail -->
+
+    <!-- 1. False ceiling -->
+    <g transform="translate(0, 160)">
+      <!-- Icon: ceiling line + box hanging -->
+      <rect x="0" y="0" width="60" height="60" class="navy-stroke-thin" rx="2" />
+      <line x1="8" y1="14" x2="52" y2="14" class="navy-stroke-thin" stroke-dasharray="3 3" />
+      <rect x="22" y="20" width="16" height="22" class="accent-fill" />
+      <line x1="30" y1="14" x2="30" y2="20" class="accent-stroke" />
+      <text x="80" y="22" class="h-loc-label">False ceiling</text>
+      <text x="80" y="48" class="h-loc-detail">Above the bathroom, hidden in service void</text>
+    </g>
+
+    <!-- 2. Plumbing shaft -->
+    <g transform="translate(0, 250)">
+      <rect x="0" y="0" width="60" height="60" class="navy-stroke-thin" rx="2" />
+      <rect x="20" y="6" width="20" height="48" class="navy-stroke-thin" stroke-dasharray="2 3" />
+      <rect x="26" y="22" width="8" height="16" class="accent-fill" />
+      <text x="80" y="22" class="h-loc-label">Plumbing shaft</text>
+      <text x="80" y="48" class="h-loc-detail">Inside the existing riser, behind the access panel</text>
+    </g>
+
+    <!-- 3. Wall recess -->
+    <g transform="translate(0, 340)">
+      <rect x="0" y="0" width="60" height="60" class="navy-stroke-thin" rx="2" />
+      <rect x="14" y="14" width="32" height="32" class="navy-stroke-thin" />
+      <rect x="22" y="22" width="16" height="16" class="accent-fill" />
+      <text x="80" y="22" class="h-loc-label">Wall recess</text>
+      <text x="80" y="48" class="h-loc-detail">A niche cut into the wall, finished flush with tile</text>
+    </g>
+
+    <!-- 4. Under-counter -->
+    <g transform="translate(0, 430)">
+      <rect x="0" y="0" width="60" height="60" class="navy-stroke-thin" rx="2" />
+      <line x1="6" y1="22" x2="54" y2="22" class="navy-stroke-thin" />
+      <rect x="14" y="30" width="32" height="22" class="accent-fill" />
+      <text x="80" y="22" class="h-loc-label">Under-counter</text>
+      <text x="80" y="48" class="h-loc-detail">In the vanity cabinet, beside the trap</text>
+    </g>
+
+    <!-- 5. Utility room -->
+    <g transform="translate(0, 520)">
+      <rect x="0" y="0" width="60" height="60" class="navy-stroke-thin" rx="2" />
+      <path d="M 8 50 L 30 18 L 52 50 Z" class="navy-stroke-thin" />
+      <rect x="22" y="32" width="16" height="18" class="accent-fill" />
+      <text x="80" y="22" class="h-loc-label">Utility room</text>
+      <text x="80" y="48" class="h-loc-detail">For whole-house systems — plant area or garden corner</text>
+    </g>
+
+    <!-- Bottom note -->
+    <text x="0" y="640" class="h-loc-detail" font-style="italic">Specified at site survey. Decided before tile.</text>
+  </g>
+
+  <!-- =========================================== -->
+  <!-- RIGHT BLOCK: HOW IT'S KEPT (12-month rhythm)-->
+  <!-- =========================================== -->
+  <g transform="translate(1020, 130)">
+    <text class="h-tag">How it's kept</text>
+    <text y="60" class="h-section">Twelve visits a year.</text>
+    <line x1="0" y1="100" x2="80" y2="100" class="accent-stroke" />
+
+    <!-- 12-month timeline ribbon -->
+    <g transform="translate(0, 170)">
+      <!-- Horizontal axis -->
+      <line x1="20" y1="60" x2="780" y2="60" class="navy-stroke-thin" />
+
+      <!-- 12 month markers -->
+      <!-- JAN -->
+      <g transform="translate(20, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">JAN</text>
+      </g>
+      <!-- FEB -->
+      <g transform="translate(89, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">FEB</text>
+      </g>
+      <!-- MAR -->
+      <g transform="translate(158, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">MAR</text>
+      </g>
+      <!-- APR -->
+      <g transform="translate(227, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">APR</text>
+      </g>
+      <!-- MAY -->
+      <g transform="translate(296, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">MAY</text>
+      </g>
+      <!-- JUN -->
+      <g transform="translate(365, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">JUN</text>
+      </g>
+      <!-- JUL -->
+      <g transform="translate(434, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">JUL</text>
+      </g>
+      <!-- AUG -->
+      <g transform="translate(503, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">AUG</text>
+      </g>
+      <!-- SEP -->
+      <g transform="translate(572, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">SEP</text>
+      </g>
+      <!-- OCT -->
+      <g transform="translate(641, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">OCT</text>
+      </g>
+      <!-- NOV -->
+      <g transform="translate(710, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">NOV</text>
+      </g>
+      <!-- DEC -->
+      <g transform="translate(779, 60)">
+        <circle cx="0" cy="0" r="7" class="accent-fill" />
+        <text x="0" y="32" text-anchor="middle" class="h-month">DEC</text>
+      </g>
+
+      <!-- Caption above ribbon -->
+      <text x="20" y="20" class="h-loc-detail">A scheduled visit every month. 24-hour notice. Same window. Same protocol.</text>
+    </g>
+
+    <!-- ============================================== -->
+    <!-- WHAT EACH VISIT INCLUDES — 4 task icons         -->
+    <!-- ============================================== -->
+    <g transform="translate(0, 320)">
+      <text class="h-tag">What each visit covers</text>
+
+      <!-- 4 tasks in 2x2 grid -->
+      <!-- Task 1: Parameter testing -->
+      <g transform="translate(0, 60)">
+        <!-- Icon: test tube -->
+        <g transform="translate(0, 0)">
+          <rect x="14" y="4" width="20" height="44" class="navy-stroke-thin" rx="2" />
+          <rect x="14" y="28" width="20" height="20" class="accent-fill" />
+          <line x1="10" y1="4" x2="38" y2="4" class="navy-stroke-thin" />
+        </g>
+        <text x="60" y="20" class="h-task-label">Parameter testing</text>
+        <text x="60" y="44" class="h-task-detail">TDS, hardness, iron, pH, FRC.</text>
+      </g>
+
+      <!-- Task 2: Salt and resin -->
+      <g transform="translate(450, 60)">
+        <!-- Icon: bag/granules -->
+        <g transform="translate(0, 0)">
+          <path d="M 12 12 L 36 12 L 40 48 L 8 48 Z" class="navy-stroke-thin" />
+          <circle cx="18" cy="28" r="2" class="accent-fill" />
+          <circle cx="26" cy="32" r="2" class="accent-fill" />
+          <circle cx="22" cy="38" r="2" class="accent-fill" />
+          <circle cx="30" cy="40" r="2" class="accent-fill" />
+        </g>
+        <text x="60" y="20" class="h-task-label">Salt top-up. Resin check.</text>
+        <text x="60" y="44" class="h-task-detail">Backwash verified. Pressure logged.</text>
+      </g>
+
+      <!-- Task 3: Leak / pressure inspection -->
+      <g transform="translate(0, 160)">
+        <g transform="translate(0, 0)">
+          <circle cx="24" cy="24" r="16" class="navy-stroke-thin" />
+          <line x1="24" y1="14" x2="24" y2="24" class="navy-stroke-thin" />
+          <line x1="24" y1="24" x2="32" y2="28" class="accent-stroke" />
+          <line x1="36" y1="36" x2="46" y2="46" class="navy-stroke-thin" />
+        </g>
+        <text x="60" y="20" class="h-task-label">Leak &amp; pressure inspection</text>
+        <text x="60" y="44" class="h-task-detail">Joint by joint. Before anything fails.</text>
+      </g>
+
+      <!-- Task 4: Same-day report -->
+      <g transform="translate(450, 160)">
+        <g transform="translate(0, 0)">
+          <rect x="8" y="4" width="32" height="44" class="navy-stroke-thin" rx="1" />
+          <line x1="14" y1="16" x2="34" y2="16" class="accent-stroke" />
+          <line x1="14" y1="24" x2="34" y2="24" class="accent-stroke" />
+          <line x1="14" y1="32" x2="28" y2="32" class="accent-stroke" />
+          <line x1="14" y1="40" x2="34" y2="40" class="accent-stroke" />
+        </g>
+        <text x="60" y="20" class="h-task-label">Same-day report</text>
+        <text x="60" y="44" class="h-task-detail">Parameters in. Out. Work done. Flags raised.</text>
+      </g>
+    </g>
+
+    <!-- Bottom note -->
+    <text x="0" y="660" class="h-loc-detail" font-style="italic">The discipline that decides year four.</text>
+  </g>
+
+  <!-- ===== Vertical divider between blocks ===== -->
+  <line x1="960" y1="160" x2="960" y2="900" stroke="#87D0CD" stroke-width="1" />
+</svg>

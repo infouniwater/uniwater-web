@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">BATHROOM INSTALL · 4 of 7</text>
+  <text class="title" x="50" y="74">4. Inside plumbing duct</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <rect class="wall-fill" x="120" y="120" width="80" height="500"/>
+  <line class="outline" x1="120" y1="120" x2="120" y2="620"/>
+  <line class="outline" x1="200" y1="120" x2="200" y2="620"/>
+
+  <rect class="wall-fill" x="500" y="120" width="80" height="500"/>
+  <line class="outline" x1="500" y1="120" x2="500" y2="620"/>
+  <line class="outline" x1="580" y1="120" x2="580" y2="620"/>
+
+  <rect class="void-fill" x="200" y="120" width="300" height="500"/>
+
+  <line class="outline" x1="500" y1="280" x2="500" y2="400" stroke-dasharray="4 3" opacity="0.4"/>
+  <g transform="rotate(-70 500 280)">
+    <rect class="vessel-tint" x="496" y="280" width="8" height="120"/>
+  </g>
+
+  <path class="pipe" d="M260 120 L260 220"/>
+  <path class="pipe" d="M310 120 L310 220"/>
+  <path class="pipe" d="M260 460 L260 620"/>
+  <path class="pipe" d="M310 460 L310 620"/>
+
+  <rect class="vessel" x="320" y="220" width="55" height="240" rx="4"/>
+  <ellipse cx="347.5" cy="220" rx="27.5" ry="5" class="vessel"/>
+  <ellipse cx="347.5" cy="460" rx="27.5" ry="5" class="vessel"/>
+  <rect class="vessel" x="395" y="220" width="55" height="240" rx="4"/>
+  <ellipse cx="422.5" cy="220" rx="27.5" ry="5" class="vessel"/>
+  <ellipse cx="422.5" cy="460" rx="27.5" ry="5" class="vessel"/>
+
+  <path class="pipe" d="M260 240 L320 240"/>
+  <path class="pipe" d="M310 260 L320 260"/>
+  <path class="pipe" d="M375 240 L395 240"/>
+  <path class="pipe" d="M450 440 L500 440"/>
+
+  <line class="secondary" x1="450" y1="250" x2="500" y2="250"/>
+  <line class="secondary" x1="450" y1="430" x2="500" y2="430"/>
+  <rect x="492" y="246" width="8" height="8" class="vessel"/>
+  <rect x="492" y="426" width="8" height="8" class="vessel"/>
+
+  <g class="dim">
+    <line class="dim-line" x1="200" y1="100" x2="500" y2="100"/>
+    <line class="dim-line" x1="200" y1="96" x2="200" y2="104"/>
+    <line class="dim-line" x1="500" y1="96" x2="500" y2="104"/>
+    <text class="dim-text" x="350.0" y="114" text-anchor="middle">Shaft cavity — 300 mm clear</text>
+  </g>
+  <g class="dim">
+    <line class="dim-line" x1="670" y1="220" x2="670" y2="460"/>
+    <line class="dim-line" x1="666" y1="220" x2="674" y2="220"/>
+    <line class="dim-line" x1="666" y1="460" x2="674" y2="460"/>
+    <text class="dim-text" x="676" y="343.0" text-anchor="start">240 mm vessel</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M347 340 L274 337"/>
+    <circle cx="347" cy="340" r="1.5" fill="#05455F"/>
+    <text class="callout" x="270" y="340" text-anchor="end">SS twin filter — vertical mount</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M310 180 L224 157"/>
+    <circle cx="310" cy="180" r="1.5" fill="#05455F"/>
+    <text class="callout" x="220" y="160" text-anchor="end">Riser from above</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M450 250 L536 242"/>
+    <circle cx="450" cy="250" r="1.5" fill="#05455F"/>
+    <text class="callout" x="540" y="245" text-anchor="start">Bracket to wall stud</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M500 340 L696 277"/>
+    <circle cx="500" cy="340" r="1.5" fill="#05455F"/>
+    <text class="callout" x="700" y="280" text-anchor="start">Access panel · swing open for service</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">SECTION B–B · NTS</text>
+</svg>

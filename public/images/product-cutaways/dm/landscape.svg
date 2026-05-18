@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1050" width="1800" height="1050">
+  <defs>
+    <pattern id="grid-bg" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#05455F" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+    <pattern id="media-sand" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="2" cy="2" r="0.8" fill="#7396A3" opacity="0.4"/>
+      <circle cx="6" cy="6" r="0.7" fill="#7396A3" opacity="0.35"/>
+      <circle cx="4" cy="5" r="0.6" fill="#7396A3" opacity="0.3"/>
+    </pattern>
+    <pattern id="media-iron" patternUnits="userSpaceOnUse" width="6" height="6">
+      <circle cx="2" cy="2" r="1.0" fill="#05455F" opacity="0.55"/>
+      <circle cx="4.5" cy="4.5" r="0.9" fill="#05455F" opacity="0.45"/>
+    </pattern>
+    <pattern id="media-carbon" patternUnits="userSpaceOnUse" width="6" height="6">
+      <rect x="1" y="1" width="1.8" height="1.8" fill="#05455F" opacity="0.55"/>
+      <rect x="3.5" y="3.5" width="1.6" height="1.6" fill="#05455F" opacity="0.45"/>
+    </pattern>
+    <pattern id="media-resin" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="3" cy="3" r="1.6" fill="#1B9BB4" opacity="0.45"/>
+      <circle cx="6" cy="6" r="1.4" fill="#1B9BB4" opacity="0.35"/>
+    </pattern>
+    <pattern id="media-sba" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="3" cy="3" r="1.6" fill="#87D0CD" opacity="0.6"/>
+      <circle cx="6" cy="6" r="1.4" fill="#87D0CD" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B9BB4"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#87D0CD"/>
+    </marker>
+    <style>
+      .bg          { fill: #FAF8F3; }
+      .grid        { fill: url(#grid-bg); }
+      .wordmark    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; font-weight: 700; letter-spacing: 0.01em; }
+      .wordmark-sub{ font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #7396A3; font-weight: 400; letter-spacing: 0.08em; }
+      .meta        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.55; letter-spacing: 0.20em; text-transform: uppercase; }
+
+      .eyebrow     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+      .h1          { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 30px; fill: #05455F; font-weight: 600; letter-spacing: -0.005em; }
+      .subhead     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 14px; fill: #05455F; opacity: 0.7; }
+      .h-section   { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 18px; fill: #05455F; font-weight: 600; }
+
+      .vessel-stroke { stroke: #05455F; stroke-width: 1.8; fill: #FFFFFF; }
+      .vessel-fill   { fill: #F2EEE6; }
+      .vessel-cap    { stroke: #05455F; stroke-width: 1.8; fill: #FFFFFF; }
+      .pipe          { stroke: #05455F; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .pipe-drain    { stroke: #7396A3; stroke-width: 2.0; fill: none; stroke-linecap: round; stroke-dasharray: 4 3; }
+      .arch-line     { stroke: #05455F; stroke-width: 1.0; fill: none; }
+      .hair          { stroke: #E5E1DA; stroke-width: 0.6; fill: none; }
+      .accent        { stroke: #1B9BB4; stroke-width: 2.5; fill: none; }
+
+      .label-stem    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+      .label-head    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 13px; fill: #05455F; font-weight: 600; }
+      .label-body    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; opacity: 0.75; }
+      .label-leader  { stroke: #1B9BB4; stroke-width: 1.0; fill: none; }
+
+      .stage-num     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.20em; text-transform: uppercase; }
+      .stage-name    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; }
+      .stage-detail  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; opacity: 0.75; }
+
+      .footer        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.55; }
+      .footer-it     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 11px; fill: #05455F; opacity: 0.75; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="1050"/>
+  <rect class="grid" width="1800" height="1050"/>
+  <text class="wordmark" x="50" y="70">UNIWATER</text>
+  <text class="wordmark-sub" x="210" y="70">SOLUTIONS</text>
+  <text class="meta" x="1750" y="70" text-anchor="end">SVG-006 · landscape</text>
+  <line class="hair" x1="50" y1="90" x2="1750" y2="90"/>
+  <text class="eyebrow" x="50" y="130">Product cutaway</text>
+  <text class="h1" x="50" y="160">DM Plant</text>
+  <text class="subhead" x="50" y="182">Two columns in series. Conductivity below 10 µS/cm. The water industrial machines need.</text>
+  <rect x="450.71000000000004" y="309.6" width="178.57999999999998" height="32" rx="3" class="vessel-cap"/>
+  <path d="M 459.71000000000004 333.6 L 459.71000000000004 712.11 A 80.28999999999999 80.28999999999999 0 0 0 620.29 712.11 L 620.29 333.6 Z" class="vessel-stroke" fill="#F2EEE6"/>
+  <defs><clipPath id="dm-clip-540-563-landscape"><path d="M 459.71000000000004 333.6 L 459.71000000000004 712.11 A 80.28999999999999 80.28999999999999 0 0 0 620.29 712.11 L 620.29 333.6 Z"/></clipPath></defs>
+  <rect x="459.71000000000004" y="434.53600000000006" width="160.57999999999998" height="289.044" fill="url(#media-resin)" clip-path="url(#dm-clip-540-563-landscape)"/>
+  <rect x="459.71000000000004" y="723.58" width="160.57999999999998" height="68.81999999999994" fill="url(#media-sand)" clip-path="url(#dm-clip-540-563-landscape)"/>
+  <text class="label-stem" x="540.0" y="904.6899999999999" text-anchor="middle">Column 01</text>
+  <text class="stage-name" x="540.0" y="924.6899999999999" text-anchor="middle">Cation</text>
+  <text class="label-body" x="540.0" y="942.6899999999999" text-anchor="middle">SAC resin · H⁺ form</text>
+  <rect x="900.7100000000002" y="309.6" width="178.57999999999998" height="32" rx="3" class="vessel-cap"/>
+  <path d="M 909.7100000000002 333.6 L 909.7100000000002 712.11 A 80.28999999999999 80.28999999999999 0 0 0 1070.2900000000002 712.11 L 1070.2900000000002 333.6 Z" class="vessel-stroke" fill="#F2EEE6"/>
+  <defs><clipPath id="dm-clip-990-563-landscape"><path d="M 909.7100000000002 333.6 L 909.7100000000002 712.11 A 80.28999999999999 80.28999999999999 0 0 0 1070.2900000000002 712.11 L 1070.2900000000002 333.6 Z"/></clipPath></defs>
+  <rect x="909.7100000000002" y="434.53600000000006" width="160.57999999999998" height="289.044" fill="url(#media-sba)" clip-path="url(#dm-clip-990-563-landscape)"/>
+  <rect x="909.7100000000002" y="723.58" width="160.57999999999998" height="68.81999999999994" fill="url(#media-sand)" clip-path="url(#dm-clip-990-563-landscape)"/>
+  <text class="label-stem" x="990.0000000000001" y="904.6899999999999" text-anchor="middle">Column 02</text>
+  <text class="stage-name" x="990.0000000000001" y="924.6899999999999" text-anchor="middle">Anion</text>
+  <text class="label-body" x="990.0000000000001" y="942.6899999999999" text-anchor="middle">SBA resin · OH⁻ form</text>
+  <path d="M 419.71000000000004 321.6 L 540.0 321.6" class="pipe" marker-end="url(#arrow-teal)"/>
+  <text class="label-stem" x="413.71000000000004" y="318.6" text-anchor="end">From RO</text>
+  <path d="M 548.0 313.6 L 548.0 291.6 L 982.0000000000001 291.6 L 982.0000000000001 313.6" class="pipe"/>
+  <text class="label-stem" x="765.0" y="285.6" text-anchor="middle">Cations removed</text>
+  <path d="M 998.0000000000001 313.6 L 998.0000000000001 291.6 L 1120.2900000000002 291.6" class="pipe"/>
+  <text class="label-stem" x="1126.2900000000002" y="288.6">DM water</text>
+  <text class="label-stem" x="1126.2900000000002" y="302.6">&lt;10 µS/cm</text>
+  <rect x="341.3910000000001" y="443.71200000000005" width="88.319" height="100.936" rx="2" class="vessel-stroke" fill="#FFFFFF"/>
+  <line x1="341.3910000000001" y1="449.71200000000005" x2="341.3910000000001" y2="538.648" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="label-stem" x="385.55050000000006" y="459.71200000000005" text-anchor="middle">Regen tank</text>
+  <text class="label-head" x="385.55050000000006" y="479.71200000000005" text-anchor="middle">HCl</text>
+  <path d="M 429.71000000000004 494.18000000000006 L 455.71000000000004 494.18000000000006 L 455.71000000000004 321.6" stroke="#87D0CD" stroke-width="1.4" stroke-dasharray="3 2" fill="none"/>
+  <rect x="1100.2900000000002" y="443.71200000000005" width="88.319" height="100.936" rx="2" class="vessel-stroke" fill="#FFFFFF"/>
+  <line x1="1100.2900000000002" y1="449.71200000000005" x2="1100.2900000000002" y2="538.648" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="label-stem" x="1144.4495000000002" y="459.71200000000005" text-anchor="middle">Regen tank</text>
+  <text class="label-head" x="1144.4495000000002" y="479.71200000000005" text-anchor="middle">NaOH</text>
+  <path d="M 1100.2900000000002 494.18000000000006 L 1074.2900000000002 494.18000000000006 L 1074.2900000000002 321.6" stroke="#87D0CD" stroke-width="1.4" stroke-dasharray="3 2" fill="none"/>
+  <path d="M 455.71000000000004 796.4 L 429.71000000000004 796.4 L 429.71000000000004 822.4" class="pipe-drain"/>
+  <path d="M 905.7100000000002 796.4 L 879.7100000000002 796.4 L 879.7100000000002 822.4" class="pipe-drain"/>
+  <text class="label-stem" x="654.71" y="836.4" text-anchor="middle">Spent regen effluent → neutralization tank → discharge</text>
+  <text class="label-stem" x="1350.0" y="230">How it works</text>
+  <text class="label-head" x="1350.0" y="254">01 · Upstream RO is mandatory.</text>
+  <text class="label-body" x="1350.0" y="270">       DM downstream of RO uses 90% less regenerant.</text>
+  <text class="label-body" x="1350.0" y="286"></text>
+  <text class="label-head" x="1350.0" y="302">02 · Cation column removes Ca²⁺, Mg²⁺, Na⁺, Fe²⁺.</text>
+  <text class="label-body" x="1350.0" y="318">       SAC resin in H⁺ form. Regen with HCl.</text>
+  <text class="label-body" x="1350.0" y="334"></text>
+  <text class="label-head" x="1350.0" y="350">03 · Anion column removes Cl⁻, SO₄²⁻, NO₃⁻, HCO₃⁻.</text>
+  <text class="label-body" x="1350.0" y="366">       SBA resin in OH⁻ form. Regen with NaOH.</text>
+  <text class="label-body" x="1350.0" y="382"></text>
+  <text class="label-head" x="1350.0" y="398">04 · Output conductivity below 10 µS/cm.</text>
+  <text class="label-body" x="1350.0" y="414">       Mixed-bed polisher available for sub-1 µS/cm.</text>
+  <text class="label-body" x="1350.0" y="430"></text>
+  <text class="label-head" x="1350.0" y="446">05 · Effluent must be pH-neutralised before drain.</text>
+  <text class="label-body" x="1350.0" y="462">       Mandatory neutralization tank with pH dosing.</text>
+  <line class="hair" x1="50" y1="992" x2="1750" y2="992"/>
+  <text class="footer-it" x="50" y="1010">Industrial demin is not residential plus more. It is its own discipline.</text>
+  <text class="footer" x="1750" y="1010" text-anchor="end">SVG-006 · dm-landscape · uniwater.co.in</text>
+</svg>

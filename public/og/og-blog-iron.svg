@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <pattern id="hairline-grid" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#05455F" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <style>
+      .bg          { fill: #FAF8F3; }
+      .grid        { fill: url(#hairline-grid); }
+      .wordmark    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 28px; fill: #05455F; font-weight: 700; letter-spacing: 0.01em; }
+      .wordmark-sub{ font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #7396A3; font-weight: 400; letter-spacing: 0.08em; }
+      .route       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.65; }
+      .eyebrow     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 13px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-weight: 600; fill: #05455F; }
+      .tagline     { font-family: "Bodoni Moda", "Signika", "Inter", system-ui, serif; font-style: italic; font-size: 18px; fill: #05455F; opacity: 0.75; }
+      .domain      { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 500; letter-spacing: 0.08em; }
+      .hairline    { stroke: #E5E1DA; fill: none; stroke-width: 0.8; }
+      .accent      { stroke: #1B9BB4; fill: none; stroke-width: 1.5; }
+      .accent-soft { stroke: #87D0CD; fill: none; stroke-width: 1.2; opacity: 0.7; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="630"/>
+  <rect class="grid" width="1200" height="630"/>
+  <text class="wordmark" x="60" y="84">UNIWATER</text>
+  <text class="wordmark-sub" x="260" y="84">SOLUTIONS</text>
+  <text class="route" x="1140" y="82" text-anchor="end">BLOG · WATER QUALITY</text>
+  <line class="hairline" x1="60" y1="110" x2="1140" y2="110"/>
+
+    <g transform="translate(940 180)" stroke="#05455F" stroke-width="2" fill="#FFFFFF" stroke-linejoin="round">
+      <path d="M100 30
+               C 50 110, 30 175, 100 240
+               C 170 175, 150 110, 100 30 Z"/>
+      <!-- Inner highlight curve -->
+      <path d="M70 130 C 60 160, 70 195, 95 215" stroke="#87D0CD" stroke-width="1.5" fill="none" opacity="0.7"/>
+    </g>
+  <text class="eyebrow" x="60" y="220">Editorial</text>
+  <line class="accent" x1="60" y1="234" x2="100" y2="234"/>
+  <text class="title" x="60" y="290" font-size="64">Why your borewell</text>
+  <text class="title" x="60" y="362" font-size="64">water is yellow.</text>
+  <line class="hairline" x1="60" y1="480" x2="1140" y2="480"/>
+  <text class="tagline" x="60" y="510">And why that is not the same as muddy.</text>
+  <text class="domain" x="1140" y="510" text-anchor="end">uniwater.co.in</text>
+</svg>

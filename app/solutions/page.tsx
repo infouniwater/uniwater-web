@@ -1,0 +1,166 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { Section } from '@/components/ui/Section';
+import { Eyebrow, Display, Heading, Lede, Body } from '@/components/ui/Typography';
+import { SolutionCard } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+import { FinalCTA } from '@/components/sections/FinalCTA';
+import { SOLUTIONS, SOLUTION_LIST } from '@/content/solutions';
+import { cn } from '@/lib/cn';
+
+// (Metadata is set in adjacent layout / parent, since this is a Client Component)
+
+const HOME_TAB_SLUGS = [
+  'bathroom-filter',
+  'whole-house-water-filter',
+  'drinking-water-solution',
+  'iron-filter',
+  'water-softener',
+  'sediment-filter',
+  'activated-carbon-filter',
+] as const;
+
+const INSTITUTIONAL_CARDS = [
+  {
+    href: '/industrial#building-wtp',
+    title: 'Building & society water plants',
+    description:
+      '8,000 to 30,000 LPH inlet treatment for complexes, hotels, hospitals, schools, and townships.',
+    photoDescription: 'WTP install in plant room of a gated complex',
+    photoRef: 'building-wtp',
+  },
+  {
+    href: '/industrial#commercial-ro',
+    title: 'Industrial RO plants',
+    description:
+      '500 \u2014 50,000 LPH. Drinking water, process water, boiler make-up, beverage.',
+    photoDescription: 'Industrial RO skid with FRP vessels and instrumentation',
+    photoRef: 'industrial-ro',
+  },
+  {
+    href: '/industrial#commercial-dm',
+    title: 'Industrial DM plants',
+    description:
+      '100 \u2014 10,000 LPH. Boiler feed, pharma, lab water, battery manufacturing.',
+    photoDescription: 'DM plant with SAC/SBA columns and conductivity meters',
+    photoRef: 'industrial-dm',
+  },
+  {
+    href: '/service',
+    title: 'AMC services for institutions',
+    description:
+      'Monthly preventive visits, same-day reports, 24-hour SLA on flagged faults.',
+    photoDescription: 'Engineer logging parameters on a tablet at an institutional site',
+    photoRef: 'amc-institutional',
+  },
+];
+
+export default function SolutionsHub() {
+  const [tab, setTab] = useState<'home' | 'b2b'>('home');
+
+  return (
+    <>
+      {/* Hero strip */}
+      <section className="bg-offwhite border-b border-hairline">
+        <div className="container-uw py-16 md:py-24">
+          <div className="max-w-3xl flex flex-col gap-6">
+            <Eyebrow>Solutions</Eyebrow>
+            <Display>What we install.</Display>
+            <Lede className="text-mute">
+              From a single bathroom to a 30,000-litre-per-hour building plant. Every system surveyed before it&rsquo;s sold.
+            </Lede>
+          </div>
+        </div>
+      </section>
+
+      {/* Tab switcher */}
+      <div className="border-b border-hairline">
+        <div className="container-uw">
+          <div role="tablist" aria-label="Audience" className="flex gap-8">
+            <button
+              role="tab"
+              aria-selected={tab === 'home'}
+              onClick={() => setTab('home')}
+              className={cn(
+                'py-5 text-[15px] font-medium transition-colors duration-200 ease-calm border-b-2 -mb-px',
+                tab === 'home'
+                  ? 'border-teal text-navy'
+                  : 'border-transparent text-mute hover:text-navy'
+              )}
+            >
+              For your home
+            </button>
+            <button
+              role="tab"
+              aria-selected={tab === 'b2b'}
+              onClick={() => setTab('b2b')}
+              className={cn(
+                'py-5 text-[15px] font-medium transition-colors duration-200 ease-calm border-b-2 -mb-px',
+                tab === 'b2b'
+                  ? 'border-teal text-navy'
+                  : 'border-transparent text-mute hover:text-navy'
+              )}
+            >
+              For institutions &amp; industry
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {tab === 'home' ? (
+        <Section padding="default">
+          <div className="mb-12 max-w-3xl">
+            <Heading level={2} className="mb-4">For your home.</Heading>
+            <Body className="text-mute">
+              Eight engineered configurations, each sized to the water and the home. Not sure which? Take the 60-second water check.
+            </Body>
+            <div className="mt-6">
+              <Button href="/water-problem-checker" variant="secondary">
+                Not sure which you need? Take the water check
+              </Button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {HOME_TAB_SLUGS.map((slug) => {
+              const sol = SOLUTIONS[slug];
+              return (
+                <SolutionCard
+                  key={slug}
+                  href={`/solutions/${slug}`}
+                  title={sol.navLabel}
+                  description={sol.shortHeadline}
+                  photoDescription={`${sol.navLabel} solution`}
+                  photoRef={`hub-${slug}`}
+                />
+              );
+            })}
+          </div>
+        </Section>
+      ) : (
+        <Section padding="default">
+          <div className="mb-12 max-w-3xl">
+            <Heading level={2} className="mb-4">For institutions &amp; industry.</Heading>
+            <Body className="text-mute">
+              Capacity, SCADA-readiness, AMC tiers, SLAs. Components from named manufacturers. Same-day reports on every visit.
+            </Body>
+            <div className="mt-6">
+              <Button href="/industrial" variant="secondary">
+                See the industrial page
+              </Button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {INSTITUTIONAL_CARDS.map((card) => (
+              <SolutionCard key={card.title} {...card} />
+            ))}
+          </div>
+        </Section>
+      )}
+
+      <FinalCTA />
+    </>
+  );
+}

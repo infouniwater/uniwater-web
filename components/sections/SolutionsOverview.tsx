@@ -1,0 +1,90 @@
+import { Section } from '@/components/ui/Section';
+import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
+import { SolutionCard } from '@/components/ui/Card';
+
+const HOME_SOLUTIONS = [
+  {
+    href: '/solutions/bathroom-filter',
+    title: 'Bathroom water filters',
+    description:
+      'Stop iron staining and hard-water scale at the bathroom feed, in spaces you\u2019d never expect to fit equipment.',
+    photoDescription: 'BathSoft Trio installed in a plumbing shaft of a finished bathroom',
+    photoRef: 'solution-bathroom',
+    imgSrc: '/images/photography/bathroom-filter-hero.png',
+    imgAlt: 'BathSoft installed in a marble luxury bathroom with brass freestanding bath, two stainless cylinders recessed behind a glass shower partition',
+  },
+  {
+    href: '/solutions/whole-house-water-filter',
+    title: 'Whole-house filtration',
+    description:
+      'Treat the water once, at the inlet \u2014 every tap, every shower, every appliance protected.',
+    photoDescription: 'HomeSoft two-vessel install in a residential utility room',
+    photoRef: 'solution-wholehouse',
+    imgSrc: '/images/photography/whole-house-hero.png',
+    imgAlt: 'HomeSoft whole-house water filter \u2014 two branded UNIWATER vessels installed in a finished home corner near windows and plants',
+  },
+  {
+    href: '/solutions/drinking-water-solution',
+    title: 'Drinking water systems',
+    description: 'RO, UV, or UF \u2014 sized to your actual TDS. Wall-mounted, under-sink, or centralised.',
+    photoDescription: 'Premium chrome kitchen tap with filtered water flowing into glass',
+    photoRef: 'solution-drinking',
+    imgSrc: '/images/photography/drinking-water-home.png',
+    imgAlt: 'Glass of UNIWATER drinking water on a marble kitchen counter, family in soft focus in the background',
+  },
+];
+
+const B2B_SOLUTIONS = [
+  {
+    href: '/industrial',
+    title: 'Building & society water plants',
+    description: '8,000 to 30,000 litres per hour, for apartment complexes, hotels, hospitals, schools.',
+    photoDescription: 'WTP install in a gated complex plant room',
+    photoRef: 'solution-wtp',
+    imgSrc: '/images/photography/wtp-basement.png',
+    imgAlt: 'Building water-treatment plant \u2014 three branded UNIWATER vessels in a basement plant room with overhead piping',
+  },
+  {
+    href: '/industrial',
+    title: 'Industrial RO and DM plants',
+    description: 'Engineered process water for manufacturing, pharmaceutical, institutional applications.',
+    photoDescription: 'Industrial RO/DM plant with SS vessels and instrumentation',
+    photoRef: 'solution-industrial',
+    imgSrc: '/images/photography/wtp-terrace.png',
+    imgAlt: 'Industrial water treatment plant on a terrace with stainless vessels and SCADA-ready instrumentation',
+  },
+];
+
+export function SolutionsOverview() {
+  return (
+    <Section padding="default" id="solutions-overview">
+      <div className="mb-12 max-w-3xl">
+        <Eyebrow className="mb-4">What we install</Eyebrow>
+        <Heading level={2} className="mb-4">
+          What we install.
+        </Heading>
+        <Body className="text-mute text-lede font-light">
+          For your home. For your building. For your factory.
+        </Body>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {HOME_SOLUTIONS.map((solution) => (
+          <SolutionCard key={solution.href} {...solution} />
+        ))}
+      </div>
+
+      <div className="pt-12 border-t border-hairline">
+        <div className="mb-8">
+          <Eyebrow className="mb-2">For institutions &amp; industry</Eyebrow>
+          <Body className="text-mute">A separate journey, with its own engineering rigour and SLAs.</Body>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {B2B_SOLUTIONS.map((solution) => (
+            <SolutionCard key={solution.title} {...solution} />
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}

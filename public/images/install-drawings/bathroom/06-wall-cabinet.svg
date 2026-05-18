@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">BATHROOM INSTALL · 6 of 7</text>
+  <text class="title" x="50" y="74">6. Wall-cabinet install (mounted on wall)</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <!-- Bathroom wall (tile) -->
+  <rect class="tile-fill" x="80" y="110" width="740" height="500"/>
+  <line class="outline" x1="80" y1="110" x2="820" y2="110"/>
+
+  <!-- Cabinet box mounted ON wall surface — perspective hint at top right -->
+  <!-- Top edge with depth -->
+  <path class="outline" d="M280 200 L600 200 L630 175 L310 175 Z" fill="#F2EEE6"/>
+  <!-- Right side with depth -->
+  <path class="outline" d="M600 200 L630 175 L630 510 L600 535 Z" fill="#EFE9DC"/>
+  <!-- Front face (cabinet doors) -->
+  <rect class="vessel" x="280" y="200" width="320" height="335"/>
+
+  <!-- Two doors with split + pulls -->
+  <line class="secondary" x1="440" y1="200" x2="440" y2="535"/>
+  <line class="secondary" x1="432" y1="350" x2="432" y2="385" stroke-width="1.3"/>
+  <line class="secondary" x1="448" y1="350" x2="448" y2="385" stroke-width="1.3"/>
+
+  <!-- Hinges on outer edges -->
+  <line class="secondary" x1="280" y1="225" x2="295" y2="225" stroke-width="0.6" opacity="0.5"/>
+  <line class="secondary" x1="280" y1="510" x2="295" y2="510" stroke-width="0.6" opacity="0.5"/>
+  <line class="secondary" x1="585" y1="225" x2="600" y2="225" stroke-width="0.6" opacity="0.5"/>
+  <line class="secondary" x1="585" y1="510" x2="600" y2="510" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Vessels hinted behind doors (dashed) -->
+  <rect x="320" y="240" width="60" height="240" rx="4" fill="none" stroke="#05455F" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.45"/>
+  <rect x="500" y="240" width="60" height="240" rx="4" fill="none" stroke="#05455F" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.45"/>
+
+  <!-- Mounting plate/strip on the wall (visible below cabinet, dashed since hidden) -->
+  <line class="secondary" x1="280" y1="200" x2="600" y2="200" stroke-dasharray="2 2" opacity="0.5"/>
+
+  <!-- Plumbing drops out the bottom of the cabinet -->
+  <path class="pipe" d="M350 535 L350 555"/>
+  <path class="pipe" d="M530 535 L530 555"/>
+
+  <!-- Floor + skirting -->
+  <rect class="tile-fill" x="80" y="560" width="740" height="50"/>
+  <line class="outline" x1="80" y1="560" x2="820" y2="560"/>
+
+  <!-- Sample bathroom fixture (basin to the left) for context -->
+  <path class="outline" d="M130 480 Q130 460 150 460 L210 460 Q230 460 230 480 L230 560 L130 560 Z" fill="#FFFFFF"/>
+  <path class="pipe" d="M180 460 L180 425"/>
+  <path class="outline" d="M168 425 L192 425 L190 435 L170 435 Z" fill="#FFFFFF"/>
+
+
+  <g class="dim">
+    <line class="dim-line" x1="750" y1="200" x2="750" y2="535"/>
+    <line class="dim-line" x1="746" y1="200" x2="754" y2="200"/>
+    <line class="dim-line" x1="746" y1="535" x2="754" y2="535"/>
+    <text class="dim-text" x="756" y="370.5" text-anchor="start">Cabinet 335 mm</text>
+  </g>
+  <g class="dim">
+    <line class="dim-line" x1="280" y1="160" x2="600" y2="160"/>
+    <line class="dim-line" x1="280" y1="156" x2="280" y2="164"/>
+    <line class="dim-line" x1="600" y1="156" x2="600" y2="164"/>
+    <text class="dim-text" x="440.0" y="156" text-anchor="middle">Cabinet 320 mm wide</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M440 360 L696 377"/>
+    <circle cx="440" cy="360" r="1.5" fill="#05455F"/>
+    <text class="callout" x="700" y="380" text-anchor="start">Doors swing open — service access</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M610 175 L736 152"/>
+    <circle cx="610" cy="175" r="1.5" fill="#05455F"/>
+    <text class="callout" x="740" y="155" text-anchor="start">Depth ~150 mm protrudes from wall</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M530 555 L576 577"/>
+    <circle cx="530" cy="555" r="1.5" fill="#05455F"/>
+    <text class="callout" x="580" y="580" text-anchor="start">Plumbing drops to floor service area</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M280 470 L224 587"/>
+    <circle cx="280" cy="470" r="1.5" fill="#05455F"/>
+    <text class="callout" x="220" y="590" text-anchor="end">No structural alteration to wall</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">ELEVATION · NTS</text>
+</svg>

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1050" width="1800" height="1050">
+  <defs>
+    <pattern id="grid-bg" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#05455F" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+    <pattern id="media-sand" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="2" cy="2" r="0.8" fill="#7396A3" opacity="0.4"/>
+      <circle cx="6" cy="6" r="0.7" fill="#7396A3" opacity="0.35"/>
+      <circle cx="4" cy="5" r="0.6" fill="#7396A3" opacity="0.3"/>
+    </pattern>
+    <pattern id="media-iron" patternUnits="userSpaceOnUse" width="6" height="6">
+      <circle cx="2" cy="2" r="1.0" fill="#05455F" opacity="0.55"/>
+      <circle cx="4.5" cy="4.5" r="0.9" fill="#05455F" opacity="0.45"/>
+    </pattern>
+    <pattern id="media-carbon" patternUnits="userSpaceOnUse" width="6" height="6">
+      <rect x="1" y="1" width="1.8" height="1.8" fill="#05455F" opacity="0.55"/>
+      <rect x="3.5" y="3.5" width="1.6" height="1.6" fill="#05455F" opacity="0.45"/>
+    </pattern>
+    <pattern id="media-resin" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="3" cy="3" r="1.6" fill="#1B9BB4" opacity="0.45"/>
+      <circle cx="6" cy="6" r="1.4" fill="#1B9BB4" opacity="0.35"/>
+    </pattern>
+    <pattern id="media-sba" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="3" cy="3" r="1.6" fill="#87D0CD" opacity="0.6"/>
+      <circle cx="6" cy="6" r="1.4" fill="#87D0CD" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B9BB4"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#87D0CD"/>
+    </marker>
+    <style>
+      .bg          { fill: #FAF8F3; }
+      .grid        { fill: url(#grid-bg); }
+      .wordmark    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; font-weight: 700; letter-spacing: 0.01em; }
+      .wordmark-sub{ font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #7396A3; font-weight: 400; letter-spacing: 0.08em; }
+      .meta        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.55; letter-spacing: 0.20em; text-transform: uppercase; }
+
+      .eyebrow     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+      .h1          { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 30px; fill: #05455F; font-weight: 600; letter-spacing: -0.005em; }
+      .subhead     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 14px; fill: #05455F; opacity: 0.7; }
+      .h-section   { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 18px; fill: #05455F; font-weight: 600; }
+
+      .vessel-stroke { stroke: #05455F; stroke-width: 1.8; fill: #FFFFFF; }
+      .vessel-fill   { fill: #F2EEE6; }
+      .vessel-cap    { stroke: #05455F; stroke-width: 1.8; fill: #FFFFFF; }
+      .pipe          { stroke: #05455F; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .pipe-drain    { stroke: #7396A3; stroke-width: 2.0; fill: none; stroke-linecap: round; stroke-dasharray: 4 3; }
+      .arch-line     { stroke: #05455F; stroke-width: 1.0; fill: none; }
+      .hair          { stroke: #E5E1DA; stroke-width: 0.6; fill: none; }
+      .accent        { stroke: #1B9BB4; stroke-width: 2.5; fill: none; }
+
+      .label-stem    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+      .label-head    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 13px; fill: #05455F; font-weight: 600; }
+      .label-body    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; opacity: 0.75; }
+      .label-leader  { stroke: #1B9BB4; stroke-width: 1.0; fill: none; }
+
+      .stage-num     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.20em; text-transform: uppercase; }
+      .stage-name    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; }
+      .stage-detail  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 11px; fill: #05455F; opacity: 0.75; }
+
+      .footer        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.55; }
+      .footer-it     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 11px; fill: #05455F; opacity: 0.75; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="1050"/>
+  <rect class="grid" width="1800" height="1050"/>
+  <text class="wordmark" x="50" y="70">UNIWATER</text>
+  <text class="wordmark-sub" x="210" y="70">SOLUTIONS</text>
+  <text class="meta" x="1750" y="70" text-anchor="end">SVG-006 · landscape</text>
+  <line class="hair" x1="50" y1="90" x2="1750" y2="90"/>
+  <text class="eyebrow" x="50" y="130">Product cutaway</text>
+  <text class="h1" x="50" y="160">HomeSoft</text>
+  <text class="subhead" x="50" y="182">One unit at the inlet, treating every tap. The vessel below — one of four — softens.</text>
+  <text class="label-stem" x="50" y="206">The 4-stage HomeSoft train</text>
+  <rect x="50.0" y="218" width="410.0" height="40" rx="2" fill="#FFFFFF" stroke="#05455F" stroke-width="1"/>
+  <line x1="50.0" y1="226" x2="50.0" y2="250" stroke="#E5E1DA" stroke-width="3"/>
+  <text class="label-stem" x="62.0" y="236">01</text>
+  <text class="stage-name" x="62.0" y="252">Sediment</text>
+  <text class="stage-detail" x="62.0" y="268">River sand · MGF</text>
+  <path d="M 464.0 238.0 L 476.0 238.0" stroke="#7396A3" stroke-width="1.5" marker-end="url(#arrow-soft)"/>
+  <rect x="480.0" y="218" width="410.0" height="40" rx="2" fill="#FFFFFF" stroke="#05455F" stroke-width="1"/>
+  <line x1="480.0" y1="226" x2="480.0" y2="250" stroke="#E5E1DA" stroke-width="3"/>
+  <text class="label-stem" x="492.0" y="236">02</text>
+  <text class="stage-name" x="492.0" y="252">Iron</text>
+  <text class="stage-detail" x="492.0" y="268">Catalytic media</text>
+  <path d="M 894.0 238.0 L 906.0 238.0" stroke="#7396A3" stroke-width="1.5" marker-end="url(#arrow-soft)"/>
+  <rect x="910.0" y="218" width="410.0" height="40" rx="2" fill="#FFFFFF" stroke="#05455F" stroke-width="1"/>
+  <line x1="910.0" y1="226" x2="910.0" y2="250" stroke="#E5E1DA" stroke-width="3"/>
+  <text class="label-stem" x="922.0" y="236">03</text>
+  <text class="stage-name" x="922.0" y="252">Carbon</text>
+  <text class="stage-detail" x="922.0" y="268">IV 900 activated</text>
+  <path d="M 1324.0 238.0 L 1336.0 238.0" stroke="#7396A3" stroke-width="1.5" marker-end="url(#arrow-soft)"/>
+  <rect x="1340.0" y="218" width="410.0" height="40" rx="2" fill="#05455F"/>
+  <line x1="1340.0" y1="226" x2="1340.0" y2="250" stroke="#1B9BB4" stroke-width="3"/>
+  <text class="label-stem" x="1352.0" y="236" fill="#1B9BB4">04 · This view</text>
+  <text class="stage-name" x="1352.0" y="252" fill="#FFFFFF">Softener</text>
+  <text class="stage-detail" x="1352.0" y="268" fill="#FFFFFF" opacity="0.85">SAC resin</text>
+  <rect x="414.24" y="315.0" width="251.52" height="36" rx="3" class="vessel-cap"/>
+  <rect x="522.0" y="319.0" width="36" height="14" rx="1" fill="#05455F"/>
+  <text font-family="monospace" font-size="8" fill="#1B9BB4" x="540.0" y="329.0" text-anchor="middle">AUTO</text>
+  <path d="M 425.24 341.0 L 425.24 830.24 A 114.76 114.76 0 0 0 654.76 830.24 L 654.76 341.0 Z" class="vessel-stroke" fill="#F2EEE6"/>
+  <defs><clipPath id="homesoft-clip-landscape"><path d="M 425.24 341.0 L 425.24 830.24 A 114.76 114.76 0 0 0 654.76 830.24 L 654.76 341.0 Z"/></clipPath></defs>
+  <rect x="425.24" y="473.88" width="229.52" height="362.4" fill="url(#media-resin)" clip-path="url(#homesoft-clip-landscape)"/>
+  <rect x="425.24" y="836.28" width="229.52" height="108.72000000000003" fill="url(#media-sand)" clip-path="url(#homesoft-clip-landscape)"/>
+  <line x1="540.0" y1="355.0" x2="540.0" y2="840.28" stroke="#05455F" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <path d="M 375.24 327.0 L 526.0 327.0 L 526.0 335.0" class="pipe"/>
+  <path d="M 554.0 335.0 L 554.0 327.0 L 704.76 327.0" class="pipe"/>
+  <path d="M 360.24 327.0 L 375.24 327.0" class="pipe" marker-end="url(#arrow-teal)"/>
+  <text class="label-stem" x="710.76" y="330.0">Soft water out</text>
+  <text class="label-stem" x="354.24" y="330.0" text-anchor="end">Hard in</text>
+  <rect x="766.4019999999999" y="590.8" width="126.23600000000002" height="12" rx="2" class="vessel-cap"/>
+  <rect x="766.4019999999999" y="602.8" width="126.23600000000002" height="332.20000000000005" rx="2" class="vessel-stroke" fill="#F2EEE6"/>
+  <rect x="768.4019999999999" y="702.4599999999999" width="122.23600000000002" height="225.89600000000004" fill="url(#media-sand)" opacity="0.8"/>
+  <text class="label-stem" x="829.52" y="955.0" text-anchor="middle">Brine tank</text>
+  <path d="M 766.4019999999999 608.8 L 658.76 608.8" stroke="#87D0CD" stroke-width="1.5" stroke-dasharray="3 2" fill="none"/>
+  <path d="M 660.76 337.0 L 660.76 361.0 L 720.76 361.0" class="pipe-drain"/>
+  <text class="label-stem" x="726.76" y="364.0">Drain</text>
+  <path d="M 674.76 323.0 L 892.0 323.0 L 892.0 314" class="label-leader"/>
+  <circle cx="674.76" cy="323.0" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="900.0" y="318">01 · Control head</text>
+  <text class="label-head" x="900.0" y="338">Automatic MPV</text>
+  <text class="label-body" x="900.0" y="356">Timer-operated multiport valve.</text>
+  <text class="label-body" x="900.0" y="371">Initiates regeneration overnight without operator.</text>
+  <path d="M 658.76 655.0799999999999 L 892.0 655.0799999999999 L 892.0 412" class="label-leader"/>
+  <circle cx="658.76" cy="655.0799999999999" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="900.0" y="416">02 · Resin bed</text>
+  <text class="label-head" x="900.0" y="436">Food-grade SAC resin</text>
+  <text class="label-body" x="900.0" y="454">5,000–20,000 L operating bed run</text>
+  <text class="label-body" x="900.0" y="469">at 300 ppm hardness (depending on tier).</text>
+  <path d="M 770.4019999999999 768.9 L 892.0 768.9 L 892.0 510" class="label-leader"/>
+  <circle cx="770.4019999999999" cy="768.9" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="900.0" y="514">03 · Brine system</text>
+  <text class="label-head" x="900.0" y="534">Salt tank with float</text>
+  <text class="label-body" x="900.0" y="552">Refill every 3–8 weeks depending on usage.</text>
+  <text class="label-body" x="900.0" y="567">Food-grade NaCl, 10–40 kg per regen.</text>
+  <path d="M 728.76 363.0 L 1272.0 363.0 L 1272.0 314" class="label-leader"/>
+  <circle cx="728.76" cy="363.0" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="1280.0" y="318">04 · Drain line</text>
+  <text class="label-head" x="1280.0" y="338">Mandatory connection</text>
+  <text class="label-body" x="1280.0" y="356">Spent brine and backwash water discharge.</text>
+  <text class="label-body" x="1280.0" y="371">1/2" line to nearest drain.</text>
+  <path d="M 658.76 850.28 L 1272.0 850.28 L 1272.0 412" class="label-leader"/>
+  <circle cx="658.76" cy="850.28" r="3" fill="#1B9BB4"/>
+  <text class="label-stem" x="1280.0" y="416">05 · Underdrain</text>
+  <text class="label-head" x="1280.0" y="436">Gravel + screen</text>
+  <text class="label-body" x="1280.0" y="454">Distributes flow across bed.</text>
+  <text class="label-body" x="1280.0" y="469">Prevents resin loss into outlet.</text>
+  <line class="hair" x1="50" y1="992" x2="1750" y2="992"/>
+  <text class="footer-it" x="50" y="1010">Treat once at the inlet. Every fitting protected.</text>
+  <text class="footer" x="1750" y="1010" text-anchor="end">SVG-006 · homesoft-landscape · uniwater.co.in</text>
+</svg>

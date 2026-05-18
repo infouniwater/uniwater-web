@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1400" width="700" height="1400">
+  <defs>
+    <style>
+      .node-ring     { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; }
+      .node-active   { fill: #1B9BB4; }
+      .connector     { stroke: #E5E1DA; stroke-width: 1.4; fill: none; }
+      .connector-strong { stroke: #87D0CD; stroke-width: 1.4; fill: none; opacity: 0.85; }
+      .stage-num     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.18em; }
+      .stage-title   { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 31px; fill: #05455F; font-weight: 600; }
+      .stage-window  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; font-weight: 500; letter-spacing: 0.04em; opacity: 0.85; }
+      .stage-body    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; opacity: 0.7; }
+      .title         { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 37px; fill: #05455F; font-weight: 600; letter-spacing: 0.02em; }
+      .subtitle      { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; opacity: 0.55; letter-spacing: 0.18em; text-transform: uppercase; }
+    </style>
+  </defs>
+  <rect width="700" height="1400" fill="#FAF8F3"/>
+  <text class="subtitle" x="60" y="70">CUSTOMER JOURNEY · SVG-004</text>
+  <text class="title" x="60" y="108" font-size="31">From the first survey to monthly
+  </text>
+  <text class="title" x="60" y="132" font-size="31">service for life.</text>
+  <line x1="60" y1="148" x2="200" y2="148" stroke="#05455F" stroke-width="0.6" opacity="0.4"/>
+  <line class="connector" x1="110" y1="220" x2="110" y2="1250"/>
+  <line class="connector-strong" x1="110" y1="220" x2="110" y2="1250"/>
+  <path d="M106 344.75 L110 352.75 L114 344.75" fill="none" stroke="#87D0CD" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <circle class="node-ring" cx="110" cy="220.0" r="26"/>
+  <g transform="translate(97.0 207.0) scale(1.0833333333333333)" color="#05455F">
+
+        <rect x="6" y="5" width="12" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="9" y="3" width="6" height="3.5" rx="0.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8.5 10 L9.5 11 L11.5 9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="13" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="9" cy="14" r="0.7" fill="currentColor"/>
+        <line x1="11" y1="14" x2="16" y2="14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="9" cy="17.5" r="0.7" fill="currentColor"/>
+        <line x1="11" y1="17.5" x2="15" y2="17.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    
+  </g>
+  <text class="stage-num" x="164" y="202.0">STAGE 01</text>
+  <text class="stage-title" x="164" y="226.0">Survey</text>
+  <text class="stage-window" x="164" y="246.0">Within 24 hours</text>
+  <text class="stage-body" x="164" y="266.0">Engineer visits, tests water on</text>
+  <text class="stage-body" x="164" y="282.0">site, audits plumbing.</text>
+  <path d="M106 602.25 L110 610.25 L114 602.25" fill="none" stroke="#87D0CD" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <circle class="node-ring" cx="110" cy="477.5" r="26"/>
+  <g transform="translate(97.0 464.5) scale(1.0833333333333333)" color="#05455F">
+
+        <rect x="5" y="3" width="12" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="7.5" y1="7" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="7.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="7.5" y1="13" x2="12" y2="13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="16" cy="17" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14.5 19.5 L14.5 22 L16 21 L17.5 22 L17.5 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="16" y1="15.5" x2="16" y2="18.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <line x1="14.5" y1="17" x2="17.5" y2="17" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    
+  </g>
+  <text class="stage-num" x="164" y="459.5">STAGE 02</text>
+  <text class="stage-title" x="164" y="483.5">Quote</text>
+  <text class="stage-window" x="164" y="503.5">Within 48 hours</text>
+  <text class="stage-body" x="164" y="523.5">Itemised proposal with system</text>
+  <text class="stage-body" x="164" y="539.5">options and BOM.</text>
+  <path d="M106 859.75 L110 867.75 L114 859.75" fill="none" stroke="#87D0CD" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <circle class="node-ring" cx="110" cy="735.0" r="26"/>
+  <g transform="translate(97.0 722.0) scale(1.0833333333333333)" color="#05455F">
+
+        <line x1="2" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="17" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4" y1="11" x2="4" y2="13" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <line x1="19" y1="11" x2="19" y2="13" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <rect x="7" y="9" width="10" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="12" y1="9" x2="12" y2="4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="9.5" y1="4.5" x2="14.5" y2="4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    
+  </g>
+  <text class="stage-num" x="164" y="717.0">STAGE 03</text>
+  <text class="stage-title" x="164" y="741.0">Install</text>
+  <text class="stage-window" x="164" y="761.0">Within 7 days</text>
+  <text class="stage-body" x="164" y="781.0">Engineering team installs at agreed</text>
+  <text class="stage-body" x="164" y="797.0">location.</text>
+  <path d="M106 1117.25 L110 1125.25 L114 1117.25" fill="none" stroke="#87D0CD" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <circle class="node-ring" cx="110" cy="992.5" r="26"/>
+  <g transform="translate(97.0 979.5) scale(1.0833333333333333)" color="#05455F">
+
+        <rect x="3" y="5" width="18" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="12" y1="16" x2="12" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8" y1="20" x2="16" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M5.5 13 L8.5 11 L11 12 L14.5 9 L18.5 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="5.5" y1="14.5" x2="18.5" y2="14.5" stroke="currentColor" stroke-width="0.7" opacity="0.4" stroke-linecap="round"/>
+    
+  </g>
+  <text class="stage-num" x="164" y="974.5">STAGE 04</text>
+  <text class="stage-title" x="164" y="998.5">Handover</text>
+  <text class="stage-window" x="164" y="1018.5">Same day</text>
+  <text class="stage-body" x="164" y="1038.5">System commissioned. Parameters</text>
+  <text class="stage-body" x="164" y="1054.5">logged. Walkthrough complete.</text>
+  <circle class="node-ring" cx="110" cy="1250.0" r="26"/>
+  <g transform="translate(97.0 1237.0) scale(1.0833333333333333)" color="#05455F">
+
+        <circle cx="12" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M9 18.5 L9 21 L15 21 L15 18.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="6.5" y1="10" x2="7.3" y2="10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <line x1="12" y1="4.5" x2="12" y2="5.3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <line x1="17.5" y1="10" x2="16.7" y2="10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="15" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="12" cy="10" r="0.8" fill="currentColor"/>
+    
+  </g>
+  <text class="stage-num" x="164" y="1232.0">STAGE 05</text>
+  <text class="stage-title" x="164" y="1256.0">Service</text>
+  <text class="stage-window" x="164" y="1276.0">Monthly · for life</text>
+  <text class="stage-body" x="164" y="1296.0">Engineer returns every month.</text>
+  <text class="stage-body" x="164" y="1312.0">Parameters checked. Report filed.</text>
+  <line x1="60" y1="1340" x2="640" y2="1340" stroke="#E5E1DA" stroke-width="0.6"/>
+  <text class="stage-window" x="60" y="1370" fill="#05455F" opacity="0.7">Every visit logged. Every parameter measured.</text>
+</svg>

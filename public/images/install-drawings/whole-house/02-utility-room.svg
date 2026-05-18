@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#05455F" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+    <pattern id="tile" patternUnits="userSpaceOnUse" width="20" height="10">
+      <rect width="20" height="10" fill="#E5E1DA"/>
+      <path d="M0 0 L20 0 M0 10 L20 10 M0 0 L0 10 M10 0 L10 10" stroke="#05455F" stroke-width="0.4" opacity="0.3" fill="none"/>
+    </pattern>
+    <pattern id="utility-tile" patternUnits="userSpaceOnUse" width="60" height="60">
+      <rect width="60" height="60" fill="#E5E1DA"/>
+      <path d="M0 0 L60 0 M0 60 L60 60 M0 0 L0 60 M60 0 L60 60" stroke="#05455F" stroke-width="0.3" opacity="0.25" fill="none"/>
+    </pattern>
+    <pattern id="terrace" patternUnits="userSpaceOnUse" width="40" height="40">
+      <rect width="40" height="40" fill="#E5E1DA"/>
+      <path d="M0 0 L40 0 M0 40 L40 40 M0 0 L0 40 M40 0 L40 40" stroke="#05455F" stroke-width="0.3" opacity="0.3" fill="none"/>
+      <path d="M20 0 L20 40 M0 20 L40 20" stroke="#05455F" stroke-width="0.2" opacity="0.15" fill="none"/>
+    </pattern>
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#EAE7DC"/>
+      <path d="M3 12 L5 6 M7 13 L8 7 M11 12 L12 6" stroke="#05455F" stroke-width="0.4" opacity="0.35" fill="none" stroke-linecap="round"/>
+    </pattern>
+    <style>
+      .wall-fill   { fill: url(#hatch); }
+      .tile-fill   { fill: url(#tile); }
+      .floor-fill  { fill: url(#utility-tile); }
+      .terrace-fill{ fill: url(#terrace); }
+      .grass-fill  { fill: url(#grass); }
+      .void-fill   { fill: #FAF8F3; }
+      .outline     { fill: none; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+      .secondary   { fill: none; stroke: #05455F; stroke-width: 0.75; stroke-linejoin: round; stroke-linecap: round; }
+      .detail      { fill: none; stroke: #05455F; stroke-width: 0.5; }
+      .vessel      { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .vessel-tint { fill: #F2EEE6; stroke: #05455F; stroke-width: 1.5; stroke-linejoin: round; }
+      .pipe        { fill: none; stroke: #05455F; stroke-width: 1.2; stroke-linecap: round; }
+      .pipe-water  { fill: none; stroke: #1B9BB4; stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
+      .dim-line    { fill: none; stroke: #1B9BB4; stroke-width: 0.6; }
+      .leader      { fill: none; stroke: #05455F; stroke-width: 0.5; opacity: 0.7; }
+      .dim-text    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #1B9BB4; font-weight: 500; }
+      .callout     { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9.5px; fill: #05455F; font-weight: 500; }
+      .title       { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 14px; fill: #05455F; font-weight: 600; letter-spacing: 0.04em; }
+      .subtitle    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 10px; fill: #05455F; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+      .axis-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 8px; fill: #05455F; opacity: 0.4; letter-spacing: 0.1em; }
+      .axis-label-strong { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 9px; fill: #05455F; opacity: 0.65; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <rect width="1000" height="700" fill="#FAF8F3"/>
+  <text class="subtitle" x="50" y="50">WHOLE-HOUSE INSTALL · 2 of 5</text>
+  <text class="title" x="50" y="74">2. Utility-room install</text>
+  <line class="secondary" x1="50" y1="86" x2="200" y2="86" opacity="0.4"/>
+  <!-- Walls -->
+  <rect class="wall-fill" x="80" y="110" width="40" height="500"/>
+  <line class="outline" x1="80" y1="110" x2="80" y2="610"/>
+  <line class="outline" x1="120" y1="110" x2="120" y2="610"/>
+
+  <rect class="wall-fill" x="80" y="110" width="720" height="40"/>
+  <line class="outline" x1="80" y1="110" x2="800" y2="110"/>
+  <line class="outline" x1="120" y1="150" x2="780" y2="150"/>
+
+  <rect class="wall-fill" x="760" y="110" width="40" height="500"/>
+  <line class="outline" x1="800" y1="110" x2="800" y2="610"/>
+  <line class="outline" x1="760" y1="150" x2="760" y2="610"/>
+
+  <rect x="120" y="150" width="640" height="460" fill="url(#utility-tile)"/>
+
+  <!-- Inlet from above -->
+  <path class="pipe" d="M180 110 L180 150 L180 220"/>
+
+  <rect class="vessel" x="150" y="220" width="80" height="280" rx="4"/>
+  <ellipse cx="190.0" cy="220" rx="40.0" ry="5" class="vessel"/>
+  <ellipse cx="190.0" cy="500" rx="40.0" ry="5" class="vessel"/>
+  <rect class="vessel" x="250" y="220" width="80" height="280" rx="4"/>
+  <ellipse cx="290.0" cy="220" rx="40.0" ry="5" class="vessel"/>
+  <ellipse cx="290.0" cy="500" rx="40.0" ry="5" class="vessel"/>
+
+  <!-- Control valve heads -->
+  <rect class="vessel-tint" x="170" y="200" width="40" height="20" rx="2"/>
+  <rect class="vessel-tint" x="270" y="200" width="40" height="20" rx="2"/>
+
+  <!-- Plumbing between vessels -->
+  <path class="pipe" d="M230 230 L250 230"/>
+  <path class="pipe" d="M330 230 L380 230"/>
+
+  <!-- Brine tank -->
+  <rect class="vessel-tint" x="370" y="350" width="70" height="150" rx="4"/>
+  <ellipse cx="405" cy="350" rx="35" ry="5" class="vessel-tint"/>
+  <line class="secondary" x1="370" y1="430" x2="440" y2="430" opacity="0.5"/>
+  <text class="axis-label" x="405" y="475" text-anchor="middle" opacity="0.7">BRINE</text>
+  <path class="pipe" d="M370 380 L350 380 L350 280 L290 280"/>
+
+  <!-- Service tag -->
+  <rect class="vessel" x="245" y="340" width="32" height="22"/>
+  <line class="detail" x1="248" y1="346" x2="274" y2="346"/>
+  <line class="detail" x1="248" y1="351" x2="274" y2="351"/>
+  <line class="detail" x1="248" y1="356" x2="262" y2="356"/>
+
+  <!-- Washer -->
+  <rect class="vessel" x="520" y="380" width="120" height="160" rx="3"/>
+  <circle class="secondary" cx="580" cy="460" r="35"/>
+  <circle class="detail" cx="580" cy="460" r="28"/>
+  <rect class="detail" x="540" y="395" width="80" height="10"/>
+  <text class="axis-label" x="580" y="565" text-anchor="middle" opacity="0.6">WASHING MACHINE</text>
+
+  <!-- Outlet -->
+  <path class="pipe" d="M380 230 L740 230 L740 150"/>
+
+  <!-- Floor drain -->
+  <circle class="secondary" cx="680" cy="320" r="12"/>
+  <path class="detail" d="M670 320 L690 320 M680 310 L680 330 M673 313 L687 327 M687 313 L673 327"/>
+  <text class="axis-label" x="680" y="345" text-anchor="middle" opacity="0.5">FLOOR DRAIN</text>
+
+
+  <g class="dim">
+    <line class="dim-line" x1="150" y1="540" x2="330" y2="540"/>
+    <line class="dim-line" x1="150" y1="536" x2="150" y2="544"/>
+    <line class="dim-line" x1="330" y1="536" x2="330" y2="544"/>
+    <text class="dim-text" x="240.0" y="554" text-anchor="middle">Whole-house twin — 180 mm</text>
+  </g>
+  <g class="dim">
+    <line class="dim-line" x1="90" y1="220" x2="90" y2="500"/>
+    <line class="dim-line" x1="86" y1="220" x2="94" y2="220"/>
+    <line class="dim-line" x1="86" y1="500" x2="94" y2="500"/>
+    <text class="dim-text" x="84" y="363.0" text-anchor="end">Vessel 280 mm tall</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M190 200 L104 177"/>
+    <circle cx="190" cy="200" r="1.5" fill="#05455F"/>
+    <text class="callout" x="100" y="180" text-anchor="end">Control valve head</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M405 425 L476 422"/>
+    <circle cx="405" cy="425" r="1.5" fill="#05455F"/>
+    <text class="callout" x="480" y="425" text-anchor="start">Brine tank — consumable salt</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M740 200 L724 172"/>
+    <circle cx="740" cy="200" r="1.5" fill="#05455F"/>
+    <text class="callout" x="720" y="175" text-anchor="end">Outlet to whole-house plumbing</text>
+  </g>
+  <g class="callout-group">
+    <path class="leader" d="M261 351 L376 337"/>
+    <circle cx="261" cy="351" r="1.5" fill="#05455F"/>
+    <text class="callout" x="380" y="340" text-anchor="start">Service tag — last visit, next due</text>
+  </g>
+  <text class="axis-label" x="500" y="650" text-anchor="middle">PLAN · NTS</text>
+</svg>

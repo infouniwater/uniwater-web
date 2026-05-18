@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1450" width="1800" height="1450">
+  <defs>
+    <pattern id="page-grid" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#05455F" stroke-width="0.3" opacity="0.05"/>
+    </pattern>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#87D0CD"/>
+    </marker>
+    <style>
+      .bg          { fill: #FAF8F3; }
+      .grid        { fill: url(#page-grid); }
+
+      .wordmark    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 47px; fill: #05455F; font-weight: 700; letter-spacing: 0.01em; }
+      .wordmark-sub{ font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #7396A3; font-weight: 400; letter-spacing: 0.08em; }
+      .meta        { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; opacity: 0.55; letter-spacing: 0.20em; text-transform: uppercase; }
+      .h1          { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 40px; fill: #05455F; font-weight: 600; letter-spacing: -0.005em; }
+      .subhead     { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 32px; fill: #05455F; opacity: 0.7; }
+
+      .root-label  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+      .root-q      { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 43px; fill: #05455F; font-weight: 600; }
+
+      .branch-num  { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.20em; text-transform: uppercase; }
+      .branch-h    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 40px; fill: #05455F; font-weight: 600; line-height: 1.2; }
+      .branch-tag  { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 23px; fill: #05455F; opacity: 0.7; }
+
+      .sub-label   { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #1B9BB4; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+      .sub-cond    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 23px; fill: #05455F; font-weight: 600; line-height: 1.3; }
+      .sub-body    { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; opacity: 0.75; line-height: 1.4; }
+
+      .leaf-bg     { fill: #FFFFFF; stroke: #05455F; stroke-width: 1.2; }
+      .leaf-bg-tint{ fill: #F2EEE6; stroke: #05455F; stroke-width: 1.2; }
+      .leaf-product{ font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; font-weight: 700; }
+      .leaf-detail { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; opacity: 0.85; }
+
+      .below-label { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #7396A3; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+      .below-cat   { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; font-weight: 600; }
+      .below-foot  { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 22px; fill: #7396A3; line-height: 1.4; }
+
+      .connector   { fill: none; stroke: #87D0CD; stroke-width: 1.5; }
+      .connector-h { fill: none; stroke: #E5E1DA; stroke-width: 0.8; stroke-dasharray: 0; }
+      .divider     { stroke: #E5E1DA; stroke-width: 0.6; fill: none; }
+
+      .footer      { font-family: "Signika", "Inter", system-ui, sans-serif; font-size: 22px; fill: #05455F; opacity: 0.55; }
+      .footer-it   { font-family: "Bodoni Moda", "Signika", serif; font-style: italic; font-size: 22px; fill: #05455F; opacity: 0.7; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="1450"/>
+  <rect class="grid" width="1800" height="1450"/>
+  <text class="wordmark" x="60" y="82">UNIWATER</text>
+  <text class="wordmark-sub" x="250" y="82">SOLUTIONS</text>
+  <text class="meta" x="1740" y="82" text-anchor="end">SVG-005 · System selector</text>
+  <line class="divider" x1="60" y1="102" x2="1740" y2="102"/>
+  <text class="h1" x="60" y="150">Which Uniwater system does your water need?</text>
+  <text class="subhead" x="60" y="178">Not who you are. What the water is.</text>
+  <rect x="610.0" y="240" width="580" height="80" rx="3" fill="#FFFFFF" stroke="#05455F" stroke-width="1.3"/>
+  <text class="root-label" x="900.0" y="266" text-anchor="middle">The root question</text>
+  <text class="root-q" x="900.0" y="298" text-anchor="middle">What does your water need treated?</text>
+  <path d="M 900.0 320 L 900.0 355.0 L 330.0 355.0 L 330.0 390" class="connector"/>
+  <circle cx="330.0" cy="390" r="3.5" fill="#1B9BB4"/>
+  <path d="M 900.0 320 L 900.0 355.0 L 900.0 355.0 L 900.0 390" class="connector"/>
+  <circle cx="900.0" cy="390" r="3.5" fill="#1B9BB4"/>
+  <path d="M 900.0 320 L 900.0 355.0 L 1470.0 355.0 L 1470.0 390" class="connector"/>
+  <circle cx="1470.0" cy="390" r="3.5" fill="#1B9BB4"/>
+  <text class="branch-num" x="60.0" y="418">Branch 01</text>
+  <text class="branch-h" x="60.0" y="446">Drinking water</text>
+  <text class="branch-h" x="60.0" y="474">only</text>
+  <text class="branch-tag" x="60.0" y="506">The kitchen tap. The water people drink, not the</text>
+  <text class="branch-tag" x="60.0" y="523">water they shower in.</text>
+  <line x1="60.0" y1="546" x2="96.0" y2="546" stroke="#1B9BB4" stroke-width="1.5"/>
+  <text class="sub-label" x="60.0" y="568">Sub-fork</text>
+  <text class="sub-cond" x="60.0" y="586">One family, one kitchen</text>
+  <text class="sub-body" x="60.0" y="602">Test the TDS first.</text>
+  <line x1="68.0" y1="623" x2="68.0" y2="633" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="60.0" y="625" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="60.0" y1="631" x2="60.0" y2="665" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="74.0" y="643">UF + UV</text>
+  <text class="leaf-detail" x="74.0" y="659">Below 200 ppm. Pathogens go, minerals stay.</text>
+  <line x1="68.0" y1="675" x2="68.0" y2="685" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="60.0" y="677" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="60.0" y1="683" x2="60.0" y2="717" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="74.0" y="695">Test &amp; consult</text>
+  <text class="leaf-detail" x="74.0" y="711">200–500 ppm. Borderline.</text>
+  <line x1="68.0" y1="727" x2="68.0" y2="737" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="60.0" y="729" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="60.0" y1="735" x2="60.0" y2="769" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="74.0" y="747">RO + UV</text>
+  <text class="leaf-detail" x="74.0" y="763">Above 500 ppm. Borewells. Mineral correction.</text>
+  <text class="sub-label" x="60.0" y="795">Sub-fork</text>
+  <text class="sub-cond" x="60.0" y="813">Centralised drinking for an office,</text>
+  <text class="sub-cond" x="60.0" y="829">school, hotel, hospital</text>
+  <text class="sub-body" x="60.0" y="845">Daily volume decides the system.</text>
+  <line x1="68.0" y1="866" x2="68.0" y2="876" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="60.0" y="868" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="60.0" y1="874" x2="60.0" y2="908" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="74.0" y="886">Centralised RO</text>
+  <text class="leaf-detail" x="74.0" y="902">25 / 50 / 100 LPH for institutions.</text>
+  <line x1="68.0" y1="918" x2="68.0" y2="928" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="60.0" y="920" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="60.0" y1="926" x2="60.0" y2="960" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="74.0" y="938">Commercial RO</text>
+  <text class="leaf-detail" x="74.0" y="954">500 to 50,000 LPH for large supply.</text>
+  <text class="branch-num" x="630.0" y="418">Branch 02</text>
+  <text class="branch-h" x="630.0" y="446">Whole bathroom,</text>
+  <text class="branch-h" x="630.0" y="474">whole house</text>
+  <text class="branch-tag" x="630.0" y="506">Soft water at every shower, every sink, every</text>
+  <text class="branch-tag" x="630.0" y="523">appliance.</text>
+  <line x1="630.0" y1="546" x2="666.0" y2="546" stroke="#1B9BB4" stroke-width="1.5"/>
+  <text class="sub-label" x="630.0" y="568">Sub-fork</text>
+  <text class="sub-cond" x="630.0" y="586">One bathroom — high demand or visible</text>
+  <text class="sub-cond" x="630.0" y="602">install</text>
+  <text class="sub-body" x="630.0" y="618">Sized to the bathroom's load.</text>
+  <line x1="638.0" y1="639" x2="638.0" y2="649" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="630.0" y="641" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="630.0" y1="647" x2="630.0" y2="681" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="644.0" y="659">BathSoft Mono</text>
+  <text class="leaf-detail" x="644.0" y="675">Single shower. Standard CP.</text>
+  <line x1="638.0" y1="691" x2="638.0" y2="701" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="630.0" y="693" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="630.0" y1="699" x2="630.0" y2="733" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="644.0" y="711">BathSoft Duo</text>
+  <text class="leaf-detail" x="644.0" y="727">Rain shower + jets, or two together.</text>
+  <line x1="638.0" y1="743" x2="638.0" y2="753" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="630.0" y="745" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="630.0" y1="751" x2="630.0" y2="785" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="644.0" y="763">BathSoft Trio</text>
+  <text class="leaf-detail" x="644.0" y="779">Steam, jacuzzi, multiple outlets.</text>
+  <text class="sub-label" x="630.0" y="811">Sub-fork</text>
+  <text class="sub-cond" x="630.0" y="829">Whole house — villa, multi-bath, borewell</text>
+  <text class="sub-cond" x="630.0" y="845">or variable supply</text>
+  <text class="sub-body" x="630.0" y="861">Sediment → iron → carbon → softener. Sized to</text>
+  <text class="sub-body" x="630.0" y="876">the home.</text>
+  <line x1="638.0" y1="897" x2="638.0" y2="907" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="630.0" y="899" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="630.0" y1="905" x2="630.0" y2="939" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="644.0" y="917">HomeSoft 2K</text>
+  <text class="leaf-detail" x="644.0" y="933">3–4 bathrooms.</text>
+  <line x1="638.0" y1="949" x2="638.0" y2="959" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="630.0" y="951" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="630.0" y1="957" x2="630.0" y2="991" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="644.0" y="969">HomeSoft 4K</text>
+  <text class="leaf-detail" x="644.0" y="985">5–6 bathrooms, small villas.</text>
+  <line x1="638.0" y1="1001" x2="638.0" y2="1011" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="630.0" y="1003" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="630.0" y1="1009" x2="630.0" y2="1043" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="644.0" y="1021">HomeSoft 6K</text>
+  <text class="leaf-detail" x="644.0" y="1037">Large villas, duplexes.</text>
+  <text class="branch-num" x="1200.0" y="418">Branch 03</text>
+  <text class="branch-h" x="1200.0" y="446">A building, a</text>
+  <text class="branch-h" x="1200.0" y="474">hotel, a hospital,</text>
+  <text class="branch-h" x="1200.0" y="502">a complex</text>
+  <text class="branch-tag" x="1200.0" y="534">Every flat, every room, every floor. Treated</text>
+  <text class="branch-tag" x="1200.0" y="551">once, at the inlet.</text>
+  <line x1="1200.0" y1="574" x2="1236.0" y2="574" stroke="#1B9BB4" stroke-width="1.5"/>
+  <text class="sub-label" x="1200.0" y="596">Sub-fork</text>
+  <text class="sub-cond" x="1200.0" y="614">Sized for the load</text>
+  <text class="sub-body" x="1200.0" y="630">Specified after site survey and water analysis.</text>
+  <line x1="1208.0" y1="651" x2="1208.0" y2="661" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="1200.0" y="653" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="1200.0" y1="659" x2="1200.0" y2="693" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="1214.0" y="671">WTP 8K</text>
+  <text class="leaf-detail" x="1214.0" y="687">Small complexes, mid-rise. Boutique hotels.</text>
+  <line x1="1208.0" y1="703" x2="1208.0" y2="713" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="1200.0" y="705" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="1200.0" y1="711" x2="1200.0" y2="745" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="1214.0" y="723">WTP 12K</text>
+  <text class="leaf-detail" x="1214.0" y="739">Mid-size societies, schools. Hospitals to 100 beds.</text>
+  <line x1="1208.0" y1="755" x2="1208.0" y2="765" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="1200.0" y="757" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="1200.0" y1="763" x2="1200.0" y2="797" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="1214.0" y="775">WTP 18K</text>
+  <text class="leaf-detail" x="1214.0" y="791">Large complexes, hospitality. Mid-size institutions.</text>
+  <line x1="1208.0" y1="807" x2="1208.0" y2="817" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="1200.0" y="809" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="1200.0" y1="815" x2="1200.0" y2="849" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="1214.0" y="827">WTP 24K</text>
+  <text class="leaf-detail" x="1214.0" y="843">Large mixed-use, large hotels. Campuses.</text>
+  <line x1="1208.0" y1="859" x2="1208.0" y2="869" stroke="#87D0CD" stroke-width="1.2"/>
+  <rect x="1200.0" y="861" width="528.0" height="46" rx="2" class="leaf-bg"/>
+  <line x1="1200.0" y1="867" x2="1200.0" y2="901" stroke="#1B9BB4" stroke-width="2.5"/>
+  <text class="leaf-product" x="1214.0" y="879">WTP 30K</text>
+  <text class="leaf-detail" x="1214.0" y="895">Industrial campuses, multi-block developments.</text>
+  <line x1="60.0" y1="1083" x2="588.0" y2="1083" stroke="#E5E1DA" stroke-width="0.6"/>
+  <text class="below-label" x="60.0" y="1101">Below this need</text>
+  <text class="below-cat" x="60.0" y="1119">Point-of-use cartridge filters</text>
+  <text class="below-foot" x="60.0" y="1135">e.g. tap-mount and shower-head filters on Amazon</text>
+  <text class="below-foot" x="60.0" y="1148">(₹1K–4K). They don't reduce TDS or hardness; they</text>
+  <text class="below-foot" x="60.0" y="1161">sequester it. DIY install, 6-month cartridge swap.</text>
+  <text class="below-foot" x="60.0" y="1174">Honest about what they can't do.</text>
+  <line x1="630.0" y1="1083" x2="1158.0" y2="1083" stroke="#E5E1DA" stroke-width="0.6"/>
+  <text class="below-label" x="630.0" y="1101">Below this need</text>
+  <text class="below-cat" x="630.0" y="1119">Mass-market residential softeners</text>
+  <text class="below-foot" x="630.0" y="1135">e.g. dealer-sold ion-exchange softeners from large</text>
+  <text class="below-foot" x="630.0" y="1148">home-appliance brands (₹15K–60K). Real softening.</text>
+  <text class="below-foot" x="630.0" y="1161">Service depends on the dealer. Often not tuned for</text>
+  <text class="below-foot" x="630.0" y="1174">borewell-fed homes or multi-stage treatment.</text>
+  <line x1="1200.0" y1="1083" x2="1728.0" y2="1083" stroke="#E5E1DA" stroke-width="0.6"/>
+  <text class="below-label" x="1200.0" y="1101">Below this need</text>
+  <text class="below-cat" x="1200.0" y="1119">Local plumbing contractor with generic vessels</text>
+  <text class="below-foot" x="1200.0" y="1135">Works if your in-house plant team will own service,</text>
+  <text class="below-foot" x="1200.0" y="1148">resin, salt, and consumables for fifteen years. Stops</text>
+  <text class="below-foot" x="1200.0" y="1161">working when the team turns over.</text>
+  <line class="divider" x1="60" y1="1366" x2="1740" y2="1366"/>
+  <text class="footer-it" x="60" y="1390">The system isn&apos;t the promise. The service is.</text>
+  <text class="footer" x="1740" y="1390" text-anchor="end">uniwater.co.in · 9 cities · India and Nepal</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="t-clipboard">
+  <title id="t-clipboard">Service report / clipboard</title>
+  <!-- board -->
+  <rect x="10" y="9" width="28" height="34" rx="2" />
+  <!-- top clip -->
+  <path d="M19 5 L29 5 L29 11 L19 11 Z" />
+  <!-- checklist line 1 with check -->
+  <path d="M16 21 L18 23 L22 19" stroke-width="1.6" />
+  <path d="M25 21 L33 21" />
+  <!-- checklist line 2 -->
+  <circle cx="17" cy="29" r="1.4" />
+  <path d="M21 29 L33 29" />
+  <!-- checklist line 3 -->
+  <circle cx="17" cy="37" r="1.4" />
+  <path d="M21 37 L33 37" />
+</svg>

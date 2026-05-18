@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="t-monitor">
+  <title id="t-monitor">Monitor / readout display</title>
+  <!-- screen frame -->
+  <rect x="6" y="9" width="36" height="24" rx="2" />
+  <!-- stand neck -->
+  <path d="M24 33 L24 39" />
+  <!-- stand base -->
+  <path d="M16 41 L32 41" />
+  <!-- readout trace: small upward trend across the screen -->
+  <path d="M11 26 L17 23 L23 25 L29 18 L37 16" stroke-width="1.5" />
+  <!-- baseline tick -->
+  <path d="M11 29 L37 29" stroke-width="1" opacity="0.4" />
+</svg>

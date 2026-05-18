@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect x="0" y="0" width="1920" height="1080" fill="#05455F" />
+  <style>
+    .navy-stroke { stroke: #D5EEF1; stroke-width: 2; fill: none; }
+    .navy-stroke-thin { stroke: #D5EEF1; stroke-width: 1; fill: none; }
+    .navy-fill { fill: #D5EEF1; }
+    .ink { fill: #FFFFFF; }
+    .grey { fill: #87D0CD; }
+    .h-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 28px; fill: #87D0CD; letter-spacing: 0.12em; text-transform: uppercase; }
+    .h-cap { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 59px; fill: #D5EEF1; }
+    .h-use { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 34px; fill: #FFFFFF; }
+    .h-detail { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 26px; fill: #87D0CD; font-style: italic; }
+  </style>
+
+  <!-- Section header -->
+  <text x="120" y="140" class="h-tag">Building WTP capacity ladder</text>
+  <text x="120" y="200" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="65" fill="#D5EEF1">Specified for the load. Sized for the building.</text>
+
+  <!-- Five-rung ladder, scaling up in width -->
+  <g transform="translate(120, 320)">
+    <!-- RUNG 1: 8K LPH -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="320" height="100" class="navy-stroke" fill="none" />
+      <text x="30" y="65" class="h-cap">8K LPH</text>
+      <text x="380" y="40" class="h-use">Small complexes, mid-rise.</text>
+      <text x="380" y="75" class="h-detail">Boutique hotels.</text>
+    </g>
+
+    <!-- RUNG 2: 12K LPH -->
+    <g transform="translate(0, 130)">
+      <rect x="0" y="0" width="500" height="100" class="navy-stroke" fill="none" />
+      <text x="30" y="65" class="h-cap">12K LPH</text>
+      <text x="560" y="40" class="h-use">Mid-size societies, schools.</text>
+      <text x="560" y="75" class="h-detail">Hospitals up to 100 beds.</text>
+    </g>
+
+    <!-- RUNG 3: 18K LPH -->
+    <g transform="translate(0, 260)">
+      <rect x="0" y="0" width="680" height="100" class="navy-stroke" fill="none" />
+      <text x="30" y="65" class="h-cap">18K LPH</text>
+      <text x="740" y="40" class="h-use">Large complexes, hospitality.</text>
+      <text x="740" y="75" class="h-detail">Mid-size institutions.</text>
+    </g>
+
+    <!-- RUNG 4: 24K LPH -->
+    <g transform="translate(0, 390)">
+      <rect x="0" y="0" width="860" height="100" class="navy-stroke" fill="none" />
+      <text x="30" y="65" class="h-cap">24K LPH</text>
+      <text x="920" y="40" class="h-use">Large mixed-use, large hotels.</text>
+      <text x="920" y="75" class="h-detail">Institutional campuses.</text>
+    </g>
+
+    <!-- RUNG 5: 30K LPH -->
+    <g transform="translate(0, 520)">
+      <rect x="0" y="0" width="1040" height="100" fill="#1B9BB4" />
+      <text x="30" y="65" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="59" fill="white">30K LPH</text>
+      <text x="1100" y="40" class="h-use">Industrial campuses, large gated communities.</text>
+      <text x="1100" y="75" class="h-detail">Multi-block developments.</text>
+    </g>
+  </g>
+
+  <!-- Bottom AMC strip -->
+  <g transform="translate(120, 980)">
+    <line x1="0" y1="-30" x2="1680" y2="-30" class="navy-stroke-thin" stroke-dasharray="3 5" />
+    <text y="20" class="h-tag">What an AMC contains</text>
+    <text y="60" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="31" fill="#FFFFFF">Monthly preventive visits  ·  Parameter logging  ·  Resin assessment and top-up  ·  Media replacement on schedule  ·  Documented service reports  ·  24-hour critical response</text>
+  </g>
+</svg>
