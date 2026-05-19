@@ -3,18 +3,21 @@ import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 
 /**
- * Home-page featured clients — a curated 7-card single row, ordered for
- * visual rhythm and brand recognition (hospital · medical college · steel ·
- * plywood · university · realty · wires). NAMED_CLIENTS (the wider list)
+ * Home-page featured clients — a curated 8-card grid (2 rows × 4 on
+ * desktop/tablet, 4 rows × 2 on mobile), ordered for visual rhythm and
+ * brand recognition. Eight is intentional: it tiles cleanly at every
+ * breakpoint, which avoids the orphan tile a 7-card grid produces on
+ * 2-col mobile and 4-col tablet. NAMED_CLIENTS (the wider list of 14)
  * stays in /content/site.ts and is rendered verbatim on /industrial and
- * elsewhere; this section deliberately shows the strongest seven.
+ * elsewhere; this section deliberately shows the strongest eight.
  */
 const FEATURED_CLIENTS = [
   'Charnock Hospital',
   'Birat Medical College',
+  'IIEST',
+  'Techno India University',
   'Shyam Steel',
   'Saburi Plywood',
-  'Techno India University',
   'GM Group',
   'Premier Wires',
 ] as const;
@@ -45,14 +48,14 @@ const CLIENT_LOGOS: Record<string, { src: string; alt: string }> = {
   'Shyam Steel':             { src: '/clients/shyam-steel.png',             alt: 'Shyam Steel logo' },
   'Saburi Plywood':          { src: '/clients/saburi-plywood.png',          alt: 'Saburi Plywood logo' },
   'Techno India University': { src: '/clients/techno-india-university.png', alt: 'Techno India University logo' },
-  'GM Group':                { src: '/clients/gm-group.png',                alt: 'GM Group logo' },
   'Marudhar Marble':         { src: '/clients/marudhar-marble.png',         alt: 'Marudhar Marble logo' },
   'Movash':                  { src: '/clients/movash.png',                  alt: 'Movash logo' },
   'Premier Wires':           { src: '/clients/premier-wires.png',           alt: 'Premier Wires logo' },
   'Kreamz':                  { src: '/clients/kreamz.png',                  alt: 'Kreamz logo' },
   'IIEST':                   { src: '/clients/iiest.png',                   alt: 'IIEST Shibpur logo' },
-  // No clean public logo source for these three — fall through to a tasteful
+  // No clean public logo source for these four — fall through to a tasteful
   // text tile until the client provides their official mark:
+  //   'GM Group'              (only had a 32×32 favicon, rendered hazy on upscale)
   //   'Acasa by Malani Group'
   //   'Azurre Surfaces'
   //   'Waterworks'
@@ -71,7 +74,7 @@ export function ProofSection() {
         </Body>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
         {FEATURED_CLIENTS.map((client) => {
           const logo = CLIENT_LOGOS[client];
           return (
@@ -86,7 +89,7 @@ export function ProofSection() {
                     src={logo.src}
                     alt={logo.alt}
                     fill
-                    sizes="(min-width: 1024px) 14vw, (min-width: 640px) 25vw, 50vw"
+                    sizes="(min-width: 640px) 25vw, 50vw"
                     className="object-contain"
                   />
                 </div>
