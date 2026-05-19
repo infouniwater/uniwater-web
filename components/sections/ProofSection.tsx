@@ -36,7 +36,7 @@ const FEATURED_CLIENTS = [
 export function ProofSection() {
   return (
     <Section padding="default" tone="plain">
-      <div className="mb-8 max-w-3xl">
+      <div className="mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">Selected clients</Eyebrow>
         <Heading level={2} className="mb-4">
           Hospitals. Hotels. Universities. Premium homes.

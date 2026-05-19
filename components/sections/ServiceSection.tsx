@@ -28,14 +28,14 @@ const SERVICE_PILLARS = [
 export function ServiceSection() {
   return (
     <Section tone="inverse" padding="loose">
-      <div className="max-w-4xl mb-10 md:mb-16">
+      <div className="max-w-3xl mb-8 md:mb-12">
         <Eyebrow className="text-soft mb-5">Service is the system</Eyebrow>
         <Heading level={2} inverse className="text-display-m md:text-[56px] font-light leading-tight">
           Most water companies show up when something breaks. We show up every month.
         </Heading>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 lg:gap-16 mb-10 md:mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 lg:gap-16 mb-8 md:mb-12">
         {SERVICE_PILLARS.map((pillar) => (
           <div key={pillar.title} className="flex flex-col gap-4">
             <Heading level={3} inverse>{pillar.title}</Heading>

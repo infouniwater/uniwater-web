@@ -50,7 +50,7 @@ const ROWS: Row[] = [
 export function ComparisonBlock() {
   return (
     <Section padding="default" tone="subtle">
-      <div className="mb-12 max-w-3xl">
+      <div className="mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">Why we&rsquo;re different</Eyebrow>
         <Heading level={2}>
           What most water companies do. What we do.

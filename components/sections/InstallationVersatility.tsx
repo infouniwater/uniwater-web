@@ -36,7 +36,7 @@ const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
 export function InstallationVersatility() {
   return (
     <Section padding="default">
-      <div className="mb-12 max-w-3xl">
+      <div className="mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">What makes us different</Eyebrow>
         <Heading level={2} className="mb-5">
           Five places we&rsquo;ve put a water system that the family never sees.

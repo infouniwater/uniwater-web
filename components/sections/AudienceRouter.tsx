@@ -44,7 +44,7 @@ const AUDIENCES = [
 export function AudienceRouter() {
   return (
     <Section padding="default">
-      <div className="flex flex-col gap-4 mb-12">
+      <div className="flex flex-col gap-4 mb-8 md:mb-12">
         <Eyebrow>Where would you like to start?</Eyebrow>
         <Heading level={2} className="max-w-3xl">
           Pick the sentence that sounds like you.
