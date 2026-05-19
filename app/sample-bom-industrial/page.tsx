@@ -76,7 +76,8 @@ export default function SampleBomPage() {
             {/* BOM table */}
             <section className="mb-10">
               <h2 className="text-h3 font-semibold text-navy mb-4">Treatment train</h2>
-              <table className="w-full text-caption border-collapse">
+              <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+              <table className="w-full text-caption border-collapse min-w-[760px] sm:min-w-0">
                 <thead>
                   <tr className="bg-subtle text-mute uppercase text-[11px] tracking-wide">
                     <th className="text-left p-3 border border-hairline">#</th>
@@ -192,10 +193,11 @@ export default function SampleBomPage() {
                   </tr>
                 </tfoot>
               </table>
+              </div>
             </section>
 
             {/* Bundled / excluded */}
-            <section className="grid grid-cols-2 gap-8 mb-10">
+            <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-10">
               <div>
                 <div className="text-eyebrow text-mute uppercase mb-2 text-xs">Bundled in the line items</div>
                 <ul className="text-caption text-navy leading-snug flex flex-col gap-1">
@@ -221,7 +223,8 @@ export default function SampleBomPage() {
             {/* AMC */}
             <section className="mb-10 border-t border-hairline pt-6">
               <h2 className="text-h3 font-semibold text-navy mb-3">Annual Maintenance Contract — priced at handover</h2>
-              <table className="w-full text-caption border-collapse">
+              <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+              <table className="w-full text-caption border-collapse min-w-[560px] sm:min-w-0">
                 <thead>
                   <tr className="bg-subtle text-mute uppercase text-[11px] tracking-wide">
                     <th className="text-left p-3 border border-hairline">Tier</th>
@@ -236,16 +239,17 @@ export default function SampleBomPage() {
                   <tr><td className="p-3 border border-hairline">Premium</td><td className="p-3 border border-hairline">Monthly + 24-hr SLA</td><td className="p-3 border border-hairline">All of Comprehensive + 24-hour fault response + remote alerts</td><td className="p-3 border border-hairline text-right">2,16,000</td></tr>
                 </tbody>
               </table>
+              </div>
               <p className="text-caption text-mute mt-3 italic">AMC starts on day 31 after handover; first 30 days covered free under installation warranty.</p>
             </section>
 
-            <footer className="border-t border-hairline pt-6 flex items-end justify-between">
+            <footer className="border-t border-hairline pt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <div className="text-caption text-mute uppercase tracking-wide text-[11px]">Prepared by</div>
                 <div className="text-body text-navy font-medium mt-1">UNIWATER engineering team</div>
                 <div className="text-caption text-mute">Validity: 30 days from quote date · final BOM after site survey</div>
               </div>
-              <div className="text-right text-caption text-mute">
+              <div className="text-caption text-mute sm:text-right">
                 <div>support@uniwater.co.in</div>
                 <div>+91 97487 45193</div>
                 <div>uniwater.co.in</div>

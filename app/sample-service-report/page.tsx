@@ -41,14 +41,14 @@ export default function SampleServiceReportPage() {
             </p>
           </div>
 
-          <article className="report-page max-w-3xl mx-auto bg-offwhite border border-hairline p-10 md:p-12 print:border-0 print:p-0">
+          <article className="report-page max-w-3xl mx-auto bg-offwhite border border-hairline p-6 sm:p-10 md:p-12 print:border-0 print:p-0">
             {/* Header */}
-            <header className="flex items-baseline justify-between border-b border-hairline pb-4 mb-8">
+            <header className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between border-b border-hairline pb-4 mb-8">
               <div>
                 <div className="text-eyebrow font-medium uppercase text-teal tracking-wide">Monthly service report</div>
                 <div className="text-h3 font-semibold text-navy mt-1">Visit #14</div>
               </div>
-              <div className="text-right text-caption text-mute">
+              <div className="text-caption text-mute sm:text-right">
                 <div className="font-medium text-navy">UNIWATER</div>
                 <div>Salt Lake, Kolkata</div>
                 <div>2026-05-18</div>
@@ -78,7 +78,8 @@ export default function SampleServiceReportPage() {
             {/* Parameter table */}
             <section className="mb-10">
               <h2 className="text-h3 font-semibold text-navy mb-4">Parameters logged</h2>
-              <table className="w-full text-caption border-collapse">
+              <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+              <table className="w-full text-caption border-collapse min-w-[640px] sm:min-w-0">
                 <thead>
                   <tr className="bg-subtle text-mute uppercase text-[11px] tracking-wide">
                     <th className="text-left p-3 border border-hairline">Parameter</th>
@@ -98,6 +99,7 @@ export default function SampleServiceReportPage() {
                   <tr><td className="p-3 border border-hairline">Outlet pressure (bar)</td><td className="p-3 border border-hairline">1.8</td><td className="p-3 border border-hairline">1.9</td><td className="p-3 border border-hairline">&gt; 1.5</td><td className="p-3 border border-hairline text-teal font-medium">OK</td></tr>
                 </tbody>
               </table>
+              </div>
             </section>
 
             {/* Work performed */}
@@ -129,13 +131,13 @@ export default function SampleServiceReportPage() {
             </section>
 
             {/* Engineer signature */}
-            <footer className="border-t border-hairline pt-6 flex items-end justify-between">
+            <footer className="border-t border-hairline pt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <div className="text-caption text-mute uppercase tracking-wide text-[11px]">Engineer</div>
                 <div className="text-body text-navy font-medium mt-1">Suman Saha</div>
                 <div className="text-caption text-mute">Senior service engineer · UNIWATER Kolkata</div>
               </div>
-              <div className="text-right">
+              <div className="sm:text-right">
                 <div className="text-caption text-mute uppercase tracking-wide text-[11px]">Customer signature</div>
                 <div className="mt-1 border-b border-navy w-44 h-6"></div>
               </div>

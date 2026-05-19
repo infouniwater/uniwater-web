@@ -29,9 +29,10 @@ export function EditorialHero() {
   return (
     <section className="bg-offwhite border-b border-hairline">
       <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[calc(100vh-80px)] py-12 lg:py-0">
-          {/* Text panel — left on desktop */}
-          <div className="lg:col-span-6 flex flex-col gap-7 order-2 lg:order-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-80px)] py-10 lg:py-0">
+          {/* Text panel — first on mobile (was second, which pushed value
+              copy below the fold on phones), still left on desktop. */}
+          <div className="lg:col-span-6 flex flex-col gap-7">
             <Display>We engineer your water &mdash; and we maintain it.</Display>
             <Lede className="text-mute">
               Surveyed before quoted. Engineered before installed. Serviced every month for the life of the contract.
@@ -73,7 +74,7 @@ export function EditorialHero() {
           </div>
 
           {/* Visual — video when supplied, else the original ken-burns photograph. */}
-          <div className="lg:col-span-6 order-1 lg:order-2 lg:py-12">
+          <div className="lg:col-span-6 lg:py-12">
             <div
               className="relative w-full overflow-hidden"
               style={{ aspectRatio: '56 / 75' }}

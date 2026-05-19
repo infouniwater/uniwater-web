@@ -107,12 +107,19 @@ export default function WhyUniwaterPage() {
             Three branches by water need. Every leaf is a real UNIWATER product. Categories that fit below each need are named in the footnotes &mdash; we&rsquo;re honest about when we&rsquo;re not the right answer.
           </Body>
         </div>
+        {/* On desktop the infographic fits a content column comfortably.
+            On mobile the labels would get too small to read if forced into
+            a narrow viewport — so we keep a 720px floor and let the user
+            scroll horizontally. A small "swipe →" hint appears on phones. */}
+        <p className="text-caption text-mute italic md:hidden mb-3">
+          Swipe horizontally to read the full tree →
+        </p>
         <div className="overflow-x-auto -mx-6 sm:-mx-12 lg:-mx-16 px-6 sm:px-12 lg:px-16">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/infographics/comparison-tree.svg"
             alt="System-selection decision tree — three branches by water need: drinking water (kitchen RO or centralised), whole bathroom or house (BathSoft Mono/Duo/Trio or HomeSoft 2K/4K/6K), or a building (WTP 8K through 30K). Each branch ends with a 'Below this need' footnote naming the category that fits at a lower tier."
-            className="block w-full h-auto min-w-[900px] mx-auto"
+            className="block w-full h-auto md:min-w-[720px] mx-auto"
             loading="lazy"
             decoding="async"
           />

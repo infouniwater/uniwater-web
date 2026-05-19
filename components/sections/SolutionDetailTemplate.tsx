@@ -77,8 +77,9 @@ export function SolutionDetailTemplate({ solution }: Props) {
           />
         </div>
         <div className="container-uw">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-10 pb-16 lg:pt-12 lg:pb-24">
-            <div className="lg:col-span-6 flex flex-col gap-6 order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-8 pb-12 lg:pt-12 lg:pb-24">
+            {/* Text panel — first on mobile (was second). */}
+            <div className="lg:col-span-6 flex flex-col gap-6">
               {solution.wordmark && (
                 <div className="text-eyebrow font-medium uppercase text-teal">
                   {solution.wordmark}.
@@ -109,7 +110,7 @@ export function SolutionDetailTemplate({ solution }: Props) {
               </div>
             </div>
 
-            <div className="lg:col-span-6 order-1 lg:order-2">
+            <div className="lg:col-span-6">
               {heroPhoto ? (
                 <div className="w-full overflow-hidden border border-hairline" style={{ aspectRatio: '1 / 1' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
