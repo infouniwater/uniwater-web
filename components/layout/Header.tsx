@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Logo } from '@/components/ui/Logo';
 import { Button } from '@/components/ui/Button';
 import { SOLUTIONS } from '@/content/solutions';
@@ -34,6 +34,23 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+
+  // Mega-menu close debounce. Without this, the trigger's onMouseLeave fires
+  // the moment the cursor leaves the small "Solutions ⌄" hit area, and the
+  // panel unmounts before the cursor reaches it — so the panel's onMouseEnter
+  // never fires. Holding the close for 150ms lets the cursor cross the gap.
+  const megaCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openMega = () => {
+    if (megaCloseTimer.current) {
+      clearTimeout(megaCloseTimer.current);
+      megaCloseTimer.current = null;
+    }
+    setMegaOpen(true);
+  };
+  const scheduleCloseMega = () => {
+    if (megaCloseTimer.current) clearTimeout(megaCloseTimer.current);
+    megaCloseTimer.current = setTimeout(() => setMegaOpen(false), 150);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -67,8 +84,8 @@ export function Header() {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => setMegaOpen(true)}
-                onMouseLeave={() => setMegaOpen(false)}
+                onMouseEnter={openMega}
+                onMouseLeave={scheduleCloseMega}
               >
                 <Link
                   href={item.href}
@@ -163,8 +180,8 @@ export function Header() {
       {megaOpen && (
         <div
           className="hidden lg:block absolute left-0 right-0 top-full bg-offwhite border-b border-hairline shadow-[0_8px_24px_rgba(5,69,95,0.08)] animate-fade-in"
-          onMouseEnter={() => setMegaOpen(true)}
-          onMouseLeave={() => setMegaOpen(false)}
+          onMouseEnter={openMega}
+          onMouseLeave={scheduleCloseMega}
         >
           <div className="container-uw py-10 grid grid-cols-2 gap-12">
             <div>
@@ -232,7 +249,7 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="lg:hidden fixed inset-0 top-16 md:top-20 bg-offwhite z-40 overflow-y-auto animate-fade-in"
+          className="lg:hidden fixed inset-0 top-20 md:top-24 bg-offwhite z-40 overflow-y-auto animate-fade-in"
         >
           <nav aria-label="Mobile primary" className="container-uw py-8 flex flex-col gap-1">
             {NAV_ITEMS.map((item) =>
