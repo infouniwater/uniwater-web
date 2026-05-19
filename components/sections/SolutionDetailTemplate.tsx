@@ -185,7 +185,10 @@ export function SolutionDetailTemplate({ solution }: Props) {
                 What the system looks like on the cutaway. Media bed, distributor, freeboard, control head &mdash; the visible engineering that decides what the water does over the next fifteen years.
               </Body>
             </div>
-            <div className="lg:col-span-8 bg-offwhite border border-hairline p-6 md:p-8">
+            <div className="hidden md:block lg:col-span-8 bg-offwhite border border-hairline p-6 md:p-8">
+              {/* Cutaway hidden on mobile — 1800×1050 SVG with 14–18px labels
+                  compresses to ~3–4px on a phone. Eyebrow/heading/body above
+                  carry the message at small sizes. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/images/product-cutaways/${cutawaySlug}/landscape.svg`}
@@ -286,16 +289,20 @@ export function SolutionDetailTemplate({ solution }: Props) {
                 Section drawings of the install patterns we use most often for this system. Pre-tile, mid-construction, or as a retrofit &mdash; the right pattern is decided at survey, against the house.
               </Body>
             </div>
-            <div className={`grid grid-cols-1 sm:grid-cols-2 ${drawings.length >= 3 ? 'lg:grid-cols-3' : ''} gap-6`}>
+            <div className={`grid grid-cols-1 sm:grid-cols-2 ${drawings.length >= 3 ? 'lg:grid-cols-3' : ''} gap-3 sm:gap-6`}>
               {drawings.map((d) => (
-                <figure key={d.file} className="flex flex-col gap-3 bg-offwhite border border-hairline p-4">
+                <figure key={d.file} className="flex flex-col gap-3 bg-offwhite border border-hairline p-4 sm:p-6">
+                  {/* Drawing hidden on mobile — the SVG canvas is 1000×700
+                      with 12-14px labels that render at ~5px on a 375px phone,
+                      i.e. unreadable. The title + body in the figcaption below
+                      carry the install pattern in plain language. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={d.file}
                     alt={d.alt}
                     loading="lazy"
                     decoding="async"
-                    className="block w-full h-auto"
+                    className="hidden sm:block w-full h-auto"
                   />
                   <figcaption>
                     <h3 className="text-h3-m font-medium text-navy">{d.title}</h3>

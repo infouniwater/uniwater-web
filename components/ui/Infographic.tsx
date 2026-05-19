@@ -2,13 +2,19 @@ import { cn } from '@/lib/cn';
 
 /**
  * <Infographic> — renders the catalogue-grade SVG/PNG embeds per
- * BLUEPRINT §3.7 + §14. Uses <picture> so mobile (≤767px) gets the
- * portrait variant where available; tablet/desktop get the landscape.
+ * BLUEPRINT §3.7 + §14. Hidden on mobile by default: the SVGs are
+ * authored at 1920×1080 (or similar) with body text in the 25–34px range,
+ * which compresses to ~4–6px on a 375px phone — illegible. Section
+ * eyebrow + headline + body above the infographic already carry the
+ * message in readable text on small screens. Mobile users see the
+ * narrative; tablet+ users get the diagram. (User feedback 2026-05-19.)
+ *
+ * When real, dedicated portrait/mobile assets ship (≤500px wide canvas
+ * with appropriately sized type), remove the hidden md:block wrappers
+ * and let the existing <picture> media-query pick them up.
+ *
  * Assets not in MANIFEST fall back to a labelled placeholder so the page
  * still works while commissioned art is in flight.
- *
- * When a real asset arrives in public/images/infographics/, add an entry
- * to MANIFEST below. No callsite changes required.
  */
 
 interface InfographicProps {
@@ -84,7 +90,7 @@ export function Infographic({
   if (entry) {
     return (
       <picture
-        className={cn('relative block w-full bg-navy overflow-hidden', className)}
+        className={cn('relative hidden md:block w-full bg-navy overflow-hidden', className)}
       >
         {entry.portrait && (
           <source media="(max-width: 767px)" srcSet={entry.portrait} />
@@ -107,7 +113,7 @@ export function Infographic({
       role="img"
       aria-label={description}
       className={cn(
-        'relative w-full bg-navy/60 border border-offwhite/15 overflow-hidden',
+        'relative hidden md:block w-full bg-navy/60 border border-offwhite/15 overflow-hidden',
         className
       )}
       style={{ aspectRatio: aspect.replace('/', ' / ') }}
