@@ -112,7 +112,7 @@ export function SolutionDetailTemplate({ solution }: Props) {
 
             <div className="lg:col-span-6">
               {heroPhoto ? (
-                <div className="w-full overflow-hidden border border-hairline" style={{ aspectRatio: '1 / 1' }}>
+                <div className="w-full overflow-hidden border border-hairline aspect-[16/9] sm:aspect-[1/1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={heroPhoto.src}
@@ -127,6 +127,7 @@ export function SolutionDetailTemplate({ solution }: Props) {
                   description={`Hero — ${solution.navLabel} installed in a finished home`}
                   assetRef={`solution-${solution.slug}-hero`}
                   aspect="five-six"
+                  mobileAspect="sixteen-nine"
                 />
               )}
             </div>
@@ -442,11 +443,11 @@ export function SolutionDetailTemplate({ solution }: Props) {
           <Eyebrow className="mb-4">Real installs</Eyebrow>
           <Heading level={2}>Where these systems are running today.</Heading>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {(realInstallPhotos.length > 0 ? realInstallPhotos : [null, null, null]).slice(0, 3).map((photo, i) => (
-            <div key={i} className="flex flex-col gap-4">
+            <div key={i} className="flex flex-col gap-3 sm:gap-4">
               {photo ? (
-                <div className="w-full overflow-hidden border border-hairline" style={{ aspectRatio: '1 / 1' }}>
+                <div className="w-full overflow-hidden border border-hairline aspect-[1/1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photo.src}

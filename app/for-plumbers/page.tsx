@@ -88,6 +88,7 @@ export default function ForPlumbersPage() {
                 description="A plumber in branded workwear shaking hands with a Uniwater engineer at a site walkthrough"
                 assetRef="for-plumbers-hero"
                 aspect="four-five"
+                mobileAspect="sixteen-nine"
               />
             </div>
           </div>

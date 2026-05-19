@@ -49,12 +49,12 @@ export function InstallationVersatility() {
         </EditorialAccent>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
         {FIVE_PLACES.map((place, i) => {
           const photo = INSTALL_PHOTOS[i];
           return (
-            <div key={place.location} className="flex flex-col gap-4">
-              <div className="relative w-full overflow-hidden bg-subtle" style={{ aspectRatio: '3 / 4' }}>
+            <div key={place.location} className="flex flex-col gap-3 sm:gap-4">
+              <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4]">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -67,8 +67,8 @@ export function InstallationVersatility() {
                 <div className="text-eyebrow font-medium uppercase text-teal mb-1">
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="text-h3 font-semibold text-navy mb-2">{place.location}</h3>
-                <p className="text-caption text-mute">{place.description}</p>
+                <h3 className="text-body sm:text-h3 font-semibold text-navy mb-1 sm:mb-2 leading-snug">{place.location}</h3>
+                <p className="text-caption text-mute leading-snug">{place.description}</p>
               </div>
             </div>
           );

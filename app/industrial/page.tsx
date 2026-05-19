@@ -107,7 +107,7 @@ export default function IndustrialPage() {
               </p>
             </div>
             <div className="lg:col-span-6">
-              <div className="w-full overflow-hidden border border-offwhite/15" style={{ aspectRatio: '1 / 1' }}>
+              <div className="w-full overflow-hidden border border-offwhite/15 aspect-[16/9] sm:aspect-[1/1]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/photography/wtp-basement.jpg"

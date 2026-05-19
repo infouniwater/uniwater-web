@@ -155,6 +155,7 @@ export default function BookSurveyPage({
               description="UNIWATER engineer at customer home, taking water sample at kitchen tap"
               assetRef="book-survey-aside"
               aspect="four-five"
+              mobileAspect="sixteen-nine"
             />
             <div className="mt-6 border border-hairline bg-tint/30 p-6">
               <div className="text-eyebrow font-medium uppercase text-teal mb-4">

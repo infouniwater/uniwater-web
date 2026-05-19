@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import type { CSSProperties } from 'react';
 import { cn } from '@/lib/cn';
 import { resolvePhoto } from '@/lib/photo-registry';
 
@@ -30,15 +29,31 @@ type Aspect =
   | 'four-three'  // 4:3 (portraits)
   | 'hero-desktop';// 56:75 desktop hero
 
-const aspectStyle: Record<Aspect, CSSProperties> = {
-  'square':         { aspectRatio: '1 / 1' },
-  'four-five':      { aspectRatio: '4 / 5' },
-  'three-four':     { aspectRatio: '3 / 4' },
-  'five-six':       { aspectRatio: '5 / 6' },
-  'sixteen-nine':   { aspectRatio: '16 / 9' },
-  'sixteen-ten':    { aspectRatio: '16 / 10' },
-  'four-three':     { aspectRatio: '4 / 3' },
-  'hero-desktop':   { aspectRatio: '56 / 75' },
+/**
+ * Tailwind class equivalents of each aspect — used so the aspect can vary
+ * by breakpoint via `sm:`/`lg:` variants, which inline `style` can't do.
+ * Pre-declared so JIT can extract them at build time.
+ */
+const aspectClass: Record<Aspect, string> = {
+  'square':         'aspect-[1/1]',
+  'four-five':      'aspect-[4/5]',
+  'three-four':     'aspect-[3/4]',
+  'five-six':       'aspect-[5/6]',
+  'sixteen-nine':   'aspect-[16/9]',
+  'sixteen-ten':    'aspect-[16/10]',
+  'four-three':     'aspect-[4/3]',
+  'hero-desktop':   'aspect-[56/75]',
+};
+
+const aspectClassSmUp: Record<Aspect, string> = {
+  'square':         'sm:aspect-[1/1]',
+  'four-five':      'sm:aspect-[4/5]',
+  'three-four':     'sm:aspect-[3/4]',
+  'five-six':       'sm:aspect-[5/6]',
+  'sixteen-nine':   'sm:aspect-[16/9]',
+  'sixteen-ten':    'sm:aspect-[16/10]',
+  'four-three':     'sm:aspect-[4/3]',
+  'hero-desktop':   'sm:aspect-[56/75]',
 };
 
 interface PhotoProps {
@@ -51,6 +66,13 @@ interface PhotoProps {
   /** Alt text override for the direct image path. Defaults to description. */
   imgAlt?: string;
   aspect?: Aspect;
+  /**
+   * Optional aspect override for sub-`sm:` (≤640px) viewports. When set,
+   * the photo uses this aspect on mobile and the regular `aspect` from `sm:`
+   * upward. Use this to render portrait heroes as landscape on phones so
+   * they don't take ~500px of vertical scroll.
+   */
+  mobileAspect?: Aspect;
   /** Use 'dark' on inverse-navy sections so the placeholder reads against navy. */
   scheme?: 'light' | 'dark';
   className?: string;
@@ -63,6 +85,7 @@ export function Photo({
   imgSrc,
   imgAlt,
   aspect = 'sixteen-nine',
+  mobileAspect,
   scheme = 'light',
   className,
   rounded = false,
@@ -71,15 +94,19 @@ export function Photo({
     ? { src: imgSrc, alt: imgAlt ?? description }
     : resolvePhoto(assetRef);
 
+  const aspectClasses = mobileAspect
+    ? cn(aspectClass[mobileAspect], aspectClassSmUp[aspect])
+    : aspectClass[aspect];
+
   if (resolved) {
     return (
       <div
         className={cn(
           'relative w-full overflow-hidden border border-hairline',
+          aspectClasses,
           rounded && 'rounded-sm',
           className
         )}
-        style={aspectStyle[aspect]}
       >
         <Image
           src={resolved.src}
@@ -99,13 +126,13 @@ export function Photo({
       aria-label={description}
       className={cn(
         'relative w-full overflow-hidden flex items-center justify-center',
+        aspectClasses,
         isDark
           ? 'bg-navy/40 border border-offwhite/15'
           : 'bg-subtle border border-hairline',
         rounded && 'rounded-sm',
         className
       )}
-      style={aspectStyle[aspect]}
     >
       {/* Cross-hatch lines to read clearly as a placeholder, never as decoration. */}
       <svg

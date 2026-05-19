@@ -44,6 +44,7 @@ export default function AboutPage() {
                 description="Founder portrait — natural light, considered, professional"
                 assetRef="founder-portrait"
                 aspect="four-five"
+                mobileAspect="sixteen-nine"
               />
             </div>
           </div>
@@ -115,6 +116,7 @@ export default function AboutPage() {
               description="Team or office photograph — UNIWATER operations in Kolkata"
               assetRef="team-office"
               aspect="five-six"
+              mobileAspect="sixteen-nine"
             />
           </div>
         </div>

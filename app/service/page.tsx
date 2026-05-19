@@ -201,7 +201,7 @@ export default function ServicePage() {
       <Section padding="default" tone="subtle">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
-            <div className="w-full overflow-hidden border border-hairline" style={{ aspectRatio: '1 / 1' }}>
+            <div className="w-full overflow-hidden border border-hairline aspect-[16/9] sm:aspect-[1/1]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/photography/service-testing-water.jpg"

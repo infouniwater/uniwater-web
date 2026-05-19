@@ -93,6 +93,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
                 description={`${content.name} cityscape or representative residential context`}
                 assetRef={`city-${content.slug}-hero`}
                 aspect="five-six"
+                mobileAspect="sixteen-nine"
               />
             </div>
           </div>
@@ -141,6 +142,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
               description={`UNIWATER local team in ${content.name}, branded uniform, group portrait`}
               assetRef={`city-${content.slug}-team`}
               aspect="four-five"
+              mobileAspect="sixteen-nine"
             />
           </div>
           <div className="lg:col-span-7">

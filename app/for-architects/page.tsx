@@ -93,6 +93,7 @@ export default function ForArchitectsPage() {
                 description="Architect at a drafting table reviewing a Uniwater install-location drawing with a sample CP fitting alongside"
                 assetRef="for-architects-hero"
                 aspect="four-five"
+                mobileAspect="sixteen-nine"
               />
             </div>
           </div>

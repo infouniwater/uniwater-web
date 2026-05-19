@@ -192,6 +192,7 @@ export default function HowItWorksPage() {
                 description={`${stage.label}: representative photograph (engineer at work / install in progress / monthly service visit)`}
                 assetRef={`how-${stage.label.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                 aspect="four-five"
+                mobileAspect="sixteen-nine"
               />
               <div className="mt-6 border border-hairline p-6">
                 <div className="text-eyebrow font-medium uppercase text-teal mb-4">

@@ -73,11 +73,13 @@ export function EditorialHero() {
             </figure>
           </div>
 
-          {/* Visual — video when supplied, else the original ken-burns photograph. */}
+          {/* Visual — video when supplied, else the original ken-burns photograph.
+              Mobile aspect deliberately landscape (16/9) so the image doesn't take
+              ~500px of phone screen as it did with the portrait 56/75 aspect.
+              Desktop keeps the editorial portrait aspect. */}
           <div className="lg:col-span-6 lg:py-12">
             <div
-              className="relative w-full overflow-hidden"
-              style={{ aspectRatio: '56 / 75' }}
+              className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]"
             >
               {HERO_VIDEO_SRC ? (
                 <video

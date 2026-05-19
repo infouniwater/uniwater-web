@@ -71,6 +71,7 @@ export default function ResidentialPage() {
                 description="Premium Indian home — wellness moment with family and water"
                 assetRef="residential-hero"
                 aspect="hero-desktop"
+                mobileAspect="sixteen-nine"
               />
             </div>
           </div>
