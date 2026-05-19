@@ -1,5 +1,5 @@
 /**
- * City content stubs. Bangalore is rendered fully as the template per scoping.
+ * City content. All nine cities render fully; Noida is the newest addition.
  * Sprint 5 builds out remaining 8 cities with real locality data.
  */
 
@@ -19,27 +19,27 @@ export interface CityContent {
 }
 
 export const CITY_CONTENT: Record<string, CityContent> = {
-  bangalore: {
-    slug: 'bangalore',
-    name: 'Bangalore',
+  noida: {
+    slug: 'noida',
+    name: 'Noida',
     country: 'India',
     lede:
-      'Borewell hardness 350\u2013500 ppm typical; iron present in Whitefield and Sarjapur. Pre-treatment before softening.',
+      'Hard water across NCR \u2014 typical hardness 350\u2013600 ppm; iron, taste, and chlorine show up across Sectors 50, 62, 137. Softening first; pre-treatment where the borewell is involved.',
     waterContext:
-      'The municipal supply is reasonably treated, but borewell augmentation is near-universal in the south-east and east. Borewell chemistry varies block to block. A 10-minute on-site test is the only reliable way to size the system.',
+      'Noida runs on a mix of Yamuna/Ganga canal water (treated municipal) and borewell augmentation. Hardness is the consistent issue \u2014 the calcium-magnesium load is high enough to leave scale on every premium fitting within twelve months. Borewell-fed sectors carry iron on top of the hardness. The Delhi-NCR water-source mix shifts by sector and by season; test before sizing.',
     localities: [
-      'Whitefield',
-      'Sarjapur Road',
-      'HSR Layout',
-      'Indiranagar',
-      'Koramangala',
-      'JP Nagar',
-      'Jayanagar',
-      'Hebbal',
-      'Yelahanka',
-      'Electronic City',
+      'Sector 18',
+      'Sector 50',
+      'Sector 62',
+      'Sector 78',
+      'Sector 93',
+      'Sector 100',
+      'Sector 137',
+      'Greater Noida West',
+      'Jaypee Greens',
+      'Mahagun Mywoods',
     ],
-    localTeam: 'Our Bangalore team operates from a base in HSR Layout. Survey response within 48 hours across the city.',
+    localTeam: 'Our newest city. The Noida engineering team is being assembled \u2014 surveys are running on a 5\u20137 day window from Delhi-NCR until the local base in Sector 62 is fully staffed.',
     fullContent: true,
   },
   kolkata: {

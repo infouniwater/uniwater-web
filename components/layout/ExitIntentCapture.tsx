@@ -146,7 +146,7 @@ export function ExitIntentCapture() {
             <input
               type="text"
               name="city"
-              placeholder="e.g. Bangalore"
+              placeholder="e.g. Kolkata"
               className="h-[52px] px-4 bg-offwhite text-ink text-body border border-hairline focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition-colors duration-200 ease-calm placeholder:text-mute/60"
             />
           </label>

@@ -172,7 +172,7 @@ export function PincodeCheck({ tone = 'light', bookSurveyHref = '/book-survey' }
             We don&rsquo;t have a local team at your pincode — yet.
           </div>
           <p className={`text-body ${isDark ? 'text-offwhite/90' : 'text-navy'}`}>
-            We currently service 9 cities directly: Bangalore, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Kathmandu, Biratnagar &mdash; and the surrounding corridors. For everywhere else, our <span className="font-medium">Remote Site Survey</span> covers system design and quote by correspondence; install is then routed through trade-partner installers we&rsquo;ve qualified.
+            We currently service 9 cities directly: Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida, Kathmandu, Biratnagar &mdash; and the surrounding corridors. For everywhere else, our <span className="font-medium">Remote Site Survey</span> covers system design and quote by correspondence; install is then routed through trade-partner installers we&rsquo;ve qualified.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-1">
             <a

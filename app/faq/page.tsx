@@ -21,7 +21,7 @@ const CATEGORIES = [
       },
       {
         q: 'Where do you operate?',
-        a: 'Seven cities in India (Bangalore, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati) and two in Nepal (Kathmandu, Biratnagar). Service teams in every city, not subcontracted.',
+        a: 'Seven cities in India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two in Nepal (Kathmandu, Biratnagar). Service teams in every city, not subcontracted.',
       },
       {
         q: 'How is UNIWATER different from Aquaguard, Kent, Eureka Forbes?',
@@ -38,7 +38,7 @@ const CATEGORIES = [
       },
       {
         q: 'How fast can someone visit?',
-        a: 'Within 48 hours of booking, across our nine cities. Faster in Kolkata and Bangalore.',
+        a: 'Within 48 hours of booking, across our nine cities. Faster in Kolkata. The Noida team is being assembled — surveys there run on a 5–7 day window until the local base is fully staffed.',
       },
       {
         q: 'How long does installation take?',

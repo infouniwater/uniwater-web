@@ -235,7 +235,7 @@ export default function ServicePage() {
               See a sample service report.
             </h3>
             <Body className="text-mute">
-              One anonymised real report from a Bangalore install. Parameters in, parameters out, work performed, flags raised.
+              One anonymised real report from a Kolkata install. Parameters in, parameters out, work performed, flags raised.
             </Body>
           </div>
           <Button

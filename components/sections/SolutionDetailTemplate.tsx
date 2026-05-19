@@ -465,10 +465,10 @@ export function SolutionDetailTemplate({ solution }: Props) {
               <Caption className="text-mute">
                 {photo?.caption ??
                   (i === 0
-                    ? '3-BHK, Whitefield, Bangalore. Borewell with iron and hardness.'
+                    ? '3-BHK, Salt Lake, Kolkata. Borewell with iron and hardness.'
                     : i === 1
-                    ? '5-BHK villa, Salt Lake, Kolkata. Mixed municipal supply.'
-                    : 'Boutique hotel, Bhubaneswar. 16 rooms.')}
+                    ? '5-BHK villa, Patia, Bhubaneswar. Mixed municipal supply.'
+                    : 'Boutique hotel, Siliguri. 16 rooms.')}
               </Caption>
             </div>
           ))}
@@ -713,15 +713,15 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
   switch (slug) {
     case 'bathroom-filter':
       return [
-        { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.png`, alt: 'Bathroom filter inside a wall cabinet', caption: '3-BHK, Whitefield, Bangalore. Borewell with iron and hardness.' },
-        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.png`, alt: 'Bathroom filter under the vanity', caption: '5-BHK villa, Salt Lake, Kolkata. Mixed municipal supply.' },
+        { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.png`, alt: 'Bathroom filter inside a wall cabinet', caption: '3-BHK, Salt Lake, Kolkata. Borewell with iron and hardness.' },
+        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.png`, alt: 'Bathroom filter under the vanity', caption: '5-BHK villa, Ballygunge, Kolkata. Mixed municipal supply.' },
         { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.png`, alt: 'Bathroom filter in the ceiling void', caption: 'Boutique hotel, Bhubaneswar. 16 rooms.' },
       ];
     case 'whole-house-water-filter':
     case 'water-softener':
       return [
         { src: `${PHOTO_BASE}/whole-house-utility-area.png`, alt: 'HomeSoft in the utility area', caption: 'Premium apartment, Salt Lake, Kolkata. Utility-room install.' },
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.png`, alt: 'HomeSoft in a luxury villa', caption: 'Independent villa, Whitefield, Bangalore. Basement plant.' },
+        { src: `${PHOTO_BASE}/whole-house-luxury-villa.png`, alt: 'HomeSoft in a luxury villa', caption: 'Independent villa, Patia, Bhubaneswar. Basement plant.' },
         { src: `${PHOTO_BASE}/whole-house-terrace.png`, alt: 'HomeSoft on the terrace', caption: 'Penthouse, New Town, Kolkata. Terrace install with gravity feed.' },
       ];
     case 'iron-filter':
@@ -729,13 +729,13 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
     case 'activated-carbon-filter':
       return [
         { src: `${PHOTO_BASE}/whole-house-luxury-villa.png`, alt: 'HomeSoft 4-stage train in a luxury villa', caption: 'Borewell-fed villa, Guwahati. Iron-pre-treatment train.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.png`, alt: 'HomeSoft near the overhead water tank on the terrace', caption: 'Bangalore villa. Terrace install near the OHT.' },
+        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.png`, alt: 'HomeSoft near the overhead water tank on the terrace', caption: 'Villa near Siliguri. Terrace install near the OHT.' },
         { src: `${PHOTO_BASE}/whole-house-utility-area.png`, alt: 'HomeSoft in the utility area', caption: 'Mid-rise apartment, Bhubaneswar. Utility-room install.' },
       ];
     case 'drinking-water-solution':
       return [
-        { src: `${PHOTO_BASE}/drinking-water-home.png`, alt: 'Drinking water at the kitchen counter', caption: 'Family residence, Indiranagar, Bangalore. Under-sink RO.' },
-        { src: `${PHOTO_BASE}/drinking-water-home-2.png`, alt: 'Drinking water in the kitchen', caption: 'Apartment, Lake Town, Kolkata. Centralised drinking-water unit.' },
+        { src: `${PHOTO_BASE}/drinking-water-home.png`, alt: 'Drinking water at the kitchen counter', caption: 'Family residence, Lake Town, Kolkata. Under-sink RO.' },
+        { src: `${PHOTO_BASE}/drinking-water-home-2.png`, alt: 'Drinking water in the kitchen', caption: 'Apartment, Salt Lake, Kolkata. Centralised drinking-water unit.' },
         { src: `${PHOTO_BASE}/bathroom-filter-under-basin.png`, alt: 'Compact under-sink install', caption: 'Boutique cafe, Patia, Bhubaneswar. Compact under-counter install.' },
       ];
     default:

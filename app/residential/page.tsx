@@ -167,11 +167,11 @@ export default function ResidentialPage() {
               />
               <Caption className="text-mute">
                 {[
-                  'Whitefield, Bangalore',
+                  'Ballygunge, Kolkata',
                   'Salt Lake, Kolkata',
                   'Patia, Bhubaneswar',
                   'Kasba, Kolkata',
-                  'Sarjapur, Bangalore',
+                  'Chandrasekharpur, Bhubaneswar',
                   'Lalmati, Guwahati',
                   'Hill Cart Road, Siliguri',
                   'Lalitpur, Kathmandu',

@@ -67,6 +67,18 @@ const nextConfig = {
         destination: '/cities/:city',
         permanent: true,
       },
+      {
+        // Bangalore decommissioned — nearest replacement city is Noida (NCR,
+        // also high-hardness, also a high-rise residential market).
+        source: '/cities/bangalore',
+        destination: '/cities/noida',
+        permanent: true,
+      },
+      {
+        source: '/cities/water-softener-bangalore',
+        destination: '/cities/noida',
+        permanent: true,
+      },
     ];
   },
 };

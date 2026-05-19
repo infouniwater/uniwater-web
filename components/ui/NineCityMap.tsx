@@ -26,6 +26,8 @@ interface Pin {
 }
 
 const PINS: Pin[] = [
+  // Coords derived from lon/lat: longitudes 70 → 95 ↦ x 0–100, latitudes 37 → 8 ↦ y 0–72.
+  { name: 'Noida',      country: 'India', x: 28.8, y: 20.9, anchor: 'start' },   // ~28.6°N 77.2°E (NCR)
   { name: 'Kathmandu',  country: 'Nepal', x: 61.3, y: 23.0, anchor: 'end',   dy: -2 },
   { name: 'Biratnagar', country: 'Nepal', x: 69.1, y: 26.0, anchor: 'end',   dy: 4 },
   { name: 'Siliguri',   country: 'India', x: 73.7, y: 26.0, anchor: 'start' },
@@ -34,13 +36,12 @@ const PINS: Pin[] = [
   { name: 'Rourkela',   country: 'India', x: 59.4, y: 37.0, anchor: 'end' },
   { name: 'Kolkata',    country: 'India', x: 73.4, y: 36.0, anchor: 'start' },
   { name: 'Bhubaneswar',country: 'India', x: 63.3, y: 42.0, anchor: 'start', dy: 4 },
-  { name: 'Bangalore',  country: 'India', x: 30.4, y: 60.0, anchor: 'start' },
 ];
 
 export function NineCityMap() {
   return (
     <figure
-      aria-label="Nine UNIWATER operating cities — Bangalore, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati in India; Kathmandu, Biratnagar in Nepal."
+      aria-label="Nine UNIWATER operating cities — Noida, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati in India; Kathmandu, Biratnagar in Nepal."
       className="w-full"
     >
       <svg
@@ -61,6 +62,9 @@ export function NineCityMap() {
         {/* Connecting hairlines — every pin to its nearest neighbour, suggests
             the operating network. */}
         <g stroke="#87D0CD" strokeOpacity="0.18" strokeWidth="0.15">
+          {/* Noida → Kathmandu (the western anchor reaching the cluster) */}
+          <line x1="28.8" y1="20.9" x2="61.3" y2="23.0" />
+          {/* Kathmandu ↔ neighbours */}
           <line x1="61.3" y1="23.0" x2="69.1" y2="26.0" />
           <line x1="69.1" y1="26.0" x2="73.7" y2="26.0" />
           <line x1="73.7" y1="26.0" x2="86.9" y2="28.0" />
@@ -69,7 +73,6 @@ export function NineCityMap() {
           <line x1="73.4" y1="36.0" x2="61.2" y2="34.0" />
           <line x1="61.2" y1="34.0" x2="59.4" y2="37.0" />
           <line x1="59.4" y1="37.0" x2="63.3" y2="42.0" />
-          <line x1="63.3" y1="42.0" x2="30.4" y2="60.0" />
           <line x1="61.3" y1="23.0" x2="61.2" y2="34.0" />
         </g>
 
@@ -114,7 +117,7 @@ export function NineCityMap() {
       </svg>
 
       <figcaption className="sr-only">
-        UNIWATER operates with its own engineering teams in seven cities across India (Bangalore, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati) and two cities in Nepal (Kathmandu, Biratnagar).
+        UNIWATER operates with its own engineering teams in seven cities across India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two cities in Nepal (Kathmandu, Biratnagar).
       </figcaption>
     </figure>
   );

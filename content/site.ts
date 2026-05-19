@@ -97,13 +97,13 @@ export const NAMED_CLIENTS = [
 ] as const;
 
 export const CITIES = [
-  { slug: 'bangalore', name: 'Bangalore', country: 'India' },
   { slug: 'kolkata', name: 'Kolkata', country: 'India' },
   { slug: 'bhubaneswar', name: 'Bhubaneswar', country: 'India' },
   { slug: 'ranchi', name: 'Ranchi', country: 'India' },
   { slug: 'rourkela', name: 'Rourkela', country: 'India' },
   { slug: 'siliguri', name: 'Siliguri', country: 'India' },
   { slug: 'guwahati', name: 'Guwahati', country: 'India' },
+  { slug: 'noida', name: 'Noida', country: 'India' },
   { slug: 'kathmandu', name: 'Kathmandu', country: 'Nepal' },
   { slug: 'biratnagar', name: 'Biratnagar', country: 'Nepal' },
 ] as const;
@@ -141,10 +141,12 @@ export interface PincodeZone {
 
 export const PINCODE_ZONES: PincodeZone[] = [
   {
-    citySlug: 'bangalore', cityName: 'Bangalore', country: 'India',
-    core: ['560'],
-    nearby: ['561', '562', '563', '571', '572'],
-    nearbyLabel: 'Bangalore Rural, Devanahalli, Doddaballapur, Hosur belt',
+    citySlug: 'noida', cityName: 'Noida', country: 'India',
+    // 201 covers Noida, Greater Noida, and Ghaziabad — all within the local team's reach.
+    core: ['201'],
+    // Delhi (110), Faridabad (121), Gurgaon/Gurugram (122) — Delhi-NCR corridor.
+    nearby: ['110', '121', '122'],
+    nearbyLabel: 'Delhi, Gurugram, Faridabad, Ghaziabad corridor',
   },
   {
     citySlug: 'kolkata', cityName: 'Kolkata', country: 'India',
