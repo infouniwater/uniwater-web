@@ -14,7 +14,7 @@ import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 const FEATURED_CLIENTS = [
   'Charnock Hospital',
   'Birat Medical College',
-  'IIEST',
+  'Path Bhavan',
   'Techno India University',
   'Shyam Steel',
   'Saburi Plywood',
@@ -45,17 +45,16 @@ const CLIENT_LOGOS: Record<string, { src: string; alt: string }> = {
   // client supplies one (see /public/clients/README if added later).
   'Charnock Hospital':       { src: '/clients/charnock-hospital.png',       alt: 'Charnock Hospital logo' },
   'Birat Medical College':   { src: '/clients/birat-medical-college.png',   alt: 'Birat Medical College logo' },
+  'Path Bhavan':             { src: '/clients/path-bhavan.png',             alt: 'Path Bhavan school logo' },
   'Shyam Steel':             { src: '/clients/shyam-steel.png',             alt: 'Shyam Steel logo' },
   'Saburi Plywood':          { src: '/clients/saburi-plywood.png',          alt: 'Saburi Plywood logo' },
   'Techno India University': { src: '/clients/techno-india-university.png', alt: 'Techno India University logo' },
-  'Marudhar Marble':         { src: '/clients/marudhar-marble.png',         alt: 'Marudhar Marble logo' },
-  'Movash':                  { src: '/clients/movash.png',                  alt: 'Movash logo' },
-  'Premier Wires':           { src: '/clients/premier-wires.png',           alt: 'Premier Wires logo' },
+  'GM Group':                { src: '/clients/gm-group.png',                alt: 'GM Group logo (Sanjeeb & Sujit, since 1984)' },
+  'Omacme':                  { src: '/clients/omacme.png',                  alt: 'Omacme logo' },
+  'Premier Wires':           { src: '/clients/premier-wires.svg',           alt: 'Premier Wires logo' },
   'Kreamz':                  { src: '/clients/kreamz.png',                  alt: 'Kreamz logo' },
-  'IIEST':                   { src: '/clients/iiest.png',                   alt: 'IIEST Shibpur logo' },
-  // No clean public logo source for these four — fall through to a tasteful
+  // No clean public logo source for these three — fall through to a tasteful
   // text tile until the client provides their official mark:
-  //   'GM Group'              (only had a 32×32 favicon, rendered hazy on upscale)
   //   'Acasa by Malani Group'
   //   'Azurre Surfaces'
   //   'Waterworks'

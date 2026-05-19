@@ -82,18 +82,17 @@ export const WHATSAPP_HREF = `https://wa.me/${PRIMARY_PHONE_E164}`;
 export const NAMED_CLIENTS = [
   'Charnock Hospital',
   'Birat Medical College',
+  'Path Bhavan',
+  'Techno India University',
   'Shyam Steel',
   'Saburi Plywood',
-  'Techno India University',
   'GM Group',
-  'Marudhar Marble',
+  'Omacme',
   'Acasa by Malani Group',
-  'Movash',
   'Azurre Surfaces',
   'Waterworks',
   'Premier Wires',
   'Kreamz',
-  'IIEST',
 ] as const;
 
 export const CITIES = [
