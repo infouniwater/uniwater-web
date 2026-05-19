@@ -29,63 +29,63 @@ const INSTALL_CYCLE: PhotoAsset[] = [
   { src: `${INSTALLS}/utility-room-01.jpg`, alt: 'UNIWATER system in the utility room' },
   { src: `${INSTALLS}/wall-recess-01.jpg`, alt: 'UNIWATER system in a wall recess' },
   { src: `${INSTALLS}/hero-duo-iron-softener-ss316.jpg`, alt: 'UNIWATER iron filter and softener duo in SS316 stainless steel vessels' },
-  { src: `${PHOTO}/whole-house-luxury-villa.png`, alt: 'UNIWATER whole-house system installed at a luxury villa' },
-  { src: `${PHOTO}/whole-house-utility-area.png`, alt: 'UNIWATER whole-house system in the utility area' },
+  { src: `${PHOTO}/whole-house-luxury-villa.jpg`, alt: 'UNIWATER whole-house system installed at a luxury villa' },
+  { src: `${PHOTO}/whole-house-utility-area.jpg`, alt: 'UNIWATER whole-house system in the utility area' },
 ];
 
 const SOLUTION_INSTALL_CYCLE: PhotoAsset[] = [
-  { src: `${PHOTO}/bathroom-filter-ceiling-installation.png`, alt: 'Bathroom filter installed in the false ceiling' },
-  { src: `${PHOTO}/bathroom-filter-wall-cabinet.png`, alt: 'Bathroom filter inside a wall cabinet' },
-  { src: `${PHOTO}/bathroom-filter-floor-mounted.png`, alt: 'Bathroom filter floor-mounted in a finished bathroom corner' },
-  { src: `${PHOTO}/bathroom-filter-under-basin.png`, alt: 'Bathroom filter installed under the vanity counter' },
-  { src: `${PHOTO}/whole-house-utility-area.png`, alt: 'Whole-house system in the utility area' },
+  { src: `${PHOTO}/bathroom-filter-ceiling-installation.jpg`, alt: 'Bathroom filter installed in the false ceiling' },
+  { src: `${PHOTO}/bathroom-filter-wall-cabinet.jpg`, alt: 'Bathroom filter inside a wall cabinet' },
+  { src: `${PHOTO}/bathroom-filter-floor-mounted.jpg`, alt: 'Bathroom filter floor-mounted in a finished bathroom corner' },
+  { src: `${PHOTO}/bathroom-filter-under-basin.jpg`, alt: 'Bathroom filter installed under the vanity counter' },
+  { src: `${PHOTO}/whole-house-utility-area.jpg`, alt: 'Whole-house system in the utility area' },
 ];
 
 /** Representative photo for each solution slug — used by hub cards, residential
  *  page cards, and the related-solutions cards on each solution detail page. */
 const SOLUTION_PHOTO: Record<string, PhotoAsset> = {
   'bathroom-filter': {
-    src: `${PHOTO}/bathroom-filter-hero.png`,
+    src: `${PHOTO}/bathroom-filter-hero.jpg`,
     alt: 'BathSoft bathroom filter installed in a marble luxury bathroom',
   },
   'whole-house-water-filter': {
-    src: `${PHOTO}/whole-house-hero.png`,
+    src: `${PHOTO}/whole-house-hero.jpg`,
     alt: 'HomeSoft whole-house water filter installed in a finished home',
   },
   'drinking-water-solution': {
-    src: `${PHOTO}/drinking-water-home.png`,
+    src: `${PHOTO}/drinking-water-home.jpg`,
     alt: 'Glass of UNIWATER drinking water at the kitchen counter',
   },
   'iron-filter': {
-    src: `${PHOTO}/whole-house-luxury-villa.png`,
+    src: `${PHOTO}/whole-house-luxury-villa.jpg`,
     alt: 'Iron-pre-treatment train installed at a luxury villa',
   },
   'water-softener': {
-    src: `${PHOTO}/whole-house-utility-area.png`,
+    src: `${PHOTO}/whole-house-utility-area.jpg`,
     alt: 'Water softener installed in the utility area',
   },
   'sediment-filter': {
-    src: `${PHOTO}/whole-house-luxury-villa.png`,
+    src: `${PHOTO}/whole-house-luxury-villa.jpg`,
     alt: 'Sediment-stage filter as part of a whole-house train at a villa',
   },
   'activated-carbon-filter': {
-    src: `${PHOTO}/whole-house-utility-area.png`,
+    src: `${PHOTO}/whole-house-utility-area.jpg`,
     alt: 'Activated-carbon stage in a whole-house train, utility-area install',
   },
 };
 
 const FALLBACK_SOLUTION_PHOTO: PhotoAsset = {
-  src: `${PHOTO}/whole-house-hero.png`,
+  src: `${PHOTO}/whole-house-hero.jpg`,
   alt: 'A UNIWATER system installed in a finished home',
 };
 
 const EXACT_MAP: Record<string, PhotoAsset> = {
   'tool-checker': {
-    src: `${PHOTO}/service-testing-water.png`,
+    src: `${PHOTO}/service-testing-water.jpg`,
     alt: 'UNIWATER engineer testing water parameters at the kitchen tap',
   },
   'tool-remote': {
-    src: `${PHOTO}/service-checkups.png`,
+    src: `${PHOTO}/service-checkups.jpg`,
     alt: 'UNIWATER engineer reviewing a service checklist at the system',
   },
   'for-plumbers-hero': {
@@ -93,23 +93,23 @@ const EXACT_MAP: Record<string, PhotoAsset> = {
     alt: 'UNIWATER system installed in a customer utility room — the kind of finish trade partners help deliver',
   },
   'for-architects-hero': {
-    src: `${PHOTO}/bathroom-filter-ceiling-installation.png`,
+    src: `${PHOTO}/bathroom-filter-ceiling-installation.jpg`,
     alt: 'Bathroom filter integrated into a false ceiling — the kind of architectural integration UNIWATER delivers',
   },
   'residential-hero': {
-    src: `${PHOTO}/whole-house-luxury-villa.png`,
+    src: `${PHOTO}/whole-house-luxury-villa.jpg`,
     alt: 'A premium Indian villa with a UNIWATER whole-house system installed',
   },
   'book-survey-aside': {
-    src: `${PHOTO}/service-testing-water.png`,
+    src: `${PHOTO}/service-testing-water.jpg`,
     alt: 'UNIWATER engineer at a customer home, taking a water sample at the kitchen tap',
   },
   'founder-portrait': {
-    src: `${PHOTO}/service-installing.png`,
+    src: `${PHOTO}/service-installing.jpg`,
     alt: 'A UNIWATER engineer at work — the team that owns the system end to end',
   },
   'team-office': {
-    src: `${PHOTO}/service-checkups.png`,
+    src: `${PHOTO}/service-checkups.jpg`,
     alt: 'The UNIWATER service team on a monthly check-up visit',
   },
 };
@@ -125,19 +125,19 @@ const PATTERN_RULES: PatternRule[] = [
   // How-it-works stages — survey/design/install/service
   {
     test: /^how-stage-01-/,
-    resolve: () => ({ src: `${PHOTO}/service-testing-water.png`, alt: 'UNIWATER engineer taking a water sample on the first survey visit' }),
+    resolve: () => ({ src: `${PHOTO}/service-testing-water.jpg`, alt: 'UNIWATER engineer taking a water sample on the first survey visit' }),
   },
   {
     test: /^how-stage-02-/,
-    resolve: () => ({ src: `${PHOTO}/service-checkups.png`, alt: 'UNIWATER engineer reviewing the system design on a clipboard' }),
+    resolve: () => ({ src: `${PHOTO}/service-checkups.jpg`, alt: 'UNIWATER engineer reviewing the system design on a clipboard' }),
   },
   {
     test: /^how-stage-03-/,
-    resolve: () => ({ src: `${PHOTO}/service-installing.png`, alt: 'UNIWATER engineer installing a system at a customer home' }),
+    resolve: () => ({ src: `${PHOTO}/service-installing.jpg`, alt: 'UNIWATER engineer installing a system at a customer home' }),
   },
   {
     test: /^how-stage-04-/,
-    resolve: () => ({ src: `${PHOTO}/service-testing-pressure.png`, alt: 'UNIWATER engineer checking pressure during the monthly service visit' }),
+    resolve: () => ({ src: `${PHOTO}/service-testing-pressure.jpg`, alt: 'UNIWATER engineer checking pressure during the monthly service visit' }),
   },
 
   // City pages — specific suffixes before generic ones
@@ -147,17 +147,17 @@ const PATTERN_RULES: PatternRule[] = [
   },
   {
     test: /^city-[a-z0-9-]+-team$/,
-    resolve: () => ({ src: `${PHOTO}/service-checkups.png`, alt: 'The UNIWATER local service team at a monthly visit' }),
+    resolve: () => ({ src: `${PHOTO}/service-checkups.jpg`, alt: 'The UNIWATER local service team at a monthly visit' }),
   },
   {
     test: /^city-[a-z0-9-]+-hero$/,
-    resolve: () => ({ src: `${PHOTO}/residential-complex.png`, alt: 'A premium residential context — the kind of homes UNIWATER serves in this city' }),
+    resolve: () => ({ src: `${PHOTO}/residential-complex.jpg`, alt: 'A premium residential context — the kind of homes UNIWATER serves in this city' }),
   },
 
   // Case studies — install numbered photos, hero, then index card (most generic)
   {
     test: /^case-[a-z0-9-]+-hero$/,
-    resolve: () => ({ src: `${PHOTO}/wtp-basement.png`, alt: 'UNIWATER commercial water treatment plant installed in a basement plant room' }),
+    resolve: () => ({ src: `${PHOTO}/wtp-basement.jpg`, alt: 'UNIWATER commercial water treatment plant installed in a basement plant room' }),
   },
   {
     test: /^case-[a-z0-9-]+-(\d+)$/,

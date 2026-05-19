@@ -675,7 +675,7 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
   switch (slug) {
     case 'bathroom-filter':
       return {
-        src: `${PHOTO_BASE}/bathroom-filter-hero.png`,
+        src: `${PHOTO_BASE}/bathroom-filter-hero.jpg`,
         alt: 'BathSoft bathroom filter installed in a marble luxury bathroom with brass freestanding tub, recessed niche housing two stainless cylinders behind a glass partition',
       };
     case 'whole-house-water-filter':
@@ -684,12 +684,12 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
     case 'sediment-filter':
     case 'activated-carbon-filter':
       return {
-        src: `${PHOTO_BASE}/whole-house-hero.png`,
+        src: `${PHOTO_BASE}/whole-house-hero.jpg`,
         alt: 'HomeSoft whole-house water filter — two branded UNIWATER vessels installed in a finished home corner near windows and plants',
       };
     case 'drinking-water-solution':
       return {
-        src: `${PHOTO_BASE}/drinking-water-home.png`,
+        src: `${PHOTO_BASE}/drinking-water-home.jpg`,
         alt: 'Glass of UNIWATER drinking water on a marble kitchen counter, family in soft focus in the background',
       };
     default:
@@ -701,11 +701,11 @@ function getInstallPhotosForSolution(slug: string): PhotoAsset[] {
   if (slug === 'bathroom-filter') {
     // Maps to FIVE_PLACES ordering. Five Canva install shots, one per card.
     return [
-      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.png`, alt: 'Bathroom filter — false-ceiling install with stainless cylinder mounted in suspended ceiling void' },
-      { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.png`, alt: 'Bathroom filter — vessel inside a wall cabinet with service door open' },
-      { src: `${PHOTO_BASE}/bathroom-filter-floor-mounted.png`, alt: 'Bathroom filter — floor-mounted vessel in a finished bathroom corner' },
-      { src: `${PHOTO_BASE}/bathroom-filter-under-basin.png`, alt: 'Bathroom filter — compact unit installed under the vanity counter' },
-      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation-2.png`, alt: 'Bathroom filter — alternative ceiling install view showing access panel' },
+      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.jpg`, alt: 'Bathroom filter — false-ceiling install with stainless cylinder mounted in suspended ceiling void' },
+      { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.jpg`, alt: 'Bathroom filter — vessel inside a wall cabinet with service door open' },
+      { src: `${PHOTO_BASE}/bathroom-filter-floor-mounted.jpg`, alt: 'Bathroom filter — floor-mounted vessel in a finished bathroom corner' },
+      { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Bathroom filter — compact unit installed under the vanity counter' },
+      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation-2.jpg`, alt: 'Bathroom filter — alternative ceiling install view showing access panel' },
     ];
   }
   return [];
@@ -715,30 +715,30 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
   switch (slug) {
     case 'bathroom-filter':
       return [
-        { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.png`, alt: 'Bathroom filter inside a wall cabinet', caption: '3-BHK, Salt Lake, Kolkata. Borewell with iron and hardness.' },
-        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.png`, alt: 'Bathroom filter under the vanity', caption: '5-BHK villa, Ballygunge, Kolkata. Mixed municipal supply.' },
-        { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.png`, alt: 'Bathroom filter in the ceiling void', caption: 'Boutique hotel, Bhubaneswar. 16 rooms.' },
+        { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.jpg`, alt: 'Bathroom filter inside a wall cabinet', caption: '3-BHK, Salt Lake, Kolkata. Borewell with iron and hardness.' },
+        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Bathroom filter under the vanity', caption: '5-BHK villa, Ballygunge, Kolkata. Mixed municipal supply.' },
+        { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.jpg`, alt: 'Bathroom filter in the ceiling void', caption: 'Boutique hotel, Bhubaneswar. 16 rooms.' },
       ];
     case 'whole-house-water-filter':
     case 'water-softener':
       return [
-        { src: `${PHOTO_BASE}/whole-house-utility-area.png`, alt: 'HomeSoft in the utility area', caption: 'Premium apartment, Salt Lake, Kolkata. Utility-room install.' },
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.png`, alt: 'HomeSoft in a luxury villa', caption: 'Independent villa, Patia, Bhubaneswar. Basement plant.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace.png`, alt: 'HomeSoft on the terrace', caption: 'Penthouse, New Town, Kolkata. Terrace install with gravity feed.' },
+        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Premium apartment, Salt Lake, Kolkata. Utility-room install.' },
+        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'HomeSoft in a luxury villa', caption: 'Independent villa, Patia, Bhubaneswar. Basement plant.' },
+        { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'HomeSoft on the terrace', caption: 'Penthouse, New Town, Kolkata. Terrace install with gravity feed.' },
       ];
     case 'iron-filter':
     case 'sediment-filter':
     case 'activated-carbon-filter':
       return [
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.png`, alt: 'HomeSoft 4-stage train in a luxury villa', caption: 'Borewell-fed villa, Guwahati. Iron-pre-treatment train.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.png`, alt: 'HomeSoft near the overhead water tank on the terrace', caption: 'Villa near Siliguri. Terrace install near the OHT.' },
-        { src: `${PHOTO_BASE}/whole-house-utility-area.png`, alt: 'HomeSoft in the utility area', caption: 'Mid-rise apartment, Bhubaneswar. Utility-room install.' },
+        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'HomeSoft 4-stage train in a luxury villa', caption: 'Borewell-fed villa, Guwahati. Iron-pre-treatment train.' },
+        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'HomeSoft near the overhead water tank on the terrace', caption: 'Villa near Siliguri. Terrace install near the OHT.' },
+        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Mid-rise apartment, Bhubaneswar. Utility-room install.' },
       ];
     case 'drinking-water-solution':
       return [
-        { src: `${PHOTO_BASE}/drinking-water-home.png`, alt: 'Drinking water at the kitchen counter', caption: 'Family residence, Lake Town, Kolkata. Under-sink RO.' },
-        { src: `${PHOTO_BASE}/drinking-water-home-2.png`, alt: 'Drinking water in the kitchen', caption: 'Apartment, Salt Lake, Kolkata. Centralised drinking-water unit.' },
-        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.png`, alt: 'Compact under-sink install', caption: 'Boutique cafe, Patia, Bhubaneswar. Compact under-counter install.' },
+        { src: `${PHOTO_BASE}/drinking-water-home.jpg`, alt: 'Drinking water at the kitchen counter', caption: 'Family residence, Lake Town, Kolkata. Under-sink RO.' },
+        { src: `${PHOTO_BASE}/drinking-water-home-2.jpg`, alt: 'Drinking water in the kitchen', caption: 'Apartment, Salt Lake, Kolkata. Centralised drinking-water unit.' },
+        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Compact under-sink install', caption: 'Boutique cafe, Patia, Bhubaneswar. Compact under-counter install.' },
       ];
     default:
       return [];
