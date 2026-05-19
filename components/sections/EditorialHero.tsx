@@ -73,14 +73,13 @@ export function EditorialHero() {
             </figure>
           </div>
 
-          {/* Visual — desktop only. On mobile the image at any aspect produced
-              an orphan strip between the text panel and the next section (per
-              user feedback 2026-05-19). The text panel + pull-quote carry the
-              hero on phones; the image returns at lg:+ where it has the column
-              width to read as editorial photography rather than a thin band. */}
-          <div className="hidden lg:block lg:col-span-6 lg:py-12">
+          {/* Visual — full-width 4:3 on mobile (~280px tall on a 375px phone,
+              substantial enough to feel deliberate without dominating the
+              fold), reverts to the editorial portrait 56:75 from lg:+ where
+              the image lives in a half-column. */}
+          <div className="lg:col-span-6 lg:py-12">
             <div
-              className="relative w-full overflow-hidden lg:aspect-[56/75]"
+              className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[56/75]"
             >
               {HERO_VIDEO_SRC ? (
                 <video
