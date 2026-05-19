@@ -77,10 +77,11 @@
     }
   }
 
-  /* Section vertical rhythm per §3.3 */
-  .section-tight { padding-top: 3rem; padding-bottom: 3rem; }
-  .section { padding-top: 4rem; padding-bottom: 4rem; }
-  .section-loose { padding-top: 6rem; padding-bottom: 6rem; }
+  /* Section vertical rhythm per §3.3 — mobile values reduced 2026-05-19
+     to tighten home-page scroll length on phones (was 3 / 4 / 6 rem). */
+  .section-tight { padding-top: 2rem; padding-bottom: 2rem; }
+  .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .section-loose { padding-top: 4rem; padding-bottom: 4rem; }
   @media (min-width: 768px) {
     .section-tight { padding-top: 5rem; padding-bottom: 5rem; }
     .section { padding-top: 7.5rem; padding-bottom: 7.5rem; }

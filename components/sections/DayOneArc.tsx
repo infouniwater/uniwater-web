@@ -61,7 +61,7 @@ const STAGES: Stage[] = [
 export function DayOneArc() {
   return (
     <Section tone="navy" padding="default">
-      <div className="flex flex-col gap-4 mb-12 max-w-3xl">
+      <div className="flex flex-col gap-4 mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="!text-soft">The decision</Eyebrow>
         <Heading level={2} inverse>
           Day one. Eighteen months. Ten years.
@@ -74,7 +74,7 @@ export function DayOneArc() {
       {/* Three-stage timeline */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
         {STAGES.map((stage) => (
-          <div key={stage.marker} className="bg-navy p-8 md:p-10 flex flex-col gap-5">
+          <div key={stage.marker} className="bg-navy p-5 sm:p-8 md:p-10 flex flex-col gap-3 sm:gap-5">
             <div className="flex items-baseline gap-3">
               <span className="text-eyebrow font-medium uppercase text-soft tracking-wide">
                 {stage.marker}
@@ -84,20 +84,20 @@ export function DayOneArc() {
               </span>
             </div>
 
-            <h3 className="text-h2-m font-light text-offwhite leading-snug [text-wrap:balance]">
+            <h3 className="text-h3 sm:text-h2-m font-light text-offwhite leading-snug [text-wrap:balance]">
               {stage.headline}
             </h3>
 
-            <ul className="flex flex-col gap-3 mt-2">
+            <ul className="flex flex-col gap-2 sm:gap-3 mt-1 sm:mt-2">
               {stage.bullets.map((b) => (
-                <li key={b} className="text-offwhite/85 text-body leading-snug flex gap-3">
+                <li key={b} className="text-offwhite/85 text-caption sm:text-body leading-snug flex gap-2 sm:gap-3">
                   <span className="text-soft flex-shrink-0">&mdash;</span>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-auto pt-6 border-t border-offwhite/15">
+            <div className="mt-auto pt-4 sm:pt-6 border-t border-offwhite/15">
               <p className="text-caption uppercase tracking-wide text-soft font-medium">
                 {stage.cost}
               </p>
@@ -106,7 +106,7 @@ export function DayOneArc() {
         ))}
       </div>
 
-      <div className="mt-16 max-w-reading">
+      <div className="mt-10 md:mt-16 max-w-reading">
         <EditorialAccent className="!text-soft">
           Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances, the family&rsquo;s skin and hair, and your way of life &mdash; for decades. Done poorly, the house ages faster than it should.
         </EditorialAccent>

@@ -43,26 +43,26 @@ const PROBLEMS: Problem[] = [
 export function ProblemGrid() {
   return (
     <Section padding="default">
-      <div className="mb-12 max-w-3xl">
+      <div className="mb-8 md:mb-12 max-w-3xl">
         <Heading level={2}>
           The water in most Indian homes isn&rsquo;t doing what you think it&rsquo;s doing.
         </Heading>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-6">
         {PROBLEMS.map((problem) => (
-          <div key={problem.title} className="flex flex-col gap-5">
+          <div key={problem.title} className="flex flex-col gap-3 sm:gap-5">
             <div className="relative w-full overflow-hidden border border-hairline" style={{ aspectRatio: '1 / 1' }}>
               <Image
                 src={problem.imgSrc}
                 alt={problem.imgAlt}
                 fill
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 25vw, 50vw"
                 className="object-cover"
               />
             </div>
-            <Heading level={3}>{problem.title}</Heading>
-            <Body className="text-mute">{problem.body}</Body>
+            <Heading level={3} className="text-body sm:text-h3 leading-snug">{problem.title}</Heading>
+            <Body className="text-caption sm:text-body text-mute leading-snug sm:leading-normal">{problem.body}</Body>
           </div>
         ))}
       </div>

@@ -18,7 +18,7 @@ const STEP_ICONS: Record<string, { src: string; alt: string }> = {
 export function FourStepProcess({ id }: { id?: string }) {
   return (
     <Section padding="default" tone="plain" id={id}>
-      <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
         <Eyebrow className="mb-4">Our process</Eyebrow>
         <Heading level={2} className="mb-4">What we do.</Heading>
         <Body className="text-mute text-lede font-light">
@@ -26,7 +26,7 @@ export function FourStepProcess({ id }: { id?: string }) {
         </Body>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 lg:gap-8">
         {FOUR_STEPS.map((step) => {
           const icon = STEP_ICONS[step.n];
           return (

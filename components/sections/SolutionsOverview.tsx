@@ -58,7 +58,7 @@ const B2B_SOLUTIONS = [
 export function SolutionsOverview() {
   return (
     <Section padding="default" id="solutions-overview">
-      <div className="mb-12 max-w-3xl">
+      <div className="mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">What we install</Eyebrow>
         <Heading level={2} className="mb-4">
           What we install.
@@ -68,18 +68,18 @@ export function SolutionsOverview() {
         </Body>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-10 md:mb-12">
         {HOME_SOLUTIONS.map((solution) => (
           <SolutionCard key={solution.href} {...solution} />
         ))}
       </div>
 
-      <div className="pt-12 border-t border-hairline">
-        <div className="mb-8">
+      <div className="pt-10 md:pt-12 border-t border-hairline">
+        <div className="mb-6 md:mb-8">
           <Eyebrow className="mb-2">For institutions &amp; industry</Eyebrow>
           <Body className="text-mute">A separate journey, with its own engineering rigour and SLAs.</Body>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-6">
           {B2B_SOLUTIONS.map((solution) => (
             <SolutionCard key={solution.title} {...solution} />
           ))}

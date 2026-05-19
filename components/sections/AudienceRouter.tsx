@@ -50,17 +50,17 @@ export function AudienceRouter() {
           Pick the sentence that sounds like you.
         </Heading>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
         {AUDIENCES.map((audience) => (
           <Link
             key={audience.label}
             href={audience.href}
-            className="group bg-offwhite p-8 lg:p-10 flex flex-col gap-4 transition-colors duration-200 ease-calm hover:bg-tint/30"
+            className="group bg-offwhite p-5 sm:p-7 lg:p-10 flex flex-col gap-3 sm:gap-4 transition-colors duration-200 ease-calm hover:bg-tint/30"
           >
-            <h3 className="text-h3 font-semibold text-navy [text-wrap:balance]">
+            <h3 className="text-body sm:text-h3 font-semibold text-navy leading-snug [text-wrap:balance]">
               {audience.label}
             </h3>
-            <p className="text-body text-mute flex-grow">{audience.body}</p>
+            <p className="text-caption sm:text-body text-mute flex-grow leading-snug sm:leading-normal">{audience.body}</p>
             <div className="flex items-center gap-2 text-teal text-caption font-medium mt-2">
               <span>{audience.cta}</span>
               <svg

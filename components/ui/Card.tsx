@@ -72,10 +72,10 @@ export function SolutionCard({
           aspect="sixteen-nine"
         />
       )}
-      <div className="p-8 flex flex-col gap-3">
-        <Heading level={3}>{title}</Heading>
-        <Body className="text-mute">{description}</Body>
-        <div className="mt-2 flex items-center gap-2 text-teal text-caption font-medium">
+      <div className="p-4 sm:p-6 lg:p-8 flex flex-col gap-2 sm:gap-3">
+        <Heading level={3} className="text-body sm:text-h3 leading-snug">{title}</Heading>
+        <Body className="text-caption sm:text-body text-mute leading-snug sm:leading-normal">{description}</Body>
+        <div className="mt-1 sm:mt-2 flex items-center gap-2 text-teal text-caption font-medium">
           <span>Read more</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
