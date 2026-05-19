@@ -6,23 +6,23 @@ import { FIVE_PLACES } from '@/content/education';
 // Order matches FIVE_PLACES from @/content/education.
 const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
   {
-    src: '/images/photography/bathroom-filter-ceiling-installation.png',
+    src: '/images/photography/bathroom-filter-ceiling-installation.jpg',
     alt: 'Stainless cylinder mounted in the suspended-ceiling void of a finished bathroom, accessed via a removable panel',
   },
   {
-    src: '/images/photography/bathroom-filter-hero.png',
+    src: '/images/photography/bathroom-filter-hero.jpg',
     alt: 'Two stainless cylinders recessed in a wall niche behind a marble shower glass — part of the bathroom architecture, not bolted onto it',
   },
   {
-    src: '/images/photography/bathroom-filter-wall-cabinet.png',
+    src: '/images/photography/bathroom-filter-wall-cabinet.jpg',
     alt: 'Stainless vessel housed inside a wall cabinet behind a finish door, flush with the bathroom wall',
   },
   {
-    src: '/images/photography/bathroom-filter-under-basin.png',
+    src: '/images/photography/bathroom-filter-under-basin.jpg',
     alt: 'Compact vessels installed under the vanity counter beside the trap, hidden behind the cabinet door',
   },
   {
-    src: '/images/photography/whole-house-utility-area.png',
+    src: '/images/photography/whole-house-utility-area.jpg',
     alt: 'Two branded UNIWATER vessels floor-mounted in the home utility area beside the washing machine',
   },
 ];

@@ -9,9 +9,12 @@ import './globals.css';
 
 const signika = Signika({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  // 700 is unused in this design system (no font-bold / fontWeight:700 anywhere
+  // in the codebase). Dropping it saves ~50 KB of font payload per first-load.
+  weight: ['300', '400', '500', '600'],
   variable: '--font-signika',
   display: 'swap',
+  preload: true,
 });
 
 const bodoni = Bodoni_Moda({

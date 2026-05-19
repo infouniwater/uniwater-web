@@ -19,15 +19,15 @@ export const metadata: Metadata = {
 
 const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
   '01': {
-    src: '/images/photography/wtp-basement.png',
+    src: '/images/photography/wtp-basement.jpg',
     alt: 'Industrial water-treatment plant in a basement plant room',
   },
   '02': {
-    src: '/images/photography/wtp-terrace.png',
+    src: '/images/photography/wtp-terrace.jpg',
     alt: 'Building water-treatment plant on the rooftop of an institution',
   },
   '03': {
-    src: '/images/photography/residential-complex.png',
+    src: '/images/photography/residential-complex.jpg',
     alt: 'Gated residential complex served by a centralised water-treatment plant',
   },
 };
@@ -109,7 +109,7 @@ export default function IndustrialPage() {
               <div className="w-full overflow-hidden border border-offwhite/15" style={{ aspectRatio: '1 / 1' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/photography/wtp-basement.png"
+                  src="/images/photography/wtp-basement.jpg"
                   alt="Industrial water treatment plant — three branded UNIWATER vessels in a building basement plant room with overhead piping and concrete walls"
                   className="block w-full h-full object-cover"
                   loading="eager"

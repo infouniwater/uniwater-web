@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button';
 import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
 
 const FALLBACK_IMAGE = {
-  src: '/images/photography/bathroom-filter-hero.png',
+  src: '/images/photography/bathroom-filter-hero.jpg',
   alt:
     'UNIWATER BathSoft installed in a marble luxury bathroom — two stainless cylinders recessed in a backlit wall niche behind the glass shower partition, brass freestanding bathtub in the foreground',
 };

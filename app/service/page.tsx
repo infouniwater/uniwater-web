@@ -204,7 +204,7 @@ export default function ServicePage() {
             <div className="w-full overflow-hidden border border-hairline" style={{ aspectRatio: '1 / 1' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/photography/service-testing-water.png"
+                src="/images/photography/service-testing-water.jpg"
                 alt="UNIWATER engineer in branded uniform performing on-site water parameter test at a system in a customer's utility room"
                 className="block w-full h-full object-cover"
                 loading="lazy"

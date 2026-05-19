@@ -5,11 +5,19 @@ const nextConfig = {
   images: {
     // TODO Sprint 1: configure Cloudinary CDN domain when image pipeline is in place
     remotePatterns: [],
+    // AVIF first (30-50% smaller than WebP on photographs) — Next emits a
+    // <picture> with AVIF + WebP + JPG fallbacks; modern browsers pick AVIF.
+    formats: ['image/avif', 'image/webp'],
+    // Cache the optimised variant for 30 days at the Vercel edge.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
 
-  // Production security headers — applied site-wide. CSP is permissive
-  // for now to accommodate inline JSON-LD scripts and Next's hydration
-  // boundary scripts; tighten with a nonce-based policy once GA4/GTM ship.
+  // Production security headers + cache-control. Vercel applies its own
+  // CDN cache for /_next/static and /_next/image; we add immutable-cache
+  // headers for /images and /downloads so a year-long browser-cache is
+  // permitted on the photography + catalogue PDFs (filenames are
+  // versioned implicitly by content — when we re-export a catalogue PDF
+  // we bump the filename year).
   async headers() {
     const securityHeaders = [
       { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
@@ -35,8 +43,15 @@ const nextConfig = {
         ].join('; '),
       },
     ];
+    const longCacheImmutable = [
+      { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+    ];
     return [
       { source: '/(.*)', headers: securityHeaders },
+      { source: '/images/:path*', headers: longCacheImmutable },
+      { source: '/downloads/:path*', headers: longCacheImmutable },
+      { source: '/brand/:path*', headers: longCacheImmutable },
+      { source: '/og/:path*', headers: longCacheImmutable },
     ];
   },
 

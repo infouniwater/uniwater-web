@@ -10,7 +10,7 @@ const HOME_SOLUTIONS = [
       'Stop iron staining and hard-water scale at the bathroom feed, in spaces you\u2019d never expect to fit equipment.',
     photoDescription: 'BathSoft Trio installed in a plumbing shaft of a finished bathroom',
     photoRef: 'solution-bathroom',
-    imgSrc: '/images/photography/bathroom-filter-hero.png',
+    imgSrc: '/images/photography/bathroom-filter-hero.jpg',
     imgAlt: 'BathSoft installed in a marble luxury bathroom with brass freestanding bath, two stainless cylinders recessed behind a glass shower partition',
   },
   {
@@ -20,7 +20,7 @@ const HOME_SOLUTIONS = [
       'Treat the water once, at the inlet \u2014 every tap, every shower, every appliance protected.',
     photoDescription: 'HomeSoft two-vessel install in a residential utility room',
     photoRef: 'solution-wholehouse',
-    imgSrc: '/images/photography/whole-house-hero.png',
+    imgSrc: '/images/photography/whole-house-hero.jpg',
     imgAlt: 'HomeSoft whole-house water filter \u2014 two branded UNIWATER vessels installed in a finished home corner near windows and plants',
   },
   {
@@ -29,7 +29,7 @@ const HOME_SOLUTIONS = [
     description: 'RO, UV, or UF \u2014 sized to your actual TDS. Wall-mounted, under-sink, or centralised.',
     photoDescription: 'Premium chrome kitchen tap with filtered water flowing into glass',
     photoRef: 'solution-drinking',
-    imgSrc: '/images/photography/drinking-water-home.png',
+    imgSrc: '/images/photography/drinking-water-home.jpg',
     imgAlt: 'Glass of UNIWATER drinking water on a marble kitchen counter, family in soft focus in the background',
   },
 ];
@@ -41,7 +41,7 @@ const B2B_SOLUTIONS = [
     description: '8,000 to 30,000 litres per hour, for apartment complexes, hotels, hospitals, schools.',
     photoDescription: 'WTP install in a gated complex plant room',
     photoRef: 'solution-wtp',
-    imgSrc: '/images/photography/wtp-basement.png',
+    imgSrc: '/images/photography/wtp-basement.jpg',
     imgAlt: 'Building water-treatment plant \u2014 three branded UNIWATER vessels in a basement plant room with overhead piping',
   },
   {
@@ -50,7 +50,7 @@ const B2B_SOLUTIONS = [
     description: 'Engineered process water for manufacturing, pharmaceutical, institutional applications.',
     photoDescription: 'Industrial RO/DM plant with SS vessels and instrumentation',
     photoRef: 'solution-industrial',
-    imgSrc: '/images/photography/wtp-terrace.png',
+    imgSrc: '/images/photography/wtp-terrace.jpg',
     imgAlt: 'Industrial water treatment plant on a terrace with stainless vessels and SCADA-ready instrumentation',
   },
 ];

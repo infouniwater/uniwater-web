@@ -8,7 +8,7 @@ import { CASE_STUDIES } from '@/content/case-studies';
 
 const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
   Healthcare: {
-    src: '/images/photography/wtp-basement.png',
+    src: '/images/photography/wtp-basement.jpg',
     alt: 'A UNIWATER water treatment plant installed in a healthcare facility plant room',
   },
   Manufacturing: {
@@ -16,11 +16,11 @@ const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
     alt: 'A UNIWATER iron filter and softener duo in SS316 vessels — manufacturing-grade install',
   },
   Residential: {
-    src: '/images/photography/whole-house-luxury-villa.png',
+    src: '/images/photography/whole-house-luxury-villa.jpg',
     alt: 'A UNIWATER whole-house system installed at a luxury residential villa',
   },
   Hospitality: {
-    src: '/images/photography/wtp-terrace.png',
+    src: '/images/photography/wtp-terrace.jpg',
     alt: 'A UNIWATER water treatment plant on the rooftop of a hospitality property',
   },
 };
