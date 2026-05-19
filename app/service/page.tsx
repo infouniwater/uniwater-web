@@ -126,7 +126,7 @@ export default function ServicePage() {
             </EditorialAccent>
           </div>
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-6 gap-px bg-hairline border border-hairline">
+            <div className="grid grid-cols-4 sm:grid-cols-6 gap-px bg-hairline border border-hairline">
               {TWELVE_MONTHS.map((month, i) => (
                 <div
                   key={month}

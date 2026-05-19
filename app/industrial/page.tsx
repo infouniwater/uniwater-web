@@ -274,7 +274,7 @@ export default function IndustrialPage() {
           <div className="text-eyebrow font-medium uppercase text-soft mb-4">Capacity bands</div>
           <Heading level={2} inverse>From boutique to industrial.</Heading>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-offwhite/15 border border-offwhite/15">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-offwhite/15 border border-offwhite/15">
           {CAPACITY_BANDS.map((band) => (
             <div key={band.capacity} className="bg-navy p-6 flex flex-col gap-3">
               <div className="text-[28px] md:text-[32px] font-light text-soft leading-none">{band.capacity}</div>
@@ -317,7 +317,7 @@ export default function IndustrialPage() {
             </Body>
           </div>
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-3 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
               {COMPONENT_MANUFACTURERS.map((mfr) => (
                 <div key={mfr} className="bg-navy aspect-[3/2] flex items-center justify-center p-4">
                   <span className="text-caption text-offwhite font-medium">{mfr}</span>
