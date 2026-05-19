@@ -29,7 +29,7 @@ export function EditorialHero() {
   return (
     <section className="bg-offwhite border-b border-hairline">
       <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-10 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-6 lg:py-0">
           {/* Text panel — first on mobile (was second, which pushed value
               copy below the fold on phones), still left on desktop. */}
           <div className="lg:col-span-6 flex flex-col gap-7">
@@ -73,13 +73,14 @@ export function EditorialHero() {
             </figure>
           </div>
 
-          {/* Visual — video when supplied, else the original ken-burns photograph.
-              Mobile aspect deliberately landscape (16/9) so the image doesn't take
-              ~500px of phone screen as it did with the portrait 56/75 aspect.
-              Desktop keeps the editorial portrait aspect. */}
-          <div className="lg:col-span-6 lg:py-12">
+          {/* Visual — desktop only. On mobile the image at any aspect produced
+              an orphan strip between the text panel and the next section (per
+              user feedback 2026-05-19). The text panel + pull-quote carry the
+              hero on phones; the image returns at lg:+ where it has the column
+              width to read as editorial photography rather than a thin band. */}
+          <div className="hidden lg:block lg:col-span-6 lg:py-12">
             <div
-              className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]"
+              className="relative w-full overflow-hidden lg:aspect-[56/75]"
             >
               {HERO_VIDEO_SRC ? (
                 <video
