@@ -43,11 +43,35 @@ function normalizeEmail(email: string): string {
   return email.trim().toLowerCase();
 }
 
-function normalizePhone(phone: string): string {
-  // Strip everything that isn't a digit; default to E.164 with country code 91
-  // (India) if the supplied value is a bare 10-digit mobile.
+/**
+ * Cities Uniwater serves in Nepal. Used to infer country code for phone
+ * normalisation and the hashed country field. Matched as substring against
+ * the city field after lowercase-trim, so common variants (e.g. "Lalitpur,
+ * Kathmandu Valley") still resolve correctly.
+ */
+const NEPAL_CITY_TOKENS = [
+  'kathmandu',
+  'biratnagar',
+  'pokhara',
+  'lalitpur',
+  'bhaktapur',
+  'patan',
+];
+
+function inferCountry(city?: string): 'in' | 'np' {
+  if (!city) return 'in';
+  const norm = city.trim().toLowerCase();
+  return NEPAL_CITY_TOKENS.some((token) => norm.includes(token)) ? 'np' : 'in';
+}
+
+function normalizePhone(phone: string, country: 'in' | 'np' = 'in'): string {
+  // Strip everything that isn't a digit; if the value is a bare 10-digit
+  // mobile, prefix the country dial code (+91 India / +977 Nepal). Already
+  // E.164-prefixed numbers pass through unchanged.
   const digits = phone.replace(/\D/g, '');
-  if (digits.length === 10) return '91' + digits;
+  if (digits.length === 10) {
+    return (country === 'np' ? '977' : '91') + digits;
+  }
   return digits;
 }
 
@@ -96,9 +120,14 @@ export async function sendMetaLeadEvent(input: {
     return;
   }
 
+  // Country is inferred from the city field — Nepal customers (Kathmandu,
+  // Biratnagar, etc.) get the 'np' hash + +977 phone prefix so Meta can
+  // match them against its Nepal-side user data. Default is India.
+  const country = inferCountry(input.city);
+
   const userData: Record<string, string | string[]> = {};
   if (input.email) userData.em = sha256(normalizeEmail(input.email));
-  if (input.phone) userData.ph = sha256(normalizePhone(input.phone));
+  if (input.phone) userData.ph = sha256(normalizePhone(input.phone, country));
   if (input.name) {
     // Single-field name → use as both fn (first name) and a hashed full
     // name. Meta's matching is best-effort, more hashed signals = better.
@@ -107,9 +136,7 @@ export async function sendMetaLeadEvent(input: {
     if (lastName) userData.ln = sha256(normalizeName(lastName));
   }
   if (input.city) userData.ct = sha256(normalizeName(input.city));
-  // Country: hash of ISO-3166-1 alpha-2. All leads are India (or Nepal via
-  // pincode), but Meta wants country hashed so we send 'in' as the default.
-  userData.country = sha256('in');
+  userData.country = sha256(country);
   if (input.clientIp) userData.client_ip_address = input.clientIp;
   if (input.clientUserAgent) userData.client_user_agent = input.clientUserAgent;
 

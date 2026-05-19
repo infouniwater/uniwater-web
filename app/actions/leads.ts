@@ -42,6 +42,19 @@ function joinDescription(parts: Array<string | undefined>): string {
 }
 
 /**
+ * Per-form indicative conversion values sent to Meta CAPI. These are
+ * SIGNALS to the ad optimiser, not pricing commitments — Meta uses them
+ * to bid more aggressively for high-value lead types vs. low-value ones.
+ *
+ *  - mid    (₹50k) — residential install average (single book-survey)
+ *  - high   (₹500k) — commercial/industrial average (10× residential)
+ *  - low    (₹10k) — entry-tier engagement (contact form, water-test)
+ */
+const META_VALUE_MID = 50_000;
+const META_VALUE_HIGH = 500_000;
+const META_VALUE_LOW = 10_000;
+
+/**
  * Read what we can about the visitor from the request headers. Used to
  * fill the Meta CAPI user_data with client_ip_address + client_user_agent
  * — both improve Meta's event matching against ad-click impressions.
@@ -79,6 +92,9 @@ async function fanOut(input: {
     phone?: string;
     name?: string;
     city?: string;
+    /** Indicative INR value for this lead — drives Meta value-based bid
+     * optimisation. Pick one of META_VALUE_* constants per form. */
+    value?: number;
   };
 }): Promise<void> {
   await createLead(input.odoo);
@@ -100,6 +116,8 @@ async function fanOut(input: {
       phone: input.meta.phone,
       name: input.meta.name,
       city: input.meta.city,
+      value: input.meta.value,
+      currency: 'INR',
       sourceUrl: sig.referer,
       clientIp: sig.ip,
       clientUserAgent: sig.userAgent,
@@ -152,7 +170,7 @@ export async function submitBookSurvey(formData: FormData): Promise<void> {
     formLabel: 'Book a free survey',
     emailSubject: `New survey request — ${name ?? 'Unnamed'}${city ? ` (${city})` : ''}`,
     fields,
-    meta: { eventName: 'Schedule', email, phone: mobile, name, city },
+    meta: { eventName: 'Schedule', email, phone: mobile, name, city, value: META_VALUE_MID },
   });
 
   redirect('/thank-you?source=book-survey');
@@ -194,7 +212,7 @@ export async function submitContact(formData: FormData): Promise<void> {
     formLabel: 'Contact form',
     emailSubject: `New contact — ${subject ?? name ?? 'General enquiry'}`,
     fields,
-    meta: { eventName: 'Contact', email, phone: mobile, name },
+    meta: { eventName: 'Contact', email, phone: mobile, name, value: META_VALUE_LOW },
   });
 
   redirect('/thank-you?source=contact');
@@ -245,7 +263,7 @@ export async function submitRFQ(formData: FormData): Promise<void> {
     formLabel: 'Industrial RFQ',
     emailSubject: `New RFQ — ${org ?? name ?? 'Unnamed'}${application ? ` · ${application}` : ''}`,
     fields,
-    meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location },
+    meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location, value: META_VALUE_HIGH },
   });
 
   redirect('/thank-you?source=industrial-rfq');
@@ -281,7 +299,7 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
     formLabel: 'Free water-test request',
     emailSubject: `Water-test request — ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
     fields,
-    meta: { eventName: 'Lead', phone: mobile, city },
+    meta: { eventName: 'Lead', phone: mobile, city, value: META_VALUE_LOW },
   });
 
   // Bounce the visitor straight to WhatsApp with a pre-filled message.
@@ -346,7 +364,7 @@ export async function submitRemoteSurvey(formData: FormData): Promise<void> {
     formLabel: 'Remote site survey',
     emailSubject: `Remote site survey — ${name ?? 'Unnamed'}${location ? ` (${location})` : ''}`,
     fields,
-    meta: { eventName: 'Schedule', email, phone: mobile, name, city: location },
+    meta: { eventName: 'Schedule', email, phone: mobile, name, city: location, value: META_VALUE_HIGH },
   });
 
   redirect('/thank-you?source=remote-site-survey');
