@@ -9,7 +9,7 @@ import { CASE_STUDIES } from '@/content/case-studies';
 export const metadata: Metadata = {
   title: 'Case studies',
   description:
-    'Where UNIWATER systems run today. Selected installations across healthcare, hospitality, education, manufacturing, and premium residential.',
+    'Where Uniwater systems run today. Selected installations across healthcare, hospitality, education, manufacturing, and premium residential.',
 };
 
 export default function CaseStudiesIndex() {
@@ -18,7 +18,7 @@ export default function CaseStudiesIndex() {
       <section className="bg-offwhite border-b border-hairline">
         <div className="container-uw py-16 md:py-24 max-w-4xl">
           <Eyebrow className="mb-4">Case studies</Eyebrow>
-          <Display>Where UNIWATER systems run today.</Display>
+          <Display>Where Uniwater systems run today.</Display>
           <Lede className="text-mute mt-6">
             Three case studies published so far &mdash; two healthcare campuses and a premium residential development. More installations across hospitality, education, and manufacturing are being written up.
           </Lede>

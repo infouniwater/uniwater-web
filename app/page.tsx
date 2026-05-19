@@ -45,7 +45,7 @@ export default function HomePage() {
   const homeService = serviceSchema({
     name: 'Engineered home water — survey, design, install, service',
     description:
-      'UNIWATER surveys, designs, installs, and monthly-services whole-house, bathroom, and drinking-water systems. The same team owns the system from first water test onward.',
+      'Uniwater surveys, designs, installs, and monthly-services whole-house, bathroom, and drinking-water systems. The same team owns the system from first water test onward.',
     url: '/',
     steps: FOUR_STEPS.map((step) => ({
       name: step.title.replace(/\.$/, ''),

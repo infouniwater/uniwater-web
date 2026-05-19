@@ -10,7 +10,7 @@ import { cn } from '@/lib/cn';
 export const metadata: Metadata = {
   title: 'Service',
   description:
-    'The discipline that decides year four. Monthly preventive visits, same-day reports, 24-hour SLA on flagged faults. UNIWATER\u2019s service protocol explained.',
+    'The discipline that decides year four. Monthly preventive visits, same-day reports, 24-hour SLA on flagged faults. Uniwater\u2019s service protocol explained.',
   openGraph: { images: ['/og/og-service.svg'] },
   twitter: { images: ['/og/og-service.svg'] },
 };
@@ -205,7 +205,7 @@ export default function ServicePage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/photography/service-testing-water.jpg"
-                alt="UNIWATER engineer in branded uniform performing on-site water parameter test at a system in a customer's utility room"
+                alt="Uniwater engineer in branded uniform performing on-site water parameter test at a system in a customer's utility room"
                 className="block w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -250,7 +250,7 @@ export default function ServicePage() {
       </Section>
 
       <FinalCTA
-        headline="Already a UNIWATER customer?"
+        headline="Already a Uniwater customer?"
         sub="Your service history and parameter trends will live in the customer portal when it launches as a separate product."
         primaryCTA={{ label: 'Book a free survey', href: '/book-survey' }}
       />

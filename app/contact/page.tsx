@@ -12,7 +12,7 @@ import { localBusinessSchema, jsonLd } from '@/lib/structured-data';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Talk to UNIWATER. Two phones, two emails, head office in Kolkata. Nine cities across India and Nepal.',
+    'Talk to Uniwater. Two phones, two emails, head office in Kolkata. Nine cities across India and Nepal.',
 };
 
 export default function ContactPage() {

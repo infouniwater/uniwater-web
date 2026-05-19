@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
  * Service is the system — inverse-navy section.
  * Per Blueprint §6.8.
  *
- * "Most defensible thing UNIWATER has against competitors."
+ * "Most defensible thing Uniwater has against competitors."
  * Uses catalogue voice directly.
  */
 

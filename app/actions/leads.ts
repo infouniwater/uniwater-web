@@ -241,7 +241,7 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
   // The lead is already in Odoo by this point, so even if the visitor never
   // sends the WhatsApp message the engineer has the mobile to follow up.
   const waMsg = encodeURIComponent(
-    "Hi UNIWATER — I'd like a free water-test report. (Sent from the home-page popup.)"
+    "Hi Uniwater — I'd like a free water-test report. (Sent from the home-page popup.)"
   );
   const phoneE164 = '919748745193';
   redirect(`https://wa.me/${phoneE164}?text=${waMsg}`);

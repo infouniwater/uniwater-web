@@ -8,12 +8,12 @@ import { faqPageSchema, jsonLd } from '@/lib/structured-data';
 export const metadata: Metadata = {
   title: 'FAQ',
   description:
-    'Frequently asked questions about UNIWATER water systems, survey, install, and service.',
+    'Frequently asked questions about Uniwater water systems, survey, install, and service.',
 };
 
 const CATEGORIES = [
   {
-    title: 'About UNIWATER',
+    title: 'About Uniwater',
     items: [
       {
         q: 'Are you a water-purifier brand?',
@@ -24,7 +24,7 @@ const CATEGORIES = [
         a: 'Seven cities in India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two in Nepal (Kathmandu, Biratnagar). Service teams in every city, not subcontracted.',
       },
       {
-        q: 'How is UNIWATER different from Aquaguard, Kent, Eureka Forbes?',
+        q: 'How is Uniwater different from Aquaguard, Kent, Eureka Forbes?',
         a: 'Those are mass-market kitchen purifier brands. We sit in the gap between them and industrial EPC firms: bathroom-level, whole-house, drinking-water, and building-scale systems, surveyed and serviced monthly.',
       },
     ],

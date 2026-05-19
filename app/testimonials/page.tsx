@@ -9,30 +9,30 @@ import { CASE_STUDIES } from '@/content/case-studies';
 const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
   Healthcare: {
     src: '/images/photography/wtp-basement.jpg',
-    alt: 'A UNIWATER water treatment plant installed in a healthcare facility plant room',
+    alt: 'A Uniwater water treatment plant installed in a healthcare facility plant room',
   },
   Manufacturing: {
     src: '/images/installs/hero-duo-iron-softener-ss316.jpg',
-    alt: 'A UNIWATER iron filter and softener duo in SS316 vessels — manufacturing-grade install',
+    alt: 'A Uniwater iron filter and softener duo in SS316 vessels — manufacturing-grade install',
   },
   Residential: {
     src: '/images/photography/whole-house-luxury-villa.jpg',
-    alt: 'A UNIWATER whole-house system installed at a luxury residential villa',
+    alt: 'A Uniwater whole-house system installed at a luxury residential villa',
   },
   Hospitality: {
     src: '/images/photography/wtp-terrace.jpg',
-    alt: 'A UNIWATER water treatment plant on the rooftop of a hospitality property',
+    alt: 'A Uniwater water treatment plant on the rooftop of a hospitality property',
   },
 };
 const FALLBACK_PHOTO = {
   src: '/images/installs/hero-duo-iron-softener-ss316.jpg',
-  alt: 'A representative UNIWATER commercial install',
+  alt: 'A representative Uniwater commercial install',
 };
 
 export const metadata: Metadata = {
   title: 'Testimonials',
   description:
-    'What UNIWATER customers say. Real homeowners and institutions, real installs, real cities.',
+    'What Uniwater customers say. Real homeowners and institutions, real installs, real cities.',
 };
 
 // Derived from published case studies — keeps testimonials and case-study

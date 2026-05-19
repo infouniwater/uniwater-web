@@ -1,5 +1,5 @@
 /**
- * Nine-city constellation — a clean inline SVG showing UNIWATER's 9
+ * Nine-city constellation — a clean inline SVG showing Uniwater's 9
  * operating cities as teal pins on a navy field, with the names rendered
  * at SVG-text size so they stay sharp at any viewport width.
  *
@@ -41,7 +41,7 @@ const PINS: Pin[] = [
 export function NineCityMap() {
   return (
     <figure
-      aria-label="Nine UNIWATER operating cities — Noida, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati in India; Kathmandu, Biratnagar in Nepal."
+      aria-label="Nine Uniwater operating cities — Noida, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati in India; Kathmandu, Biratnagar in Nepal."
       className="w-full"
     >
       <svg
@@ -117,7 +117,7 @@ export function NineCityMap() {
       </svg>
 
       <figcaption className="sr-only">
-        UNIWATER operates with its own engineering teams in seven cities across India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two cities in Nepal (Kathmandu, Biratnagar).
+        Uniwater operates with its own engineering teams in seven cities across India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two cities in Nepal (Kathmandu, Biratnagar).
       </figcaption>
     </figure>
   );

@@ -21,7 +21,7 @@ export function CitiesSection() {
             Nine cities. Own teams. Not subcontracted.
           </Heading>
           <Body inverse className="mb-8">
-            Every UNIWATER survey, install, and monthly service visit is delivered by our own engineers. We don&rsquo;t hand off to local contractors after the sale.
+            Every Uniwater survey, install, and monthly service visit is delivered by our own engineers. We don&rsquo;t hand off to local contractors after the sale.
           </Body>
 
           <div className="mb-8">

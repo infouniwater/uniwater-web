@@ -22,7 +22,7 @@ const RESIDENTIAL_LINKS = [
 const NAV_ITEMS = [
   { label: 'Solutions', href: '/solutions', hasMega: true },
   { label: 'How it works', href: '/how-it-works' },
-  { label: 'Why UNIWATER', href: '/why-uniwater' },
+  { label: 'Why Uniwater', href: '/why-uniwater' },
   { label: 'Resources', href: '/resources' },
   { label: 'Contact', href: '/contact' },
 ];

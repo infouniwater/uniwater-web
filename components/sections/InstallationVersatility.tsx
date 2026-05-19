@@ -23,7 +23,7 @@ const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
   },
   {
     src: '/images/photography/whole-house-utility-area.jpg',
-    alt: 'Two branded UNIWATER vessels floor-mounted in the home utility area beside the washing machine',
+    alt: 'Two branded Uniwater vessels floor-mounted in the home utility area beside the washing machine',
   },
 ];
 
@@ -42,7 +42,7 @@ export function InstallationVersatility() {
           Five places we&rsquo;ve put a water system that the family never sees.
         </Heading>
         <Body className="text-mute text-lede font-light">
-          Most water companies bolt a vessel to a wall in the utility area and call it done. UNIWATER engineers the install into the building &mdash; false ceilings, plumbing shafts, wall niches, under-counter cavities, plant rooms. Tight shafts. Low ceilings. Finished interiors. The system disappears.
+          Most water companies bolt a vessel to a wall in the utility area and call it done. Uniwater engineers the install into the building &mdash; false ceilings, plumbing shafts, wall niches, under-counter cavities, plant rooms. Tight shafts. Low ceilings. Finished interiors. The system disappears.
         </Body>
         <EditorialAccent className="mt-6">
           Engineered for the homes you don&rsquo;t get to redo.

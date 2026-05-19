@@ -21,7 +21,7 @@ const HOME_SOLUTIONS = [
     photoDescription: 'HomeSoft two-vessel install in a residential utility room',
     photoRef: 'solution-wholehouse',
     imgSrc: '/images/photography/whole-house-hero.jpg',
-    imgAlt: 'HomeSoft whole-house water filter \u2014 two branded UNIWATER vessels installed in a finished home corner near windows and plants',
+    imgAlt: 'HomeSoft whole-house water filter \u2014 two branded Uniwater vessels installed in a finished home corner near windows and plants',
   },
   {
     href: '/solutions/drinking-water-solution',
@@ -30,7 +30,7 @@ const HOME_SOLUTIONS = [
     photoDescription: 'Premium chrome kitchen tap with filtered water flowing into glass',
     photoRef: 'solution-drinking',
     imgSrc: '/images/photography/drinking-water-home.jpg',
-    imgAlt: 'Glass of UNIWATER drinking water on a marble kitchen counter, family in soft focus in the background',
+    imgAlt: 'Glass of Uniwater drinking water on a marble kitchen counter, family in soft focus in the background',
   },
 ];
 
@@ -42,7 +42,7 @@ const B2B_SOLUTIONS = [
     photoDescription: 'WTP install in a gated complex plant room',
     photoRef: 'solution-wtp',
     imgSrc: '/images/photography/wtp-basement.jpg',
-    imgAlt: 'Building water-treatment plant \u2014 three branded UNIWATER vessels in a basement plant room with overhead piping',
+    imgAlt: 'Building water-treatment plant \u2014 three branded Uniwater vessels in a basement plant room with overhead piping',
   },
   {
     href: '/industrial',

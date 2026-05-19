@@ -35,7 +35,7 @@ export function WhatsAppFAB() {
   const inSolutionDetail = pathname.startsWith('/solutions/');
   if (inFormOrB2BFlow || inSolutionDetail) return null;
 
-  const message = `Hi UNIWATER, I have a question about ${pageLabel}`;
+  const message = `Hi Uniwater, I have a question about ${pageLabel}`;
   const href = `https://wa.me/${PRIMARY_PHONE_E164}?text=${encodeURIComponent(message)}`;
 
   return (

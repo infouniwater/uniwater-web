@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Sample monthly service report',
   description:
-    'A representative UNIWATER monthly service report — Before, On site, After. The parameters logged, the work performed, the discipline that decides year four.',
+    'A representative Uniwater monthly service report — Before, On site, After. The parameters logged, the work performed, the discipline that decides year four.',
 };
 
 /**
@@ -34,7 +34,7 @@ export default function SampleServiceReportPage() {
             <p className="text-eyebrow font-medium uppercase text-teal mb-2">Sample report</p>
             <h1 className="text-h2 font-light text-navy mb-2">This is what the monthly report looks like.</h1>
             <p className="text-mute text-body">
-              Every UNIWATER service contract produces one of these on the same day as the engineer&rsquo;s visit. Below is a representative example for a 3-BHK in Salt Lake, Kolkata on its 14th monthly service.
+              Every Uniwater service contract produces one of these on the same day as the engineer&rsquo;s visit. Below is a representative example for a 3-BHK in Salt Lake, Kolkata on its 14th monthly service.
             </p>
             <p className="text-caption text-mute mt-4">
               Press <kbd className="px-2 py-0.5 text-[11px] font-mono bg-subtle border border-hairline">Ctrl/Cmd + P</kbd> to save this report as a PDF.
@@ -49,7 +49,7 @@ export default function SampleServiceReportPage() {
                 <div className="text-h3 font-semibold text-navy mt-1">Visit #14</div>
               </div>
               <div className="text-caption text-mute sm:text-right">
-                <div className="font-medium text-navy">UNIWATER</div>
+                <div className="font-medium text-navy">Uniwater</div>
                 <div>Salt Lake, Kolkata</div>
                 <div>2026-05-18</div>
               </div>
@@ -135,7 +135,7 @@ export default function SampleServiceReportPage() {
               <div>
                 <div className="text-caption text-mute uppercase tracking-wide text-[11px]">Engineer</div>
                 <div className="text-body text-navy font-medium mt-1">Suman Saha</div>
-                <div className="text-caption text-mute">Senior service engineer · UNIWATER Kolkata</div>
+                <div className="text-caption text-mute">Senior service engineer · Uniwater Kolkata</div>
               </div>
               <div className="sm:text-right">
                 <div className="text-caption text-mute uppercase tracking-wide text-[11px]">Customer signature</div>

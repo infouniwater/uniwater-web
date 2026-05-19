@@ -5,7 +5,7 @@ import { SITE, CONTACT } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Privacy policy',
-  description: 'How UNIWATER collects, uses, and protects the personal information you share through the site, the survey form, and the service relationship.',
+  description: 'How Uniwater collects, uses, and protects the personal information you share through the site, the survey form, and the service relationship.',
 };
 
 /**

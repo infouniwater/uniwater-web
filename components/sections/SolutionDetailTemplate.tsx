@@ -153,7 +153,7 @@ export function SolutionDetailTemplate({ solution }: Props) {
         </div>
       </Section>
 
-      {/* 3. How UNIWATER solves it */}
+      {/* 3. How Uniwater solves it */}
       <Section tone="subtle" padding="default">
         <div className="max-w-3xl mb-8">
           <Eyebrow className="mb-4">How we solve it</Eyebrow>
@@ -163,7 +163,7 @@ export function SolutionDetailTemplate({ solution }: Props) {
         </div>
         <div className="max-w-reading">
           <Lede className="text-mute mb-6">
-            Every UNIWATER {solution.navLabel.toLowerCase()} starts with a free water test and a site survey. The chemistry decides the media. The household decides the capacity. The architecture decides where it goes.
+            Every Uniwater {solution.navLabel.toLowerCase()} starts with a free water test and a site survey. The chemistry decides the media. The household decides the capacity. The architecture decides where it goes.
           </Lede>
           <Body className="text-mute mb-6">
             Catalogue sizes are starting points, not the sale. Our 17-rule auto-suggest engine generates a bill of materials specific to your water analysis, pressure, and draw &mdash; not a generic SKU pulled off a shelf.
@@ -685,12 +685,12 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
     case 'activated-carbon-filter':
       return {
         src: `${PHOTO_BASE}/whole-house-hero.jpg`,
-        alt: 'HomeSoft whole-house water filter — two branded UNIWATER vessels installed in a finished home corner near windows and plants',
+        alt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',
       };
     case 'drinking-water-solution':
       return {
         src: `${PHOTO_BASE}/drinking-water-home.jpg`,
-        alt: 'Glass of UNIWATER drinking water on a marble kitchen counter, family in soft focus in the background',
+        alt: 'Glass of Uniwater drinking water on a marble kitchen counter, family in soft focus in the background',
       };
     default:
       return null;

@@ -13,7 +13,7 @@ const SOLUTIONS_LINKS = [
 
 const RESOURCES_LINKS = [
   { href: '/how-it-works', label: 'How it works' },
-  { href: '/why-uniwater', label: 'Why UNIWATER' },
+  { href: '/why-uniwater', label: 'Why Uniwater' },
   { href: '/water-problem-checker', label: 'Water checker' },
   { href: '/remote-site-survey', label: 'Remote survey' },
   { href: '/case-studies', label: 'Case studies' },

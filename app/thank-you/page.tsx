@@ -26,7 +26,7 @@ const MESSAGES: Record<Source, { eyebrow: string; headline: string; body: string
   'industrial-rfq': {
     eyebrow: 'RFQ submitted',
     headline: 'Thank you. An engineer is reviewing.',
-    body: 'A UNIWATER engineer (not a sales rep) will respond within one business day with a single clarifying question or confirmation. A system layout, bill of materials, and price typically follow within five working days. If you have drawings or a water-test report ready to share, email them to support@uniwater.co.in referencing the email address you provided.',
+    body: 'A Uniwater engineer (not a sales rep) will respond within one business day with a single clarifying question or confirmation. A system layout, bill of materials, and price typically follow within five working days. If you have drawings or a water-test report ready to share, email them to support@uniwater.co.in referencing the email address you provided.',
   },
   'remote-site-survey': {
     eyebrow: 'Remote brief submitted',

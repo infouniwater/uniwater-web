@@ -9,7 +9,7 @@ import { FOUR_STEPS } from '@/content/education';
 export const metadata: Metadata = {
   title: 'How it works',
   description:
-    'From first water test to monthly service: the four-step UNIWATER process. Surveyed, designed, installed, and serviced by one team.',
+    'From first water test to monthly service: the four-step Uniwater process. Surveyed, designed, installed, and serviced by one team.',
   openGraph: { images: ['/og/og-how-it-works.svg'] },
   twitter: { images: ['/og/og-how-it-works.svg'] },
 };
@@ -19,7 +19,7 @@ const STEP_DETAIL = [
     label: 'Stage 01 — Survey',
     headline: '30 minutes on site. 48 hours to a quote.',
     paragraphs: [
-      'A UNIWATER engineer visits your home or site with a water-testing kit. The visit takes between 30 and 60 minutes. We take a sample, run the test, and walk you through what the numbers mean before any quote is written.',
+      'A Uniwater engineer visits your home or site with a water-testing kit. The visit takes between 30 and 60 minutes. We take a sample, run the test, and walk you through what the numbers mean before any quote is written.',
       'We also map the plumbing: where the inlet is, what the pressure runs at, what the storage looks like, and where the equipment could reasonably go without disrupting the architecture.',
       'No quote is written until the survey is complete. If the survey reveals the system doesn\u2019t need to be as large as you thought, we say so.',
     ],
@@ -38,7 +38,7 @@ const STEP_DETAIL = [
     label: 'Stage 02 — Design',
     headline: 'Configured from 100+ engineered options. Not pulled off a shelf.',
     paragraphs: [
-      'Your survey readings go into the UNIWATER auto-suggest engine \u2014 a 17-rule system built from years of installation data. It generates a bill of materials specific to your water, your draw, and your install location.',
+      'Your survey readings go into the Uniwater auto-suggest engine \u2014 a 17-rule system built from years of installation data. It generates a bill of materials specific to your water, your draw, and your install location.',
       'The proposal includes the configuration name (Mono / Duo / Trio, or 2K / 4K / 6K LPH, etc.), the media selection, vessel grade, controls, install plan, and AMC terms.',
       'For residential customers, the quote is presented as a clean single-line price. For B2B customers, we include the full itemised BOM.',
     ],
@@ -103,9 +103,9 @@ export default function HowItWorksPage() {
       <section className="bg-offwhite border-b border-hairline">
         <div className="container-uw py-16 md:py-24 max-w-4xl">
           <Eyebrow className="mb-6">How it works</Eyebrow>
-          <Display>How a UNIWATER system gets into your home.</Display>
+          <Display>How a Uniwater system gets into your home.</Display>
           <Lede className="text-mute mt-8">
-            One company. Four stages. From first water test to monthly service, the same UNIWATER team owns the system for the life of the contract.
+            One company. Four stages. From first water test to monthly service, the same Uniwater team owns the system for the life of the contract.
           </Lede>
         </div>
       </section>
@@ -216,7 +216,7 @@ export default function HowItWorksPage() {
       <Section padding="default">
         <div className="max-w-reading mx-auto text-center">
           <EditorialAccent className="mx-auto">
-            From start to monthly service, the same UNIWATER team owns the system.
+            From start to monthly service, the same Uniwater team owns the system.
           </EditorialAccent>
         </div>
       </Section>

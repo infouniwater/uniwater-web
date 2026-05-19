@@ -11,7 +11,7 @@ import { PROBLEM_LABEL, type ProblemToken } from '@/content/cross-links';
 export const metadata: Metadata = {
   title: 'Book a free survey',
   description:
-    'Tell us about your home. A UNIWATER engineer will visit, test your water, and write a quote within 48 hours. Free, no obligation.',
+    'Tell us about your home. A Uniwater engineer will visit, test your water, and write a quote within 48 hours. Free, no obligation.',
 };
 
 const REASSURANCE = [
@@ -152,7 +152,7 @@ export default function BookSurveyPage({
           {/* Reassurance aside */}
           <aside className="lg:col-span-5">
             <Photo
-              description="UNIWATER engineer at customer home, taking water sample at kitchen tap"
+              description="Uniwater engineer at customer home, taking water sample at kitchen tap"
               assetRef="book-survey-aside"
               aspect="four-five"
               mobileAspect="sixteen-nine"

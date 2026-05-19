@@ -62,7 +62,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-8 max-w-reading">
             <EditorialAccent className="mb-8">
-              We started UNIWATER because the customers we&rsquo;d worked with for years were spending lakhs on premium fittings, then handing the water itself to whichever local plumber the architect knew.
+              We started Uniwater because the customers we&rsquo;d worked with for years were spending lakhs on premium fittings, then handing the water itself to whichever local plumber the architect knew.
             </EditorialAccent>
             <div className="flex flex-col gap-5">
               <Body className="text-mute">
@@ -72,7 +72,7 @@ export default function AboutPage() {
                 The fix isn&rsquo;t a better kitchen RO. It&rsquo;s a survey before the sale, a system sized to the house, and an engineer who comes back every month. That&rsquo;s the company we built. It hasn&rsquo;t changed since 2020.
               </Body>
               <Caption className="text-mute italic mt-4">
-                &mdash; The UNIWATER team
+                &mdash; The Uniwater team
               </Caption>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-6">
             <Photo
-              description="Team or office photograph — UNIWATER operations in Kolkata"
+              description="Team or office photograph — Uniwater operations in Kolkata"
               assetRef="team-office"
               aspect="five-six"
               mobileAspect="sixteen-nine"
@@ -126,7 +126,7 @@ export default function AboutPage() {
       <Section padding="default" tone="subtle">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">Selected clients</Eyebrow>
-          <Heading level={2}>Where UNIWATER systems run today.</Heading>
+          <Heading level={2}>Where Uniwater systems run today.</Heading>
           <Body className="text-mute mt-4">
             Hospitals, hotels, factories, schools, universities, premium residential complexes. A partial list, in no particular order:
           </Body>

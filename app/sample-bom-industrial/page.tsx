@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Sample BOM — building inlet WTP',
   description:
-    'A representative UNIWATER bill of materials for a 12,000 LPH building WTP. Vessels, media, controls, piping — every line transparent. Sample reference.',
+    'A representative Uniwater bill of materials for a 12,000 LPH building WTP. Vessels, media, controls, piping — every line transparent. Sample reference.',
 };
 
 /**
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
  * this). Per marketing TODO #18.
  *
  * Example covers a 12K LPH building inlet WTP for a 60-flat residential
- * complex — the modal procurement case for UNIWATER's B2B funnel. Numbers
+ * complex — the modal procurement case for Uniwater's B2B funnel. Numbers
  * are representative; real quotes vary with site survey.
  */
 export default function SampleBomPage() {
@@ -32,7 +32,7 @@ export default function SampleBomPage() {
         <div className="container-uw">
           <div className="no-print mb-8 max-w-4xl mx-auto">
             <p className="text-eyebrow font-medium uppercase text-teal mb-2">Sample BOM</p>
-            <h1 className="text-h2 font-light text-navy mb-2">This is what a UNIWATER B2B quote looks like.</h1>
+            <h1 className="text-h2 font-light text-navy mb-2">This is what a Uniwater B2B quote looks like.</h1>
             <p className="text-mute text-body">
               Below is a representative bill of materials for a 12,000 LPH building inlet water-treatment plant serving a 60-flat residential complex. Every line is named: vessel, media, control, piping, electrical, instrumentation. The real BOM your project receives carries the same level of detail, sized to your survey.
             </p>
@@ -49,7 +49,7 @@ export default function SampleBomPage() {
                 <div className="text-caption text-mute mt-1">Sample BOM · for reference only · 2026 catalogue pricing</div>
               </div>
               <div className="text-right text-caption text-mute">
-                <div className="font-medium text-navy">UNIWATER</div>
+                <div className="font-medium text-navy">Uniwater</div>
                 <div>Reference: SAMPLE-WTP-12K-2026</div>
               </div>
             </header>
@@ -246,7 +246,7 @@ export default function SampleBomPage() {
             <footer className="border-t border-hairline pt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <div className="text-caption text-mute uppercase tracking-wide text-[11px]">Prepared by</div>
-                <div className="text-body text-navy font-medium mt-1">UNIWATER engineering team</div>
+                <div className="text-body text-navy font-medium mt-1">Uniwater engineering team</div>
                 <div className="text-caption text-mute">Validity: 30 days from quote date · final BOM after site survey</div>
               </div>
               <div className="text-caption text-mute sm:text-right">

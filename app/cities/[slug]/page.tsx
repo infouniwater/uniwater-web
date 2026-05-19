@@ -36,7 +36,7 @@ export async function generateMetadata({
   if (!content) return { title: 'City' };
   return {
     title: `${content.name} \u2014 Water systems`,
-    description: `UNIWATER water systems in ${content.name}, ${content.country}. ${content.lede}`,
+    description: `Uniwater water systems in ${content.name}, ${content.country}. ${content.lede}`,
   };
 }
 
@@ -79,7 +79,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
               <div className="flex items-center gap-3">
                 <span className="text-eyebrow font-medium uppercase text-teal">{content.country}</span>
               </div>
-              <Display>UNIWATER in {content.name}.</Display>
+              <Display>Uniwater in {content.name}.</Display>
               <Lede className="text-mute">{content.lede}</Lede>
               <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
                 <Button href="/book-survey">Book a free survey</Button>
@@ -139,7 +139,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <Photo
-              description={`UNIWATER local team in ${content.name}, branded uniform, group portrait`}
+              description={`Uniwater local team in ${content.name}, branded uniform, group portrait`}
               assetRef={`city-${content.slug}-team`}
               aspect="four-five"
               mobileAspect="sixteen-nine"
@@ -164,7 +164,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
             {[1, 2, 3].map((i) => (
               <div key={i} className="flex flex-col gap-4">
                 <Photo
-                  description={`${content.name} install #${i} — finished home with UNIWATER system`}
+                  description={`${content.name} install #${i} — finished home with Uniwater system`}
                   assetRef={`city-${content.slug}-install-${i}`}
                   aspect="sixteen-nine"
                 />
@@ -257,7 +257,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
 
       <FinalCTA
         headline={`Ready for a free survey in ${content.name}?`}
-        sub="A UNIWATER engineer will visit, test your water, and respond within one business day."
+        sub="A Uniwater engineer will visit, test your water, and respond within one business day."
       />
     </>
   );

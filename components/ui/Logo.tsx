@@ -12,7 +12,7 @@ interface LogoProps {
 }
 
 /**
- * Brand logo. Renders the official Horizontal SVG (droplet + UNIWATER wordmark
+ * Brand logo. Renders the official Horizontal SVG (droplet + Uniwater wordmark
  * + "WELLNESS STARTS WITH CLEAN WATER" tagline) from public/brand/.
  *
  * Sizes:

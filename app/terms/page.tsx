@@ -5,7 +5,7 @@ import { SITE, CONTACT } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Terms of service',
-  description: 'The terms under which UNIWATER surveys, designs, installs, and services water systems. Survey, payment, install, warranty, AMC, and dispute resolution covered.',
+  description: 'The terms under which Uniwater surveys, designs, installs, and services water systems. Survey, payment, install, warranty, AMC, and dispute resolution covered.',
 };
 
 /**

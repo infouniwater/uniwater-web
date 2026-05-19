@@ -3,7 +3,7 @@
  *
  * Env vars:
  *   RESEND_API_KEY   — secret API key from resend.com (re_xxx...)
- *   RESEND_FROM      — verified sender, e.g. "UNIWATER Leads <leads@uniwater.co.in>"
+ *   RESEND_FROM      — verified sender, e.g. "Uniwater Leads <leads@uniwater.co.in>"
  *                      until the domain is verified, use the Resend sandbox
  *                      sender: "onboarding@resend.dev"
  *   LEAD_NOTIFY_TO   — recipient(s), comma-separated. Defaults to
@@ -75,7 +75,7 @@ export async function sendLeadNotification(input: {
     return;
   }
 
-  const from = process.env.RESEND_FROM ?? 'UNIWATER Leads <onboarding@resend.dev>';
+  const from = process.env.RESEND_FROM ?? 'Uniwater Leads <onboarding@resend.dev>';
   const toRaw = process.env.LEAD_NOTIFY_TO ?? 'buzz.uniwater@gmail.com';
   const to = toRaw.split(',').map((s) => s.trim()).filter(Boolean);
 

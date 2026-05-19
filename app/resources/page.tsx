@@ -36,11 +36,11 @@ const RESOURCES = [
   {
     href: '/case-studies',
     title: 'Case studies',
-    body: 'Where UNIWATER systems run today — hospitals, hotels, factories, schools, premium homes.',
+    body: 'Where Uniwater systems run today — hospitals, hotels, factories, schools, premium homes.',
   },
   {
     href: '/why-uniwater',
-    title: 'Why UNIWATER',
+    title: 'Why Uniwater',
     body: 'Brand positioning, what we don’t claim, and a frank decision tree against other categories.',
   },
 ];

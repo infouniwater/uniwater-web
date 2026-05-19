@@ -102,7 +102,7 @@ export default function ForArchitectsPage() {
 
       <Section padding="default">
         <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Why specify UNIWATER</Eyebrow>
+          <Eyebrow className="mb-4">Why specify Uniwater</Eyebrow>
           <Heading level={2}>Three things specifiers actually need.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -184,7 +184,7 @@ export default function ForArchitectsPage() {
       </Section>
 
       <FinalCTA
-        headline="Specify UNIWATER into your next project."
+        headline="Specify Uniwater into your next project."
         sub="Send your brief — bathrooms, water source, project location. We respond within one business day with a tentative system spec for your drawings."
         primaryCTA={{ label: 'Join the program', href: '/contact?audience=architect' }}
       />

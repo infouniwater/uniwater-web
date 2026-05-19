@@ -228,11 +228,11 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'inside-your-monthly-service-report',
     title: 'What\'s actually in your monthly service report',
     description:
-      'Before, On site, After of a real UNIWATER service visit — parameters logged, work performed, what "flag raised" means. The discipline of year four.',
+      'Before, On site, After of a real Uniwater service visit — parameters logged, work performed, what "flag raised" means. The discipline of year four.',
     publishedAt: '2026-09-04',
     readingMinutes: 5,
     category: 'Service',
-    lede: 'A UNIWATER monthly service visit produces a single-page PDF that lands in the customer\'s inbox by the end of the same day. Most homeowners read it for the first one and then file the rest. The numbers in it, read across twelve months, are the most accurate picture of a home\'s water chemistry that any source produces. They are also the evidence that the system is doing what it was specified to do.',
+    lede: 'A Uniwater monthly service visit produces a single-page PDF that lands in the customer\'s inbox by the end of the same day. Most homeowners read it for the first one and then file the rest. The numbers in it, read across twelve months, are the most accurate picture of a home\'s water chemistry that any source produces. They are also the evidence that the system is doing what it was specified to do.',
     body: [
       { type: 'h2', text: 'Before' },
       { type: 'p', text: 'Before the visit, the customer gets a WhatsApp message twenty-four hours ahead. Date. Window. Technician name. The visit happens when promised. If the customer flags a specific concern in reply — slow flow at one shower, salt re-fill anxiety, a stain that appeared since the last visit — the engineer arrives knowing about it. This is the half of service that homeowners do not usually notice until they have lived with a service company that does not do it.' },
@@ -257,7 +257,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: '2026-09-18',
     readingMinutes: 5,
     category: 'Service',
-    lede: 'Most water companies in India offer one AMC tier and charge per service visit. UNIWATER offers three tiers and prices them honestly against what each one delivers. The decision between tiers is not aspirational — it is a question of what the home\'s water chemistry and the customer\'s service expectations actually need.',
+    lede: 'Most water companies in India offer one AMC tier and charge per service visit. Uniwater offers three tiers and prices them honestly against what each one delivers. The decision between tiers is not aspirational — it is a question of what the home\'s water chemistry and the customer\'s service expectations actually need.',
     body: [
       { type: 'h2', text: 'Standard — quarterly' },
       { type: 'p', text: 'The Standard tier ships with four scheduled preventive visits a year. Each visit follows the full Before / On site / After protocol — parameter testing, media inspection, salt top-up, pressure check, written report. Between visits, the customer has on-call response with a forty-eight-hour SLA on flagged faults.' },

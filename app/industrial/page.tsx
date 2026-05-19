@@ -111,7 +111,7 @@ export default function IndustrialPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/photography/wtp-basement.jpg"
-                  alt="Industrial water treatment plant — three branded UNIWATER vessels in a building basement plant room with overhead piping and concrete walls"
+                  alt="Industrial water treatment plant — three branded Uniwater vessels in a building basement plant room with overhead piping and concrete walls"
                   className="block w-full h-full object-cover"
                   loading="eager"
                   decoding="async"

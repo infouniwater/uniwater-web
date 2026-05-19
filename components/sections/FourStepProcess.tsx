@@ -22,7 +22,7 @@ export function FourStepProcess({ id }: { id?: string }) {
         <Eyebrow className="mb-4">Our process</Eyebrow>
         <Heading level={2} className="mb-4">What we do.</Heading>
         <Body className="text-mute text-lede font-light">
-          From first water test to monthly service, the same UNIWATER team owns the system.
+          From first water test to monthly service, the same Uniwater team owns the system.
         </Body>
       </div>
 

@@ -2,7 +2,7 @@ import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 
 /**
- * "What most sellers do · What UNIWATER does." — a side-by-side that
+ * "What most sellers do · What Uniwater does." — a side-by-side that
  * gives a premium buyer the ammunition to defend the spend internally
  * (to their spouse, their architect, their facilities team).
  *
@@ -29,7 +29,7 @@ const ROWS: Row[] = [
     market:
       'Local plumbers on commission, swapped each visit. The sales person never sees the install.',
     uniwater:
-      'A UNIWATER engineer designs the system and the same team installs it. The person who quoted is on site at handover.',
+      'A Uniwater engineer designs the system and the same team installs it. The person who quoted is on site at handover.',
   },
   {
     topic: 'After handover',
@@ -74,7 +74,7 @@ export function ComparisonBlock() {
         </div>
         <div className="col-span-5 bg-tint/40 p-5">
           <Caption className="text-navy uppercase tracking-wide text-eyebrow font-medium">
-            What UNIWATER does
+            What Uniwater does
           </Caption>
         </div>
       </div>
@@ -99,7 +99,7 @@ export function ComparisonBlock() {
             </div>
             <div className="col-span-5 bg-tint/40 p-6 md:p-8">
               <Caption className="text-navy uppercase tracking-wide text-eyebrow font-medium mb-2 md:hidden">
-                What UNIWATER does
+                What Uniwater does
               </Caption>
               <Body className="text-ink leading-relaxed">{row.uniwater}</Body>
             </div>

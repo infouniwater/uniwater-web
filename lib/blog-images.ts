@@ -30,7 +30,7 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
   },
   'how-to-read-a-water-test': {
     src: `${PHOTO}/service-testing-water.jpg`,
-    alt: 'UNIWATER engineer drawing a water sample at the kitchen tap during the on-site test',
+    alt: 'Uniwater engineer drawing a water sample at the kitchen tap during the on-site test',
   },
   'soft-water-vs-salt-water': {
     src: `${PHOTO}/hairfall.jpg`,
@@ -50,15 +50,15 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
   },
   'inside-your-monthly-service-report': {
     src: `${PHOTO}/service-checkups.jpg`,
-    alt: 'UNIWATER engineer reviewing the monthly service checklist at a customer system',
+    alt: 'Uniwater engineer reviewing the monthly service checklist at a customer system',
   },
   'amc-tiers-honestly': {
     src: `${PHOTO}/service-installing.jpg`,
-    alt: 'A UNIWATER engineer at work — the team that owns the system through the life of the contract',
+    alt: 'A Uniwater engineer at work — the team that owns the system through the life of the contract',
   },
   'remineralisation-after-ro': {
     src: `${PHOTO}/drinking-water-home.jpg`,
-    alt: 'A glass of UNIWATER drinking water on a marble kitchen counter — remineralised, not stripped',
+    alt: 'A glass of Uniwater drinking water on a marble kitchen counter — remineralised, not stripped',
   },
   'premium-fittings-slow-disaster': {
     src: `${PHOTO}/scaling-on-taps.jpg`,
@@ -68,7 +68,7 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
 
 const FALLBACK: BlogFeatureImage = {
   src: `${PHOTO}/service-testing-water.jpg`,
-  alt: 'UNIWATER engineer at a customer home during the on-site water test',
+  alt: 'Uniwater engineer at a customer home during the on-site water test',
 };
 
 export function featureImageFor(slug: string): BlogFeatureImage {

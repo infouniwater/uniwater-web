@@ -251,7 +251,7 @@ export const THREE_CLAIMS = [
   {
     label: 'Engineered, not bought off a shelf.',
     body:
-      'Every UNIWATER system starts from a survey of your actual water, pressure, usage, and space. Catalogue sizes are starting points, not the sale.',
+      'Every Uniwater system starts from a survey of your actual water, pressure, usage, and space. Catalogue sizes are starting points, not the sale.',
   },
   {
     label: 'Hidden, not displayed.',

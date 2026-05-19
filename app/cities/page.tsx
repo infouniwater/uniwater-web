@@ -10,7 +10,7 @@ import { CITY_CONTENT } from '@/content/cities';
 export const metadata: Metadata = {
   title: 'Cities',
   description:
-    'Where UNIWATER operates: 7 cities across India and 2 in Nepal. Own service teams in every city, not subcontracted.',
+    'Where Uniwater operates: 7 cities across India and 2 in Nepal. Own service teams in every city, not subcontracted.',
 };
 
 export default function CitiesIndex() {
@@ -21,7 +21,7 @@ export default function CitiesIndex() {
           <Eyebrow className="mb-4">Where we work</Eyebrow>
           <Display>Nine cities. Own teams.</Display>
           <Lede className="text-mute mt-6">
-            Every UNIWATER survey, install, and monthly service visit is delivered by our own engineers. No subcontracting after the sale.
+            Every Uniwater survey, install, and monthly service visit is delivered by our own engineers. No subcontracting after the sale.
           </Lede>
         </div>
       </section>

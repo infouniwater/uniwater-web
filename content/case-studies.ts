@@ -62,7 +62,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       challenge:
         'The existing setup was fragmented — jar deliveries for drinking water, no inlet treatment, scale and iron staining accumulating in laundry and CSSD. AMC was on-call, not preventive. Equipment downtime was rising with no early-warning visibility.',
       solution:
-        'UNIWATER installed a building inlet WTP (sediment, iron-removal, carbon, softening) sized to peak occupancy, and centralised drinking-water RO with re-mineralisation distributed to point-of-use at ward and OPD level. Comprehensive AMC was contracted from handover: monthly preventive visits, same-day documented reports, 24-hour SLA on flagged faults.',
+        'Uniwater installed a building inlet WTP (sediment, iron-removal, carbon, softening) sized to peak occupancy, and centralised drinking-water RO with re-mineralisation distributed to point-of-use at ward and OPD level. Comprehensive AMC was contracted from handover: monthly preventive visits, same-day documented reports, 24-hour SLA on flagged faults.',
       outcomes: [
         { value: '0', label: 'Jar deliveries since install' },
         { value: '< 30 ppm', label: 'Hardness at every tap, post-softening' },
@@ -70,7 +70,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         { value: '12', label: 'Service visits a year' },
       ],
       quote:
-        'Before UNIWATER, water was something we worried about every quarter. After UNIWATER, it’s something we read in a monthly report.',
+        'Before Uniwater, water was something we worried about every quarter. After Uniwater, it’s something we read in a monthly report.',
       attribution: 'Facilities lead, Charnock Hospital',
     },
   },
@@ -124,7 +124,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       challenge:
         'Variable bore-well chemistry, silica spiking in monsoon, and inconsistent AMC across three suppliers meant boilers were being blowed-down twice the design frequency. Maintenance cost was rising every quarter; nobody owned the trend.',
       solution:
-        'Replaced the patchwork with a single UNIWATER train: 30,000 LPH commercial RO (pre-treatment + dosing + membranes) feeding a 6,000 LPH DM plant for boiler feed; cooling-tower make-up taken from the RO permeate. One AMC, monthly engineer visit, parameter trend reviewed by the plant team in person.',
+        'Replaced the patchwork with a single Uniwater train: 30,000 LPH commercial RO (pre-treatment + dosing + membranes) feeding a 6,000 LPH DM plant for boiler feed; cooling-tower make-up taken from the RO permeate. One AMC, monthly engineer visit, parameter trend reviewed by the plant team in person.',
       outcomes: [
         { value: '< 1 µS/cm', label: 'Conductivity at DM outlet' },
         { value: '50%', label: 'Drop in boiler blowdown frequency' },
