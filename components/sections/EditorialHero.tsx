@@ -29,7 +29,7 @@ export function EditorialHero() {
   return (
     <section className="bg-offwhite border-b border-hairline">
       <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-80px)] py-10 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-10 lg:py-0">
           {/* Text panel — first on mobile (was second, which pushed value
               copy below the fold on phones), still left on desktop. */}
           <div className="lg:col-span-6 flex flex-col gap-7">

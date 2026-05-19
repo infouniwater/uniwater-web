@@ -16,7 +16,7 @@ interface LogoProps {
  * + "WELLNESS STARTS WITH CLEAN WATER" tagline) from public/brand/.
  *
  * Sizes:
- *   - Default (header): h-14 mobile, h-16 desktop  (was h-12 / h-14)
+ *   - Default (header): h-16 mobile, h-20 desktop
  *   - showTagline (footer / hero): h-16 mobile, h-20 desktop
  *
  * Colour: `inverse` switches to the white horizontal variant for navy / dark
@@ -41,7 +41,7 @@ export function Logo({ inverse = false, showTagline = false, className }: LogoPr
         loading={showTagline ? 'lazy' : 'eager'}
         className={cn(
           'block w-auto',
-          showTagline ? 'h-16 md:h-20' : 'h-14 md:h-16',
+          showTagline ? 'h-16 md:h-20' : 'h-16 md:h-20',
         )}
       />
     </Link>

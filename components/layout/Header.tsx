@@ -57,7 +57,7 @@ export function Header() {
         scrolled ? 'border-b border-hairline shadow-[0_2px_8px_rgba(5,69,95,0.04)]' : 'border-b border-transparent'
       )}
     >
-      <div className="container-uw flex items-center justify-between h-16 md:h-20">
+      <div className="container-uw flex items-center justify-between h-20 md:h-24">
         <Logo />
 
         {/* Desktop nav */}
