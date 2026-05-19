@@ -67,6 +67,7 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
+    <>
     <header
       className={cn(
         'sticky top-0 z-50 transition-all duration-200 ease-calm',
@@ -243,7 +244,12 @@ export function Header() {
         </div>
       )}
 
-      {/* Mobile overlay */}
+    </header>
+      {/* Mobile overlay — rendered OUTSIDE the <header> on purpose. The
+          header has backdrop-blur which creates a CSS containing block for
+          fixed-positioned descendants, so a `fixed inset-0` overlay placed
+          inside <header> would be sized to the 80px header bar, not the
+          viewport, and render with zero height. */}
       {mobileOpen && (
         <div
           role="dialog"
@@ -357,6 +363,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
