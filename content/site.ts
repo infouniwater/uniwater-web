@@ -79,6 +79,8 @@ export const PRIMARY_PHONE_HREF = `tel:${PRIMARY_PHONE.replace(/\s/g, '')}`;
 export const WHATSAPP_HREF = `https://wa.me/${PRIMARY_PHONE_E164}`;
 
 // Per Strategy §1.2 and Blueprint §2 — these are FACT, used verbatim, never paraphrased.
+// Constraint added 2026-05-19 per Rajat: only render clients whose logo is in
+// /public/clients/. Don't add a name here until its logo file is in place.
 export const NAMED_CLIENTS = [
   'Charnock Hospital',
   'Birat Medical College',
@@ -88,12 +90,27 @@ export const NAMED_CLIENTS = [
   'Saburi Plywood',
   'GM Group',
   'Omacme',
-  'Acasa by Malani Group',
-  'Azurre Surfaces',
-  'Waterworks',
   'Premier Wires',
   'Kreamz',
 ] as const;
+
+/**
+ * Shared logo lookup. Every entry in NAMED_CLIENTS must have a logo here.
+ * Used by the home-page ProofSection, the /industrial track-record band,
+ * and the /about clients wall — so all three pages render the same files.
+ */
+export const CLIENT_LOGOS: Record<typeof NAMED_CLIENTS[number], { src: string; alt: string }> = {
+  'Charnock Hospital':       { src: '/clients/charnock-hospital.png',       alt: 'Charnock Hospital logo' },
+  'Birat Medical College':   { src: '/clients/birat-medical-college.png',   alt: 'Birat Medical College logo' },
+  'Path Bhavan':             { src: '/clients/path-bhavan.png',             alt: 'Path Bhavan school logo' },
+  'Techno India University': { src: '/clients/techno-india-university.png', alt: 'Techno India University logo' },
+  'Shyam Steel':             { src: '/clients/shyam-steel.png',             alt: 'Shyam Steel logo' },
+  'Saburi Plywood':          { src: '/clients/saburi-plywood.png',          alt: 'Saburi Plywood logo' },
+  'GM Group':                { src: '/clients/gm-group.png',                alt: 'GM Group logo (Sanjeeb & Sujit, since 1984)' },
+  'Omacme':                  { src: '/clients/omacme.png',                  alt: 'Omacme logo' },
+  'Premier Wires':           { src: '/clients/premier-wires.svg',           alt: 'Premier Wires logo' },
+  'Kreamz':                  { src: '/clients/kreamz.png',                  alt: 'Kreamz logo' },
+};
 
 export const CITIES = [
   { slug: 'kolkata', name: 'Kolkata', country: 'India' },

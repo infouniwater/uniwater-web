@@ -5,7 +5,8 @@ import { Photo } from '@/components/ui/Photo';
 import { StatTile } from '@/components/ui/Card';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { CitiesSection } from '@/components/sections/CitiesSection';
-import { NAMED_CLIENTS, STATS, SITE } from '@/content/site';
+import { NAMED_CLIENTS, CLIENT_LOGOS, STATS, SITE } from '@/content/site';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -128,17 +129,27 @@ export default function AboutPage() {
             Hospitals, hotels, factories, schools, universities, premium residential complexes. A partial list, in no particular order:
           </Body>
         </div>
-        {/* TODO Sprint 2: swap text fallback for real client logos when public/images/clients/ is populated.
-            Per BLUEPRINT §15.3 trust hierarchy: text list is the acceptable fallback until logos ship. */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-          {NAMED_CLIENTS.map((client) => (
-            <div
-              key={client}
-              className="aspect-[3/2] border border-hairline bg-offwhite flex items-center justify-center p-4 text-center"
-            >
-              <Caption className="text-navy font-medium leading-tight">{client}</Caption>
-            </div>
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-4">
+          {NAMED_CLIENTS.map((client) => {
+            const logo = CLIENT_LOGOS[client];
+            return (
+              <div
+                key={client}
+                className="aspect-[3/2] border border-hairline bg-offwhite flex items-center justify-center p-4"
+                aria-label={logo.alt}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    sizes="(min-width: 640px) 20vw, 50vw"
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </Section>
 

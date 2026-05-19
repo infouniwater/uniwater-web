@@ -7,7 +7,8 @@ import { Card, StatTile } from '@/components/ui/Card';
 import { Infographic } from '@/components/ui/Infographic';
 import { TextField, TextArea, SelectField } from '@/components/ui/Form';
 import { WHERE_WE_WORK, SYSTEM_TYPES, CAPACITY_BANDS, TECHNICAL_EDGE } from '@/content/industrial';
-import { COMPONENT_MANUFACTURERS, NAMED_CLIENTS, STATS, PRIMARY_PHONE_HREF } from '@/content/site';
+import { COMPONENT_MANUFACTURERS, NAMED_CLIENTS, CLIENT_LOGOS, STATS, PRIMARY_PHONE_HREF } from '@/content/site';
+import Image from 'next/image';
 import { submitRFQ } from '@/app/actions/leads';
 import { PincodeCheck } from '@/components/ui/PincodeCheck';
 
@@ -340,15 +341,27 @@ export default function IndustrialPage() {
           <StatTile value={String(STATS.citiesTotal)} label="Cities served" inverse />
           <StatTile value={String(STATS.skus)} label="Engineered configurations" inverse />
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-          {NAMED_CLIENTS.map((client) => (
-            <div
-              key={client}
-              className="aspect-[3/2] border border-offwhite/15 bg-navy/40 flex items-center justify-center p-4 text-center"
-            >
-              <span className="text-caption text-offwhite font-medium leading-tight">{client}</span>
-            </div>
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-4">
+          {NAMED_CLIENTS.map((client) => {
+            const logo = CLIENT_LOGOS[client];
+            return (
+              <div
+                key={client}
+                className="aspect-[3/2] border border-offwhite/15 bg-offwhite flex items-center justify-center p-4"
+                aria-label={logo.alt}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    sizes="(min-width: 640px) 20vw, 50vw"
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </Section>
 
