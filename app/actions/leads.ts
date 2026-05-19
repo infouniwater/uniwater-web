@@ -50,10 +50,10 @@ function joinDescription(parts: Array<string | undefined>): string {
  * Meta Events Manager (set by Rajat 2026-05-20) so reports are
  * consistent whether or not the event arrived with an explicit value.
  */
-const META_VALUE_BOOK_SURVEY = 14_000;   // BathSoft entry price — anchor of the residential funnel
-const META_VALUE_REMOTE_SURVEY = 400_000; // Remote = larger property → larger install
-const META_VALUE_INDUSTRIAL_RFQ = 100_000;
-const META_VALUE_CONTACT = 100_000;
+const META_VALUE_BOOK_SURVEY = 100_000;   // residential survey converts to mid-size install
+const META_VALUE_REMOTE_SURVEY = 100_000; // similar residential, just remote-managed
+const META_VALUE_INDUSTRIAL_RFQ = 400_000; // commercial scale — highest value
+const META_VALUE_CONTACT = 14_000;        // entry-tier interest, generic
 const META_VALUE_WATER_TEST = 25_000;
 
 /**
