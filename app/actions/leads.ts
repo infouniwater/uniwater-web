@@ -46,13 +46,15 @@ function joinDescription(parts: Array<string | undefined>): string {
  * SIGNALS to the ad optimiser, not pricing commitments — Meta uses them
  * to bid more aggressively for high-value lead types vs. low-value ones.
  *
- *  - mid    (₹50k) — residential install average (single book-survey)
- *  - high   (₹500k) — commercial/industrial average (10× residential)
- *  - low    (₹10k) — entry-tier engagement (contact form, water-test)
+ * Values mirror what's configured on the matching Custom Conversion in
+ * Meta Events Manager (set by Rajat 2026-05-20) so reports are
+ * consistent whether or not the event arrived with an explicit value.
  */
-const META_VALUE_MID = 50_000;
-const META_VALUE_HIGH = 500_000;
-const META_VALUE_LOW = 10_000;
+const META_VALUE_BOOK_SURVEY = 14_000;   // BathSoft entry price — anchor of the residential funnel
+const META_VALUE_REMOTE_SURVEY = 400_000; // Remote = larger property → larger install
+const META_VALUE_INDUSTRIAL_RFQ = 100_000;
+const META_VALUE_CONTACT = 100_000;
+const META_VALUE_WATER_TEST = 25_000;
 
 /**
  * Read what we can about the visitor from the request headers. Used to
@@ -170,7 +172,7 @@ export async function submitBookSurvey(formData: FormData): Promise<void> {
     formLabel: 'Book a free survey',
     emailSubject: `New survey request — ${name ?? 'Unnamed'}${city ? ` (${city})` : ''}`,
     fields,
-    meta: { eventName: 'Schedule', email, phone: mobile, name, city, value: META_VALUE_MID },
+    meta: { eventName: 'Schedule', email, phone: mobile, name, city, value: META_VALUE_BOOK_SURVEY },
   });
 
   redirect('/thank-you?source=book-survey');
@@ -212,7 +214,7 @@ export async function submitContact(formData: FormData): Promise<void> {
     formLabel: 'Contact form',
     emailSubject: `New contact — ${subject ?? name ?? 'General enquiry'}`,
     fields,
-    meta: { eventName: 'Contact', email, phone: mobile, name, value: META_VALUE_LOW },
+    meta: { eventName: 'Contact', email, phone: mobile, name, value: META_VALUE_CONTACT },
   });
 
   redirect('/thank-you?source=contact');
@@ -263,7 +265,7 @@ export async function submitRFQ(formData: FormData): Promise<void> {
     formLabel: 'Industrial RFQ',
     emailSubject: `New RFQ — ${org ?? name ?? 'Unnamed'}${application ? ` · ${application}` : ''}`,
     fields,
-    meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location, value: META_VALUE_HIGH },
+    meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location, value: META_VALUE_INDUSTRIAL_RFQ },
   });
 
   redirect('/thank-you?source=industrial-rfq');
@@ -299,7 +301,7 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
     formLabel: 'Free water-test request',
     emailSubject: `Water-test request — ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
     fields,
-    meta: { eventName: 'Lead', phone: mobile, city, value: META_VALUE_LOW },
+    meta: { eventName: 'Lead', phone: mobile, city, value: META_VALUE_WATER_TEST },
   });
 
   // Bounce the visitor straight to WhatsApp with a pre-filled message.
@@ -364,7 +366,7 @@ export async function submitRemoteSurvey(formData: FormData): Promise<void> {
     formLabel: 'Remote site survey',
     emailSubject: `Remote site survey — ${name ?? 'Unnamed'}${location ? ` (${location})` : ''}`,
     fields,
-    meta: { eventName: 'Schedule', email, phone: mobile, name, city: location, value: META_VALUE_HIGH },
+    meta: { eventName: 'Schedule', email, phone: mobile, name, city: location, value: META_VALUE_REMOTE_SURVEY },
   });
 
   redirect('/thank-you?source=remote-site-survey');
