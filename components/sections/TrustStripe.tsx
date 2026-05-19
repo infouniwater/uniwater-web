@@ -53,7 +53,13 @@ export function TrustStripe() {
           {ITEMS.map((item, i) => (
             <div
               key={item.label}
-              className={`flex flex-col items-center md:items-start text-center md:text-left gap-1 ${i > 0 ? 'pt-6 md:pt-0 md:pl-8' : ''}`}
+              // pt-6 only applies to the SECOND-row cells on mobile (i>=2 in a
+              // 2-col grid). The previous condition (i>0) wrongly pushed the
+              // top-right cell ("9") 24px below the top-left cell ("200+"),
+              // breaking the baseline alignment within row 1.
+              // Desktop md:pl-8 still applies to every non-first cell to clear
+              // the vertical divider on the 4-col single-row layout.
+              className={`flex flex-col gap-1 ${i >= 2 ? 'pt-6' : ''} ${i > 0 ? 'md:pt-0 md:pl-8' : ''}`}
             >
               <div className="text-[28px] md:text-[32px] font-light leading-none text-navy">
                 {item.value}
