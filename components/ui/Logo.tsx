@@ -33,7 +33,7 @@ export function Logo({ inverse = false, showTagline = false, className }: LogoPr
       className={cn('inline-block', className)}
     >
       <Image
-        src={inverse ? '/brand/uniwater-horizontal-white.svg' : '/brand/uniwater-horizontal-coloured.svg'}
+        src={inverse ? '/brand/uniwater-horizontal-white-v2.svg' : '/brand/uniwater-horizontal-coloured.svg'}
         alt="Uniwater — Wellness starts with clean water"
         width={2182}
         height={1080}
