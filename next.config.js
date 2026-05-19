@@ -35,8 +35,10 @@ const nextConfig = {
           // 'unsafe-inline' needed for Next's hydration boundary + the JSON-LD <script>
           // tags written via dangerouslySetInnerHTML. Replace with a per-request
           // nonce once GA4/GTM is wired and we move to a strict CSP.
-          "script-src 'self' 'unsafe-inline'",
-          "connect-src 'self' https://wa.me https://*.odoo.com",
+          // Meta Pixel loads from connect.facebook.net and posts events to
+          // www.facebook.com/tr (handled by connect-src + img-src https:).
+          "script-src 'self' 'unsafe-inline' https://connect.facebook.net",
+          "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com",
           "frame-ancestors 'none'",
           "base-uri 'self'",
           "form-action 'self' https://wa.me",

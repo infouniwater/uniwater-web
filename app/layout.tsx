@@ -3,6 +3,7 @@ import { Signika, Bodoni_Moda } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppFAB } from '@/components/layout/WhatsAppFAB';
+import { MetaPixel } from '@/components/layout/MetaPixel';
 import { SITE } from '@/content/site';
 import { organizationSchema, websiteSchema, jsonLd } from '@/lib/structured-data';
 import './globals.css';
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppFAB />
+        <MetaPixel />
       </body>
     </html>
   );
