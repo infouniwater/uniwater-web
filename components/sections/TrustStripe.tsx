@@ -53,7 +53,7 @@ export function TrustStripe() {
           {ITEMS.map((item, i) => (
             <div
               key={item.label}
-              className={`flex flex-col gap-1 ${i > 0 ? 'pt-6 md:pt-0 md:pl-8' : ''}`}
+              className={`flex flex-col items-center md:items-start text-center md:text-left gap-1 ${i > 0 ? 'pt-6 md:pt-0 md:pl-8' : ''}`}
             >
               <div className="text-[28px] md:text-[32px] font-light leading-none text-navy">
                 {item.value}
