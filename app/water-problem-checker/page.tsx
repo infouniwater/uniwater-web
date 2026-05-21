@@ -7,6 +7,7 @@ import { Eyebrow, Heading, Lede, Body, Caption } from '@/components/ui/Typograph
 import { Button } from '@/components/ui/Button';
 import { TextField, SelectField } from '@/components/ui/Form';
 import { Infographic } from '@/components/ui/Infographic';
+import { ProblemGrid } from '@/components/sections/ProblemGrid';
 import { CITIES } from '@/content/site';
 import { HARDNESS_BANDS } from '@/content/education';
 import { cn } from '@/lib/cn';
@@ -77,6 +78,11 @@ export default function WaterCheckerPage() {
 
   return (
     <>
+      {/* Problem grid — migrated from the homepage on 2026-05-21 to give
+          visitors a symptom-first orientation before they enter the quiz.
+          Same component as the home page used; copy unchanged. */}
+      <ProblemGrid />
+
       <section className="bg-offwhite border-b border-hairline">
         <div className="container-uw py-8 md:py-10">
           <div className="flex items-center justify-between mb-6">

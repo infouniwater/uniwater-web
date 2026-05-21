@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Accordion, AccordionItem } from '@/components/ui/Accordion';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { SystemSelectorTree } from '@/components/sections/SystemSelectorTree';
+import { ComparisonBlock } from '@/components/sections/ComparisonBlock';
 import { THREE_CLAIMS, STATS, COMPONENT_MANUFACTURERS } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -116,6 +117,12 @@ export default function WhyUniwaterPage() {
         </div>
         <SystemSelectorTree />
       </Section>
+
+      {/* "What most sellers do · What Uniwater does" — migrated from the
+          homepage on 2026-05-21. Different framing from the Accordion
+          decision tree below (operational dimensions, not per-scenario),
+          so both sections complement each other on this page. */}
+      <ComparisonBlock />
 
       {/* Decision tree comparison */}
       <Section padding="default">

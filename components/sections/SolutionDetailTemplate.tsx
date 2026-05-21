@@ -29,9 +29,17 @@ import { getBlogsForSolution, bookSurveyHrefForSolution } from '@/content/cross-
  */
 interface Props {
   solution: Solution;
+  /**
+   * Optional content slot rendered immediately above the page's final
+   * CTA. Used to attach solution-specific sections (e.g. the
+   * "five places we've put a system" showcase on the bathroom-filter
+   * page after the 2026-05-21 homepage restructure) without duplicating
+   * the template body per solution.
+   */
+  slotBeforeFinalCTA?: React.ReactNode;
 }
 
-export function SolutionDetailTemplate({ solution }: Props) {
+export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) {
   // Variant: install-context section content differs per solution type
   const installContent = getInstallContent(solution);
   const techSpecs = getTechSpecs(solution);
@@ -556,6 +564,8 @@ export function SolutionDetailTemplate({ solution }: Props) {
 
       {/* Sentinel — SolutionStickyCTA hides past this line. */}
       <div id="solution-sticky-end" aria-hidden="true" />
+
+      {slotBeforeFinalCTA}
 
       <FinalCTA primaryCTA={{ label: 'Book a free survey', href: bookSurveyHref }} />
       <SolutionStickyCTA bookSurveyHref={bookSurveyHref} />
