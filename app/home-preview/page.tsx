@@ -8,6 +8,7 @@ import { FourStepProcess } from '@/components/sections/FourStepProcess';
 import { ProofSection } from '@/components/sections/ProofSection';
 import { CitiesSection } from '@/components/sections/CitiesSection';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { PincodeCheck } from '@/components/ui/PincodeCheck';
 import { Section } from '@/components/ui/Section';
 import { Caption } from '@/components/ui/Typography';
 
@@ -61,6 +62,17 @@ export default function HomePreviewPage() {
       <div id="preview-trust-strip">
         <TrustStripe />
       </div>
+
+      {/* Location checker — kept on the preview per Rajat (2026-05-22). Sits
+          between the stats strip and the audience picker so a visitor can
+          quickly answer "do you even cover my area?" before they engage
+          with the picker. Same component as the live homepage previously
+          used at the equivalent slot. */}
+      <Section padding="tight">
+        <div className="max-w-3xl mx-auto">
+          <PincodeCheck />
+        </div>
+      </Section>
 
       {/* 3. Audience picker — promoted to position 3 */}
       <AudienceRouter />
