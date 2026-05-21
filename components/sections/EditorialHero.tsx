@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Display, Lede } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
-import { HeroAmbience } from '@/components/sections/HeroAmbience';
+import { HeroFiltration } from '@/components/sections/HeroFiltration';
 import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
 
 /**
@@ -40,11 +40,12 @@ export function EditorialHero() {
 
   return (
     <section className="relative bg-offwhite border-b border-hairline overflow-hidden">
-      {/* Hero ambience — two slow-breathing gradient orbs anchored outside
-          the container edges so they bleed into the corner whitespace
-          only, never overlapping text or image. Replaces the prior
-          wave + droplet decoration (too literal, too busy). */}
-      <HeroAmbience />
+      {/* Hero filtration narrative — Before/Arrow/After diptych anchored to
+          the bottom whitespace band only. Communicates the brand promise
+          ("we turn dirty water into clean water") explicitly via labels
+          + motion contrast (dirty jitters, clean pulses). Never overlaps
+          headline text or hero image — confined to the bottom band. */}
+      <HeroFiltration />
       <div className="container-uw relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-14 sm:py-20 md:py-24 lg:py-0">
           {/* Text panel */}
