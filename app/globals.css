@@ -99,4 +99,25 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /* Hero water-flow decoration — three layered wave lines drifting at
+     different speeds and offsets. Each translation distance matches one
+     period of the wave path (300 / 240 / 400 px respectively) so the
+     translate-to-zero wrap is visually seamless. The reduced-motion rule
+     above already collapses the animation to 0.01ms when users opt out. */
+  @keyframes water-flow-1 {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-300px); }
+  }
+  @keyframes water-flow-2 {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-240px); }
+  }
+  @keyframes water-flow-3 {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-400px); }
+  }
+  .animate-water-flow-1 { animation: water-flow-1 22s linear infinite; }
+  .animate-water-flow-2 { animation: water-flow-2 18s linear infinite; }
+  .animate-water-flow-3 { animation: water-flow-3 28s linear infinite; }
 }

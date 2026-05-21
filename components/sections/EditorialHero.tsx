@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Display, Lede } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
+import { WaterFlowDecoration } from '@/components/sections/WaterFlowDecoration';
 import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
 
 /**
@@ -38,8 +39,13 @@ export function EditorialHero() {
   const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
 
   return (
-    <section className="bg-offwhite border-b border-hairline">
-      <div className="container-uw">
+    <section className="relative bg-offwhite border-b border-hairline overflow-hidden">
+      {/* Water-flow decoration — three drifting wave lines at the bottom of
+          the hero. Sits behind the content (z-0) so text and image stay
+          legible; visible mainly in the empty space below the centered
+          content panel at lg+ heights. */}
+      <WaterFlowDecoration />
+      <div className="container-uw relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-6 lg:py-0">
           {/* Text panel */}
           <div className="lg:col-span-6 flex flex-col gap-6">
