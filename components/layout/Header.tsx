@@ -19,11 +19,27 @@ const RESIDENTIAL_LINKS = [
   { slug: 'activated-carbon-filter', label: 'Activated carbon filter' },
 ];
 
+/** Items inside the Resources dropdown. PDFs render with `download` so the
+ *  browser triggers a save dialog instead of opening the PDF inline — the
+ *  catalogues are meant to be saved and shared, not browsed in a new tab. */
+const RESOURCES_DROPDOWN = [
+  {
+    label: 'Homeowner catalogue (PDF)',
+    href: '/downloads/uniwater-homeowner-catalogue-2026.pdf',
+    download: true,
+  },
+  {
+    label: 'Commercial catalogue (PDF)',
+    href: '/downloads/uniwater-commercial-catalogue-2026.pdf',
+    download: true,
+  },
+];
+
 const NAV_ITEMS = [
   { label: 'Solutions', href: '/solutions', hasMega: true },
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Why Uniwater', href: '/why-uniwater' },
-  { label: 'Resources', href: '/resources' },
+  { label: 'Resources', href: '/resources', hasDropdown: true },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -33,7 +49,9 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
   // Mega-menu close debounce. Without this, the trigger's onMouseLeave fires
   // the moment the cursor leaves the small "Solutions ⌄" hit area, and the
@@ -50,6 +68,21 @@ export function Header() {
   const scheduleCloseMega = () => {
     if (megaCloseTimer.current) clearTimeout(megaCloseTimer.current);
     megaCloseTimer.current = setTimeout(() => setMegaOpen(false), 150);
+  };
+
+  // Same close-debounce pattern for the Resources dropdown so the cursor
+  // can cross the gap between the trigger and the floating panel.
+  const resourcesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openResources = () => {
+    if (resourcesCloseTimer.current) {
+      clearTimeout(resourcesCloseTimer.current);
+      resourcesCloseTimer.current = null;
+    }
+    setResourcesOpen(true);
+  };
+  const scheduleCloseResources = () => {
+    if (resourcesCloseTimer.current) clearTimeout(resourcesCloseTimer.current);
+    resourcesCloseTimer.current = setTimeout(() => setResourcesOpen(false), 150);
   };
 
   useEffect(() => {
@@ -99,6 +132,50 @@ export function Header() {
                     <path d="M2 4L5 7L8 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </Link>
+              </div>
+            ) : item.hasDropdown ? (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={openResources}
+                onMouseLeave={scheduleCloseResources}
+              >
+                <Link
+                  href={item.href}
+                  className="text-[15px] text-ink hover:text-teal transition-colors duration-200 ease-calm flex items-center gap-1"
+                  aria-expanded={resourcesOpen}
+                  aria-haspopup="true"
+                >
+                  {item.label}
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M2 4L5 7L8 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </Link>
+                {/* Small floating dropdown panel — opens on hover, closes after
+                    a 150ms debounce so the cursor can cross the gap to it. */}
+                {resourcesOpen && (
+                  <div
+                    className="absolute left-0 top-full pt-2 min-w-[280px] animate-fade-in z-50"
+                    onMouseEnter={openResources}
+                    onMouseLeave={scheduleCloseResources}
+                  >
+                    <div className="bg-offwhite border border-hairline shadow-[0_8px_24px_rgba(5,69,95,0.08)]">
+                      <ul className="py-2">
+                        {RESOURCES_DROPDOWN.map((entry) => (
+                          <li key={entry.href}>
+                            <a
+                              href={entry.href}
+                              download={entry.download || undefined}
+                              className="block px-5 py-3 text-body text-ink hover:bg-tint/40 hover:text-teal transition-colors duration-200 ease-calm"
+                            >
+                              {entry.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <Link
@@ -311,6 +388,53 @@ export function Header() {
                           Industrial &amp; institutional systems
                         </Link>
                       </li>
+                    </ul>
+                  )}
+                </div>
+              ) : item.hasDropdown ? (
+                <div key={item.label} className="border-b border-hairline">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex-1 py-4 text-h3 font-medium text-navy"
+                    >
+                      {item.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setMobileResourcesOpen((open) => !open)}
+                      aria-expanded={mobileResourcesOpen}
+                      aria-controls="mobile-resources-list"
+                      aria-label={mobileResourcesOpen ? 'Hide resources list' : 'Show resources list'}
+                      className="p-4 -mr-4 text-mute hover:text-teal transition-colors duration-200 ease-calm"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        aria-hidden="true"
+                        className={cn('transition-transform duration-200 ease-calm', mobileResourcesOpen ? 'rotate-180' : 'rotate-0')}
+                      >
+                        <path d="M3 5L7 9L11 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                  </div>
+                  {mobileResourcesOpen && (
+                    <ul id="mobile-resources-list" className="pb-4 flex flex-col gap-2 animate-fade-in">
+                      {RESOURCES_DROPDOWN.map((entry) => (
+                        <li key={entry.href}>
+                          <a
+                            href={entry.href}
+                            download={entry.download || undefined}
+                            onClick={() => setMobileOpen(false)}
+                            className="block py-2 pl-1 text-body text-ink hover:text-teal transition-colors duration-200 ease-calm"
+                          >
+                            {entry.label}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </div>
