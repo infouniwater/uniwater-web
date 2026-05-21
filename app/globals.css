@@ -120,4 +120,55 @@
   .animate-water-flow-1 { animation: water-flow-1 22s linear infinite; }
   .animate-water-flow-2 { animation: water-flow-2 18s linear infinite; }
   .animate-water-flow-3 { animation: water-flow-3 28s linear infinite; }
+
+  /* Hero water-droplet animations — falling, floating, drifting, rippling.
+     Used by components/sections/WaterFlowDecoration to layer ~11 droplets
+     across the hero. Each droplet uses a single animation class; the variety
+     (different durations + delays) prevents synchronized "marching" motion. */
+
+  /* FALL: droplet emerges at top, accelerates down, fades out. */
+  @keyframes droplet-fall {
+    0%   { transform: translateY(0);    opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(620px); opacity: 0; }
+  }
+
+  /* FLOAT: gentle vertical bob with tiny rotation, in place. */
+  @keyframes droplet-float {
+    0%, 100% { transform: translateY(0)    rotate(0deg);  }
+    50%      { transform: translateY(-12px) rotate(3deg); }
+  }
+
+  /* DRIFT: slow diagonal drift, returns to origin. */
+  @keyframes droplet-drift {
+    0%, 100% { transform: translate(0, 0); }
+    33%      { transform: translate(14px, -8px); }
+    66%      { transform: translate(-10px, -14px); }
+  }
+
+  /* RIPPLE: expanding circle that fades to nothing. */
+  @keyframes droplet-ripple {
+    0%   { transform: scale(0.4); opacity: 0.7; }
+    100% { transform: scale(2.4); opacity: 0;   }
+  }
+
+  /* Fall — 4 staggered streams */
+  .animate-droplet-fall-1 { animation: droplet-fall  8s linear infinite;        }
+  .animate-droplet-fall-2 { animation: droplet-fall 11s linear infinite 3s;     }
+  .animate-droplet-fall-3 { animation: droplet-fall  9s linear infinite 1.5s;   }
+  .animate-droplet-fall-4 { animation: droplet-fall 10s linear infinite 5s;     }
+
+  /* Float — 3 hovering drops at different cadences */
+  .animate-droplet-float-1 { animation: droplet-float 4s ease-in-out infinite;       }
+  .animate-droplet-float-2 { animation: droplet-float 5s ease-in-out infinite 1s;    }
+  .animate-droplet-float-3 { animation: droplet-float 6s ease-in-out infinite 2s;    }
+
+  /* Drift — 2 longer-cycle wanderers */
+  .animate-droplet-drift-1 { animation: droplet-drift 12s ease-in-out infinite;      }
+  .animate-droplet-drift-2 { animation: droplet-drift 15s ease-in-out infinite 4s;   }
+
+  /* Ripple — 2 expanding splashes */
+  .animate-droplet-ripple-1 { animation: droplet-ripple 4s ease-out infinite;        }
+  .animate-droplet-ripple-2 { animation: droplet-ripple 5s ease-out infinite 2s;     }
 }

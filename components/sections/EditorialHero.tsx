@@ -46,7 +46,7 @@ export function EditorialHero() {
           content panel at lg+ heights. */}
       <WaterFlowDecoration />
       <div className="container-uw relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-6 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-14 sm:py-20 md:py-24 lg:py-0">
           {/* Text panel */}
           <div className="lg:col-span-6 flex flex-col gap-6">
             <Display>Wellness starts with clean water.</Display>
