@@ -100,29 +100,4 @@
     }
   }
 
-  /* Hero filtration narrative — three elements in the bottom whitespace
-     band tell the brand story (dirty water → filter → clean water).
-     The motion vocabulary reinforces the metaphor:
-       - dirty-jitter: nervous wobble  (turbidity, impurity)
-       - flow-slide:   smooth pulse    (the transformation)
-       - clean-pulse:  calm scale      (purity, presence)
-     Site-wide prefers-reduced-motion rule above collapses to ~0ms. */
-  @keyframes dirty-jitter {
-    0%, 100% { transform: translateX(0)    rotate(-1deg); }
-    25%      { transform: translateX(-1.5px) rotate(1deg);  }
-    50%      { transform: translateX(1.5px)  rotate(-1deg); }
-    75%      { transform: translateX(-1.5px) rotate(1deg);  }
-  }
-  @keyframes flow-slide {
-    0%   { transform: translateX(-6px); opacity: 0.45; }
-    50%  { transform: translateX(6px);  opacity: 1;    }
-    100% { transform: translateX(-6px); opacity: 0.45; }
-  }
-  @keyframes clean-pulse {
-    0%, 100% { transform: scale(1);    opacity: 0.85; }
-    50%      { transform: scale(1.08); opacity: 1;    }
-  }
-  .animate-dirty-jitter { animation: dirty-jitter 1.4s ease-in-out infinite; }
-  .animate-flow-slide   { animation: flow-slide   2.6s ease-in-out infinite; }
-  .animate-clean-pulse  { animation: clean-pulse  3s   ease-in-out infinite; }
 }

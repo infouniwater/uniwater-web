@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { Display, Lede } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
-import { HeroFiltration } from '@/components/sections/HeroFiltration';
 import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
 
 /**
@@ -39,14 +38,8 @@ export function EditorialHero() {
   const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
 
   return (
-    <section className="relative bg-offwhite border-b border-hairline overflow-hidden">
-      {/* Hero filtration narrative — Before/Arrow/After diptych anchored to
-          the bottom whitespace band only. Communicates the brand promise
-          ("we turn dirty water into clean water") explicitly via labels
-          + motion contrast (dirty jitters, clean pulses). Never overlaps
-          headline text or hero image — confined to the bottom band. */}
-      <HeroFiltration />
-      <div className="container-uw relative z-10">
+    <section className="bg-offwhite border-b border-hairline">
+      <div className="container-uw">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-14 sm:py-20 md:py-24 lg:py-0">
           {/* Text panel */}
           <div className="lg:col-span-6 flex flex-col gap-6">
