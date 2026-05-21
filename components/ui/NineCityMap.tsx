@@ -99,6 +99,10 @@ export function NineCityMap() {
               textAnchor={p.anchor ?? 'start'}
               fill="#FAFAF7"
               opacity="0.92"
+              /* Without aria-label the city name + country tspan concatenate
+                 visually-fine but read aloud as "NoidaIndia". Explicit label
+                 keeps screen readers + copy-paste correct. */
+              aria-label={`${p.name}, ${p.country}`}
             >
               {p.name}
               <tspan

@@ -34,10 +34,14 @@ const AUDIENCES = [
   },
   {
     label: 'I specify or install water systems.',
+    // Trimmed the "Architect spec packs" sentence on 2026-05-22 when the
+    // href moved from /for-architects to /for-plumbers — architects are
+    // already served by the card above; this card is exclusively the
+    // installer / trade-partner audience.
     body:
-      'Architect spec packs and section drawings. Plumber partner programme with margin you can live on. Trade access to the catalogue and the install library.',
+      'Partner programme with margin you can live on. Trade access to the catalogue and the install library.',
     cta: 'Open the partner programme',
-    href: '/for-architects',
+    href: '/for-plumbers',
   },
 ];
 

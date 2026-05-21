@@ -7,8 +7,6 @@ import { FourStepProcess } from '@/components/sections/FourStepProcess';
 import { ProofSection } from '@/components/sections/ProofSection';
 import { CitiesSection } from '@/components/sections/CitiesSection';
 import { FinalCTA } from '@/components/sections/FinalCTA';
-import { Section } from '@/components/ui/Section';
-import { Caption } from '@/components/ui/Typography';
 import { FOUR_STEPS } from '@/content/education';
 import { jsonLd, serviceSchema } from '@/lib/structured-data';
 
@@ -81,21 +79,16 @@ export default function HomePage() {
       {/* 8. Cities */}
       <CitiesSection />
 
-      {/* Composite homeowner pull-quote — relocated from the hero. Sits
-          just above the final CTA so the page closes with an emotional
-          beat before the action. Attribution kept as composite until the
-          post-install review-collection flow ships a verified named-customer
-          quote we can publish in its place. */}
-      <Section padding="tight" tone="plain">
-        <figure className="max-w-3xl mx-auto text-center">
-          <blockquote className="font-editorial italic text-navy text-lede md:text-h3 leading-snug [text-wrap:balance]">
-            &ldquo;Three years in, the geyser still feels new and the marble grout hasn&rsquo;t taken a stain. The engineer comes back every month and tells us what the water did. That&rsquo;s not normal.&rdquo;
-          </blockquote>
-          <Caption className="text-mute mt-4">
-            &mdash; Composite, based on residential install-handover feedback
-          </Caption>
-        </figure>
-      </Section>
+      {/* Composite homeowner pull-quote previously rendered here was removed
+          2026-05-22 per Part 5.3 of the homepage-restructure-2 brief.
+          Reasoning: the prior attribution ("Composite, based on residential
+          install-handover feedback") reads as "we made this up from real
+          feedback" and hurts trust more than it helps. Real testimonials
+          exist in content/case-studies.ts but they're all B2B-operations-
+          toned (hospital, plywood, steel plant) — they would tonally clash
+          with the homepage's residential-wellness pitch. Until a real
+          residential testimonial lands from the post-install review-
+          collection flow, the page closes directly into the final CTA. */}
 
       {/* 9. Final CTA */}
       <FinalCTA />
