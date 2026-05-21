@@ -145,8 +145,11 @@ export default function HowItWorksPage() {
         </div>
       </Section>
 
-      {/* Customer journey timeline — SVG-004. 5 stages: Survey → Quote → Install → Handover → Service. */}
-      <Section padding="default">
+      {/* Customer journey timeline — SVG-004. 5 stages: Survey → Quote → Install → Handover → Service.
+          Hidden on mobile because even the portrait 700×1400 variant renders ~750px tall on a phone
+          and the in-SVG body text scales to ~12px. The long-form STEP_DETAIL section below carries
+          every stage in readable text, so mobile users lose no information. (User feedback 2026-05-21.) */}
+      <Section padding="default" className="hidden md:block">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">The journey, on one line</Eyebrow>
           <Heading level={2}>From the first survey to monthly service for life.</Heading>

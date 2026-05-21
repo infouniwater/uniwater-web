@@ -107,14 +107,14 @@ export default function WhyUniwaterPage() {
             Three branches by water need. Every leaf is a real Uniwater product. Categories that fit below each need are named in the footnotes &mdash; we&rsquo;re honest about when we&rsquo;re not the right answer.
           </Body>
         </div>
-        {/* On desktop the infographic fits a content column comfortably.
-            On mobile the labels would get too small to read if forced into
-            a narrow viewport — so we keep a 720px floor and let the user
-            scroll horizontally. A small "swipe →" hint appears on phones. */}
-        <p className="text-caption text-mute italic md:hidden mb-3">
-          Swipe horizontally to read the full tree →
-        </p>
-        <div className="overflow-x-auto -mx-6 sm:-mx-12 lg:-mx-16 px-6 sm:px-12 lg:px-16">
+        {/* SVG-005 comparison-tree (1800×1450) is hidden on mobile — labels render
+            at ~4-6px even with the prior horizontal-scroll workaround, which read
+            as broken rather than navigable. The Accordion DECISION_TREE below
+            ("How we compare" → "Which brand is right for which problem?") carries
+            the same brand-vs-brand information as plain-text on mobile. The SVG
+            returns at md+ where it fits a 720px column at readable typography.
+            (User feedback 2026-05-21.) */}
+        <div className="hidden md:block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/infographics/comparison-tree.svg"
