@@ -34,14 +34,15 @@ const AUDIENCES = [
   },
   {
     label: 'I specify or install water systems.',
-    // Trimmed the "Architect spec packs" sentence on 2026-05-22 when the
-    // href moved from /for-architects to /for-plumbers — architects are
-    // already served by the card above; this card is exclusively the
-    // installer / trade-partner audience.
+    // 2026-05-22: href moved from /for-plumbers → /for-trade so the trade
+    // audience lands on a three-way chooser (sanitary-ware seller /
+    // architect / plumber) instead of being routed straight to the
+    // plumber page. Body softened from "partner programme" specifics to
+    // an audience-agnostic line that suits all three trade lanes.
     body:
-      'Partner programme with margin you can live on. Trade access to the catalogue and the install library.',
-    cta: 'Open the partner programme',
-    href: '/for-plumbers',
+      'Three ways to work with us — for dealers, designers, and installers. Trade access, install support, lead routing.',
+    cta: 'See the trade programme',
+    href: '/for-trade',
   },
 ];
 
