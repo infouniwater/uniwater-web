@@ -120,7 +120,7 @@ export const FOUR_STEPS = [
     n: '01',
     title: 'Survey.',
     body:
-      'An engineer visits the site, tests the water, and maps the plumbing, pressure, and space. No quote until this is done.',
+      'An engineer visits, tests the water, and maps plumbing, pressure, and space — no quote until this is done.',
   },
   {
     n: '02',

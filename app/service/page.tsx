@@ -4,6 +4,7 @@ import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from 
 import { Photo } from '@/components/ui/Photo';
 import { Button } from '@/components/ui/Button';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { ServiceSection } from '@/components/sections/ServiceSection';
 import { SERVICE_PROTOCOL, AMC_TIERS, TWELVE_MONTHS } from '@/content/service';
 import { cn } from '@/lib/cn';
 
@@ -41,6 +42,13 @@ export default function ServicePage() {
           </div>
         </div>
       </section>
+
+      {/* "Service is the system" 3-pillar block — migrated from the homepage
+          on 2026-05-21. Sits between the page hero and the detailed protocol
+          block; the three pillars (Automated / Verified by an engineer / Owned
+          by us) frame the more granular "Before / On site / After" content
+          that follows. Copy unchanged from the homepage version. */}
+      <ServiceSection />
 
       {/* Service protocol — Before / On site / After */}
       <Section padding="default" tone="plain">
