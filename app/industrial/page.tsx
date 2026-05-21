@@ -15,7 +15,7 @@ import { PincodeCheck } from '@/components/ui/PincodeCheck';
 export const metadata: Metadata = {
   title: 'Industrial &amp; institutional water systems',
   description:
-    'Engineered water systems for industry, hospitality, healthcare. 8,000 LPH building plants to 50,000 LPH industrial RO. SCADA-ready. AMC-priced.',
+    'Engineered water systems for industry, hospitality, healthcare. 8,000 LPH building plants to 50,000 LPH industrial RO. AMC-priced.',
 };
 
 const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
@@ -126,7 +126,7 @@ export default function IndustrialPage() {
       <Section tone="navy" padding="tight">
         <div className="border-y border-offwhite/15 py-8 -my-8">
           <Lede inverse className="text-offwhite/85 max-w-4xl">
-            From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM. SCADA-ready. Designed by engineers; serviced by engineers.
+            From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM. Designed by engineers; serviced by engineers.
           </Lede>
         </div>
       </Section>
