@@ -5,6 +5,7 @@ import { Photo } from '@/components/ui/Photo';
 import { Card } from '@/components/ui/Card';
 import { Accordion, AccordionItem } from '@/components/ui/Accordion';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { SystemSelectorTree } from '@/components/sections/SystemSelectorTree';
 import { THREE_CLAIMS, STATS, COMPONENT_MANUFACTURERS } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -98,7 +99,13 @@ export default function WhyUniwaterPage() {
         </div>
       </Section>
 
-      {/* System selector visual — SVG-005. Forks on what the water needs, not who the customer is. */}
+      {/* System selector — formerly SVG-005 (public/images/infographics/
+          comparison-tree.svg). Replaced 2026-05-21 with the native
+          <SystemSelectorTree /> component because the SVG had two
+          unfixable bugs: line spacing smaller than font size (heading
+          lines overlapped) and fixed-width columns that overflowed on
+          any long copy. The native component uses CSS grid + auto-wrap,
+          so the same data renders cleanly at every breakpoint. */}
       <Section padding="default" tone="subtle">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">System selector</Eyebrow>
@@ -107,23 +114,7 @@ export default function WhyUniwaterPage() {
             Three branches by water need. Every leaf is a real Uniwater product. Categories that fit below each need are named in the footnotes &mdash; we&rsquo;re honest about when we&rsquo;re not the right answer.
           </Body>
         </div>
-        {/* SVG-005 comparison-tree (1800×1450) is hidden on mobile — labels render
-            at ~4-6px even with the prior horizontal-scroll workaround, which read
-            as broken rather than navigable. The Accordion DECISION_TREE below
-            ("How we compare" → "Which brand is right for which problem?") carries
-            the same brand-vs-brand information as plain-text on mobile. The SVG
-            returns at md+ where it fits a 720px column at readable typography.
-            (User feedback 2026-05-21.) */}
-        <div className="hidden md:block">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/infographics/comparison-tree.svg"
-            alt="System-selection decision tree — three branches by water need: drinking water (kitchen RO or centralised), whole bathroom or house (BathSoft Mono/Duo/Trio or HomeSoft 2K/4K/6K), or a building (WTP 8K through 30K). Each branch ends with a 'Below this need' footnote naming the category that fits at a lower tier."
-            className="block w-full h-auto md:min-w-[720px] mx-auto"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+        <SystemSelectorTree />
       </Section>
 
       {/* Decision tree comparison */}

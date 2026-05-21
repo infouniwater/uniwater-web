@@ -4,6 +4,7 @@ import { Eyebrow, Display, Heading, Lede, Body, EditorialAccent } from '@/compon
 import { Photo } from '@/components/ui/Photo';
 import { Card } from '@/components/ui/Card';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { CustomerJourneyTimeline } from '@/components/sections/CustomerJourneyTimeline';
 import { FOUR_STEPS } from '@/content/education';
 
 export const metadata: Metadata = {
@@ -145,29 +146,19 @@ export default function HowItWorksPage() {
         </div>
       </Section>
 
-      {/* Customer journey timeline — SVG-004. 5 stages: Survey → Quote → Install → Handover → Service.
-          Hidden on mobile because even the portrait 700×1400 variant renders ~750px tall on a phone
-          and the in-SVG body text scales to ~12px. The long-form STEP_DETAIL section below carries
-          every stage in readable text, so mobile users lose no information. (User feedback 2026-05-21.) */}
-      <Section padding="default" className="hidden md:block">
+      {/* Customer journey timeline — formerly SVG-004 (public/images/infographics/
+          landscape|portrait/customer-journey.svg). Replaced 2026-05-21 with a
+          native React component because the SVG used absolute pixel positioning
+          that clipped text at the viewBox edges and overlapped multi-line copy
+          when y-offsets fell short of the font size. The native version uses
+          CSS grid + auto-wrap so the same data renders correctly at every
+          breakpoint without fragile hand-tuned positions. */}
+      <Section padding="default">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">The journey, on one line</Eyebrow>
           <Heading level={2}>From the first survey to monthly service for life.</Heading>
         </div>
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcSet="/images/infographics/portrait/customer-journey.svg"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/infographics/landscape/customer-journey.svg"
-            alt="Customer journey timeline — five stages from on-site survey within 24 hours, to quote within 48 hours, to install within seven days, to same-day handover, to monthly service for life"
-            className="block w-full h-auto"
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
+        <CustomerJourneyTimeline />
       </Section>
 
       {/* Long-form stages */}
