@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { Display, Lede } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
 import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
+import { HeroDropletAnimation } from './HeroDropletAnimation';
 
 /**
  * Editorial home hero — restructured 2026-05-21 per homepage-restructure
@@ -22,17 +22,13 @@ import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
  * live in the header + footer + WhatsAppFAB, so the hero stays focused.
  */
 
-const HERO_IMAGE = {
-  // TODO: Replace hero image. Brief: either (a) before/after split of
-  // scaled tap or stained marble grout vs. clean, or (b) wide
-  // finished-bathroom shot with small inset showing the hidden install.
-  // The current image is the marble-bathroom hero that has been bumped
-  // to its second appearance on the page — card 02 of the "five places"
-  // showcase on /solutions/bathroom-filter. Placeholder kept for layout.
-  src: '/images/photography/bathroom-filter-hero.jpg',
-  alt:
-    'Placeholder hero image — to be replaced. Currently shows a Uniwater BathSoft installation in a marble luxury bathroom.',
-};
+// Hero visual: HERO_VIDEO_SRC takes precedence when present; otherwise
+// the right-side whitespace gets the droplet animation (sandbox-
+// approved, ported in HeroDropletAnimation). Animation only renders on
+// `lg`+ because the portrait viewBox would clip in the landscape mobile
+// cell after the column stacks.
+const HERO_VIDEO_POSTER =
+  '/images/photography/bathroom-filter-hero.jpg';
 
 export function EditorialHero() {
   const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
@@ -70,29 +66,27 @@ export function EditorialHero() {
             </p>
           </div>
 
-          {/* Visual — see HERO_IMAGE comment above for the replacement brief. */}
-          <div className="lg:col-span-6 lg:py-12">
-            <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[56/75]">
+          {/* Visual — droplet animation on lg+. Below lg the visual
+              column doesn't render: the portrait viewBox (320×440) is
+              shaped for a tall portrait container, and after the grid
+              stacks on tablet/mobile this cell becomes landscape, which
+              would clip the splash at the bottom. Hiding rather than
+              degrading was the explicit decision per the handoff brief.
+              No layout shift — the column simply collapses on <lg. */}
+          <div className="hidden lg:block lg:col-span-6 lg:py-12">
+            <div className="relative w-full overflow-hidden aspect-[56/75]">
               {HERO_VIDEO_SRC ? (
                 <video
                   src={HERO_VIDEO_SRC}
-                  poster={HERO_IMAGE.src}
+                  poster={HERO_VIDEO_POSTER}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  aria-label={HERO_IMAGE.alt}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               ) : (
-                <Image
-                  src={HERO_IMAGE.src}
-                  alt={HERO_IMAGE.alt}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover animate-ken-burns"
-                />
+                <HeroDropletAnimation />
               )}
             </div>
           </div>
