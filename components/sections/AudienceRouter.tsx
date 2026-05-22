@@ -28,7 +28,7 @@ const AUDIENCES = [
   {
     label: 'I run a building, hotel, or factory.',
     body:
-      'Engineered water at scale. 8K LPH building plants to 50K LPH industrial RO. RFQ today, BOM and price within five working days, AMC priced at handover.',
+      'Engineered water at scale. 8K LPH building plants to 50K LPH industrial RO. RFQ today, site visit within five working days, BOM and price five working days after that, AMC priced at handover.',
     cta: 'Submit an RFQ',
     href: '/industrial#rfq',
   },

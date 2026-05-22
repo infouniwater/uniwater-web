@@ -947,6 +947,28 @@ function getTechSpecs(solution: Solution) {
   };
 }
 
+// Per-installContext answer to "How long does installation take?" The
+// previous single binary branched only on whole-house-water-filter and
+// gave the bathroom-day answer for iron / softener / sediment / carbon,
+// which all ship whole-house variants too.
+function getInstallDurationAnswer(solution: Solution): string {
+  switch (solution.installContext) {
+    case 'bathroom-five-places':
+      return 'Most bathroom installs complete in a single day. Larger configurations or wall-recess installs may extend to two days.';
+    case 'whole-house-inlet':
+      return 'A whole-house install typically takes one to two days. The bulk of the time is in the plumbing, not the equipment.';
+    case 'point-of-use':
+      return 'A point-of-use kitchen install completes in a half-day. Centralised drinking-water systems for villas or offices take one to two days depending on plumbing.';
+    case 'pretreatment-stage':
+    case 'specialised-media':
+      // Multi-tier products: bathroom variant is a day, whole-house is
+      // one to two days. Give both so the visitor self-locates.
+      return 'A bathroom install completes in a single day. A whole-house install typically takes one to two days, with most of the time spent on plumbing rather than equipment.';
+    default:
+      return 'Most home installs complete in one to two days. The exact timing depends on plumbing complexity and is confirmed at the survey.';
+  }
+}
+
 function getFaqs(solution: Solution) {
   return [
     {
@@ -955,10 +977,7 @@ function getFaqs(solution: Solution) {
     },
     {
       q: 'How long does installation take?',
-      a:
-        solution.slug === 'whole-house-water-filter'
-          ? 'A whole-house install typically takes one to two days. The bulk of the time is in the plumbing, not the equipment.'
-          : 'Most bathroom installs complete in a single day. Larger configurations or wall-recess installs may extend to two days.',
+      a: getInstallDurationAnswer(solution),
     },
     {
       q: 'What if my supply chemistry changes over the years?',

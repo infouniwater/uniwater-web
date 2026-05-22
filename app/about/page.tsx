@@ -40,12 +40,21 @@ export default function AboutPage() {
               </Lede>
             </div>
             <div className="lg:col-span-5 order-1 lg:order-2">
-              <Photo
-                description="Founder portrait — natural light, considered, professional"
-                assetRef="founder-portrait"
-                aspect="four-five"
-                mobileAspect="sixteen-nine"
-              />
+              {/* Founder portrait pending. In the meantime, an editorial
+                  brand shot (backlit rain shower with shampoo bottles
+                  in shadow) lives in this slot — same "premium homes,
+                  considered" register as the hero copy. Replace with
+                  the founder portrait when the photo lands. */}
+              <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[4/5]">
+                <Image
+                  src="/images/photography/homepage-hero.jpg"
+                  alt="Editorial brand image — a hand reaching into a backlit rain shower with shampoo bottles in shadow, evoking the wellness-from-water register that the company was built around."
+                  fill
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>

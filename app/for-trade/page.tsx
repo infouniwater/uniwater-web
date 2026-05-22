@@ -47,18 +47,20 @@ const AUDIENCES: ReadonlyArray<TradeAudience> = [
       'No inventory risk on commercial enquiries. We engineer the system; you keep the customer relationship.',
     ],
     cta: 'Open the dealer enquiry',
-    href: '/contact',
+    // Audience tag preserves the dealer context across the /contact
+    // hop so inbound leads land tagged in the CRM (architect + plumber
+    // get their own pages, so they self-segment by destination URL).
+    href: '/contact?audience=dealer',
   },
   {
     eyebrow: 'Architect & interior designer',
     heading: 'Spec into the plan, not after tile.',
     body:
-      'Documentation that holds up to scrutiny — vessel footprints, BIM blocks, install drawings, technical PDFs.',
+      'Documentation that survives a submittal review. DWG, BIM, install drawings — designed for the way you actually work.',
     bullets: [
-      'Submittal-grade DWG and PDF vessel footprints across every capacity.',
-      'Revit families for residential and building plant systems.',
-      'Architectural section drawings of the five install patterns — false ceiling, shaft, recess, under-counter, utility room.',
-      'A single survey-led partner from BathSoft Mono through 30,000 LPH building plant.',
+      'Submittal-grade footprints and Revit families.',
+      'Section drawings for the five install patterns.',
+      'A single survey-led partner across every capacity.',
     ],
     cta: 'Open the architect deck',
     href: '/for-architects',
@@ -67,12 +69,11 @@ const AUDIENCES: ReadonlyArray<TradeAudience> = [
     eyebrow: 'Plumber & installer',
     heading: 'Partner programme with margin you can live on.',
     body:
-      'Trade access to the catalogue, the install library, and lead routing in your service area.',
+      'Trade access to the catalogue, install support, and lead routing in your service area.',
     bullets: [
-      'Plumber partner pricing with documented margin per SKU.',
-      'Install library — section drawings, isometric routing, finished-bathroom photos.',
-      'Engineering support on site for the first install in any new city or product line.',
-      'Service tier: we own the AMC; you handle the install — or train into the AMC delivery if you want.',
+      'Plumber partner pricing with documented per-SKU margin.',
+      'Install library and on-site engineering on first city installs.',
+      'Service tier — own the AMC, or train into ours.',
     ],
     cta: 'Open the partner programme',
     href: '/for-plumbers',

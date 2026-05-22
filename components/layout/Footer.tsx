@@ -8,6 +8,8 @@ const SOLUTIONS_LINKS = [
   { href: '/solutions/drinking-water-solution', label: 'Drinking water' },
   { href: '/solutions/iron-filter', label: 'Iron filter' },
   { href: '/solutions/water-softener', label: 'Water softener' },
+  { href: '/solutions/sediment-filter', label: 'Sediment filter' },
+  { href: '/solutions/activated-carbon-filter', label: 'Activated carbon filter' },
   { href: '/industrial', label: 'Industrial / WTP' },
 ];
 
