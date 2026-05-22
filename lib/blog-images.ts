@@ -25,8 +25,8 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
     alt: 'Heavy white scale buildup on a geyser heating element — what hardness and iron leave behind when treated in the wrong order',
   },
   'hansgrohe-spec-vs-indian-water': {
-    src: `${PHOTO}/scaling-on-taps.jpg`,
-    alt: 'A premium chrome tap pitted and dulled by Indian feed water that exceeds the manufacturer’s spec',
+    src: `${PHOTO}/bathroom-filter-floor-mounted.jpg`,
+    alt: 'A premium chrome tap in a finished bathroom — the kind of fitting that needs the water spec checked before the install',
   },
   'how-to-read-a-water-test': {
     src: `${PHOTO}/service-testing-water.jpg`,
@@ -61,8 +61,8 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
     alt: 'A glass of Uniwater drinking water on a marble kitchen counter — remineralised, not stripped',
   },
   'premium-fittings-slow-disaster': {
-    src: `${PHOTO}/scaling-on-taps.jpg`,
-    alt: 'Mineral spotting and corrosion on a chrome tap — what premium fittings look like four years into untreated water',
+    src: `${PHOTO}/bathroom-filter-hero.jpg`,
+    alt: 'A premium marble bathroom with brass and chrome fittings — the kind of bathroom that ages badly when the water isn’t handled',
   },
 };
 

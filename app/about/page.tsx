@@ -22,7 +22,7 @@ const MILESTONES = [
   { year: '2023', body: 'Expanded to Bhubaneswar, Ranchi, Rourkela.' },
   { year: '2024', body: 'Crossed 100 commercial installs. Opened Nepal operations in Kathmandu and Biratnagar.' },
   { year: '2025', body: 'Reached 200+ residential homes serviced across India and Nepal.' },
-  { year: '2026', body: 'Active in 7 Indian + 2 Nepali cities. 110-SKU catalogue. Marketing site relaunch; customer portal under development as a separate product.' },
+  { year: '2026', body: '110-SKU catalogue published. Marketing site relaunch; customer portal under development as a separate product.' },
 ];
 
 export default function AboutPage() {

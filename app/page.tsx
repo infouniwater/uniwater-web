@@ -21,7 +21,7 @@ import { jsonLd, serviceSchema } from '@/lib/structured-data';
  * logical interior pages — nothing was deleted from the codebase.
  *
  *  1. Hero — wellness tagline H1 + audience-naming H2 + two CTAs
- *  2. Trust stripe — 200+ homes · 9 cities · 3+ years · surveys this month
+ *  2. Trust stripe — 200+ homes · 9 cities · 3+ years · surveys last 12 months
  *  3. Audience router — promoted, "Pick the sentence that sounds like you"
  *  4. Day One arc — cost-of-cheap-water timeline
  *  5. Solutions overview — what we install (3 home + 2 commercial)
@@ -33,7 +33,8 @@ import { jsonLd, serviceSchema } from '@/lib/structured-data';
  *  7. Four-step process — survey · design · install · service
  *  8. Proof — selected clients (logo wall)
  *  9. Cities — operating footprint
- * 10. Final CTA — preceded by an inline composite-quote pull
+ * 10. Final CTA — page closes straight into it (composite quote
+ *     removed 2026-05-22, see Part 5.3 note below).
  *
  * Sections moved off the homepage (still in the codebase):
  *   - ProblemGrid              → /water-problem-checker (above the form)
@@ -42,10 +43,7 @@ import { jsonLd, serviceSchema } from '@/lib/structured-data';
  *   - ToolsSection             → removed (already linked from AudienceRouter)
  *   - EditorialLede            → removed (one-paragraph bridge no longer needed)
  *   - PincodeCheck             → removed from home (still rendered on
- *                                /book-survey, /residential, /remote-site-survey)
- *
- * The composite homeowner pull-quote previously living inside the hero
- * is now inline just above FinalCTA on this page.
+ *                                /residential and /industrial)
  */
 export default function HomePage() {
   const homeService = serviceSchema({
@@ -97,7 +95,7 @@ export default function HomePage() {
           residential testimonial lands from the post-install review-
           collection flow, the page closes directly into the final CTA. */}
 
-      {/* 9. Final CTA */}
+      {/* 10. Final CTA */}
       <FinalCTA />
     </>
   );
