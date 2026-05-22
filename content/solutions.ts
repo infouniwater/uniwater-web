@@ -121,7 +121,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       {
         name: 'Kitchen RO',
         subtitle: 'Wall-mounted or under-sink',
-        description: 'For TDS above 200 ppm. With post-RO mineral correction.',
+        description: 'For TDS above 500 ppm. Re-mineralised post-RO so the water doesn’t taste flat.',
       },
       {
         name: 'Kitchen Non-RO (UF + UV)',
@@ -148,7 +148,11 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'Iron in drinking water has a metallic taste even at low concentrations. Tea and coffee suffer first.',
       'Borewell water is the usual source, but old galvanised municipal pipes can deliver it too.',
     ],
-    priceFromINR: 14000,
+    // priceFromINR intentionally omitted \u2014 this product ships at three
+    // tiers (bathroom from \u20b914k, whole-house from ~\u20b91L, industrial
+    // from much higher), and a single "From \u20b914,000" anchor in the
+    // hero misleads visitors who arrived looking for whole-house.
+    // Per-tier costs are quoted after the free survey.
     configurations: [
       {
         name: 'Bathroom Mono / Duo / Trio',
@@ -180,7 +184,8 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'Washing machines and dishwashers fail early. Detergent doesn\u2019t lather. Cycle times rise.',
       'Soap consumption doubles on hard water without anyone noticing. Costs compound silently.',
     ],
-    priceFromINR: 14000,
+    // priceFromINR intentionally omitted — multi-tier (see iron-filter
+    // note above). Per-tier prices are quoted after the free survey.
     configurations: [
       {
         name: 'Bathroom Mono / Duo / Trio',
@@ -207,7 +212,8 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'A sediment filter buys downstream systems years of life. Without it, RO membranes fail in months.',
       'Borewell water and old municipal lines both deliver particulate. Worst in monsoon.',
     ],
-    priceFromINR: 14000,
+    // priceFromINR intentionally omitted — multi-tier (see iron-filter
+    // note above). Per-tier prices are quoted after the free survey.
     configurations: [
       {
         name: 'Bathroom Mono / Duo / Trio',
@@ -234,7 +240,8 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'Activated carbon adsorbs organics, removes the chemical taste, leaves minerals untouched.',
       'Often paired with UV — carbon for taste, UV for pathogens.',
     ],
-    priceFromINR: 14000,
+    // priceFromINR intentionally omitted — multi-tier (see iron-filter
+    // note above). Per-tier prices are quoted after the free survey.
     configurations: [
       {
         name: 'Bathroom Mono / Duo / Trio',

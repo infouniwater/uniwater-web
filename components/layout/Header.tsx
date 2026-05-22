@@ -250,6 +250,12 @@ export function Header() {
             >
               A plumber &rarr;
             </Link>
+            <Link
+              href="/for-trade"
+              className="text-caption text-ink hover:text-teal transition-colors duration-200 ease-calm"
+            >
+              A dealer &rarr;
+            </Link>
           </div>
         </div>
       )}

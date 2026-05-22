@@ -19,6 +19,7 @@ const RESOURCES_LINKS = [
   { href: '/case-studies', label: 'Case studies' },
   { href: '/blog', label: 'Journal' },
   { href: '/faq', label: 'FAQ' },
+  { href: '/for-trade', label: 'For the trade' },
   { href: '/downloads/uniwater-homeowner-catalogue-2026.pdf', label: 'Homeowner catalogue (PDF)', external: true },
   { href: '/downloads/uniwater-commercial-catalogue-2026.pdf', label: 'Commercial catalogue (PDF)', external: true },
 ];
@@ -45,7 +46,13 @@ export function Footer() {
               <div>{CONTACT.address.line1}</div>
               <div>{CONTACT.address.city} {CONTACT.address.pin}</div>
               <div className="mt-2 text-offwhite/60 text-[12px]">
-                {LAUNCH_FLAGS.showCIN && <div>CIN: {COMPANY_REGISTRATION.CIN}</div>}
+                {/* Double-gate: only render CIN when the flag is on AND
+                    the value is real (non-empty). Prevents shipping a
+                    placeholder string if showCIN flips before the MCA
+                    CIN lands in site.ts. */}
+                {LAUNCH_FLAGS.showCIN && COMPANY_REGISTRATION.CIN && (
+                  <div>CIN: {COMPANY_REGISTRATION.CIN}</div>
+                )}
                 <div>GSTIN: {COMPANY_REGISTRATION.GSTIN}</div>
               </div>
             </div>
@@ -166,53 +173,64 @@ export function Footer() {
           </div>
           {LAUNCH_FLAGS.showSocial && (
           <div className="flex items-center gap-5">
-            {/* Social — placeholder URLs in content/site.ts. Update when claimed. */}
-            <a
-              href={SOCIAL_HANDLES.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Uniwater on Instagram"
-              className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            <a
-              href={SOCIAL_HANDLES.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Uniwater on LinkedIn"
-              className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M4.98 3.5C4.98 4.881 3.87 6 2.5 6S0 4.881 0 3.5 1.13 1 2.5 1 4.98 2.119 4.98 3.5zM.22 8h4.56v14H.22V8zM7.34 8h4.37v1.91h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.16c0-1.47-.03-3.36-2.05-3.36-2.05 0-2.36 1.6-2.36 3.26V22H7.34V8z"/>
-              </svg>
-            </a>
-            <a
-              href={SOCIAL_HANDLES.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Uniwater on YouTube"
-              className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12c0 1.9.2 3.8.5 5.8a3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1c.3-2 .5-3.9.5-5.8a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
-              </svg>
-            </a>
-            <a
-              href={SOCIAL_HANDLES.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Uniwater on Facebook"
-              className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M9.1 22V12.5H6V8.7h3.1V6c0-3 1.9-4.7 4.6-4.7 1.3 0 2.5.1 2.9.1v3.3h-1.9c-1.5 0-1.8.7-1.8 1.7v2.3h3.6l-.5 3.8h-3.1V22h-3.7z"/>
-              </svg>
-            </a>
+            {/* Per-icon double-gate: even when the flag is on, each link
+                renders only if its URL in SOCIAL_HANDLES is non-empty.
+                So a half-claimed set (e.g. only Instagram up) still
+                ships cleanly, no broken-href placeholders. */}
+            {SOCIAL_HANDLES.instagram && (
+              <a
+                href={SOCIAL_HANDLES.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Uniwater on Instagram"
+                className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+            )}
+            {SOCIAL_HANDLES.linkedin && (
+              <a
+                href={SOCIAL_HANDLES.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Uniwater on LinkedIn"
+                className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4.98 3.5C4.98 4.881 3.87 6 2.5 6S0 4.881 0 3.5 1.13 1 2.5 1 4.98 2.119 4.98 3.5zM.22 8h4.56v14H.22V8zM7.34 8h4.37v1.91h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.16c0-1.47-.03-3.36-2.05-3.36-2.05 0-2.36 1.6-2.36 3.26V22H7.34V8z"/>
+                </svg>
+              </a>
+            )}
+            {SOCIAL_HANDLES.youtube && (
+              <a
+                href={SOCIAL_HANDLES.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Uniwater on YouTube"
+                className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12c0 1.9.2 3.8.5 5.8a3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1c.3-2 .5-3.9.5-5.8a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+                </svg>
+              </a>
+            )}
+            {SOCIAL_HANDLES.facebook && (
+              <a
+                href={SOCIAL_HANDLES.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Uniwater on Facebook"
+                className="text-offwhite/70 hover:text-soft transition-colors duration-200 ease-calm"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M9.1 22V12.5H6V8.7h3.1V6c0-3 1.9-4.7 4.6-4.7 1.3 0 2.5.1 2.9.1v3.3h-1.9c-1.5 0-1.8.7-1.8 1.7v2.3h3.6l-.5 3.8h-3.1V22h-3.7z"/>
+                </svg>
+              </a>
+            )}
           </div>
           )}
           <div className="text-caption text-offwhite/60 italic">

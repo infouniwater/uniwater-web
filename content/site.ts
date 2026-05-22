@@ -29,35 +29,36 @@ export const CONTACT = {
  * Company registration — rendered in the footer because Indian Pvt Ltd
  * companies must publish GSTIN and CIN on all customer-facing surfaces.
  *
- * GSTIN supplied. CIN is a PLACEHOLDER. To prevent it from rendering on
- * the live site with a fake value, the footer reads `LAUNCH_FLAGS.showCIN`
- * — flip to `true` once the real CIN from the MCA incorporation certificate
- * replaces the placeholder below.
+ * GSTIN supplied. CIN intentionally left empty until the real MCA-filed
+ * number is in hand. The Footer double-gates on both LAUNCH_FLAGS.showCIN
+ * AND a truthy CIN string, so an accidental flag flip with an empty
+ * value cannot leak a fake CIN.
+ *
+ * Example CIN shape (do NOT paste this into the export):
+ *   'U41000WB2020PTC123456'  — 21 chars: industry / state / year / type / 6-digit serial
  */
 export const COMPANY_REGISTRATION = {
   GSTIN: '19AADCU6172B1ZD',
-  // CIN: ASSUMED — placeholder shape. Replace with the actual CIN before
-  // setting LAUNCH_FLAGS.showCIN = true.
-  CIN: 'U41000WB2020PTC000000',
+  CIN: '',
 } as const;
 
 /**
- * Social handles — placeholder URLs based on standard "@uniwater" pattern.
- * The actual handles need to be claimed and confirmed by marketing before
- * the footer renders them. Footer reads `LAUNCH_FLAGS.showSocial`.
+ * Social handles — empty until each account is claimed and verified.
+ * The Footer renders only handles that are both gated by
+ * LAUNCH_FLAGS.showSocial AND non-empty; structured-data filters empties
+ * out of the Organization "sameAs" array. So this set is safe to ship
+ * empty — no placeholder leak.
  *
- * Grep "social: ASSUMED" to find these.
+ * When a handle is claimed, paste the full URL here (https://...).
  */
-// social: ASSUMED — placeholder URLs. Verify each handle is actually claimed
-// (a real, controlled, posting account) before flipping LAUNCH_FLAGS.showSocial = true.
 export const SOCIAL_HANDLES = {
-  instagram: 'https://www.instagram.com/uniwater.in',
-  linkedin: 'https://www.linkedin.com/company/uniwater-solutions',
-  youtube: 'https://www.youtube.com/@uniwater',
-  facebook: 'https://www.facebook.com/uniwater.in',
+  instagram: '',
+  linkedin: '',
+  youtube: '',
+  facebook: '',
 } as const;
 
-export const SOCIAL_URLS = Object.values(SOCIAL_HANDLES);
+export const SOCIAL_URLS = Object.values(SOCIAL_HANDLES).filter(Boolean);
 
 /**
  * Launch gates — flip to `true` only after the corresponding data has been

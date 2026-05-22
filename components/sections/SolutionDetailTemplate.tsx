@@ -696,13 +696,29 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
         alt: 'BathSoft bathroom filter installed in a marble luxury bathroom with brass freestanding tub, recessed niche housing two stainless cylinders behind a glass partition',
       };
     case 'whole-house-water-filter':
-    case 'iron-filter':
-    case 'water-softener':
-    case 'sediment-filter':
-    case 'activated-carbon-filter':
       return {
         src: `${PHOTO_BASE}/whole-house-hero.jpg`,
         alt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',
+      };
+    case 'iron-filter':
+      return {
+        src: `${PHOTO_BASE}/whole-house-terrace.jpg`,
+        alt: 'Iron filter install — branded Uniwater inlet vessels treating borewell water at a residential terrace, preventing iron staining downstream',
+      };
+    case 'water-softener':
+      return {
+        src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`,
+        alt: 'Water softener install — three branded Uniwater vessels treating hard water at a luxury villa, protecting downstream appliances and fittings',
+      };
+    case 'sediment-filter':
+      return {
+        src: `${PHOTO_BASE}/whole-house-utility-area.jpg`,
+        alt: 'Sediment filter install — branded Uniwater inlet vessels handling pre-treatment in a home utility area, protecting downstream stages from particulate',
+      };
+    case 'activated-carbon-filter':
+      return {
+        src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`,
+        alt: 'Activated carbon filter install — branded Uniwater vessels removing chlorine and chemical taste, installed near the overhead water tank on a terrace',
       };
     case 'drinking-water-solution':
       return {
@@ -716,13 +732,15 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
 
 function getInstallPhotosForSolution(slug: string): PhotoAsset[] {
   if (slug === 'bathroom-filter') {
-    // Maps to FIVE_PLACES ordering. Five Canva install shots, one per card.
+    // Strict 1:1 to FIVE_PLACES (False ceiling / Hidden niche / Wall
+    // cabinet / Under-counter / Utility room). Same photo mapping as
+    // InstallationVersatility on the homepage.
     return [
-      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.jpg`, alt: 'Bathroom filter — false-ceiling install with stainless cylinder mounted in suspended ceiling void' },
-      { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.jpg`, alt: 'Bathroom filter — vessel inside a wall cabinet with service door open' },
-      { src: `${PHOTO_BASE}/bathroom-filter-floor-mounted.jpg`, alt: 'Bathroom filter — floor-mounted vessel in a finished bathroom corner' },
-      { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Bathroom filter — compact unit installed under the vanity counter' },
-      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation-2.jpg`, alt: 'Bathroom filter — alternative ceiling install view showing access panel' },
+      { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.jpg`, alt: 'Stainless cylinder mounted in the suspended-ceiling void of a finished bathroom, accessed via a removable panel' },
+      { src: `${PHOTO_BASE}/bathroom-filter-hero.jpg`, alt: 'Two stainless cylinders recessed in a wall niche behind a marble shower glass — part of the bathroom architecture, not bolted onto it' },
+      { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.jpg`, alt: 'Stainless vessel housed inside a wall cabinet behind a finish door, flush with the bathroom wall' },
+      { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Compact vessels installed under the vanity counter beside the trap, hidden behind the cabinet door' },
+      { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater vessels floor-mounted in the home utility area beside the washing machine' },
     ];
   }
   return [];

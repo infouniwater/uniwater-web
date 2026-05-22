@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/faq',
     '/contact',
     '/resources',
+    '/for-trade',
     '/for-architects',
     '/for-plumbers',
     '/privacy',

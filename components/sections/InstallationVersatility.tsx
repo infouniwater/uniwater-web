@@ -39,14 +39,11 @@ export function InstallationVersatility() {
       <div className="mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">What makes us different</Eyebrow>
         <Heading level={2} className="mb-5">
-          Five places we&rsquo;ve put a water system that the family never sees.
+          Five places we&rsquo;ve put a water system &mdash; engineered into the architecture, not bolted to it.
         </Heading>
         <Body className="text-mute text-lede font-light">
-          Most water companies bolt a vessel to a wall in the utility area and call it done. Uniwater engineers the install into the building &mdash; false ceilings, plumbing shafts, wall niches, under-counter cavities, plant rooms. Tight shafts. Low ceilings. Finished interiors. The system disappears.
+          Most water companies bolt a vessel to a wall in the utility area and call it done. Uniwater engineers the install into the building &mdash; false ceilings, plumbing shafts, wall niches, under-counter cavities, plant rooms. Tight shafts. Low ceilings. Finished interiors. The system fits the house, the house doesn&rsquo;t move around the system.
         </Body>
-        <EditorialAccent className="mt-6">
-          Engineered for the homes you don&rsquo;t get to redo.
-        </EditorialAccent>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
