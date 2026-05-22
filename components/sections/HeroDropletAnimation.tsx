@@ -68,16 +68,19 @@ const LAND_Y = 428;
 
 type Pt = { x: number; y: number };
 
-// Paths kept inside x ∈ [20, 60] so all five entries stay visible even
-// under "xMidYMid slice" on the narrowest mobile strip (slice clips
-// ~16 viewBox units off each side of an 80-wide stage when the strip
-// container is 64×600).
+// Paths kept inside x ∈ [25, 55] so every drop stays fully visible
+// under "xMidYMid slice" on the narrowest mobile strip. The slice on a
+// 64×600 strip clips ~16 viewBox units off each side, and a max-scale
+// drop rotated to a 30° angle of travel has a bounding-box half-width
+// of ~5.4 viewBox units. So path waypoints sit at least 5 units inside
+// the slice-visible window (16.5–63.5), which keeps even the start of
+// path 1/2/4/5 from showing half-clipped before fade-in completes.
 const PATHS: ReadonlyArray<ReadonlyArray<Pt>> = [
-  [{ x: 20, y: 10 }, { x: 24, y: 145 }, { x: 30, y: 285 }, { x: LAND_X, y: LAND_Y }], // left edge
-  [{ x: 60, y: 15 }, { x: 56, y: 160 }, { x: 48, y: 295 }, { x: LAND_X, y: LAND_Y }], // right edge
+  [{ x: 25, y: 10 }, { x: 27, y: 145 }, { x: 32, y: 285 }, { x: LAND_X, y: LAND_Y }], // left edge
+  [{ x: 55, y: 15 }, { x: 52, y: 160 }, { x: 46, y: 295 }, { x: LAND_X, y: LAND_Y }], // right edge
   [{ x: 40, y:  5 }, { x: 40, y: 150 }, { x: 40, y: 290 }, { x: LAND_X, y: LAND_Y }], // centre
-  [{ x: 24, y: 20 }, { x: 38, y: 140 }, { x: 50, y: 270 }, { x: LAND_X, y: LAND_Y }], // L→R diagonal
-  [{ x: 56, y: 20 }, { x: 42, y: 145 }, { x: 30, y: 280 }, { x: LAND_X, y: LAND_Y }], // R→L diagonal
+  [{ x: 27, y: 20 }, { x: 38, y: 140 }, { x: 50, y: 270 }, { x: LAND_X, y: LAND_Y }], // L→R diagonal
+  [{ x: 53, y: 20 }, { x: 42, y: 145 }, { x: 33, y: 280 }, { x: LAND_X, y: LAND_Y }], // R→L diagonal
 ];
 
 const PARTICLE_SPREAD_MIN = 10;
