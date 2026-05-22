@@ -44,52 +44,57 @@ export function EditorialHero() {
     <section className="bg-offwhite border-b border-hairline">
       <div className="container-uw">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-14 sm:py-20 md:py-24 lg:py-0">
-          {/* Text panel — lg:relative + lg:z-10 so the slim droplet
-              animation (mounted absolutely on the image cell, overlapping
-              into the gap and ~80 px into this column) paints BEHIND
-              the text, not over it. */}
-          <div className="lg:col-span-6 flex flex-col gap-6 lg:relative lg:z-10">
-            <Display>Wellness starts with clean water.</Display>
-            <h2 className="text-h2-m md:text-h2 font-light text-navy/85 leading-snug [text-wrap:balance]">
-              Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
-            </h2>
-            <Lede className="text-mute">
-              Bathroom filters, whole-house systems, drinking water &mdash; surveyed before we quote, serviced every month after.
-            </Lede>
+          {/* Text panel — split into two sub-blocks at every viewport:
+                • wide sub-block holds the headline / CTAs / price
+                • narrow sub-block is the droplet strip, beside the text
+              This is the same pattern mobile + desktop, so there's only
+              one HeroDropletAnimation mount on the page (was two before).
+              self-stretch on the strip makes it as tall as the text
+              content; lg-only width bump gives the strip a touch more
+              presence at desktop sizes. */}
+          <div className="lg:col-span-6">
+            <div className="flex gap-4 sm:gap-6 lg:gap-8">
+              <div className="flex-1 min-w-0 flex flex-col gap-6">
+                <Display>Wellness starts with clean water.</Display>
+                <h2 className="text-h2-m md:text-h2 font-light text-navy/85 leading-snug [text-wrap:balance]">
+                  Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
+                </h2>
+                <Lede className="text-mute">
+                  Bathroom filters, whole-house systems, drinking water &mdash; surveyed before we quote, serviced every month after.
+                </Lede>
 
-            {/* Primary + secondary CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-              <Button href="/book-survey" size="lg">
-                Book a free survey
-              </Button>
-              <Button href="/water-problem-checker" variant="tertiary">
-                Take the 60-second water check
-                <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Button>
+                {/* Primary + secondary CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
+                  <Button href="/book-survey" size="lg">
+                    Book a free survey
+                  </Button>
+                  <Button href="/water-problem-checker" variant="tertiary">
+                    Take the 60-second water check
+                    <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Button>
+                </div>
+
+                {/* Italic price anchor below the CTAs */}
+                <p className="font-editorial italic text-mute text-caption mt-1">
+                  Surveys are free. Bathroom filters from ₹{formattedStarts}.
+                </p>
+              </div>
+
+              {/* Droplet strip — narrow sub-block beside the text at
+                  every viewport. 64 px on phones, 80 px on small
+                  tablets, 96 px on lg+. */}
+              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none">
+                <HeroDropletAnimation />
+              </div>
             </div>
-
-            {/* Italic price anchor below the CTAs */}
-            <p className="font-editorial italic text-mute text-caption mt-1">
-              Surveys are free. Bathroom filters from ₹{formattedStarts}.
-            </p>
           </div>
 
-          {/* Visual cell — marble-bathroom photo plus, on lg+, the
-              droplet animation strip immediately to the left of the
-              photo. The strip is `absolute right-full` so its right
-              edge sits at the image cell's left edge; `w-32` (128 px)
-              wide so it fills the 48 px gap AND overlaps the rightmost
-              ~80 px of the text column. The text column has `z-10` so
-              text paints over the animation in the overlap region.
-              `top-12 bottom-12` matches the image's `lg:py-12` inset
-              vertically. On <lg the strip is hidden — only the image
-              renders. */}
-          <div className="lg:col-span-6 lg:py-12 lg:relative">
-            <div className="hidden lg:block absolute top-12 bottom-12 right-full w-32 pointer-events-none">
-              <HeroDropletAnimation />
-            </div>
+          {/* Visual cell — hero photo only. The droplet animation lives
+              inside the text panel as a sub-block (see above), so this
+              column is just the image. */}
+          <div className="lg:col-span-6 lg:py-12">
             <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[56/75]">
               {HERO_VIDEO_SRC ? (
                 <video

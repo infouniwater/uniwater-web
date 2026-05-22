@@ -53,17 +53,31 @@ import { useEffect, useRef } from 'react';
 const SVGNS = 'http://www.w3.org/2000/svg';
 const VB_W   = 80;
 const VB_H   = 440;
-const LAND_X = 50;
-const LAND_Y = 388;
+// LAND_X is the viewBox's true horizontal centre (80 / 2). Pool +
+// splash + drops all converge here so the action stays centred in the
+// strip whatever its aspect, and pool ripples have equal headroom on
+// both sides before clipping.
+const LAND_X = 40;
+// LAND_Y at 428: pool centre sits at LAND_Y + 4 = 432, and the splash
+// ripple's outer edge (ry peak ≈ 7) reaches y ≈ 439 — within the
+// 440-unit viewBox by ~1 unit. Path starts at y 5–20 push the entry
+// point right up to the top of the stage; the drop is fading in
+// (opacity < 0.5) during its first ~270 ms anyway, so any tail bleed
+// above y = 0 is invisible. Net journey covers ~98 % of viewBox height.
+const LAND_Y = 428;
 
 type Pt = { x: number; y: number };
 
+// Paths kept inside x ∈ [20, 60] so all five entries stay visible even
+// under "xMidYMid slice" on the narrowest mobile strip (slice clips
+// ~16 viewBox units off each side of an 80-wide stage when the strip
+// container is 64×600).
 const PATHS: ReadonlyArray<ReadonlyArray<Pt>> = [
-  [{ x: 18, y: 50 }, { x: 24, y: 150 }, { x: 35, y: 255 }, { x: LAND_X, y: LAND_Y }], // left edge
-  [{ x: 66, y: 55 }, { x: 63, y: 160 }, { x: 56, y: 270 }, { x: LAND_X, y: LAND_Y }], // right edge
-  [{ x: 40, y: 45 }, { x: 45, y: 150 }, { x: 48, y: 260 }, { x: LAND_X, y: LAND_Y }], // centre
-  [{ x: 23, y: 60 }, { x: 39, y: 130 }, { x: 59, y: 235 }, { x: LAND_X, y: LAND_Y }], // L→R diagonal
-  [{ x: 64, y: 60 }, { x: 46, y: 140 }, { x: 30, y: 250 }, { x: LAND_X, y: LAND_Y }], // R→L diagonal
+  [{ x: 20, y: 10 }, { x: 24, y: 145 }, { x: 30, y: 285 }, { x: LAND_X, y: LAND_Y }], // left edge
+  [{ x: 60, y: 15 }, { x: 56, y: 160 }, { x: 48, y: 295 }, { x: LAND_X, y: LAND_Y }], // right edge
+  [{ x: 40, y:  5 }, { x: 40, y: 150 }, { x: 40, y: 290 }, { x: LAND_X, y: LAND_Y }], // centre
+  [{ x: 24, y: 20 }, { x: 38, y: 140 }, { x: 50, y: 270 }, { x: LAND_X, y: LAND_Y }], // L→R diagonal
+  [{ x: 56, y: 20 }, { x: 42, y: 145 }, { x: 30, y: 280 }, { x: LAND_X, y: LAND_Y }], // R→L diagonal
 ];
 
 const PARTICLE_SPREAD_MIN = 10;
@@ -421,7 +435,14 @@ export function HeroDropletAnimation() {
         width="100%"
         height="100%"
         viewBox={`0 0 ${VB_W} ${VB_H}`}
-        preserveAspectRatio="xMidYMid meet"
+        /* "slice" lets the SVG fill the strip's full height (and width)
+           by scaling the viewBox up until both axes meet-or-exceed the
+           container, then clipping the overflow. Path waypoints are
+           kept within x ∈ [20, 60] so the narrowest mobile strip — which
+           clips ~16 viewBox units off each side — still shows every
+           drop's entry. Trade-off vs "meet": no vertical letterboxing,
+           drops cover the full strip height. */
+        preserveAspectRatio="xMidYMid slice"
         className="block w-full h-full"
       >
         {dropIndices.map((i) => {
