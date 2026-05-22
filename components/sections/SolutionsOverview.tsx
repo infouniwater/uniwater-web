@@ -59,7 +59,7 @@ export function SolutionsOverview() {
   return (
     <Section padding="default" id="solutions-overview">
       <div className="mb-8 md:mb-12 max-w-3xl">
-        <Eyebrow className="mb-4">What we install</Eyebrow>
+        <Eyebrow className="mb-4">Catalogue</Eyebrow>
         <Heading level={2} className="mb-4">
           What we install.
         </Heading>

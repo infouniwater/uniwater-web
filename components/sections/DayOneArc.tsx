@@ -50,11 +50,11 @@ const STAGES: Stage[] = [
     headline: 'Lakhs in cumulative cost.',
     bullets: [
       'Appliances replaced — geyser, washing machine, dishwasher.',
-      'Marble re-polished.',
-      'Fittings dulled or swapped.',
+      'Marble re-polished. Fittings dulled or swapped.',
       'Bottled-jar habit baked in.',
+      'What money can’t fix — hair thinning, skin damage, premature ageing.',
     ],
-    cost: '₹3–6 lakh of compounded damage',
+    cost: '₹10–12 lakh of compounded loss',
   },
 ];
 
@@ -108,7 +108,7 @@ export function DayOneArc() {
 
       <div className="mt-10 md:mt-16 max-w-reading">
         <EditorialAccent className="!text-soft">
-          Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances, the family&rsquo;s skin and hair, and your way of life &mdash; for decades. Done poorly, the house ages faster than it should.
+          Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they don&rsquo;t get back. Done poorly, the house ages faster than it should. So do the people in it.
         </EditorialAccent>
       </div>
     </Section>
