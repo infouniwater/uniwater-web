@@ -3,6 +3,7 @@ import { TrustStripe } from '@/components/sections/TrustStripe';
 import { AudienceRouter } from '@/components/sections/AudienceRouter';
 import { DayOneArc } from '@/components/sections/DayOneArc';
 import { SolutionsOverview } from '@/components/sections/SolutionsOverview';
+import { InstallationVersatility } from '@/components/sections/InstallationVersatility';
 import { FourStepProcess } from '@/components/sections/FourStepProcess';
 import { ProofSection } from '@/components/sections/ProofSection';
 import { CitiesSection } from '@/components/sections/CitiesSection';
@@ -14,23 +15,27 @@ import { jsonLd, serviceSchema } from '@/lib/structured-data';
  * Homepage — restructured 2026-05-21 per the homepage-only brief (Rajat).
  *
  * Earlier version had ~14 sections doing the work of an entire site on
- * one page. New shape cuts to 9 sections with the audience picker
- * promoted to position 3 (it's the strongest piece of writing on the
- * page). Sections that left the homepage moved to logical interior
- * pages — nothing was deleted from the codebase.
+ * one page. New shape (now 10 sections) cuts most of that, with the
+ * audience picker promoted to position 3 (it's the strongest piece of
+ * writing on the page). Sections that left the homepage moved to
+ * logical interior pages — nothing was deleted from the codebase.
  *
  *  1. Hero — wellness tagline H1 + audience-naming H2 + two CTAs
  *  2. Trust stripe — 200+ homes · 9 cities · 3+ years · surveys this month
  *  3. Audience router — promoted, "Pick the sentence that sounds like you"
  *  4. Day One arc — cost-of-cheap-water timeline
  *  5. Solutions overview — what we install (3 home + 2 commercial)
- *  6. Four-step process — survey · design · install · service
- *  7. Proof — selected clients (logo wall)
- *  8. Cities — operating footprint
- *  9. Final CTA — preceded by an inline composite-quote pull
+ *  6. Installation versatility — five photographed install locations.
+ *     Re-added 2026-05-22 per Rajat: "add places we have installed in
+ *     hidden spaces section in homepage". Sits between Solutions (what)
+ *     and Process (how) so the visitor sees WHERE the system goes
+ *     before they read about delivery.
+ *  7. Four-step process — survey · design · install · service
+ *  8. Proof — selected clients (logo wall)
+ *  9. Cities — operating footprint
+ * 10. Final CTA — preceded by an inline composite-quote pull
  *
  * Sections moved off the homepage (still in the codebase):
- *   - InstallationVersatility  → /solutions/bathroom-filter
  *   - ProblemGrid              → /water-problem-checker (above the form)
  *   - ComparisonBlock          → /why-uniwater
  *   - ServiceSection           → /service
@@ -72,11 +77,13 @@ export default function HomePage() {
       <DayOneArc />
       {/* 5. What we install */}
       <SolutionsOverview />
-      {/* 6. Process */}
+      {/* 6. Where we install — five hidden-install locations */}
+      <InstallationVersatility />
+      {/* 7. Process */}
       <FourStepProcess id="how-it-works" />
-      {/* 7. Selected clients */}
+      {/* 8. Selected clients */}
       <ProofSection />
-      {/* 8. Cities */}
+      {/* 9. Cities */}
       <CitiesSection />
 
       {/* Composite homeowner pull-quote previously rendered here was removed

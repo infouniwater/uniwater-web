@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Display, Lede } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
 import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
@@ -22,13 +23,19 @@ import { HeroDropletAnimation } from './HeroDropletAnimation';
  * live in the header + footer + WhatsAppFAB, so the hero stays focused.
  */
 
-// Hero visual: HERO_VIDEO_SRC takes precedence when present; otherwise
-// the right-side whitespace gets the droplet animation (sandbox-
-// approved, ported in HeroDropletAnimation). Animation only renders on
-// `lg`+ because the portrait viewBox would clip in the landscape mobile
-// cell after the column stacks.
-const HERO_VIDEO_POSTER =
-  '/images/photography/bathroom-filter-hero.jpg';
+const HERO_IMAGE = {
+  // Whole-house hero — luxury-villa variant picked 2026-05-22 per Rajat
+  // ("image is a bit hazy" was the high-key bright-wall style of the
+  // earlier choice). This frame puts three branded Uniwater vessels on
+  // a sunlit terrace with hydrangeas, bougainvillea, and city skyline
+  // behind. Same brand subject, much more contrast and colour, so it
+  // reads sharp in the hero. The earlier whole-house-hero.jpg still
+  // runs as the HomeSoft card in SolutionsOverview, so visitors see
+  // both framings as they scroll.
+  src: '/images/photography/whole-house-luxury-villa.jpg',
+  alt:
+    'Three branded Uniwater whole-house vessels installed on a luxury villa terrace, with garden plantings and city skyline behind.',
+};
 
 export function EditorialHero() {
   const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
@@ -37,8 +44,11 @@ export function EditorialHero() {
     <section className="bg-offwhite border-b border-hairline">
       <div className="container-uw">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-14 sm:py-20 md:py-24 lg:py-0">
-          {/* Text panel */}
-          <div className="lg:col-span-6 flex flex-col gap-6">
+          {/* Text panel — lg:relative + lg:z-10 so the slim droplet
+              animation (mounted absolutely on the image cell, overlapping
+              into the gap and ~80 px into this column) paints BEHIND
+              the text, not over it. */}
+          <div className="lg:col-span-6 flex flex-col gap-6 lg:relative lg:z-10">
             <Display>Wellness starts with clean water.</Display>
             <h2 className="text-h2-m md:text-h2 font-light text-navy/85 leading-snug [text-wrap:balance]">
               Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
@@ -66,27 +76,42 @@ export function EditorialHero() {
             </p>
           </div>
 
-          {/* Visual — droplet animation on lg+. Below lg the visual
-              column doesn't render: the portrait viewBox (320×440) is
-              shaped for a tall portrait container, and after the grid
-              stacks on tablet/mobile this cell becomes landscape, which
-              would clip the splash at the bottom. Hiding rather than
-              degrading was the explicit decision per the handoff brief.
-              No layout shift — the column simply collapses on <lg. */}
-          <div className="hidden lg:block lg:col-span-6 lg:py-12">
-            <div className="relative w-full overflow-hidden aspect-[56/75]">
+          {/* Visual cell — marble-bathroom photo plus, on lg+, the
+              droplet animation strip immediately to the left of the
+              photo. The strip is `absolute right-full` so its right
+              edge sits at the image cell's left edge; `w-32` (128 px)
+              wide so it fills the 48 px gap AND overlaps the rightmost
+              ~80 px of the text column. The text column has `z-10` so
+              text paints over the animation in the overlap region.
+              `top-12 bottom-12` matches the image's `lg:py-12` inset
+              vertically. On <lg the strip is hidden — only the image
+              renders. */}
+          <div className="lg:col-span-6 lg:py-12 lg:relative">
+            <div className="hidden lg:block absolute top-12 bottom-12 right-full w-32 pointer-events-none">
+              <HeroDropletAnimation />
+            </div>
+            <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[56/75]">
               {HERO_VIDEO_SRC ? (
                 <video
                   src={HERO_VIDEO_SRC}
-                  poster={HERO_VIDEO_POSTER}
+                  poster={HERO_IMAGE.src}
                   autoPlay
                   muted
                   loop
                   playsInline
+                  aria-label={HERO_IMAGE.alt}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               ) : (
-                <HeroDropletAnimation />
+                <Image
+                  src={HERO_IMAGE.src}
+                  alt={HERO_IMAGE.alt}
+                  fill
+                  priority
+                  quality={90}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover animate-ken-burns"
+                />
               )}
             </div>
           </div>

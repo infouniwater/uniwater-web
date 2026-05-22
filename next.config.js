@@ -19,6 +19,21 @@ const nextConfig = {
   // versioned implicitly by content — when we re-export a catalogue PDF
   // we bump the filename year).
   async headers() {
+    const isDev = process.env.NODE_ENV !== 'production';
+    // 'unsafe-eval' is required ONLY in dev — Next.js React-Refresh
+    // (HMR) calls eval() to swap modules without a full reload, and
+    // without this token the dev runtime crashes silently, leaving
+    // every client component stuck at its SSR state (no useEffect, no
+    // event handlers). Production builds never call eval(), so the
+    // production CSP stays strict.
+    const scriptSrc = [
+      'script-src',
+      "'self'",
+      "'unsafe-inline'",
+      isDev && "'unsafe-eval'",
+      'https://connect.facebook.net',
+    ].filter(Boolean).join(' ');
+
     const securityHeaders = [
       { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
       { key: 'X-Frame-Options', value: 'DENY' },
@@ -37,7 +52,7 @@ const nextConfig = {
           // nonce once GA4/GTM is wired and we move to a strict CSP.
           // Meta Pixel loads from connect.facebook.net and posts events to
           // www.facebook.com/tr (handled by connect-src + img-src https:).
-          "script-src 'self' 'unsafe-inline' https://connect.facebook.net",
+          scriptSrc,
           "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com",
           "frame-ancestors 'none'",
           "base-uri 'self'",
