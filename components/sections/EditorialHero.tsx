@@ -84,8 +84,15 @@ export function EditorialHero() {
 
               {/* Droplet strip — narrow sub-block beside the text at
                   every viewport. 64 px on phones, 80 px on small
-                  tablets, 96 px on lg+. */}
-              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none">
+                  tablets, 96 px on lg+.
+                  overflow-hidden: with preserveAspectRatio="slice" the
+                  SVG content scales to fill, then anything outside the
+                  strip's box gets clipped — so a wide curve in path 4
+                  or path 5 can't visually overlap the text column.
+                  z-10: anywhere the strip and text DO meet (e.g. a
+                  bottom-corner ripple peak), the animation paints in
+                  front of the text instead of behind it. */}
+              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none overflow-hidden z-10">
                 <HeroDropletAnimation />
               </div>
             </div>
