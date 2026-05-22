@@ -5,7 +5,7 @@ import { SolutionCard } from '@/components/ui/Card';
 const HOME_SOLUTIONS = [
   {
     href: '/solutions/bathroom-filter',
-    title: 'Bathroom water filters',
+    title: 'Bathroom filters',
     description:
       'Stop iron staining and hard-water scale at the bathroom feed, in spaces you\u2019d never expect to fit equipment.',
     photoDescription: 'BathSoft Trio installed in a plumbing shaft of a finished bathroom',

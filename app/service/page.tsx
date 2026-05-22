@@ -148,7 +148,7 @@ export default function ServicePage() {
               ))}
             </div>
             <Caption className="mt-4 text-mute italic">
-              24-hour notice. Date. Window. Technician name. The visit happens when promised.
+              24-hour notice. Date. Window. Engineer name. The visit happens when promised.
             </Caption>
           </div>
         </div>

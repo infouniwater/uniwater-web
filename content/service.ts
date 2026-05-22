@@ -7,7 +7,7 @@ export const SERVICE_PROTOCOL = [
   {
     label: 'Before.',
     body:
-      '24-hour notice. Date. Window. Technician name. The visit happens when promised.',
+      '24-hour notice. Date. Window. Engineer name. The visit happens when promised.',
   },
   {
     label: 'On site.',

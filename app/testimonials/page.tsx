@@ -16,8 +16,8 @@ const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
     alt: 'A Uniwater iron filter and softener duo in SS316 vessels — manufacturing-grade install',
   },
   Residential: {
-    src: '/images/photography/whole-house-luxury-villa.jpg',
-    alt: 'A Uniwater whole-house system installed at a luxury residential villa',
+    src: '/images/photography/residential-complex.jpg',
+    alt: 'A premium residential complex at dusk — representative of the gated communities and luxury residences Uniwater services',
   },
   Hospitality: {
     src: '/images/photography/wtp-terrace.jpg',

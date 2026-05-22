@@ -25,11 +25,11 @@ const STAGES: Stage[] = [
     label: 'Day one',
     headline: 'Decided on price.',
     bullets: [
-      'Five minutes with the plumber.',
+      'The architect’s plumber picks the system.',
       'A generic softener off the catalogue.',
-      'You save ₹50,000 today.',
+      'No water test. No survey. No long view.',
     ],
-    cost: 'You save ₹50,000',
+    cost: '₹50,000 saved today',
   },
   {
     marker: '02',

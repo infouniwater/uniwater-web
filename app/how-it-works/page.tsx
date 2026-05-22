@@ -66,7 +66,7 @@ const STEP_DETAIL = [
     aside: {
       title: 'On-site discipline',
       items: [
-        'Branded uniform, named technician',
+        'Branded uniform, named engineer',
         'Plumbing, electrical, mounting, commissioning',
         'Photos of every install location',
         'Pre-handover parameter test',

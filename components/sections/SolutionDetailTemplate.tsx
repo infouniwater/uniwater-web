@@ -770,10 +770,13 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
         { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Mid-rise apartment, Bhubaneswar. Utility-room install.' },
       ];
     case 'drinking-water-solution':
+      // Third slot intentionally falls through to the Photo placeholder
+      // until a real cafe / commercial drinking-water install photo lands.
+      // Previously held bathroom-filter-under-basin.jpg dressed as a
+      // "boutique cafe" install — wrong product context.
       return [
         { src: `${PHOTO_BASE}/drinking-water-home.jpg`, alt: 'Drinking water at the kitchen counter', caption: 'Family residence, Lake Town, Kolkata. Under-sink RO.' },
         { src: `${PHOTO_BASE}/drinking-water-home-2.jpg`, alt: 'Drinking water in the kitchen', caption: 'Apartment, Salt Lake, Kolkata. Centralised drinking-water unit.' },
-        { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Compact under-sink install', caption: 'Boutique cafe, Patia, Bhubaneswar. Compact under-counter install.' },
       ];
     default:
       return [];

@@ -120,7 +120,7 @@ export default function ForArchitectsPage() {
           <Eyebrow className="mb-4">Spec library</Eyebrow>
           <Heading level={2}>Everything you need on your drawings.</Heading>
           <Body className="text-mute mt-4">
-            DWG, BIM, install drawings, and technical PDFs covering the full residential and building range. Submittal-grade documentation, version-controlled, available on request until the partner portal ships.
+            DWG, BIM, install drawings, and technical PDFs covering the full residential and building range. Submittal-grade documentation, version-controlled, shared by email on request. A self-serve partner portal is in development as a separate product.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

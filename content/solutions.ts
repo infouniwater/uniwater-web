@@ -41,7 +41,7 @@ export interface Solution {
 export const SOLUTIONS: Record<SolutionSlug, Solution> = {
   'bathroom-filter': {
     slug: 'bathroom-filter',
-    navLabel: 'Bathroom water filters',
+    navLabel: 'Bathroom filters',
     wordmark: 'BathSoft',
     shortHeadline:
       'A bathroom filter has to do three things at once: treat the water, fit the space, not announce itself.',
@@ -261,14 +261,17 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
 
 // Helpers
 export const SOLUTION_LIST = Object.values(SOLUTIONS);
+// Aligned with /residential page's RESIDENTIAL_SLUGS — the five "named"
+// product families a homeowner would pick from. Sediment + carbon are
+// stages within HomeSoft's four-stage train (pre-treatment), not
+// standalone residential products, so they live in the catalogue but
+// not in this curated list.
 export const RESIDENTIAL_SOLUTIONS: SolutionSlug[] = [
   'bathroom-filter',
   'whole-house-water-filter',
   'drinking-water-solution',
   'iron-filter',
   'water-softener',
-  'sediment-filter',
-  'activated-carbon-filter',
 ];
 
 export function getSolution(slug: SolutionSlug): Solution {

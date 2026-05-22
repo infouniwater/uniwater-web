@@ -32,7 +32,7 @@ const STEPS = [
   { n: '01', title: 'Register.', body: 'Name, mobile, business name, city, service area. Two minutes.' },
   { n: '02', title: 'Refer.', body: 'Bring us a lead — a homeowner with water symptoms, a builder asking about whole-house, a project beginning the plumbing phase.' },
   { n: '03', title: 'Install.', body: 'Our engineer surveys and quotes. You stay in the loop. If the install happens, you handle the plumbing portion or refer to our team — your choice.' },
-  { n: '04', title: 'Earn.', body: 'Points credited at install handover. Redemption monthly. Statement of account visible in the partner portal when it ships.' },
+  { n: '04', title: 'Earn.', body: 'Points credited at install handover. Redemption monthly. Statement of account shared by email; a partner portal for self-serve access is in development as a separate product.' },
 ];
 
 const FAQS = [
