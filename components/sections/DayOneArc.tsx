@@ -144,11 +144,11 @@ export function DayOneArc() {
               </span>
             </div>
 
-            {/* Body hidden below sm — the number + caption carry the
-                row at mobile widths so the whole three-card group fits
-                close to one mobile frame instead of three. Returns at
-                sm+ where there's vertical room. */}
-            <p className="hidden sm:block text-offwhite/80 text-body leading-snug [text-wrap:balance]">
+            {/* Body is text-caption on mobile (14 px), text-body sm+
+                (17 px). Visible at every viewport per Rajat — smaller
+                mobile size keeps the section compact while the body
+                still carries context next to the number. */}
+            <p className="text-offwhite/80 text-caption sm:text-body leading-snug [text-wrap:balance]">
               {stage.body}
             </p>
 
