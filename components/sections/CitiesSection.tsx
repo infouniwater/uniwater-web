@@ -14,8 +14,11 @@ export function CitiesSection() {
 
   return (
     <Section tone="navy" padding="default">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div>
+      {/* Asymmetric grid — text gets 2/5, map gets 3/5 so the
+          NineCityMap reads larger on lg+. Below lg the grid stacks
+          (text → map) and the map fills the container width. */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        <div className="lg:col-span-2">
           <Eyebrow className="text-soft mb-5">Where we work</Eyebrow>
           <Heading level={2} inverse className="mb-6">
             Nine cities. Own teams. Not subcontracted.
@@ -55,7 +58,7 @@ export function CitiesSection() {
           </div>
         </div>
 
-        <div>
+        <div className="lg:col-span-3">
           <NineCityMap />
         </div>
       </div>

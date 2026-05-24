@@ -45,19 +45,26 @@ export function NineCityMap() {
       className="w-full"
     >
       <svg
-        viewBox="0 0 100 72"
+        // Tightened viewBox 2026-05-25 — was "0 0 100 72". The pins
+        // sit in x:28–87, y:20–42, and labels extend to roughly
+        // x:26–100, y:18–50. Cropping to that region (x 25, y 16,
+        // width 75, height 36) drops ~50% of the empty margin and
+        // makes the pins + labels read ~30% larger at the same
+        // rendered column width. Grid + background-rect updated to
+        // match the new bounds.
+        viewBox="25 16 75 36"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         className="block w-full h-auto"
       >
         {/* Subtle grid — gives a sense of cartographic space without claiming
-            to be a map. */}
+            to be a map. Drawn over the visible viewBox window. */}
         <defs>
           <pattern id="ncm-grid" width="10" height="10" patternUnits="userSpaceOnUse">
             <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#FAFAF7" strokeOpacity="0.06" strokeWidth="0.15" />
           </pattern>
         </defs>
-        <rect width="100" height="72" fill="url(#ncm-grid)" />
+        <rect x="25" y="16" width="75" height="36" fill="url(#ncm-grid)" />
 
         {/* Connecting hairlines — every pin to its nearest neighbour, suggests
             the operating network. */}
