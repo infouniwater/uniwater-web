@@ -1,19 +1,20 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
-import { SolutionCard } from '@/components/ui/Card';
 
-// 2026-05-25 — all five products in one inline row at lg+. Residential
-// and commercial sit in the same grid at equal width; the card title
-// and photo carry the audience signal. Below lg the grid collapses
-// (sm: 2-per-row, mobile: stack).
+// 2026-05-25 — UI matched to InstallationVersatility: same grid
+// (grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6), same
+// aspect-[3/4] portrait images, same numbered eyebrow + title +
+// caption layout. Cards stay clickable via a Link wrapper. No
+// borders, no bordered "card" panels, no Read-more chevron — the
+// whole card is the affordance.
 const SOLUTIONS = [
   {
     href: '/solutions/bathroom-filter',
     title: 'Bathroom filters',
     description:
       'Stop iron staining and hard-water scale at the bathroom feed, in spaces you’d never expect to fit equipment.',
-    photoDescription: 'BathSoft Trio installed in a plumbing shaft of a finished bathroom',
-    photoRef: 'solution-bathroom',
     imgSrc: '/images/photography/bathroom-filter-hero.jpg',
     imgAlt: 'BathSoft installed in a marble luxury bathroom with brass freestanding bath, two stainless cylinders recessed behind a glass shower partition',
   },
@@ -22,8 +23,6 @@ const SOLUTIONS = [
     title: 'Whole-house filtration',
     description:
       'Treat the water once, at the inlet — every tap, every shower, every appliance protected.',
-    photoDescription: 'HomeSoft two-vessel install in a residential utility room',
-    photoRef: 'solution-wholehouse',
     imgSrc: '/images/photography/whole-house-hero.jpg',
     imgAlt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',
   },
@@ -31,8 +30,6 @@ const SOLUTIONS = [
     href: '/solutions/drinking-water-solution',
     title: 'Drinking water systems',
     description: 'RO, UV, or UF — sized to your actual TDS. Wall-mounted, under-sink, or centralised.',
-    photoDescription: 'Premium chrome kitchen tap with filtered water flowing into glass',
-    photoRef: 'solution-drinking',
     imgSrc: '/images/photography/drinking-water-home.jpg',
     imgAlt: 'Glass of Uniwater drinking water on a marble kitchen counter, family in soft focus in the background',
   },
@@ -40,8 +37,6 @@ const SOLUTIONS = [
     href: '/industrial',
     title: 'Building & society water plants',
     description: '8,000 to 30,000 LPH, for apartment complexes, hotels, hospitals, schools.',
-    photoDescription: 'WTP install in a gated complex plant room',
-    photoRef: 'solution-wtp',
     imgSrc: '/images/photography/wtp-basement.jpg',
     imgAlt: 'Building water-treatment plant — three branded Uniwater vessels in a basement plant room with overhead piping',
   },
@@ -49,8 +44,6 @@ const SOLUTIONS = [
     href: '/industrial',
     title: 'Industrial RO and DM plants',
     description: 'Engineered process water for manufacturing, pharmaceutical, institutional use.',
-    photoDescription: 'Industrial RO/DM plant with SS vessels and instrumentation',
-    photoRef: 'solution-industrial',
     imgSrc: '/images/photography/wtp-terrace.jpg',
     imgAlt: 'Industrial water treatment plant on a terrace with stainless vessels and SCADA-ready instrumentation',
   },
@@ -69,12 +62,32 @@ export function SolutionsOverview() {
         </Body>
       </div>
 
-      {/* All five solutions in one row at lg+. Mobile stacks; tablet
-          (sm/md) goes 2-per-row, which lands 5 cards as 2+2+1 — the
-          5th card sits alone on its row, full grid-cell width. */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6 items-stretch">
-        {SOLUTIONS.map((solution) => (
-          <SolutionCard key={solution.title} {...solution} />
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
+        {SOLUTIONS.map((solution, i) => (
+          <Link
+            key={solution.title}
+            href={solution.href}
+            className="group flex flex-col gap-3 sm:gap-4 transition-opacity duration-200 ease-calm hover:opacity-90"
+          >
+            <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4]">
+              <Image
+                src={solution.imgSrc}
+                alt={solution.imgAlt}
+                fill
+                sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-300 ease-calm group-hover:scale-[1.02]"
+              />
+            </div>
+            <div>
+              <div className="text-eyebrow font-medium uppercase text-teal mb-1">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <h3 className="text-body sm:text-h3 font-semibold text-navy mb-1 sm:mb-2 leading-snug">
+                {solution.title}
+              </h3>
+              <p className="text-caption text-mute leading-snug">{solution.description}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </Section>
