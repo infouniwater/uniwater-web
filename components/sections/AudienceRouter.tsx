@@ -10,25 +10,30 @@ import { Eyebrow, Heading } from '@/components/ui/Typography';
  * current state, and we send them to the page that closes that state.
  */
 
+// 2026-05-25 trim: each body cut to two short sentences max so the
+// section reads as four picks at a glance instead of four paragraphs.
+// Industrial SLA detail moved off this card — it lives canonically on
+// /industrial. AudienceRouter is the chooser; the destination pages
+// own the specifics.
 const AUDIENCES = [
   {
     label: 'Something is wrong with my water.',
     body:
-      'Yellow stains. Hair that doesn’t feel right. Scale on the geyser. Marble grout going orange. Start with a free survey — we test the chemistry before we propose anything.',
+      'Yellow stains. Scale on the geyser. Marble going orange. We test the chemistry first.',
     cta: 'Find what fits',
     href: '/water-problem-checker',
   },
   {
     label: 'I’m building or renovating.',
     body:
-      'Specify the water before the tile goes down. We survey at draft drawings and hand back a system the architect can route through the false ceiling and the plumbing shaft.',
+      'Specify the water before the tile goes down. We survey at draft drawings, the architect routes the system through the shaft.',
     cta: 'Plan the system',
     href: '/for-architects',
   },
   {
     label: 'I run a building, hotel, or factory.',
     body:
-      'Engineered water at scale. 8K LPH building plants to 50K LPH industrial RO. RFQ today, site visit within five working days, BOM and price five working days after that, AMC priced at handover.',
+      'Engineered water at scale. Building plants to 50K LPH industrial RO. AMC priced at handover.',
     cta: 'Submit an RFQ',
     href: '/industrial#rfq',
   },
@@ -36,11 +41,9 @@ const AUDIENCES = [
     label: 'I specify or install water systems.',
     // 2026-05-22: href moved from /for-plumbers → /for-trade so the trade
     // audience lands on a three-way chooser (sanitary-ware seller /
-    // architect / plumber) instead of being routed straight to the
-    // plumber page. Body softened from "partner programme" specifics to
-    // an audience-agnostic line that suits all three trade lanes.
+    // architect / plumber).
     body:
-      'Three ways to work with us — for dealers, designers, and installers. Trade access, install support, lead routing.',
+      'Three lanes — dealer, designer, installer. Trade pricing, install support, lead routing.',
     cta: 'See the trade programme',
     href: '/for-trade',
   },
