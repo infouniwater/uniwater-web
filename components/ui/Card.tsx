@@ -32,10 +32,7 @@ export function Card({
 /** Solution card — hero image, title, two-line body, arrow link.
  *  Renders a real <img> when imgSrc is provided; otherwise falls back to the
  *  Photo placeholder using photoDescription as the brief.
- *
- *  `category` (optional) renders a small uppercase chip above the title.
- *  Used by SolutionsOverview to mark "Residential" vs "Commercial" cards
- *  when both categories sit in the same grid. */
+ *  h-full lets the card stretch to row height under grid alignment. */
 export function SolutionCard({
   href,
   title,
@@ -44,7 +41,6 @@ export function SolutionCard({
   photoRef,
   imgSrc,
   imgAlt,
-  category,
 }: {
   href: string;
   title: string;
@@ -53,7 +49,6 @@ export function SolutionCard({
   photoRef?: string;
   imgSrc?: string;
   imgAlt?: string;
-  category?: 'Residential' | 'Commercial';
 }) {
   return (
     <Link
@@ -70,18 +65,6 @@ export function SolutionCard({
             loading="lazy"
             decoding="async"
           />
-          {category && (
-            <span
-              className={
-                'absolute top-3 left-3 inline-flex items-center px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur ' +
-                (category === 'Residential'
-                  ? 'bg-soft/80 text-navy'
-                  : 'bg-navy/85 text-soft')
-              }
-            >
-              {category}
-            </span>
-          )}
         </div>
       ) : (
         <Photo
@@ -90,7 +73,7 @@ export function SolutionCard({
           aspect="sixteen-nine"
         />
       )}
-      <div className="p-4 sm:p-6 lg:p-8 flex flex-col gap-2 sm:gap-3">
+      <div className="p-4 sm:p-5 lg:p-6 flex flex-col gap-2 sm:gap-3">
         <Heading level={3} className="text-body sm:text-h3 leading-snug">{title}</Heading>
         <Body className="text-caption sm:text-body text-mute leading-snug sm:leading-normal">{description}</Body>
         <div className="mt-1 sm:mt-2 flex items-center gap-2 text-teal text-caption font-medium">
