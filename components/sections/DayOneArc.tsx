@@ -5,12 +5,21 @@ import { Eyebrow, Heading, Body, EditorialAccent } from '@/components/ui/Typogra
  * Day One vs Eighteen Months vs Ten Years.
  * Per BLUEPRINT §7 and the 2026 Homeowner Catalogue p.2.
  *
- * Redesigned 2026-05-25 — the previous three-column bullet-list layout
- * forced the visitor through ~80 words per card before the punchline
- * (₹50K saved → ₹10–12 L lost) registered. The real argument is the
- * three NUMBERS and how they invert over time, so the numbers are now
- * the visual anchor: big-type cost on top, single descriptor line
- * below, no bullets. Total text per card drops ~70 %.
+ * Three numbers, side-by-side. The argument IS the inversion across
+ * the row: ₹50K saved → ₹40K spent → ₹10–12 LAKH lost. Big-type
+ * numbers carry the message; one short sentence per card supplies
+ * context, not detail. No bullets.
+ *
+ * UI passes (2026-05-25):
+ *   1. "₹10–12 LAKH" now splits into big numeric + smaller `lakh`
+ *      suffix so all three cards' numbers sit on a single line at
+ *      a consistent baseline (the previous version wrapped on card 3).
+ *   2. Tone progression — saved stays soft-teal (positive), spent
+ *      shifts to muted off-white (neutral), lost goes full off-white
+ *      with bolder weight (the alarming punchline).
+ *   3. Chevron connectors in the column gap so the row reads as an
+ *      arc, not three independent rectangles. Mobile drops them
+ *      since the cards stack vertically.
  */
 
 interface Stage {
@@ -18,13 +27,16 @@ interface Stage {
   marker: string;
   /** Time-horizon label. */
   label: string;
-  /** Big-type cost — the visual hook. */
+  /** Big-type number. */
   cost: string;
+  /** Optional smaller unit suffix (used for "lakh" on card 3 so the
+      whole number stays on one line at a consistent size). */
+  unit?: string;
   /** One-line framing of what that cost represents. */
   costLabel: string;
-  /** Single short sentence summarising the stage. No bullets. */
+  /** Single short sentence — replaces the bullet list. */
   body: string;
-  /** Sign of the cost — controls the colour tone of the big number. */
+  /** Sign of the cost — drives the colour + weight of the big number. */
   tone: 'saved' | 'spent' | 'lost';
 }
 
@@ -48,19 +60,20 @@ const STAGES: Stage[] = [
   {
     marker: '03',
     label: 'Ten years',
-    cost: '₹10–12 LAKH',
+    cost: '₹10–12',
+    unit: 'lakh',
     costLabel: 'compounded loss',
     body: 'Appliances replaced. Marble re-polished. Plus what money can’t fix — hair thinning, skin damage, premature ageing.',
     tone: 'lost',
   },
 ];
 
-// Map the cost's "sign" to colour. Saved stays soft-teal (positive tone);
-// spent + lost shift toward warmer / brighter to read as expense.
-const TONE_COLOR: Record<Stage['tone'], string> = {
-  saved: 'text-soft',
-  spent: 'text-offwhite',
-  lost:  'text-offwhite',
+// Per-card tone — colour + weight progression that visually echoes
+// the compounding the section describes.
+const TONE: Record<Stage['tone'], string> = {
+  saved: 'text-soft font-light',
+  spent: 'text-offwhite/70 font-light',
+  lost:  'text-offwhite font-normal',
 };
 
 export function DayOneArc() {
@@ -77,10 +90,14 @@ export function DayOneArc() {
       </div>
 
       {/* Three numbers, one short line each. The cost typography is
-          the visual anchor; everything else supports it. */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
-        {STAGES.map((stage) => (
-          <div key={stage.marker} className="bg-navy p-6 sm:p-8 md:p-10 flex flex-col gap-5 sm:gap-6">
+          the visual anchor; the chevrons in the gap make the row read
+          as a compounding arc. */}
+      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
+        {STAGES.map((stage, i) => (
+          <div
+            key={stage.marker}
+            className="bg-navy p-6 sm:p-8 md:p-10 flex flex-col gap-5 sm:gap-6 relative"
+          >
             <div className="flex items-baseline gap-3">
               <span className="text-eyebrow font-medium uppercase text-soft tracking-wide">
                 {stage.marker}
@@ -90,12 +107,23 @@ export function DayOneArc() {
               </span>
             </div>
 
-            {/* The number — large, dominant, the actual message. */}
-            <div className="flex flex-col gap-1">
-              <span className={`text-4xl sm:text-5xl md:text-6xl font-light leading-none ${TONE_COLOR[stage.tone]} [font-feature-settings:'tnum']`}>
-                {stage.cost}
-              </span>
-              <span className="text-caption uppercase tracking-wider text-soft/80 font-medium mt-2">
+            {/* The number — large, dominant. Suffix unit (e.g. "lakh")
+                rendered smaller + inline so the whole expression stays
+                on one line at a consistent baseline across all three
+                cards. tabular-nums + whitespace-nowrap prevent any
+                further wrapping or jitter. */}
+            <div className="flex flex-col gap-2">
+              <div className={`flex items-baseline gap-2 whitespace-nowrap [font-feature-settings:'tnum']`}>
+                <span className={`text-5xl sm:text-6xl leading-none ${TONE[stage.tone]}`}>
+                  {stage.cost}
+                </span>
+                {stage.unit && (
+                  <span className={`text-2xl sm:text-3xl leading-none ${TONE[stage.tone]}`}>
+                    {stage.unit}
+                  </span>
+                )}
+              </div>
+              <span className="text-caption uppercase tracking-wider text-soft/80 font-medium">
                 {stage.costLabel}
               </span>
             </div>
@@ -103,6 +131,21 @@ export function DayOneArc() {
             <p className="text-offwhite/80 text-body leading-snug [text-wrap:balance]">
               {stage.body}
             </p>
+
+            {/* Chevron connector — sits in the gap between this card
+                and the next. Only renders for cards 1 and 2, and only
+                on md+ where the grid is horizontal. The chevron is
+                absolutely positioned so it doesn't take grid space. */}
+            {i < STAGES.length - 1 && (
+              <span
+                aria-hidden="true"
+                className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 w-6 h-6 items-center justify-center rounded-full bg-navy border border-soft/40 text-soft"
+              >
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M3 1L7 5L3 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            )}
           </div>
         ))}
       </div>
