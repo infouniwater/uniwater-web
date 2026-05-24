@@ -47,8 +47,12 @@ const STAGES: Stage[] = [
   {
     marker: '01',
     label: 'Day one',
-    cost: '₹50,000',
-    costLabel: 'engineered & customised',
+    // Card 01 is the SETUP not an outcome — there's no monetary
+    // amount to attach to "the right decision was made." The big-type
+    // slot carries the qualitative anchor instead. Rendered at the
+    // same scale as the ₹ amounts on cards 2 + 3 for row consistency.
+    cost: 'Customised.',
+    costLabel: 'engineered for your home',
     body: 'Plumber recommends Uniwater. Water tested, system specced, install engineered — decided on chemistry, not catalogue price.',
     tone: 'invested',
   },
@@ -90,7 +94,7 @@ export function DayOneArc() {
           Day one decisions, decade-long returns.
         </Heading>
         <Body inverse className="text-offwhite/80 text-lede font-light mt-2">
-          The plumber&rsquo;s call on day one &mdash; surveyed, specced, engineered &mdash; compounds into lakhs saved and the wellness money can&rsquo;t replace.
+          The right system on day one compounds &mdash; lakhs saved over the years, plus the wellness money can&rsquo;t replace.
         </Body>
       </div>
 
