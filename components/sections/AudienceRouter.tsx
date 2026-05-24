@@ -63,7 +63,7 @@ export function AudienceRouter() {
           <Link
             key={audience.label}
             href={audience.href}
-            className="group bg-offwhite p-5 sm:p-7 lg:p-10 flex flex-col gap-3 sm:gap-4 transition-colors duration-200 ease-calm hover:bg-tint/30"
+            className="group bg-offwhite p-4 sm:p-6 lg:p-8 flex flex-col gap-3 sm:gap-4 transition-colors duration-200 ease-calm hover:bg-tint/30"
           >
             <h3 className="text-body sm:text-h3 font-semibold text-navy leading-snug [text-wrap:balance]">
               {audience.label}

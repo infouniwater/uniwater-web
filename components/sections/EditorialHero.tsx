@@ -56,7 +56,7 @@ export function EditorialHero() {
             <div className="flex gap-4 sm:gap-6 lg:gap-8">
               <div className="flex-1 min-w-0 flex flex-col gap-6">
                 <Display>Wellness starts with clean water.</Display>
-                <h2 className="text-h2-m md:text-h2 font-light text-navy/85 leading-snug [text-wrap:balance]">
+                <h2 className="text-h2-m md:text-h2 font-light text-navy/90 leading-snug [text-wrap:balance]">
                   Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
                 </h2>
                 <Lede className="text-mute">

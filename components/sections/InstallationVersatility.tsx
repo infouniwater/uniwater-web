@@ -42,7 +42,7 @@ export function InstallationVersatility() {
           Five places we&rsquo;ve put a water system &mdash; engineered into the architecture, not bolted to it.
         </Heading>
         <Body className="text-mute text-lede font-light">
-          Most water companies bolt a vessel to a wall in the utility area and call it done. Uniwater engineers the install into the building &mdash; false ceilings, plumbing shafts, wall niches, under-counter cavities, plant rooms. Tight shafts. Low ceilings. Finished interiors. The system fits the house, the house doesn&rsquo;t move around the system.
+          Most water companies bolt a vessel to a wall and call it done. Uniwater engineers the install into the building &mdash; false ceilings, shafts, niches, under-counter cavities, plant rooms. The system fits the house, not the other way around.
         </Body>
       </div>
 

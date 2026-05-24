@@ -24,7 +24,11 @@ export function FinalCTA({
   const cta = primaryCTA || defaultCTA;
 
   return (
-    <Section tone="tint" padding="loose">
+    // tone="subtle" (2026-05-25) — was "tint". tint was the only place on
+    // the homepage using that token; subtle aligns the FinalCTA with the
+    // TrustStripe at the top, giving the page a 3-tone palette
+    // (offwhite / subtle / navy) rather than 4.
+    <Section tone="subtle" padding="loose">
       <div className="max-w-3xl mx-auto text-center flex flex-col gap-6 items-center">
         <Heading level={2} className="text-display-m font-light">
           {headline}

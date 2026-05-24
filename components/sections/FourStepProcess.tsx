@@ -17,7 +17,12 @@ const STEP_ICONS: Record<string, { src: string; alt: string }> = {
  */
 export function FourStepProcess({ id }: { id?: string }) {
   return (
-    <Section padding="default" tone="plain" id={id}>
+    // tone="subtle" (2026-05-25) — breaks the four-section plain-tone run
+    // (Solutions → Installation → Process → Proof) so the page has visual
+    // rhythm between Day One's navy and Cities' navy. Process is the
+    // lowest-stakes section in that run, so it carries the tone break
+    // without taking attention away from the catalogue or the proof.
+    <Section padding="default" tone="subtle" id={id}>
       <div className="max-w-3xl mb-8 md:mb-12">
         <Eyebrow className="mb-4">Our process</Eyebrow>
         <Heading level={2} className="mb-4">What we do.</Heading>
@@ -26,7 +31,9 @@ export function FourStepProcess({ id }: { id?: string }) {
         </Body>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 lg:gap-8">
+      {/* gap progression now grows with viewport (was gap-6 md:gap-12 lg:gap-8 —
+          the lg value SHRANK back below md, which read as a layout bug). */}
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
         {FOUR_STEPS.map((step) => {
           const icon = STEP_ICONS[step.n];
           return (

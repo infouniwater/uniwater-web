@@ -61,7 +61,10 @@ export function TrustStripe() {
               // Desktop md:pl-8 clears the vertical md:divide-x line.
               className={`flex flex-col gap-1 ${i >= 2 ? 'pt-6 border-t border-hairline md:border-t-0 md:pt-0' : ''} ${i > 0 ? 'md:pl-8' : ''}`}
             >
-              <div className="text-[28px] md:text-[32px] font-light leading-none text-navy">
+              {/* Stat values on the brand h2 scale (26 → 32px) instead of
+                  the previous raw 28 → 32px arbitrary tokens. Same visual
+                  weight, now governed by the design system. */}
+              <div className="text-h2-m md:text-h2 font-light leading-none text-navy">
                 {item.value}
               </div>
               <div className="text-eyebrow font-medium uppercase tracking-wide text-teal">
