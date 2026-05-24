@@ -9,41 +9,43 @@ import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
 // caption layout. Cards stay clickable via a Link wrapper. No
 // borders, no bordered "card" panels, no Read-more chevron — the
 // whole card is the affordance.
+// Descriptions written in the same telegraphic register as
+// InstallationVersatility — single focus per card, fragments OK,
+// roughly 7–12 words. The card is a teaser; the destination page
+// carries the full pitch.
 const SOLUTIONS = [
   {
     href: '/solutions/bathroom-filter',
     title: 'Bathroom filters',
-    description:
-      'Stop iron staining and hard-water scale at the bathroom feed, in spaces you’d never expect to fit equipment.',
+    description: 'At the bathroom feed. Stops iron staining and hard-water scale.',
     imgSrc: '/images/photography/bathroom-filter-hero.jpg',
     imgAlt: 'BathSoft installed in a marble luxury bathroom with brass freestanding bath, two stainless cylinders recessed behind a glass shower partition',
   },
   {
     href: '/solutions/whole-house-water-filter',
     title: 'Whole-house filtration',
-    description:
-      'Treat the water once, at the inlet — every tap, every shower, every appliance protected.',
+    description: 'At the inlet. Treats the water once for every tap in the house.',
     imgSrc: '/images/photography/whole-house-hero.jpg',
     imgAlt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',
   },
   {
     href: '/solutions/drinking-water-solution',
     title: 'Drinking water systems',
-    description: 'RO, UV, or UF — sized to your actual TDS. Wall-mounted, under-sink, or centralised.',
+    description: 'At the kitchen tap. RO, UV, or UF — sized to your TDS.',
     imgSrc: '/images/photography/drinking-water-home.jpg',
     imgAlt: 'Glass of Uniwater drinking water on a marble kitchen counter, family in soft focus in the background',
   },
   {
     href: '/industrial',
     title: 'Building & society water plants',
-    description: '8,000 to 30,000 LPH, for apartment complexes, hotels, hospitals, schools.',
+    description: 'For complexes, hotels, hospitals. 8,000 to 30,000 LPH.',
     imgSrc: '/images/photography/wtp-basement.jpg',
     imgAlt: 'Building water-treatment plant — three branded Uniwater vessels in a basement plant room with overhead piping',
   },
   {
     href: '/industrial',
     title: 'Industrial RO and DM plants',
-    description: 'Engineered process water for manufacturing, pharmaceutical, institutional use.',
+    description: 'For manufacturing, pharma, institutional use. Engineered process water.',
     imgSrc: '/images/photography/wtp-terrace.jpg',
     imgAlt: 'Industrial water treatment plant on a terrace with stainless vessels and SCADA-ready instrumentation',
   },
@@ -67,7 +69,7 @@ export function SolutionsOverview() {
           <Link
             key={solution.title}
             href={solution.href}
-            className="group flex flex-col gap-3 sm:gap-4 transition-opacity duration-200 ease-calm hover:opacity-90"
+            className="flex flex-col gap-3 sm:gap-4"
           >
             <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4]">
               <Image
@@ -75,7 +77,7 @@ export function SolutionsOverview() {
                 alt={solution.imgAlt}
                 fill
                 sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-300 ease-calm group-hover:scale-[1.02]"
+                className="object-cover"
               />
             </div>
             <div>
