@@ -68,7 +68,10 @@ export function AudienceRouter() {
             <h3 className="text-body sm:text-h3 font-semibold text-navy leading-snug [text-wrap:balance]">
               {audience.label}
             </h3>
-            <p className="text-caption sm:text-body text-mute flex-grow leading-snug sm:leading-normal">{audience.body}</p>
+            {/* Card body aligned to the homepage reference card-text scale
+                (Solutions / Installation): flat text-caption, no grow at sm.
+                flex-grow keeps the CTA pinned to the card bottom. */}
+            <p className="text-caption text-mute leading-snug flex-grow">{audience.body}</p>
             <div className="flex items-center gap-2 text-teal text-caption font-medium mt-2">
               <span>{audience.cta}</span>
               <svg

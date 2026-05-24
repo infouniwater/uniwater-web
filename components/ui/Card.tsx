@@ -169,6 +169,11 @@ export function ProcessStep({
   iconAlt?: string;
   inverse?: boolean;
 }) {
+  // Card text scale aligned with the homepage reference (Solutions /
+  // InstallationVersatility): h3 `text-body sm:text-h3 font-semibold`,
+  // body `text-caption text-mute leading-snug`. ProcessStep uses raw
+  // classes (not Heading / Body components) so the override is local
+  // to this card without affecting Heading/Body's defaults sitewide.
   if (iconSrc) {
     return (
       <div className="flex flex-col gap-4">
@@ -192,12 +197,17 @@ export function ProcessStep({
             decoding="async"
           />
         </div>
-        <Heading level={3} inverse={inverse}>
+        <h3
+          className={cn(
+            'text-body sm:text-h3 font-semibold leading-snug [text-wrap:balance]',
+            inverse ? 'text-offwhite' : 'text-navy',
+          )}
+        >
           {title}
-        </Heading>
-        <Body inverse={inverse} className={inverse ? 'text-offwhite/80' : 'text-mute'}>
+        </h3>
+        <p className={cn('text-caption leading-snug', inverse ? 'text-offwhite/80' : 'text-mute')}>
           {body}
-        </Body>
+        </p>
       </div>
     );
   }
@@ -211,12 +221,17 @@ export function ProcessStep({
       >
         {n}
       </div>
-      <Heading level={3} inverse={inverse}>
+      <h3
+        className={cn(
+          'text-body sm:text-h3 font-semibold leading-snug [text-wrap:balance]',
+          inverse ? 'text-offwhite' : 'text-navy',
+        )}
+      >
         {title}
-      </Heading>
-      <Body inverse={inverse} className={inverse ? 'text-offwhite/80' : 'text-mute'}>
+      </h3>
+      <p className={cn('text-caption leading-snug', inverse ? 'text-offwhite/80' : 'text-mute')}>
         {body}
-      </Body>
+      </p>
     </div>
   );
 }

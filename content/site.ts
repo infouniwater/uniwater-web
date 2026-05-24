@@ -105,12 +105,12 @@ export const CLIENT_LOGOS: Record<typeof NAMED_CLIENTS[number], { src: string; a
   'Birat Medical College':   { src: '/clients/birat-medical-college.png',   alt: 'Birat Medical College logo' },
   'Path Bhavan':             { src: '/clients/path-bhavan.png',             alt: 'Path Bhavan school logo' },
   'Techno India University': { src: '/clients/techno-india-university.png', alt: 'Techno India University logo' },
-  'Shyam Steel':             { src: '/clients/shyam-steel.png',             alt: 'Shyam Steel logo' },
-  'Saburi Plywood':          { src: '/clients/saburi-plywood.png',          alt: 'Saburi Plywood logo' },
+  'Shyam Steel':             { src: '/clients/shyam-steel.avif',            alt: 'Shyam Steel logo' },
+  'Saburi Plywood':          { src: '/clients/saburi-plywood.webp',         alt: 'Saburi Plywood logo' },
   'GM Group':                { src: '/clients/gm-group.png',                alt: 'GM Group logo (Sanjeeb & Sujit, since 1984)' },
-  'Omacme':                  { src: '/clients/omacme.png',                  alt: 'Omacme logo' },
+  'Omacme':                  { src: '/clients/omacme.jpg',                  alt: 'Omacme logo' },
   'Premier Wires':           { src: '/clients/premier-wires.svg',           alt: 'Premier Wires logo' },
-  'Kreamz':                  { src: '/clients/kreamz.png',                  alt: 'Kreamz logo' },
+  'Kreamz':                  { src: '/clients/kreamz.jpg',                  alt: 'Kreamz logo' },
 };
 
 export const CITIES = [
