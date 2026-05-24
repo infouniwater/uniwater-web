@@ -31,7 +31,11 @@ export function Card({
 
 /** Solution card — hero image, title, two-line body, arrow link.
  *  Renders a real <img> when imgSrc is provided; otherwise falls back to the
- *  Photo placeholder using photoDescription as the brief. */
+ *  Photo placeholder using photoDescription as the brief.
+ *
+ *  `category` (optional) renders a small uppercase chip above the title.
+ *  Used by SolutionsOverview to mark "Residential" vs "Commercial" cards
+ *  when both categories sit in the same grid. */
 export function SolutionCard({
   href,
   title,
@@ -40,6 +44,7 @@ export function SolutionCard({
   photoRef,
   imgSrc,
   imgAlt,
+  category,
 }: {
   href: string;
   title: string;
@@ -48,11 +53,12 @@ export function SolutionCard({
   photoRef?: string;
   imgSrc?: string;
   imgAlt?: string;
+  category?: 'Residential' | 'Commercial';
 }) {
   return (
     <Link
       href={href}
-      className="group block bg-offwhite border border-hairline transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)]"
+      className="group block bg-offwhite border border-hairline transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)] h-full"
     >
       {imgSrc ? (
         <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 9' }}>
@@ -64,6 +70,18 @@ export function SolutionCard({
             loading="lazy"
             decoding="async"
           />
+          {category && (
+            <span
+              className={
+                'absolute top-3 left-3 inline-flex items-center px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur ' +
+                (category === 'Residential'
+                  ? 'bg-soft/80 text-navy'
+                  : 'bg-navy/85 text-soft')
+              }
+            >
+              {category}
+            </span>
+          )}
         </div>
       ) : (
         <Photo
