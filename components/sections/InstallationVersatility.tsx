@@ -36,7 +36,7 @@ const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
 export function InstallationVersatility() {
   return (
     <Section padding="default">
-      <div className="mb-8 md:mb-12 max-w-3xl">
+      <div className="mb-6 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">What makes us different</Eyebrow>
         <Heading level={2} className="mb-5">
           Five places we&rsquo;ve put a water system &mdash; engineered into the architecture, not bolted to it.
@@ -51,7 +51,10 @@ export function InstallationVersatility() {
           const photo = INSTALL_PHOTOS[i];
           return (
             <div key={place.location} className="flex flex-col gap-3 sm:gap-4">
-              <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4]">
+              {/* aspect: landscape on mobile (shorter card, section fits
+                  closer to a single mobile frame), portrait sm+ where
+                  there's vertical room. */}
+              <div className="relative w-full overflow-hidden bg-subtle aspect-[4/3] sm:aspect-[3/4]">
                 <Image
                   src={photo.src}
                   alt={photo.alt}

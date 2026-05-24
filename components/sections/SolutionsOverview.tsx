@@ -54,7 +54,7 @@ const SOLUTIONS = [
 export function SolutionsOverview() {
   return (
     <Section padding="default" id="solutions-overview">
-      <div className="mb-8 md:mb-12 max-w-3xl">
+      <div className="mb-6 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">Catalogue</Eyebrow>
         <Heading level={2} className="mb-4">
           What we install.
@@ -71,7 +71,10 @@ export function SolutionsOverview() {
             href={solution.href}
             className="flex flex-col gap-3 sm:gap-4"
           >
-            <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4]">
+            {/* aspect: landscape on mobile (shorter card, section fits
+                closer to a single mobile frame), portrait sm+ where
+                there's vertical room and the editorial portrait reads. */}
+            <div className="relative w-full overflow-hidden bg-subtle aspect-[4/3] sm:aspect-[3/4]">
               <Image
                 src={solution.imgSrc}
                 alt={solution.imgAlt}

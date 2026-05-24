@@ -88,7 +88,7 @@ const TONE: Record<Stage['tone'], string> = {
 export function DayOneArc() {
   return (
     <Section tone="navy" padding="default">
-      <div className="flex flex-col gap-4 mb-10 md:mb-14 max-w-3xl">
+      <div className="flex flex-col gap-3 sm:gap-4 mb-6 md:mb-14 max-w-3xl">
         <Eyebrow className="!text-soft">The decision</Eyebrow>
         <Heading level={2} inverse>
           Day one decisions, decade-long returns.
@@ -105,7 +105,7 @@ export function DayOneArc() {
         {STAGES.map((stage, i) => (
           <div
             key={stage.marker}
-            className="bg-navy p-6 sm:p-8 md:p-10 flex flex-col gap-5 sm:gap-6 relative"
+            className="bg-navy p-4 sm:p-8 md:p-10 flex flex-col gap-3 sm:gap-6 relative"
           >
             <div className="flex items-baseline gap-3">
               <span className="text-eyebrow font-medium uppercase text-soft tracking-wide">
@@ -121,19 +121,20 @@ export function DayOneArc() {
                 on one line at a consistent baseline across all three
                 cards. tabular-nums + whitespace-nowrap prevent any
                 further wrapping or jitter. */}
-            <div className="flex flex-col gap-2">
-              {/* Cost typography 2026-05-25 — was text-5xl sm:text-6xl
-                  (48 → 60 px). Felt too dominant against the card body;
-                  bumped down one step on both breakpoints so the number
-                  is still the visual anchor (~1.5× the section H2 scale)
-                  without crowding the rest of the card. Suffix scaled
-                  proportionally. */}
+            <div className="flex flex-col gap-1 sm:gap-2">
+              {/* Cost typography:
+                    desktop:  text-4xl sm:text-5xl
+                    mobile:   text-2xl  (was text-4xl)  — compacted
+                              2026-05-25 per Rajat so the section fits
+                              closer to a single mobile frame. The number
+                              is still the visual anchor; just smaller
+                              on small screens. */}
               <div className={`flex items-baseline gap-2 whitespace-nowrap [font-feature-settings:'tnum']`}>
-                <span className={`text-4xl sm:text-5xl leading-none ${TONE[stage.tone]}`}>
+                <span className={`text-2xl sm:text-5xl leading-none ${TONE[stage.tone]}`}>
                   {stage.cost}
                 </span>
                 {stage.unit && (
-                  <span className={`text-xl sm:text-2xl leading-none ${TONE[stage.tone]}`}>
+                  <span className={`text-base sm:text-2xl leading-none ${TONE[stage.tone]}`}>
                     {stage.unit}
                   </span>
                 )}
@@ -143,7 +144,11 @@ export function DayOneArc() {
               </span>
             </div>
 
-            <p className="text-offwhite/80 text-body leading-snug [text-wrap:balance]">
+            {/* Body hidden below sm — the number + caption carry the
+                row at mobile widths so the whole three-card group fits
+                close to one mobile frame instead of three. Returns at
+                sm+ where there's vertical room. */}
+            <p className="hidden sm:block text-offwhite/80 text-body leading-snug [text-wrap:balance]">
               {stage.body}
             </p>
 
@@ -165,7 +170,7 @@ export function DayOneArc() {
         ))}
       </div>
 
-      <div className="mt-12 md:mt-16 max-w-reading">
+      <div className="mt-6 md:mt-16 max-w-reading">
         <EditorialAccent className="!text-soft">
           Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they keep.
         </EditorialAccent>
