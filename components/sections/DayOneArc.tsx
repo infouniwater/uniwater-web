@@ -29,15 +29,18 @@ interface Stage {
   label: string;
   /** Big-type number. */
   cost: string;
-  /** Optional smaller unit suffix (used for "lakh" on card 3 so the
-      whole number stays on one line at a consistent size). */
+  /** Optional smaller unit suffix (used for "lakh" on cards 2 + 3 so
+      "₹1 lakh" / "₹10–12 lakh" stay on one line with consistent
+      typography across all three cards). */
   unit?: string;
   /** One-line framing of what that cost represents. */
   costLabel: string;
   /** Single short sentence — replaces the bullet list. */
   body: string;
-  /** Sign of the cost — drives the colour + weight of the big number. */
-  tone: 'saved' | 'spent' | 'lost';
+  /** Tone of the card — drives the colour + weight of the big number.
+      All three tones positive (this is the value-of-the-right-choice
+      arc, not cost-of-doing-nothing). */
+  tone: 'invested' | 'saved' | 'protected';
 }
 
 const STAGES: Stage[] = [
@@ -45,35 +48,37 @@ const STAGES: Stage[] = [
     marker: '01',
     label: 'Day one',
     cost: '₹50,000',
-    costLabel: 'saved today',
-    body: 'The five-minute pick with the plumber. Generic system, no survey, no long view.',
-    tone: 'saved',
+    costLabel: 'engineered & customised',
+    body: 'Plumber recommends Uniwater. Water tested, system specced, install engineered — decided on chemistry, not catalogue price.',
+    tone: 'invested',
   },
   {
     marker: '02',
     label: 'Eighteen months',
-    cost: '₹40,000',
-    costLabel: 'first service & replacement bill',
-    body: 'Geyser scaling. Marble grout going orange. Hair feels different. The house starts ageing.',
-    tone: 'spent',
+    cost: '₹1',
+    unit: 'lakh',
+    costLabel: 'saved',
+    body: 'Appliances pristine. Marble unstained. Skin and hair notice the difference. No emergency service calls.',
+    tone: 'saved',
   },
   {
     marker: '03',
     label: 'Ten years',
     cost: '₹10–12',
     unit: 'lakh',
-    costLabel: 'compounded loss',
-    body: 'Appliances replaced. Marble re-polished. Plus what money can’t fix — hair thinning, skin damage, premature ageing.',
-    tone: 'lost',
+    costLabel: 'saved — plus what money can’t buy',
+    body: 'Appliances on their original lifespan. Marble and fittings as they came. The family’s skin, hair, and the years they keep.',
+    tone: 'protected',
   },
 ];
 
-// Per-card tone — colour + weight progression that visually echoes
-// the compounding the section describes.
+// Per-card tone — all three positive, weight progressively bolder
+// across the arc so the row visually reads as gains compounding
+// (Day one → 18 months → 10 years).
 const TONE: Record<Stage['tone'], string> = {
-  saved: 'text-soft font-light',
-  spent: 'text-offwhite/70 font-light',
-  lost:  'text-offwhite font-normal',
+  invested:  'text-soft font-light',
+  saved:     'text-soft font-normal',
+  protected: 'text-offwhite font-normal',
 };
 
 export function DayOneArc() {
@@ -82,10 +87,10 @@ export function DayOneArc() {
       <div className="flex flex-col gap-4 mb-10 md:mb-14 max-w-3xl">
         <Eyebrow className="!text-soft">The decision</Eyebrow>
         <Heading level={2} inverse>
-          Day one decisions, ten-year prices.
+          Day one decisions, decade-long returns.
         </Heading>
         <Body inverse className="text-offwhite/80 text-lede font-light mt-2">
-          The five-minute call with the plumber on day one is the most expensive decision in the house.
+          The plumber&rsquo;s call on day one &mdash; surveyed, specced, engineered &mdash; compounds into lakhs saved and the wellness money can&rsquo;t replace.
         </Body>
       </div>
 
@@ -158,7 +163,7 @@ export function DayOneArc() {
 
       <div className="mt-12 md:mt-16 max-w-reading">
         <EditorialAccent className="!text-soft">
-          Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they don&rsquo;t get back.
+          Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they keep.
         </EditorialAccent>
       </div>
     </Section>
