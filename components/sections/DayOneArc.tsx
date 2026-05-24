@@ -113,12 +113,18 @@ export function DayOneArc() {
                 cards. tabular-nums + whitespace-nowrap prevent any
                 further wrapping or jitter. */}
             <div className="flex flex-col gap-2">
+              {/* Cost typography 2026-05-25 — was text-5xl sm:text-6xl
+                  (48 → 60 px). Felt too dominant against the card body;
+                  bumped down one step on both breakpoints so the number
+                  is still the visual anchor (~1.5× the section H2 scale)
+                  without crowding the rest of the card. Suffix scaled
+                  proportionally. */}
               <div className={`flex items-baseline gap-2 whitespace-nowrap [font-feature-settings:'tnum']`}>
-                <span className={`text-5xl sm:text-6xl leading-none ${TONE[stage.tone]}`}>
+                <span className={`text-4xl sm:text-5xl leading-none ${TONE[stage.tone]}`}>
                   {stage.cost}
                 </span>
                 {stage.unit && (
-                  <span className={`text-2xl sm:text-3xl leading-none ${TONE[stage.tone]}`}>
+                  <span className={`text-xl sm:text-2xl leading-none ${TONE[stage.tone]}`}>
                     {stage.unit}
                   </span>
                 )}

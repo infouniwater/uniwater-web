@@ -32,8 +32,8 @@ const SOLUTIONS = [
     href: '/solutions/drinking-water-solution',
     title: 'Drinking water systems',
     description: 'At the kitchen tap. RO, UV, or UF — sized to your TDS.',
-    imgSrc: '/images/photography/drinking-water-home.jpg',
-    imgAlt: 'Glass of Uniwater drinking water on a marble kitchen counter, family in soft focus in the background',
+    imgSrc: '/images/photography/drinking-water-home-2.jpg',
+    imgAlt: 'Treated drinking water pouring from a dedicated chrome kitchen tap into a glass, family in soft focus at the dining table behind',
   },
   {
     href: '/industrial',
