@@ -39,9 +39,15 @@ export function Footer() {
   return (
     <footer className="bg-navy text-offwhite mt-24">
       <div className="container-uw py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-10">
+        {/* 2026-05-25 — lg grid widened from cols-5 to cols-12 so each
+            link group sits in its own column and the longest labels
+            (e.g. "Commercial catalogue (PDF)") get a column wide enough
+            to hold them on one line. Previous layout stacked Cities +
+            About into the same column, making it 15 items tall — about
+            double the height of every other column. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10">
           {/* Brand column */}
-          <div className="lg:col-span-2 flex flex-col gap-6">
+          <div className="lg:col-span-3 flex flex-col gap-6">
             <Logo inverse showTagline />
             <div className="flex flex-col gap-1 text-caption text-offwhite/80">
               <div>{SITE.legalName}</div>
@@ -95,7 +101,7 @@ export function Footer() {
           </div>
 
           {/* Solutions column */}
-          <div>
+          <div className="lg:col-span-2">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Solutions</h4>
             <ul className="flex flex-col gap-3">
               {SOLUTIONS_LINKS.map((link) => (
@@ -111,8 +117,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources column */}
-          <div>
+          {/* Resources column — col-span-3 because labels like
+              "Commercial catalogue (PDF)" need the extra width to
+              avoid wrapping. */}
+          <div className="lg:col-span-3">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Resources</h4>
             <ul className="flex flex-col gap-3">
               {RESOURCES_LINKS.map((link) => (
@@ -138,10 +146,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Cities column */}
-          <div>
+          {/* Cities column — 2-col sub-grid keeps the 9-city list compact
+              vertically (it used to stack 9 tall, dominating the row
+              height). */}
+          <div className="lg:col-span-2">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Cities</h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="grid grid-cols-2 gap-x-3 gap-y-3">
               {CITIES.map((city) => (
                 <li key={city.slug}>
                   <Link
@@ -153,7 +163,13 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <h4 className="text-eyebrow font-medium uppercase text-soft mt-8 mb-5">About</h4>
+          </div>
+
+          {/* About column — moved out of the Cities column 2026-05-25 so
+              it gets its own footprint instead of stacking awkwardly
+              underneath the 9-city list. */}
+          <div className="lg:col-span-2">
+            <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">About</h4>
             <ul className="flex flex-col gap-3">
               {ABOUT_LINKS.map((link) => (
                 <li key={link.href}>
