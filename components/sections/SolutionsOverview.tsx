@@ -2,6 +2,14 @@ import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
 import { SolutionCard } from '@/components/ui/Card';
 
+// 2026-05-25 — collapsed the previous two-frame layout (home grid +
+// divider + "For institutions & industry" header + commercial grid)
+// into a single visual frame. The two grids still render with their
+// own column counts (3 for home, 2 for commercial) so the commercial
+// cards keep their wider visual weight — but the gap between rows now
+// matches the gap inside each row, so the section reads as one
+// continuous catalogue.
+
 const HOME_SOLUTIONS = [
   {
     href: '/solutions/bathroom-filter',
@@ -68,22 +76,22 @@ export function SolutionsOverview() {
         </Body>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-10 md:mb-12">
+      {/* Single visual frame — two grids stacked with a gap that matches
+          the in-row gap so the rows read as a continuous catalogue.
+          Home cards stay 3-up; commercial cards stay 2-up so they keep
+          their wider visual weight (signals the bigger-scope audience
+          without needing the previous "For institutions & industry"
+          header strip). */}
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
         {HOME_SOLUTIONS.map((solution) => (
           <SolutionCard key={solution.href} {...solution} />
         ))}
       </div>
 
-      <div className="pt-10 md:pt-12 border-t border-hairline">
-        <div className="mb-6 md:mb-8">
-          <Eyebrow className="mb-2">For institutions &amp; industry</Eyebrow>
-          <Body className="text-mute">A separate journey, with its own engineering rigour and SLAs.</Body>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-6">
-          {B2B_SOLUTIONS.map((solution) => (
-            <SolutionCard key={solution.title} {...solution} />
-          ))}
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-6 mt-3 sm:mt-6">
+        {B2B_SOLUTIONS.map((solution) => (
+          <SolutionCard key={solution.title} {...solution} />
+        ))}
       </div>
     </Section>
   );
