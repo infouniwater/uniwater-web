@@ -43,7 +43,7 @@ export function EditorialHero() {
   return (
     <section className="bg-offwhite border-b border-hairline">
       <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-14 sm:py-20 md:py-24 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-8 sm:py-12 md:py-24 lg:py-0">
           {/* Text panel — split into two sub-blocks at every viewport:
                 • wide sub-block holds the headline / CTAs / price
                 • narrow sub-block is the droplet strip, beside the text
@@ -109,8 +109,8 @@ export function EditorialHero() {
               cell (which has order-2) — visitor sees the image first
               on small screens, then scrolls into the headline. Above
               lg the order classes go inert. */}
-          <div className="lg:col-span-6 lg:py-12 order-1 lg:order-2">
-            <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[56/75]">
+          <div className="lg:col-span-6 order-1 lg:order-2">
+            <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]">
               {HERO_VIDEO_SRC ? (
                 <video
                   src={HERO_VIDEO_SRC}
