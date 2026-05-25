@@ -23,7 +23,7 @@ interface AsLink extends BaseProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>
 type ButtonProps = AsButton | AsLink;
 
 const base =
-  'inline-flex items-center justify-center font-medium tracking-[0.02em] transition-colors duration-200 ease-calm focus-visible:outline-2 focus-visible:outline-teal focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  'inline-flex items-center justify-center font-ui font-medium tracking-[0.02em] transition-colors duration-200 ease-calm focus-visible:outline-2 focus-visible:outline-teal focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none';
 
 const variants: Record<Variant, string> = {
   // Navy bg, white label; hover → teal

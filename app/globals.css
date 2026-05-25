@@ -26,7 +26,10 @@
   body {
     background-color: var(--off-white);
     color: var(--ink);
-    font-family: var(--font-signika), system-ui, sans-serif;
+    /* Primary font is now ITC Avant Garde Gothic (--font-avant).
+       Signika is reserved for numeric / data surfaces via the
+       `font-numeric` Tailwind class. */
+    font-family: var(--font-avant), system-ui, sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
     line-height: 1.6;

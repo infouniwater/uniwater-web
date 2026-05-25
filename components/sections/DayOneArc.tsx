@@ -129,7 +129,7 @@ export function DayOneArc() {
                               closer to a single mobile frame. The number
                               is still the visual anchor; just smaller
                               on small screens. */}
-              <div className={`flex items-baseline gap-2 whitespace-nowrap [font-feature-settings:'tnum']`}>
+              <div className={`flex items-baseline gap-2 whitespace-nowrap font-numeric [font-feature-settings:'tnum']`}>
                 <span className={`text-2xl sm:text-5xl leading-none ${TONE[stage.tone]}`}>
                   {stage.cost}
                 </span>

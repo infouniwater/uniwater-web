@@ -64,7 +64,7 @@ export function TrustStripe() {
               {/* Stat values on the brand h2 scale (26 → 32px) instead of
                   the previous raw 28 → 32px arbitrary tokens. Same visual
                   weight, now governed by the design system. */}
-              <div className="text-h2-m md:text-h2 font-light leading-none text-navy">
+              <div className="text-h2-m md:text-h2 font-numeric font-light leading-none text-navy">
                 {item.value}
               </div>
               <div className="text-eyebrow font-medium uppercase tracking-wide text-teal">

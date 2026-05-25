@@ -112,7 +112,7 @@ export function Header() {
         <Logo />
 
         {/* Desktop nav */}
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 font-ui">
           {NAV_ITEMS.map((item) =>
             item.hasMega ? (
               <div

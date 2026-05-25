@@ -103,7 +103,7 @@ export function Footer() {
           {/* Solutions column */}
           <div className="lg:col-span-2">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Solutions</h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 font-ui">
               {SOLUTIONS_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -122,7 +122,7 @@ export function Footer() {
               avoid wrapping. */}
           <div className="lg:col-span-3">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Resources</h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 font-ui">
               {RESOURCES_LINKS.map((link) => (
                 <li key={link.href}>
                   {link.external ? (
@@ -151,7 +151,7 @@ export function Footer() {
               height). */}
           <div className="lg:col-span-2">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Cities</h4>
-            <ul className="grid grid-cols-2 gap-x-3 gap-y-3">
+            <ul className="grid grid-cols-2 gap-x-3 gap-y-3 font-ui">
               {CITIES.map((city) => (
                 <li key={city.slug}>
                   <Link
@@ -170,7 +170,7 @@ export function Footer() {
               underneath the 9-city list. */}
           <div className="lg:col-span-2">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">About</h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 font-ui">
               {ABOUT_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link

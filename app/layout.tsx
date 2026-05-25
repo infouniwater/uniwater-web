@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 import { Signika, Bodoni_Moda } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -8,14 +9,41 @@ import { SITE } from '@/content/site';
 import { organizationSchema, websiteSchema, jsonLd } from '@/lib/structured-data';
 import './globals.css';
 
+// ITC Avant Garde Gothic — primary display + body face (2026-05-26).
+// Self-hosted from /public/fonts/avant-garde/. Four weights cover the
+// design system's 400 (Book) / 500 (Medium) / 600 (Demi) / 700 (Bold)
+// scale; font-light (300) falls back to Book (400) since this licence
+// pack didn't ship a Light cut.
+const avantGarde = localFont({
+  src: [
+    { path: '../public/fonts/avant-garde/avant-garde-book.otf',   weight: '400', style: 'normal' },
+    { path: '../public/fonts/avant-garde/avant-garde-medium.otf', weight: '500', style: 'normal' },
+    { path: '../public/fonts/avant-garde/avant-garde-demi.otf',   weight: '600', style: 'normal' },
+    { path: '../public/fonts/avant-garde/avant-garde-bold.otf',   weight: '700', style: 'normal' },
+  ],
+  variable: '--font-avant',
+  display: 'swap',
+  preload: true,
+});
+
+// TT Fors — UI workhorse for buttons, nav, eyebrows, captions.
+// Self-hosted variable font (single file covers every weight).
+const ttFors = localFont({
+  src: [
+    { path: '../public/fonts/tt-fors/tt-fors-variable.ttf', style: 'normal' },
+  ],
+  variable: '--font-tt-fors',
+  display: 'swap',
+  preload: true,
+});
+
+// Signika — kept for numeric / data surfaces (TrustStripe stats,
+// DayOneArc cost numbers). Tabular-friendly digits.
 const signika = Signika({
   subsets: ['latin'],
-  // 700 is unused in this design system (no font-bold / fontWeight:700 anywhere
-  // in the codebase). Dropping it saves ~50 KB of font payload per first-load.
   weight: ['300', '400', '500', '600'],
   variable: '--font-signika',
   display: 'swap',
-  preload: true,
 });
 
 const bodoni = Bodoni_Moda({
@@ -72,7 +100,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${signika.variable} ${bodoni.variable}`}>
+    <html lang="en" className={`${avantGarde.variable} ${ttFors.variable} ${signika.variable} ${bodoni.variable}`}>
       <head>
         {/* Site-wide JSON-LD per BLUEPRINT §15.4 — Organization + WebSite. */}
         <script

@@ -14,7 +14,9 @@ export function Eyebrow({
   return (
     <As
       className={cn(
-        'text-eyebrow font-medium uppercase text-teal',
+        // `font-ui` switches eyebrows to TT Fors (the UI workhorse).
+        // Headings + body stay on Avant Garde Gothic (default sans).
+        'text-eyebrow font-ui font-medium uppercase text-teal',
         className
       )}
     >

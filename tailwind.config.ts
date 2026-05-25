@@ -26,7 +26,19 @@ const config: Config = {
         error: '#B22222',
       },
       fontFamily: {
-        sans: ['var(--font-signika)', 'system-ui', 'sans-serif'],
+        // Default sans = ITC Avant Garde Gothic. Carries body copy,
+        // H1 (Display), H2, H3 — everything that uses font-sans /
+        // the default <body> font.
+        sans: ['var(--font-avant)', 'system-ui', 'sans-serif'],
+        // UI workhorse = TT Fors. Buttons, nav, eyebrows, captions —
+        // apply via `font-ui` class.
+        ui: ['var(--font-tt-fors)', 'system-ui', 'sans-serif'],
+        // Numeric / data = Signika. TrustStripe stats, DayOneArc cost
+        // numbers, anywhere a tabular figure carries the meaning —
+        // apply via `font-numeric` class.
+        numeric: ['var(--font-signika)', 'system-ui', 'sans-serif'],
+        // Editorial accent = Bodoni Moda Italic. Pull-quotes, the
+        // price-anchor italic line.
         editorial: ['var(--font-bodoni)', 'Georgia', 'serif'],
       },
       fontSize: {
