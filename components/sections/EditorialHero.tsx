@@ -52,7 +52,11 @@ export function EditorialHero() {
               self-stretch on the strip makes it as tall as the text
               content; lg-only width bump gives the strip a touch more
               presence at desktop sizes. */}
-          <div className="lg:col-span-6">
+          {/* order-2 on mobile so the image cell (which comes later in
+              DOM but has order-1) renders ABOVE the text on small
+              screens. Above lg the order classes go inert (grid is
+              side-by-side), so desktop layout is unchanged. */}
+          <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="flex gap-4 sm:gap-6 lg:gap-8">
               <div className="flex-1 min-w-0 flex flex-col gap-6">
                 <Display>Wellness starts with clean water.</Display>
@@ -100,8 +104,12 @@ export function EditorialHero() {
 
           {/* Visual cell — hero photo only. The droplet animation lives
               inside the text panel as a sub-block (see above), so this
-              column is just the image. */}
-          <div className="lg:col-span-6 lg:py-12">
+              column is just the image.
+              order-1 on mobile pulls the image cell above the text
+              cell (which has order-2) — visitor sees the image first
+              on small screens, then scrolls into the headline. Above
+              lg the order classes go inert. */}
+          <div className="lg:col-span-6 lg:py-12 order-1 lg:order-2">
             <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[56/75]">
               {HERO_VIDEO_SRC ? (
                 <video
