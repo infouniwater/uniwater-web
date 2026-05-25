@@ -108,8 +108,14 @@ export function EditorialHero() {
               order-1 on mobile pulls the image cell above the text
               cell (which has order-2) — visitor sees the image first
               on small screens, then scrolls into the headline. Above
-              lg the order classes go inert. */}
-          <div className="lg:col-span-6 order-1 lg:order-2">
+              lg the order classes go inert.
+              Full-bleed escape on stacked viewports: negative mx pulls
+              the image past container-uw's horizontal padding (1.5rem
+              mobile, 3rem md), and negative mt pulls it past the
+              grid's top padding so it sits flush under the header.
+              Resets to mx-0 / mt-0 at lg where the image returns to
+              its grid column. */}
+          <div className="lg:col-span-6 order-1 lg:order-2 -mx-6 md:-mx-12 lg:mx-0 -mt-8 sm:-mt-12 md:-mt-24 lg:mt-0">
             <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]">
               {HERO_VIDEO_SRC ? (
                 <video
