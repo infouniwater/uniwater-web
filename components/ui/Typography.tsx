@@ -25,7 +25,10 @@ export function Eyebrow({
   );
 }
 
-/** Hero display type — Signika Light → SemiBold, 72/48. */
+/** Hero display type — Avant Garde Book (400), 72/48.
+ *  font-normal (not light) because the pack ships Book/400 as the
+ *  lightest real cut; font-light would force browsers to synthesize
+ *  300 from 400, which looks uneven. Catalogue register matches Book. */
 export function Display({
   children,
   className,
@@ -36,7 +39,7 @@ export function Display({
   return (
     <h1
       className={cn(
-        'text-display-m md:text-display font-light text-navy [text-wrap:balance]',
+        'text-display-m md:text-display font-normal text-navy [text-wrap:balance]',
         className
       )}
     >
@@ -52,10 +55,13 @@ interface HeadingProps extends Omit<HTMLAttributes<HTMLHeadingElement>, 'classNa
   inverse?: boolean;  // for inverse-navy sections
 }
 
+// Catalogue-register typography (2026-05-26): all heading levels lightened
+// from font-semibold (600) to font-normal (400 = Avant Garde Book).
+// Matches the homeowner-catalogue tone reference Rajat provided.
 const headingClasses = {
-  1: 'text-h1-m md:text-h1 font-semibold',
-  2: 'text-h2-m md:text-h2 font-semibold',
-  3: 'text-h3 font-semibold',
+  1: 'text-h1-m md:text-h1 font-normal',
+  2: 'text-h2-m md:text-h2 font-normal',
+  3: 'text-h3 font-normal',
 };
 
 export function Heading({ level, children, className, inverse = false, ...rest }: HeadingProps) {

@@ -114,7 +114,7 @@ export function ConfigurationCard({
         </div>
       )}
       <div className="flex items-baseline gap-3">
-        <h3 className="text-h2-m md:text-h2 font-semibold text-navy">{name}</h3>
+        <h3 className="text-h2-m md:text-h2 font-normal text-navy">{name}</h3>
         <Caption className="text-mute">{subtitle}</Caption>
       </div>
       <Body className="text-mute">{description}</Body>
@@ -199,7 +199,7 @@ export function ProcessStep({
         </div>
         <h3
           className={cn(
-            'text-body sm:text-h3 font-semibold leading-snug [text-wrap:balance]',
+            'text-body sm:text-h3 font-normal leading-snug [text-wrap:balance]',
             inverse ? 'text-offwhite' : 'text-navy',
           )}
         >
@@ -223,7 +223,7 @@ export function ProcessStep({
       </div>
       <h3
         className={cn(
-          'text-body sm:text-h3 font-semibold leading-snug [text-wrap:balance]',
+          'text-body sm:text-h3 font-normal leading-snug [text-wrap:balance]',
           inverse ? 'text-offwhite' : 'text-navy',
         )}
       >

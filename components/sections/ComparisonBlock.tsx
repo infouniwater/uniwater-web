@@ -87,7 +87,7 @@ export function ComparisonBlock() {
             className={`grid grid-cols-1 md:grid-cols-12 gap-px bg-hairline ${i < ROWS.length - 1 ? 'border-b md:border-b-0' : ''} mb-px md:mb-0`}
           >
             <div className="col-span-3 bg-offwhite p-6 md:p-8 flex md:items-center">
-              <h3 className="text-h3 font-semibold text-navy leading-snug">
+              <h3 className="text-h3 font-normal text-navy leading-snug">
                 {row.topic}
               </h3>
             </div>

@@ -236,7 +236,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {INCLUDED_ITEMS.map((item) => (
             <Card key={item.title}>
-              <h3 className="text-h3 font-semibold text-navy mb-3">{item.title}</h3>
+              <h3 className="text-h3 font-normal text-navy mb-3">{item.title}</h3>
               <Body className="text-mute">{item.body}</Body>
             </Card>
           ))}
@@ -274,7 +274,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                   />
                 )}
                 <div>
-                  <h3 className="text-h3 font-semibold text-navy mb-2">{card.title}</h3>
+                  <h3 className="text-h3 font-normal text-navy mb-2">{card.title}</h3>
                   <Caption className="text-mute">{card.body}</Caption>
                 </div>
               </div>
@@ -545,7 +545,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                     <span className="text-mute/50">/</span>
                     <span className="text-mute">{post.readingMinutes} min</span>
                   </div>
-                  <h3 className="text-h3 font-semibold text-navy mb-3 leading-snug">
+                  <h3 className="text-h3 font-normal text-navy mb-3 leading-snug">
                     {post.title}
                   </h3>
                   <Body className="text-mute text-caption">{post.description}</Body>

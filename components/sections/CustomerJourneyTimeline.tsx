@@ -159,7 +159,7 @@ export function CustomerJourneyTimeline() {
               <StageIcon name={stage.icon} className="w-6 h-6" />
             </div>
             {/* Title */}
-            <h3 className="text-h3 font-semibold text-navy mb-1 leading-tight">
+            <h3 className="text-h3 font-normal text-navy mb-1 leading-tight">
               {stage.title}
             </h3>
             {/* Time window */}

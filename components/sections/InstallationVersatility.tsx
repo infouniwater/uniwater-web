@@ -67,7 +67,7 @@ export function InstallationVersatility() {
                 <div className="text-eyebrow font-medium uppercase text-teal mb-1">
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="text-body sm:text-h3 font-semibold text-navy mb-1 sm:mb-2 leading-snug">{place.location}</h3>
+                <h3 className="text-body sm:text-h3 font-normal text-navy mb-1 sm:mb-2 leading-snug">{place.location}</h3>
                 <p className="text-caption text-mute leading-snug">{place.description}</p>
               </div>
             </div>

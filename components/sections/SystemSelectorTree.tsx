@@ -133,7 +133,7 @@ function SubForkBlock({ sub }: { sub: SubFork }) {
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-teal mb-2">
           Sub-fork
         </div>
-        <h4 className="text-body font-semibold text-navy leading-snug">{sub.label}</h4>
+        <h4 className="text-body font-normal text-navy leading-snug">{sub.label}</h4>
         <p className="text-caption text-mute leading-snug mt-1">{sub.body}</p>
       </div>
       <div className="flex flex-col gap-2">
@@ -152,7 +152,7 @@ function BranchColumn({ branch }: { branch: Branch }) {
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-teal mb-2">
           Branch {branch.num}
         </div>
-        <h3 className="text-h3 font-semibold text-navy leading-tight">{branch.heading}</h3>
+        <h3 className="text-h3 font-normal text-navy leading-tight">{branch.heading}</h3>
         <p className="font-editorial italic text-body text-navy/70 leading-snug mt-2">
           {branch.tag}
         </p>
@@ -167,7 +167,7 @@ function BranchColumn({ branch }: { branch: Branch }) {
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-mute mb-2">
           Below this need
         </div>
-        <div className="text-body font-semibold text-navy leading-snug mb-2">
+        <div className="text-body font-normal text-navy leading-snug mb-2">
           {branch.below.cat}
         </div>
         <p className="font-editorial italic text-caption text-mute leading-snug">
@@ -186,7 +186,7 @@ export function SystemSelectorTree() {
         <div className="text-eyebrow font-semibold uppercase tracking-[0.22em] text-teal mb-2">
           The root question
         </div>
-        <div className="text-h2-m md:text-h2 font-semibold text-navy leading-tight">
+        <div className="text-h2-m md:text-h2 font-normal text-navy leading-tight">
           What does your water need treated?
         </div>
       </div>
