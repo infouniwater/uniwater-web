@@ -1,10 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { EditorialHero } from '@/components/sections/EditorialHero';
-import { HeroDropletAnimation } from '@/components/sections/HeroDropletAnimation';
-import { Display, Lede } from '@/components/ui/Typography';
-import { Button } from '@/components/ui/Button';
-import { SYSTEM_STARTS_FROM_INR } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Hero redesign — lab',
@@ -29,173 +26,87 @@ function Label({ tag, title, summary }: { tag: string; title: string; summary: s
 }
 
 /* ──────────────────────────────────────────────────────────────
- * Variant A — Operational lead, single CTA, no wellness H1
+ * Variant D — Full-bleed image with overlay text
+ *
+ * Image fills the section edge-to-edge. A bottom-up navy gradient
+ * scrim carries the text without darkening the vessels above it.
+ * On lg+ the image gets nudged so the vessels sit right-of-center,
+ * leaving room for the text to breathe on the left half.
+ *
+ * Editorial register: short H1, one primary CTA with a benefit
+ * label, one micro-trust line under the button. Wellness tagline
+ * lives as a tiny uppercase eyebrow above the H1.
  * ────────────────────────────────────────────────────────────── */
-function VariantA() {
-  const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
+function VariantD() {
   return (
-    <section className="bg-offwhite border-b border-hairline">
-      <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-8 sm:py-12 md:py-24 lg:py-0">
-          <div className="lg:col-span-6 order-2 lg:order-1">
-            <div className="flex gap-4 sm:gap-6 lg:gap-8">
-              <div className="flex-1 min-w-0 flex flex-col gap-6">
-                <Display>Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.</Display>
-                <Lede className="text-mute">
-                  Bathroom filters, whole-house systems, drinking water &mdash; surveyed before we quote, serviced every month after.
-                </Lede>
-                <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                  <Button href="/book-survey" size="lg">Book a free survey</Button>
-                  <a href="/water-problem-checker" className="text-caption text-teal underline underline-offset-4 hover:text-navy">
-                    Or take the 60-second water check &rarr;
-                  </a>
-                </div>
-                <p className="font-editorial italic text-mute text-caption mt-1">
-                  Surveys are free. Bathroom filters from &#8377;{formattedStarts}.
-                </p>
-              </div>
-              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none overflow-hidden z-10">
-                <HeroDropletAnimation />
-              </div>
+    <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[640px] md:h-[720px] lg:h-[calc(100vh-96px)] lg:min-h-[640px]">
+      {/* Image */}
+      <Image
+        src={HERO_IMAGE.src}
+        alt={HERO_IMAGE.alt}
+        fill
+        priority
+        quality={90}
+        sizes="100vw"
+        className="object-cover object-center lg:object-[70%_center] animate-ken-burns"
+      />
+
+      {/* Scrim — stronger from the bottom on mobile, blended from
+          the left on desktop so the text-side stays readable while
+          the vessels-side keeps its colour. */}
+      <div
+        className="absolute inset-0 lg:hidden"
+        style={{
+          background:
+            'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 hidden lg:block"
+        style={{
+          background:
+            'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content */}
+      <div className="relative h-full container-uw flex items-end lg:items-center">
+        <div className="w-full lg:max-w-[640px] pb-10 lg:pb-0 flex flex-col gap-5">
+          <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
+            Wellness starts with clean water
+          </p>
+          <h1 className="text-display-m md:text-display font-normal leading-[1.05] [text-wrap:balance]">
+            Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
+          </h1>
+
+          <div className="mt-2 flex flex-col gap-3">
+            <div>
+              <Link
+                href="/book-survey"
+                className="inline-flex items-center justify-center h-[52px] px-7 bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] transition-colors duration-200 ease-calm hover:bg-soft hover:text-navy"
+              >
+                Book a free survey &mdash; engineer visits in 48&nbsp;hrs
+                <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
+            <p className="text-caption text-offwhite/80">
+              No obligation &middot; ~30&nbsp;minutes on site &middot; Survey report mailed within 48&nbsp;hrs
+            </p>
           </div>
-          <div className="lg:col-span-6 order-1 lg:order-2 -mx-6 md:-mx-12 lg:mx-0 -mt-8 sm:-mt-12 md:-mt-24 lg:mt-0">
-            <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]">
-              <Image
-                src={HERO_IMAGE.src}
-                alt={HERO_IMAGE.alt}
-                fill
-                priority
-                quality={90}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+
+          <a
+            href="/water-problem-checker"
+            className="text-caption text-offwhite/85 underline underline-offset-4 decoration-offwhite/40 hover:text-soft mt-1 w-fit"
+          >
+            Or take the 60-second water check &rarr;
+          </a>
         </div>
       </div>
     </section>
-  );
-}
-
-/* ──────────────────────────────────────────────────────────────
- * Variant B — Operational lead + tiny wellness eyebrow above
- * (keeps the brand line at the top without competing with the H1)
- * ────────────────────────────────────────────────────────────── */
-function VariantB() {
-  const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
-  return (
-    <section className="bg-offwhite border-b border-hairline">
-      <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-8 sm:py-12 md:py-24 lg:py-0">
-          <div className="lg:col-span-6 order-2 lg:order-1">
-            <div className="flex gap-4 sm:gap-6 lg:gap-8">
-              <div className="flex-1 min-w-0 flex flex-col gap-6">
-                <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-teal">
-                  Wellness starts with clean water
-                </p>
-                <Display>Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.</Display>
-                <Lede className="text-mute">
-                  Bathroom filters, whole-house systems, drinking water &mdash; surveyed before we quote, serviced every month after.
-                </Lede>
-                <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                  <Button href="/book-survey" size="lg">Book a free survey</Button>
-                  <a href="/water-problem-checker" className="text-caption text-teal underline underline-offset-4 hover:text-navy">
-                    Or take the 60-second water check &rarr;
-                  </a>
-                </div>
-                <p className="font-editorial italic text-mute text-caption mt-1">
-                  Surveys are free. Bathroom filters from &#8377;{formattedStarts}.
-                </p>
-              </div>
-              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none overflow-hidden z-10">
-                <HeroDropletAnimation />
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-6 order-1 lg:order-2 -mx-6 md:-mx-12 lg:mx-0 -mt-8 sm:-mt-12 md:-mt-24 lg:mt-0">
-            <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]">
-              <Image
-                src={HERO_IMAGE.src}
-                alt={HERO_IMAGE.alt}
-                fill
-                priority
-                quality={90}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ──────────────────────────────────────────────────────────────
- * Variant C — Operational lead + trust strip under the CTA
- * (drops the lede, leans on three trust ticks instead)
- * ────────────────────────────────────────────────────────────── */
-function VariantC() {
-  const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
-  return (
-    <section className="bg-offwhite border-b border-hairline">
-      <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-8 sm:py-12 md:py-24 lg:py-0">
-          <div className="lg:col-span-6 order-2 lg:order-1">
-            <div className="flex gap-4 sm:gap-6 lg:gap-8">
-              <div className="flex-1 min-w-0 flex flex-col gap-6">
-                <Display>Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.</Display>
-                <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                  <Button href="/book-survey" size="lg">Book a free survey</Button>
-                  <p className="font-editorial italic text-mute text-caption">
-                    Free survey. Bathroom filters from &#8377;{formattedStarts}.
-                  </p>
-                </div>
-                <ul className="mt-2 flex flex-col sm:flex-row gap-3 sm:gap-6 text-caption text-mute">
-                  <li className="flex items-center gap-2">
-                    <Tick /> Engineered by us, not bolted on
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Tick /> Monthly service, in person
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Tick /> 9 cities across India &amp; Nepal
-                  </li>
-                </ul>
-                <a href="/water-problem-checker" className="text-caption text-teal underline underline-offset-4 hover:text-navy mt-2">
-                  Or take the 60-second water check &rarr;
-                </a>
-              </div>
-              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none overflow-hidden z-10">
-                <HeroDropletAnimation />
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-6 order-1 lg:order-2 -mx-6 md:-mx-12 lg:mx-0 -mt-8 sm:-mt-12 md:-mt-24 lg:mt-0">
-            <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]">
-              <Image
-                src={HERO_IMAGE.src}
-                alt={HERO_IMAGE.alt}
-                fill
-                priority
-                quality={90}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Tick() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-teal shrink-0">
-      <path d="M3 7.5L6 10.5L11.5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
 
@@ -205,40 +116,26 @@ export default function HeroRedesignLab() {
       <div className="bg-navy text-offwhite border-b border-offwhite/15">
         <div className="container-uw py-10">
           <p className="text-eyebrow font-ui font-medium uppercase text-soft mb-3">Lab &mdash; not indexed</p>
-          <h1 className="text-h2-m md:text-h2 font-normal mb-3">Homepage hero — three redesigns</h1>
+          <h1 className="text-h2-m md:text-h2 font-normal mb-3">Homepage hero &mdash; redesign demo</h1>
           <p className="text-caption text-offwhite/75 max-w-2xl">
-            Current hero first, then three variants stacked below. Same image, same droplet, same image-above-text mobile order. Only the text composition + CTA structure change. Compare on mobile and desktop both.
+            Current hero first, then the proposed full-bleed image-with-overlay variant. Check on phone and desktop both &mdash; mobile is where the difference is starkest because the image and text share the same fold instead of stacking.
           </p>
         </div>
       </div>
 
       <Label
         tag="Variant 0 — Current (live on /)"
-        title="Wellness H1 + operational H2 + lede + two CTAs"
-        summary="Four text blocks compete for the fold. On mobile the CTAs sit below it. The wellness H1 is also already in the tagline and footer, so it doubles up."
+        title="Split layout: image on one side, text on the other."
+        summary="On mobile this stacks and pushes the CTA below the fold. Four text blocks compete for attention."
       />
       <EditorialHero />
 
       <Label
-        tag="Variant A — Operational lead"
-        title="Operational line becomes the H1. Wellness drops out."
-        summary="Three text blocks instead of four: H1, lede, CTA. The wellness line returns lower on the page (e.g. above FinalCTA) so the brand register is preserved without competing with conversion. Secondary CTA demoted to a text link so there's one primary action."
+        tag="Variant D — Full-bleed image with overlay text"
+        title="Image edge-to-edge. Text floats on a bottom-up navy scrim."
+        summary="One H1, one primary CTA with a benefit label (Book a free survey — engineer visits in 48 hrs), one micro-trust line (No obligation · ~30 min on site · Report in 48 hrs). Wellness tagline as a tiny eyebrow above the H1. Secondary water-check action drops to a text link. Image gets a slow Ken-Burns push so it feels alive without becoming a carousel."
       />
-      <VariantA />
-
-      <Label
-        tag="Variant B — Operational lead + wellness eyebrow"
-        title="Same as A, but keeps 'Wellness starts with clean water' as a tiny eyebrow above the H1."
-        summary="Gentlest change. The brand register stays at the top of the page, but as a small uppercase eyebrow rather than as a competing display headline. CTA structure same as A."
-      />
-      <VariantB />
-
-      <Label
-        tag="Variant C — Trust strip"
-        title="Drop the lede, replace with three trust ticks under the CTA."
-        summary="Most aggressive. H1 + CTA + 3 trust signals + price. The lede sentence ('Bathroom filters, whole-house, drinking water...') moves into the catalogue section below. Best for conversion; loses the most narrative."
-      />
-      <VariantC />
+      <VariantD />
     </>
   );
 }
