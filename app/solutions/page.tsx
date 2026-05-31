@@ -25,7 +25,7 @@ const HOME_TAB_SLUGS = [
 
 const INSTITUTIONAL_CARDS = [
   {
-    href: '/industrial#building-wtp',
+    href: '/industrial',
     title: 'Building & society water plants',
     description:
       '8,000 to 30,000 LPH inlet treatment for complexes, hotels, hospitals, schools, and townships.',
@@ -33,7 +33,7 @@ const INSTITUTIONAL_CARDS = [
     photoRef: 'building-wtp',
   },
   {
-    href: '/industrial#commercial-ro',
+    href: '/industrial',
     title: 'Industrial RO plants',
     description:
       '500 \u2014 50,000 LPH. Drinking water, process water, boiler make-up, beverage.',
@@ -41,7 +41,7 @@ const INSTITUTIONAL_CARDS = [
     photoRef: 'industrial-ro',
   },
   {
-    href: '/industrial#commercial-dm',
+    href: '/industrial',
     title: 'Industrial DM plants',
     description:
       '100 \u2014 10,000 LPH. Boiler feed, pharma, lab water, battery manufacturing.',

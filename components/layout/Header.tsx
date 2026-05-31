@@ -296,12 +296,12 @@ export function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/industrial#commercial-ro" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
+                  <Link href="/industrial" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
                     Industrial RO plants
                   </Link>
                 </li>
                 <li>
-                  <Link href="/industrial#commercial-dm" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
+                  <Link href="/industrial" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
                     Industrial DM plants
                   </Link>
                 </li>
