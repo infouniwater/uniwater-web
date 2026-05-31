@@ -6,7 +6,7 @@ import { SubmitButton } from '@/components/ui/SubmitButton';
 import { Card, StatTile } from '@/components/ui/Card';
 import { Infographic } from '@/components/ui/Infographic';
 import { TextField, TextArea, SelectField } from '@/components/ui/Form';
-import { WHERE_WE_WORK, SYSTEM_TYPES, CAPACITY_BANDS, TECHNICAL_EDGE } from '@/content/industrial';
+import { WHERE_WE_WORK, CAPACITY_BANDS, TECHNICAL_EDGE } from '@/content/industrial';
 import { COMPONENT_MANUFACTURERS, NAMED_CLIENTS, CLIENT_LOGOS, STATS, PRIMARY_PHONE_HREF } from '@/content/site';
 import Image from 'next/image';
 import { submitRFQ } from '@/app/actions/leads';
@@ -30,21 +30,6 @@ const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
   '03': {
     src: '/images/photography/wtp-terrace.jpg',
     alt: 'Centralised water-treatment plant on the rooftop of a residential complex with stainless vessels and instrumentation',
-  },
-};
-
-const SYSTEM_CUTAWAY: Record<string, { src: string; alt: string }> = {
-  RO: {
-    src: '/images/product-cutaways/commercial-ro/landscape.svg',
-    alt: 'Commercial reverse-osmosis system — engineering cross-section',
-  },
-  DM: {
-    src: '/images/product-cutaways/dm/landscape.svg',
-    alt: 'Commercial DM (demineralisation) system — engineering cross-section',
-  },
-  WTP: {
-    src: '/images/product-cutaways/overview/all-landscape.svg',
-    alt: 'Building water treatment plant — engineering overview showing major stages',
   },
 };
 
@@ -217,55 +202,6 @@ export default function IndustrialPage() {
               ))}
             </ul>
           </div>
-        </div>
-      </Section>
-
-      {/* System types — three-up */}
-      <Section tone="navy" padding="default" id="commercial-ro">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">System types</div>
-          <Heading level={2} inverse>Three systems. Different jobs. Sometimes in series.</Heading>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {SYSTEM_TYPES.map((sys) => {
-            const cutaway = SYSTEM_CUTAWAY[sys.code];
-            return (
-            <div key={sys.code} className="border border-offwhite/15 flex flex-col bg-navy/40" id={sys.code === 'DM' ? 'commercial-dm' : sys.code === 'WTP' ? 'building-wtp' : undefined}>
-              {cutaway && (
-                <div className="bg-offwhite border-b border-offwhite/15 p-6 flex items-center justify-center" style={{ minHeight: '180px' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={cutaway.src}
-                    alt={cutaway.alt}
-                    className="block w-full h-auto max-h-40 object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              )}
-              <div className="p-8 flex flex-col gap-4">
-              <div className="text-eyebrow font-medium uppercase text-soft">SYSTEM &mdash; {sys.code}</div>
-              <h3 className="text-[56px] md:text-[64px] font-light text-soft leading-none">{sys.name}</h3>
-              <p className="text-caption italic text-soft">{sys.description}</p>
-
-              <div className="mt-4 pt-4 border-t border-offwhite/15">
-                <div className="text-eyebrow font-medium uppercase text-soft mb-2">Application</div>
-                <Body inverse className="mb-6">{sys.application}</Body>
-
-                <div className="text-eyebrow font-medium uppercase text-soft mb-2">Capacity range</div>
-                <p className="text-[20px] text-offwhite mb-6">{sys.capacityRange}</p>
-
-                <div className="text-eyebrow font-medium uppercase text-soft mb-2">Key components</div>
-                <ul className="flex flex-col gap-1">
-                  {sys.components.map((c) => (
-                    <li key={c} className="text-caption text-offwhite/85">{c}</li>
-                  ))}
-                </ul>
-              </div>
-              </div>
-            </div>
-            );
-          })}
         </div>
       </Section>
 

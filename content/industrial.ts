@@ -3,54 +3,6 @@
  * Per Commercial Catalogue + Blueprint §9.
  */
 
-export const SYSTEM_TYPES = [
-  {
-    code: 'RO',
-    name: 'RO.',
-    description: 'Reverse osmosis.',
-    application:
-      'Drinking water, process water, boiler make-up, beverage. Removes TDS, salts, organics.',
-    capacityRange: '500 \u2014 50,000 LPH',
-    components: [
-      'Multi-grade filter',
-      'Activated carbon filter',
-      'Antiscalant dosing',
-      'High-pressure pump',
-      'RO membranes (TFC)',
-    ],
-  },
-  {
-    code: 'DM',
-    name: 'DM.',
-    description: 'Demineralization.',
-    application:
-      'Boiler feed, pharma, lab water, battery manufacturing. High-purity water below 1 \u00b5S/cm.',
-    capacityRange: '100 \u2014 10,000 LPH',
-    components: [
-      'Strong acid cation (SAC) resin',
-      'Strong base anion (SBA) resin',
-      'Acid & alkali regeneration',
-      'Conductivity meters',
-      'Optional mixed-bed polisher',
-    ],
-  },
-  {
-    code: 'WTP',
-    name: 'WTP.',
-    description: 'Building water-treatment plant.',
-    application:
-      'Inlet treatment for whole sites. Removes turbidity, hardness, iron, chlorine. Protects everything downstream.',
-    capacityRange: '5 \u2014 100 KLD',
-    components: [
-      'Sand filter (turbidity)',
-      'Iron-removal filter',
-      'Activated carbon filter',
-      'Softener (ion exchange)',
-      'UV / chlorination polish',
-    ],
-  },
-] as const;
-
 export const WHERE_WE_WORK = [
   {
     number: '01',
