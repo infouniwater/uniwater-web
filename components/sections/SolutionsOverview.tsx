@@ -39,8 +39,8 @@ const SOLUTIONS = [
     href: '/industrial',
     title: 'Building & society water plants',
     description: 'For complexes, hotels, hospitals. 8,000 to 30,000 LPH.',
-    imgSrc: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
-    imgAlt: 'Branded Uniwater commercial RO and softening plant installed inside a rooftop polycarbonate enclosure',
+    imgSrc: '/images/photography/wtp-basement.jpg',
+    imgAlt: 'Building water-treatment plant — three branded Uniwater vessels in a basement plant room with overhead piping',
   },
   {
     href: '/industrial',
