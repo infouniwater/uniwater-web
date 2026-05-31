@@ -28,8 +28,8 @@ const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
     alt: 'Branded Uniwater commercial RO plant installed inside a rooftop polycarbonate enclosure',
   },
   '03': {
-    src: '/images/photography/residential-complex.jpg',
-    alt: 'Gated residential complex served by a centralised water-treatment plant',
+    src: '/images/photography/whole-house-terrace-water-tank.jpg',
+    alt: 'Two branded Uniwater vessels installed beside the overhead Sintex water tank on a residential complex terrace — treatment at the building inlet',
   },
 };
 
