@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 
 const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
   '01': {
-    src: '/images/photography/wtp-basement.jpg',
-    alt: 'Industrial water-treatment plant in a basement plant room',
+    src: '/images/photography/commercial-ro-industrial-shed.jpg',
+    alt: 'Branded Uniwater commercial RO and softening plant installed inside an industrial shed',
   },
   '02': {
-    src: '/images/photography/wtp-terrace.jpg',
-    alt: 'Building water-treatment plant on the rooftop of an institution',
+    src: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
+    alt: 'Branded Uniwater commercial RO plant installed inside a rooftop polycarbonate enclosure',
   },
   '03': {
     src: '/images/photography/residential-complex.jpg',
@@ -110,8 +110,8 @@ export default function IndustrialPage() {
               <div className="w-full overflow-hidden border border-offwhite/15 aspect-[16/9] sm:aspect-[1/1]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/photography/wtp-basement.jpg"
-                  alt="Industrial water treatment plant — three branded Uniwater vessels in a building basement plant room with overhead piping and concrete walls"
+                  src="/images/photography/commercial-ro-warehouse.jpg"
+                  alt="Branded Uniwater commercial RO and softening plant installed on a factory warehouse floor — engineered water at industrial scale"
                   className="block w-full h-full object-cover"
                   loading="eager"
                   decoding="async"

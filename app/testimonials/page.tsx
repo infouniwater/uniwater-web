@@ -8,8 +8,8 @@ import { CASE_STUDIES } from '@/content/case-studies';
 
 const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
   Healthcare: {
-    src: '/images/photography/wtp-basement.jpg',
-    alt: 'A Uniwater water treatment plant installed in a healthcare facility plant room',
+    src: '/images/photography/commercial-ro-industrial-shed.jpg',
+    alt: 'A Uniwater commercial RO and softening plant installed at a healthcare facility',
   },
   Manufacturing: {
     src: '/images/installs/hero-duo-iron-softener-ss316.jpg',
@@ -20,8 +20,8 @@ const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
     alt: 'A premium residential complex at dusk — representative of the gated communities and luxury residences Uniwater services',
   },
   Hospitality: {
-    src: '/images/photography/wtp-terrace.jpg',
-    alt: 'A Uniwater water treatment plant on the rooftop of a hospitality property',
+    src: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
+    alt: 'A Uniwater commercial RO plant in a rooftop enclosure at a hospitality property',
   },
 };
 const FALLBACK_PHOTO = {

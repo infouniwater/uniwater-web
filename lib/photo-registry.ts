@@ -157,7 +157,7 @@ const PATTERN_RULES: PatternRule[] = [
   // Case studies — install numbered photos, hero, then index card (most generic)
   {
     test: /^case-[a-z0-9-]+-hero$/,
-    resolve: () => ({ src: `${PHOTO}/wtp-basement.jpg`, alt: 'Uniwater commercial water treatment plant installed in a basement plant room' }),
+    resolve: () => ({ src: `${PHOTO}/commercial-ro-industrial-shed.jpg`, alt: 'A Uniwater commercial RO and softening plant — representative install' }),
   },
   {
     test: /^case-[a-z0-9-]+-(\d+)$/,

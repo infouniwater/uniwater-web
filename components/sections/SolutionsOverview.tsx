@@ -39,15 +39,15 @@ const SOLUTIONS = [
     href: '/industrial',
     title: 'Building & society water plants',
     description: 'For complexes, hotels, hospitals. 8,000 to 30,000 LPH.',
-    imgSrc: '/images/photography/wtp-basement.jpg',
-    imgAlt: 'Building water-treatment plant — three branded Uniwater vessels in a basement plant room with overhead piping',
+    imgSrc: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
+    imgAlt: 'Branded Uniwater commercial RO and softening plant installed inside a rooftop polycarbonate enclosure',
   },
   {
     href: '/industrial',
     title: 'Industrial RO and DM plants',
     description: 'For manufacturing, pharma, institutional use. Engineered process water.',
-    imgSrc: '/images/photography/wtp-terrace.jpg',
-    imgAlt: 'Industrial water treatment plant on a terrace with stainless vessels and SCADA-ready instrumentation',
+    imgSrc: '/images/photography/commercial-ro-warehouse.jpg',
+    imgAlt: 'Branded Uniwater commercial RO plant installed on a factory warehouse floor',
   },
 ];
 
