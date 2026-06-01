@@ -139,18 +139,19 @@ export default function IndustrialPage() {
         </div>
       </section>
 
-      {/* Capacity range strip */}
-      <Section tone="navy" padding="tight">
-        <div className="border-y border-offwhite/15 py-8 -my-8">
-          <Lede inverse className="text-offwhite/85 max-w-4xl">
+      {/* Capacity range strip — light surface, alternates with the
+          dark hero per the dark/light cadence rule. */}
+      <Section padding="tight">
+        <div className="border-y border-hairline py-8 -my-8">
+          <Lede className="text-mute max-w-4xl">
             From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM. Designed by engineers; serviced by engineers.
           </Lede>
         </div>
       </Section>
 
-      <Section tone="navy" padding="tight">
+      <Section padding="tight">
         <div className="max-w-3xl">
-          <PincodeCheck tone="navy" bookSurveyHref="/industrial#rfq" />
+          <PincodeCheck bookSurveyHref="/industrial#rfq" />
         </div>
       </Section>
 
@@ -199,17 +200,18 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Audience cards */}
-      <Section tone="navy" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">Audience</div>
-          <Heading level={2} inverse>Who we work with.</Heading>
+      {/* Audience cards — light surface to alternate with the dark
+          "Where we work" above and the dark "Applications" below. */}
+      <Section padding="default">
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow>Audience</Eyebrow>
+          <Heading level={2}>Who we work with.</Heading>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {AUDIENCES.map((audience) => (
-            <Card key={audience.name} inverse>
-              <h3 className="text-h3 font-semibold text-offwhite mb-3">{audience.name}</h3>
-              <Body inverse>{audience.body}</Body>
+            <Card key={audience.name}>
+              <h3 className="text-h3 font-normal text-navy mb-3">{audience.name}</h3>
+              <Body className="text-mute">{audience.body}</Body>
             </Card>
           ))}
         </div>

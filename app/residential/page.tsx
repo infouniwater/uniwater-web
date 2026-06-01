@@ -118,26 +118,29 @@ export default function ResidentialPage() {
         </div>
       </Section>
 
-      {/* Problem-led selector */}
-      <Section padding="default" tone="subtle">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Start with the problem</Eyebrow>
-          <Heading level={2}>What are you trying to solve?</Heading>
+      {/* Problem-led selector — promoted to dark per the "important
+          sections in dark view" rule. This is the residential page's
+          entry point for problem-aware visitors; the editorial
+          treatment matches the hero's voice. */}
+      <Section tone="navy" padding="default">
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Start with the problem</Eyebrow>
+          <Heading level={2} inverse>What are you trying to solve?</Heading>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
           {PROBLEM_SELECTOR.map((item, i) => (
             <Link
               key={item.problem}
               href={`/solutions/${item.solution}`}
-              className="group bg-offwhite p-6 lg:p-8 flex flex-col gap-4 transition-colors duration-200 ease-calm hover:bg-tint/30"
+              className="group bg-navy/40 p-6 lg:p-8 flex flex-col gap-4 transition-colors duration-200 ease-calm hover:bg-navy/70"
             >
-              <div className="text-eyebrow font-medium uppercase text-teal">
+              <span className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
                 {String(i + 1).padStart(2, '0')}
-              </div>
-              <h3 className="text-h3 font-semibold text-navy [text-wrap:balance] flex-grow">{item.problem}</h3>
-              <div className="flex items-center gap-2 text-teal text-caption font-medium">
+              </span>
+              <h3 className="text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] flex-grow">{item.problem}</h3>
+              <div className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium pt-3 border-t border-offwhite/15">
                 <span>See solution</span>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1 self-center shrink-0">
                   <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
@@ -145,15 +148,15 @@ export default function ResidentialPage() {
           ))}
           <Link
             href="/water-problem-checker"
-            className="group bg-tint p-6 lg:p-8 flex flex-col gap-4 transition-colors duration-200 ease-calm hover:bg-tint/70"
+            className="group bg-teal/15 p-6 lg:p-8 flex flex-col gap-4 transition-colors duration-200 ease-calm hover:bg-teal/25"
           >
-            <div className="text-eyebrow font-medium uppercase text-teal">06</div>
-            <h3 className="text-h3 font-semibold text-navy [text-wrap:balance] flex-grow">
+            <span className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">06</span>
+            <h3 className="text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] flex-grow">
               Not sure. Take the 60-second water check.
             </h3>
-            <div className="flex items-center gap-2 text-teal text-caption font-medium">
+            <div className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium pt-3 border-t border-offwhite/15">
               <span>Start the check</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1 self-center shrink-0">
                 <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
