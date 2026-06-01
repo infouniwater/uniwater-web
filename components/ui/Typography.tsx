@@ -1,22 +1,29 @@
 import type { HTMLAttributes, ReactNode, ElementType } from 'react';
 import { cn } from '@/lib/cn';
 
-/** Small uppercase label above section headings. Per §3.2 Eyebrow row. */
+/** Small uppercase label above section headings. Per §3.2 Eyebrow row.
+ *  `inverse` swaps the teal accent to soft for dark/navy surfaces — same
+ *  pattern the hero uses, so eyebrows in navy sections match the hero
+ *  without ad-hoc `!text-soft` overrides. tracking-[0.18em] matches the
+ *  hero's letterspacing so the rhythm is consistent. */
 export function Eyebrow({
   children,
   className,
   as: As = 'p',
+  inverse = false,
 }: {
   children: ReactNode;
   className?: string;
   as?: ElementType;
+  inverse?: boolean;
 }) {
   return (
     <As
       className={cn(
         // `font-ui` switches eyebrows to TT Fors (the UI workhorse).
         // Headings + body stay on Avant Garde Gothic (default sans).
-        'text-eyebrow font-ui font-medium uppercase text-teal',
+        'text-eyebrow font-ui font-medium uppercase tracking-[0.18em]',
+        inverse ? 'text-soft' : 'text-teal',
         className
       )}
     >

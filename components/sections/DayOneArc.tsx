@@ -89,7 +89,7 @@ export function DayOneArc() {
   return (
     <Section tone="navy" padding="default">
       <div className="flex flex-col gap-3 sm:gap-4 mb-6 md:mb-14 max-w-3xl">
-        <Eyebrow className="!text-soft">The decision</Eyebrow>
+        <Eyebrow inverse>The decision</Eyebrow>
         <Heading level={2} inverse>
           Day one decisions, decade-long returns.
         </Heading>

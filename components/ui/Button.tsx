@@ -22,8 +22,11 @@ interface AsLink extends BaseProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>
 
 type ButtonProps = AsButton | AsLink;
 
+// rounded-full is the brand button shape — matches the hero CTA pill so
+// every primary action in the site reads as one family. tertiary is a
+// text-link variant so the radius is invisible there.
 const base =
-  'inline-flex items-center justify-center font-ui font-medium tracking-[0.02em] transition-colors duration-200 ease-calm focus-visible:outline-2 focus-visible:outline-teal focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  'inline-flex items-center justify-center font-ui font-medium tracking-[0.02em] rounded-full transition-colors duration-200 ease-calm focus-visible:outline-2 focus-visible:outline-teal focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none';
 
 const variants: Record<Variant, string> = {
   // Navy bg, white label; hover → teal

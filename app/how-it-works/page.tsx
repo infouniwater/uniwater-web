@@ -117,7 +117,7 @@ export default function HowItWorksPage() {
           rebuilding their distribution model. */}
       <Section tone="navy" padding="default">
         <div className="max-w-4xl mx-auto">
-          <Eyebrow className="!text-soft mb-5">Why this matters</Eyebrow>
+          <Eyebrow inverse className="mb-5">Why this matters</Eyebrow>
           <EditorialAccent className="!text-offwhite text-h2-m md:text-h2 leading-snug font-light">
             The only water-treatment company in India where the engineer who surveys your water is the same person who designs the system, installs it, and comes back every month &mdash; by name, for the life of the contract.
           </EditorialAccent>
