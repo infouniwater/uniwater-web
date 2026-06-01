@@ -38,13 +38,43 @@ export default function BookSurveyPage({
 
   return (
     <>
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw py-12 md:py-16 max-w-4xl">
-          <Eyebrow className="mb-4">Book a survey</Eyebrow>
-          <Display>Tell us about your home. We&rsquo;ll come to you.</Display>
-          <Lede className="text-mute mt-6">
-            Free site visit, free water test, and a written quote within 48 hours. No quote is sent without a survey.
-          </Lede>
+      {/* Hero — image-with-scrim editorial register. The terrace shot
+          ties the survey-booking moment back to the homepage hero
+          ("for the homes you don't get to redo"). */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[400px] md:h-[480px] lg:h-[calc(100vh-260px)] lg:min-h-[420px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/terrace-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/terrace-tablet.jpg" />
+          <img
+            src="/images/hero/terrace-mobile.jpg"
+            alt="Three Uniwater whole-house vessels on a residential terrace at sunset."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Book a survey</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+              Tell us about your home. We&rsquo;ll come to you.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              Free site visit, free water test, and a written quote within 48 hours. No quote is sent without a survey.
+            </p>
+          </div>
         </div>
       </section>
 

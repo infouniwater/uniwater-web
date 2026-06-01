@@ -22,13 +22,41 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(localBusinessSchema({})) }}
       />
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw py-16 md:py-24 max-w-4xl">
-          <Eyebrow className="mb-4">Talk to us</Eyebrow>
-          <Display>Let&rsquo;s begin.</Display>
-          <Lede className="text-mute mt-6">
-            Two phones, two emails, head office in Kolkata. Service teams in nine cities. We respond within one business day.
-          </Lede>
+      {/* Hero — image-with-scrim editorial register, contact-as-decision. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[400px] md:h-[480px] lg:h-[calc(100vh-260px)] lg:min-h-[420px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/bathroom-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/bathroom-tablet.jpg" />
+          <img
+            src="/images/hero/bathroom-mobile.jpg"
+            alt="A luxury bathroom drinking-water filter installed beside a freestanding tub."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Talk to us</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+              Let&rsquo;s begin.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              Two phones, two emails, head office in Kolkata. Service teams in nine cities. We respond within one business day.
+            </p>
+          </div>
         </div>
       </section>
 
