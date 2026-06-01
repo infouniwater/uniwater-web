@@ -50,13 +50,23 @@ const CASE_STUDY_QUOTES = CASE_STUDIES.filter((cs) => cs.body && cs.testimonial)
 export default function TestimonialsPage() {
   return (
     <>
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw py-16 md:py-24 max-w-4xl">
-          <Eyebrow className="mb-4">Testimonials</Eyebrow>
-          <Display>What customers say.</Display>
-          <Lede className="text-mute mt-6">
-            The attributions below come from published case studies. Customers who have agreed to be named, in their own words, on the record. The wider review set, sourced from every install handover, is being collected systematically and will surface here as it lands.
-          </Lede>
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[420px] md:h-[500px] lg:h-[calc(100vh-240px)] lg:min-h-[440px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/terrace-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/terrace-tablet.jpg" />
+          <img src="/images/hero/terrace-mobile.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" fetchPriority="high" decoding="async" />
+        </picture>
+        <div className="absolute inset-0 lg:hidden" style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }} aria-hidden="true" />
+        <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }} aria-hidden="true" />
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Testimonials</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">What customers say.</h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              The attributions below come from published case studies. Customers who have agreed to be named, in their own words, on the record. The wider review set, sourced from every install handover, is being collected systematically and will surface here as it lands.
+            </p>
+          </div>
         </div>
       </section>
 
