@@ -155,11 +155,11 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Where we work */}
+      {/* Where we work — important section, kept dark per the rule. */}
       <Section tone="navy" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">Where we work</div>
-          <Heading level={2} inverse className="mb-4">Three categories. One protocol.</Heading>
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Where we work</Eyebrow>
+          <Heading level={2} inverse>Three categories. One protocol.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {WHERE_WE_WORK.map((category) => {
@@ -179,12 +179,12 @@ export default function IndustrialPage() {
                 </div>
               )}
               <div className="p-8 flex flex-col gap-4">
-              <div className="text-eyebrow font-medium uppercase text-soft">{category.number}</div>
-              <h3 className="text-h2-m font-light text-offwhite">{category.title}</h3>
+              <Eyebrow inverse>{category.number}</Eyebrow>
+              <h3 className="text-h2-m font-light text-offwhite [text-wrap:balance]">{category.title}</h3>
               <p className="text-soft text-caption italic">{category.subtitle}</p>
               <Body inverse>{category.body}</Body>
               <div className="mt-4 pt-4 border-t border-offwhite/15">
-                <div className="text-eyebrow font-medium uppercase text-soft mb-3">Typical sites</div>
+                <Eyebrow inverse className="mb-3">Typical sites</Eyebrow>
                 <ul className="flex flex-col gap-1">
                   {category.typicalSites.map((site) => (
                     <li key={site} className="text-caption text-offwhite/85">
@@ -220,10 +220,10 @@ export default function IndustrialPage() {
       {/* Applications */}
       <Section tone="navy" padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <div className="text-eyebrow font-medium uppercase text-soft mb-4">Applications</div>
-            <Heading level={2} inverse className="mb-4">Engineered to the load.</Heading>
-            <Body inverse>
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <Eyebrow inverse>Applications</Eyebrow>
+            <Heading level={2} inverse>Engineered to the load.</Heading>
+            <Body inverse className="mt-2">
               Every BOM follows from a feed-water analysis. TDS, hardness, iron, silica, conductivity, microbiological. The wrong sequence is worse than no sequence.
             </Body>
           </div>
@@ -239,18 +239,18 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Capacity ladder */}
-      <Section tone="navy" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">Capacity bands</div>
-          <Heading level={2} inverse>From boutique to industrial.</Heading>
+      {/* Capacity ladder — light surface for alternation. */}
+      <Section padding="default">
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow>Capacity bands</Eyebrow>
+          <Heading level={2}>From boutique to industrial.</Heading>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-offwhite/15 border border-offwhite/15">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-hairline border border-hairline">
           {CAPACITY_BANDS.map((band) => (
-            <div key={band.capacity} className="bg-navy p-6 flex flex-col gap-3">
-              <div className="text-[28px] md:text-[32px] font-light text-soft leading-none">{band.capacity}</div>
-              <div className="h-px w-10 bg-offwhite/30" />
-              <Caption inverse>{band.subtitle}</Caption>
+            <div key={band.capacity} className="bg-offwhite p-6 flex flex-col gap-3">
+              <div className="text-[28px] md:text-[32px] font-light text-teal leading-none font-numeric">{band.capacity}</div>
+              <div className="h-px w-10 bg-hairline" />
+              <Caption>{band.subtitle}</Caption>
             </div>
           ))}
         </div>
@@ -261,37 +261,37 @@ export default function IndustrialPage() {
         />
       </Section>
 
-      {/* Technical edge */}
+      {/* Technical edge — USP, kept dark per "important sections dark" rule. */}
       <Section tone="navy" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">The technical edge</div>
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>The technical edge</Eyebrow>
           <Heading level={2} inverse>Four things commercial buyers should ask.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-offwhite/15 border border-offwhite/15">
           {TECHNICAL_EDGE.map((item) => (
             <div key={item.title} className="bg-navy p-8 flex flex-col gap-3">
-              <h3 className="text-h3 font-semibold text-offwhite">{item.title}</h3>
+              <h3 className="text-h3 font-normal text-offwhite [text-wrap:balance]">{item.title}</h3>
               <Body inverse>{item.body}</Body>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Component manufacturers */}
-      <Section tone="navy" padding="default">
+      {/* Component manufacturers — light surface for alternation. */}
+      <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-4">
-            <div className="text-eyebrow font-medium uppercase text-soft mb-4">Component supply</div>
-            <Heading level={2} inverse className="mb-4">Named manufacturers, not whitebox.</Heading>
-            <Body inverse>
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            <Eyebrow>Component supply</Eyebrow>
+            <Heading level={2}>Named manufacturers, not whitebox.</Heading>
+            <Body className="text-mute mt-2">
               FRP and SS316 vessels rated for the duty cycle. RO membranes from Hydranautics, Dow, LG. Resins from Tulsion and Ionex. Pumps from Wilo and Grundfos.
             </Body>
           </div>
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-hairline border border-hairline">
               {COMPONENT_MANUFACTURERS.map((mfr) => (
-                <div key={mfr} className="bg-navy aspect-[3/2] flex items-center justify-center p-4">
-                  <span className="text-caption text-offwhite font-medium">{mfr}</span>
+                <div key={mfr} className="bg-offwhite aspect-[3/2] flex items-center justify-center p-4">
+                  <span className="text-caption text-navy font-ui font-medium">{mfr}</span>
                 </div>
               ))}
             </div>
@@ -299,10 +299,10 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Track record */}
+      {/* Track record — proof, kept dark per "important sections dark" rule. */}
       <Section tone="navy" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">Track record</div>
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Track record</Eyebrow>
           <Heading level={2} inverse>What we&rsquo;ve put in. Where it runs.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16 pb-16 border-b border-offwhite/15">
@@ -335,24 +335,24 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* RFQ form */}
-      <Section tone="navy" padding="loose" id="rfq">
+      {/* RFQ form — light surface for alternation. */}
+      <Section padding="loose" id="rfq">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <div className="text-eyebrow font-medium uppercase text-soft mb-4">Submit an RFQ</div>
-            <Heading level={2} inverse className="mb-6">Tell us the site, the application, the daily volume.</Heading>
-            <Lede inverse>
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <Eyebrow>Submit an RFQ</Eyebrow>
+            <Heading level={2}>Tell us the site, the application, the daily volume.</Heading>
+            <Lede className="text-mute mt-2">
               We come back with a system layout, a bill of materials, and a price you can take to procurement.
             </Lede>
-            <ul className="mt-10 flex flex-col gap-3 text-offwhite/85">
-              <li className="flex gap-3 text-caption"><span className="text-soft">&mdash;</span> Engineer assigned within 1 business day</li>
-              <li className="flex gap-3 text-caption"><span className="text-soft">&mdash;</span> Site visit and water analysis within 5 working days</li>
-              <li className="flex gap-3 text-caption"><span className="text-soft">&mdash;</span> BOM &amp; quote within 5 working days of analysis</li>
-              <li className="flex gap-3 text-caption"><span className="text-soft">&mdash;</span> 24-hour SLA on flagged faults, post-install</li>
+            <ul className="mt-8 flex flex-col gap-3 text-mute">
+              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> Engineer assigned within 1 business day</li>
+              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> Site visit and water analysis within 5 working days</li>
+              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> BOM &amp; quote within 5 working days of analysis</li>
+              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> 24-hour SLA on flagged faults, post-install</li>
             </ul>
           </div>
           <div className="lg:col-span-7">
-            <form action={submitRFQ} className="bg-offwhite p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
                 <h3 className="text-h2-m font-light text-navy mb-2">RFQ details</h3>
                 <Caption className="text-mute">All fields marked * are required. Drawings, water test reports, and site photos can be sent to <a href="mailto:support@uniwater.co.in" className="text-teal underline underline-offset-4">support@uniwater.co.in</a> after submission.</Caption>
