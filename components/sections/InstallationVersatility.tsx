@@ -36,21 +36,21 @@ const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
 export function InstallationVersatility() {
   return (
     <Section padding="default">
-      <div className="mb-6 md:mb-12 max-w-3xl">
-        <Eyebrow className="mb-4">What makes us different</Eyebrow>
-        <Heading level={2} className="mb-5">
+      <div className="mb-8 md:mb-14 max-w-3xl flex flex-col gap-4">
+        <Eyebrow>What makes us different</Eyebrow>
+        <Heading level={2}>
           Five places we&rsquo;ve put a water system &mdash; engineered into the architecture, not bolted to it.
         </Heading>
-        <Body className="text-mute text-lede font-light">
+        <Body className="text-mute text-lede font-light mt-2">
           Most water companies bolt a vessel to a wall and call it done. Uniwater engineers the install into the building &mdash; false ceilings, shafts, niches, under-counter cavities, plant rooms. The system fits the house, not the other way around.
         </Body>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
         {FIVE_PLACES.map((place, i) => {
           const photo = INSTALL_PHOTOS[i];
           return (
-            <div key={place.location} className="flex flex-col gap-3 sm:gap-4">
+            <div key={place.location} className="group flex flex-col gap-3 sm:gap-4">
               {/* aspect: landscape on mobile (shorter card, section fits
                   closer to a single mobile frame), portrait sm+ where
                   there's vertical room. */}
@@ -60,14 +60,12 @@ export function InstallationVersatility() {
                   alt={photo.alt}
                   fill
                   sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 ease-calm group-hover:scale-[1.03]"
                 />
               </div>
-              <div>
-                <div className="text-eyebrow font-medium uppercase text-teal mb-1">
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-body sm:text-h3 font-normal text-navy mb-1 sm:mb-2 leading-snug">{place.location}</h3>
+              <div className="flex flex-col gap-2">
+                <Eyebrow>{String(i + 1).padStart(2, '0')}</Eyebrow>
+                <h3 className="text-body sm:text-h3 font-normal text-navy leading-snug [text-wrap:balance]">{place.location}</h3>
                 <p className="text-caption text-mute leading-snug">{place.description}</p>
               </div>
             </div>
@@ -75,9 +73,9 @@ export function InstallationVersatility() {
         })}
       </div>
 
-      <p className="mt-12 text-caption text-mute italic max-w-reading">
+      <EditorialAccent className="mt-14 md:mt-20 text-xl md:text-2xl">
         Decided at site survey. Specified before tile. Installed by the engineers who designed it.
-      </p>
+      </EditorialAccent>
     </Section>
   );
 }

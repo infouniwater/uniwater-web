@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
-import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
+import { Eyebrow, Heading } from '@/components/ui/Typography';
 
 // 2026-05-25 — UI matched to InstallationVersatility: same grid
 // (grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6), same
@@ -54,22 +54,29 @@ const SOLUTIONS = [
 export function SolutionsOverview() {
   return (
     <Section padding="default" id="solutions-overview">
-      <div className="mb-6 md:mb-12 max-w-3xl">
-        <Eyebrow className="mb-4">Catalogue</Eyebrow>
-        <Heading level={2} className="mb-4">
+      <div className="mb-8 md:mb-14 max-w-3xl flex flex-col gap-4">
+        <Eyebrow>Catalogue</Eyebrow>
+        <Heading level={2}>
           What we install.
         </Heading>
-        <Body className="text-mute text-lede font-light">
-          For your home. For your building. For your factory.
-        </Body>
+        {/* Middot-separated sub-line — same pattern the hero uses. The
+            three audiences read as a curated triple instead of three
+            separate sentences. */}
+        <div className="text-[16px] md:text-lede text-mute font-light flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline mt-2">
+          <span>For your home</span>
+          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span>For your building</span>
+          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span>For your factory</span>
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
         {SOLUTIONS.map((solution, i) => (
           <Link
             key={solution.title}
             href={solution.href}
-            className="flex flex-col gap-3 sm:gap-4"
+            className="group flex flex-col gap-3 sm:gap-4"
           >
             {/* aspect: landscape on mobile (shorter card, section fits
                 closer to a single mobile frame), portrait sm+ where
@@ -80,14 +87,12 @@ export function SolutionsOverview() {
                 alt={solution.imgAlt}
                 fill
                 sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-calm group-hover:scale-[1.03]"
               />
             </div>
-            <div>
-              <div className="text-eyebrow font-medium uppercase text-teal mb-1">
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <h3 className="text-body sm:text-h3 font-normal text-navy mb-1 sm:mb-2 leading-snug">
+            <div className="flex flex-col gap-2">
+              <Eyebrow>{String(i + 1).padStart(2, '0')}</Eyebrow>
+              <h3 className="text-body sm:text-h3 font-normal text-navy leading-snug [text-wrap:balance] transition-colors duration-200 ease-calm group-hover:text-teal">
                 {solution.title}
               </h3>
               <p className="text-caption text-mute leading-snug">{solution.description}</p>
