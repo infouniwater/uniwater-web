@@ -73,9 +73,9 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         }}
       />
 
-      {/* 1. Hero */}
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw pt-6">
+      {/* Breadcrumb strip — light, sits above the dark hero. */}
+      <div className="bg-offwhite border-b border-hairline">
+        <div className="container-uw pt-4 pb-3">
           <Breadcrumb
             items={[
               { label: 'Home', href: '/' },
@@ -84,60 +84,87 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
             ]}
           />
         </div>
-        <div className="container-uw">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-8 pb-12 lg:pt-12 lg:pb-24">
-            {/* Text panel — first on mobile (was second). */}
-            <div className="lg:col-span-6 flex flex-col gap-6">
-              {solution.wordmark && (
-                <div className="text-eyebrow font-medium uppercase text-teal">
-                  {solution.wordmark}.
-                </div>
-              )}
-              <Eyebrow>{solution.navLabel}</Eyebrow>
-              <Heading level={1} className="text-display-m md:text-h1 font-light leading-tight">
-                {solution.shortHeadline}
-              </Heading>
-              {solution.priceFromINR && (
-                <p className="text-caption text-mute">
-                  From{' '}
-                  <span className="text-ink font-medium">
-                    {formatINR(solution.priceFromINR)}
-                  </span>
-                  . Final price after free survey. EMI from{' '}
-                  <span className="text-ink font-medium">
-                    {formatINR(Math.round(solution.priceFromINR / 12))}/month
-                  </span>{' '}
-                  via Bajaj Finserv / Snapmint.
-                </p>
-              )}
-              <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                <Button href={bookSurveyHref}>Book a free survey</Button>
-                <Button href={PRIMARY_PHONE_HREF} variant="tertiary">
-                  Or call us
-                </Button>
-              </div>
-            </div>
+      </div>
 
-            <div className="lg:col-span-6">
-              {heroPhoto ? (
-                <div className="w-full overflow-hidden border border-hairline aspect-[16/9] sm:aspect-[1/1]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={heroPhoto.src}
-                    alt={heroPhoto.alt}
-                    className="block w-full h-full object-cover"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </div>
-              ) : (
-                <Photo
-                  description={`Hero — ${solution.navLabel} installed in a finished home`}
-                  assetRef={`solution-${solution.slug}-hero`}
-                  aspect="five-six"
-                  mobileAspect="sixteen-nine"
-                />
-              )}
+      {/* 1. Hero — image-with-scrim editorial register. The detail
+          page's own heroPhoto becomes the full-bleed background;
+          if absent, falls back to the Photo placeholder. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[480px] md:h-[600px] lg:h-[calc(100vh-220px)] lg:min-h-[560px] border-b border-offwhite/10">
+        {heroPhoto ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={heroPhoto.src}
+            alt={heroPhoto.alt}
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        ) : (
+          <div className="absolute inset-0">
+            <Photo
+              description={`Hero — ${solution.navLabel} installed in a finished home`}
+              assetRef={`solution-${solution.slug}-hero`}
+              aspect="five-six"
+              mobileAspect="sixteen-nine"
+            />
+          </div>
+        )}
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-4">
+            {solution.wordmark && (
+              <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
+                {solution.wordmark}.
+              </p>
+            )}
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft/80">
+              {solution.navLabel}
+            </p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+              {solution.shortHeadline}
+            </h1>
+            {solution.priceFromINR && (
+              <p className="text-caption text-offwhite/70 mt-1">
+                From{' '}
+                <span className="text-offwhite font-medium">{formatINR(solution.priceFromINR)}</span>
+                . Final price after free survey. EMI from{' '}
+                <span className="text-offwhite font-medium">
+                  {formatINR(Math.round(solution.priceFromINR / 12))}/month
+                </span>{' '}
+                via Bajaj Finserv / Snapmint.
+              </p>
+            )}
+            <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+              <Link
+                href={bookSurveyHref}
+                className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
+              >
+                Book a free survey
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <a
+                href={PRIMARY_PHONE_HREF}
+                className="group inline-flex items-center gap-1.5 self-start text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
+              >
+                <span className="border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
+                  Or call us
+                </span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M5.5 4.5C5.5 4.5 7 4 8 4C8.5 4 9 4.5 9 5L9.5 7.5C9.5 8 9.5 8.5 9 9L7.5 10.5C8.5 13 11 15.5 13.5 16.5L15 15C15.5 14.5 16 14.5 16.5 14.5L19 15C19.5 15 20 15.5 20 16C20 17 19.5 18.5 19.5 18.5C19 19.5 18 20 17 20C10.5 20 4 13.5 4 7C4 6 4.5 5 5.5 4.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

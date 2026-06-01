@@ -63,15 +63,41 @@ export default function SolutionsHub() {
 
   return (
     <>
-      {/* Hero strip */}
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw py-16 md:py-24">
-          <div className="max-w-3xl flex flex-col gap-6">
-            <Eyebrow>Solutions</Eyebrow>
-            <Display>What we install.</Display>
-            <Lede className="text-mute">
+      {/* Hero — image-with-scrim editorial register, matching the rest
+          of the site. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[440px] md:h-[520px] lg:h-[calc(100vh-220px)] lg:min-h-[460px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/under-counter-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/under-counter-tablet.jpg" />
+          <img
+            src="/images/hero/under-counter-mobile.jpg"
+            alt="A compact Uniwater filter mounted under a vanity counter behind a finish cabinet door."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Solutions</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+              What we install.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               From a single bathroom to a 30,000-litre-per-hour building plant. Every system surveyed before it&rsquo;s sold.
-            </Lede>
+            </p>
           </div>
         </div>
       </section>
