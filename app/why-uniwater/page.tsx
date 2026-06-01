@@ -110,19 +110,21 @@ export default function WhyUniwaterPage() {
       </Section>
 
       {/* Three claims */}
-      <Section padding="default" tone="subtle">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">The three claims</Eyebrow>
-          <Heading level={2}>Three things. We repeat them across every page.</Heading>
+      {/* The three claims — promoted dark per "important sections in
+          dark view" + alternation cadence. The USP triple is the
+          page's biggest single statement; the editorial dark
+          treatment matches its weight. */}
+      <Section padding="default" tone="navy">
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>The three claims</Eyebrow>
+          <Heading level={2} inverse>Three things. We repeat them across every page.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {THREE_CLAIMS.map((claim, i) => (
-            <div key={claim.label} className="bg-offwhite border border-hairline p-8 flex flex-col gap-4">
-              <div className="text-eyebrow font-medium uppercase text-teal">
-                Claim {String(i + 1).padStart(2, '0')}
-              </div>
-              <h3 className="text-h3 font-semibold text-navy">{claim.label}</h3>
-              <Body className="text-mute">{claim.body}</Body>
+            <div key={claim.label} className="bg-navy/40 border border-offwhite/15 p-8 flex flex-col gap-4">
+              <Eyebrow inverse>Claim {String(i + 1).padStart(2, '0')}</Eyebrow>
+              <h3 className="text-h3 font-normal text-offwhite [text-wrap:balance]">{claim.label}</h3>
+              <Body inverse>{claim.body}</Body>
             </div>
           ))}
         </div>
@@ -152,25 +154,32 @@ export default function WhyUniwaterPage() {
           so both sections complement each other on this page. */}
       <ComparisonBlock />
 
-      {/* Decision tree comparison */}
-      <Section padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">How we compare</Eyebrow>
-          <Heading level={2} className="mb-4">Which brand is right for which problem?</Heading>
-          <Body className="text-mute">
+      {/* Decision tree comparison — promoted dark per "important
+          sections in dark view" + alternation cadence. Comparison
+          against named competitors is a brand positioning moment;
+          earns the editorial dark treatment. Accordion still renders
+          on a light card surface inside the dark section so the
+          interactive expand/collapse stays legible. */}
+      <Section padding="default" tone="navy">
+        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>How we compare</Eyebrow>
+          <Heading level={2} inverse>Which brand is right for which problem?</Heading>
+          <Body inverse className="text-offwhite/80 mt-2">
             We&rsquo;ll be honest. Uniwater is not the right answer for every household. Here&rsquo;s a frank decision tree.
           </Body>
         </div>
-        <Accordion>
-          {DECISION_TREE.map((row, i) => (
-            <AccordionItem key={i} question={row.scenario} defaultOpen={i === 1}>
-              <div className="flex flex-col gap-4">
-                <div className="text-h3 font-medium text-navy">{row.answer}</div>
-                <Body className="text-mute">{row.why}</Body>
-              </div>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="bg-offwhite border border-hairline p-6 md:p-8">
+          <Accordion>
+            {DECISION_TREE.map((row, i) => (
+              <AccordionItem key={i} question={row.scenario} defaultOpen={i === 1}>
+                <div className="flex flex-col gap-4">
+                  <div className="text-h3 font-normal text-navy">{row.answer}</div>
+                  <Body className="text-mute">{row.why}</Body>
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </Section>
 
       {/* What we don't claim */}
