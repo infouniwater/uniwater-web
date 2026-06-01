@@ -28,34 +28,40 @@ const MILESTONES = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-16 lg:py-24">
-            <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1">
-              <Eyebrow>About</Eyebrow>
-              <Display>A water company built for premium homes.</Display>
-              <Lede className="text-mute">
-                Founded in Kolkata in {STATS.founded}. Now in {STATS.citiesTotal} cities across India and Nepal. We design, install, and service water systems for the homes you don&rsquo;t get to redo.
-              </Lede>
-            </div>
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              {/* Founder portrait pending. In the meantime, an editorial
-                  brand shot (backlit rain shower with shampoo bottles
-                  in shadow) lives in this slot — same "premium homes,
-                  considered" register as the hero copy. Replace with
-                  the founder portrait when the photo lands. */}
-              <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[4/5]">
-                <Image
-                  src="/images/photography/homepage-hero.jpg"
-                  alt="Editorial brand image — a hand reaching into a backlit rain shower with shampoo bottles in shadow, evoking the wellness-from-water register that the company was built around."
-                  fill
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
+      {/* Hero — image-with-scrim editorial register. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[460px] md:h-[560px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/terrace-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/terrace-tablet.jpg" />
+          <img
+            src="/images/hero/terrace-mobile.jpg"
+            alt="Three Uniwater whole-house vessels installed on a residential terrace at sunset."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">About</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+              A water company built for premium homes.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              Founded in Kolkata in {STATS.founded}. Now in {STATS.citiesTotal} cities across India and Nepal. We design, install, and service water systems for the homes you don&rsquo;t get to redo.
+            </p>
           </div>
         </div>
       </section>
