@@ -88,11 +88,34 @@ const config: Config = {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.05)' },
         },
+        // Hero crossfade — 3-slide rotation, 24s cycle, ~6.8s visible per
+        // slide, 1.2s crossfade overlap. Pair with the matching
+        // animation utility and the `motion-safe:` modifier so
+        // prefers-reduced-motion users see only slide 1 (its inline
+        // opacity:1 stays put when no animation runs).
+        'hero-fade-1': {
+          '0%, 28.3%': { opacity: '1' },
+          '33.3%, 95%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'hero-fade-2': {
+          '0%, 28.3%': { opacity: '0' },
+          '33.3%, 61.7%': { opacity: '1' },
+          '66.7%, 100%': { opacity: '0' },
+        },
+        'hero-fade-3': {
+          '0%, 61.7%': { opacity: '0' },
+          '66.7%, 95%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 600ms cubic-bezier(0.22, 0.61, 0.36, 1) both',
         'fade-in': 'fade-in 250ms cubic-bezier(0.22, 0.61, 0.36, 1) both',
         'ken-burns': 'ken-burns 30s linear both',
+        'hero-fade-1': 'hero-fade-1 24s ease-in-out infinite',
+        'hero-fade-2': 'hero-fade-2 24s ease-in-out infinite',
+        'hero-fade-3': 'hero-fade-3 24s ease-in-out infinite',
       },
     },
   },
