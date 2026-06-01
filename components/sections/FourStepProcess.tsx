@@ -1,5 +1,5 @@
 import { Section } from '@/components/ui/Section';
-import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
+import { Eyebrow, Heading } from '@/components/ui/Typography';
 import { ProcessStep } from '@/components/ui/Card';
 import { FOUR_STEPS } from '@/content/education';
 
@@ -23,12 +23,23 @@ export function FourStepProcess({ id }: { id?: string }) {
     // lowest-stakes section in that run, so it carries the tone break
     // without taking attention away from the catalogue or the proof.
     <Section padding="default" tone="subtle" id={id}>
-      <div className="max-w-3xl mb-8 md:mb-12">
-        <Eyebrow className="mb-4">Our process</Eyebrow>
-        <Heading level={2} className="mb-4">What we do.</Heading>
-        <Body className="text-mute text-lede font-light">
-          From first water test to monthly service, the same Uniwater team owns the system.
-        </Body>
+      <div className="max-w-3xl mb-10 md:mb-14 flex flex-col gap-4">
+        <Eyebrow>Our process</Eyebrow>
+        <Heading level={2}>What we do.</Heading>
+        {/* Middot sub-line — the same separator pattern as the hero and
+            SolutionsOverview, so the four-step section header reads as
+            part of the same family rather than a one-off Body lede. */}
+        <div className="text-[16px] md:text-lede text-mute font-light flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline mt-2">
+          <span>Survey</span>
+          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span>Design</span>
+          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span>Install</span>
+          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span>Service</span>
+          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&mdash;</span>
+          <span className="italic">the same team, end to end.</span>
+        </div>
       </div>
 
       {/* gap progression now grows with viewport (was gap-6 md:gap-12 lg:gap-8 —

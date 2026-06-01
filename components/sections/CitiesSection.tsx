@@ -18,17 +18,17 @@ export function CitiesSection() {
           NineCityMap reads larger on lg+. Below lg the grid stacks
           (text → map) and the map fills the container width. */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-        <div className="lg:col-span-2">
-          <Eyebrow className="text-soft mb-5">Where we work</Eyebrow>
-          <Heading level={2} inverse className="mb-6">
+        <div className="lg:col-span-2 flex flex-col gap-4">
+          <Eyebrow inverse>Where we work</Eyebrow>
+          <Heading level={2} inverse>
             Nine cities. Own teams. Not subcontracted.
           </Heading>
-          <Body inverse className="mb-8">
+          <Body inverse className="text-offwhite/80 mt-2">
             Every Uniwater survey, install, and monthly service visit is delivered by our own engineers. We don&rsquo;t hand off to local contractors after the sale.
           </Body>
 
-          <div className="mb-8">
-            <div className="text-eyebrow font-medium uppercase text-soft mb-4">India</div>
+          <div className="mt-6 flex flex-col gap-3">
+            <Eyebrow inverse>India</Eyebrow>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {india.map((city) => (
                 <Link
@@ -42,8 +42,8 @@ export function CitiesSection() {
             </div>
           </div>
 
-          <div>
-            <div className="text-eyebrow font-medium uppercase text-soft mb-4">Nepal</div>
+          <div className="mt-2 flex flex-col gap-3">
+            <Eyebrow inverse>Nepal</Eyebrow>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {nepal.map((city) => (
                 <Link

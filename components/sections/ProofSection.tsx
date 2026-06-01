@@ -36,26 +36,26 @@ const FEATURED_CLIENTS = [
 export function ProofSection() {
   return (
     <Section padding="default" tone="plain">
-      <div className="mb-8 md:mb-12 max-w-3xl">
-        <Eyebrow className="mb-4">Selected clients</Eyebrow>
-        <Heading level={2} className="mb-4">
+      <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
+        <Eyebrow>Selected clients</Eyebrow>
+        <Heading level={2}>
           Hospitals. Hotels. Universities. Premium homes.
         </Heading>
-        <Body className="text-mute max-w-3xl">
-          We work with hospitals, hotels, factories, schools, universities, and premium residential developments across India and Nepal. A partial list of named clients:
+        <Body className="text-mute mt-2">
+          Hospitals, hotels, factories, schools, universities, and premium residential developments across India and Nepal. A partial list of named clients:
         </Body>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
         {FEATURED_CLIENTS.map((client) => {
           const logo = CLIENT_LOGOS[client];
           return (
             <div
               key={client}
-              className="aspect-[3/2] border border-hairline flex items-center justify-center p-4 bg-offwhite"
+              className="aspect-[3/2] flex items-center justify-center p-5 sm:p-6 bg-offwhite transition-colors duration-200 ease-calm hover:bg-tint/30"
               aria-label={logo.alt}
             >
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-200 ease-calm">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
