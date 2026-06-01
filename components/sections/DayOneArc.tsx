@@ -1,4 +1,3 @@
-import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body, EditorialAccent } from '@/components/ui/Typography';
 
 /**
@@ -87,8 +86,35 @@ const TONE: Record<Stage['tone'], string> = {
 
 export function DayOneArc() {
   return (
-    <Section tone="navy" padding="default">
-      <div className="flex flex-col gap-3 sm:gap-4 mb-6 md:mb-14 max-w-3xl">
+    <section className="relative w-full bg-navy text-offwhite overflow-hidden border-y border-offwhite/10">
+      {/* Background image — a quiet utility-area install. Domestic,
+          not aspirational — fits the "this decision lives in your home
+          for the next ten years" register. Heavy scrim so the data
+          stays the focus; the image is a texture, not a focal point. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <picture>
+        <source media="(min-width: 1024px)" srcSet="/images/hero/utility-desktop.jpg" />
+        <source media="(min-width: 768px)" srcSet="/images/hero/utility-tablet.jpg" />
+        <img
+          src="/images/hero/utility-mobile.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.97) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative container-uw py-16 md:py-24">
+      <div className="flex flex-col gap-3 sm:gap-4 mb-8 md:mb-14 max-w-3xl">
         <Eyebrow inverse>The decision</Eyebrow>
         <Heading level={2} inverse>
           Day one decisions, decade-long returns.
@@ -170,11 +196,12 @@ export function DayOneArc() {
         ))}
       </div>
 
-      <div className="mt-6 md:mt-16 max-w-reading">
-        <EditorialAccent className="!text-soft">
+      <div className="mt-8 md:mt-16 max-w-reading">
+        <EditorialAccent inverse>
           Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they keep.
         </EditorialAccent>
       </div>
-    </Section>
+      </div>
+    </section>
   );
 }

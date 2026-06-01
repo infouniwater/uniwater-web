@@ -161,14 +161,17 @@ export function Caption({
 export function EditorialAccent({
   children,
   className,
+  inverse = false,
 }: {
   children: ReactNode;
   className?: string;
+  inverse?: boolean;
 }) {
   return (
     <p
       className={cn(
-        'font-editorial italic text-2xl md:text-3xl text-navy leading-snug max-w-reading',
+        'font-editorial italic text-2xl md:text-3xl leading-snug max-w-reading',
+        inverse ? 'text-soft' : 'text-navy',
         className
       )}
     >
