@@ -108,6 +108,40 @@ const config: Config = {
           '66.7%, 95%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
+        // Production hero rotation — 6 slides, 36s cycle, ~4.8s solid +
+        // 1.2s crossfade per slot. Boundaries fall on 16.667% increments
+        // (the slot edges); crossfades occupy the 3.33% windows between
+        // a slide's solid range and the next slide's solid range.
+        'hero-rot-1': {
+          '0%, 13.33%': { opacity: '1' },
+          '16.67%, 96.67%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'hero-rot-2': {
+          '0%, 13.33%': { opacity: '0' },
+          '16.67%, 30%': { opacity: '1' },
+          '33.33%, 100%': { opacity: '0' },
+        },
+        'hero-rot-3': {
+          '0%, 30%': { opacity: '0' },
+          '33.33%, 46.67%': { opacity: '1' },
+          '50%, 100%': { opacity: '0' },
+        },
+        'hero-rot-4': {
+          '0%, 46.67%': { opacity: '0' },
+          '50%, 63.33%': { opacity: '1' },
+          '66.67%, 100%': { opacity: '0' },
+        },
+        'hero-rot-5': {
+          '0%, 63.33%': { opacity: '0' },
+          '66.67%, 80%': { opacity: '1' },
+          '83.33%, 100%': { opacity: '0' },
+        },
+        'hero-rot-6': {
+          '0%, 80%': { opacity: '0' },
+          '83.33%, 96.67%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 600ms cubic-bezier(0.22, 0.61, 0.36, 1) both',
@@ -116,6 +150,12 @@ const config: Config = {
         'hero-fade-1': 'hero-fade-1 24s ease-in-out infinite',
         'hero-fade-2': 'hero-fade-2 24s ease-in-out infinite',
         'hero-fade-3': 'hero-fade-3 24s ease-in-out infinite',
+        'hero-rot-1': 'hero-rot-1 36s ease-in-out infinite',
+        'hero-rot-2': 'hero-rot-2 36s ease-in-out infinite',
+        'hero-rot-3': 'hero-rot-3 36s ease-in-out infinite',
+        'hero-rot-4': 'hero-rot-4 36s ease-in-out infinite',
+        'hero-rot-5': 'hero-rot-5 36s ease-in-out infinite',
+        'hero-rot-6': 'hero-rot-6 36s ease-in-out infinite',
       },
     },
   },

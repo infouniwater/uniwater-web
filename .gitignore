@@ -13,3 +13,7 @@ tsconfig.tsbuildinfo
 .vscode/
 
 .vercel
+
+# Source PNG masters for the hero rotation — too heavy for the deploy bundle.
+# Optimised JPGs ship from public/images/hero/ instead.
+public/Hero Images/

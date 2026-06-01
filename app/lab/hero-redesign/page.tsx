@@ -43,12 +43,19 @@ function Label({ tag, title, summary }: { tag: string; title: string; summary: s
 }
 
 /* ──────────────────────────────────────────────────────────────
- * Variant D — Full-bleed image with overlay text
+ * Variant D — Full-bleed image with overlay text (art-directed)
  *
- * Image fills the section edge-to-edge. A bottom-up navy gradient
- * scrim carries the text without darkening the vessels above it.
- * On lg+ the image gets nudged so the vessels sit right-of-center,
- * leaving room for the text to breathe on the left half.
+ * <picture> with three breakpoint-specific crops of the same
+ * source, each cut from the lossless PNG with its own aspect:
+ *   - mobile  (default)        1500x2000  3:4 portrait
+ *   - tablet  (>= 768px)       2000x1500  4:3 landscape
+ *   - desktop (>= 1024px)      3000x1800  5:3 landscape
+ *
+ * Each viewport gets a crop made for it instead of one square
+ * being cover-cropped on the fly, so the vessels never end up
+ * half off-screen. Loses Next/Image's auto WebP/AVIF, but the
+ * source JPGs are already mozjpeg-encoded at q=88 with 4:4:4
+ * chroma, so the bandwidth difference is small.
  *
  * Editorial register: short H1, one primary CTA with a benefit
  * label, one micro-trust line under the button. Wellness tagline
@@ -57,16 +64,25 @@ function Label({ tag, title, summary }: { tag: string; title: string; summary: s
 function VariantD() {
   return (
     <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[640px] md:h-[720px] lg:h-[calc(100vh-96px)] lg:min-h-[640px]">
-      {/* Image */}
-      <Image
-        src={HERO_IMAGE.src}
-        alt={HERO_IMAGE.alt}
-        fill
-        priority
-        quality={90}
-        sizes="100vw"
-        className="object-cover object-center lg:object-[70%_center] animate-ken-burns"
-      />
+      {/* Image — art-directed per breakpoint */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <picture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet="/images/photography/whole-house-luxury-villa-desktop.jpg"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet="/images/photography/whole-house-luxury-villa-tablet.jpg"
+        />
+        <img
+          src="/images/photography/whole-house-luxury-villa-mobile.jpg"
+          alt={HERO_IMAGE.alt}
+          className="absolute inset-0 w-full h-full object-cover object-center animate-ken-burns"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
 
       {/* Scrim — stronger from the bottom on mobile, blended from
           the left on desktop so the text-side stays readable while

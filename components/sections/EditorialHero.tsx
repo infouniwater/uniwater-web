@@ -1,160 +1,181 @@
-import Image from 'next/image';
-import { Display, Lede } from '@/components/ui/Typography';
-import { Button } from '@/components/ui/Button';
-import { SYSTEM_STARTS_FROM_INR, HERO_VIDEO_SRC } from '@/content/site';
-import { HeroDropletAnimation } from './HeroDropletAnimation';
+import Link from 'next/link';
 
 /**
- * Editorial home hero — restructured 2026-05-21 per homepage-restructure
- * brief (Rajat). Earlier version led with operational language
- * ("We engineer your water — and we maintain it.") and packed four
- * sentences of body copy + an inline pull-quote into the hero.
+ * Editorial home hero — 2026-06-02 redesign per Rajat.
  *
- * Current shape:
- *   - H1 promotes the wellness tagline (already in <meta> + footer)
- *   - H2 names the audience ("homes you don't get to redo")
- *   - Single sentence collapses what we do + service rhythm
- *   - Two CTAs unchanged (book survey / water check)
- *   - Italic price anchor below CTAs
- *   - Pull-quote removed from the hero — moved to sit above FinalCTA
- *     on the homepage
+ * Full-bleed image background with overlay text. Six install
+ * contexts crossfade behind the fixed text — terrace → utility
+ * room → luxury bathroom → under-counter → plant room → industrial —
+ * 36-second cycle, ~4.8 s solid + 1.2 s crossfade per slide, looping.
  *
- * Tertiary phone + WhatsApp CTAs intentionally absent; phone/WhatsApp
- * live in the header + footer + WhatsAppFAB, so the hero stays focused.
+ * Each slide is art-directed: a dedicated crop is shipped for
+ * mobile (3:4 portrait), tablet (4:3 landscape), and desktop
+ * (5:3 landscape), wired through a <picture> element so the
+ * browser only fetches the one that matches its viewport. The
+ * source PNGs come pre-scrimmed with a navy tint so the overlay
+ * text reads at sufficient contrast without an additional CSS
+ * gradient on top.
+ *
+ * The slide-1 <img> is fetchPriority="high" + loading="eager"
+ * because it carries the LCP element. Slides 2-6 are loading="eager"
+ * too — they need to be warm by the time their crossfade fires
+ * (~6 s into the page), and since the <picture> sources are
+ * media-gated, only the variant matching the user's viewport
+ * actually downloads.
+ *
+ * Animation utilities use the `motion-safe:` modifier; users who
+ * have asked the OS for less motion see only slide 1 (its inline
+ * opacity:1 stays put when no animation runs).
  */
 
-const HERO_IMAGE = {
-  // Whole-house hero — luxury-villa variant picked 2026-05-22 per Rajat
-  // ("image is a bit hazy" was the high-key bright-wall style of the
-  // earlier choice). This frame puts three branded Uniwater vessels on
-  // a sunlit terrace with hydrangeas, bougainvillea, and city skyline
-  // behind. Same brand subject, much more contrast and colour, so it
-  // reads sharp in the hero. The earlier whole-house-hero.jpg still
-  // runs as the HomeSoft card in SolutionsOverview, so visitors see
-  // both framings as they scroll.
-  src: '/images/photography/whole-house-luxury-villa.jpg',
-  alt:
-    'Three branded Uniwater whole-house vessels installed on a luxury villa terrace, with garden plantings and city skyline behind.',
-};
+interface Slide {
+  /** Filename stem under public/images/hero/. Variants resolve to
+   *  <stem>-mobile.jpg, <stem>-tablet.jpg, <stem>-desktop.jpg. */
+  stem: string;
+  /** Single alt sentence for the slide. Used on the LCP slide only;
+   *  decorative slides are aria-hidden so the rotation doesn't
+   *  fight screen-reader focus. */
+  alt: string;
+  /** Tailwind animation utility for this slot — paired keyframe in
+   *  tailwind.config.ts. The N maps to the slot index (1..6). */
+  anim:
+    | 'motion-safe:animate-hero-rot-1'
+    | 'motion-safe:animate-hero-rot-2'
+    | 'motion-safe:animate-hero-rot-3'
+    | 'motion-safe:animate-hero-rot-4'
+    | 'motion-safe:animate-hero-rot-5'
+    | 'motion-safe:animate-hero-rot-6';
+}
+
+/** Slot 1 is the LCP slide. Order tells the brand range from
+ *  residential luxury exterior → in-home installs → industrial
+ *  scale, so the rotation reads as "everywhere we do this". */
+const SLIDES: Slide[] = [
+  {
+    stem: 'terrace',
+    alt: 'Three branded Uniwater whole-house vessels installed on a residential terrace with hydrangeas and a privacy garden behind.',
+    anim: 'motion-safe:animate-hero-rot-1',
+  },
+  {
+    stem: 'utility',
+    alt: 'A Uniwater duo installed in a finished home utility corner beside a window with a potted fig tree.',
+    anim: 'motion-safe:animate-hero-rot-2',
+  },
+  {
+    stem: 'bathroom',
+    alt: 'A bathroom drinking-water filter installed beside a luxury freestanding tub overlooking a tropical garden.',
+    anim: 'motion-safe:animate-hero-rot-3',
+  },
+  {
+    stem: 'under-counter',
+    alt: 'A compact Uniwater filter installed under the vanity counter behind a dark-wood cabinet door.',
+    anim: 'motion-safe:animate-hero-rot-4',
+  },
+  {
+    stem: 'plant-room',
+    alt: 'A trio of Uniwater commercial vessels installed in a building plant room with steel piping and concrete walls.',
+    anim: 'motion-safe:animate-hero-rot-5',
+  },
+  {
+    stem: 'industrial',
+    alt: 'A Uniwater commercial RO and softening plant installed on a factory warehouse floor with control panel and instrumentation.',
+    anim: 'motion-safe:animate-hero-rot-6',
+  },
+];
 
 export function EditorialHero() {
-  const formattedStarts = new Intl.NumberFormat('en-IN').format(SYSTEM_STARTS_FROM_INR);
-
   return (
-    <section className="bg-offwhite border-b border-hairline">
-      <div className="container-uw">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center lg:min-h-[calc(100vh-96px)] py-8 sm:py-12 md:py-24 lg:py-0">
-          {/* Text panel — split into two sub-blocks at every viewport:
-                • wide sub-block holds the headline / CTAs / price
-                • narrow sub-block is the droplet strip, beside the text
-              This is the same pattern mobile + desktop, so there's only
-              one HeroDropletAnimation mount on the page (was two before).
-              self-stretch on the strip makes it as tall as the text
-              content; lg-only width bump gives the strip a touch more
-              presence at desktop sizes. */}
-          {/* order-2 on mobile so the image cell (which comes later in
-              DOM but has order-1) renders ABOVE the text on small
-              screens. Above lg the order classes go inert (grid is
-              side-by-side), so desktop layout is unchanged. */}
-          <div className="lg:col-span-6 order-2 lg:order-1">
-            <div className="flex gap-4 sm:gap-6 lg:gap-8">
-              <div className="flex-1 min-w-0 flex flex-col gap-6">
-                <Display>Wellness starts with clean water.</Display>
-                <h2 className="text-h2-m md:text-h2 font-light text-navy/90 leading-snug [text-wrap:balance]">
-                  Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
-                </h2>
-                <Lede className="text-mute">
-                  Bathroom filters, whole-house systems, drinking water &mdash; surveyed before we quote, serviced every month after.
-                </Lede>
+    <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[640px] md:h-[720px] lg:h-[calc(100vh-96px)] lg:min-h-[640px]">
+      {SLIDES.map((slide, i) => {
+        const isLcp = i === 0;
+        return (
+          <div
+            key={slide.stem}
+            className={`absolute inset-0 ${slide.anim}`}
+            style={{ opacity: isLcp ? 1 : 0, willChange: 'opacity' }}
+            // Decorative for slides 2-6; slide 1 carries the alt
+            // text via its <img> for the LCP path.
+            aria-hidden={isLcp ? undefined : 'true'}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcSet={`/images/hero/${slide.stem}-desktop.jpg`}
+              />
+              <source
+                media="(min-width: 768px)"
+                srcSet={`/images/hero/${slide.stem}-tablet.jpg`}
+              />
+              <img
+                src={`/images/hero/${slide.stem}-mobile.jpg`}
+                alt={isLcp ? slide.alt : ''}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                fetchPriority={isLcp ? 'high' : 'low'}
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </div>
+        );
+      })}
 
-                {/* Primary + secondary CTAs */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                  <Button href="/book-survey" size="lg">
-                    Book a free survey
-                  </Button>
-                  <Button href="/water-problem-checker" variant="tertiary">
-                    Take the 60-second water check
-                    <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </Button>
-                </div>
+      {/* Soft reinforcement scrim — the source images already carry
+          their own navy tint, so this layer is light. Bottom-up on
+          mobile (text sits at the bottom); left-to-right on desktop
+          (text sits at the left). Both stop at ~60% so the right /
+          top side of the image keeps its colour. */}
+      <div
+        className="absolute inset-0 lg:hidden"
+        style={{
+          background:
+            'linear-gradient(to top, rgba(4,69,95,0.55) 0%, rgba(4,69,95,0.25) 40%, rgba(4,69,95,0.0) 70%)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 hidden lg:block"
+        style={{
+          background:
+            'linear-gradient(to right, rgba(4,69,95,0.65) 0%, rgba(4,69,95,0.30) 35%, rgba(4,69,95,0.0) 60%)',
+        }}
+        aria-hidden="true"
+      />
 
-                {/* Italic price anchor below the CTAs */}
-                <p className="font-editorial italic text-mute text-caption mt-1">
-                  Surveys are free. Bathroom filters from ₹{formattedStarts}.
-                </p>
-              </div>
+      {/* Content */}
+      <div className="relative h-full container-uw flex items-end lg:items-center">
+        <div className="w-full lg:max-w-[640px] pb-10 lg:pb-0 flex flex-col gap-5">
+          <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
+            Wellness starts with clean water
+          </p>
+          <h1 className="text-display-m md:text-display font-normal leading-[1.05] [text-wrap:balance]">
+            Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
+          </h1>
 
-              {/* Droplet strip — narrow sub-block beside the text at
-                  every viewport. 64 px on phones, 80 px on small
-                  tablets, 96 px on lg+.
-                  overflow-hidden: with preserveAspectRatio="slice" the
-                  SVG content scales to fill, then anything outside the
-                  strip's box gets clipped — so a wide curve in path 4
-                  or path 5 can't visually overlap the text column.
-                  z-10: anywhere the strip and text DO meet (e.g. a
-                  bottom-corner ripple peak), the animation paints in
-                  front of the text instead of behind it. */}
-              <div className="relative w-16 sm:w-20 lg:w-24 shrink-0 self-stretch pointer-events-none overflow-hidden z-10">
-                <HeroDropletAnimation />
-              </div>
+          <div className="mt-2 flex flex-col gap-3">
+            <div>
+              <Link
+                href="/book-survey"
+                className="inline-flex items-center justify-center h-[52px] px-7 bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] transition-colors duration-200 ease-calm hover:bg-soft"
+              >
+                Book a free survey &mdash; engineer visits in 48&nbsp;hrs
+                <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
+            <p className="text-caption text-offwhite/85">
+              No obligation &middot; ~30&nbsp;minutes on site &middot; Survey report mailed within 48&nbsp;hrs
+            </p>
           </div>
 
-          {/* Visual cell — hero photo only. The droplet animation lives
-              inside the text panel as a sub-block (see above), so this
-              column is just the image.
-              order-1 on mobile pulls the image cell above the text
-              cell (which has order-2) — visitor sees the image first
-              on small screens, then scrolls into the headline. Above
-              lg the order classes go inert.
-              Full-bleed escape on stacked viewports: negative mx pulls
-              the image past container-uw's horizontal padding (1.5rem
-              mobile, 3rem md), and negative mt pulls it past the
-              grid's top padding so it sits flush under the header.
-              Resets to mx-0 / mt-0 at lg where the image returns to
-              its grid column. */}
-          <div className="lg:col-span-6 order-1 lg:order-2 -mx-6 md:-mx-12 lg:mx-0 -mt-8 sm:-mt-12 md:-mt-24 lg:mt-0">
-            <div className="relative w-full overflow-hidden aspect-[16/9] lg:aspect-[56/75]">
-              {HERO_VIDEO_SRC ? (
-                <video
-                  src={HERO_VIDEO_SRC}
-                  poster={HERO_IMAGE.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  aria-label={HERO_IMAGE.alt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={HERO_IMAGE.src}
-                  alt={HERO_IMAGE.alt}
-                  fill
-                  priority
-                  quality={90}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover animate-ken-burns"
-                />
-              )}
-            </div>
-          </div>
+          <Link
+            href="/water-problem-checker"
+            className="text-caption text-offwhite/85 underline underline-offset-4 decoration-offwhite/40 hover:text-soft mt-1 w-fit"
+          >
+            Or take the 60-second water check &rarr;
+          </Link>
         </div>
-      </div>
-
-      {/* Scroll-down indicator — only on desktop where the hero is full-height. */}
-      <div className="hidden lg:flex justify-center pb-6">
-        <a
-          href="#trust-strip"
-          aria-label="Scroll to track record"
-          className="text-mute hover:text-teal transition-colors duration-200 ease-calm"
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
       </div>
     </section>
   );
