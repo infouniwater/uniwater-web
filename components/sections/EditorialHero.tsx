@@ -148,33 +148,38 @@ export function EditorialHero() {
           <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
             Wellness starts with clean water
           </p>
-          <h1 className="text-display-m md:text-display font-normal leading-[1.05] [text-wrap:balance]">
-            Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
+          <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+            Integrated water systems &mdash; for the home you only build once.
           </h1>
+          <p className="text-[15px] leading-relaxed text-offwhite/80">
+            Matched to your water chemistry
+            <span className="text-offwhite/40"> &middot; </span>
+            Fitted to your architecture
+            <span className="text-offwhite/40"> &middot; </span>
+            Serviced every month
+          </p>
 
-          <div className="mt-2 flex flex-col gap-3">
-            <div>
-              <Link
-                href="/book-survey"
-                className="inline-flex items-center justify-center h-[52px] px-7 bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] transition-colors duration-200 ease-calm hover:bg-soft"
-              >
-                Book a free survey &mdash; engineer visits in 48&nbsp;hrs
-                <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </div>
-            <p className="text-caption text-offwhite/85">
-              No obligation &middot; ~30&nbsp;minutes on site &middot; Survey report mailed within 48&nbsp;hrs
-            </p>
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
+            <Link
+              href="/book-survey"
+              className="inline-flex items-center gap-2 self-start bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
+            >
+              Book a free survey
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+
+            <Link
+              href="/water-problem-checker"
+              className="inline-flex items-center gap-1.5 self-start w-fit text-[15px] text-offwhite/75 hover:text-offwhite border-b border-offwhite/30 hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm"
+            >
+              Take the 60-second water check
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
-
-          <Link
-            href="/water-problem-checker"
-            className="text-caption text-offwhite/85 underline underline-offset-4 decoration-offwhite/40 hover:text-soft mt-1 w-fit"
-          >
-            Or take the 60-second water check &rarr;
-          </Link>
         </div>
       </div>
     </section>
