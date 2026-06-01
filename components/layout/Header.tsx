@@ -190,7 +190,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1 md:gap-3">
-          <Button href="/book-survey" size="md" className="hidden md:inline-flex">
+          <Button href="/book-survey" size="md" className="hidden md:inline-flex rounded-full">
             Book a free survey
           </Button>
 

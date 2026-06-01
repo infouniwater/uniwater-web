@@ -151,13 +151,13 @@ export function EditorialHero() {
           <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
             Integrated water systems &mdash; for the home you only build once.
           </h1>
-          <p className="text-[15px] leading-relaxed text-offwhite/80">
-            Matched to your water chemistry
-            <span className="text-offwhite/40"> &middot; </span>
-            Fitted to your architecture
-            <span className="text-offwhite/40"> &middot; </span>
-            Serviced every month
-          </p>
+          <div className="text-[15px] leading-relaxed text-offwhite/80 flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline">
+            <span>Matched to your water chemistry</span>
+            <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
+            <span>Fitted to your architecture</span>
+            <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
+            <span>Serviced every month</span>
+          </div>
 
           <div className="mt-2 flex flex-col sm:flex-row sm:items-end sm:flex-wrap gap-5 sm:gap-7">
             <Link
