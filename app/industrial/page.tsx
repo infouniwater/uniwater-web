@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
@@ -54,55 +55,86 @@ const APPLICATIONS = [
 export default function IndustrialPage() {
   return (
     <>
-      {/* Dark hero — B2B mode per Critique §2.3 */}
-      <section className="bg-navy text-offwhite border-b border-offwhite/15">
-        <div className="container-uw">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-20 lg:py-28">
-            <div className="lg:col-span-6 flex flex-col gap-6">
-              <div className="text-eyebrow font-medium uppercase text-soft">Industrial &amp; institutional</div>
-              <Heading level={1} inverse className="text-display-m md:text-display font-light leading-tight">
-                Water that holds up at scale.
-              </Heading>
-              <Lede inverse>
-                Engineered water systems for industry, hospitality, healthcare, and institutions. Surveyed before sold. Serviced after handover. Year five, the system still meets spec.
-              </Lede>
-              <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                <Button href="#rfq" variant="ghost">Submit RFQ</Button>
-                <a href={PRIMARY_PHONE_HREF} className="text-offwhite hover:text-soft transition-colors duration-200 ease-calm text-[15px] underline underline-offset-4">
+      {/* Hero — image-with-scrim editorial register, matching the
+          homepage and /residential heroes. B2B audience reads the
+          same brand voice; only the eyebrow + heading + CTA verb
+          change. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[520px] md:h-[640px] lg:h-[calc(100vh-160px)] lg:min-h-[600px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/industrial-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/industrial-tablet.jpg" />
+          <img
+            src="/images/hero/industrial-mobile.jpg"
+            alt="A Uniwater commercial RO and softening plant installed on a factory warehouse floor."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Industrial &amp; institutional</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+              Water that holds up at scale.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              Engineered water systems for industry, hospitality, healthcare, and institutions. Surveyed before sold. Serviced after handover. Year five, the system still meets spec.
+            </p>
+
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7">
+              <Link
+                href="#rfq"
+                className="inline-flex items-center gap-2 whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
+              >
+                Submit an RFQ
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+
+              <a
+                href={PRIMARY_PHONE_HREF}
+                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm"
+              >
+                <span className="border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
                   Or talk to an engineer
-                </a>
-              </div>
-              <p className="text-caption text-offwhite/70 mt-2">
-                Or{' '}
-                <a
-                  href="/downloads/uniwater-commercial-catalogue-2026.pdf"
-                  download
-                  className="text-offwhite hover:text-soft transition-colors duration-200 ease-calm underline underline-offset-4 decoration-offwhite/30"
-                >
-                  download the commercial catalogue (PDF, 7 MB)
-                </a>
-                {' '}or{' '}
-                <a
-                  href="/sample-bom-industrial"
-                  className="text-offwhite hover:text-soft transition-colors duration-200 ease-calm underline underline-offset-4 decoration-offwhite/30"
-                >
-                  see a sample BOM
-                </a>
-                .
-              </p>
+                </span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
             </div>
-            <div className="lg:col-span-6">
-              <div className="w-full overflow-hidden border border-offwhite/15 aspect-[16/9] sm:aspect-[1/1]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/photography/commercial-ro-warehouse.jpg"
-                  alt="Branded Uniwater commercial RO and softening plant installed on a factory warehouse floor — engineered water at industrial scale"
-                  className="block w-full h-full object-cover"
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
-            </div>
+
+            <p className="text-caption text-offwhite/65 mt-2">
+              Or{' '}
+              <a
+                href="/downloads/uniwater-commercial-catalogue-2026.pdf"
+                download
+                className="text-offwhite/85 hover:text-offwhite transition-colors duration-200 ease-calm underline underline-offset-4 decoration-offwhite/30"
+              >
+                download the commercial catalogue (PDF, 7 MB)
+              </a>
+              {' '}or{' '}
+              <a
+                href="/sample-bom-industrial"
+                className="text-offwhite/85 hover:text-offwhite transition-colors duration-200 ease-calm underline underline-offset-4 decoration-offwhite/30"
+              >
+                see a sample BOM
+              </a>
+              .
+            </p>
           </div>
         </div>
       </section>

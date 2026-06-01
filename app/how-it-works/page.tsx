@@ -100,28 +100,60 @@ const STEP_DETAIL = [
 export default function HowItWorksPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw py-16 md:py-24 max-w-4xl">
-          <Eyebrow className="mb-6">How it works</Eyebrow>
-          <Display>How a Uniwater system gets into your home.</Display>
-          <Lede className="text-mute mt-8">
-            One company. Four stages. From first water test to monthly service, the same Uniwater team owns the system for the life of the contract.
-          </Lede>
+      {/* Hero — image-with-scrim editorial register, matching the rest
+          of the site. The utility-area shot keeps the process page
+          grounded in the install (vs. the more aspirational terrace
+          hero used elsewhere). */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[460px] md:h-[560px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/plant-room-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/plant-room-tablet.jpg" />
+          <img
+            src="/images/hero/plant-room-mobile.jpg"
+            alt="A Uniwater commercial install in a building plant room with steel piping and concrete walls."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">How it works</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+              How a Uniwater system gets into your home.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              One company. Four stages. From first water test to monthly service, the same Uniwater team owns the system for the life of the contract.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* The one sentence — surfaces the competitive positioning claim
           identified in the §6.2 marketing benchmark. The only differentiator
           no Indian residential competitor can credibly match without
-          rebuilding their distribution model. */}
-      <Section tone="navy" padding="default">
+          rebuilding their distribution model.
+          Rendered on a light surface so the dark hero is followed by a
+          light section per the homepage dark/light cadence rule. */}
+      <Section padding="default">
         <div className="max-w-4xl mx-auto">
-          <Eyebrow inverse className="mb-5">Why this matters</Eyebrow>
-          <EditorialAccent className="!text-offwhite text-h2-m md:text-h2 leading-snug font-light">
+          <Eyebrow className="mb-5">Why this matters</Eyebrow>
+          <EditorialAccent className="text-h2-m md:text-h2 leading-snug font-light">
             The only water-treatment company in India where the engineer who surveys your water is the same person who designs the system, installs it, and comes back every month &mdash; by name, for the life of the contract.
           </EditorialAccent>
-          <p className="text-caption text-soft mt-6 max-w-2xl">
+          <p className="text-caption text-mute mt-6 max-w-2xl">
             Most water companies sell systems and outsource service. We sell the four things a system actually needs over its lifetime &mdash; a survey, the right design, an install that fits the house, and a service crew that does not change.
           </p>
         </div>
