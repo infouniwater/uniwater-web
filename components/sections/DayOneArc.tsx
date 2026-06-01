@@ -1,3 +1,4 @@
+import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body, EditorialAccent } from '@/components/ui/Typography';
 
 /**
@@ -7,18 +8,15 @@ import { Eyebrow, Heading, Body, EditorialAccent } from '@/components/ui/Typogra
  * Three numbers, side-by-side. The argument IS the inversion across
  * the row: ₹50K saved → ₹40K spent → ₹10–12 LAKH lost. Big-type
  * numbers carry the message; one short sentence per card supplies
- * context, not detail. No bullets.
+ * context, not detail.
  *
- * UI passes (2026-05-25):
- *   1. "₹10–12 LAKH" now splits into big numeric + smaller `lakh`
- *      suffix so all three cards' numbers sit on a single line at
- *      a consistent baseline (the previous version wrapped on card 3).
- *   2. Tone progression — saved stays soft-teal (positive), spent
- *      shifts to muted off-white (neutral), lost goes full off-white
- *      with bolder weight (the alarming punchline).
- *   3. Chevron connectors in the column gap so the row reads as an
- *      arc, not three independent rectangles. Mobile drops them
- *      since the cards stack vertically.
+ * 2026-06-02 rhythm fix: reverted from navy image-with-scrim back to
+ * a light (subtle-toned) surface. Two adjacent dark sections (the
+ * just-redesigned AudienceRouter and this one) broke the dark/light
+ * cadence rule — a dark section must always be followed by a white
+ * one. DayOneArc is the better candidate to go light because its
+ * numerical content reads cleanly on a light surface; AudienceRouter
+ * (the ceremonial decision moment) keeps the dark treatment.
  */
 
 interface Stage {
@@ -28,17 +26,13 @@ interface Stage {
   label: string;
   /** Big-type number. */
   cost: string;
-  /** Optional smaller unit suffix (used for "lakh" on cards 2 + 3 so
-      "₹1 lakh" / "₹10–12 lakh" stay on one line with consistent
-      typography across all three cards). */
+  /** Optional smaller unit suffix. */
   unit?: string;
   /** One-line framing of what that cost represents. */
   costLabel: string;
   /** Single short sentence — replaces the bullet list. */
   body: string;
-  /** Tone of the card — drives the colour + weight of the big number.
-      All three tones positive (this is the value-of-the-right-choice
-      arc, not cost-of-doing-nothing). */
+  /** Tone of the card — drives the colour + weight of the big number. */
   tone: 'invested' | 'saved' | 'protected';
 }
 
@@ -46,10 +40,6 @@ const STAGES: Stage[] = [
   {
     marker: '01',
     label: 'Day one',
-    // Card 01 is the SETUP not an outcome — there's no monetary
-    // amount to attach to "the right decision was made." The big-type
-    // slot carries the qualitative anchor instead. Rendered at the
-    // same scale as the ₹ amounts on cards 2 + 3 for row consistency.
     cost: 'Customised.',
     costLabel: 'engineered for your home',
     body: 'Plumber recommends Uniwater. Water tested, system specced, install engineered — decided on chemistry, not catalogue price.',
@@ -75,87 +65,45 @@ const STAGES: Stage[] = [
   },
 ];
 
-// Per-card tone — all three positive, weight progressively bolder
-// across the arc so the row visually reads as gains compounding
-// (Day one → 18 months → 10 years).
+// On the light surface the progressive emphasis is delivered by
+// weight, not colour: teal Book → teal Medium → navy Medium so the
+// final stage carries the most ink.
 const TONE: Record<Stage['tone'], string> = {
-  invested:  'text-soft font-light',
-  saved:     'text-soft font-normal',
-  protected: 'text-offwhite font-normal',
+  invested:  'text-teal font-light',
+  saved:     'text-teal font-normal',
+  protected: 'text-navy font-normal',
 };
 
 export function DayOneArc() {
   return (
-    <section className="relative w-full bg-navy text-offwhite overflow-hidden border-y border-offwhite/10">
-      {/* Background image — a quiet utility-area install. Domestic,
-          not aspirational — fits the "this decision lives in your home
-          for the next ten years" register. Heavy scrim so the data
-          stays the focus; the image is a texture, not a focal point. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <picture>
-        <source media="(min-width: 1024px)" srcSet="/images/hero/utility-desktop.jpg" />
-        <source media="(min-width: 768px)" srcSet="/images/hero/utility-tablet.jpg" />
-        <img
-          src="/images/hero/utility-mobile.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.97) 100%)',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative container-uw py-16 md:py-24">
+    <Section tone="subtle" padding="default">
       <div className="flex flex-col gap-3 sm:gap-4 mb-8 md:mb-14 max-w-3xl">
-        <Eyebrow inverse>The decision</Eyebrow>
-        <Heading level={2} inverse>
+        <Eyebrow>The decision</Eyebrow>
+        <Heading level={2}>
           Day one decisions, decade-long returns.
         </Heading>
-        <Body inverse className="text-offwhite/80 text-lede font-light mt-2">
+        <Body className="text-mute text-lede font-light mt-2">
           The right system on day one compounds &mdash; lakhs saved over the years, plus the wellness money can&rsquo;t replace.
         </Body>
       </div>
 
-      {/* Three numbers, one short line each. The cost typography is
-          the visual anchor; the chevrons in the gap make the row read
-          as a compounding arc. */}
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
+      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-px bg-hairline border border-hairline">
         {STAGES.map((stage, i) => (
           <div
             key={stage.marker}
-            className="bg-navy p-4 sm:p-8 md:p-10 flex flex-col gap-3 sm:gap-6 relative"
+            className="bg-offwhite p-5 sm:p-8 md:p-10 flex flex-col gap-3 sm:gap-6 relative"
           >
             <div className="flex items-baseline gap-3">
-              <span className="text-eyebrow font-medium uppercase text-soft tracking-wide">
+              <span className="text-eyebrow font-ui font-medium uppercase text-teal tracking-[0.18em]">
                 {stage.marker}
               </span>
-              <span className="text-eyebrow font-medium uppercase text-soft tracking-wide">
+              <span className="text-eyebrow font-ui font-medium uppercase text-teal tracking-[0.18em]">
                 {stage.label}
               </span>
             </div>
 
-            {/* The number — large, dominant. Suffix unit (e.g. "lakh")
-                rendered smaller + inline so the whole expression stays
-                on one line at a consistent baseline across all three
-                cards. tabular-nums + whitespace-nowrap prevent any
-                further wrapping or jitter. */}
             <div className="flex flex-col gap-1 sm:gap-2">
-              {/* Cost typography:
-                    desktop:  text-4xl sm:text-5xl
-                    mobile:   text-2xl  (was text-4xl)  — compacted
-                              2026-05-25 per Rajat so the section fits
-                              closer to a single mobile frame. The number
-                              is still the visual anchor; just smaller
-                              on small screens. */}
-              <div className={`flex items-baseline gap-2 whitespace-nowrap font-numeric [font-feature-settings:'tnum']`}>
+              <div className="flex items-baseline gap-2 whitespace-nowrap font-numeric [font-feature-settings:'tnum']">
                 <span className={`text-2xl sm:text-5xl leading-none ${TONE[stage.tone]}`}>
                   {stage.cost}
                 </span>
@@ -165,27 +113,19 @@ export function DayOneArc() {
                   </span>
                 )}
               </div>
-              <span className="text-caption uppercase tracking-wider text-soft/80 font-medium">
+              <span className="text-caption uppercase tracking-wider text-mute font-medium">
                 {stage.costLabel}
               </span>
             </div>
 
-            {/* Body is text-caption on mobile (14 px), text-body sm+
-                (17 px). Visible at every viewport per Rajat — smaller
-                mobile size keeps the section compact while the body
-                still carries context next to the number. */}
-            <p className="text-offwhite/80 text-caption sm:text-body leading-snug [text-wrap:balance]">
+            <p className="text-mute text-caption sm:text-body leading-snug [text-wrap:balance]">
               {stage.body}
             </p>
 
-            {/* Chevron connector — sits in the gap between this card
-                and the next. Only renders for cards 1 and 2, and only
-                on md+ where the grid is horizontal. The chevron is
-                absolutely positioned so it doesn't take grid space. */}
             {i < STAGES.length - 1 && (
               <span
                 aria-hidden="true"
-                className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 w-6 h-6 items-center justify-center rounded-full bg-navy border border-soft/40 text-soft"
+                className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 w-6 h-6 items-center justify-center rounded-full bg-offwhite border border-teal/40 text-teal"
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                   <path d="M3 1L7 5L3 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -197,11 +137,10 @@ export function DayOneArc() {
       </div>
 
       <div className="mt-8 md:mt-16 max-w-reading">
-        <EditorialAccent inverse>
+        <EditorialAccent>
           Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they keep.
         </EditorialAccent>
       </div>
-      </div>
-    </section>
+    </Section>
   );
 }

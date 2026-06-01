@@ -38,42 +38,76 @@ const RESIDENTIAL_SLUGS = [
 export default function ResidentialPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-16 lg:py-24">
-            <div className="lg:col-span-6 flex flex-col gap-6 order-2 lg:order-1">
-              <Eyebrow>For your home</Eyebrow>
-              <Display>Water systems for the home.</Display>
-              <Lede className="text-mute">
-                For the homes you don&rsquo;t get to redo. Surveyed before the tile goes down. Hidden after.
-              </Lede>
-              <div className="flex flex-col sm:flex-row gap-4 sm:items-center mt-2">
-                <Button href="/book-survey">Book a free survey</Button>
-                <Button href="/water-problem-checker" variant="tertiary">
+      {/* Hero — image-with-scrim editorial, same family as the homepage. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[520px] md:h-[640px] lg:h-[calc(100vh-160px)] lg:min-h-[600px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/bathroom-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/bathroom-tablet.jpg" />
+          <img
+            src="/images/hero/bathroom-mobile.jpg"
+            alt="A luxury bathroom drinking-water filter in a marble niche beside a freestanding tub overlooking a tropical garden."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }}
+          aria-hidden="true"
+        />
+
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">For your home</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+              Water systems for the home.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              For the homes you don&rsquo;t get to redo. Surveyed before the tile goes down. Hidden after.
+            </p>
+
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7">
+              <Link
+                href="/book-survey"
+                className="inline-flex items-center gap-2 whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
+              >
+                Book a free survey
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+
+              <Link
+                href="/water-problem-checker"
+                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm"
+              >
+                <span className="border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
                   Take the water check
-                </Button>
-              </div>
-              <p className="text-caption text-mute mt-2">
-                Or{' '}
-                <a
-                  href="/downloads/uniwater-homeowner-catalogue-2026.pdf"
-                  download
-                  className="text-navy hover:text-teal transition-colors duration-200 ease-calm underline underline-offset-4 decoration-hairline"
-                >
-                  download the homeowner catalogue (PDF, 18 MB)
-                </a>
-                .
-              </p>
+                </span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
-            <div className="lg:col-span-6 order-1 lg:order-2">
-              <Photo
-                description="Premium Indian home — wellness moment with family and water"
-                assetRef="residential-hero"
-                aspect="hero-desktop"
-                mobileAspect="sixteen-nine"
-              />
-            </div>
+
+            <p className="text-caption text-offwhite/65 mt-2">
+              Or{' '}
+              <a
+                href="/downloads/uniwater-homeowner-catalogue-2026.pdf"
+                download
+                className="text-offwhite/85 hover:text-offwhite transition-colors duration-200 ease-calm underline underline-offset-4 decoration-offwhite/30"
+              >
+                download the homeowner catalogue (PDF, 18 MB)
+              </a>
+              .
+            </p>
           </div>
         </div>
       </section>
