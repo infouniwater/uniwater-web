@@ -144,7 +144,7 @@ export function EditorialHero() {
 
       {/* Content */}
       <div className="relative h-full container-uw flex items-end lg:items-center">
-        <div className="w-full lg:max-w-[640px] pb-10 lg:pb-0 flex flex-col gap-5">
+        <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
           <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
             Wellness starts with clean water
           </p>
@@ -159,7 +159,7 @@ export function EditorialHero() {
             <span>Serviced every month</span>
           </div>
 
-          <div className="mt-2 flex flex-col sm:flex-row sm:items-end sm:flex-wrap gap-5 sm:gap-7">
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-7">
             <Link
               href="/book-survey"
               className="inline-flex items-center gap-2 whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
