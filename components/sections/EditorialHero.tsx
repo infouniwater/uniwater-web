@@ -159,7 +159,7 @@ export function EditorialHero() {
             <span>Serviced every month</span>
           </div>
 
-          <div className="mt-2 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-7">
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7">
             <Link
               href="/book-survey"
               className="inline-flex items-center gap-2 whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
