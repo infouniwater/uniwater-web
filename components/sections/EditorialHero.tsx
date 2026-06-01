@@ -85,7 +85,7 @@ const SLIDES: Slide[] = [
 
 export function EditorialHero() {
   return (
-    <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[640px] md:h-[720px] lg:h-[calc(100vh-96px)] lg:min-h-[640px]">
+    <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[520px] md:h-[720px] lg:h-[calc(100vh-96px)] lg:min-h-[640px]">
       {SLIDES.map((slide, i) => {
         const isLcp = i === 0;
         return (
@@ -159,10 +159,10 @@ export function EditorialHero() {
             Serviced every month
           </p>
 
-          <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-end sm:flex-wrap gap-5 sm:gap-7">
             <Link
               href="/book-survey"
-              className="inline-flex items-center gap-2 self-start bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
+              className="inline-flex items-center gap-2 whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
             >
               Book a free survey
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -172,7 +172,7 @@ export function EditorialHero() {
 
             <Link
               href="/water-problem-checker"
-              className="inline-flex items-center gap-1.5 self-start w-fit text-[15px] text-offwhite/75 hover:text-offwhite border-b border-offwhite/30 hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] text-offwhite/75 hover:text-offwhite border-b border-offwhite/30 hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm"
             >
               Take the 60-second water check
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
