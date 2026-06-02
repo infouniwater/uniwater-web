@@ -332,45 +332,13 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 6b. Architectural install patterns — SVG-003 drawings, shown only
-              when the solution has canonical patterns mapped. */}
-      {(() => {
-        const drawings = getInstallDrawingsForSolution(solution.slug);
-        if (drawings.length === 0) return null;
-        return (
-          <Section padding="default">
-            <div className="mb-12 max-w-3xl">
-              <Eyebrow className="mb-4">Architectural patterns</Eyebrow>
-              <Heading level={2}>How the system fits, on paper.</Heading>
-              <Body className="text-mute mt-4">
-                Section drawings of the install patterns we use most often for this system. Pre-tile, mid-construction, or as a retrofit &mdash; the right pattern is decided at survey, against the house.
-              </Body>
-            </div>
-            <div className={`grid grid-cols-1 sm:grid-cols-2 ${drawings.length >= 3 ? 'lg:grid-cols-3' : ''} gap-3 sm:gap-6`}>
-              {drawings.map((d) => (
-                <figure key={d.file} className="flex flex-col gap-3 bg-offwhite border border-hairline p-4 sm:p-6">
-                  {/* Drawing hidden on mobile — the SVG canvas is 1000×700
-                      with 12-14px labels that render at ~5px on a 375px phone,
-                      i.e. unreadable. The title + body in the figcaption below
-                      carry the install pattern in plain language. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={d.file}
-                    alt={d.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="hidden sm:block w-full h-auto"
-                  />
-                  <figcaption>
-                    <h3 className="text-h3-m font-medium text-navy">{d.title}</h3>
-                    <Caption className="text-mute mt-1">{d.body}</Caption>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </Section>
-        );
-      })()}
+      {/* Section 6b (Architectural install patterns) removed 2026-06-03
+          per Rajat. It duplicated the install-location list rendered by
+          section 6 "Where it goes" (both ultimately list false ceiling,
+          plumbing duct, wall cabinet, niche, under-counter, utility
+          room) and added text without adding information. The
+          install-drawing SVGs themselves still ship under
+          public/images/install-drawings/ for future use elsewhere. */}
 
       {/* 7. Configurations — flipped DARK for alternation. */}
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>

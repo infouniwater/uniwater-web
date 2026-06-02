@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { SolutionDetailTemplate } from '@/components/sections/SolutionDetailTemplate';
-import { InstallationVersatility } from '@/components/sections/InstallationVersatility';
 import { SOLUTIONS } from '@/content/solutions';
 
 const solution = SOLUTIONS['bathroom-filter'];
@@ -15,18 +14,14 @@ export const metadata: Metadata = {
 /**
  * Bathroom filter solution page.
  *
- * "Five places we've put a system" (InstallationVersatility) was migrated
- * here from the homepage on 2026-05-21 as part of the homepage-restructure
- * brief. It renders just above the final CTA via the template's
- * slotBeforeFinalCTA prop — that keeps the existing template intact for
- * the other six solution pages while giving this one the install showcase
- * exactly where Rajat wanted it.
+ * 2026-06-03: the InstallationVersatility ("Five places we've put a
+ * water system") embed was removed per Rajat — the SolutionDetail
+ * template's section 6 ("Where it goes", headlined "Five places it
+ * disappears.") already renders the same FIVE_PLACES data + photos,
+ * and showing both made the page read as if the same idea had been
+ * pasted in twice. InstallationVersatility still lives on the
+ * homepage where it stands on its own.
  */
 export default function Page() {
-  return (
-    <SolutionDetailTemplate
-      solution={solution}
-      slotBeforeFinalCTA={<InstallationVersatility />}
-    />
-  );
+  return <SolutionDetailTemplate solution={solution} />;
 }
