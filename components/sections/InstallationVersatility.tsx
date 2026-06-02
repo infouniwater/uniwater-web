@@ -34,6 +34,9 @@ const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
  * lands before the editorial bridge.
  */
 export function InstallationVersatility() {
+  // Kept LIGHT because this component is used on both the homepage
+  // (after the SolutionsOverview dark band) and /residential. Flipping
+  // it dark would break the homepage's D L D L D L D L D L cadence.
   return (
     <Section padding="default">
       <div className="mb-8 md:mb-14 max-w-3xl flex flex-col gap-4">
@@ -51,9 +54,6 @@ export function InstallationVersatility() {
           const photo = INSTALL_PHOTOS[i];
           return (
             <div key={place.location} className="group flex flex-col gap-3 sm:gap-4">
-              {/* aspect: landscape on mobile (shorter card, section fits
-                  closer to a single mobile frame), portrait sm+ where
-                  there's vertical room. */}
               <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4] sm:aspect-[3/4]">
                 <Image
                   src={photo.src}

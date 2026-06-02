@@ -189,11 +189,12 @@ export default function ResidentialPage() {
 
       <InstallationVersatility />
 
-      {/* Real installs gallery — placeholder grid */}
-      <Section padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Real installs</Eyebrow>
-          <Heading level={2}>Eight installs from the last six months.</Heading>
+      {/* Real installs gallery — flipped DARK with image overlay for
+          residential alternation cadence. */}
+      <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Real installs</Eyebrow>
+          <Heading level={2} inverse>Eight installs from the last six months.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
@@ -203,7 +204,7 @@ export default function ResidentialPage() {
                 assetRef={`real-install-${String(i).padStart(2, '0')}`}
                 aspect="four-five"
               />
-              <Caption className="text-mute">
+              <Caption inverse>
                 {[
                   'Ballygunge, Kolkata',
                   'Salt Lake, Kolkata',
