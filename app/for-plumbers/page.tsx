@@ -16,45 +16,45 @@ export const metadata: Metadata = {
 const BENEFITS = [
   {
     title: 'Earn on every install.',
-    body: '20 points per qualified referral. 200 points per ₹50,000 of sales credited. Points redeem for cash, vouchers, or product credit — your call.',
+    body: '20 points per qualified referral. 200 points per ₹50,000 of sales. Cash, vouchers, or product credit — your call.',
   },
   {
     title: 'Spec packs that survive procurement.',
-    body: 'You get the technical PDF, the install diagram, and the price-range card for every solution. So the homeowner who asks "what is this?" gets the right answer the first time.',
+    body: 'Technical PDF, install diagram, price-range card for every solution. The homeowner who asks "what is this?" gets the right answer the first time.',
   },
   {
     title: 'We handle AMC.',
-    body: 'Once the install lands, our engineer takes the monthly service. You earn the referral, the customer gets the discipline, and your relationship with them deepens — without you running the AMC schedule.',
+    body: 'Our engineer takes monthly service after handover. You earn the referral; the customer gets the discipline. No AMC schedule to run.',
   },
 ];
 
 const STEPS = [
-  { n: '01', title: 'Register.', body: 'Name, mobile, business name, city, service area. Two minutes.' },
-  { n: '02', title: 'Refer.', body: 'Bring us a lead — a homeowner with water symptoms, a builder asking about whole-house, a project beginning the plumbing phase.' },
-  { n: '03', title: 'Install.', body: 'Our engineer surveys and quotes. You stay in the loop. If the install happens, you handle the plumbing portion or refer to our team — your choice.' },
-  { n: '04', title: 'Earn.', body: 'Points credited at install handover. Redemption monthly. Statement of account shared by email; a partner portal for self-serve access is in development as a separate product.' },
+  { n: '01', title: 'Register.', body: 'Name, mobile, business, city, service area. Two minutes.' },
+  { n: '02', title: 'Refer.', body: 'Bring a homeowner with symptoms, a builder asking about whole-house, or a project at plumbing phase.' },
+  { n: '03', title: 'Install.', body: 'Our engineer surveys and quotes. You handle plumbing or refer to our team — your call.' },
+  { n: '04', title: 'Earn.', body: 'Points credit at handover. Redemption monthly. Statement by email; partner portal in development.' },
 ];
 
 const FAQS = [
   {
     q: 'What counts as a qualified referral?',
-    a: 'A homeowner or builder who confirms the survey appointment and meets with our engineer at site. The lead is yours from that moment, regardless of whether they sign on day one.',
+    a: 'A homeowner or builder who meets our engineer at site. The lead is yours from that moment, sign-day notwithstanding.',
   },
   {
     q: 'When do I get paid?',
-    a: 'Points credit at install handover. Redemption requests process monthly — typically the first week of the next month, into the bank account or vouchers you select.',
+    a: 'Points credit at handover. Redemption processes monthly — first week of the following month, into the account or vouchers you select.',
   },
   {
     q: 'Do I have to do the install plumbing myself?',
-    a: 'No. If you prefer to refer and have our team handle the install entirely, the referral points are the same. If you want to do the plumbing as part of your usual scope, our engineer coordinates with you on the day. Either path earns the same.',
+    a: 'No. Refer-only and refer-plus-plumbing earn the same. Our engineer coordinates on the day either way.',
   },
   {
     q: 'Can I see my points balance?',
-    a: 'Your monthly statement comes by WhatsApp from your assigned partner manager — points balance, referral status, redemption history, all in one message. We send it on the first working day of each month.',
+    a: 'WhatsApp statement from your partner manager on the first working day of each month — balance, referrals, redemption history.',
   },
   {
     q: 'What if my referral chooses a competitor?',
-    a: 'No penalty. We do not lock referrals into exclusivity. If the homeowner chooses someone else, we close the loop and you keep the relationship for the next referral.',
+    a: 'No penalty. No exclusivity. We close the loop; you keep the relationship for the next referral.',
   },
 ];
 
