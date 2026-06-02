@@ -127,9 +127,18 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                 {solution.wordmark}.
               </p>
             )}
-            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft/80">
-              {solution.navLabel}
-            </p>
+            {/* Render the secondary nav-label line only when it adds
+                information. Since the wordmarks are now also the nav
+                labels (BathSoft / HomeSoft, 2026-06-03), this line
+                only appears on solutions WITHOUT a wordmark -- today
+                that's just drinking-water-solution, whose label
+                "Drinking water systems" is genuinely different from
+                anything in the wordmark slot. */}
+            {(!solution.wordmark || solution.wordmark !== solution.navLabel) && (
+              <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft/80">
+                {solution.navLabel}
+              </p>
+            )}
             <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               {solution.shortHeadline}
             </h1>
