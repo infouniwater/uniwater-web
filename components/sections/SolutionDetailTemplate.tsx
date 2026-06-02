@@ -386,22 +386,20 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       {/* Sentinel — SolutionStickyCTA appears below the fold past this line. */}
       <div id="solution-sticky-start" aria-hidden="true" />
 
-      {/* 8. Technical specifications */}
-      <Section tone="subtle" padding="default">
+      {/* 8. Technical specifications — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
-            <Eyebrow className="mb-4">Technical specifications</Eyebrow>
-            <Heading level={2} className="mb-4">For the architect, plumber, or engineer.</Heading>
-            <Body className="text-mute mb-6">
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            <Eyebrow inverse>Technical specifications</Eyebrow>
+            <Heading level={2} inverse>For the architect, plumber, or engineer.</Heading>
+            <Body inverse className="text-offwhite/80 mt-2">
               Surface what matters; collapse what doesn&rsquo;t. Open the rows below for the engineering detail.
             </Body>
-            <div className="mt-8">
-              <div className="text-eyebrow font-medium uppercase text-mute mb-3">
-                Components from
-              </div>
+            <div className="mt-6">
+              <Eyebrow inverse className="mb-3">Components from</Eyebrow>
               <div className="flex flex-wrap gap-x-4 gap-y-2">
                 {COMPONENT_MANUFACTURERS.map((mfr) => (
-                  <span key={mfr} className="text-caption text-ink font-medium">
+                  <span key={mfr} className="text-caption text-offwhite/85 font-medium">
                     {mfr}
                   </span>
                 ))}
@@ -409,32 +407,32 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
             </div>
           </div>
           <div className="lg:col-span-8">
-            <Accordion>
-              <AccordionItem question="Capacity & sizing">
+            <Accordion inverse>
+              <AccordionItem inverse question="Capacity & sizing">
                 <dl className="mt-2">
                   {techSpecs.capacity.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem question="Materials & media">
+              <AccordionItem inverse question="Materials & media">
                 <dl className="mt-2">
                   {techSpecs.materials.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem question="Controls & regeneration">
+              <AccordionItem inverse question="Controls & regeneration">
                 <dl className="mt-2">
                   {techSpecs.controls.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem question="Installation requirements">
+              <AccordionItem inverse question="Installation requirements">
                 <dl className="mt-2">
                   {techSpecs.install.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
@@ -461,18 +459,18 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       </Section>
 
       {/* 10. FAQ */}
-      <Section padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'bathroom' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
-            <Eyebrow className="mb-4">Frequently asked</Eyebrow>
-            <Heading level={2}>
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            <Eyebrow inverse>Frequently asked</Eyebrow>
+            <Heading level={2} inverse>
               What homeowners ask before they book.
             </Heading>
           </div>
           <div className="lg:col-span-8">
-            <Accordion>
+            <Accordion inverse>
               {faqs.map((faq, i) => (
-                <AccordionItem key={i} question={faq.q} defaultOpen={i === 0}>
+                <AccordionItem inverse key={i} question={faq.q} defaultOpen={i === 0}>
                   {faq.a}
                 </AccordionItem>
               ))}
