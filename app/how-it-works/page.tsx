@@ -148,10 +148,10 @@ export default function HowItWorksPage() {
         <div className="max-w-4xl mx-auto">
           <Eyebrow className="mb-5">Why this matters</Eyebrow>
           <EditorialAccent className="text-h2-m md:text-h2 leading-snug font-light">
-            The only water-treatment company in India where the engineer who surveys your water is the same person who designs the system, installs it, and comes back every month &mdash; by name, for the life of the contract.
+            One engineer surveys your water, designs the system, installs it, and comes back every month &mdash; by name, for the life of the contract.
           </EditorialAccent>
           <p className="text-caption text-mute mt-6 max-w-2xl">
-            Most water companies sell systems and outsource service. We sell the four things a system actually needs over its lifetime &mdash; a survey, the right design, an install that fits the house, and a service crew that does not change.
+            Most water companies sell systems and outsource service. We sell the four things a system actually needs over its lifetime &mdash; survey, design, install, service.
           </p>
         </div>
       </Section>
@@ -235,14 +235,10 @@ export default function HowItWorksPage() {
         </Section>
       ))}
 
-      {/* Editorial closer */}
-      <Section padding="default">
-        <div className="max-w-reading mx-auto text-center">
-          <EditorialAccent className="mx-auto">
-            From start to monthly service, the same Uniwater team owns the system.
-          </EditorialAccent>
-        </div>
-      </Section>
+      {/* Editorial closer removed 2026-06-03 -- it was the third
+          near-verbatim restatement of the "same team end to end"
+          claim already carried by the hero sub-lede and the "Why
+          this matters" pullquote above. FinalCTA picks up directly. */}
 
       <FinalCTA />
     </>

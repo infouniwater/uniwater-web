@@ -65,7 +65,7 @@ export default function RemoteSiteSurveyPage() {
               Out of our cities? Send a remote brief.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              For NRI buyers, out-of-network projects, and pre-construction enquiries. Tell us about the property and your water symptoms; email photos and any water-test report after you submit. We respond within 48 hours.
+              For NRI buyers, out-of-network projects, and pre-construction enquiries. Tell us about the property and your water symptoms &mdash; we&rsquo;ll email you back within 48 hours with what to share next.
             </p>
           </div>
         </div>
