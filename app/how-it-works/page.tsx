@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: 'How it works',
   description:
     'From first water test to monthly service: the four-step Uniwater process. Surveyed, designed, installed, and serviced by one team.',
-  openGraph: { images: ['/og/og-how-it-works.svg'] },
-  twitter: { images: ['/og/og-how-it-works.svg'] },
+  openGraph: { images: ['/og/og-how-it-works.png'] },
+  twitter: { images: ['/og/og-how-it-works.png'] },
 };
 
 const STEP_DETAIL = [

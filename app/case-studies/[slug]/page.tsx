@@ -8,6 +8,7 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { CASE_STUDIES } from '@/content/case-studies';
 import { breadcrumbSchema, jsonLd } from '@/lib/structured-data';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
   return CASE_STUDIES.filter((cs) => cs.fullDetail).map((cs) => ({ slug: cs.slug }));
@@ -19,10 +20,13 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const cs = CASE_STUDIES.find((c) => c.slug === params.slug);
-  return {
-    title: cs ? `${cs.client} \u2014 Case study` : 'Case study',
-    description: cs?.brief,
-  };
+  if (!cs) return { title: 'Case study' };
+  return buildMetadata({
+    path: `/case-studies/${cs.slug}`,
+    title: `${cs.client} \u2014 Case study`,
+    description: cs.brief ?? `Uniwater case study: ${cs.client}.`,
+    image: '/og/og-home.png',
+  });
 }
 
 export default function CaseStudyDetailPage({ params }: { params: { slug: string } }) {

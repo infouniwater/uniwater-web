@@ -10,14 +10,16 @@ import { BLOG_POSTS, formatPostDate, getPostBySlug } from '@/content/blog';
 import { getSolutionForBlog } from '@/content/cross-links';
 import { articleSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
 import { featureImageFor } from '@/lib/blog-images';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
 
-// Per-post OG image overrides — only set where a dedicated SVG-008 card exists.
+// Per-post OG image overrides — only set where a dedicated SVG-008 card
+// exists (rasterised to PNG for social-scraper compatibility).
 const BLOG_OG_OVERRIDES: Record<string, string> = {
-  'borewell-water-yellow': '/og/og-blog-iron.svg',
+  'borewell-water-yellow': '/og/og-blog-iron.png',
 };
 
 export async function generateMetadata({
@@ -27,15 +29,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   if (!post) return { title: 'Journal' };
-  const ogImage = BLOG_OG_OVERRIDES[post.slug];
-  return {
+  return buildMetadata({
+    path: `/blog/${post.slug}`,
     title: post.title,
     description: post.description,
-    ...(ogImage && {
-      openGraph: { images: [ogImage] },
-      twitter: { images: [ogImage] },
-    }),
-  };
+    image: BLOG_OG_OVERRIDES[post.slug] ?? '/og/og-home.png',
+  });
 }
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {

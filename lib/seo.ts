@@ -33,18 +33,22 @@ const OG_SLUG_ALIASES: Record<string, string> = {
  * Resolve an og:image by convention, checking the filesystem so that simply
  * dropping a file into /public/og wires it up — no code change needed.
  *
+ * PNG is preferred over SVG: Facebook, LinkedIn, WhatsApp, and X do not
+ * render SVG og:image files. The brand cards ship as SVG and are rasterised
+ * to PNG by scripts/og-svg-to-png.mjs; this resolver points at the PNG.
+ *
  * Lookup order:
- *   1. /og/og-{slug}.{svg,png}            (per-page image)
- *   2. /og/og-{category}.{svg,png}        (category default — og-cities / og-solutions)
- *   3. /og/og-home.svg                    (sitewide fallback)
+ *   1. /og/og-{slug}.{png,svg}            (per-page image, PNG first)
+ *   2. /og/og-{category}.{png,svg}        (category default — og-cities / og-solutions)
+ *   3. /og/og-home.png                    (sitewide fallback)
  */
 export function resolveOgImage(slug: string, category: 'cities' | 'solutions'): string {
   const stem = OG_SLUG_ALIASES[slug] ?? slug;
   const candidates = [
-    `og-${stem}.svg`,
     `og-${stem}.png`,
-    `og-${category}.svg`,
+    `og-${stem}.svg`,
     `og-${category}.png`,
+    `og-${category}.svg`,
   ];
   for (const file of candidates) {
     try {
@@ -53,7 +57,7 @@ export function resolveOgImage(slug: string, category: 'cities' | 'solutions'): 
       // fs unavailable (shouldn't happen at build) — fall through to default.
     }
   }
-  return '/og/og-home.svg';
+  return '/og/og-home.png';
 }
 
 /**

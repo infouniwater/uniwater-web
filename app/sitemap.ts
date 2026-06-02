@@ -6,8 +6,20 @@ import { BLOG_POSTS } from '@/content/blog';
 
 const BASE = 'https://uniwater.co.in';
 
+// Stable content-revision date for routes we don't track per-page.
+//
+// `lastmod` is now Google's primary signal for scheduling re-crawls of
+// already-discovered URLs — the unauthenticated sitemap "ping" endpoint was
+// deprecated in 2023 (https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping).
+// Previously this file stamped `new Date()` on every route, so each deploy
+// told Google "every page changed just now," which dilutes the signal and
+// reads as noise. A stable date that reflects the last real content revision
+// is the correct behaviour. Bump this when site content is materially
+// updated; per-post dates (blog) override it below.
+const CONTENT_REVISION = '2026-06-03';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = CONTENT_REVISION;
 
   const staticRoutes = [
     '/',

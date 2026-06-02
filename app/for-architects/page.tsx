@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   title: 'For architects & interior designers',
   description:
     'Engineered home water specified into your projects — vessel footprints, BIM blocks, install drawings, technical PDFs. One survey-led partner across every build.',
-  openGraph: { images: ['/og/og-for-architects.svg'] },
-  twitter: { images: ['/og/og-for-architects.svg'] },
+  openGraph: { images: ['/og/og-for-architects.png'] },
+  twitter: { images: ['/og/og-for-architects.png'] },
 };
 
 const BENEFITS = [

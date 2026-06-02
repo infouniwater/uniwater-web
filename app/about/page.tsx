@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'A water company built for premium homes. Founded 2020 in Kolkata. Now in 9 cities across India and Nepal.',
-  openGraph: { images: ['/og/og-about.svg'] },
-  twitter: { images: ['/og/og-about.svg'] },
+  openGraph: { images: ['/og/og-about.png'] },
+  twitter: { images: ['/og/og-about.png'] },
 };
 
 const MILESTONES = [

@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og/og-home.svg',
+        url: '/og/og-home.png',
         width: 1200,
         height: 630,
         alt: `${SITE.name} — ${SITE.tagline}`,
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
-    images: ['/og/og-home.svg'],
+    images: ['/og/og-home.png'],
   },
   // Favicon + apple-icon are auto-discovered by Next.js from app/icon.svg and
   // app/apple-icon.png — both point at the official Compact (Coloured) mark.

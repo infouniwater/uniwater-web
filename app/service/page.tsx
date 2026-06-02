@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   title: 'Service',
   description:
     'The discipline that decides year four. Monthly preventive visits, same-day reports, 24-hour SLA on flagged faults. Uniwater\u2019s service protocol explained.',
-  openGraph: { images: ['/og/og-service.svg'] },
-  twitter: { images: ['/og/og-service.svg'] },
+  openGraph: { images: ['/og/og-service.png'] },
+  twitter: { images: ['/og/og-service.png'] },
 };
 
 export default function ServicePage() {
