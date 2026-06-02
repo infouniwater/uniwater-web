@@ -45,15 +45,19 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     wordmark: 'BathSoft',
     shortHeadline:
       'A bathroom filter has to do three things at once: treat the water, fit the space, not announce itself.',
+    // Problem bands tightened 2026-06-02 -- each band is one
+    // punchy sentence now (was 40-55 words each). Per Rajat's
+    // feedback the previous version read as four paragraphs;
+    // each card is now scannable in under 5 seconds.
     problemBands: [
-      // Band 1: TREAT THE WATER \u2014 the chemistry job
-      'Hard water dries skin, dulls hair, scales the geyser. The shower is the same; the water isn\u2019t. BathSoft removes hardness, suspended particulate, and chlorine residual at the bathroom feed.',
-      // Band 2: FIT THE SPACE \u2014 the architectural constraint
-      'Indian bathrooms aren\u2019t spec\u2019d around water equipment. False ceilings are 200 mm. Plumbing shafts are 150 mm. Niches get added late. BathSoft is engineered to fit those spaces \u2014 ceiling void, wall recess, plumbing duct, under-counter \u2014 not to dictate them.',
-      // Band 3: NOT ANNOUNCE ITSELF \u2014 the brand differentiator
-      'Most water systems bolt a vessel to a wall and call it done. BathSoft hides inside the architecture: behind a finish panel, inside a cabinet, in the void above the suspended ceiling. Once installed, you stop seeing it.',
-      // Band 4: SERVED, NOT FORGOTTEN \u2014 the post-install reality
-      'A bathroom system that never gets touched is a bathroom system that quietly fails by year three. BathSoft ships with monthly engineer visits on Comprehensive AMC \u2014 same person, named, for the life of the contract.',
+      // 01 \u00b7 TREAT
+      'Removes hardness, particulate, and chlorine residual at the bathroom feed.',
+      // 02 \u00b7 FIT
+      'Engineered for 200 mm ceilings, 150 mm shafts, retro-fit niches \u2014 not the other way around.',
+      // 03 \u00b7 HIDE
+      'Inside cabinets, ceiling voids, wall recesses. Once installed, you stop seeing it.',
+      // 04 \u00b7 SERVE
+      'Monthly engineer visit. Same person. Named, for the life of the contract.',
     ],
     // priceFromINR removed 2026-06-02 -- the per-tier "from \u20b9X"
     // anchors now live inside each configuration subtitle (Mono \u20b914k
@@ -183,11 +187,13 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     navLabel: 'Water softener',
     shortHeadline:
       'The single biggest improvement to a home\u2019s water. The unglamorous workhorse. The one most homes don\u2019t have.',
+    // Problem bands tightened 2026-06-02 -- single sentences,
+    // 15-25 words each. Scannable in under 5 seconds per card.
     problemBands: [
-      'Hardness is calcium and magnesium dissolved in the supply. Ion-exchange swaps them for sodium \u2014 clean chemistry, decades-old method, still the single best lever for everything downstream.',
-      'Geyser elements scale. Heating times lengthen. Eventually elements burn out \u2014 usually replaced under warranty once, paid for the second time.',
-      'Washing machines, dishwashers, and laundry machines run on shorter lifespans on hard water. The motor isn\u2019t the failure; the heating coil is.',
-      'Salt regeneration is the cost of softness. Brine on a schedule, salt top-up rolled into the AMC, a few rupees a day to keep the rest of the house alive.',
+      'Calcium and magnesium swapped for sodium by ion-exchange. The single biggest lever for everything downstream.',
+      'Geyser elements scale. Heating coil burns out \u2014 replaced under warranty once, paid for the second time.',
+      'Washing machines and dishwashers fail on the coil, not the motor. Hard water shortens both.',
+      'Salt top-up rolled into the AMC. A few rupees a day to keep the rest of the house alive.',
     ],
     // priceFromINR intentionally omitted — multi-tier (see iron-filter
     // note above). Per-tier prices are quoted after the free survey.

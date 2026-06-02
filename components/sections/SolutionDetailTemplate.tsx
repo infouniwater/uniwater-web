@@ -188,27 +188,32 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 3. How Uniwater solves it */}
-      {/* 2026-06-02: flipped DARK with image for strict D L D L
-          alternation across the template. */}
+      {/* 3. How we solve it — tightened 2026-06-02 per the
+          text-heaviness review. Was Lede + Body + EditorialAccent
+          (~80 words of prose); now a three-line scannable rhythm
+          carried by the editorial accent itself + three short labels. */}
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
-        <div className="max-w-3xl mb-8 flex flex-col gap-4">
+        <div className="max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>How we solve it</Eyebrow>
           <Heading level={2} inverse>
             Sized to the water, the house, and the people in it.
           </Heading>
         </div>
-        <div className="max-w-reading flex flex-col gap-6">
-          <Lede inverse className="text-offwhite/85">
-            Every Uniwater {solution.navLabel.toLowerCase()} starts with a free water test and a site survey. The chemistry decides the media. The household decides the capacity. The architecture decides where it goes.
-          </Lede>
-          <Body inverse className="text-offwhite/80">
-            Catalogue sizes are starting points, not the sale. Our 17-rule auto-suggest engine generates a bill of materials specific to your water analysis, pressure, and draw &mdash; not a generic SKU pulled off a shelf.
-          </Body>
-          <EditorialAccent inverse>
-            Engineered, not bought off a shelf.
-          </EditorialAccent>
+        <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15 max-w-4xl">
+          {[
+            { label: 'Chemistry', body: 'decides the media.' },
+            { label: 'Household', body: 'decides the capacity.' },
+            { label: 'Architecture', body: 'decides where it goes.' },
+          ].map((row) => (
+            <div key={row.label} className="bg-navy/30 p-6 md:p-8 flex flex-col gap-2">
+              <Eyebrow inverse>{row.label}</Eyebrow>
+              <p className="text-body md:text-lede text-offwhite leading-snug">{row.body}</p>
+            </div>
+          ))}
         </div>
+        <EditorialAccent inverse className="mt-10 md:mt-14">
+          Engineered, not bought off a shelf.
+        </EditorialAccent>
       </Section>
 
       {/* 3b. Inside the vessel — SVG-006 product cutaway. Only when a cutaway maps. */}
@@ -265,8 +270,23 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {getIncludedItems(solution).map((item) => (
             <Card key={item.title}>
-              <h3 className="text-h3 font-normal text-navy mb-3">{item.title}</h3>
-              <Body className="text-mute">{item.body}</Body>
+              <div className="flex flex-col gap-4">
+                {item.icon && (
+                  <div className="w-12 h-12 text-teal">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/images/icons/engineer/${item.icon}`}
+                      alt=""
+                      aria-hidden="true"
+                      className="block w-full h-full"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+                <h3 className="text-h3 font-normal text-navy">{item.title}</h3>
+                <Body className="text-mute leading-snug">{item.body}</Body>
+              </div>
             </Card>
           ))}
         </div>
@@ -853,21 +873,28 @@ function getCutawayForSolution(slug: string): 'bathsoft' | 'homesoft' | 'commerc
 // Per-installContext "What's included" lists. Each list keeps the
 // generic Installation / Water-analysis / Warranty / AMC lines but
 // tailors the vessel-and-media line and the consumables line so each
-// solution feels engineered rather than templated.
-interface IncludedItem { title: string; body: string }
+// solution feels engineered rather than templated. The optional `icon`
+// names a file under /images/icons/engineer/ so each card scans
+// visually before the body text is read.
+interface IncludedItem { title: string; body: string; icon?: string }
 
 function getIncludedItems(solution: Solution): IncludedItem[] {
+  // Generic items shared across every install context. Bodies
+  // tightened 2026-06-02 -- single sentences, 10-15 words each.
   const installation: IncludedItem = {
     title: 'Installation',
-    body: 'Plumbing, electrical, mounting, and commissioning. Documented before handover with a written parameter log.',
+    body: 'Plumbing, electrical, mounting, commissioning. Documented before handover.',
+    icon: 'valve.svg',
   };
   const waterAnalysis: IncludedItem = {
     title: 'Water analysis',
-    body: 'Pre-install and post-install parameter readings. Filed with your quote, repeated on every monthly service visit.',
+    body: 'Pre + post-install parameter readings. Repeated on every visit.',
+    icon: 'sample-tube.svg',
   };
   const warranty: IncludedItem = {
     title: 'One-year warranty',
     body: 'All system components covered. Replacement, not repair-by-letter.',
+    icon: 'certificate.svg',
   };
 
   switch (solution.installContext) {
@@ -875,108 +902,126 @@ function getIncludedItems(solution: Solution): IncludedItem[] {
       return [
         {
           title: 'Engineered vessel + media',
-          body: 'FRP or SS316 cylinders sized to the bathroom feed. Media tuned to your specific water — hardness, low-level iron, chlorine residual.',
+          body: 'FRP / SS316 cylinders sized to the bathroom feed. Media tuned to your water.',
+          icon: 'pressure-gauge.svg',
         },
         {
           title: 'Hidden install accessories',
-          body: 'Mounting brackets, finish-panel hardware, and access provisions for false ceiling, niche, cabinet, or under-counter installs.',
+          body: 'Brackets, finish-panel hardware, access provisions for ceiling / niche / cabinet / under-counter.',
+          icon: 'clipboard.svg',
         },
         installation,
         waterAnalysis,
         warranty,
         {
-          title: 'One-year AMC included',
-          body: 'Monthly engineer visit on Comprehensive tier — same person, named, for the life of the contract.',
+          title: 'One-year AMC',
+          body: 'Monthly engineer visit on Comprehensive. Same person, named, for the contract.',
+          icon: 'monitor.svg',
         },
       ];
     case 'whole-house-inlet':
       return [
         {
-          title: 'Four-stage vessel train',
-          body: 'Sediment + iron + carbon + softening, sized to your 2K / 4K / 6K LPH draw. FRP vessels standard; SS316 upgrade on Premium tier.',
+          title: 'Four-stage train',
+          body: 'Sediment + iron + carbon + softening. 2K / 4K / 6K LPH per house.',
+          icon: 'pressure-gauge.svg',
         },
         {
-          title: 'Brine tank + control panel',
-          body: 'Salt-water reservoir for softener regeneration. Manual or automatic controls per configuration.',
+          title: 'Brine tank + controls',
+          body: 'Salt reservoir for softener regeneration. Manual or automatic per configuration.',
+          icon: 'brine-tank.svg',
         },
         installation,
         waterAnalysis,
         warranty,
         {
-          title: 'One-year AMC included',
-          body: 'Monthly engineer visit on Comprehensive tier. Salt top-up rolled into the AMC; no separate consumable bill.',
+          title: 'One-year AMC',
+          body: 'Monthly visit on Comprehensive. Salt top-up rolled in; no separate bill.',
+          icon: 'monitor.svg',
         },
       ];
     case 'point-of-use':
       return [
         {
-          title: 'Engineered cartridge stack',
-          body: 'RO membrane + carbon polish + UV/UF as the chemistry needs. Re-mineralisation post-RO so the water doesn’t taste flat.',
+          title: 'Cartridge stack',
+          body: 'RO + carbon + UV/UF as your TDS needs. Re-mineralised post-RO.',
+          icon: 'pressure-gauge.svg',
         },
         {
           title: 'Dedicated tap + storage',
-          body: 'Chrome dedicated tap (under-sink) or storage reservoir (centralised). All food-grade-rated plumbing.',
+          body: 'Chrome under-sink tap or centralised reservoir. Food-grade plumbing throughout.',
+          icon: 'clipboard.svg',
         },
         installation,
         waterAnalysis,
         warranty,
         {
-          title: 'One-year AMC included',
-          body: 'Cartridge replacements + membrane flush + TDS check on every visit. Comprehensive tier covers consumables.',
+          title: 'One-year AMC',
+          body: 'Cartridge swap + membrane flush + TDS check on every visit.',
+          icon: 'monitor.svg',
         },
       ];
     case 'pretreatment-stage':
       return [
         {
-          title: 'Specialised media vessel',
-          body: 'FRP or SS316 vessel sized for the duty cycle. Catalytic / oxidation / carbon media chosen at survey by feed-water analysis.',
+          title: 'Media vessel',
+          body: 'FRP / SS316 vessel sized to duty cycle. Media chosen at survey.',
+          icon: 'pressure-gauge.svg',
         },
         {
           title: 'Backwash valve + drain',
-          body: 'Manual or automatic backwash routine. Drain line sized so the regeneration cycle never backs up.',
+          body: 'Manual or automatic backwash. Drain sized so regeneration never backs up.',
+          icon: 'drain.svg',
         },
         installation,
         waterAnalysis,
         warranty,
         {
-          title: 'One-year AMC included',
-          body: 'Monthly engineer visit — media inspection, backwash verification, downstream parameter check.',
+          title: 'One-year AMC',
+          body: 'Monthly visit. Media check, backwash verify, downstream parameter test.',
+          icon: 'monitor.svg',
         },
       ];
     case 'specialised-media':
       return [
         {
-          title: 'Cation resin + vessel',
-          body: 'Strong-acid cation (SAC) resin in an FRP or SS316 vessel. Resin volume sized to peak draw plus a buffer.',
+          title: 'Resin + vessel',
+          body: 'SAC resin in FRP / SS316 vessel. Volume sized to peak draw + buffer.',
+          icon: 'pressure-gauge.svg',
         },
         {
-          title: 'Brine tank + salt provision',
-          body: 'Salt-water reservoir on the regeneration line. Salt top-up is rolled into the AMC, not a separate bill.',
+          title: 'Brine tank',
+          body: 'Salt reservoir on regeneration. Salt top-up rolled into the AMC.',
+          icon: 'brine-tank.svg',
         },
         installation,
         waterAnalysis,
         warranty,
         {
-          title: 'One-year AMC included',
-          body: 'Monthly engineer visit — hardness check downstream, regeneration verification, salt top-up.',
+          title: 'One-year AMC',
+          body: 'Monthly visit. Hardness check, regeneration verify, salt top-up.',
+          icon: 'monitor.svg',
         },
       ];
     case 'industrial-skid':
       return [
         {
           title: 'Pre-piped skid',
-          body: 'Factory-assembled and tested. FRP or SS316 vessels per duty cycle. Internal piping in CPVC / SS316.',
+          body: 'Factory-assembled, tested. FRP / SS316 vessels. Internal piping CPVC / SS316.',
+          icon: 'pressure-gauge.svg',
         },
         {
           title: 'Instrumentation',
-          body: 'Pressure, flow, and conductivity gauges where they matter. Single-line diagram filed with every quote.',
+          body: 'Pressure, flow, conductivity. Single-line diagram on every quote.',
+          icon: 'monitor.svg',
         },
         installation,
         waterAnalysis,
         warranty,
         {
-          title: 'One-year AMC included',
-          body: 'Standard institutional cadence; SLA on flagged faults built into the contract.',
+          title: 'One-year AMC',
+          body: 'Institutional cadence. SLA on flagged faults built into the contract.',
+          icon: 'clipboard.svg',
         },
       ];
   }
