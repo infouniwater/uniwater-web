@@ -9,7 +9,7 @@ export const WHERE_WE_WORK = [
     title: 'Industries.',
     subtitle: 'Process water that meets spec.',
     body:
-      'Manufacturing plants need water treated to the load and the discharge norms. RO for boiler make-up and cooling. DM for process. Hard limits on conductivity and silica.',
+      'Treated to the load + discharge norms. RO for boiler / cooling, DM for process. Hard limits on conductivity and silica.',
     typicalSites: ['F&B processing', 'Pharmaceutical plants', 'Textile and dyeing', 'Boilers, cooling towers'],
   },
   {
@@ -17,7 +17,7 @@ export const WHERE_WE_WORK = [
     title: 'Institutions.',
     subtitle: 'Reliable supply, every day.',
     body:
-      'Hotels and hospitals run on water that has to be there at 6 AM and at 11 PM. WTP plus drinking-water RO at point of use. Designed for peak occupancy, not the average.',
+      'Water has to be there at 6 AM and at 11 PM. WTP + point-of-use RO. Sized for peak occupancy, not the average.',
     typicalSites: ['Hotels and resorts', 'Hospitals, clinics', 'Schools, hostels', 'Office complexes'],
   },
   {
@@ -25,7 +25,7 @@ export const WHERE_WE_WORK = [
     title: 'Communities.',
     subtitle: 'Treated at source, distributed clean.',
     body:
-      'Gated complexes and townships treat water once, at the inlet. A single WTP that handles turbidity, hardness, iron. Every flat gets the same water.',
+      'Treated once at the inlet — turbidity, hardness, iron. Every flat gets the same water.',
     typicalSites: ['Gated residential complexes', 'Townships, mid-rise', 'Cooperative housing', 'Plotted developments'],
   },
 ] as const;

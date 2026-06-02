@@ -19,25 +19,26 @@ interface TrustItem {
   caveat?: string;
 }
 
+// Labels and caveats updated 2026-06-03 per Rajat's preferred phrasing.
 const ITEMS: TrustItem[] = [
   {
     value: STATS.homesServiced,
-    label: 'Homes serviced',
+    label: 'Homes enjoying clean water',
     caveat: 'Across 9 cities in India & Nepal',
   },
   {
-    value: String(STATS.citiesTotal),
+    value: `${STATS.citiesTotal}+`,
     label: 'Cities, own teams',
     caveat: 'Not subcontracted',
   },
   {
     value: `${STATS.yearsOperating} years`,
-    label: 'Engineering water',
+    label: 'Delivering engineered pristine water',
     caveat: 'Surveyed before quoted',
   },
   {
     value: `${SURVEYS_BOOKED_TRAILING_12M.toLocaleString('en-IN')}+`,
-    label: 'Surveys, last 12 months',
+    label: 'Surveys delivered',
     caveat: 'Free of cost',
   },
 ];

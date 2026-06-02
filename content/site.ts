@@ -280,9 +280,12 @@ export const COMPONENT_MANUFACTURERS = [
 ] as const;
 
 // Stats — Blueprint §6 (Strategy doc verified facts).
+// Updated 2026-06-03 per Rajat: homes 200+ -> 1000+; years 3+ -> 6+.
+// Cities + surveys unchanged in value but TrustStripe copy below
+// reframes the labels per his preferred phrasing.
 export const STATS = {
-  homesServiced: '200+',
-  yearsOperating: '3+',
+  homesServiced: '1000+',
+  yearsOperating: '6+',
   citiesIndia: 7,
   citiesNepal: 2,
   citiesTotal: 9,
