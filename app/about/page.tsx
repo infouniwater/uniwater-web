@@ -94,17 +94,17 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Traction stats */}
-      <Section padding="default" tone="subtle">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">By the numbers</Eyebrow>
-          <Heading level={2}>Six years in. Compounding.</Heading>
+      {/* Traction stats — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>By the numbers</Eyebrow>
+          <Heading level={2} inverse>Six years in. Compounding.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-          <StatTile value={STATS.homesServiced} label="Homes serviced" />
-          <StatTile value={STATS.installations} label="Commercial installations" />
-          <StatTile value={String(STATS.citiesTotal)} label="Cities served" />
-          <StatTile value={String(STATS.skus)} label="Engineered configurations" />
+          <StatTile inverse value={STATS.homesServiced} label="Homes serviced" />
+          <StatTile inverse value={STATS.installations} label="Commercial installations" />
+          <StatTile inverse value={String(STATS.citiesTotal)} label="Cities served" />
+          <StatTile inverse value={String(STATS.skus)} label="Engineered configurations" />
         </div>
       </Section>
 
@@ -137,12 +137,12 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Clients */}
-      <Section padding="default" tone="subtle">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Selected clients</Eyebrow>
-          <Heading level={2}>Where Uniwater systems run today.</Heading>
-          <Body className="text-mute mt-4">
+      {/* Clients — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Selected clients</Eyebrow>
+          <Heading level={2} inverse>Where Uniwater systems run today.</Heading>
+          <Body inverse className="text-offwhite/80 mt-2">
             Hospitals, hotels, factories, schools, universities, premium residential complexes. A partial list, in no particular order:
           </Body>
         </div>
