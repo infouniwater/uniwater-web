@@ -352,14 +352,14 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         );
       })()}
 
-      {/* 7. Configurations */}
-      <Section padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Configurations</Eyebrow>
-          <Heading level={2}>
+      {/* 7. Configurations — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Configurations</Eyebrow>
+          <Heading level={2} inverse>
             Three or four sizes. Decided by load, not by SKU.
           </Heading>
-          <Body className="text-mute mt-4">
+          <Body inverse className="text-offwhite/80 mt-2">
             We don&rsquo;t expose part numbers. The configuration is decided at survey based on bathroom count, household draw, and water chemistry.
           </Body>
         </div>
@@ -379,6 +379,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               subtitle={config.subtitle}
               description={config.description}
               recommended={i === 1 && solution.configurations.length === 3}
+              inverse
             />
           ))}
         </div>
@@ -386,20 +387,22 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       {/* Sentinel — SolutionStickyCTA appears below the fold past this line. */}
       <div id="solution-sticky-start" aria-hidden="true" />
 
-      {/* 8. Technical specifications — flipped DARK for alternation. */}
-      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
+      {/* 8. Technical specifications — kept LIGHT so the alternation
+          stays D L D L D L D L. Configurations above just went DARK;
+          two DARK sections in a row would break the cadence rule. */}
+      <Section tone="subtle" padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 flex flex-col gap-4">
-            <Eyebrow inverse>Technical specifications</Eyebrow>
-            <Heading level={2} inverse>For the architect, plumber, or engineer.</Heading>
-            <Body inverse className="text-offwhite/80 mt-2">
+            <Eyebrow>Technical specifications</Eyebrow>
+            <Heading level={2}>For the architect, plumber, or engineer.</Heading>
+            <Body className="text-mute mt-2">
               Surface what matters; collapse what doesn&rsquo;t. Open the rows below for the engineering detail.
             </Body>
             <div className="mt-6">
-              <Eyebrow inverse className="mb-3">Components from</Eyebrow>
+              <Eyebrow className="mb-3">Components from</Eyebrow>
               <div className="flex flex-wrap gap-x-4 gap-y-2">
                 {COMPONENT_MANUFACTURERS.map((mfr) => (
-                  <span key={mfr} className="text-caption text-offwhite/85 font-medium">
+                  <span key={mfr} className="text-caption text-ink font-medium">
                     {mfr}
                   </span>
                 ))}
@@ -407,32 +410,32 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
             </div>
           </div>
           <div className="lg:col-span-8">
-            <Accordion inverse>
-              <AccordionItem inverse question="Capacity & sizing">
+            <Accordion>
+              <AccordionItem question="Capacity & sizing">
                 <dl className="mt-2">
                   {techSpecs.capacity.map((row) => (
-                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem inverse question="Materials & media">
+              <AccordionItem question="Materials & media">
                 <dl className="mt-2">
                   {techSpecs.materials.map((row) => (
-                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem inverse question="Controls & regeneration">
+              <AccordionItem question="Controls & regeneration">
                 <dl className="mt-2">
                   {techSpecs.controls.map((row) => (
-                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem inverse question="Installation requirements">
+              <AccordionItem question="Installation requirements">
                 <dl className="mt-2">
                   {techSpecs.install.map((row) => (
-                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
@@ -459,18 +462,20 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       </Section>
 
       {/* 10. FAQ */}
-      <Section tone="navy" padding="default" image={{ stem: 'bathroom' }}>
+      {/* 10. FAQ — kept LIGHT so PDF (light) -> FAQ (light) -> Real installs
+          (now dark) maintains alternation without three darks in the trailing run. */}
+      <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 flex flex-col gap-4">
-            <Eyebrow inverse>Frequently asked</Eyebrow>
-            <Heading level={2} inverse>
+            <Eyebrow>Frequently asked</Eyebrow>
+            <Heading level={2}>
               What homeowners ask before they book.
             </Heading>
           </div>
           <div className="lg:col-span-8">
-            <Accordion inverse>
+            <Accordion>
               {faqs.map((faq, i) => (
-                <AccordionItem inverse key={i} question={faq.q} defaultOpen={i === 0}>
+                <AccordionItem key={i} question={faq.q} defaultOpen={i === 0}>
                   {faq.a}
                 </AccordionItem>
               ))}
@@ -479,17 +484,17 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 11. Real installs */}
-      <Section tone="subtle" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Real installs</Eyebrow>
-          <Heading level={2}>Where these systems are running today.</Heading>
+      {/* 11. Real installs — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Real installs</Eyebrow>
+          <Heading level={2} inverse>Where these systems are running today.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {(realInstallPhotos.length > 0 ? realInstallPhotos : [null, null, null]).slice(0, 3).map((photo, i) => (
             <div key={i} className="flex flex-col gap-3 sm:gap-4">
               {photo ? (
-                <div className="w-full overflow-hidden border border-hairline aspect-[1/1]">
+                <div className="w-full overflow-hidden border border-offwhite/15 aspect-[1/1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photo.src}
@@ -506,7 +511,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                   aspect="sixteen-nine"
                 />
               )}
-              <Caption className="text-mute">
+              <Caption inverse>
                 {photo?.caption ??
                   (i === 0
                     ? '3-BHK, Salt Lake, Kolkata. Borewell with iron and hardness.'

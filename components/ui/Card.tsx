@@ -93,31 +93,37 @@ export function ConfigurationCard({
   subtitle,
   description,
   recommended = false,
+  inverse = false,
 }: {
   name: string;
   subtitle: string;
   description: string;
   recommended?: boolean;
+  inverse?: boolean;
 }) {
   return (
     <div
       className={cn(
         'p-8 flex flex-col gap-3 transition-all duration-200 ease-calm',
-        recommended
-          ? 'border-2 border-navy bg-tint/30'
-          : 'border border-hairline bg-offwhite'
+        inverse
+          ? recommended
+            ? 'border-2 border-soft bg-navy/40'
+            : 'border border-offwhite/15 bg-navy/30'
+          : recommended
+            ? 'border-2 border-navy bg-tint/30'
+            : 'border border-hairline bg-offwhite'
       )}
     >
       {recommended && (
-        <div className="text-eyebrow font-medium uppercase text-teal -mb-1">
+        <div className={cn('text-eyebrow font-ui font-medium uppercase tracking-[0.18em] -mb-1', inverse ? 'text-soft' : 'text-teal')}>
           Most chosen
         </div>
       )}
-      <div className="flex items-baseline gap-3">
-        <h3 className="text-h2-m md:text-h2 font-normal text-navy">{name}</h3>
-        <Caption className="text-mute">{subtitle}</Caption>
+      <div className="flex items-baseline gap-3 flex-wrap">
+        <h3 className={cn('text-h2-m md:text-h2 font-normal', inverse ? 'text-offwhite' : 'text-navy')}>{name}</h3>
+        <Caption inverse={inverse}>{subtitle}</Caption>
       </div>
-      <Body className="text-mute">{description}</Body>
+      <Body inverse={inverse} className={inverse ? 'text-offwhite/80' : 'text-mute'}>{description}</Body>
     </div>
   );
 }
