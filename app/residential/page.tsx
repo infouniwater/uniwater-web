@@ -164,10 +164,14 @@ export default function ResidentialPage() {
         </div>
       </Section>
 
-      {/* Residential solutions grid */}
+      {/* Residential solutions grid — kept LIGHT. The flip-to-dark
+          attempt created a D D adjacency with the dark "Problem Selector"
+          above; InstallationVersatility below is shared with the
+          homepage where it has to stay light. The L L pair here is
+          the least-bad option without restructuring. */}
       <Section padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">What we install</Eyebrow>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow>What we install</Eyebrow>
           <Heading level={2}>Five engineered families. One survey to decide.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

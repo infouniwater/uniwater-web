@@ -41,6 +41,7 @@ export function SolutionCard({
   photoRef,
   imgSrc,
   imgAlt,
+  inverse = false,
 }: {
   href: string;
   title: string;
@@ -49,11 +50,17 @@ export function SolutionCard({
   photoRef?: string;
   imgSrc?: string;
   imgAlt?: string;
+  inverse?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className="group block bg-offwhite border border-hairline transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)] h-full"
+      className={cn(
+        'group block transition-all duration-200 ease-calm hover:-translate-y-1 h-full',
+        inverse
+          ? 'bg-navy/30 border border-offwhite/15 hover:bg-navy/60 hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)]'
+          : 'bg-offwhite border border-hairline hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)]'
+      )}
     >
       {imgSrc ? (
         <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 9' }}>
@@ -74,9 +81,9 @@ export function SolutionCard({
         />
       )}
       <div className="p-4 sm:p-5 lg:p-6 flex flex-col gap-2 sm:gap-3">
-        <Heading level={3} className="text-body sm:text-h3 leading-snug">{title}</Heading>
-        <Body className="text-caption sm:text-body text-mute leading-snug sm:leading-normal">{description}</Body>
-        <div className="mt-1 sm:mt-2 flex items-center gap-2 text-teal text-caption font-medium">
+        <Heading level={3} inverse={inverse} className="text-body sm:text-h3 leading-snug">{title}</Heading>
+        <Body inverse={inverse} className={cn('text-caption sm:text-body leading-snug sm:leading-normal', inverse ? 'text-offwhite/75' : 'text-mute')}>{description}</Body>
+        <div className={cn('mt-1 sm:mt-2 flex items-center gap-2 text-caption font-medium', inverse ? 'text-soft' : 'text-teal')}>
           <span>Read more</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

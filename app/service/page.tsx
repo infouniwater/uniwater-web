@@ -93,7 +93,9 @@ export default function ServicePage() {
         </div>
       </Section>
 
-      {/* Operational stats — provable, written-down commitments */}
+      {/* Operational stats — kept LIGHT. Earlier flip-to-dark
+          attempt created a D D adjacency with the next "Documented"
+          section. Leaving the L L pair at ServiceSection + Stats. */}
       <Section padding="default" tone="subtle">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {[
@@ -103,7 +105,7 @@ export default function ServicePage() {
             { value: '5', label: 'Parameters tested in and out, every visit' },
           ].map((s) => (
             <div key={s.label} className="flex flex-col gap-2">
-              <div className="text-[40px] md:text-[48px] font-light leading-none text-teal">{s.value}</div>
+              <div className="text-[40px] md:text-[48px] font-light leading-none text-teal font-numeric">{s.value}</div>
               <div className="h-px w-12 bg-hairline" />
               <Caption className="uppercase tracking-wide text-eyebrow font-medium text-mute">{s.label}</Caption>
             </div>

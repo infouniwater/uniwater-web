@@ -444,26 +444,32 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 9. PDF data sheet download */}
-      <Section padding="tight">
-        <div className="border border-hairline p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="max-w-xl">
-            <h3 className="text-h2-m md:text-h2 font-light text-navy mb-2">
+      {/* 9. PDF data sheet download — flipped DARK with terrace overlay
+          so the trailing run alternates L D L D L instead of L L L D. */}
+      <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
+        <div className="border border-offwhite/15 bg-navy/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="max-w-xl flex flex-col gap-2">
+            <h3 className="text-h2-m md:text-h2 font-normal text-offwhite [text-wrap:balance]">
               Take the spec to your architect.
             </h3>
-            <Body className="text-mute">
+            <Body inverse>
               A 2-page PDF data sheet with capacities, materials, dimensions, and the install diagram.
             </Body>
           </div>
-          <Button href={`/data-sheets/${solution.slug}.pdf`} variant="secondary">
+          <a
+            href={`/data-sheets/${solution.slug}.pdf`}
+            className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
+          >
             Download data sheet
-          </Button>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+              <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
       </Section>
 
-      {/* 10. FAQ */}
-      {/* 10. FAQ — kept LIGHT so PDF (light) -> FAQ (light) -> Real installs
-          (now dark) maintains alternation without three darks in the trailing run. */}
+      {/* 10. FAQ — kept LIGHT so the trailing run reads PDF (D) -> FAQ (L) ->
+          Real installs (D) -> Related (L). */}
       <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 flex flex-col gap-4">
