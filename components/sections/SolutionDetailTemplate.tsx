@@ -340,14 +340,19 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           install-drawing SVGs themselves still ship under
           public/images/install-drawings/ for future use elsewhere. */}
 
-      {/* 7. Configurations — flipped DARK for alternation. */}
-      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+      {/* 7. Configurations — kept LIGHT 2026-06-03. The earlier
+          DARK treatment relied on section 6b (Architectural patterns)
+          to act as the light bridge between "Where it goes" (D) and
+          "Configurations" (D). With 6b removed, keeping Configurations
+          dark would put two adjacent dark sections; light here
+          restores the D L D L cadence. */}
+      <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
-          <Eyebrow inverse>Configurations</Eyebrow>
-          <Heading level={2} inverse>
+          <Eyebrow>Configurations</Eyebrow>
+          <Heading level={2}>
             Three or four sizes. Decided by load, not by SKU.
           </Heading>
-          <Body inverse className="text-offwhite/80 mt-2">
+          <Body className="text-mute mt-2">
             We don&rsquo;t expose part numbers. The configuration is decided at survey based on bathroom count, household draw, and water chemistry.
           </Body>
         </div>
@@ -367,7 +372,6 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               subtitle={config.subtitle}
               description={config.description}
               recommended={i === 1 && solution.configurations.length === 3}
-              inverse
             />
           ))}
         </div>
@@ -375,22 +379,23 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       {/* Sentinel — SolutionStickyCTA appears below the fold past this line. */}
       <div id="solution-sticky-start" aria-hidden="true" />
 
-      {/* 8. Technical specifications — kept LIGHT so the alternation
-          stays D L D L D L D L. Configurations above just went DARK;
-          two DARK sections in a row would break the cadence rule. */}
-      <Section tone="subtle" padding="default">
+      {/* 8. Technical specifications — flipped DARK 2026-06-03 as part
+          of the re-alternation after section 6b removal. Configurations
+          above just went LIGHT, so this can safely go DARK; PDF below
+          flips LIGHT in the same pass. */}
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 flex flex-col gap-4">
-            <Eyebrow>Technical specifications</Eyebrow>
-            <Heading level={2}>For the architect, plumber, or engineer.</Heading>
-            <Body className="text-mute mt-2">
+            <Eyebrow inverse>Technical specifications</Eyebrow>
+            <Heading level={2} inverse>For the architect, plumber, or engineer.</Heading>
+            <Body inverse className="text-offwhite/80 mt-2">
               Surface what matters; collapse what doesn&rsquo;t. Open the rows below for the engineering detail.
             </Body>
             <div className="mt-6">
-              <Eyebrow className="mb-3">Components from</Eyebrow>
+              <Eyebrow inverse className="mb-3">Components from</Eyebrow>
               <div className="flex flex-wrap gap-x-4 gap-y-2">
                 {COMPONENT_MANUFACTURERS.map((mfr) => (
-                  <span key={mfr} className="text-caption text-ink font-medium">
+                  <span key={mfr} className="text-caption text-offwhite/85 font-medium">
                     {mfr}
                   </span>
                 ))}
@@ -398,32 +403,32 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
             </div>
           </div>
           <div className="lg:col-span-8">
-            <Accordion>
-              <AccordionItem question="Capacity & sizing">
+            <Accordion inverse>
+              <AccordionItem inverse question="Capacity & sizing">
                 <dl className="mt-2">
                   {techSpecs.capacity.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem question="Materials & media">
+              <AccordionItem inverse question="Materials & media">
                 <dl className="mt-2">
                   {techSpecs.materials.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem question="Controls & regeneration">
+              <AccordionItem inverse question="Controls & regeneration">
                 <dl className="mt-2">
                   {techSpecs.controls.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
-              <AccordionItem question="Installation requirements">
+              <AccordionItem inverse question="Installation requirements">
                 <dl className="mt-2">
                   {techSpecs.install.map((row) => (
-                    <TechSpecRow key={row.label} label={row.label} value={row.value} />
+                    <TechSpecRow inverse key={row.label} label={row.label} value={row.value} />
                   ))}
                 </dl>
               </AccordionItem>
@@ -432,44 +437,38 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 9. PDF data sheet download — flipped DARK with terrace overlay
-          so the trailing run alternates L D L D L instead of L L L D. */}
-      <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
-        <div className="border border-offwhite/15 bg-navy/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      {/* 9. PDF data sheet download — flipped LIGHT 2026-06-03 as part
+          of the re-alternation after section 6b removal. */}
+      <Section padding="tight">
+        <div className="border border-hairline p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="max-w-xl flex flex-col gap-2">
-            <h3 className="text-h2-m md:text-h2 font-normal text-offwhite [text-wrap:balance]">
+            <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
               Take the spec to your architect.
             </h3>
-            <Body inverse>
+            <Body className="text-mute">
               A 2-page PDF data sheet with capacities, materials, dimensions, and the install diagram.
             </Body>
           </div>
-          <a
-            href={`/data-sheets/${solution.slug}.pdf`}
-            className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
-          >
+          <Button href={`/data-sheets/${solution.slug}.pdf`} variant="secondary">
             Download data sheet
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
-              <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          </Button>
         </div>
       </Section>
 
-      {/* 10. FAQ — kept LIGHT so the trailing run reads PDF (D) -> FAQ (L) ->
-          Real installs (D) -> Related (L). */}
-      <Section padding="default">
+      {/* 10. FAQ — flipped DARK 2026-06-03. Cadence at this point:
+          Tech specs (D) -> PDF (L) -> FAQ (D) -> Real installs (L). */}
+      <Section tone="navy" padding="default" image={{ stem: 'bathroom' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 flex flex-col gap-4">
-            <Eyebrow>Frequently asked</Eyebrow>
-            <Heading level={2}>
+            <Eyebrow inverse>Frequently asked</Eyebrow>
+            <Heading level={2} inverse>
               What homeowners ask before they book.
             </Heading>
           </div>
           <div className="lg:col-span-8">
-            <Accordion>
+            <Accordion inverse>
               {faqs.map((faq, i) => (
-                <AccordionItem key={i} question={faq.q} defaultOpen={i === 0}>
+                <AccordionItem inverse key={i} question={faq.q} defaultOpen={i === 0}>
                   {faq.a}
                 </AccordionItem>
               ))}
@@ -478,17 +477,18 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 11. Real installs — flipped DARK for alternation. */}
-      <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
+      {/* 11. Real installs — flipped LIGHT 2026-06-03 as part of the
+          re-alternation after section 6b removal. */}
+      <Section tone="subtle" padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
-          <Eyebrow inverse>Real installs</Eyebrow>
-          <Heading level={2} inverse>Where these systems are running today.</Heading>
+          <Eyebrow>Real installs</Eyebrow>
+          <Heading level={2}>Where these systems are running today.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {(realInstallPhotos.length > 0 ? realInstallPhotos : [null, null, null]).slice(0, 3).map((photo, i) => (
             <div key={i} className="flex flex-col gap-3 sm:gap-4">
               {photo ? (
-                <div className="w-full overflow-hidden border border-offwhite/15 aspect-[1/1]">
+                <div className="w-full overflow-hidden border border-hairline aspect-[1/1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photo.src}
@@ -505,7 +505,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                   aspect="sixteen-nine"
                 />
               )}
-              <Caption inverse>
+              <Caption className="text-mute">
                 {photo?.caption ??
                   (i === 0
                     ? '3-BHK, Salt Lake, Kolkata. Borewell with iron and hardness.'
@@ -518,11 +518,13 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 12. Related solutions */}
-      <Section padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Related</Eyebrow>
-          <Heading level={2}>You may also want to look at &mdash;</Heading>
+      {/* 12. Related solutions — flipped DARK 2026-06-03 as part of the
+          re-alternation after section 6b removal. SolutionCard already
+          supports inverse via the prop added in commit d5a388a. */}
+      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Related</Eyebrow>
+          <Heading level={2} inverse>You may also want to look at &mdash;</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {solution.related.slice(0, 3).map((relSlug) => {
@@ -535,6 +537,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                 description={rel.shortHeadline}
                 photoDescription={`${rel.navLabel} install`}
                 photoRef={`solution-${relSlug}-related`}
+                inverse
               />
             );
           })}
