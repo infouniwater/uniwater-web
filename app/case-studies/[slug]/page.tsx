@@ -44,9 +44,9 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
           ),
         }}
       />
-      {/* Hero */}
-      <section className="bg-offwhite border-b border-hairline">
-        <div className="container-uw pt-6">
+      {/* Breadcrumb strip */}
+      <div className="bg-offwhite border-b border-hairline">
+        <div className="container-uw pt-4 pb-3">
           <Breadcrumb
             items={[
               { label: 'Home', href: '/' },
@@ -55,21 +55,30 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
             ]}
           />
         </div>
-        <div className="container-uw pt-8 pb-12 md:pt-10 md:pb-16">
-          <div className="max-w-4xl mb-12">
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-eyebrow font-medium uppercase text-teal">{cs.sector}</span>
-              <span className="text-mute">&middot;</span>
-              <span className="text-caption text-mute">{cs.city}</span>
+      </div>
+
+      {/* Hero — image-with-scrim editorial register. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[440px] md:h-[540px] lg:h-[calc(100vh-220px)] lg:min-h-[480px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/industrial-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/industrial-tablet.jpg" />
+          <img src="/images/hero/industrial-mobile.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" fetchPriority="high" decoding="async" />
+        </picture>
+        <div className="absolute inset-0 lg:hidden" style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }} aria-hidden="true" />
+        <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }} aria-hidden="true" />
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-4">
+            <div className="flex flex-wrap items-baseline gap-2">
+              <span className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">{cs.sector}</span>
+              <span className="text-offwhite/40">&middot;</span>
+              <span className="text-caption text-offwhite/70">{cs.city}</span>
             </div>
-            <Display>{cs.client}</Display>
-            <Lede className="text-mute mt-6">{cs.outcome}</Lede>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] max-w-[22ch] [text-wrap:balance]">
+              {cs.client}
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">{cs.outcome}</p>
           </div>
-          <Photo
-            description={`${cs.client} — site photograph of the installed system`}
-            assetRef={`case-${cs.slug}-hero`}
-            aspect="sixteen-nine"
-          />
         </div>
       </section>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from '@/components/ui/Typography';
 import { Photo } from '@/components/ui/Photo';
@@ -19,25 +20,45 @@ export const metadata: Metadata = {
 export default function ServicePage() {
   return (
     <>
-      {/* Hero — inverse navy */}
-      <section className="bg-navy text-offwhite border-b border-offwhite/15">
-        <div className="container-uw py-20 md:py-28">
-          <div className="max-w-4xl flex flex-col gap-6">
-            <div className="text-eyebrow font-medium uppercase text-soft">Service</div>
-            <h1 className="text-display-m md:text-display font-light leading-tight">
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[460px] md:h-[560px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/plant-room-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/plant-room-tablet.jpg" />
+          <img src="/images/hero/plant-room-mobile.jpg" alt="A Uniwater commercial install in a building plant room with steel piping." className="absolute inset-0 w-full h-full object-cover object-center" fetchPriority="high" decoding="async" />
+        </picture>
+        <div className="absolute inset-0 lg:hidden" style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)' }} aria-hidden="true" />
+        <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)' }} aria-hidden="true" />
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Service</p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               The discipline that decides year four.
             </h1>
-            <Lede inverse>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               Most water systems in Indian premium homes stop performing within three years. The reason is rarely the equipment. It&rsquo;s the absence of service discipline.
-            </Lede>
-            <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:items-center">
-              <Button href="/book-survey" variant="ghost">Book a free survey</Button>
-              <a
-                href="/sample-service-report"
-                className="text-offwhite hover:text-soft transition-colors duration-200 ease-calm text-[15px] underline underline-offset-4 decoration-offwhite/30"
+            </p>
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+              <Link
+                href="/book-survey"
+                className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
               >
-                See a sample monthly report →
-              </a>
+                Book a free survey
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <Link
+                href="/sample-service-report"
+                className="group inline-flex items-center gap-1.5 self-start text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
+              >
+                <span className="border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
+                  See a sample monthly report
+                </span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
