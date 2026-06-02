@@ -120,18 +120,18 @@ export default function ServicePage() {
             <Eyebrow inverse>Documented from day one</Eyebrow>
             <Heading level={2} inverse>What you receive in writing.</Heading>
             <Body inverse className="text-offwhite/80 mt-2">
-              Six artifacts arrive over the life of the contract. None of them depend on the customer asking. The discipline of writing it down is what makes the relationship audit-able by either side.
+              Six artifacts over the contract. None depend on the customer asking.
             </Body>
           </div>
           <div className="lg:col-span-7">
             <ul className="border-t border-offwhite/15">
               {[
-                ['Pre-install water test', 'TDS, hardness, iron, pH, FRC — taken at survey, filed with the quote. The number that decides the design.'],
-                ['Install diagram', 'Single-line drawing of the train, with vessel sizes, media types, and pipe routes. Signed off before commissioning.'],
-                ['Post-install parameter reading', 'Repeat of the five-parameter test after commissioning. The improvement, on paper, on day one.'],
-                ['Monthly service report (PDF)', 'Parameters in and out, work performed, flags raised, next visit date. Same day. Every visit.'],
-                ['Twelve-month parameter trend', 'Year-end summary chart of hardness, iron, and TDS at the tap across the contract year.'],
-                ['Annual independent water analysis', 'Premium tier. Third-party lab analysis filed alongside the in-house monthly record.'],
+                ['Pre-install water test', 'TDS, hardness, iron, pH, FRC — filed with the quote.'],
+                ['Install diagram', 'Single-line drawing. Vessel sizes, media, pipe routes.'],
+                ['Post-install parameter reading', 'Five-parameter repeat. The improvement, on paper, on day one.'],
+                ['Monthly service report (PDF)', 'Parameters in/out, work performed, flags raised. Same day. Every visit.'],
+                ['Twelve-month parameter trend', 'Year-end chart of hardness, iron, TDS at the tap.'],
+                ['Annual independent water analysis', 'Premium tier. Third-party lab analysis alongside the in-house record.'],
               ].map(([label, body]) => (
                 <li key={label} className="border-b border-offwhite/15 py-5 flex flex-col gap-2">
                   <div className="text-h3 font-normal text-offwhite [text-wrap:balance]">{label}</div>
@@ -150,7 +150,7 @@ export default function ServicePage() {
             <Eyebrow className="mb-4">Cadence</Eyebrow>
             <Heading level={2} className="mb-4">Twelve visits a year.</Heading>
             <Body className="text-mute mb-4">
-              A scheduled visit every month for customers on the Comprehensive tier. Quarterly for Standard. Same window. Same protocol. Same engineer where geography allows.
+              Monthly on Comprehensive. Quarterly on Standard. Same window, same protocol, same engineer where geography allows.
             </Body>
             <EditorialAccent className="mt-6">
               We show up every month. Not when something breaks.
@@ -249,10 +249,10 @@ export default function ServicePage() {
             <Heading level={2}>What an engineer actually does.</Heading>
             <div className="flex flex-col gap-4 mt-2">
               <Body className="text-mute">
-                Pressure gauge calibration. Backwash verification. Salt top-up. Resin assessment. Iron-spot test. TDS and hardness readings. Leak inspection along the install joints. Same-day written report filed to the customer.
+                Pressure gauge, backwash, salt top-up, resin check, iron-spot test, TDS + hardness, leak inspection. Written report filed same day.
               </Body>
               <Body className="text-mute">
-                If a flag is raised &mdash; pressure low, resin exhausted, iron leak through the bed &mdash; we don&rsquo;t wait for the next monthly. The SLA kicks in: 24 hours on Comprehensive, 12 hours on Premium.
+                If a flag is raised, the SLA kicks in: 24 hours Comprehensive, 12 hours Premium &mdash; we don&rsquo;t wait for the next monthly.
               </Body>
             </div>
           </div>

@@ -77,14 +77,14 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-8 max-w-reading">
             <EditorialAccent className="mb-8">
-              We started Uniwater because the customers we&rsquo;d worked with for years were spending lakhs on premium fittings, then handing the water itself to whichever local plumber the architect knew.
+              Customers were spending lakhs on premium fittings, then handing the water itself to whichever local plumber the architect knew.
             </EditorialAccent>
             <div className="flex flex-col gap-5">
               <Body className="text-mute">
-                The kitchen got the most attention &mdash; usually an Aquaguard or a Kent. The bathroom got nothing. Two years later the geyser was scaled, the marble had an orange line, the Hansgrohe shower head was dulling, and nobody quite knew why.
+                Kitchen got an Aquaguard or Kent. Bathroom got nothing. Two years later the geyser was scaled, the marble had an orange line, the Hansgrohe shower was dulling &mdash; and nobody quite knew why.
               </Body>
               <Body className="text-mute">
-                The fix isn&rsquo;t a better kitchen RO. It&rsquo;s a survey before the sale, a system sized to the house, and an engineer who comes back every month. That&rsquo;s the company we built. It hasn&rsquo;t changed since 2020.
+                The fix isn&rsquo;t a better kitchen RO. It&rsquo;s a survey before the sale, a system sized to the house, and an engineer who comes back every month. That&rsquo;s the company we built in 2020. Same one today.
               </Body>
               <Caption className="text-mute italic mt-4">
                 &mdash; The Uniwater team
