@@ -198,14 +198,21 @@ export function ProcessStep({
         >
           Step {n}
         </div>
-        <div className={cn('w-14 h-14', inverse ? 'text-soft' : 'text-teal')}>
+        <div className="w-14 h-14">
+          {/* The engineer SVGs are stroke="currentColor", but because
+              they're loaded as <img> the CSS color of the parent
+              doesn't propagate -- the SVG renders against its own
+              isolated root color (defaults to black on a black-
+              stroke icon). On inverse / dark backgrounds we recolour
+              the rendered pixels with a brightness(0) invert(1)
+              filter so the icon reads as offwhite. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={iconSrc}
             alt={iconAlt ?? ''}
             width={56}
             height={56}
-            className="block w-full h-full"
+            className={cn('block w-full h-full', inverse && '[filter:brightness(0)_invert(1)]')}
             loading="lazy"
             decoding="async"
           />
