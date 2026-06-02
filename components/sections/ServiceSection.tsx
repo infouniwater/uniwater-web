@@ -25,12 +25,24 @@ const SERVICE_PILLARS = [
   },
 ];
 
-export function ServiceSection() {
+interface Props {
+  /** Override the default dark treatment with a light variant.
+   *  Used where ServiceSection follows a dark hero and would
+   *  otherwise create a D D adjacency (e.g. /service). */
+  light?: boolean;
+}
+
+export function ServiceSection({ light = false }: Props = {}) {
+  const inverse = !light;
   return (
-    <Section tone="inverse" padding="loose" image={{ stem: 'utility' }}>
+    <Section
+      tone={light ? 'subtle' : 'inverse'}
+      padding="loose"
+      image={light ? undefined : { stem: 'utility' }}
+    >
       <div className="max-w-3xl mb-8 md:mb-12">
-        <Eyebrow inverse className="mb-5">Service is the system</Eyebrow>
-        <Heading level={2} inverse className="text-display-m md:text-[56px] font-light leading-tight">
+        <Eyebrow inverse={inverse} className="mb-5">Service is the system</Eyebrow>
+        <Heading level={2} inverse={inverse} className="text-display-m md:text-[56px] font-light leading-tight">
           Most water companies show up when something breaks. We show up every month.
         </Heading>
       </div>
@@ -38,17 +50,17 @@ export function ServiceSection() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 lg:gap-16 mb-8 md:mb-12">
         {SERVICE_PILLARS.map((pillar) => (
           <div key={pillar.title} className="flex flex-col gap-4">
-            <Heading level={3} inverse>{pillar.title}</Heading>
-            <Body inverse>{pillar.body}</Body>
+            <Heading level={3} inverse={inverse}>{pillar.title}</Heading>
+            <Body inverse={inverse} className={inverse ? undefined : 'text-mute'}>{pillar.body}</Body>
           </div>
         ))}
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        <Button href="/service" variant="ghost" size="lg">
+        <Button href="/service" variant={inverse ? 'ghost' : 'primary'} size="lg">
           How our service works
         </Button>
-        <p className="text-caption text-offwhite/60 italic">
+        <p className={`text-caption italic ${inverse ? 'text-offwhite/60' : 'text-mute'}`}>
           The discipline that decides year four.
         </p>
       </div>

@@ -69,7 +69,7 @@ export default function ServicePage() {
           block; the three pillars (Automated / Verified by an engineer / Owned
           by us) frame the more granular "Before / On site / After" content
           that follows. Copy unchanged from the homepage version. */}
-      <ServiceSection />
+      <ServiceSection light />
 
       {/* Service protocol — Before / On site / After */}
       <Section padding="default" tone="plain">
@@ -111,18 +111,18 @@ export default function ServicePage() {
         </div>
       </Section>
 
-      {/* What you receive in writing — documentation trail */}
-      <Section padding="default">
+      {/* What you receive in writing — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <Eyebrow className="mb-4">Documented from day one</Eyebrow>
-            <Heading level={2} className="mb-4">What you receive in writing.</Heading>
-            <Body className="text-mute">
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <Eyebrow inverse>Documented from day one</Eyebrow>
+            <Heading level={2} inverse>What you receive in writing.</Heading>
+            <Body inverse className="text-offwhite/80 mt-2">
               Six artifacts arrive over the life of the contract. None of them depend on the customer asking. The discipline of writing it down is what makes the relationship audit-able by either side.
             </Body>
           </div>
           <div className="lg:col-span-7">
-            <ul className="border-t border-hairline">
+            <ul className="border-t border-offwhite/15">
               {[
                 ['Pre-install water test', 'TDS, hardness, iron, pH, FRC — taken at survey, filed with the quote. The number that decides the design.'],
                 ['Install diagram', 'Single-line drawing of the train, with vessel sizes, media types, and pipe routes. Signed off before commissioning.'],
@@ -131,9 +131,9 @@ export default function ServicePage() {
                 ['Twelve-month parameter trend', 'Year-end summary chart of hardness, iron, and TDS at the tap across the contract year.'],
                 ['Annual independent water analysis', 'Premium tier. Third-party lab analysis filed alongside the in-house monthly record.'],
               ].map(([label, body]) => (
-                <li key={label} className="border-b border-hairline py-5 flex flex-col gap-2">
-                  <div className="text-h3 font-semibold text-navy">{label}</div>
-                  <Body className="text-mute">{body}</Body>
+                <li key={label} className="border-b border-offwhite/15 py-5 flex flex-col gap-2">
+                  <div className="text-h3 font-normal text-offwhite [text-wrap:balance]">{label}</div>
+                  <Body inverse>{body}</Body>
                 </li>
               ))}
             </ul>
