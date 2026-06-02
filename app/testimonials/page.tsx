@@ -120,21 +120,21 @@ export default function TestimonialsPage() {
 
       {/* The collection discipline — replaces the old "Placeholder content" label
           with an explanation of how reviews actually arrive. */}
-      <Section padding="default" tone="subtle">
+      <Section tone="navy" padding="default" image={{ stem: 'utility' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <Eyebrow className="mb-4">How reviews arrive</Eyebrow>
-            <Heading level={2} className="mb-6">Collected at handover. Verified before publication.</Heading>
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <Eyebrow inverse>How reviews arrive</Eyebrow>
+            <Heading level={2} inverse>Collected at handover. Verified before publication.</Heading>
           </div>
           <div className="lg:col-span-7">
             <div className="flex flex-col gap-4">
-              <Body className="text-mute">
+              <Body inverse>
                 Every install handover ends the same way: a written review request, with permission asked separately for naming and for using the response on this page. No incentive, no template &mdash; the customer&rsquo;s words, edited only for length where they consent.
               </Body>
-              <Body className="text-mute">
+              <Body inverse>
                 Reviews that name a person, organisation, or city are confirmed with that party before they appear here. Reviews that prefer to stay anonymous are published with sector and city only. The intent is what reads above: real homeowners and institutions, on the record, in their own language.
               </Body>
-              <EditorialAccent className="mt-4">
+              <EditorialAccent inverse className="mt-4">
                 Named. On the record. Or not at all.
               </EditorialAccent>
             </div>

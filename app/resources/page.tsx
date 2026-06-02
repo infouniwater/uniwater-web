@@ -88,21 +88,21 @@ export default function ResourcesPage() {
         </div>
       </Section>
 
-      <Section padding="default" tone="subtle">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Tools &amp; references</Eyebrow>
-          <Heading level={2}>For homeowners, specifiers, and the curious.</Heading>
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Tools &amp; references</Eyebrow>
+          <Heading level={2} inverse>For homeowners, specifiers, and the curious.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {RESOURCES.map((r) => (
             <Link
               key={r.href}
               href={r.href}
-              className="group block bg-offwhite border border-hairline p-8 transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)]"
+              className="group block bg-navy/30 border border-offwhite/15 p-8 transition-all duration-200 ease-calm hover:-translate-y-1 hover:bg-navy/60"
             >
-              <h3 className="text-h3 font-semibold text-navy mb-3">{r.title}</h3>
-              <Body className="text-mute mb-6">{r.body}</Body>
-              <div className="flex items-center gap-2 text-teal text-caption font-medium">
+              <h3 className="text-h3 font-normal text-offwhite mb-3 [text-wrap:balance]">{r.title}</h3>
+              <Body inverse className="mb-6">{r.body}</Body>
+              <div className="flex items-center gap-2 text-soft text-caption font-medium">
                 <span>Open</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                   <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
