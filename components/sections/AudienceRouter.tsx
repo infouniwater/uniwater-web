@@ -23,11 +23,16 @@ const AUDIENCES = [
     href: '/water-problem-checker',
   },
   {
+    // Re-pointed 2026-06-03: this card used to send the homeowner to
+    // /for-architects (trade portal -- DWG/BIM/submittal-grade PDFs)
+    // which spoke past the visitor. /building-or-renovating is the
+    // homeowner-facing landing for the same intent; it links back to
+    // /for-architects for the architect's side.
     label: 'I’m building or renovating.',
     body:
-      'Specify the water before the tile goes down. We survey at draft drawings, the architect routes the system through the shaft.',
+      'Specify the water before the tile goes down. Survey at draft drawings; the plumbing routes around the system.',
     cta: 'Plan the system',
-    href: '/for-architects',
+    href: '/building-or-renovating',
   },
   {
     label: 'I run a building, hotel, or factory.',

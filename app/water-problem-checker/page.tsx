@@ -5,21 +5,25 @@ import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
-import { TextField, SelectField } from '@/components/ui/Form';
+import { SelectField } from '@/components/ui/Form';
 import { Infographic } from '@/components/ui/Infographic';
-import { ProblemGrid } from '@/components/sections/ProblemGrid';
 import { CITIES } from '@/content/site';
 import { HARDNESS_BANDS } from '@/content/education';
 import { cn } from '@/lib/cn';
 
 /**
- * Water-problem checker — quiz UX per Blueprint §7.8.
+ * Water-problem checker.
  *
- * Single-question-per-screen pattern. Auto-advance on selection.
- * Result page shows hardness band (catalogue voice) + solution recommendation.
+ * Single-question-per-screen quiz, auto-advance on selection.
  *
- * Per Blueprint Sprint 0: embed hardness scale on result page.
- * No contact-details capture until result; minimal friction.
+ * 2026-06-03 rebuild: the ProblemGrid embed at the top of this page was
+ * dropped per Rajat. A visitor who clicked "Something is wrong with my
+ * water" already KNOWS something is wrong; showing them four scare
+ * photographs of hairfall / scaled taps / blown geyser before the
+ * checker even starts is the opposite of diagnostic help. The page now
+ * opens with a focused intro hero that frames the diagnostic intent
+ * (60-second tentative recommendation; the survey decides the final
+ * spec) and then drops straight into the quiz.
  */
 
 type Step = 0 | 1 | 2 | 3 | 4;
@@ -78,11 +82,58 @@ export default function WaterCheckerPage() {
 
   return (
     <>
-      {/* Problem grid — migrated from the homepage on 2026-05-21 to give
-          visitors a symptom-first orientation before they enter the quiz.
-          Same component as the home page used; copy unchanged. */}
-      <ProblemGrid />
+      {/* Intro hero — image-with-scrim editorial, matching the rest of
+          the site. Frames what the checker IS (four questions, tentative
+          answer) and what it ISN'T (a replacement for the on-site test).
+          Hidden once the visitor moves past step 0 so the quiz takes the
+          full viewport. */}
+      {step === 0 && (
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[380px] md:h-[440px] border-b border-offwhite/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/utility-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/utility-tablet.jpg" />
+          <img
+            src="/images/hero/utility-mobile.jpg"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.78) 45%, rgba(4,69,95,0.35) 90%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 50%, rgba(4,69,95,0.30) 85%)' }}
+          aria-hidden="true"
+        />
+        <div className="relative h-full container-uw flex items-end lg:items-center">
+          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
+              Water-problem checker
+            </p>
+            <h1 className="text-[clamp(2rem,4vw+1rem,3.25rem)] font-medium leading-[1.15] max-w-[20ch] [text-wrap:balance]">
+              Tell us about your water. We&rsquo;ll tell you where to start.
+            </h1>
+            <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
+              Four questions, roughly 60 seconds. You&rsquo;ll get a tentative
+              recommendation at the end &mdash; BathSoft, HomeSoft, or a
+              kitchen drinking-water system, sized to your home and
+              chemistry. The final spec is decided at the survey, after a
+              ten-minute on-site water test.
+            </p>
+          </div>
+        </div>
+      </section>
+      )}
 
+      {/* Progress strip — visible once the quiz has begun. */}
+      {step > 0 && step < 4 && (
       <section className="bg-offwhite border-b border-hairline">
         <div className="container-uw py-8 md:py-10">
           <div className="flex items-center justify-between mb-6">
@@ -101,11 +152,17 @@ export default function WaterCheckerPage() {
           </div>
         </div>
       </section>
+      )}
 
       <Section padding="default">
         {step === 0 && (
           <div className="max-w-2xl mx-auto flex flex-col gap-8">
-            <Heading level={1} className="font-light">Where is your water from?</Heading>
+            <div>
+              <Heading level={1} className="font-light mb-2">Where is your water from?</Heading>
+              <Caption className="text-mute">
+                Borewell, municipal, and tanker supplies have different chemistry profiles. Borewell water often carries iron and higher TDS; municipal carries chlorine residual.
+              </Caption>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SOURCES.map((s) => (
                 <button
@@ -129,7 +186,9 @@ export default function WaterCheckerPage() {
           <div className="max-w-2xl mx-auto flex flex-col gap-8">
             <div>
               <Heading level={1} className="font-light mb-2">What have you noticed?</Heading>
-              <Caption className="text-mute">Select all that apply.</Caption>
+              <Caption className="text-mute">
+                Select all that apply. Each symptom maps to a specific chemistry: orange stains mean iron, scale means hardness, taste means TDS. Two symptoms together usually point at a sequenced treatment, not a single product.
+              </Caption>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SYMPTOMS.map((s) => {
@@ -161,7 +220,12 @@ export default function WaterCheckerPage() {
 
         {step === 2 && (
           <div className="max-w-2xl mx-auto flex flex-col gap-8">
-            <Heading level={1} className="font-light">How big is your home?</Heading>
+            <div>
+              <Heading level={1} className="font-light mb-2">How big is your home?</Heading>
+              <Caption className="text-mute">
+                Home size decides capacity. A 1&ndash;2 BHK usually starts at BathSoft; 3&ndash;4 BHK and up usually goes to a whole-house HomeSoft 2K&ndash;6K LPH. Institutional sites take a different funnel altogether.
+              </Caption>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {PROPERTIES.map((p) => (
                 <button
@@ -188,7 +252,12 @@ export default function WaterCheckerPage() {
 
         {step === 3 && (
           <div className="max-w-2xl mx-auto flex flex-col gap-8">
-            <Heading level={1} className="font-light">Which city?</Heading>
+            <div>
+              <Heading level={1} className="font-light mb-2">Which city?</Heading>
+              <Caption className="text-mute">
+                Two reasons: some cities (Siliguri, Guwahati, Biratnagar) sit in the arsenic-affected belt, which requires a different baseline. And city tells us how fast we can have an engineer at your door.
+              </Caption>
+            </div>
             <SelectField
               label="City"
               name="city"
