@@ -11,15 +11,22 @@
  * but nav labels stay plain-language for SEO and clarity.
  */
 
-// Iron / water-softener / sediment / activated-carbon dropped as
-// standalone solution pages 2026-06-03. Those media still live inside
-// the HomeSoft 4-stage train (covered on the whole-house page) and
-// inside BathSoft (bathroom-filter); a dedicated page each was
-// confusing the catalogue without adding a real product family.
+// Iron / water-softener / sediment / activated-carbon were dropped as
+// standalone solution pages 2026-06-03 because each media also lives
+// inside the HomeSoft 4-stage train (whole-house) and inside BathSoft.
+//
+// Iron-filter and water-softener were RE-ADDED later the same day for the
+// Tier-1 SEO/GEO pass: "does a water softener remove iron", "iron remover vs
+// water softener", and "borewell water yellow/orange" are high-intent
+// queries with no landing page otherwise. The two pages reuse the existing
+// SolutionDetailTemplate via the pretreatment-stage / specialised-media
+// install contexts. Sediment + activated-carbon stay folded into HomeSoft.
 export type SolutionSlug =
   | 'bathroom-filter'
   | 'whole-house-water-filter'
-  | 'drinking-water-solution';
+  | 'drinking-water-solution'
+  | 'iron-filter'
+  | 'water-softener';
 
 export interface Solution {
   slug: SolutionSlug;
@@ -160,6 +167,72 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     ],
     installContext: 'point-of-use',
     related: ['whole-house-water-filter', 'bathroom-filter'],
+  },
+  // Iron removal — a pre-treatment stage that also ships as a standalone
+  // page for the iron-staining / iron-vs-softener search intent.
+  'iron-filter': {
+    slug: 'iron-filter',
+    navLabel: 'Iron removal filter',
+    shortHeadline:
+      'Iron is the stain you can see and the taste you can’t ignore — and it has to come out before anything else does.',
+    problemBands: [
+      'Dissolved iron looks clear at the tap, then turns water yellow or orange the moment it meets air — staining basins, tiles, and white laundry.',
+      'Iron fouls softening resin and clogs RO membranes. Left untreated upstream, it shortens the life of everything after it.',
+      'Borewell-fed homes carry iron more often than the municipal record suggests. Treat it first, or rebuild the softener inside a year.',
+      'An iron filter is a media bed, not a cartridge. Sized to the iron load and backwashed on cycle, it runs for years.',
+    ],
+    configurations: [
+      {
+        name: 'Single-point',
+        subtitle: 'Bathroom or single line',
+        description: 'One iron-removal vessel at the bathroom feed or a single line. Manual backwash.',
+      },
+      {
+        name: 'Whole-house',
+        subtitle: '2,000 — 4,000 LPH',
+        description: 'Iron pre-treatment ahead of the HomeSoft train, so iron never reaches the softening resin. Automatic backwash on larger loads.',
+      },
+      {
+        name: 'Heavy iron',
+        subtitle: 'Iron above 3 ppm',
+        description: 'Oxidation plus media for high-iron borewells. Sized at survey to the measured load.',
+      },
+    ],
+    installContext: 'pretreatment-stage',
+    related: ['whole-house-water-filter', 'water-softener'],
+  },
+  // Water softener — hardness removal. Standalone page for the
+  // "does a softener remove iron" / scale-on-fittings search intent.
+  'water-softener': {
+    slug: 'water-softener',
+    navLabel: 'Water softener',
+    shortHeadline:
+      'Hard water scales every fitting, geyser, and appliance it touches. A softener takes the hardness out at the source.',
+    problemBands: [
+      'Hardness is calcium and magnesium. It furs up geyser elements, blocks shower heads, clouds glassware, and leaves white scale on every fitting.',
+      'A softener swaps that hardness for sodium on an ion-exchange resin — the standard, proven fix for scale.',
+      'It does not remove iron. On borewell supply, iron has to be filtered out upstream first, or it fouls the resin.',
+      'Resin is regenerated with salt on cycle. Sized to your draw and hardness, it runs for years with routine service.',
+    ],
+    configurations: [
+      {
+        name: 'Single-point',
+        subtitle: 'Bathroom feed',
+        description: 'Softens the bathroom feed where scale is the only issue. Compact vessel, manual or automatic.',
+      },
+      {
+        name: 'Whole-house',
+        subtitle: '2,000 — 6,000 LPH',
+        description: 'Softens every tap from the inlet. Brine tank for automatic regeneration.',
+      },
+      {
+        name: 'High hardness',
+        subtitle: 'Hardness above 400 ppm',
+        description: 'Larger resin volume and buffer for very hard supply. Sized at survey.',
+      },
+    ],
+    installContext: 'specialised-media',
+    related: ['whole-house-water-filter', 'iron-filter'],
   },
 };
 

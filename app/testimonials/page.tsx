@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from '@/components/ui/Typography';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { JsonLd } from '@/components/ui/JsonLd';
+import { reviewSchema } from '@/lib/structured-data';
 import { CASE_STUDIES } from '@/content/case-studies';
 
 // Per-case-study photo so no two testimonial tiles share the same image.
@@ -84,6 +86,15 @@ const CASE_STUDY_QUOTES = CASE_STUDIES.filter((cs) => cs.body && cs.testimonial)
 export default function TestimonialsPage() {
   return (
     <>
+      {/* Review JSON-LD — Review only, no AggregateRating: the site collects
+          no numeric star ratings, so a rating value would be fabricated. */}
+      {CASE_STUDY_QUOTES.length > 0 && (
+        <JsonLd
+          data={reviewSchema(
+            CASE_STUDY_QUOTES.map((t) => ({ quote: t.quote, name: t.name, org: t.org })),
+          )}
+        />
+      )}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[420px] md:h-[500px] lg:h-[calc(100vh-240px)] lg:min-h-[440px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>

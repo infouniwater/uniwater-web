@@ -10,7 +10,8 @@ import { Accordion, AccordionItem, TechSpecRow } from '@/components/ui/Accordion
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { SolutionStickyCTA } from '@/components/sections/SolutionStickyCTA';
-import { productSchema, faqPageSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
+import { productSchema, faqPageSchema, breadcrumbSchema, serviceSchema, jsonLd } from '@/lib/structured-data';
+import { SOLUTION_FAQS } from '@/content/faqs';
 import { COMPONENT_MANUFACTURERS, PRIMARY_PHONE_HREF } from '@/content/site';
 import { FIVE_PLACES, HOMESOFT_PLACES, DRINKING_PLACES, TDS_DECISION_TREE } from '@/content/education';
 import { Infographic } from '@/components/ui/Infographic';
@@ -62,6 +63,11 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               slug: solution.slug,
               description: solution.shortHeadline,
               priceFromINR: solution.priceFromINR,
+            }),
+            serviceSchema({
+              name: `${solution.navLabel} — survey, install, and service`,
+              description: solution.shortHeadline,
+              url: `/solutions/${solution.slug}`,
             }),
             faqPageSchema(faqs),
             breadcrumbSchema([
@@ -1119,6 +1125,12 @@ function getInstallDurationAnswer(solution: Solution): string {
 // gets 1-2 questions specific to that product family so the FAQ never
 // reads as a copy-paste across every detail page.
 function getSolutionSpecificFaqs(solution: Solution): Array<{ q: string; a: string }> {
+  // Iron-filter and water-softener draw their page-local FAQs from
+  // content/faqs.ts (the iron-vs-softener / yellow-water question set),
+  // so a single FAQ section + a single FAQPage schema render per page.
+  const seeded = SOLUTION_FAQS[solution.slug];
+  if (seeded) return seeded;
+
   switch (solution.slug) {
     case 'bathroom-filter':
       return [

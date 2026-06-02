@@ -9,11 +9,15 @@ import { Card } from '@/components/ui/Card';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { ServiceSection } from '@/components/sections/ServiceSection';
+import { CityWaterTable } from '@/components/sections/CityWaterTable';
+import { FaqSection } from '@/components/sections/FaqSection';
 import { CITIES, PRIMARY_PHONE_HREF } from '@/content/site';
 import { CITY_CONTENT } from '@/content/cities';
+import { CITY_FAQS } from '@/content/faqs';
 import { CASE_STUDIES } from '@/content/case-studies';
 import { SOLUTIONS } from '@/content/solutions';
 import { localBusinessSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
+import { buildMetadata, resolveOgImage } from '@/lib/seo';
 
 // City-page funnel: every residential solution the homeowner can pick.
 const CITY_FEATURED_SOLUTIONS: Array<keyof typeof SOLUTIONS> = [
@@ -33,10 +37,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const content = CITY_CONTENT[params.slug];
   if (!content) return { title: 'City' };
-  return {
+  return buildMetadata({
+    path: `/cities/${content.slug}`,
     title: `${content.name} \u2014 Water systems`,
     description: `Uniwater water systems in ${content.name}, ${content.country}. ${content.lede}`,
-  };
+    image: resolveOgImage(content.slug, 'cities'),
+  });
 }
 
 export default function CityDetailPage({ params }: { params: { slug: string } }) {
@@ -52,7 +58,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: jsonLd([
-            localBusinessSchema({ cityName: content.name, citySlug: content.slug }),
+            localBusinessSchema({ cityName: content.name, citySlug: content.slug, localities: content.localities }),
             breadcrumbSchema([
               { name: 'Home', url: '/' },
               { name: 'Cities', url: '/cities' },
@@ -150,6 +156,10 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
           ))}
         </div>
       </Section>
+
+      {/* Per-locality water data — renders only for cities with seeded
+          data (currently Kolkata); other cities render nothing here. */}
+      <CityWaterTable citySlug={content.slug} cityName={content.name} />
 
       {/* Local team */}
       <Section padding="default">
@@ -269,6 +279,15 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
           </Section>
         );
       })()}
+
+      {/* Page-local FAQ — renders + emits FAQPage JSON-LD only for cities
+          with a seeded set (currently Kolkata). */}
+      <FaqSection
+        items={CITY_FAQS[content.slug] ?? []}
+        heading={`Water questions, answered for ${content.name}.`}
+        inverse
+        imageStem="utility"
+      />
 
       <ServiceSection />
 

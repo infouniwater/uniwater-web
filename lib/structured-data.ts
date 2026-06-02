@@ -10,7 +10,11 @@
  * Product) inject from the relevant page.
  */
 
-import { SITE, CONTACT, NAMED_CLIENTS, SOCIAL_URLS, LAUNCH_FLAGS } from '@/content/site';
+import { SITE, CONTACT, NAMED_CLIENTS, SOCIAL_URLS, LAUNCH_FLAGS, CITIES } from '@/content/site';
+
+// All nine service cities, by name — used as the Service `areaServed` so each
+// solution declares the full India + Nepal footprint, not just two countries.
+const SERVICE_CITY_NAMES = CITIES.map((c) => c.name);
 
 const SITE_URL = 'https://uniwater.co.in';
 
@@ -77,6 +81,8 @@ export function websiteSchema() {
 export function localBusinessSchema(opts: {
   cityName?: string;
   citySlug?: string;
+  /** Localities served from this city — appended to areaServed. */
+  localities?: readonly string[];
 }) {
   const id = opts.citySlug ? `${SITE_URL}/cities/${opts.citySlug}#localbusiness` : `${SITE_URL}#localbusiness`;
   return {
@@ -95,7 +101,9 @@ export function localBusinessSchema(opts: {
       postalCode: opts.cityName ? undefined : CONTACT.address.pin,
       addressCountry: 'IN',
     },
-    areaServed: opts.cityName ? opts.cityName : ['India', 'Nepal'],
+    areaServed: opts.cityName
+      ? [opts.cityName, ...(opts.localities ?? [])]
+      : ['India', 'Nepal'],
     priceRange: '₹₹₹',
     parentOrganization: { '@id': `${SITE_URL}#organization` },
   };
@@ -168,7 +176,7 @@ export function serviceSchema(opts: {
     description: opts.description,
     url: opts.url.startsWith('http') ? opts.url : `${SITE_URL}${opts.url}`,
     provider: { '@id': `${SITE_URL}#organization` },
-    areaServed: ['India', 'Nepal'],
+    areaServed: SERVICE_CITY_NAMES,
     serviceType: 'Water treatment design, installation, and service',
   };
   if (opts.steps && opts.steps.length > 0) {
@@ -215,6 +223,35 @@ export function productSchema(opts: {
     };
   }
   return fields;
+}
+
+/**
+ * Review schema for /testimonials.
+ *
+ * Emits an itemReviewed → Organization with one nested Review per quote.
+ * Deliberately NO AggregateRating: the site collects no numeric star ratings,
+ * and inventing a rating value would be fabrication. When real ratings start
+ * arriving at handover, add `reviewRating` per item and an AggregateRating here.
+ */
+export function reviewSchema(
+  reviews: Array<{ quote: string; name: string; org?: string }>,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${SITE_URL}#organization`,
+    name: SITE.name,
+    url: SITE_URL,
+    review: reviews.map((r) => ({
+      '@type': 'Review',
+      reviewBody: r.quote,
+      author: {
+        '@type': 'Person',
+        name: r.org ? `${r.name}, ${r.org}` : r.name,
+      },
+      itemReviewed: { '@id': `${SITE_URL}#organization` },
+    })),
+  };
 }
 
 /**

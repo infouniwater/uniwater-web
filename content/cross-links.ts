@@ -56,6 +56,16 @@ export const SOLUTION_TO_BLOGS: Record<SolutionSlug, BlogSlug[]> = {
     'remineralisation-after-ro',
     'how-to-read-a-water-test',
   ],
+  'iron-filter': [
+    'borewell-water-yellow',
+    'iron-hardness-order',
+    'how-to-read-a-water-test',
+  ],
+  'water-softener': [
+    'soft-water-vs-salt-water',
+    'iron-hardness-order',
+    'premium-fittings-slow-disaster',
+  ],
 };
 
 export function getSolutionForBlog(slug: string) {
@@ -79,6 +89,8 @@ export const SOLUTION_TO_PROBLEM: Record<SolutionSlug, ProblemToken> = {
   'bathroom-filter': 'hardness',
   'whole-house-water-filter': 'multiple',
   'drinking-water-solution': 'drinking',
+  'iron-filter': 'iron',
+  'water-softener': 'scale',
 };
 
 export const PROBLEM_LABEL: Record<ProblemToken, string> = {
