@@ -53,20 +53,20 @@ const SOLUTIONS = [
 
 export function SolutionsOverview() {
   return (
-    <Section padding="default" id="solutions-overview">
+    // 2026-06-02: promoted to dark for strict D L D L D L homepage
+    // alternation. Card photos stay portrait; the navy frame around
+    // them gives the catalogue a gallery-wall feel.
+    <Section tone="navy" padding="default" id="solutions-overview">
       <div className="mb-8 md:mb-14 max-w-3xl flex flex-col gap-4">
-        <Eyebrow>Catalogue</Eyebrow>
-        <Heading level={2}>
+        <Eyebrow inverse>Catalogue</Eyebrow>
+        <Heading level={2} inverse>
           What we install.
         </Heading>
-        {/* Middot-separated sub-line — same pattern the hero uses. The
-            three audiences read as a curated triple instead of three
-            separate sentences. */}
-        <div className="text-[16px] md:text-lede text-mute font-light flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline mt-2">
+        <div className="text-[16px] md:text-lede text-offwhite/80 font-light flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline mt-2">
           <span>For your home</span>
-          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
           <span>For your building</span>
-          <span aria-hidden="true" className="hidden sm:inline text-mute/40 mx-2">&middot;</span>
+          <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
           <span>For your factory</span>
         </div>
       </div>
@@ -78,10 +78,7 @@ export function SolutionsOverview() {
             href={solution.href}
             className="group flex flex-col gap-3 sm:gap-4"
           >
-            {/* aspect: landscape on mobile (shorter card, section fits
-                closer to a single mobile frame), portrait sm+ where
-                there's vertical room and the editorial portrait reads. */}
-            <div className="relative w-full overflow-hidden bg-subtle aspect-[4/3] sm:aspect-[3/4]">
+            <div className="relative w-full overflow-hidden bg-navy/40 aspect-[4/3] sm:aspect-[3/4]">
               <Image
                 src={solution.imgSrc}
                 alt={solution.imgAlt}
@@ -91,11 +88,11 @@ export function SolutionsOverview() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Eyebrow>{String(i + 1).padStart(2, '0')}</Eyebrow>
-              <h3 className="text-body sm:text-h3 font-normal text-navy leading-snug [text-wrap:balance] transition-colors duration-200 ease-calm group-hover:text-teal">
+              <Eyebrow inverse>{String(i + 1).padStart(2, '0')}</Eyebrow>
+              <h3 className="text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] transition-colors duration-200 ease-calm group-hover:text-soft">
                 {solution.title}
               </h3>
-              <p className="text-caption text-mute leading-snug">{solution.description}</p>
+              <p className="text-caption text-offwhite/70 leading-snug">{solution.description}</p>
             </div>
           </Link>
         ))}
