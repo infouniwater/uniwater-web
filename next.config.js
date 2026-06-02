@@ -81,22 +81,18 @@ const nextConfig = {
         permanent: true,
       },
       {
-        // Sediment / iron / softening / activated-carbon retired as
-        // standalone pages 2026-06-03 — they're stages inside HomeSoft,
-        // not separate products. All four (plus the historical
-        // practical-particle-filter slug) now point at the whole-house
-        // page so inbound search traffic still lands somewhere useful.
+        // Sediment / activated-carbon retired as standalone pages
+        // 2026-06-03 — they're stages inside HomeSoft, not separate
+        // products. These (plus the historical practical-particle-filter
+        // slug) point at the whole-house page so inbound search traffic
+        // still lands somewhere useful.
+        //
+        // NOTE: iron-filter and water-softener were RE-INSTATED as
+        // standalone pages for the Tier-1 SEO/GEO pass (high-intent
+        // iron-vs-softener / yellow-water queries). Their redirects were
+        // removed so app/solutions/{iron-filter,water-softener}/page.tsx
+        // can actually render — a redirect here would shadow the route.
         source: '/solutions/practical-particle-filter',
-        destination: '/solutions/whole-house-water-filter',
-        permanent: true,
-      },
-      {
-        source: '/solutions/iron-filter',
-        destination: '/solutions/whole-house-water-filter',
-        permanent: true,
-      },
-      {
-        source: '/solutions/water-softener',
         destination: '/solutions/whole-house-water-filter',
         permanent: true,
       },
