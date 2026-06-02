@@ -69,17 +69,17 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       {
         name: 'Mono',
         subtitle: 'Single cylinder \u2014 from \u20b914,000',
-        description: 'Single shower, standard CP fittings. 8\u20131 200 LPH at peak. Right for one bathroom, low to moderate demand. FRP vessel, manual regeneration.',
+        description: 'Single shower, standard fittings. ~1,200 LPH peak.',
       },
       {
         name: 'Duo',
         subtitle: 'Double cylinder \u2014 from \u20b924,000',
-        description: 'Rain shower with body jets, or two showers running together. 1 800 LPH at peak. FRP vessel, manual regeneration; SS316 upgrade available.',
+        description: 'Rain shower + body jets, or two showers in parallel. ~1,800 LPH peak.',
       },
       {
         name: 'Trio',
         subtitle: 'Triple cylinder \u2014 from \u20b942,000',
-        description: 'Master suite with steam, jacuzzi, or multiple high-flow outlets. 2 400 LPH at peak. SS316 vessels standard, optional brine-automatic regeneration.',
+        description: 'Master suite \u2014 steam, jacuzzi, multiple high-flow outlets. ~2,400 LPH peak.',
       },
     ],
     installContext: 'bathroom-five-places',
