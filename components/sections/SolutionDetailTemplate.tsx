@@ -300,7 +300,13 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 6. Where it goes — flipped DARK with image overlay for alternation. */}
+      {/* 6. Where it goes -- DARK with image overlay for alternation.
+          HIDDEN on drinking-water 2026-06-03 per Rajat: a kitchen RO
+          isn't a "place" decision the way BathSoft (5 hidden niches)
+          or HomeSoft (5 plant-room sites) are -- the page reads
+          cleaner without it. Same skip-condition applies to section
+          7 (Configurations) below. */}
+      {solution.installContext !== 'point-of-use' && (
       <Section tone="navy" padding="default" image={{ stem: 'utility' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Where it goes</Eyebrow>
@@ -339,6 +345,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           })}
         </div>
       </Section>
+      )}
 
       {/* Section 6b (Architectural install patterns) removed 2026-06-03
           per Rajat. It duplicated the install-location list rendered by
@@ -348,12 +355,12 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           install-drawing SVGs themselves still ship under
           public/images/install-drawings/ for future use elsewhere. */}
 
-      {/* 7. Configurations — kept LIGHT 2026-06-03. The earlier
-          DARK treatment relied on section 6b (Architectural patterns)
-          to act as the light bridge between "Where it goes" (D) and
-          "Configurations" (D). With 6b removed, keeping Configurations
-          dark would put two adjacent dark sections; light here
-          restores the D L D L cadence. */}
+      {/* 7. Configurations -- LIGHT. Hidden on drinking-water 2026-06-03
+          per Rajat (same skip as section 6): the RO / UF+UV / centralised
+          framing is already on every problem band and config subtitle
+          via the TDS thresholds, so a separate "Configurations" grid
+          duplicates information without adding any. */}
+      {solution.installContext !== 'point-of-use' && (
       <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>Configurations</Eyebrow>
@@ -384,6 +391,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           ))}
         </div>
       </Section>
+      )}
       {/* Sentinel — SolutionStickyCTA appears below the fold past this line. */}
       <div id="solution-sticky-start" aria-hidden="true" />
 
@@ -741,15 +749,16 @@ function getInstallPhotosForSolution(slug: string): PhotoAsset[] {
   }
   if (slug === 'whole-house-water-filter') {
     // Strict 1:1 to HOMESOFT_PLACES (Utility room / Balcony / Terrace /
-    // Basement / Custom cabinet). Balcony and Custom cabinet fall back
-    // to the closest available imagery in the photography library
-    // until dedicated frames land.
+    // Basement / Custom cabinet). Balcony and Custom cabinet swapped
+    // 2026-06-03 per Rajat: the luxury-villa frame reads as the
+    // service-door/balcony aesthetic, and the finished-home-corner
+    // frame reads as the joinery-cabinet aesthetic.
     return [
-      { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater whole-house vessels floor-mounted in a finished home utility area beside the washing machine' },
-      { src: `${PHOTO_BASE}/whole-house-hero.jpg`, alt: 'Branded Uniwater whole-house vessels installed in a finished home corner near tall windows and planting' },
-      { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'Two branded Uniwater vessels on a residential terrace, beachfront villas behind' },
-      { src: `${PHOTO_BASE}/wtp-basement.jpg`, alt: 'Branded Uniwater whole-house train installed in a villa basement plant room with overhead piping and concrete walls' },
-      { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Three branded Uniwater whole-house vessels installed against a finished joinery wall on a luxury villa terrace' },
+      { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater HomeSoft vessels floor-mounted in a finished home utility area beside the washing machine' },
+      { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Three branded Uniwater HomeSoft vessels installed against a finished joinery wall on a luxury villa terrace -- balcony-aesthetic service install' },
+      { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'Two branded Uniwater HomeSoft vessels on a residential terrace, beachfront villas behind' },
+      { src: `${PHOTO_BASE}/wtp-basement.jpg`, alt: 'Branded Uniwater HomeSoft train installed in a villa basement plant room with overhead piping and concrete walls' },
+      { src: `${PHOTO_BASE}/whole-house-hero.jpg`, alt: 'Branded Uniwater HomeSoft vessels in a custom joinery-grade enclosure in a finished home corner near tall windows and planting' },
     ];
   }
   return [];

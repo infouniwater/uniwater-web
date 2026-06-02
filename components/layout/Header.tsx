@@ -10,8 +10,8 @@ import { PRIMARY_PHONE, PRIMARY_PHONE_HREF, WHATSAPP_HREF } from '@/content/site
 import { cn } from '@/lib/cn';
 
 const RESIDENTIAL_LINKS = [
-  { slug: 'bathroom-filter', label: 'Bathroom filters' },
-  { slug: 'whole-house-water-filter', label: 'Whole-house filtration' },
+  { slug: 'bathroom-filter', label: 'BathSoft' },
+  { slug: 'whole-house-water-filter', label: 'HomeSoft' },
   { slug: 'drinking-water-solution', label: 'Drinking water systems' },
 ];
 

@@ -3,8 +3,8 @@ import { Logo } from '@/components/ui/Logo';
 import { CONTACT, CITIES, SITE, WHATSAPP_HREF, COMPANY_REGISTRATION, SOCIAL_HANDLES, LAUNCH_FLAGS } from '@/content/site';
 
 const SOLUTIONS_LINKS = [
-  { href: '/solutions/bathroom-filter', label: 'Bathroom filters' },
-  { href: '/solutions/whole-house-water-filter', label: 'Whole-house' },
+  { href: '/solutions/bathroom-filter', label: 'BathSoft' },
+  { href: '/solutions/whole-house-water-filter', label: 'HomeSoft' },
   { href: '/solutions/drinking-water-solution', label: 'Drinking water' },
   { href: '/industrial', label: 'Industrial / WTP' },
 ];

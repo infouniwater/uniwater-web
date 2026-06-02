@@ -16,14 +16,14 @@ import { Eyebrow, Heading } from '@/components/ui/Typography';
 const SOLUTIONS = [
   {
     href: '/solutions/bathroom-filter',
-    title: 'Bathroom filters',
+    title: 'BathSoft',
     description: 'At the bathroom feed. Stops iron staining and hard-water scale.',
     imgSrc: '/images/photography/bathroom-filter-hero.jpg',
     imgAlt: 'BathSoft installed in a marble luxury bathroom with brass freestanding bath, two stainless cylinders recessed behind a glass shower partition',
   },
   {
     href: '/solutions/whole-house-water-filter',
-    title: 'Whole-house filtration',
+    title: 'HomeSoft',
     description: 'At the inlet. Treats the water once for every tap in the house.',
     imgSrc: '/images/photography/whole-house-hero.jpg',
     imgAlt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',

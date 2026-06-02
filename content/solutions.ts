@@ -42,7 +42,7 @@ export interface Solution {
 export const SOLUTIONS: Record<SolutionSlug, Solution> = {
   'bathroom-filter': {
     slug: 'bathroom-filter',
-    navLabel: 'Bathroom filters',
+    navLabel: 'BathSoft',
     wordmark: 'BathSoft',
     shortHeadline:
       'A bathroom filter has to do three things at once: treat the water, fit the space, not announce itself.',
@@ -86,14 +86,14 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
   },
   'whole-house-water-filter': {
     slug: 'whole-house-water-filter',
-    navLabel: 'Whole-house filtration',
+    navLabel: 'HomeSoft',
     wordmark: 'HomeSoft',
     shortHeadline:
       'One softened, filtered supply for the whole house. Every shower, every sink, every appliance.',
     problemBands: [
       'Treating water tap-by-tap means six service contracts. Treating at the inlet means one.',
       'Geysers, washing machines, dishwashers fail early on hard or iron-bearing water.',
-      'Bathroom filters help the bathroom. The kitchen sink, the washing machine, the garden tap still get raw supply.',
+      'BathSoft helps the bathroom. The kitchen sink, the washing machine, the garden tap still get raw supply.',
       'Borewell-fed homes need iron removal upstream of everything else. Or everything else fails faster.',
     ],
     priceFromINR: 50000,

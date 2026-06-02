@@ -16,7 +16,7 @@ import { CITIES } from '@/content/site';
 export const metadata: Metadata = {
   title: 'Water systems for the home',
   description:
-    'Bathroom filters, whole-house systems, and drinking water for premium Indian homes. Surveyed, engineered, installed, and serviced monthly.',
+    'BathSoft bathroom systems, HomeSoft whole-house systems, and drinking water for premium Indian homes. Surveyed, engineered, installed, and serviced monthly.',
 };
 
 // Problems → solutions. Iron / softening / scale are all answered by the
