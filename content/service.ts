@@ -31,7 +31,7 @@ export const AMC_TIERS = [
     name: 'Standard',
     cadence: 'Quarterly preventive visits',
     summary:
-      'Four scheduled visits a year, plus on-call response. For low-load installations and stable water chemistry.',
+      'Four visits a year plus on-call. Low-load installs, stable chemistry.',
     annualFromINR: 9600,
     inclusions: [
       'Quarterly preventive visits with documented report',
@@ -45,7 +45,7 @@ export const AMC_TIERS = [
     name: 'Comprehensive',
     cadence: 'Monthly preventive visits',
     summary:
-      'Twelve scheduled visits a year. The right choice for borewell-fed homes and any system with iron, scale, or variable supply.',
+      'Twelve visits a year. Right for borewell-fed homes and any iron / scale / variable supply.',
     annualFromINR: 18000,
     inclusions: [
       'Monthly preventive visits with documented report',
@@ -61,7 +61,7 @@ export const AMC_TIERS = [
     name: 'Premium',
     cadence: 'Monthly visits + priority response',
     summary:
-      'For institutions, complexes, and customers who treat their water as infrastructure. Includes a named engineer and a customer dashboard with parameter history.',
+      'Institutions and customers who treat water as infrastructure. Named engineer + dashboard.',
     annualFromINR: 30000,
     inclusions: [
       'Everything in Comprehensive',

@@ -97,10 +97,10 @@ export default function WhyUniwaterPage() {
           <Heading level={2} className="mb-6">Between two categories that don&rsquo;t fit.</Heading>
           <div className="flex flex-col gap-5">
             <Body className="text-mute">
-              India&rsquo;s residential water market has two visible categories. The first is the kitchen-purifier brands &mdash; Aquaguard, Kent, Zero B, Eureka Forbes &mdash; mass-distributed, off-the-shelf, single-tap. The second is industrial EPC firms &mdash; project-based, brand-anonymous, B2B-only.
+              India has two visible water-treatment categories: kitchen-purifier brands (Aquaguard, Kent, Zero B, Eureka Forbes) and industrial EPC firms. Mass-distributed single-tap on one end; project-based and brand-anonymous on the other.
             </Body>
             <Body className="text-mute">
-              Neither serves the premium homeowner who wants the bathroom water, the kitchen water, the appliance water, and the next decade of upkeep handled by one company that actually shows up. That&rsquo;s the gap Uniwater built into.
+              Neither serves the premium homeowner who wants every tap, every appliance, and the next decade of upkeep handled by one team. That&rsquo;s the gap Uniwater built into.
             </Body>
             <EditorialAccent className="mt-6">
               Engineered home water. Surveyed, installed, and serviced for the long term.
@@ -218,7 +218,7 @@ export default function WhyUniwaterPage() {
             <Eyebrow className="mb-4">Components from</Eyebrow>
             <Heading level={2} className="mb-4">The names on the parts.</Heading>
             <Body className="text-mute">
-              We don&rsquo;t manufacture our own pumps, resin, or membranes. We integrate from the vendors the industry actually trusts, and we name them &mdash; every quote, every spec sheet.
+              We don&rsquo;t make pumps, resin, or membranes. We integrate from vendors the industry trusts &mdash; and we name them on every quote.
             </Body>
           </div>
           <div className="lg:col-span-8">

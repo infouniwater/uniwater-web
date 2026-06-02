@@ -20,9 +20,8 @@ const STEP_DETAIL = [
     label: 'Stage 01 — Survey',
     headline: '30 minutes on site. 48 hours to a quote.',
     paragraphs: [
-      'A Uniwater engineer visits your home or site with a water-testing kit. The visit takes between 30 and 60 minutes. We take a sample, run the test, and walk you through what the numbers mean before any quote is written.',
-      'We also map the plumbing: where the inlet is, what the pressure runs at, what the storage looks like, and where the equipment could reasonably go without disrupting the architecture.',
-      'No quote is written until the survey is complete. If the survey reveals the system doesn\u2019t need to be as large as you thought, we say so.',
+      'Engineer visits with a water-testing kit. Reads chemistry, maps plumbing, pressure, storage, and viable install locations.',
+      'No quote until the survey is complete. If a smaller system fits, we say so.',
     ],
     aside: {
       title: 'What the survey covers',
@@ -39,9 +38,8 @@ const STEP_DETAIL = [
     label: 'Stage 02 — Design',
     headline: 'Configured from 100+ engineered options. Not pulled off a shelf.',
     paragraphs: [
-      'Your survey readings go into the Uniwater auto-suggest engine \u2014 a 17-rule system built from years of installation data. It generates a bill of materials specific to your water, your draw, and your install location.',
-      'The proposal includes the configuration name (Mono / Duo / Trio, or 2K / 4K / 6K LPH, etc.), the media selection, vessel grade, controls, install plan, and AMC terms.',
-      'For residential customers, the quote is presented as a clean single-line price. For B2B customers, we include the full itemised BOM.',
+      'Your readings go into the 17-rule auto-suggest engine. It generates a BOM specific to your water, draw, and install location \u2014 not a generic SKU.',
+      'Residential proposals are a single-line price. B2B proposals include the full itemised BOM.',
     ],
     aside: {
       title: 'What\u2019s in the proposal',
@@ -60,8 +58,8 @@ const STEP_DETAIL = [
     label: 'Stage 03 — Install',
     headline: 'In a day. Or three. Wherever it disappears.',
     paragraphs: [
-      'Equipment goes in false ceilings, plumbing shafts, behind cabinets, under counters, or outside windows \u2014 wherever it disappears. The home keeps its lines. The architect\u2019s decisions stay intact.',
-      'Most residential installs complete in one to two days. Industrial and building-scale installs run one to four weeks depending on scope and site readiness. The engineer commissions every system before handover, with parameter readings filed and shared.',
+      'Equipment goes false ceiling, plumbing shaft, behind cabinet, under counter \u2014 wherever it disappears. The architecture stays intact.',
+      'One to two days residential. One to four weeks B2B. Commissioned and parameter-tested before handover.',
     ],
     aside: {
       title: 'On-site discipline',
@@ -78,9 +76,8 @@ const STEP_DETAIL = [
     label: 'Stage 04 — Service',
     headline: 'Every month. 24-hour notice. Same window. Same protocol.',
     paragraphs: [
-      'Year one of AMC is included with every install. From month one, an engineer visits on a defined schedule. Comprehensive tier customers get monthly visits; Standard tier customers get quarterly.',
-      'Every visit follows the Before / On site / After protocol: 24-hour advance notice, parameter testing against design spec, written report filed before the engineer leaves your house.',
-      'If a flag is raised, the SLA is 24 hours for Comprehensive and 12 hours for Premium. The system isn\u2019t a sale we made; it\u2019s a relationship we maintain.',
+      'Year one AMC included. Monthly visits on Comprehensive; quarterly on Standard. 24-hour notice; written report filed before the engineer leaves.',
+      'SLA on flagged faults: 24 hours Comprehensive, 12 hours Premium. Not a sale we made \u2014 a relationship we maintain.',
     ],
     aside: {
       title: 'What an engineer does',
