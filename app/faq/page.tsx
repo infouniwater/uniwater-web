@@ -135,29 +135,41 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {CATEGORIES.map((cat, ci) => (
-        <Section
-          key={cat.title}
-          padding="default"
-          tone={ci % 2 === 0 ? 'plain' : 'subtle'}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <Eyebrow className="mb-4">Category</Eyebrow>
-              <Heading level={2}>{cat.title}.</Heading>
+      {/* Categories alternate plain (light) -> navy (dark with image
+          overlay) so the page reads as D L D L D L after the dark hero.
+          Image stem rotates through the photography family so adjacent
+          dark bands don't share a background photo. */}
+      {CATEGORIES.map((cat, ci) => {
+        // Hero above is D. First category (ci=0) must be LIGHT to
+        // alternate; second (ci=1) is DARK; and so on.
+        const isDark = ci % 2 === 1;
+        const darkStems = ['plant-room', 'utility', 'industrial', 'bathroom'];
+        const stem = darkStems[Math.floor(ci / 2) % darkStems.length];
+        return (
+          <Section
+            key={cat.title}
+            padding="default"
+            tone={isDark ? 'navy' : 'plain'}
+            image={isDark ? { stem } : undefined}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+              <div className="lg:col-span-4 flex flex-col gap-4">
+                <Eyebrow inverse={isDark}>Category</Eyebrow>
+                <Heading level={2} inverse={isDark}>{cat.title}.</Heading>
+              </div>
+              <div className="lg:col-span-8">
+                <Accordion inverse={isDark}>
+                  {cat.items.map((item, ii) => (
+                    <AccordionItem inverse={isDark} key={ii} question={item.q} defaultOpen={ci === 0 && ii === 0}>
+                      {item.a}
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             </div>
-            <div className="lg:col-span-8">
-              <Accordion>
-                {cat.items.map((item, ii) => (
-                  <AccordionItem key={ii} question={item.q} defaultOpen={ci === 0 && ii === 0}>
-                    {item.a}
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </div>
-        </Section>
-      ))}
+          </Section>
+        );
+      })}
 
       <FinalCTA />
     </>

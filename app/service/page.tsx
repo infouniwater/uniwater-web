@@ -175,12 +175,12 @@ export default function ServicePage() {
         </div>
       </Section>
 
-      {/* AMC tiers — tiered honestly per Blueprint §0 hardened decision 5 */}
-      <Section padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">AMC tiers</Eyebrow>
-          <Heading level={2} className="mb-4">Three tiers. Honest scope.</Heading>
-          <Body className="text-mute">
+      {/* AMC tiers — flipped DARK for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'bathroom' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>AMC tiers</Eyebrow>
+          <Heading level={2} inverse>Three tiers. Honest scope.</Heading>
+          <Body inverse className="text-offwhite/80 mt-2">
             We don&rsquo;t promise monthly service to every customer at every price point. The cadence is tiered \u2014 explicitly \u2014 so you choose what fits your home and your water.
           </Body>
         </div>
@@ -191,29 +191,29 @@ export default function ServicePage() {
               className={cn(
                 'p-8 flex flex-col gap-5 border',
                 'recommended' in tier && tier.recommended
-                  ? 'border-2 border-navy bg-tint/30'
-                  : 'border-hairline bg-offwhite'
+                  ? 'border-2 border-soft bg-navy/40'
+                  : 'border-offwhite/15 bg-navy/30'
               )}
             >
               {'recommended' in tier && tier.recommended && (
-                <div className="text-eyebrow font-medium uppercase text-teal -mb-2">
+                <div className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft -mb-2">
                   Most chosen
                 </div>
               )}
-              <h3 className="text-h2-m font-light text-navy">{tier.name}</h3>
-              <p className="text-h3 font-medium text-teal">{tier.cadence}</p>
-              <p className="text-caption text-mute">
+              <h3 className="text-h2-m font-light text-offwhite">{tier.name}</h3>
+              <p className="text-h3 font-medium text-soft">{tier.cadence}</p>
+              <p className="text-caption text-offwhite/70">
                 From{' '}
-                <span className="text-navy font-medium">
+                <span className="text-offwhite font-medium">
                   ₹{tier.annualFromINR.toLocaleString('en-IN')}/year
                 </span>
                 {' '}+ GST · residential indicative · final price varies with system capacity
               </p>
-              <Body className="text-mute">{tier.summary}</Body>
-              <ul className="flex flex-col gap-2 mt-4 pt-4 border-t border-hairline">
+              <Body inverse>{tier.summary}</Body>
+              <ul className="flex flex-col gap-2 mt-4 pt-4 border-t border-offwhite/15">
                 {tier.inclusions.map((inc) => (
-                  <li key={inc} className="text-caption text-ink flex gap-3">
-                    <span className="text-teal flex-shrink-0">&mdash;</span>
+                  <li key={inc} className="text-caption text-offwhite/85 flex gap-3">
+                    <span className="text-soft flex-shrink-0">&mdash;</span>
                     <span>{inc}</span>
                   </li>
                 ))}
@@ -221,7 +221,7 @@ export default function ServicePage() {
             </div>
           ))}
         </div>
-        <Caption className="mt-8 text-mute italic">
+        <Caption inverse className="mt-8 italic">
           AMC tier is set at handover. Re-tier on renewal if your draw or chemistry changes.
         </Caption>
       </Section>
