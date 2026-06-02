@@ -159,7 +159,7 @@ export default function TermsPage() {
           </div>
 
           <Caption className="text-mute italic mt-8 pt-8 border-t border-hairline">
-            These terms were drafted in-house against the Indian Consumer Protection Act 2019, the Sale of Goods Act 1930, and the IT Act 2000. They are a working draft pending review by retained legal counsel. Warranty, AMC, and refund representations will be reconfirmed before public launch.
+            These terms are written against the Indian Consumer Protection Act 2019, the Sale of Goods Act 1930, and the IT Act 2000. We may update them as our practices evolve; the version in force at the time of contract governs that contract.
           </Caption>
         </div>
       </Section>

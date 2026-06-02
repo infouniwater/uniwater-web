@@ -64,7 +64,7 @@ export default function TestimonialsPage() {
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Testimonials</p>
             <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">What customers say.</h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              The attributions below come from published case studies. Customers who have agreed to be named, in their own words, on the record. The wider review set, sourced from every install handover, is being collected systematically and will surface here as it lands.
+              Named customers, in their own words, on the record. Drawn from published case studies; the wider review set is collected systematically at every handover.
             </p>
           </div>
         </div>

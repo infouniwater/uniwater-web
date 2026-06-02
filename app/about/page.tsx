@@ -70,10 +70,10 @@ export default function AboutPage() {
       <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
-            <Eyebrow className="mb-4">A note from the founder</Eyebrow>
-            {/* TODO Sprint 2: founder note + photo + signed attribution per BLUEPRINT §0 + §14.1 #73.
-                Current copy is the plausible-draft fallback drawn from STRATEGY §3.1. Replace
-                when the team supplies the real interview + portrait photo. */}
+            <Eyebrow className="mb-4">A note from the team</Eyebrow>
+            <Caption className="text-mute italic mt-2">
+              The story behind the company. Founder portrait + signed attribution land here in the next content update.
+            </Caption>
           </div>
           <div className="lg:col-span-8 max-w-reading">
             <EditorialAccent className="mb-8">

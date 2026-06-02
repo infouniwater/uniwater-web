@@ -97,7 +97,7 @@ export default function WhyUniwaterPage() {
           <Heading level={2} className="mb-6">Between two categories that don&rsquo;t fit.</Heading>
           <div className="flex flex-col gap-5">
             <Body className="text-mute">
-              India has two visible water-treatment categories: kitchen-purifier brands (Aquaguard, Kent, Zero B, Eureka Forbes) and industrial EPC firms. Mass-distributed single-tap on one end; project-based and brand-anonymous on the other.
+              India has two visible water-treatment categories: kitchen-purifier brands (Aquaguard, Kent, Zero B, Eureka Forbes) and industrial EPC firms. Mass-distributed single-tap on one end; project-based, unnamed install teams on the other.
             </Body>
             <Body className="text-mute">
               Neither serves the premium homeowner who wants every tap, every appliance, and the next decade of upkeep handled by one team. That&rsquo;s the gap Uniwater built into.

@@ -36,7 +36,7 @@ export default function ServicePage() {
               The discipline that decides year four.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Most water systems in Indian premium homes stop performing within three years. The reason is rarely the equipment. It&rsquo;s the absence of service discipline.
+              In our experience, most premium-home water systems quietly stop performing within three to four years &mdash; rarely because of the equipment. The absence of service discipline is what compounds.
             </p>
             <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
               <Link
@@ -102,7 +102,7 @@ export default function ServicePage() {
             { value: '12', label: 'Preventive visits a year, Comprehensive AMC' },
             { value: '24h', label: 'SLA on flagged faults, Comprehensive AMC' },
             { value: 'Same day', label: 'Written report after every visit' },
-            { value: '5', label: 'Parameters tested in and out, every visit' },
+            { value: '5', label: 'Parameters (TDS, hardness, iron, pH, FRC) at inlet + outlet, every visit' },
           ].map((s) => (
             <div key={s.label} className="flex flex-col gap-2">
               <div className="text-[40px] md:text-[48px] font-light leading-none text-teal font-numeric">{s.value}</div>

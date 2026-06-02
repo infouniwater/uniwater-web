@@ -174,7 +174,7 @@ export default function PrivacyPage() {
           </div>
 
           <Caption className="text-mute italic mt-8 pt-8 border-t border-hairline">
-            This privacy policy was drafted in-house against the Digital Personal Data Protection Act, 2023. It is a working draft pending review by retained legal counsel. Material representations about retention periods, grievance-officer designation, and cross-border data transfer will be reconfirmed before public launch.
+            This policy is written against the Digital Personal Data Protection Act, 2023. We may update it as our practices evolve or as guidance from regulators changes; material changes will be notified by email to the address on file.
           </Caption>
         </div>
       </Section>

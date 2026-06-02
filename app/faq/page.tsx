@@ -38,7 +38,7 @@ const CATEGORIES = [
       },
       {
         q: 'How fast can someone visit?',
-        a: 'Within 48 hours of booking, across our nine cities. Faster in Kolkata. The Noida team is being assembled — surveys there run on a 5–7 day window until the local base is fully staffed.',
+        a: 'Within 48 hours of booking, across our nine cities. Faster in Kolkata. Newer city teams run on a 5–7 day window while their local base is ramping up.',
       },
       {
         q: 'How long does installation take?',
@@ -59,11 +59,11 @@ const CATEGORIES = [
       },
       {
         q: 'What does a bathroom filter cost?',
-        a: 'BathSoft starts at \u20b914,000 MRP (inclusive of 18% GST) for a Mono Manual Plastic configuration. Top of the range is a Trio Automatic SS at \u20b91,20,000 MRP.',
+        a: 'BathSoft Mono starts at \u20b914,000 MRP (inclusive of 18% GST). Duo and Trio configurations scale up from there; tier-wise starting prices are on the bathroom filter page.',
       },
       {
         q: 'What does a whole-house system cost?',
-        a: 'HomeSoft starts at \u20b91,00,000 MRP for a 2K LPH base configuration. A 4K or 6K LPH four-stage train with iron pre-treatment runs higher; the survey decides.',
+        a: 'HomeSoft starts at \u20b91,00,000 MRP for the 2K LPH base. 4K and 6K LPH four-stage trains with iron pre-treatment scale up; final price is set at survey.',
       },
       {
         q: 'Do you offer EMI?',
