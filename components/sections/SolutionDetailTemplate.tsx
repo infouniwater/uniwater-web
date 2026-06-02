@@ -768,6 +768,19 @@ function getInstallPhotosForSolution(slug: string): PhotoAsset[] {
       { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater vessels floor-mounted in the home utility area beside the washing machine' },
     ];
   }
+  if (slug === 'whole-house-water-filter') {
+    // Strict 1:1 to HOMESOFT_PLACES (Utility room / Balcony / Terrace /
+    // Basement / Custom cabinet). Balcony and Custom cabinet fall back
+    // to the closest available imagery in the photography library
+    // until dedicated frames land.
+    return [
+      { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater whole-house vessels floor-mounted in a finished home utility area beside the washing machine' },
+      { src: `${PHOTO_BASE}/whole-house-hero.jpg`, alt: 'Branded Uniwater whole-house vessels installed in a finished home corner near tall windows and planting' },
+      { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'Two branded Uniwater vessels on a residential terrace, beachfront villas behind' },
+      { src: `${PHOTO_BASE}/wtp-basement.jpg`, alt: 'Branded Uniwater whole-house train installed in a villa basement plant room with overhead piping and concrete walls' },
+      { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Three branded Uniwater whole-house vessels installed against a finished joinery wall on a luxury villa terrace' },
+    ];
+  }
   return [];
 }
 

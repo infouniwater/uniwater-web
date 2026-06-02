@@ -97,7 +97,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'Bathroom filters help the bathroom. The kitchen sink, the washing machine, the garden tap still get raw supply.',
       'Borewell-fed homes need iron removal upstream of everything else. Or everything else fails faster.',
     ],
-    priceFromINR: 100000,
+    priceFromINR: 50000,
     configurations: [
       {
         name: '2K',
