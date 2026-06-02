@@ -55,7 +55,12 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       // Band 4: SERVED, NOT FORGOTTEN \u2014 the post-install reality
       'A bathroom system that never gets touched is a bathroom system that quietly fails by year three. BathSoft ships with monthly engineer visits on Comprehensive AMC \u2014 same person, named, for the life of the contract.',
     ],
-    priceFromINR: 14000,
+    // priceFromINR removed 2026-06-02 -- the per-tier "from \u20b9X"
+    // anchors now live inside each configuration subtitle (Mono \u20b914k
+    // / Duo \u20b924k / Trio \u20b942k), which is more honest than a single
+    // hero anchor and matches the other six solutions (iron, softener,
+    // sediment, carbon, whole-house, drinking-water) which never had
+    // a single anchor.
     configurations: [
       {
         name: 'Mono',
