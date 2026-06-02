@@ -129,7 +129,7 @@ export function EditorialHero() {
         className="absolute inset-0 lg:hidden"
         style={{
           background:
-            'linear-gradient(to top, rgba(4,69,95,0.55) 0%, rgba(4,69,95,0.25) 40%, rgba(4,69,95,0.0) 70%)',
+            'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.60) 40%, rgba(4,69,95,0.20) 75%)',
         }}
         aria-hidden="true"
       />
@@ -137,7 +137,7 @@ export function EditorialHero() {
         className="absolute inset-0 hidden lg:block"
         style={{
           background:
-            'linear-gradient(to right, rgba(4,69,95,0.65) 0%, rgba(4,69,95,0.30) 35%, rgba(4,69,95,0.0) 60%)',
+            'linear-gradient(to right, rgba(4,69,95,0.88) 0%, rgba(4,69,95,0.60) 45%, rgba(4,69,95,0.15) 70%)',
         }}
         aria-hidden="true"
       />

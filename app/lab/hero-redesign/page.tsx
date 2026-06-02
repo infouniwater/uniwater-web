@@ -91,7 +91,7 @@ function VariantD() {
         className="absolute inset-0 lg:hidden"
         style={{
           background:
-            'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)',
+            'linear-gradient(to top, rgba(4,69,95,0.95) 0%, rgba(4,69,95,0.78) 40%, rgba(4,69,95,0.30) 80%)',
         }}
         aria-hidden="true"
       />
@@ -99,7 +99,7 @@ function VariantD() {
         className="absolute inset-0 hidden lg:block"
         style={{
           background:
-            'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)',
+            'linear-gradient(to right, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 45%, rgba(4,69,95,0.25) 75%)',
         }}
         aria-hidden="true"
       />
@@ -207,7 +207,7 @@ function VariantE() {
         className="absolute inset-0 lg:hidden"
         style={{
           background:
-            'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 65%)',
+            'linear-gradient(to top, rgba(4,69,95,0.95) 0%, rgba(4,69,95,0.78) 40%, rgba(4,69,95,0.30) 80%)',
         }}
         aria-hidden="true"
       />
@@ -215,7 +215,7 @@ function VariantE() {
         className="absolute inset-0 hidden lg:block"
         style={{
           background:
-            'linear-gradient(to right, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.55) 35%, rgba(4,69,95,0.0) 60%)',
+            'linear-gradient(to right, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 45%, rgba(4,69,95,0.25) 75%)',
         }}
         aria-hidden="true"
       />
