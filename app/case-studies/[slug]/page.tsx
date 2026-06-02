@@ -122,9 +122,9 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
       </Section>
 
       {/* Outcomes */}
-      <Section padding="default" tone="navy">
-        <div className="mb-12 max-w-3xl">
-          <div className="text-eyebrow font-medium uppercase text-soft mb-4">Outcomes</div>
+      <Section padding="default" tone="navy" image={{ stem: 'industrial' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Outcomes</Eyebrow>
           <Heading level={2} inverse>By the numbers, after handover.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">

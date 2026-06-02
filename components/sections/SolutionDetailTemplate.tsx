@@ -239,9 +239,9 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
 
       {/* 4. Optional infographic embed — for the catalogue-mapped solutions */}
       {installContent.infographic && (
-        <Section tone="navy" padding="default">
-          <div className="max-w-2xl mb-10">
-            <Eyebrow className="text-soft mb-4">{installContent.infographic.eyebrow}</Eyebrow>
+        <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+          <div className="max-w-2xl mb-10 flex flex-col gap-4">
+            <Eyebrow inverse>{installContent.infographic.eyebrow}</Eyebrow>
             <Heading level={2} inverse>
               {installContent.infographic.headline}
             </Heading>

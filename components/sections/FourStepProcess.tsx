@@ -20,7 +20,7 @@ export function FourStepProcess({ id }: { id?: string }) {
     // 2026-06-02: promoted to dark for strict D L D L D L homepage
     // alternation. The engineer-icon process steps render inverse so
     // the icons sit on navy with offwhite tone.
-    <Section padding="default" tone="navy" id={id}>
+    <Section padding="default" tone="navy" id={id} image={{ stem: 'utility' }}>
       <div className="max-w-3xl mb-10 md:mb-14 flex flex-col gap-4">
         <Eyebrow inverse>Our process</Eyebrow>
         <Heading level={2} inverse>What we do.</Heading>

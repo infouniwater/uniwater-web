@@ -36,7 +36,7 @@ export default function CitiesIndex() {
         </div>
       </section>
 
-      <Section tone="navy" padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
         <div className="max-w-5xl mx-auto">
           <NineCityMap />
         </div>

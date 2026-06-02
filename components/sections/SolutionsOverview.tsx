@@ -56,7 +56,7 @@ export function SolutionsOverview() {
     // 2026-06-02: promoted to dark for strict D L D L D L homepage
     // alternation. Card photos stay portrait; the navy frame around
     // them gives the catalogue a gallery-wall feel.
-    <Section tone="navy" padding="default" id="solutions-overview">
+    <Section tone="navy" padding="default" id="solutions-overview" image={{ stem: 'plant-room' }}>
       <div className="mb-8 md:mb-14 max-w-3xl flex flex-col gap-4">
         <Eyebrow inverse>Catalogue</Eyebrow>
         <Heading level={2} inverse>
@@ -78,7 +78,7 @@ export function SolutionsOverview() {
             href={solution.href}
             className="group flex flex-col gap-3 sm:gap-4"
           >
-            <div className="relative w-full overflow-hidden bg-navy/40 aspect-[4/3] sm:aspect-[3/4]">
+            <div className="relative w-full overflow-hidden bg-navy/40 aspect-[3/4] sm:aspect-[3/4]">
               <Image
                 src={solution.imgSrc}
                 alt={solution.imgAlt}

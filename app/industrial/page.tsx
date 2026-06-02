@@ -156,7 +156,7 @@ export default function IndustrialPage() {
       </Section>
 
       {/* Where we work — important section, kept dark per the rule. */}
-      <Section tone="navy" padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Where we work</Eyebrow>
           <Heading level={2} inverse>Three categories. One protocol.</Heading>
@@ -218,7 +218,7 @@ export default function IndustrialPage() {
       </Section>
 
       {/* Applications */}
-      <Section tone="navy" padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 flex flex-col gap-4">
             <Eyebrow inverse>Applications</Eyebrow>
@@ -262,7 +262,7 @@ export default function IndustrialPage() {
       </Section>
 
       {/* Technical edge — USP, kept dark per "important sections dark" rule. */}
-      <Section tone="navy" padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>The technical edge</Eyebrow>
           <Heading level={2} inverse>Four things commercial buyers should ask.</Heading>
@@ -300,7 +300,7 @@ export default function IndustrialPage() {
       </Section>
 
       {/* Track record — proof, kept dark per "important sections dark" rule. */}
-      <Section tone="navy" padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Track record</Eyebrow>
           <Heading level={2} inverse>What we&rsquo;ve put in. Where it runs.</Heading>

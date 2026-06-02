@@ -122,7 +122,7 @@ export default function ResidentialPage() {
           sections in dark view" rule. This is the residential page's
           entry point for problem-aware visitors; the editorial
           treatment matches the hero's voice. */}
-      <Section tone="navy" padding="default">
+      <Section tone="navy" padding="default" image={{ stem: 'utility' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Start with the problem</Eyebrow>
           <Heading level={2} inverse>What are you trying to solve?</Heading>

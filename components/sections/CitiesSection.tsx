@@ -15,7 +15,7 @@ export function CitiesSection() {
   return (
     // 2026-06-02: dark per strict D L D L D L homepage alternation.
     // NineCityMap is designed for a navy canvas, so it sits flush.
-    <Section tone="navy" padding="default">
+    <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-2 flex flex-col gap-4">
           <Eyebrow inverse>Where we work</Eyebrow>

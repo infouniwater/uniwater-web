@@ -114,7 +114,7 @@ export default function WhyUniwaterPage() {
           dark view" + alternation cadence. The USP triple is the
           page's biggest single statement; the editorial dark
           treatment matches its weight. */}
-      <Section padding="default" tone="navy">
+      <Section padding="default" tone="navy" image={{ stem: 'utility' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>The three claims</Eyebrow>
           <Heading level={2} inverse>Three things. We repeat them across every page.</Heading>
@@ -160,7 +160,7 @@ export default function WhyUniwaterPage() {
           earns the editorial dark treatment. Accordion still renders
           on a light card surface inside the dark section so the
           interactive expand/collapse stays legible. */}
-      <Section padding="default" tone="navy">
+      <Section padding="default" tone="navy" image={{ stem: 'plant-room' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>How we compare</Eyebrow>
           <Heading level={2} inverse>Which brand is right for which problem?</Heading>

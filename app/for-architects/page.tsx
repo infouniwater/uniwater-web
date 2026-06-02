@@ -184,7 +184,7 @@ export default function ForArchitectsPage() {
         </div>
       </Section>
 
-      <Section padding="default" tone="navy">
+      <Section padding="default" tone="navy" image={{ stem: 'bathroom' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-4">
             <div className="text-eyebrow font-medium uppercase text-soft mb-4">Component supply</div>

@@ -54,7 +54,7 @@ export function InstallationVersatility() {
               {/* aspect: landscape on mobile (shorter card, section fits
                   closer to a single mobile frame), portrait sm+ where
                   there's vertical room. */}
-              <div className="relative w-full overflow-hidden bg-subtle aspect-[4/3] sm:aspect-[3/4]">
+              <div className="relative w-full overflow-hidden bg-subtle aspect-[3/4] sm:aspect-[3/4]">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
