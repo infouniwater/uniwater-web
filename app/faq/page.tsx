@@ -65,10 +65,6 @@ const CATEGORIES = [
         q: 'What does a whole-house system cost?',
         a: 'HomeSoft starts at \u20b91,00,000 MRP for the 2K LPH base. 4K and 6K LPH four-stage trains with iron pre-treatment scale up; final price is set at survey.',
       },
-      {
-        q: 'Do you offer EMI?',
-        a: 'No. Premium homeowners typically pay outright; we don&rsquo;t want to set up a mass-market financing relationship for what is a long-term service engagement.',
-      },
     ],
   },
   {

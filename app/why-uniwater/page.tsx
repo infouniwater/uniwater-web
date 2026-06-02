@@ -199,7 +199,7 @@ export default function WhyUniwaterPage() {
                 ['Largest range.', 'Internal pride. Translates to: 100+ engineered configurations \u2014 surveyed to your home.'],
                 ['Patented technology.', 'Engineer-led brands don\u2019t lead with branded acronyms. We use technical names where they earn trust.'],
                 ['#1 in India.', 'Aquaguard owns that category claim. We don\u2019t compete on it.'],
-                ['EMI / exchange / 20% off.', 'Mass-market signalling. We don\u2019t discount; we survey.'],
+                ['Exchange offers / 20% off.', 'Mass-market signalling. We don\u2019t discount; we survey.'],
               ].map(([label, body]) => (
                 <li key={label} className="border-b border-hairline py-5 flex flex-col gap-2">
                   <div className="text-h3 font-semibold text-navy">{label}</div>

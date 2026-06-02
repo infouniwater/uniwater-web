@@ -137,11 +137,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               <p className="text-caption text-offwhite/70 mt-1">
                 From{' '}
                 <span className="text-offwhite font-medium">{formatINR(solution.priceFromINR)}</span>
-                . Final price after free survey. EMI from{' '}
-                <span className="text-offwhite font-medium">
-                  {formatINR(Math.round(solution.priceFromINR / 12))}/month
-                </span>{' '}
-                via Bajaj Finserv / Snapmint.
+                . Final price after the free survey.
               </p>
             )}
             <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">

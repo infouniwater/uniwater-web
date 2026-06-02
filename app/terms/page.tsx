@@ -65,7 +65,6 @@ export default function TermsPage() {
               <li>— Quotes are valid for 30 days from issue, unless explicitly extended in writing.</li>
               <li>— All prices on this website are indicative starting prices for residential systems. The final price is set after the survey and depends on your water chemistry, household demand, and install constraints.</li>
               <li>— Prices include GST at the prevailing rate (currently 18% for water-treatment systems) unless otherwise stated.</li>
-              <li>— EMI options shown on the site (Bajaj Finserv, Snapmint) are facilitated by those third-party lenders; their own terms, eligibility, and credit decisions apply.</li>
               <li>— On order confirmation, we require 50% advance to schedule the installation. The balance is payable on the day of handover. Commercial / industrial / institutional payment milestones are agreed in writing per project.</li>
               <li>— Acceptable payment methods: UPI, Razorpay (cards, net banking), and direct bank transfer to the account named on the invoice. We do not accept cash for orders above ₹2,00,000 (per Income Tax Act §269ST).</li>
             </ul>
