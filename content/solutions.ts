@@ -129,7 +129,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
         description: 'For TDS below 200 ppm. Natural minerals stay; pathogens go.',
       },
       {
-        name: 'Centralised 25\u201350\u2013100 LPH',
+        name: 'Centralised 25 / 50 / 100 LPH',
         subtitle: 'Plant room',
         description: 'For villas, offices, schools, clinics. Drinking-quality at scale.',
       },
@@ -148,26 +148,22 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'Iron in drinking water has a metallic taste even at low concentrations. Tea and coffee suffer first.',
       'Borewell water is the usual source, but old galvanised municipal pipes can deliver it too.',
     ],
-    // priceFromINR intentionally omitted \u2014 this product ships at three
-    // tiers (bathroom from \u20b914k, whole-house from ~\u20b91L, industrial
-    // from much higher), and a single "From \u20b914,000" anchor in the
-    // hero misleads visitors who arrived looking for whole-house.
-    // Per-tier costs are quoted after the free survey.
+    // priceFromINR intentionally omitted \u2014 this product ships at two
+    // residential tiers (bathroom from ~\u20b914k, whole-house from ~\u20b91L)
+    // and a single "From \u20b914,000" anchor in the hero misleads visitors
+    // who arrived looking for whole-house. Per-tier costs are quoted
+    // after the free survey. Industrial / building-scale iron removal
+    // is sized at /industrial, not here.
     configurations: [
       {
-        name: 'Bathroom Mono / Duo / Trio',
-        subtitle: 'Per-bathroom',
-        description: 'For when one or two bathrooms are affected.',
+        name: 'Per-bathroom',
+        subtitle: 'Single feed, ceiling / niche / shaft',
+        description: 'For when one or two bathrooms are affected. Iron-removal media at the bathroom feed only.',
       },
       {
-        name: 'Whole-house 2K / 4K / 6K LPH',
-        subtitle: 'Inlet',
-        description: 'Treats every tap from a single point. The right answer for most borewell-fed homes.',
-      },
-      {
-        name: 'Industrial 8K\u201330K LPH',
-        subtitle: 'Building / commercial',
-        description: 'Buildings, complexes, hotels, hospitals.',
+        name: 'Whole-house inlet',
+        subtitle: '2K / 4K / 6K LPH',
+        description: 'Treats every tap from a single point. The right answer for most borewell-fed homes \u2014 and the right place for iron removal in the HomeSoft train: stage one, upstream of softening and carbon.',
       },
     ],
     installContext: 'pretreatment-stage',
@@ -179,23 +175,23 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     shortHeadline:
       'The single biggest improvement to a home\u2019s water. The unglamorous workhorse. The one most homes don\u2019t have.',
     problemBands: [
-      'Hard water dries skin, dulls hair, stains kurtas. Same family, same routine, different water.',
-      'Geyser elements scale. Heating times lengthen. Eventually elements burn out.',
-      'Washing machines and dishwashers fail early. Detergent doesn\u2019t lather. Cycle times rise.',
-      'Soap consumption doubles on hard water without anyone noticing. Costs compound silently.',
+      'Hardness is calcium and magnesium dissolved in the supply. Ion-exchange swaps them for sodium \u2014 clean chemistry, decades-old method, still the single best lever for everything downstream.',
+      'Geyser elements scale. Heating times lengthen. Eventually elements burn out \u2014 usually replaced under warranty once, paid for the second time.',
+      'Washing machines, dishwashers, and laundry machines run on shorter lifespans on hard water. The motor isn\u2019t the failure; the heating coil is.',
+      'Salt regeneration is the cost of softness. Brine on a schedule, salt top-up rolled into the AMC, a few rupees a day to keep the rest of the house alive.',
     ],
     // priceFromINR intentionally omitted — multi-tier (see iron-filter
     // note above). Per-tier prices are quoted after the free survey.
     configurations: [
       {
-        name: 'Bathroom Mono / Duo / Trio',
-        subtitle: 'Per-bathroom',
-        description: 'Local softening at the bathroom feed. Manual or automatic regeneration.',
+        name: 'Per-bathroom',
+        subtitle: 'Single feed, ceiling / niche / cabinet',
+        description: 'Local softening at the bathroom feed. Manual or automatic brine regeneration.',
       },
       {
-        name: 'Whole-house 2K / 4K / 6K LPH',
-        subtitle: 'Inlet',
-        description: 'Soft water to every tap. Brine regeneration on a schedule.',
+        name: 'Whole-house inlet',
+        subtitle: '2K / 4K / 6K LPH',
+        description: 'Soft water to every tap — the kitchen, the washing machine, the garden tap. Brine regeneration on a schedule; salt top-up rolled into the AMC.',
       },
     ],
     installContext: 'specialised-media',
@@ -216,18 +212,18 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     // note above). Per-tier prices are quoted after the free survey.
     configurations: [
       {
-        name: 'Bathroom Mono / Duo / Trio',
-        subtitle: 'Per-bathroom',
-        description: 'Pre-treatment for a single feed.',
+        name: 'Per-bathroom',
+        subtitle: 'Single feed',
+        description: 'Pre-treatment for a single feed. Spun-polypropylene cartridge in a stainless housing, replaced on a quarterly cadence.',
       },
       {
-        name: 'Whole-house 2K / 4K / 6K LPH',
-        subtitle: 'Inlet',
-        description: 'First stage of the HomeSoft four-stage train.',
+        name: 'Whole-house inlet',
+        subtitle: '2K / 4K / 6K LPH',
+        description: 'Stage one upstream of every other media filter on the line — iron, softening, carbon, RO. Without it, downstream media fails years early.',
       },
     ],
     installContext: 'pretreatment-stage',
-    related: ['iron-filter', 'water-softener', 'whole-house-water-filter'],
+    related: ['iron-filter', 'water-softener', 'whole-house-water-filter', 'drinking-water-solution'],
   },
   'activated-carbon-filter': {
     slug: 'activated-carbon-filter',
@@ -244,14 +240,14 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     // note above). Per-tier prices are quoted after the free survey.
     configurations: [
       {
-        name: 'Bathroom Mono / Duo / Trio',
-        subtitle: 'Per-bathroom',
-        description: 'Removes chlorine taste at the bathroom feed.',
+        name: 'Per-bathroom',
+        subtitle: 'Single feed',
+        description: 'Coconut-shell activated carbon at the bathroom feed. Removes chlorine taste and the residual chemical smell from the shower.',
       },
       {
-        name: 'Whole-house 2K / 4K / 6K LPH',
-        subtitle: 'Inlet',
-        description: 'Third stage of the HomeSoft four-stage train.',
+        name: 'Whole-house inlet',
+        subtitle: '2K / 4K / 6K LPH',
+        description: 'Sits after sediment + iron + softening on the HomeSoft train. Polishes the supply before it reaches kitchen RO / UF or downstream taps.',
       },
     ],
     installContext: 'pretreatment-stage',
