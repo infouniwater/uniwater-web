@@ -19,15 +19,15 @@ export const metadata: Metadata = {
 const BENEFITS = [
   {
     title: 'Spec into the plan, not after tile.',
-    body: 'A whole-house treatment system designed during construction routes plumbing cleanly, sites the plant in the utility area, and stays invisible. Specified after tile is repair work. Specified before tile is engineering.',
+    body: 'Designed during construction, the system routes cleanly and stays invisible. Specified after tile is repair work.',
   },
   {
     title: 'A single supplier across the build.',
-    body: 'One survey. One BOM. One handover. One AMC. From bathroom-level BathSoft up to building inlet WTP for the whole project, we are the same engineering team — not three vendors.',
+    body: 'One survey, one BOM, one handover, one AMC — from BathSoft to building-inlet WTP. Not three vendors.',
   },
   {
     title: 'Documentation that holds up to scrutiny.',
-    body: 'DWG vessel footprints, BIM blocks for the major capacities, install-location drawings, technical PDFs for procurement. Submittal-grade, version-controlled, available before tender.',
+    body: 'DWG, BIM, install drawings, submittal-grade PDFs. Version-controlled, available before tender.',
   },
 ];
 
@@ -44,22 +44,22 @@ const PROCESS = [
   {
     n: '01',
     title: 'Brief us early.',
-    body: 'A 15-minute call during DD or early CD is enough. Share the brief — number of bathrooms, water source, project location — and we send back a tentative system spec for your drawings.',
+    body: 'A 15-minute call at DD or early CD. Share bathrooms, water source, project location — we send back a tentative system spec.',
   },
   {
     n: '02',
     title: 'Spec into the drawings.',
-    body: 'We supply DWG footprints, BIM blocks, and install-location drawings sized to your project. Your team integrates them into plumbing, electrical, and structural sheets.',
+    body: 'DWG footprints, BIM blocks, install-location drawings sized to your project. Your team integrates into plumbing, electrical, structural sheets.',
   },
   {
     n: '03',
     title: 'Site survey + free water test.',
-    body: 'Before installation begins, our engineer visits the site, runs the water test, and confirms the design. Adjustments documented and shared with your team.',
+    body: 'Engineer visits site, tests water, confirms design. Adjustments documented and shared.',
   },
   {
     n: '04',
     title: 'Install + handover + AMC.',
-    body: 'Our team installs, commissions, and signs off the system. Comprehensive AMC starts at handover. Your client gets the same engineering team for the next decade.',
+    body: 'We install, commission, sign off. Comprehensive AMC starts at handover. Same team for the next decade.',
   },
 ];
 
@@ -150,7 +150,7 @@ export default function ForArchitectsPage() {
           <Eyebrow className="mb-4">Spec library</Eyebrow>
           <Heading level={2}>Everything you need on your drawings.</Heading>
           <Body className="text-mute mt-4">
-            DWG, BIM, install drawings, and technical PDFs covering the full residential and building range. Submittal-grade documentation, version-controlled, shared by email on request. A self-serve partner portal is in development as a separate product.
+            DWG, BIM, install drawings, technical PDFs. Submittal-grade, version-controlled, shared by email on request. A self-serve partner portal is in development.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
