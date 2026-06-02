@@ -189,21 +189,23 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       </Section>
 
       {/* 3. How Uniwater solves it */}
-      <Section tone="subtle" padding="default">
-        <div className="max-w-3xl mb-8">
-          <Eyebrow className="mb-4">How we solve it</Eyebrow>
-          <Heading level={2}>
+      {/* 2026-06-02: flipped DARK with image for strict D L D L
+          alternation across the template. */}
+      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+        <div className="max-w-3xl mb-8 flex flex-col gap-4">
+          <Eyebrow inverse>How we solve it</Eyebrow>
+          <Heading level={2} inverse>
             Sized to the water, the house, and the people in it.
           </Heading>
         </div>
-        <div className="max-w-reading">
-          <Lede className="text-mute mb-6">
+        <div className="max-w-reading flex flex-col gap-6">
+          <Lede inverse className="text-offwhite/85">
             Every Uniwater {solution.navLabel.toLowerCase()} starts with a free water test and a site survey. The chemistry decides the media. The household decides the capacity. The architecture decides where it goes.
           </Lede>
-          <Body className="text-mute mb-6">
+          <Body inverse className="text-offwhite/80">
             Catalogue sizes are starting points, not the sale. Our 17-rule auto-suggest engine generates a bill of materials specific to your water analysis, pressure, and draw &mdash; not a generic SKU pulled off a shelf.
           </Body>
-          <EditorialAccent>
+          <EditorialAccent inverse>
             Engineered, not bought off a shelf.
           </EditorialAccent>
         </div>
@@ -270,12 +272,12 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 6. Where it goes */}
-      <Section tone="subtle" padding="default">
-        <div className="mb-12 max-w-3xl">
-          <Eyebrow className="mb-4">Where it goes</Eyebrow>
-          <Heading level={2}>{installContent.headline}</Heading>
-          <Body className="text-mute mt-4">{installContent.body}</Body>
+      {/* 6. Where it goes — flipped DARK with image overlay for alternation. */}
+      <Section tone="navy" padding="default" image={{ stem: 'utility' }}>
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow inverse>Where it goes</Eyebrow>
+          <Heading level={2} inverse>{installContent.headline}</Heading>
+          <Body inverse className="text-offwhite/80 mt-2">{installContent.body}</Body>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {installContent.cards.map((card, i) => {
@@ -283,7 +285,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
             return (
               <div key={i} className="flex flex-col gap-4">
                 {photo ? (
-                  <div className="w-full overflow-hidden border border-hairline" style={{ aspectRatio: '4 / 3' }}>
+                  <div className="w-full overflow-hidden border border-offwhite/15" style={{ aspectRatio: '4 / 3' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={photo.src}
@@ -301,8 +303,8 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                   />
                 )}
                 <div>
-                  <h3 className="text-h3 font-normal text-navy mb-2">{card.title}</h3>
-                  <Caption className="text-mute">{card.body}</Caption>
+                  <h3 className="text-h3 font-normal text-offwhite mb-2 [text-wrap:balance]">{card.title}</h3>
+                  <Caption inverse>{card.body}</Caption>
                 </div>
               </div>
             );

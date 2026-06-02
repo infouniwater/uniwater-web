@@ -27,9 +27,9 @@ const SERVICE_PILLARS = [
 
 export function ServiceSection() {
   return (
-    <Section tone="inverse" padding="loose">
+    <Section tone="inverse" padding="loose" image={{ stem: 'utility' }}>
       <div className="max-w-3xl mb-8 md:mb-12">
-        <Eyebrow className="text-soft mb-5">Service is the system</Eyebrow>
+        <Eyebrow inverse className="mb-5">Service is the system</Eyebrow>
         <Heading level={2} inverse className="text-display-m md:text-[56px] font-light leading-tight">
           Most water companies show up when something breaks. We show up every month.
         </Heading>

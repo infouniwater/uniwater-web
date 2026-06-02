@@ -125,22 +125,10 @@ export function EditorialHero() {
           mobile (text sits at the bottom); left-to-right on desktop
           (text sits at the left). Both stop at ~60% so the right /
           top side of the image keeps its colour. */}
-      <div
-        className="absolute inset-0 lg:hidden"
-        style={{
-          background:
-            'linear-gradient(to top, rgba(4,69,95,0.85) 0%, rgba(4,69,95,0.60) 40%, rgba(4,69,95,0.20) 75%)',
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 hidden lg:block"
-        style={{
-          background:
-            'linear-gradient(to right, rgba(4,69,95,0.88) 0%, rgba(4,69,95,0.60) 45%, rgba(4,69,95,0.15) 70%)',
-        }}
-        aria-hidden="true"
-      />
+      {/* 2026-06-02: scrim layers removed at Rajat's request -- the
+          rotating slides are already pre-scrimmed at source (the
+          source PNGs ship with a navy tint baked in). Adding CSS
+          gradients on top of them was double-darkening the hero. */}
 
       {/* Content */}
       <div className="relative h-full container-uw flex items-end lg:items-center">
