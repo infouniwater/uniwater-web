@@ -236,6 +236,46 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
   },
 };
 
+/**
+ * Keyword-led SEO title + meta description per solution. Kept separate from
+ * the on-page content (navLabel / shortHeadline) on purpose: titles and metas
+ * are invisible to visitors and must carry the search query ("water softener",
+ * "iron filter") that the brand-led nicknames (BathSoft / HomeSoft) don't. The
+ * title template appends " | Uniwater" automatically.
+ */
+export const SOLUTION_SEO: Record<SolutionSlug, { title: string; description: string; anchor: string }> = {
+  'bathroom-filter': {
+    title: 'Bathroom Water Filter & Softener (BathSoft)',
+    description:
+      'BathSoft bathroom water filters remove hardness, iron, and chlorine at the shower feed — hidden in the ceiling, niche, or cabinet. Surveyed, installed, and serviced monthly across India & Nepal.',
+    anchor: 'bathroom water filter',
+  },
+  'whole-house-water-filter': {
+    title: 'Whole-House Water Softener & Filter (HomeSoft)',
+    description:
+      'HomeSoft whole-house water softeners and four-stage filtration — sediment, iron, carbon, softening — treat every tap from a single inlet. Surveyed, installed, and serviced monthly by Uniwater.',
+    anchor: 'whole-house water filter',
+  },
+  'drinking-water-solution': {
+    title: 'Drinking Water RO & UV Purifier Systems',
+    description:
+      'Kitchen RO and UF + UV drinking-water systems sized by a free TDS test — re-mineralised, under-sink or centralised. Engineered and serviced by Uniwater across India & Nepal.',
+    anchor: 'drinking water system',
+  },
+  'iron-filter': {
+    title: 'Iron Removal Filter for Borewell Water',
+    description:
+      'Iron-removal filters that clear yellow/orange staining and metallic taste from borewell water, fitted upstream of softening. Surveyed, installed, and serviced by Uniwater.',
+    anchor: 'iron removal filter',
+  },
+  'water-softener': {
+    title: 'Water Softener for Hard Water',
+    description:
+      'Water softeners that stop scale on geysers, fittings, and glassware by removing hardness at the source. Sized at survey; iron handled upstream. Installed and serviced by Uniwater.',
+    anchor: 'water softener',
+  },
+};
+
 // Helpers
 export const SOLUTION_LIST = Object.values(SOLUTIONS);
 // Three named product families a homeowner picks from. Iron /

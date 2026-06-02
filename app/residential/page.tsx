@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
@@ -13,11 +14,13 @@ import { PincodeCheck } from '@/components/ui/PincodeCheck';
 import { SOLUTIONS } from '@/content/solutions';
 import { CITIES } from '@/content/site';
 
-export const metadata: Metadata = {
-  title: 'Water systems for the home',
+export const metadata: Metadata = buildMetadata({
+  path: '/residential',
+  title: 'Home Water Softeners, Iron Filters & RO',
   description:
     'BathSoft bathroom systems, HomeSoft whole-house systems, and drinking water for premium Indian homes. Surveyed, engineered, installed, and serviced monthly.',
-};
+  image: '/og/og-home.png',
+});
 
 // Problems → solutions. Iron / softening / scale are all answered by the
 // whole-house inlet (HomeSoft pre-treatment train), not by standalone

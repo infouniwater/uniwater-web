@@ -58,10 +58,14 @@ const bodoni = Bodoni_Moda({
 export const metadata: Metadata = {
   metadataBase: new URL('https://uniwater.co.in'),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
-    template: `%s — ${SITE.name}`,
+    // Keyword-led, not brand-led: someone searching "water softener" or
+    // "iron filter" needs the query reflected in the title. The H1 and
+    // on-page voice are untouched — titles are invisible to visitors.
+    default: 'Water Softeners, Iron Filters & RO — Surveyed & Serviced | Uniwater',
+    template: `%s | ${SITE.name}`,
   },
-  description: SITE.description,
+  description:
+    'Whole-house water softeners, iron-removal filters, and RO drinking-water systems — surveyed before sold, installed, and serviced monthly. Engineered home water across Kolkata and 8 cities in India & Nepal.',
   // Canonical is emitted per-route by middleware.ts via an HTTP `Link`
   // header (read by Google Search). Not declared statically here, because
   // Next.js would otherwise resolve a root-level alternates.canonical to

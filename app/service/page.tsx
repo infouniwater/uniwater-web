@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from '@/components/ui/Typography';
@@ -9,13 +10,13 @@ import { ServiceSection } from '@/components/sections/ServiceSection';
 import { SERVICE_PROTOCOL, AMC_TIERS, TWELVE_MONTHS } from '@/content/service';
 import { cn } from '@/lib/cn';
 
-export const metadata: Metadata = {
-  title: 'Service',
+export const metadata: Metadata = buildMetadata({
+  path: '/service',
+  title: 'Water System Service & AMC',
   description:
     'The discipline that decides year four. Monthly preventive visits, same-day reports, 24-hour SLA on flagged faults. Uniwater\u2019s service protocol explained.',
-  openGraph: { images: ['/og/og-service.png'] },
-  twitter: { images: ['/og/og-service.png'] },
-};
+  image: '/og/og-service.png',
+});
 
 export default function ServicePage() {
   return (

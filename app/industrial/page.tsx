@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
@@ -13,11 +14,13 @@ import Image from 'next/image';
 import { submitRFQ } from '@/app/actions/leads';
 import { PincodeCheck } from '@/components/ui/PincodeCheck';
 
-export const metadata: Metadata = {
-  title: 'Industrial &amp; institutional water systems',
+export const metadata: Metadata = buildMetadata({
+  path: '/industrial',
+  title: 'Industrial & Institutional Water Treatment Plants',
   description:
     'Engineered water systems for industry, hospitality, healthcare. 8,000 LPH building plants to 50,000 LPH industrial RO. AMC-priced.',
-};
+  image: '/og/og-home.png',
+});
 
 const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
   '01': {

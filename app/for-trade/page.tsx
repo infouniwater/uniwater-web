@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
@@ -19,11 +20,13 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
  * Rajat's brief.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
+  path: '/for-trade',
   title: 'For the trade — dealers, architects, plumbers',
   description:
     'Three ways to work with Uniwater. Sanitary-ware dealers stock the bathroom filter customers ask for. Architects spec the system into the plan. Plumbers join the partner programme. Pick the lane that fits you.',
-};
+  image: '/og/og-home.png',
+});
 
 interface TradeAudience {
   eyebrow: string;

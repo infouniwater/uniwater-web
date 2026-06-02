@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from '@/components/ui/Typography';
@@ -8,13 +9,13 @@ import { Card } from '@/components/ui/Card';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { COMPONENT_MANUFACTURERS } from '@/content/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
+  path: '/for-architects',
   title: 'For architects & interior designers',
   description:
     'Engineered home water specified into your projects — vessel footprints, BIM blocks, install drawings, technical PDFs. One survey-led partner across every build.',
-  openGraph: { images: ['/og/og-for-architects.png'] },
-  twitter: { images: ['/og/og-for-architects.png'] },
-};
+  image: '/og/og-for-architects.png',
+});
 
 const BENEFITS = [
   {

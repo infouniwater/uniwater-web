@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, EditorialAccent, Caption } from '@/components/ui/Typography';
 import { Photo } from '@/components/ui/Photo';
@@ -8,13 +9,13 @@ import { CitiesSection } from '@/components/sections/CitiesSection';
 import { NAMED_CLIENTS, CLIENT_LOGOS, STATS, SITE } from '@/content/site';
 import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: 'About',
+export const metadata: Metadata = buildMetadata({
+  path: '/about',
+  title: 'About Uniwater',
   description:
     'A water company built for premium homes. Founded 2020 in Kolkata. Now in 9 cities across India and Nepal.',
-  openGraph: { images: ['/og/og-about.png'] },
-  twitter: { images: ['/og/og-about.png'] },
-};
+  image: '/og/og-about.png',
+});
 
 const MILESTONES = [
   { year: '2020', body: 'Founded in Kolkata.' },

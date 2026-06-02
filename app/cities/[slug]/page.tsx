@@ -15,7 +15,7 @@ import { CITIES, PRIMARY_PHONE_HREF } from '@/content/site';
 import { CITY_CONTENT } from '@/content/cities';
 import { CITY_FAQS } from '@/content/faqs';
 import { CASE_STUDIES } from '@/content/case-studies';
-import { SOLUTIONS } from '@/content/solutions';
+import { SOLUTIONS, SOLUTION_SEO } from '@/content/solutions';
 import { localBusinessSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
 import { buildMetadata, resolveOgImage } from '@/lib/seo';
 
@@ -39,8 +39,8 @@ export async function generateMetadata({
   if (!content) return { title: 'City' };
   return buildMetadata({
     path: `/cities/${content.slug}`,
-    title: `${content.name} \u2014 Water systems`,
-    description: `Uniwater water systems in ${content.name}, ${content.country}. ${content.lede}`,
+    title: `Water Softener & Iron Filter in ${content.name}`,
+    description: `Water softeners, iron-removal filters, and RO drinking-water systems in ${content.name}, ${content.country} \u2014 surveyed before sold and serviced monthly by Uniwater\u2019s local team.`,
     image: resolveOgImage(content.slug, 'cities'),
   });
 }
@@ -230,7 +230,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
                 <h3 className="text-h3 font-semibold text-navy mb-3">{solution.navLabel}</h3>
                 <Caption className="text-mute">{solution.shortHeadline}</Caption>
                 <div className="mt-4 flex items-center gap-2 text-teal text-caption font-medium">
-                  <span>See solution</span>
+                  <span>See the {SOLUTION_SEO[slug].anchor}</span>
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                     <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -270,7 +270,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
                 href={`/case-studies/${featured.slug}`}
                 className="inline-flex items-center gap-2 text-teal text-caption font-medium whitespace-nowrap"
               >
-                <span>Read case study</span>
+                <span>Read the {featured.client} case study</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

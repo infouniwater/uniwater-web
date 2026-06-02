@@ -20,9 +20,10 @@ export function CityWaterTable({ citySlug, cityName }: { citySlug: string; cityN
         <Eyebrow className="mb-4">Water by locality</Eyebrow>
         <Heading level={2}>What the water reads, area by area in {cityName}.</Heading>
         <Body className="text-mute mt-4">
-          Indicative ranges based on Uniwater survey data — confirmed on site. The number
-          that decides your system is the one our engineer takes at your address, not the
-          band below.
+          Indicative ranges only — Kolkata from our field experience, other cities from
+          published regional groundwater studies. Groundwater varies borehole to borehole,
+          so the number that sizes your system is the one our engineer measures at your
+          address, not the band below.
         </Body>
       </div>
 

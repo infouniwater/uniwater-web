@@ -1,0 +1,31 @@
+# Uniwater
+
+> Uniwater Solutions Pvt Ltd is an engineered home-water company serving 9 cities across India and Nepal. We survey each home's actual water, then design, install, and monthly-service whole-house water softeners, iron-removal filters, bathroom filters, and RO/UV drinking-water systems. We engineer and install — we do not retail off-the-shelf purifiers.
+
+## Solutions
+- [Whole-house water softener & filter (HomeSoft)](https://uniwater.co.in/solutions/whole-house-water-filter): four-stage train — sediment, iron, carbon, softening — treating every tap from one inlet.
+- [Bathroom water filter & softener (BathSoft)](https://uniwater.co.in/solutions/bathroom-filter): hardness, iron, and chlorine removal at the bathroom feed, hidden in ceiling/niche/cabinet.
+- [Iron removal filter](https://uniwater.co.in/solutions/iron-filter): clears yellow/orange staining and metallic taste from borewell water; fitted upstream of softening.
+- [Water softener](https://uniwater.co.in/solutions/water-softener): removes hardness to stop scale on geysers, fittings, and glassware.
+- [Drinking water RO & UV systems](https://uniwater.co.in/solutions/drinking-water-solution): kitchen RO or UF+UV sized by a free TDS test; re-mineralised; under-sink or centralised.
+- [Industrial & institutional plants](https://uniwater.co.in/industrial): RO, DM, and building water-treatment plants from 500 to 50,000 LPH.
+
+## Cities served
+India: [Kolkata](https://uniwater.co.in/cities/kolkata), [Bhubaneswar](https://uniwater.co.in/cities/bhubaneswar), [Ranchi](https://uniwater.co.in/cities/ranchi), [Rourkela](https://uniwater.co.in/cities/rourkela), [Siliguri](https://uniwater.co.in/cities/siliguri), [Guwahati](https://uniwater.co.in/cities/guwahati), [Noida](https://uniwater.co.in/cities/noida). Nepal: [Kathmandu](https://uniwater.co.in/cities/kathmandu), [Biratnagar](https://uniwater.co.in/cities/biratnagar).
+
+## Key facts (commonly asked)
+- A water softener removes hardness (scale); it does NOT remove iron. Iron needs a dedicated iron-removal filter fitted upstream of the softener, or it fouls the resin.
+- Yellow/orange staining and a metallic taste are dissolved iron oxidising on contact with air — common in borewell-fed supply, treatable with an iron filter.
+- Every system is sized from a free on-site water survey (hardness, iron, TDS, pH tested on the spot), not sold off a catalogue.
+- Drinking water: TDS above ~500 ppm calls for RO; below ~200 ppm, UF + UV. Re-mineralisation follows RO.
+- Year-one AMC is included with every install; service is monthly preventive, not on-complaint.
+
+## Resources
+- [Solutions overview](https://uniwater.co.in/solutions)
+- [FAQ](https://uniwater.co.in/faq)
+- [Book a free survey](https://uniwater.co.in/book-survey)
+- [Testimonials](https://uniwater.co.in/testimonials)
+
+## Contact
+Uniwater Solutions Pvt Ltd, 316 Canal Street, Shribhumi, Kolkata 700048, West Bengal, India.
+GSTIN 19AADCU6172B1ZD · support@uniwater.co.in · +91 97487 45193 · WhatsApp 91 97487 45193

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, EditorialAccent } from '@/components/ui/Typography';
 import { Photo } from '@/components/ui/Photo';
@@ -7,13 +8,13 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { CustomerJourneyTimeline } from '@/components/sections/CustomerJourneyTimeline';
 import { FOUR_STEPS } from '@/content/education';
 
-export const metadata: Metadata = {
-  title: 'How it works',
+export const metadata: Metadata = buildMetadata({
+  path: '/how-it-works',
+  title: 'How It Works — Survey, Design, Install, Service',
   description:
     'From first water test to monthly service: the four-step Uniwater process. Surveyed, designed, installed, and serviced by one team.',
-  openGraph: { images: ['/og/og-how-it-works.png'] },
-  twitter: { images: ['/og/og-how-it-works.png'] },
-};
+  image: '/og/og-how-it-works.png',
+});
 
 const STEP_DETAIL = [
   {

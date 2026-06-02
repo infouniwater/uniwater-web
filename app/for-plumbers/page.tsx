@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
@@ -7,11 +8,13 @@ import { Photo } from '@/components/ui/Photo';
 import { Card } from '@/components/ui/Card';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
+  path: '/for-plumbers',
   title: 'For plumbers & installers',
   description:
     'Join the Uniwater plumber program. Earn for every install. Spec packs, install-day support, AMC handoff — you do the plumbing, we do the rest.',
-};
+  image: '/og/og-home.png',
+});
 
 const BENEFITS = [
   {

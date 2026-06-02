@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import { Suspense } from 'react';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
@@ -9,11 +10,13 @@ import { CONTACT, CITIES } from '@/content/site';
 import { submitContact } from '@/app/actions/leads';
 import { localBusinessSchema, jsonLd } from '@/lib/structured-data';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
+  path: '/contact',
   title: 'Contact',
   description:
     'Talk to Uniwater. Two phones, two emails, head office in Kolkata. Nine cities across India and Nepal.',
-};
+  image: '/og/og-home.png',
+});
 
 export default function ContactPage() {
   return (
