@@ -261,7 +261,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           <Heading level={2}>Everything to put it in. Everything to keep it running.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {INCLUDED_ITEMS.map((item) => (
+          {getIncludedItems(solution).map((item) => (
             <Card key={item.title}>
               <h3 className="text-h3 font-normal text-navy mb-3">{item.title}</h3>
               <Body className="text-mute">{item.body}</Body>
@@ -789,12 +789,22 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
         { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'HomeSoft on the terrace', caption: 'Penthouse, New Town, Kolkata. Terrace install with gravity feed.' },
       ];
     case 'iron-filter':
+      return [
+        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Iron filter as stage one of a HomeSoft train at a luxury villa', caption: 'Borewell-fed villa, Guwahati. Iron at 4 ppm; stage one of the pretreatment train.' },
+        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'Iron filter installed at the OHT inlet on a terrace', caption: 'Villa near Siliguri. Iron stripped at the OHT inlet, before everything downstream.' },
+        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Iron filter in a residential utility area', caption: 'Mid-rise apartment, Bhubaneswar. Borewell switchover; iron pre-treatment retrofitted.' },
+      ];
     case 'sediment-filter':
+      return [
+        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Sediment filter upstream of a softener and RO train at a luxury villa', caption: 'Villa near Guwahati. Sediment cartridge protecting a downstream softener bed.' },
+        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'Sediment filter at the terrace inlet, downstream of the OHT', caption: 'Villa near Siliguri. Spun-PP cartridge at the inlet; monsoon-grade sizing.' },
+        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Sediment filter in the residential utility area', caption: 'Apartment, Bhubaneswar. Sediment-first stage of a four-stage HomeSoft train.' },
+      ];
     case 'activated-carbon-filter':
       return [
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'HomeSoft 4-stage train in a luxury villa', caption: 'Borewell-fed villa, Guwahati. Iron-pre-treatment train.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'HomeSoft near the overhead water tank on the terrace', caption: 'Villa near Siliguri. Terrace install near the OHT.' },
-        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Mid-rise apartment, Bhubaneswar. Utility-room install.' },
+        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Activated carbon filter polishing supply at a luxury villa', caption: 'Villa near Guwahati. Carbon polish ahead of kitchen UF + UV.' },
+        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'Activated carbon filter near the OHT on a residential terrace', caption: 'Villa near Siliguri. Carbon stripping chlorine residual at the terrace inlet.' },
+        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Activated carbon filter in a residential utility area', caption: 'Apartment, Bhubaneswar. Carbon as stage three of the HomeSoft train; chlorine and chemical-taste polish.' },
       ];
     case 'drinking-water-solution':
       // Third slot intentionally falls through to the Photo placeholder
@@ -829,32 +839,137 @@ function getCutawayForSolution(slug: string): 'bathsoft' | 'homesoft' | 'commerc
 }
 
 
-const INCLUDED_ITEMS = [
-  {
-    title: 'Engineered vessel + media',
-    body: 'FRP or SS316 vessel, sized to your draw and chemistry. Media chosen for the specific problem.',
-  },
-  {
-    title: 'Controls & valves',
-    body: 'Manual or automatic regeneration. Pressure gauges and flow meters where they matter.',
-  },
-  {
+// Per-installContext "What's included" lists. Each list keeps the
+// generic Installation / Water-analysis / Warranty / AMC lines but
+// tailors the vessel-and-media line and the consumables line so each
+// solution feels engineered rather than templated.
+interface IncludedItem { title: string; body: string }
+
+function getIncludedItems(solution: Solution): IncludedItem[] {
+  const installation: IncludedItem = {
     title: 'Installation',
-    body: 'Plumbing, electrical, mounting, and commissioning. Documented before handover.',
-  },
-  {
+    body: 'Plumbing, electrical, mounting, and commissioning. Documented before handover with a written parameter log.',
+  };
+  const waterAnalysis: IncludedItem = {
     title: 'Water analysis',
-    body: 'Pre-install and post-install parameter readings. Filed with your quote.',
-  },
-  {
+    body: 'Pre-install and post-install parameter readings. Filed with your quote, repeated on every monthly service visit.',
+  };
+  const warranty: IncludedItem = {
     title: 'One-year warranty',
     body: 'All system components covered. Replacement, not repair-by-letter.',
-  },
-  {
-    title: 'One-year AMC included',
-    body: 'Monthly preventive service on Comprehensive / Premium tiers. Standard tier gets quarterly.',
-  },
-];
+  };
+
+  switch (solution.installContext) {
+    case 'bathroom-five-places':
+      return [
+        {
+          title: 'Engineered vessel + media',
+          body: 'FRP or SS316 cylinders sized to the bathroom feed. Media tuned to your specific water — hardness, low-level iron, chlorine residual.',
+        },
+        {
+          title: 'Hidden install accessories',
+          body: 'Mounting brackets, finish-panel hardware, and access provisions for false ceiling, niche, cabinet, or under-counter installs.',
+        },
+        installation,
+        waterAnalysis,
+        warranty,
+        {
+          title: 'One-year AMC included',
+          body: 'Monthly engineer visit on Comprehensive tier — same person, named, for the life of the contract.',
+        },
+      ];
+    case 'whole-house-inlet':
+      return [
+        {
+          title: 'Four-stage vessel train',
+          body: 'Sediment + iron + carbon + softening, sized to your 2K / 4K / 6K LPH draw. FRP vessels standard; SS316 upgrade on Premium tier.',
+        },
+        {
+          title: 'Brine tank + control panel',
+          body: 'Salt-water reservoir for softener regeneration. Manual or automatic controls per configuration.',
+        },
+        installation,
+        waterAnalysis,
+        warranty,
+        {
+          title: 'One-year AMC included',
+          body: 'Monthly engineer visit on Comprehensive tier. Salt top-up rolled into the AMC; no separate consumable bill.',
+        },
+      ];
+    case 'point-of-use':
+      return [
+        {
+          title: 'Engineered cartridge stack',
+          body: 'RO membrane + carbon polish + UV/UF as the chemistry needs. Re-mineralisation post-RO so the water doesn’t taste flat.',
+        },
+        {
+          title: 'Dedicated tap + storage',
+          body: 'Chrome dedicated tap (under-sink) or storage reservoir (centralised). All food-grade-rated plumbing.',
+        },
+        installation,
+        waterAnalysis,
+        warranty,
+        {
+          title: 'One-year AMC included',
+          body: 'Cartridge replacements + membrane flush + TDS check on every visit. Comprehensive tier covers consumables.',
+        },
+      ];
+    case 'pretreatment-stage':
+      return [
+        {
+          title: 'Specialised media vessel',
+          body: 'FRP or SS316 vessel sized for the duty cycle. Catalytic / oxidation / carbon media chosen at survey by feed-water analysis.',
+        },
+        {
+          title: 'Backwash valve + drain',
+          body: 'Manual or automatic backwash routine. Drain line sized so the regeneration cycle never backs up.',
+        },
+        installation,
+        waterAnalysis,
+        warranty,
+        {
+          title: 'One-year AMC included',
+          body: 'Monthly engineer visit — media inspection, backwash verification, downstream parameter check.',
+        },
+      ];
+    case 'specialised-media':
+      return [
+        {
+          title: 'Cation resin + vessel',
+          body: 'Strong-acid cation (SAC) resin in an FRP or SS316 vessel. Resin volume sized to peak draw plus a buffer.',
+        },
+        {
+          title: 'Brine tank + salt provision',
+          body: 'Salt-water reservoir on the regeneration line. Salt top-up is rolled into the AMC, not a separate bill.',
+        },
+        installation,
+        waterAnalysis,
+        warranty,
+        {
+          title: 'One-year AMC included',
+          body: 'Monthly engineer visit — hardness check downstream, regeneration verification, salt top-up.',
+        },
+      ];
+    case 'industrial-skid':
+      return [
+        {
+          title: 'Pre-piped skid',
+          body: 'Factory-assembled and tested. FRP or SS316 vessels per duty cycle. Internal piping in CPVC / SS316.',
+        },
+        {
+          title: 'Instrumentation',
+          body: 'Pressure, flow, and conductivity gauges where they matter. Single-line diagram filed with every quote.',
+        },
+        installation,
+        waterAnalysis,
+        warranty,
+        {
+          title: 'One-year AMC included',
+          body: 'Standard institutional cadence; SLA on flagged faults built into the contract.',
+        },
+      ];
+  }
+}
 
 function getInstallContent(solution: Solution) {
   switch (solution.installContext) {
@@ -864,13 +979,11 @@ function getInstallContent(solution: Solution) {
         body:
           'BathSoft is engineered for real Indian bathrooms \u2014 tight shafts, low ceilings, finished interiors. Specified at site survey. Decided before tile.',
         cards: FIVE_PLACES.map((p) => ({ title: p.location, body: p.description })),
-        infographic: {
-          eyebrow: 'The four-stage train',
-          headline: 'Sediment. Iron. Carbon. Softening.',
-          asset: 'homesoft-four-stage.svg',
-          description:
-            'Diagram of the four-stage HomeSoft train: sediment → iron → carbon → softening, with optional UV/UF polish for kitchen tap.',
-        },
+        // BathSoft is a single-point bathroom product family. The
+        // four-stage HomeSoft infographic belongs to whole-house
+        // surfaces, not here -- leaving infographic undefined hides
+        // the section on bathroom pages.
+        infographic: undefined,
       };
     case 'whole-house-inlet':
       return {
@@ -999,8 +1112,96 @@ function getInstallDurationAnswer(solution: Solution): string {
   }
 }
 
+// Per-solution Q&A that gets prepended to the generic list. Each solution
+// gets 1-2 questions specific to that product family so the FAQ never
+// reads as a copy-paste across every detail page.
+function getSolutionSpecificFaqs(solution: Solution): Array<{ q: string; a: string }> {
+  switch (solution.slug) {
+    case 'bathroom-filter':
+      return [
+        {
+          q: 'How does the system stay hidden after the bathroom is finished?',
+          a: 'Five canonical install patterns: false ceiling void, plumbing duct, wall cabinet, wall niche, under-counter. The pattern is chosen at site survey, before tile goes down. Once installed, there is no visible vessel on a wall.',
+        },
+        {
+          q: 'Why a per-bathroom system instead of one whole-house system?',
+          a: 'Whole-house treatment is the right answer for most homes \u2014 and the right place to spend \u20b91 lakh+. BathSoft makes sense when the architecture is already finished, when only one or two bathrooms have issues, or when the homeowner wants to start with the bathroom they actually use.',
+        },
+      ];
+    case 'whole-house-water-filter':
+      return [
+        {
+          q: 'What are the four stages of the HomeSoft train?',
+          a: 'Sediment removes particulate; iron removes dissolved iron and manganese; carbon adsorbs chlorine and organics; softening swaps calcium and magnesium for sodium. Order matters \u2014 sediment first protects everything downstream. Each stage is optional; the four together are the canonical residential build.',
+        },
+        {
+          q: 'How much space does a 2K / 4K / 6K LPH plant need?',
+          a: 'A 2K LPH plant fits in about 6\u00d74 ft. A 4K LPH in 8\u00d74 ft. A 6K LPH in 10\u00d75 ft. Plant rooms, utility corners, terraces, garden corners \u2014 five canonical install locations, decided at site survey.',
+        },
+      ];
+    case 'drinking-water-solution':
+      return [
+        {
+          q: 'How do I know whether I need RO or UF + UV?',
+          a: 'TDS decides. Above 500 ppm, RO is the right answer \u2014 followed by re-mineralisation so the water doesn\u2019t taste flat. Below 500 ppm, UF + UV preserves natural minerals while removing pathogens. The survey includes a free TDS test on the spot.',
+        },
+        {
+          q: 'What does "re-mineralised post-RO" mean? Is it healthier?',
+          a: 'RO strips everything \u2014 including the calcium and magnesium that give water its taste and contribute to mineral intake. A re-mineralisation cartridge after the RO membrane adds back trace minerals at controlled levels. Yes, it\u2019s healthier than bare RO water.',
+        },
+      ];
+    case 'iron-filter':
+      return [
+        {
+          q: 'Why does iron need to be removed before the softener?',
+          a: 'Iron fouls cation resin \u2014 coats the bead, blocks the exchange site, kills regeneration efficiency. A softener installed downstream of an unremoved iron load clogs within months, not years. Iron is always stage one of a pretreatment train.',
+        },
+        {
+          q: 'How long does iron media last between regeneration?',
+          a: 'Catalytic media regenerates on every backwash cycle \u2014 typically 2-3 days at residential loads, longer at low-iron loads. The vessel is sized at survey so the backwash schedule matches your draw without manual intervention.',
+        },
+      ];
+    case 'water-softener':
+      return [
+        {
+          q: 'How often does the softener need salt top-up?',
+          a: 'Depends on hardness and draw. A 2K LPH whole-house softener at typical Indian hardness needs salt every 4-6 weeks. The Comprehensive AMC includes salt top-up; no separate consumable bill.',
+        },
+        {
+          q: 'Is softened water safe to drink?',
+          a: 'Softened water has slightly elevated sodium from ion exchange. Within safe limits for healthy adults, but the drinking-water tap is usually run on a separate RO or UF + UV line \u2014 the kitchen is the one place where chemistry matters more than feel.',
+        },
+      ];
+    case 'sediment-filter':
+      return [
+        {
+          q: 'How often does the sediment cartridge need replacement?',
+          a: 'Quarterly under typical municipal loads; monthly during monsoon if you\u2019re on a borewell. The cartridge is consumable; replacement is rolled into the Comprehensive AMC.',
+        },
+        {
+          q: 'Why bother \u2014 can\u2019t I just clean the strainer at the tap?',
+          a: 'Tap strainers catch visible particulate. The damage from invisible particulate happens upstream \u2014 scratched valve seats, torn RO membranes, fouled softener beds. A spun-PP cartridge stops the damage at the inlet.',
+        },
+      ];
+    case 'activated-carbon-filter':
+      return [
+        {
+          q: 'How long does the carbon media last?',
+          a: 'Coconut-shell activated carbon lasts 12-18 months at typical residential loads before adsorption capacity drops. Replacement is scheduled into the AMC; no surprise service call.',
+        },
+        {
+          q: 'Does carbon remove pathogens too?',
+          a: 'No \u2014 carbon is for chlorine, chemical taste, and dissolved organics. Pathogens go to UV (residential drinking water) or chlorination (commercial). Carbon and UV are often paired on the kitchen line.',
+        },
+      ];
+    default:
+      return [];
+  }
+}
+
 function getFaqs(solution: Solution) {
   return [
+    ...getSolutionSpecificFaqs(solution),
     {
       q: 'Do I need to know my TDS or hardness before booking a survey?',
       a: 'No. The survey includes a free water test on the spot. The engineer takes the reading and walks you through what it means before any quote.',

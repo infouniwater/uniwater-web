@@ -46,27 +46,31 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     shortHeadline:
       'A bathroom filter has to do three things at once: treat the water, fit the space, not announce itself.',
     problemBands: [
-      'Hair feels different. Dry. Brittle. The shower\u2019s the same; the water isn\u2019t.',
-      'Geyser efficiency drops. The 50\u00b0C bath ends up 35\u00b0C. Scale in the heating element.',
-      'CP fittings dull. Marble grout takes an orange line. The bathroom ages faster than the rest of the house.',
-      'Bathing on hard water dries skin. Soap doesn\u2019t lather. Towels feel rough.',
+      // Band 1: TREAT THE WATER \u2014 the chemistry job
+      'Hard water dries skin, dulls hair, scales the geyser. The shower is the same; the water isn\u2019t. BathSoft removes hardness, suspended particulate, and chlorine residual at the bathroom feed.',
+      // Band 2: FIT THE SPACE \u2014 the architectural constraint
+      'Indian bathrooms aren\u2019t spec\u2019d around water equipment. False ceilings are 200 mm. Plumbing shafts are 150 mm. Niches get added late. BathSoft is engineered to fit those spaces \u2014 ceiling void, wall recess, plumbing duct, under-counter \u2014 not to dictate them.',
+      // Band 3: NOT ANNOUNCE ITSELF \u2014 the brand differentiator
+      'Most water systems bolt a vessel to a wall and call it done. BathSoft hides inside the architecture: behind a finish panel, inside a cabinet, in the void above the suspended ceiling. Once installed, you stop seeing it.',
+      // Band 4: SERVED, NOT FORGOTTEN \u2014 the post-install reality
+      'A bathroom system that never gets touched is a bathroom system that quietly fails by year three. BathSoft ships with monthly engineer visits on Comprehensive AMC \u2014 same person, named, for the life of the contract.',
     ],
     priceFromINR: 14000,
     configurations: [
       {
         name: 'Mono',
-        subtitle: 'Single cylinder',
-        description: 'Basic fittings. Single shower. Standard CP. Lowest demand.',
+        subtitle: 'Single cylinder \u2014 from \u20b914,000',
+        description: 'Single shower, standard CP fittings. 8\u20131 200 LPH at peak. Right for one bathroom, low to moderate demand. FRP vessel, manual regeneration.',
       },
       {
         name: 'Duo',
-        subtitle: 'Double cylinder',
-        description: 'Rain shower with body jets, or two showers running together. Mid demand.',
+        subtitle: 'Double cylinder \u2014 from \u20b924,000',
+        description: 'Rain shower with body jets, or two showers running together. 1 800 LPH at peak. FRP vessel, manual regeneration; SS316 upgrade available.',
       },
       {
         name: 'Trio',
-        subtitle: 'Triple cylinder',
-        description: 'Master suite with steam, jacuzzi, multiple high-flow outlets. Highest demand.',
+        subtitle: 'Triple cylinder \u2014 from \u20b942,000',
+        description: 'Master suite with steam, jacuzzi, or multiple high-flow outlets. 2 400 LPH at peak. SS316 vessels standard, optional brine-automatic regeneration.',
       },
     ],
     installContext: 'bathroom-five-places',
