@@ -18,7 +18,7 @@ export const CONTACT = {
     city: 'Kolkata',
     pin: '700048',
   },
-  phones: ['+91 97487 45193', '+91 96632 45193'] as const,
+  phones: ['+91 97487 45193'] as const,
   emails: {
     support: 'support@uniwater.co.in',
     marketing: 'marketing@uniwater.co.in',
