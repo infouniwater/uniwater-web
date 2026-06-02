@@ -118,6 +118,27 @@ export const HOMESOFT_PLACES = [
   },
 ] as const;
 
+// Three physical locations a drinking-water system (kitchen RO / UF+UV /
+// centralised) commonly goes. Drives the "Where it goes" section on
+// /solutions/drinking-water-solution. Drinking water has its own logic:
+// unlike bathroom (5 hidden places) or whole-house (5 plant-room
+// locations), a drinking-water system lives at the kitchen tap or at a
+// centralised plant — three is the real count, not five.
+export const DRINKING_PLACES = [
+  {
+    location: 'Wall-mounted, kitchen counter',
+    description: 'Beside the kitchen sink, on the wall above the platform. Visible by design — the dedicated tap sits next to the sink mixer.',
+  },
+  {
+    location: 'Under the sink',
+    description: 'Hidden inside the sink cabinet, plumbed to a dedicated counter-top tap. The choice for finished kitchens where joinery rules the look.',
+  },
+  {
+    location: 'Centralised plant room',
+    description: 'For villas, offices, schools, clinics. One plant, drinking-quality at every tap on a dedicated line. 25 / 50 / 100 LPH.',
+  },
+] as const;
+
 export const HOMESOFT_STAGES = [
   {
     stage: '01',

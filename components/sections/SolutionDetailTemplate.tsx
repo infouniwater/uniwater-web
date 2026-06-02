@@ -12,7 +12,7 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { SolutionStickyCTA } from '@/components/sections/SolutionStickyCTA';
 import { productSchema, faqPageSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
 import { COMPONENT_MANUFACTURERS, PRIMARY_PHONE_HREF } from '@/content/site';
-import { FIVE_PLACES, HOMESOFT_PLACES, TDS_DECISION_TREE } from '@/content/education';
+import { FIVE_PLACES, HOMESOFT_PLACES, DRINKING_PLACES, TDS_DECISION_TREE } from '@/content/education';
 import { Infographic } from '@/components/ui/Infographic';
 import { getBlogsForSolution, bookSurveyHrefForSolution } from '@/content/cross-links';
 
@@ -184,23 +184,33 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         </div>
       </Section>
 
-      {/* 3. How we solve it — tightened 2026-06-02 per the
-          text-heaviness review. Was Lede + Body + EditorialAccent
-          (~80 words of prose); now a three-line scannable rhythm
-          carried by the editorial accent itself + three short labels. */}
+      {/* 3. How we solve it — per-solution labels so the same grid
+          frame reads correctly for bathroom / whole-house (chemistry +
+          household + architecture) and for drinking-water (TDS +
+          household + plumbing — architecture isn't the right lens for
+          a kitchen tap). */}
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>How we solve it</Eyebrow>
           <Heading level={2} inverse>
-            Sized to the water, the house, and the people in it.
+            {solution.installContext === 'point-of-use'
+              ? 'TDS decides the chemistry. The kitchen decides the rest.'
+              : 'Sized to the water, the house, and the people in it.'}
           </Heading>
         </div>
         <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15 max-w-4xl">
-          {[
-            { label: 'Chemistry', body: 'decides the media.' },
-            { label: 'Household', body: 'decides the capacity.' },
-            { label: 'Architecture', body: 'decides where it goes.' },
-          ].map((row) => (
+          {(solution.installContext === 'point-of-use'
+            ? [
+                { label: 'TDS', body: 'decides RO vs UF + UV.' },
+                { label: 'Household', body: 'decides single tap vs centralised.' },
+                { label: 'Plumbing', body: 'decides under-sink vs counter.' },
+              ]
+            : [
+                { label: 'Chemistry', body: 'decides the media.' },
+                { label: 'Household', body: 'decides the capacity.' },
+                { label: 'Architecture', body: 'decides where it goes.' },
+              ]
+          ).map((row) => (
             <div key={row.label} className="bg-navy/30 p-6 md:p-8 flex flex-col gap-2">
               <Eyebrow inverse>{row.label}</Eyebrow>
               <p className="text-body md:text-lede text-offwhite leading-snug">{row.body}</p>
@@ -208,7 +218,9 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           ))}
         </div>
         <EditorialAccent inverse className="mt-10 md:mt-14">
-          Engineered, not bought off a shelf.
+          {solution.installContext === 'point-of-use'
+            ? 'A water test, not a sales pitch.'
+            : 'Engineered, not bought off a shelf.'}
         </EditorialAccent>
       </Section>
 
@@ -669,32 +681,11 @@ const DRINKING_WATER_DRAWINGS: InstallDrawing[] = [
   },
 ];
 
-const IRON_FILTER_DRAWINGS: InstallDrawing[] = [
-  {
-    file: '/images/install-drawings/whole-house/04-basement.svg',
-    title: '04 · Basement',
-    body: 'Iron filter as part of the basement plant. Treats every tap from a single point.',
-    alt: 'Whole-house basement install — iron stage of 4-stage plant',
-  },
-  {
-    file: '/images/install-drawings/whole-house/05-garden.svg',
-    title: '05 · Garden',
-    body: 'At the borewell source. Accommodates iron + softener + carbon train under weather hood.',
-    alt: 'Whole-house garden install — plant at borewell source',
-  },
-];
-
 function getInstallDrawingsForSolution(slug: string): InstallDrawing[] {
   switch (slug) {
     case 'bathroom-filter':
       return BATHROOM_DRAWINGS;
     case 'whole-house-water-filter':
-    case 'sediment-filter':
-    case 'activated-carbon-filter':
-      return WHOLE_HOUSE_DRAWINGS;
-    case 'iron-filter':
-      return IRON_FILTER_DRAWINGS;
-    case 'water-softener':
       return WHOLE_HOUSE_DRAWINGS;
     case 'drinking-water-solution':
       return DRINKING_WATER_DRAWINGS;
@@ -724,26 +715,6 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
       return {
         src: `${PHOTO_BASE}/whole-house-hero.jpg`,
         alt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',
-      };
-    case 'iron-filter':
-      return {
-        src: `${PHOTO_BASE}/whole-house-terrace.jpg`,
-        alt: 'Iron filter install — branded Uniwater inlet vessels treating borewell water at a residential terrace, preventing iron staining downstream',
-      };
-    case 'water-softener':
-      return {
-        src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`,
-        alt: 'Water softener install — three branded Uniwater vessels treating hard water at a luxury villa, protecting downstream appliances and fittings',
-      };
-    case 'sediment-filter':
-      return {
-        src: `${PHOTO_BASE}/whole-house-utility-area.jpg`,
-        alt: 'Sediment filter install — branded Uniwater inlet vessels handling pre-treatment in a home utility area, protecting downstream stages from particulate',
-      };
-    case 'activated-carbon-filter':
-      return {
-        src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`,
-        alt: 'Activated carbon filter install — branded Uniwater vessels removing chlorine and chemical taste, installed near the overhead water tank on a terrace',
       };
     case 'drinking-water-solution':
       return {
@@ -793,29 +764,10 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
         { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.jpg`, alt: 'Bathroom filter in the ceiling void', caption: 'Boutique hotel, Bhubaneswar. 16 rooms.' },
       ];
     case 'whole-house-water-filter':
-    case 'water-softener':
       return [
         { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Premium apartment, Salt Lake, Kolkata. Utility-room install.' },
         { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'HomeSoft in a luxury villa', caption: 'Independent villa, Patia, Bhubaneswar. Basement plant.' },
         { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'HomeSoft on the terrace', caption: 'Penthouse, New Town, Kolkata. Terrace install with gravity feed.' },
-      ];
-    case 'iron-filter':
-      return [
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Iron filter as stage one of a HomeSoft train at a luxury villa', caption: 'Borewell-fed villa, Guwahati. Iron at 4 ppm; stage one of the pretreatment train.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'Iron filter installed at the OHT inlet on a terrace', caption: 'Villa near Siliguri. Iron stripped at the OHT inlet, before everything downstream.' },
-        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Iron filter in a residential utility area', caption: 'Mid-rise apartment, Bhubaneswar. Borewell switchover; iron pre-treatment retrofitted.' },
-      ];
-    case 'sediment-filter':
-      return [
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Sediment filter upstream of a softener and RO train at a luxury villa', caption: 'Villa near Guwahati. Sediment cartridge protecting a downstream softener bed.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'Sediment filter at the terrace inlet, downstream of the OHT', caption: 'Villa near Siliguri. Spun-PP cartridge at the inlet; monsoon-grade sizing.' },
-        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Sediment filter in the residential utility area', caption: 'Apartment, Bhubaneswar. Sediment-first stage of a four-stage HomeSoft train.' },
-      ];
-    case 'activated-carbon-filter':
-      return [
-        { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Activated carbon filter polishing supply at a luxury villa', caption: 'Villa near Guwahati. Carbon polish ahead of kitchen UF + UV.' },
-        { src: `${PHOTO_BASE}/whole-house-terrace-water-tank.jpg`, alt: 'Activated carbon filter near the OHT on a residential terrace', caption: 'Villa near Siliguri. Carbon stripping chlorine residual at the terrace inlet.' },
-        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Activated carbon filter in a residential utility area', caption: 'Apartment, Bhubaneswar. Carbon as stage three of the HomeSoft train; chlorine and chemical-taste polish.' },
       ];
     case 'drinking-water-solution':
       // Third slot intentionally falls through to the Photo placeholder
@@ -836,12 +788,6 @@ function getCutawayForSolution(slug: string): 'bathsoft' | 'homesoft' | 'commerc
     case 'bathroom-filter':
       return 'bathsoft';
     case 'whole-house-water-filter':
-    case 'iron-filter':
-    case 'water-softener':
-    case 'sediment-filter':
-    case 'activated-carbon-filter':
-      // These are stages of the HomeSoft 4-stage train; the homesoft cutaway
-      // shows the full train with the relevant stage emphasised.
       return 'homesoft';
     case 'drinking-water-solution':
     default:
@@ -1037,15 +983,18 @@ function getInstallContent(solution: Solution) {
       };
     case 'point-of-use':
       return {
-        headline: 'The kitchen is the one tap.',
+        // Drinking water has three real install locations -- not five.
+        // Bathroom hides in five places; whole-house lives at five
+        // plant-room sites; drinking-water sits visible at the kitchen
+        // counter, hidden under the sink cabinet, or scales out to a
+        // centralised plant. The TDS chemistry decision shows up
+        // separately in the infographic below.
+        headline: 'Three places it goes.',
         body:
-          'Drinking water gets its own treatment, sized to your TDS. Wall-mounted, under-sink, or centralised \u2014 the plumbing decides where it goes.',
-        cards: TDS_DECISION_TREE.map((t) => ({
-          title: `${t.range} \u2192 ${t.answer}`,
-          body: t.description,
-        })),
+          'A drinking-water system lives at the kitchen tap, or at a centralised plant for the whole building. The chemistry (RO vs UF + UV) is decided by TDS; the place is decided by the kitchen.',
+        cards: DRINKING_PLACES.map((p) => ({ title: p.location, body: p.description })),
         infographic: {
-          eyebrow: 'TDS decides',
+          eyebrow: 'TDS decides the chemistry',
           headline: 'Test the TDS first.',
           asset: 'tds-decision-tree.svg',
           description:
@@ -1184,50 +1133,6 @@ function getSolutionSpecificFaqs(solution: Solution): Array<{ q: string; a: stri
         {
           q: 'What does "re-mineralised post-RO" mean? Is it healthier?',
           a: 'RO strips everything \u2014 including the calcium and magnesium that give water its taste and contribute to mineral intake. A re-mineralisation cartridge after the RO membrane adds back trace minerals at controlled levels. Yes, it\u2019s healthier than bare RO water.',
-        },
-      ];
-    case 'iron-filter':
-      return [
-        {
-          q: 'Why does iron need to be removed before the softener?',
-          a: 'Iron fouls cation resin \u2014 coats the bead, blocks the exchange site, kills regeneration efficiency. A softener installed downstream of an unremoved iron load clogs within months, not years. Iron is always stage one of a pretreatment train.',
-        },
-        {
-          q: 'How long does iron media last between regeneration?',
-          a: 'Catalytic media regenerates on every backwash cycle \u2014 typically 2-3 days at residential loads, longer at low-iron loads. The vessel is sized at survey so the backwash schedule matches your draw without manual intervention.',
-        },
-      ];
-    case 'water-softener':
-      return [
-        {
-          q: 'How often does the softener need salt top-up?',
-          a: 'Depends on hardness and draw. A 2K LPH whole-house softener at typical Indian hardness needs salt every 4-6 weeks. The Comprehensive AMC includes salt top-up; no separate consumable bill.',
-        },
-        {
-          q: 'Is softened water safe to drink?',
-          a: 'Softened water has slightly elevated sodium from ion exchange. Within safe limits for healthy adults, but the drinking-water tap is usually run on a separate RO or UF + UV line \u2014 the kitchen is the one place where chemistry matters more than feel.',
-        },
-      ];
-    case 'sediment-filter':
-      return [
-        {
-          q: 'How often does the sediment cartridge need replacement?',
-          a: 'Quarterly under typical municipal loads; monthly during monsoon if you\u2019re on a borewell. The cartridge is consumable; replacement is rolled into the Comprehensive AMC.',
-        },
-        {
-          q: 'Why bother \u2014 can\u2019t I just clean the strainer at the tap?',
-          a: 'Tap strainers catch visible particulate. The damage from invisible particulate happens upstream \u2014 scratched valve seats, torn RO membranes, fouled softener beds. A spun-PP cartridge stops the damage at the inlet.',
-        },
-      ];
-    case 'activated-carbon-filter':
-      return [
-        {
-          q: 'How long does the carbon media last?',
-          a: 'Coconut-shell activated carbon lasts 12-18 months at typical residential loads before adsorption capacity drops. Replacement is scheduled into the AMC; no surprise service call.',
-        },
-        {
-          q: 'Does carbon remove pathogens too?',
-          a: 'No \u2014 carbon is for chlorine, chemical taste, and dissolved organics. Pathogens go to UV (residential drinking water) or chlorination (commercial). Carbon and UV are often paired on the kitchen line.',
         },
       ];
     default:

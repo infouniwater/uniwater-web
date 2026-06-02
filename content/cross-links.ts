@@ -22,11 +22,14 @@ import type { SolutionSlug } from '@/content/solutions';
 type BlogSlug = (typeof BLOG_POSTS)[number]['slug'];
 
 export const BLOG_TO_SOLUTION: Partial<Record<BlogSlug, SolutionSlug>> = {
-  'borewell-water-yellow': 'iron-filter',
+  // Iron / softening / sediment / carbon all point to HomeSoft — the
+  // standalone pages were merged on 2026-06-03 because those four media
+  // live as stages on the same train, not as separate products.
+  'borewell-water-yellow': 'whole-house-water-filter',
   'iron-hardness-order': 'whole-house-water-filter',
   'hansgrohe-spec-vs-indian-water': 'whole-house-water-filter',
   'how-to-read-a-water-test': 'whole-house-water-filter',
-  'soft-water-vs-salt-water': 'water-softener',
+  'soft-water-vs-salt-water': 'whole-house-water-filter',
   'tds-isnt-a-quality-metric': 'drinking-water-solution',
   'five-year-cost-of-doing-nothing': 'whole-house-water-filter',
   'whole-house-vs-point-of-use': 'whole-house-water-filter',
@@ -53,24 +56,6 @@ export const SOLUTION_TO_BLOGS: Record<SolutionSlug, BlogSlug[]> = {
     'remineralisation-after-ro',
     'how-to-read-a-water-test',
   ],
-  'iron-filter': [
-    'borewell-water-yellow',
-    'iron-hardness-order',
-    'how-to-read-a-water-test',
-  ],
-  'water-softener': [
-    'soft-water-vs-salt-water',
-    'iron-hardness-order',
-    'how-to-read-a-water-test',
-  ],
-  'sediment-filter': [
-    'iron-hardness-order',
-    'how-to-read-a-water-test',
-  ],
-  'activated-carbon-filter': [
-    'iron-hardness-order',
-    'how-to-read-a-water-test',
-  ],
 };
 
 export function getSolutionForBlog(slug: string) {
@@ -94,10 +79,6 @@ export const SOLUTION_TO_PROBLEM: Record<SolutionSlug, ProblemToken> = {
   'bathroom-filter': 'hardness',
   'whole-house-water-filter': 'multiple',
   'drinking-water-solution': 'drinking',
-  'iron-filter': 'iron',
-  'water-softener': 'scale',
-  'sediment-filter': 'multiple',
-  'activated-carbon-filter': 'drinking',
 };
 
 export const PROBLEM_LABEL: Record<ProblemToken, string> = {

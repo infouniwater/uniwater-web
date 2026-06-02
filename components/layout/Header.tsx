@@ -13,10 +13,6 @@ const RESIDENTIAL_LINKS = [
   { slug: 'bathroom-filter', label: 'Bathroom filters' },
   { slug: 'whole-house-water-filter', label: 'Whole-house filtration' },
   { slug: 'drinking-water-solution', label: 'Drinking water systems' },
-  { slug: 'iron-filter', label: 'Iron filter' },
-  { slug: 'water-softener', label: 'Water softener' },
-  { slug: 'sediment-filter', label: 'Sediment filter' },
-  { slug: 'activated-carbon-filter', label: 'Activated carbon filter' },
 ];
 
 /** Items inside the Resources dropdown. PDFs render with `download` so the

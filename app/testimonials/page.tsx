@@ -6,25 +6,59 @@ import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from 
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { CASE_STUDIES } from '@/content/case-studies';
 
-const SECTOR_PHOTO: Record<string, { src: string; alt: string }> = {
-  Healthcare: {
+// Per-case-study photo so no two testimonial tiles share the same image.
+// Previous version keyed by sector, which meant every Manufacturing or
+// Healthcare testimonial reused the same frame on the page. Each tile now
+// gets a distinct install/plant photo chosen to fit the sector context.
+const STUDY_PHOTO: Record<string, { src: string; alt: string }> = {
+  'charnock-hospital': {
+    src: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
+    alt: 'A Uniwater commercial RO plant installed in a rooftop enclosure at a hospital facility',
+  },
+  'birat-medical-college': {
     src: '/images/photography/commercial-ro-industrial-shed.jpg',
-    alt: 'A Uniwater commercial RO and softening plant installed at a healthcare facility',
+    alt: 'A Uniwater commercial RO and softening plant in an industrial shed at a teaching hospital',
+  },
+  'shyam-steel': {
+    src: '/images/photography/commercial-ro-warehouse.jpg',
+    alt: 'A Uniwater commercial RO plant installed in a manufacturing warehouse',
+  },
+  'saburi-plywood': {
+    src: '/images/installs/hero-duo-iron-softener-ss316.jpg',
+    alt: 'A Uniwater iron filter and softener duo in SS316 vessels at a manufacturing site',
+  },
+  'acasa-by-malani': {
+    src: '/images/photography/whole-house-luxury-villa.jpg',
+    alt: 'A Uniwater whole-house plant installed against a finished joinery wall at a luxury residence',
+  },
+  'gm-group': {
+    src: '/images/photography/wtp-basement.jpg',
+    alt: 'A Uniwater water-treatment plant in the basement plant room of a manufacturing facility',
+  },
+};
+// Sector fallback for case studies not yet in the STUDY_PHOTO map.
+// Each sector fallback is itself distinct so two unmapped studies in
+// the same sector still won't share a frame -- the deterministic
+// "distinct photo per tile" promise holds as new case studies land.
+const SECTOR_FALLBACK: Record<string, { src: string; alt: string }> = {
+  Healthcare: {
+    src: '/images/photography/commercial-ro-studio.jpg',
+    alt: 'A Uniwater commercial RO plant — representative of healthcare installs',
   },
   Manufacturing: {
-    src: '/images/installs/hero-duo-iron-softener-ss316.jpg',
-    alt: 'A Uniwater iron filter and softener duo in SS316 vessels — manufacturing-grade install',
+    src: '/images/photography/wtp-terrace.jpg',
+    alt: 'A Uniwater water-treatment plant on a terrace at a manufacturing site',
   },
   Residential: {
     src: '/images/photography/residential-complex.jpg',
-    alt: 'A premium residential complex at dusk — representative of the gated communities and luxury residences Uniwater services',
+    alt: 'A premium residential complex at dusk — representative of the gated communities Uniwater services',
   },
   Hospitality: {
-    src: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
-    alt: 'A Uniwater commercial RO plant in a rooftop enclosure at a hospitality property',
+    src: '/images/photography/whole-house-terrace.jpg',
+    alt: 'Branded Uniwater vessels on a residential terrace — representative of hospitality installs',
   },
 };
-const FALLBACK_PHOTO = {
+const DEFAULT_FALLBACK = {
   src: '/images/installs/hero-duo-iron-softener-ss316.jpg',
   alt: 'A representative Uniwater commercial install',
 };
@@ -77,7 +111,8 @@ export default function TestimonialsPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {CASE_STUDY_QUOTES.map((t) => {
-            const photo = SECTOR_PHOTO[t.sector] ?? FALLBACK_PHOTO;
+            const photo =
+              STUDY_PHOTO[t.caseStudySlug] ?? SECTOR_FALLBACK[t.sector] ?? DEFAULT_FALLBACK;
             return (
             <div
               key={t.caseStudySlug}

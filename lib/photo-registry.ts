@@ -42,7 +42,11 @@ const SOLUTION_INSTALL_CYCLE: PhotoAsset[] = [
 ];
 
 /** Representative photo for each solution slug — used by hub cards, residential
- *  page cards, and the related-solutions cards on each solution detail page. */
+ *  page cards, and the related-solutions cards on each solution detail page.
+ *  Each entry must point at a DIFFERENT photo: hub / residential grids render
+ *  all three side-by-side, so identical photos would visibly repeat. The four
+ *  legacy entries (iron / softener / sediment / carbon) were dropped on
+ *  2026-06-03 along with the standalone pages. */
 const SOLUTION_PHOTO: Record<string, PhotoAsset> = {
   'bathroom-filter': {
     src: `${PHOTO}/bathroom-filter-hero.jpg`,
@@ -56,27 +60,44 @@ const SOLUTION_PHOTO: Record<string, PhotoAsset> = {
     src: `${PHOTO}/drinking-water-home.jpg`,
     alt: 'Glass of Uniwater drinking water at the kitchen counter',
   },
-  'iron-filter': {
-    src: `${PHOTO}/whole-house-luxury-villa.jpg`,
-    alt: 'Iron-pre-treatment train installed at a luxury villa',
-  },
-  'water-softener': {
-    src: `${PHOTO}/whole-house-utility-area.jpg`,
-    alt: 'Water softener installed in the utility area',
-  },
-  'sediment-filter': {
-    src: `${PHOTO}/whole-house-luxury-villa.jpg`,
-    alt: 'Sediment-stage filter as part of a whole-house train at a villa',
-  },
-  'activated-carbon-filter': {
-    src: `${PHOTO}/whole-house-utility-area.jpg`,
-    alt: 'Activated-carbon stage in a whole-house train, utility-area install',
-  },
 };
 
 const FALLBACK_SOLUTION_PHOTO: PhotoAsset = {
   src: `${PHOTO}/whole-house-hero.jpg`,
   alt: 'A Uniwater system installed in a finished home',
+};
+
+/** Per-case-study card photo for the /case-studies index grid. Each entry
+ *  must be DISTINCT — all six cards render on one page, and the previous
+ *  behaviour (every card falling back to hero-duo-iron-softener-ss316.jpg
+ *  because of the generic case-[slug]$ rule) made the grid read as the
+ *  same photograph six times. Kept in sync with the STUDY_PHOTO map in
+ *  /testimonials so both pages show the same image per case study. */
+const CASE_STUDY_PHOTO: Record<string, PhotoAsset> = {
+  'charnock-hospital': {
+    src: `${PHOTO}/commercial-ro-rooftop-enclosure.jpg`,
+    alt: 'Uniwater commercial RO plant in a rooftop enclosure at a hospital',
+  },
+  'birat-medical-college': {
+    src: `${PHOTO}/commercial-ro-industrial-shed.jpg`,
+    alt: 'Uniwater commercial RO and softening plant at a teaching hospital',
+  },
+  'shyam-steel': {
+    src: `${PHOTO}/commercial-ro-warehouse.jpg`,
+    alt: 'Uniwater commercial RO plant inside a manufacturing warehouse',
+  },
+  'saburi-plywood': {
+    src: `${INSTALLS}/hero-duo-iron-softener-ss316.jpg`,
+    alt: 'Uniwater iron filter and softener duo in SS316 vessels at a manufacturing site',
+  },
+  'acasa-by-malani': {
+    src: `${PHOTO}/whole-house-luxury-villa.jpg`,
+    alt: 'Uniwater whole-house plant against a finished joinery wall at a luxury residence',
+  },
+  'gm-group': {
+    src: `${PHOTO}/wtp-basement.jpg`,
+    alt: 'Uniwater water-treatment plant in the basement plant room at a manufacturing facility',
+  },
 };
 
 const EXACT_MAP: Record<string, PhotoAsset> = {
@@ -164,8 +185,17 @@ const PATTERN_RULES: PatternRule[] = [
     resolve: (m) => pick(INSTALL_CYCLE, parseInt(m[1], 10)),
   },
   {
-    test: /^case-[a-z0-9-]+$/,
-    resolve: () => ({ src: `${INSTALLS}/hero-duo-iron-softener-ss316.jpg`, alt: 'A representative Uniwater commercial install' }),
+    // case-<slug> for the /case-studies index grid. Look up in
+    // CASE_STUDY_PHOTO so each card renders a distinct photo;
+    // fall back to the generic representative install only when the
+    // slug is unknown (e.g. a new case study just landed and the
+    // map hasn't been updated yet).
+    test: /^case-([a-z0-9-]+)$/,
+    resolve: (m) =>
+      CASE_STUDY_PHOTO[m[1]] ?? {
+        src: `${INSTALLS}/hero-duo-iron-softener-ss316.jpg`,
+        alt: 'A representative Uniwater commercial install',
+      },
   },
 
   // Residential page — real installs gallery

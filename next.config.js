@@ -81,8 +81,33 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // Sediment / iron / softening / activated-carbon retired as
+        // standalone pages 2026-06-03 — they're stages inside HomeSoft,
+        // not separate products. All four (plus the historical
+        // practical-particle-filter slug) now point at the whole-house
+        // page so inbound search traffic still lands somewhere useful.
         source: '/solutions/practical-particle-filter',
-        destination: '/solutions/sediment-filter',
+        destination: '/solutions/whole-house-water-filter',
+        permanent: true,
+      },
+      {
+        source: '/solutions/iron-filter',
+        destination: '/solutions/whole-house-water-filter',
+        permanent: true,
+      },
+      {
+        source: '/solutions/water-softener',
+        destination: '/solutions/whole-house-water-filter',
+        permanent: true,
+      },
+      {
+        source: '/solutions/sediment-filter',
+        destination: '/solutions/whole-house-water-filter',
+        permanent: true,
+      },
+      {
+        source: '/solutions/activated-carbon-filter',
+        destination: '/solutions/whole-house-water-filter',
         permanent: true,
       },
       {

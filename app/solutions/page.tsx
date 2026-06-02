@@ -17,10 +17,6 @@ const HOME_TAB_SLUGS = [
   'bathroom-filter',
   'whole-house-water-filter',
   'drinking-water-solution',
-  'iron-filter',
-  'water-softener',
-  'sediment-filter',
-  'activated-carbon-filter',
 ] as const;
 
 const INSTITUTIONAL_CARDS = [
@@ -141,7 +137,7 @@ export default function SolutionsHub() {
           <div className="mb-12 max-w-3xl">
             <Heading level={2} className="mb-4">For your home.</Heading>
             <Body className="text-mute">
-              Eight engineered configurations, each sized to the water and the home. Not sure which? Take the 60-second water check.
+              Three engineered families, each sized to the water and the home. Not sure which? Take the 60-second water check.
             </Body>
             <div className="mt-6">
               <Button href="/water-problem-checker" variant="secondary">

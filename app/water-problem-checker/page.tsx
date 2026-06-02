@@ -342,20 +342,21 @@ function recommend(answers: Answers): RecommendResult {
     };
   }
 
-  // 3. Iron + borewell — pretreatment first, sized by home.
+  // 3. Iron + borewell — HomeSoft inlet sized by home. Iron / softening
+  // are stages on the same train, not separate products.
   if (hasIron && isBorewell) {
     const size = isLargeHome
-      ? 'HomeSoft with iron pre-treatment, 4K or 6K LPH'
+      ? 'HomeSoft 4K or 6K LPH (4-stage)'
       : isMidHome
-      ? 'HomeSoft with iron pre-treatment, 2K LPH'
-      : 'Iron filter at the bathroom or kitchen feed, with optional softening downstream';
+      ? 'HomeSoft 2K LPH (4-stage)'
+      : 'HomeSoft 2K LPH (4-stage)';
     return {
-      headline: 'Iron filter first. Softening second.',
-      body: 'Borewell water with iron staining is the textbook case for sequenced treatment: oxidation and iron-media filtration upstream of softening. Treating tap-by-tap will fail because iron exhausts softening resin in months, not years. The order matters more than the equipment.',
-      solutionName: 'iron filter',
+      headline: 'Iron upstream of softening. Both on the same train.',
+      body: 'Borewell water with iron staining is the textbook case for sequenced treatment at the inlet: sediment → iron-media oxidation → carbon → softening, in that order. Treating tap-by-tap fails because iron exhausts softening resin in months, not years. HomeSoft is built for this exact sequence.',
+      solutionName: 'whole-house filtration',
       cta: 'Recommended: ' + size + '.',
       ctaBody: 'Sized to your bathroom count and household draw. Installed in the utility area or plumbing shaft. Monthly service from month one.',
-      href: '/solutions/iron-filter',
+      href: '/solutions/whole-house-water-filter',
     };
   }
 
@@ -406,12 +407,12 @@ function recommend(answers: Answers): RecommendResult {
 
   // 6. Appliances failing without an explicit scale or iron call-out — likely scale.
   if (hasAppliances) {
-    const href = isLargeHome || isMidHome ? '/solutions/whole-house-water-filter' : '/solutions/water-softener';
+    const href = isLargeHome || isMidHome ? '/solutions/whole-house-water-filter' : '/solutions/bathroom-filter';
     return {
       headline: 'Treat the water before the next appliance fails.',
       body: 'Geysers, washing machines, and dishwashers fail early on hard or iron-bearing water. The fix depends on the chemistry, the home size, and where the failures are concentrated. We test and size at the survey.',
-      solutionName: isLargeHome || isMidHome ? 'whole-house filtration' : 'water softener',
-      cta: 'Recommended: whole-house treatment or a per-bathroom softener, decided at survey.',
+      solutionName: isLargeHome || isMidHome ? 'whole-house filtration' : 'bathroom filtration',
+      cta: 'Recommended: whole-house inlet, or per-bathroom treatment if the failures are localised.',
       ctaBody: 'A free survey runs the parameter test, identifies the cause, and recommends the cheapest effective fix.',
       href,
     };

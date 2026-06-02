@@ -15,12 +15,11 @@ import { CASE_STUDIES } from '@/content/case-studies';
 import { SOLUTIONS } from '@/content/solutions';
 import { localBusinessSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
 
-// Curated for residential city-page funnel — the four solutions homeowners actually act on.
+// City-page funnel: every residential solution the homeowner can pick.
 const CITY_FEATURED_SOLUTIONS: Array<keyof typeof SOLUTIONS> = [
   'whole-house-water-filter',
   'bathroom-filter',
   'drinking-water-solution',
-  'iron-filter',
 ];
 
 export async function generateStaticParams() {

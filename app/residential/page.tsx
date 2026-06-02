@@ -19,20 +19,23 @@ export const metadata: Metadata = {
     'Bathroom filters, whole-house systems, and drinking water for premium Indian homes. Surveyed, engineered, installed, and serviced monthly.',
 };
 
+// Problems → solutions. Iron / softening / scale are all answered by the
+// whole-house inlet (HomeSoft pre-treatment train), not by standalone
+// pages: those four media used to have their own pages but were merged
+// into HomeSoft on 2026-06-03 because they aren't a buying decision a
+// homeowner makes alone — they're stages inside the train.
 const PROBLEM_SELECTOR = [
-  { problem: 'Orange staining on tiles and grout', solution: 'iron-filter' },
-  { problem: 'Dry skin, dull hair, hard-water feel', solution: 'water-softener' },
+  { problem: 'Orange staining on tiles and grout', solution: 'whole-house-water-filter' },
+  { problem: 'Dry skin, dull hair, hard-water feel', solution: 'whole-house-water-filter' },
   { problem: 'Drinking water taste, kitchen tap', solution: 'drinking-water-solution' },
   { problem: 'Scale on fittings, geyser failing early', solution: 'whole-house-water-filter' },
-  { problem: 'Multiple problems across the home', solution: 'whole-house-water-filter' },
+  { problem: 'Bathroom shower water — skin, hair, tile', solution: 'bathroom-filter' },
 ] as const;
 
 const RESIDENTIAL_SLUGS = [
   'bathroom-filter',
   'whole-house-water-filter',
   'drinking-water-solution',
-  'iron-filter',
-  'water-softener',
 ] as const;
 
 export default function ResidentialPage() {
@@ -172,7 +175,7 @@ export default function ResidentialPage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>What we install</Eyebrow>
-          <Heading level={2}>Five engineered families. One survey to decide.</Heading>
+          <Heading level={2}>Three engineered families. One survey to decide.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {RESIDENTIAL_SLUGS.map((slug) => {
