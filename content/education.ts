@@ -92,6 +92,32 @@ export const FIVE_PLACES = [
   },
 ] as const;
 
+// Five places a whole-house (HomeSoft) system commonly goes. Drives the
+// "Where it goes" section on /solutions/whole-house-water-filter. The
+// system itself is the same; these are the install contexts.
+export const HOMESOFT_PLACES = [
+  {
+    location: 'Utility room',
+    description: 'Indoor controlled environment. Service access on day one.',
+  },
+  {
+    location: 'Balcony',
+    description: 'Behind a service door or cabinet. Apartment installs where there is no utility area.',
+  },
+  {
+    location: 'Terrace',
+    description: 'Gravity-feed from the OHT. Weather hood + drain provisioned at survey.',
+  },
+  {
+    location: 'Basement',
+    description: 'Villa plant rooms. Full four-stage train + sump-pit backwash routing.',
+  },
+  {
+    location: 'Custom cabinet',
+    description: 'Joinery-grade enclosure designed with the architect — the plant fits the house.',
+  },
+] as const;
+
 export const HOMESOFT_STAGES = [
   {
     stage: '01',

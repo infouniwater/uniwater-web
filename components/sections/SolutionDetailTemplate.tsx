@@ -12,7 +12,7 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { SolutionStickyCTA } from '@/components/sections/SolutionStickyCTA';
 import { productSchema, faqPageSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
 import { COMPONENT_MANUFACTURERS, PRIMARY_PHONE_HREF } from '@/content/site';
-import { FIVE_PLACES, HOMESOFT_STAGES, TDS_DECISION_TREE } from '@/content/education';
+import { FIVE_PLACES, HOMESOFT_PLACES, TDS_DECISION_TREE } from '@/content/education';
 import { Infographic } from '@/components/ui/Infographic';
 import { getBlogsForSolution, bookSurveyHrefForSolution } from '@/content/cross-links';
 
@@ -1010,10 +1010,10 @@ function getInstallContent(solution: Solution) {
       };
     case 'whole-house-inlet':
       return {
-        headline: 'One inlet. Every tap.',
+        headline: 'Five places it goes.',
         body:
-          'HomeSoft treats every tap from a single point. Sits in the utility area, plant room, or garden corner. Out of sight, out of conversation.',
-        cards: HOMESOFT_STAGES.map((s) => ({ title: `${s.stage} — ${s.name}`, body: s.body })),
+          'HomeSoft treats every tap from a single point. Five canonical install locations -- decided at survey, against the house.',
+        cards: HOMESOFT_PLACES.map((p) => ({ title: p.location, body: p.description })),
         infographic: {
           eyebrow: 'The four-stage train',
           headline: 'Sediment. Iron. Carbon. Softening.',
