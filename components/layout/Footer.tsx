@@ -142,12 +142,14 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Cities column — 2-col sub-grid keeps the 9-city list compact
-              vertically (it used to stack 9 tall, dominating the row
-              height). */}
+          {/* Cities column — single-column stack per Rajat 2026-06-03.
+              Earlier 2-col sub-grid (introduced to keep the column
+              shorter) read as visually broken next to the other footer
+              columns that all run single-column. Cities matches them
+              now. */}
           <div className="lg:col-span-2">
             <h4 className="text-eyebrow font-medium uppercase text-soft mb-5">Cities</h4>
-            <ul className="grid grid-cols-2 gap-x-3 gap-y-3 font-ui">
+            <ul className="flex flex-col gap-3 font-ui">
               {CITIES.map((city) => (
                 <li key={city.slug}>
                   <Link
