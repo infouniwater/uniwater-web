@@ -152,7 +152,7 @@ function BranchColumn({ branch }: { branch: Branch }) {
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-teal mb-2">
           Branch {branch.num}
         </div>
-        <h3 className="text-h3 font-normal text-navy leading-tight">{branch.heading}</h3>
+        <h3 className="font-sans text-h3 font-normal text-navy leading-tight">{branch.heading}</h3>
         <p className="font-editorial italic text-body text-navy/70 leading-snug mt-2">
           {branch.tag}
         </p>

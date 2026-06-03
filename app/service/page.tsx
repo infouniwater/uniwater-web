@@ -33,7 +33,7 @@ export default function ServicePage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Service</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               The discipline that decides year four.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -84,7 +84,7 @@ export default function ServicePage() {
               <div className="text-eyebrow font-medium uppercase text-teal">
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <h3 className="text-h2-m font-light text-navy">{stage.label}</h3>
+              <h3 className="font-sans text-h2-m font-light text-navy">{stage.label}</h3>
               <Body className="text-mute">{stage.body}</Body>
             </div>
           ))}
@@ -200,7 +200,7 @@ export default function ServicePage() {
                   Most chosen
                 </div>
               )}
-              <h3 className="text-h2-m font-light text-offwhite">{tier.name}</h3>
+              <h3 className="font-sans text-h2-m font-light text-offwhite">{tier.name}</h3>
               <p className="text-h3 font-medium text-soft">{tier.cadence}</p>
               <p className="text-caption text-offwhite/70">
                 From{' '}
@@ -262,7 +262,7 @@ export default function ServicePage() {
       <Section tone="navy" padding="default" image={{ stem: 'terrace' }}>
         <div className="border border-offwhite/15 bg-navy/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="max-w-xl flex flex-col gap-2">
-            <h3 className="text-h2-m md:text-h2 font-normal text-offwhite [text-wrap:balance]">
+            <h3 className="font-sans text-h2-m md:text-h2 font-normal text-offwhite [text-wrap:balance]">
               See a sample service report.
             </h3>
             <Body inverse>

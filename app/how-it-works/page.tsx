@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">How it works</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               How a Uniwater system gets into your home.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -167,7 +167,7 @@ export default function HowItWorksPage() {
               className="flex flex-col gap-3 group"
             >
               <div className="text-[40px] font-light text-teal leading-none">{step.n}</div>
-              <h3 className="text-h3 font-semibold text-navy group-hover:text-teal transition-colors duration-200 ease-calm">
+              <h3 className="font-sans text-h3 font-semibold text-navy group-hover:text-teal transition-colors duration-200 ease-calm">
                 {step.title}
               </h3>
               <Body className="text-mute">{step.body}</Body>

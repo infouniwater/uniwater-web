@@ -138,7 +138,7 @@ export default function WaterCheckerPage() {
               Water test &mdash; lighter than a survey
             </p>
             {/* DRAFT — review */}
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               Not ready for a full survey? Start with a 10-minute water test.
             </h1>
             {/* DRAFT — review */}

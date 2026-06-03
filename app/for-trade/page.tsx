@@ -112,7 +112,7 @@ export default function ForTradePage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">For the trade</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               Three ways to work with Uniwater.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -131,7 +131,7 @@ export default function ForTradePage() {
               className="bg-offwhite border border-hairline p-6 md:p-8 flex flex-col gap-5"
             >
               <Eyebrow>{a.eyebrow}</Eyebrow>
-              <h3 className="text-h3 font-semibold text-navy leading-snug [text-wrap:balance]">
+              <h3 className="font-sans text-h3 font-semibold text-navy leading-snug [text-wrap:balance]">
                 {a.heading}
               </h3>
               <Body className="text-mute">{a.body}</Body>

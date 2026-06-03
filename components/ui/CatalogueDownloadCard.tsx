@@ -62,7 +62,7 @@ export function CatalogueDownloadCard({ catalogue, scheme = 'light' }: Props) {
             {catalogue.edition} · PDF · {catalogue.sizeMB} MB
           </Caption>
           <h3
-            className={`text-h3 font-normal leading-snug ${
+            className={`font-sans text-h3 font-normal leading-snug ${
               isDark ? 'text-offwhite' : 'text-navy'
             }`}
           >

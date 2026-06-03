@@ -32,7 +32,7 @@ export default function SampleBomPage() {
         <div className="container-uw">
           <div className="no-print mb-8 max-w-4xl mx-auto">
             <p className="text-eyebrow font-medium uppercase text-teal mb-2">Sample BOM</p>
-            <h1 className="text-h2 font-light text-navy mb-2">This is what a Uniwater B2B quote looks like.</h1>
+            <h1 className="font-sans text-h2 font-light text-navy mb-2">This is what a Uniwater B2B quote looks like.</h1>
             <p className="text-mute text-body">
               Below is a representative bill of materials for a 12,000 LPH building inlet water-treatment plant serving a 60-flat residential complex. Every line is named: vessel, media, control, piping, electrical, instrumentation. The real BOM your project receives carries the same level of detail, sized to your survey.
             </p>
@@ -75,7 +75,7 @@ export default function SampleBomPage() {
 
             {/* BOM table */}
             <section className="mb-10">
-              <h2 className="text-h3 font-semibold text-navy mb-4">Treatment train</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-4">Treatment train</h2>
               <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
               <table className="w-full text-caption border-collapse min-w-[760px] sm:min-w-0">
                 <thead>
@@ -222,7 +222,7 @@ export default function SampleBomPage() {
 
             {/* AMC */}
             <section className="mb-10 border-t border-hairline pt-6">
-              <h2 className="text-h3 font-semibold text-navy mb-3">Annual Maintenance Contract — priced at handover</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-3">Annual Maintenance Contract — priced at handover</h2>
               <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
               <table className="w-full text-caption border-collapse min-w-[560px] sm:min-w-0">
                 <thead>

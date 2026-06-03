@@ -32,7 +32,7 @@ export default function SampleServiceReportPage() {
         <div className="container-uw">
           <div className="no-print mb-8 max-w-3xl mx-auto">
             <p className="text-eyebrow font-medium uppercase text-teal mb-2">Sample report</p>
-            <h1 className="text-h2 font-light text-navy mb-2">This is what the monthly report looks like.</h1>
+            <h1 className="font-sans text-h2 font-light text-navy mb-2">This is what the monthly report looks like.</h1>
             <p className="text-mute text-body">
               Every Uniwater service contract produces one of these on the same day as the engineer&rsquo;s visit. Below is a representative example for a 3-BHK in Salt Lake, Kolkata on its 14th monthly service.
             </p>
@@ -77,7 +77,7 @@ export default function SampleServiceReportPage() {
 
             {/* Parameter table */}
             <section className="mb-10">
-              <h2 className="text-h3 font-semibold text-navy mb-4">Parameters logged</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-4">Parameters logged</h2>
               <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
               <table className="w-full text-caption border-collapse min-w-[640px] sm:min-w-0">
                 <thead>
@@ -104,7 +104,7 @@ export default function SampleServiceReportPage() {
 
             {/* Work performed */}
             <section className="mb-10">
-              <h2 className="text-h3 font-semibold text-navy mb-4">Work performed</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-4">Work performed</h2>
               <ul className="flex flex-col gap-2 text-body text-navy">
                 <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Inlet sediment pre-filter inspected, backwashed. No replacement needed.</span></li>
                 <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Iron filter regen cycle verified. Media bed depth measured at 320 mm (target 300–350). No top-up required this visit.</span></li>
@@ -117,7 +117,7 @@ export default function SampleServiceReportPage() {
 
             {/* Flags */}
             <section className="mb-10">
-              <h2 className="text-h3 font-semibold text-navy mb-4">Flags raised</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-4">Flags raised</h2>
               <p className="text-body text-mute leading-relaxed">
                 None this visit. Carbon filter life is projected to fall below 6 months by the next visit — we&rsquo;ll plan the replacement on visit #15 in line with the AMC schedule. No customer action required.
               </p>
@@ -125,7 +125,7 @@ export default function SampleServiceReportPage() {
 
             {/* Next visit */}
             <section className="mb-10 border-t border-hairline pt-6">
-              <h2 className="text-h3 font-semibold text-navy mb-3">Next visit</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-3">Next visit</h2>
               <p className="text-body text-navy"><span className="font-medium">Visit #15 — scheduled 2026-06-17</span></p>
               <p className="text-caption text-mute mt-1">Same engineer. Same time slot. We&rsquo;ll WhatsApp you the day before to confirm.</p>
             </section>

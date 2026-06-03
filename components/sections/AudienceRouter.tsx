@@ -107,7 +107,7 @@ export function AudienceRouter() {
           <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
             Where would you like to start?
           </p>
-          <h2 className="text-h1-m md:text-h1 font-normal leading-[1.1] [text-wrap:balance]">
+          <h2 className="font-sans text-h1-m md:text-h1 font-normal leading-[1.1] [text-wrap:balance]">
             Pick the sentence that sounds like you.
           </h2>
         </div>
@@ -119,7 +119,7 @@ export function AudienceRouter() {
               href={audience.href}
               className="group flex flex-col gap-4 p-6 md:p-7 bg-navy/30 border border-offwhite/15 backdrop-blur-[2px] transition-all duration-200 ease-calm hover:bg-navy/60 hover:border-offwhite/35"
             >
-              <h3 className="text-body sm:text-[18px] font-normal text-offwhite leading-snug [text-wrap:balance]">
+              <h3 className="font-sans text-body sm:text-[18px] font-normal text-offwhite leading-snug [text-wrap:balance]">
                 {audience.label}
               </h3>
               <p className="text-caption text-offwhite/70 leading-snug flex-grow">

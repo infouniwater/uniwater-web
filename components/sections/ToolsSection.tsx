@@ -48,7 +48,7 @@ export function ToolsSection() {
             <Photo description={tool.photo} assetRef={tool.assetRef} aspect="sixteen-ten" />
             <div className="p-4 sm:p-6 lg:p-8 flex flex-col gap-2 sm:gap-3">
               <div className="text-eyebrow font-medium uppercase text-teal">{tool.label}</div>
-              <h3 className="text-body sm:text-h2-m md:text-h2 font-normal text-navy leading-snug">{tool.title}</h3>
+              <h3 className="font-sans text-body sm:text-h2-m md:text-h2 font-normal text-navy leading-snug">{tool.title}</h3>
               <Body className="text-caption sm:text-body text-mute leading-snug sm:leading-normal">{tool.body}</Body>
               <div className="mt-3 flex items-center gap-2 text-teal text-caption font-medium">
                 <span>{tool.cta}</span>

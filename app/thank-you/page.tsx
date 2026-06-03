@@ -53,7 +53,7 @@ export default function ThankYouPage({
     <Section padding="loose">
       <div className="max-w-2xl mx-auto text-center flex flex-col gap-5 items-center">
         <Eyebrow>{m.eyebrow}</Eyebrow>
-        <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] text-navy max-w-[22ch] [text-wrap:balance]">
+        <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] text-navy max-w-[22ch] [text-wrap:balance]">
           {m.headline}
         </h1>
         <Lede className="text-mute mt-1">{m.body}</Lede>

@@ -117,7 +117,7 @@ export default function KolkataIronWaterPage() {
               Kolkata · Water chemistry
             </p>
             {/* DRAFT — review */}
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               Iron in Kolkata&rsquo;s water &mdash; what it does, and how to get it out.
             </h1>
             {/* DRAFT — review */}

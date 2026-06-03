@@ -68,7 +68,7 @@ export default function BookSurveyPage({
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Book a survey</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               Tell us about your home. We&rsquo;ll come to you.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -84,7 +84,7 @@ export default function BookSurveyPage({
           <div className="lg:col-span-7">
             <form action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
-                <h2 className="text-h2-m font-light text-navy mb-2">Survey request</h2>
+                <h2 className="font-sans text-h2-m font-light text-navy mb-2">Survey request</h2>
                 <Caption className="text-mute">Fields marked * are required.</Caption>
               </div>
 

@@ -80,7 +80,7 @@ export default function WhyUniwaterPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Why Uniwater</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
               The water company that stays.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -123,7 +123,7 @@ export default function WhyUniwaterPage() {
           {THREE_CLAIMS.map((claim, i) => (
             <div key={claim.label} className="bg-navy/40 border border-offwhite/15 p-8 flex flex-col gap-4">
               <Eyebrow inverse>Claim {String(i + 1).padStart(2, '0')}</Eyebrow>
-              <h3 className="text-h3 font-normal text-offwhite [text-wrap:balance]">{claim.label}</h3>
+              <h3 className="font-sans text-h3 font-normal text-offwhite [text-wrap:balance]">{claim.label}</h3>
               <Body inverse>{claim.body}</Body>
             </div>
           ))}

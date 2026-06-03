@@ -28,7 +28,7 @@ export default function CitiesIndex() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Where we work</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">Nine cities. Own teams.</h1>
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">Nine cities. Own teams.</h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               Every Uniwater survey, install, and monthly service visit is delivered by our own engineers. No subcontracting after the sale.
             </p>
@@ -60,7 +60,7 @@ export default function CitiesIndex() {
                 className="group block bg-navy/30 border border-offwhite/15 p-8 transition-all duration-200 ease-calm hover:-translate-y-1 hover:bg-navy/60"
               >
                 <Eyebrow inverse className="mb-3">{c.country}</Eyebrow>
-                <h3 className="text-h2-m font-light text-offwhite mb-3">{c.name}</h3>
+                <h3 className="font-sans text-h2-m font-light text-offwhite mb-3">{c.name}</h3>
                 {content && <Caption inverse>{content.lede}</Caption>}
                 <div className="mt-6 flex items-center gap-2 text-soft text-caption font-medium">
                   <span>City page</span>
@@ -89,7 +89,7 @@ export default function CitiesIndex() {
                 className="group block bg-offwhite border border-hairline p-8 transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)]"
               >
                 <Eyebrow className="mb-3">{c.country}</Eyebrow>
-                <h3 className="text-h2-m font-light text-navy mb-3">{c.name}</h3>
+                <h3 className="font-sans text-h2-m font-light text-navy mb-3">{c.name}</h3>
                 {content && <Caption className="text-mute">{content.lede}</Caption>}
                 <div className="mt-6 flex items-center gap-2 text-teal text-caption font-medium">
                   <span>City page</span>

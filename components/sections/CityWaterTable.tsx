@@ -80,7 +80,7 @@ export function CityWaterTable({ citySlug, cityName, note }: CityWaterTableProps
       <div className="md:hidden flex flex-col gap-4">
         {rows.map((row) => (
           <div key={row.area} className="border border-hairline bg-offwhite p-5">
-            <h3 className="text-h3 font-medium text-navy mb-3">{row.area}</h3>
+            <h3 className="font-sans text-h3 font-medium text-navy mb-3">{row.area}</h3>
             {showSupply && row.supply && (
               <Caption className="text-mute block mb-3">Supply: {row.supply}</Caption>
             )}

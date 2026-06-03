@@ -120,7 +120,7 @@ export default function BuildingOrRenovatingPage() {
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
               Building or renovating
             </p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               Specify the water before the tile goes down.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">

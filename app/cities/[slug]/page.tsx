@@ -93,7 +93,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">{content.country}</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               Uniwater in {content.name}.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">{content.lede}</p>
@@ -265,7 +265,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
                     {solution.wordmark}
                   </div>
                 )}
-                <h3 className="text-h3 font-semibold text-navy mb-3">{solution.navLabel}</h3>
+                <h3 className="font-sans text-h3 font-semibold text-navy mb-3">{solution.navLabel}</h3>
                 <Caption className="text-mute">{solution.shortHeadline}</Caption>
                 <div className="mt-4 flex items-center gap-2 text-teal text-caption font-medium">
                   <span>See the {SOLUTION_SEO[slug].anchor}</span>
@@ -301,7 +301,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
                 <div className="text-eyebrow font-medium uppercase text-teal mb-3">
                   {inThisCity ? `Case study in ${content.name}` : `Published case study — ${content.country}`}
                 </div>
-                <h3 className="text-h3 font-semibold text-navy mb-2">{featured.client}</h3>
+                <h3 className="font-sans text-h3 font-semibold text-navy mb-2">{featured.client}</h3>
                 <Caption className="text-mute">{featured.outcome}</Caption>
               </div>
               <Link

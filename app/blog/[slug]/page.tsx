@@ -87,7 +87,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <span className="text-offwhite/40">&middot;</span>
               <span className="text-caption">{post.readingMinutes} min read</span>
             </div>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] max-w-[24ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] max-w-[24ch] [text-wrap:balance]">
               {post.title}
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">{post.lede}</p>
@@ -167,7 +167,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 <div className="text-eyebrow font-medium uppercase text-teal mb-3">
                   The system this article describes
                 </div>
-                <h3 className="text-h3 font-semibold text-navy mb-2">{target.navLabel}</h3>
+                <h3 className="font-sans text-h3 font-semibold text-navy mb-2">{target.navLabel}</h3>
                 <Caption className="text-mute">{target.shortHeadline}</Caption>
               </div>
               <Link
@@ -196,7 +196,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <div className="text-eyebrow font-medium uppercase text-teal mb-3">
                 Pillar guide
               </div>
-              <h3 className="text-h3 font-semibold text-navy mb-2">
+              <h3 className="font-sans text-h3 font-semibold text-navy mb-2">
                 Iron in Kolkata water — stains, causes, and removal.
               </h3>
               <Caption className="text-mute">

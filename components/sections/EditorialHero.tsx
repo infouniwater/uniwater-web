@@ -136,7 +136,7 @@ export function EditorialHero() {
           <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
             Wellness starts with clean water
           </p>
-          <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+          <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
             Integrated water systems &mdash; for the home you only build once.
           </h1>
           <div className="text-[15px] leading-relaxed text-offwhite/80 flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline">

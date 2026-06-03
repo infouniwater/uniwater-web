@@ -53,7 +53,7 @@ export default function ContactPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Talk to us</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
               Let&rsquo;s begin.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -133,7 +133,7 @@ export default function ContactPage() {
                 <AudiencePrefill />
               </Suspense>
               <div>
-                <h2 className="text-h2-m font-light text-navy mb-2">General enquiry</h2>
+                <h2 className="font-sans text-h2-m font-light text-navy mb-2">General enquiry</h2>
                 <Caption className="text-mute">
                   For a survey booking, use{' '}
                   <a href="/book-survey" className="text-teal underline underline-offset-4">

@@ -72,7 +72,7 @@ export default function ResidentialPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">For your home</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
               Water systems for the home.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -140,7 +140,7 @@ export default function ResidentialPage() {
               <span className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 className="text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] flex-grow">{item.problem}</h3>
+              <h3 className="font-sans text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] flex-grow">{item.problem}</h3>
               <div className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium pt-3 border-t border-offwhite/15">
                 <span>See solution</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1 self-center shrink-0">
@@ -154,7 +154,7 @@ export default function ResidentialPage() {
             className="group bg-teal/15 p-6 lg:p-8 flex flex-col gap-4 transition-colors duration-200 ease-calm hover:bg-teal/25"
           >
             <span className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">06</span>
-            <h3 className="text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] flex-grow">
+            <h3 className="font-sans text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] flex-grow">
               Not sure. Take the 60-second water check.
             </h3>
             <div className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium pt-3 border-t border-offwhite/15">
@@ -282,7 +282,7 @@ export default function ResidentialPage() {
             >
               <div className="flex flex-col gap-4">
                 <Eyebrow className="text-teal">Clean Water as a Service · Residential societies</Eyebrow>
-                <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
+                <h3 className="font-sans text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
                   400 homes on managed soft water. Society committees out of the loop on plant maintenance.
                 </h3>
                 <Body className="text-mute">

@@ -60,7 +60,7 @@ export default function ResourcesPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Resources</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">Tools, guides, references.</h1>
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">Tools, guides, references.</h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               Everything we publish for prospective customers, architects, plumbers, and curious homeowners.
             </p>
@@ -100,7 +100,7 @@ export default function ResourcesPage() {
               href={r.href}
               className="group block bg-navy/30 border border-offwhite/15 p-8 transition-all duration-200 ease-calm hover:-translate-y-1 hover:bg-navy/60"
             >
-              <h3 className="text-h3 font-normal text-offwhite mb-3 [text-wrap:balance]">{r.title}</h3>
+              <h3 className="font-sans text-h3 font-normal text-offwhite mb-3 [text-wrap:balance]">{r.title}</h3>
               <Body inverse className="mb-6">{r.body}</Body>
               <div className="flex items-center gap-2 text-soft text-caption font-medium">
                 <span>Open</span>

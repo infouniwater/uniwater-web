@@ -26,10 +26,18 @@
   body {
     background-color: var(--off-white);
     color: var(--ink);
-    /* Primary font is now ITC Avant Garde Gothic (--font-avant).
-       Signika is reserved for numeric / data surfaces via the
-       `font-numeric` Tailwind class. */
-    font-family: var(--font-avant), system-ui, sans-serif;
+    /* Font rules (Rajat 2026-06-04):
+       - TT Fors (--font-tt-fors) is the default body / UI font. Used
+         for paragraphs, captions, ledes, buttons, nav, labels, links,
+         and eyebrows. Inherited by everything that doesn't override.
+       - ITC Avant Garde Gothic (--font-avant) is for HEADINGS ONLY
+         (Display, H1, H2, H3). Applied via `font-sans` on the
+         Heading/Display components in Typography.tsx.
+       - Signika (--font-signika) for numeric / data via `font-numeric`,
+         used sparingly (StatTile, hero stats, cost numbers).
+       - Bodoni Moda Italic (--font-bodoni) for editorial pull-quotes
+         via `font-editorial`, once or twice per page at most. */
+    font-family: var(--font-tt-fors), system-ui, sans-serif;
     font-weight: 400;
     font-size: 1.0625rem;
     line-height: 1.6;

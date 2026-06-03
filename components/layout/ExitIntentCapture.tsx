@@ -115,7 +115,7 @@ export function ExitIntentCapture() {
         </p>
         <h2
           id="exit-intent-heading"
-          className="text-h2-m md:text-h2 font-light text-navy leading-snug mb-4 [text-wrap:balance]"
+          className="font-sans text-h2-m md:text-h2 font-light text-navy leading-snug mb-4 [text-wrap:balance]"
         >
           A free water-test report &mdash; sent to your WhatsApp.
         </h2>

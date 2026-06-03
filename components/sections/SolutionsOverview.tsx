@@ -89,7 +89,7 @@ export function SolutionsOverview() {
             </div>
             <div className="flex flex-col gap-2">
               <Eyebrow inverse>{String(i + 1).padStart(2, '0')}</Eyebrow>
-              <h3 className="text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] transition-colors duration-200 ease-calm group-hover:text-soft">
+              <h3 className="font-sans text-body sm:text-h3 font-normal text-offwhite leading-snug [text-wrap:balance] transition-colors duration-200 ease-calm group-hover:text-soft">
                 {solution.title}
               </h3>
               <p className="text-caption text-offwhite/70 leading-snug">{solution.description}</p>

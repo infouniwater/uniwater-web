@@ -145,7 +145,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                 {solution.navLabel}
               </p>
             )}
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               {solution.shortHeadline}
             </h1>
             {solution.priceFromINR && (
@@ -304,7 +304,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                     />
                   </div>
                 )}
-                <h3 className="text-h3 font-normal text-navy">{item.title}</h3>
+                <h3 className="font-sans text-h3 font-normal text-navy">{item.title}</h3>
                 <Body className="text-mute leading-snug">{item.body}</Body>
               </div>
             </Card>
@@ -349,7 +349,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                   />
                 )}
                 <div>
-                  <h3 className="text-h3 font-normal text-offwhite mb-2 [text-wrap:balance]">{card.title}</h3>
+                  <h3 className="font-sans text-h3 font-normal text-offwhite mb-2 [text-wrap:balance]">{card.title}</h3>
                   <Caption inverse>{card.body}</Caption>
                 </div>
               </div>
@@ -470,7 +470,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       <Section padding="tight">
         <div className="border border-hairline p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="max-w-xl flex flex-col gap-2">
-            <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
+            <h3 className="font-sans text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
               Take the spec to your architect.
             </h3>
             <Body className="text-mute">
@@ -602,7 +602,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                     <span className="text-mute/50">/</span>
                     <span className="text-mute">{post.readingMinutes} min</span>
                   </div>
-                  <h3 className="text-h3 font-normal text-navy mb-3 leading-snug">
+                  <h3 className="font-sans text-h3 font-normal text-navy mb-3 leading-snug">
                     {post.title}
                   </h3>
                   <Body className="text-mute text-caption">{post.description}</Body>

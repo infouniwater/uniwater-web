@@ -134,7 +134,7 @@ export default function IndustrialPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Institutions &amp; industry</p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
               Water that holds up at scale.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
@@ -206,7 +206,7 @@ export default function IndustrialPage() {
               <Eyebrow className="text-teal">Subscribe</Eyebrow>
               <Caption className="text-teal font-medium uppercase tracking-wide">Recommended</Caption>
             </div>
-            <h3 className="text-h2-m md:text-h2 font-light text-navy leading-snug [text-wrap:balance]">
+            <h3 className="font-sans text-h2-m md:text-h2 font-light text-navy leading-snug [text-wrap:balance]">
               Clean Water as a Service.
             </h3>
             <Body className="text-mute">
@@ -239,7 +239,7 @@ export default function IndustrialPage() {
               <Eyebrow>Specify</Eyebrow>
               <Caption className="text-mute uppercase tracking-wide">Traditional</Caption>
             </div>
-            <h3 className="text-h2-m md:text-h2 font-light text-navy leading-snug [text-wrap:balance]">
+            <h3 className="font-sans text-h2-m md:text-h2 font-light text-navy leading-snug [text-wrap:balance]">
               Engineer it and buy it.
             </h3>
             <Body className="text-mute">
@@ -301,7 +301,7 @@ export default function IndustrialPage() {
                 )}
                 <div className="p-7 flex flex-col gap-4 flex-1">
                   <Eyebrow inverse>{where.number}</Eyebrow>
-                  <h3 className="text-h2-m font-light text-offwhite [text-wrap:balance]">{track.eyebrow}.</h3>
+                  <h3 className="font-sans text-h2-m font-light text-offwhite [text-wrap:balance]">{track.eyebrow}.</h3>
                   <p className="text-soft text-caption italic">{where.subtitle}</p>
                   <Body inverse className="text-offwhite/85">{where.body}</Body>
 
@@ -397,7 +397,7 @@ export default function IndustrialPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline mb-12">
           {TECHNICAL_EDGE.map((item) => (
             <div key={item.title} className="bg-offwhite p-7 flex flex-col gap-3">
-              <h3 className="text-h3 font-normal text-navy [text-wrap:balance]">{item.title}</h3>
+              <h3 className="font-sans text-h3 font-normal text-navy [text-wrap:balance]">{item.title}</h3>
               <Body className="text-mute">{item.body}</Body>
             </div>
           ))}
@@ -493,7 +493,7 @@ export default function IndustrialPage() {
           <div className="lg:col-span-7">
             <form action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
-                <h3 className="text-h2-m font-light text-navy mb-2">RFQ details</h3>
+                <h3 className="font-sans text-h2-m font-light text-navy mb-2">RFQ details</h3>
                 <Caption className="text-mute">All fields marked * are required. Drawings, water test reports, and site photos can be sent to <a href="mailto:support@uniwater.co.in" className="text-teal underline underline-offset-4">support@uniwater.co.in</a> after submission.</Caption>
               </div>
               <TextField label="Name" name="name" required placeholder="Your name" />

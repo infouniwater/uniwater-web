@@ -78,7 +78,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
               <span className="text-offwhite/40">&middot;</span>
               <span className="text-caption text-offwhite/70">{cs.city}</span>
             </div>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] max-w-[22ch] [text-wrap:balance]">
               {cs.client}
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">{cs.outcome}</p>
@@ -201,7 +201,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
                     <span className="text-mute">&middot;</span>
                     <span className="text-caption text-mute">{rel.city}</span>
                   </div>
-                  <h3 className="text-h3 font-semibold text-navy mb-3">{rel.client}</h3>
+                  <h3 className="font-sans text-h3 font-semibold text-navy mb-3">{rel.client}</h3>
                   <Body className="text-mute text-caption">{rel.outcome}</Body>
                   <div className="mt-5 flex items-center gap-2 text-teal text-caption font-medium">
                     <span>Read case study</span>

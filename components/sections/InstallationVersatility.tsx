@@ -65,7 +65,7 @@ export function InstallationVersatility() {
               </div>
               <div className="flex flex-col gap-2">
                 <Eyebrow>{String(i + 1).padStart(2, '0')}</Eyebrow>
-                <h3 className="text-body sm:text-h3 font-normal text-navy leading-snug [text-wrap:balance]">{place.location}</h3>
+                <h3 className="font-sans text-body sm:text-h3 font-normal text-navy leading-snug [text-wrap:balance]">{place.location}</h3>
                 <p className="text-caption text-mute leading-snug">{place.description}</p>
               </div>
             </div>

@@ -1,6 +1,32 @@
 import type { HTMLAttributes, ReactNode, ElementType } from 'react';
 import { cn } from '@/lib/cn';
 
+/**
+ * Typography primitives. The font + size rules live HERE; pages should
+ * use these components, not bare <h1>/<p> tags with ad-hoc classes.
+ *
+ * Font rules (Rajat 2026-06-04):
+ *   - HEADINGS use ITC Avant Garde Gothic  (font-sans, applied
+ *     explicitly on Display / Heading below).
+ *   - BODY + UI default uses TT Fors        (the document body font;
+ *     Body / Lede / Caption inherit it; Eyebrow uses font-ui which
+ *     resolves to the same TT Fors variable).
+ *   - NUMERIC uses Signika                  (font-numeric, used
+ *     sparingly: StatTile values, hero stats, cost numbers).
+ *   - EDITORIAL uses Bodoni Moda Italic     (font-editorial, used on
+ *     EditorialAccent only -- pull-quotes, one or two per page).
+ *
+ * Size rules (per token, mobile / desktop):
+ *   - text-display  48 / 72 px   page hero H1 only (one per page)
+ *   - text-h1       36 / 48 px   alternative section H1 (softer than display)
+ *   - text-h2       26 / 32 px   default section H2 -- most common
+ *   - text-h3       22 px        card titles, sub-section heads
+ *   - text-lede     21 px        first paragraph after H2 -- one per section
+ *   - text-body     17 px        default paragraph
+ *   - text-caption  14 px        photo credits, footnotes, table labels
+ *   - text-eyebrow  12 px        uppercase label above headings
+ */
+
 /** Small uppercase label above section headings. Per §3.2 Eyebrow row.
  *  `inverse` swaps the teal accent to soft for dark/navy surfaces — same
  *  pattern the hero uses, so eyebrows in navy sections match the hero
@@ -20,8 +46,10 @@ export function Eyebrow({
   return (
     <As
       className={cn(
-        // `font-ui` switches eyebrows to TT Fors (the UI workhorse).
-        // Headings + body stay on Avant Garde Gothic (default sans).
+        // `font-ui` resolves to TT Fors (same as the body default after
+        // the 2026-06-04 font-rules change). Kept here explicitly so
+        // the intent ("UI workhorse, not heading") survives any future
+        // change to the document default.
         'text-eyebrow font-ui font-medium uppercase tracking-[0.18em]',
         inverse ? 'text-soft' : 'text-teal',
         className
@@ -33,9 +61,9 @@ export function Eyebrow({
 }
 
 /** Hero display type — Avant Garde Book (400), 72/48.
- *  font-normal (not light) because the pack ships Book/400 as the
- *  lightest real cut; font-light would force browsers to synthesize
- *  300 from 400, which looks uneven. Catalogue register matches Book. */
+ *  font-sans pulls Avant Garde from the design tokens (the body
+ *  default is TT Fors after the 2026-06-04 font-rules change, so
+ *  headings must opt-in to Avant Garde explicitly). */
 export function Display({
   children,
   className,
@@ -46,7 +74,7 @@ export function Display({
   return (
     <h1
       className={cn(
-        'text-display-m md:text-display font-normal text-navy [text-wrap:balance]',
+        'font-sans text-display-m md:text-display font-normal text-navy [text-wrap:balance]',
         className
       )}
     >
@@ -62,13 +90,14 @@ interface HeadingProps extends Omit<HTMLAttributes<HTMLHeadingElement>, 'classNa
   inverse?: boolean;  // for inverse-navy sections
 }
 
-// Catalogue-register typography (2026-05-26): all heading levels lightened
-// from font-semibold (600) to font-normal (400 = Avant Garde Book).
-// Matches the homeowner-catalogue tone reference Rajat provided.
+// Catalogue-register typography: all heading levels at font-normal
+// (400 = Avant Garde Book), matching the homeowner-catalogue tone.
+// `font-sans` is applied explicitly so headings use Avant Garde even
+// though the document body default is now TT Fors (2026-06-04 rules).
 const headingClasses = {
-  1: 'text-h1-m md:text-h1 font-normal',
-  2: 'text-h2-m md:text-h2 font-normal',
-  3: 'text-h3 font-normal',
+  1: 'font-sans text-h1-m md:text-h1 font-normal',
+  2: 'font-sans text-h2-m md:text-h2 font-normal',
+  3: 'font-sans text-h3 font-normal',
 };
 
 export function Heading({ level, children, className, inverse = false, ...rest }: HeadingProps) {
@@ -88,7 +117,8 @@ export function Heading({ level, children, className, inverse = false, ...rest }
   );
 }
 
-/** Opening paragraph — Signika Light 21px, line-height 1.5. */
+/** Opening paragraph — 21px, line-height 1.5. TT Fors (inherited from
+ *  document body); one Lede per section, immediately after the H2/H3. */
 export function Lede({
   children,
   className,
@@ -111,7 +141,8 @@ export function Lede({
   );
 }
 
-/** Default body — 17px, line-height 1.6. */
+/** Default body — 17px, line-height 1.6. TT Fors (inherited from
+ *  document body). The most common paragraph type on the site. */
 export function Body({
   children,
   className,
@@ -134,7 +165,8 @@ export function Body({
   );
 }
 
-/** 14px caption / photo cred. */
+/** 14px caption -- photo credits, footnotes, table labels, supporting
+ *  small text. TT Fors (inherited from document body). */
 export function Caption({
   children,
   className,

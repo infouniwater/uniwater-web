@@ -146,7 +146,7 @@ export default function CleanWaterAsAServicePage() {
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
               {HERO_EYEBROW}
             </p>
-            <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
               {HERO_TITLE}
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-2xl">
@@ -207,7 +207,7 @@ export default function CleanWaterAsAServicePage() {
               >
                 <div className="flex flex-col gap-3">
                   <Eyebrow className="text-teal">{track.eyebrow}</Eyebrow>
-                  <h3 className="text-h2-m font-light text-navy leading-snug [text-wrap:balance]">{track.headline}</h3>
+                  <h3 className="font-sans text-h2-m font-light text-navy leading-snug [text-wrap:balance]">{track.headline}</h3>
                   <Body className="text-mute">{track.body}</Body>
                 </div>
 
@@ -276,7 +276,7 @@ export default function CleanWaterAsAServicePage() {
           {PILLARS.map((pillar, i) => (
             <div key={pillar.title} className="bg-navy p-8 flex flex-col gap-3">
               <Eyebrow inverse>{String(i + 1).padStart(2, '0')}</Eyebrow>
-              <h3 className="text-h3 font-normal text-offwhite [text-wrap:balance]">{pillar.title}</h3>
+              <h3 className="font-sans text-h3 font-normal text-offwhite [text-wrap:balance]">{pillar.title}</h3>
               <Body inverse className="text-offwhite/80">{pillar.body}</Body>
             </div>
           ))}
@@ -311,7 +311,7 @@ export default function CleanWaterAsAServicePage() {
                   <Caption className="text-teal font-medium uppercase tracking-wide">Flagship</Caption>
                 )}
               </div>
-              <h3 className={`text-h3 font-normal text-navy leading-snug [text-wrap:balance] ${line.featured ? 'lg:text-h2-m' : ''}`}>
+              <h3 className={`font-sans text-h3 font-normal text-navy leading-snug [text-wrap:balance] ${line.featured ? 'lg:text-h2-m' : ''}`}>
                 {line.promise}
               </h3>
               <div className="mt-2">
@@ -402,7 +402,7 @@ export default function CleanWaterAsAServicePage() {
                     ))}
                   </div>
                 </div>
-                <h3 className="text-h3 font-normal text-navy leading-snug [text-wrap:balance]">{site.name}</h3>
+                <h3 className="font-sans text-h3 font-normal text-navy leading-snug [text-wrap:balance]">{site.name}</h3>
                 <Body className="text-mute">{site.context}</Body>
                 {site.volume && (
                   <Caption className="text-navy font-medium mt-1">{site.volume}</Caption>
