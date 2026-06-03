@@ -294,17 +294,6 @@ export function Header() {
                     Service &amp; AMC for homes
                   </Link>
                 </li>
-                <li>
-                  {/* 5th item added 2026-06-04 to match the institutions
-                      column count after CWaaS landed there. Why Uniwater
-                      sits naturally in the home column. */}
-                  <Link
-                    href="/why-uniwater"
-                    className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm"
-                  >
-                    Why Uniwater
-                  </Link>
-                </li>
               </ul>
               {/* Parallel "see all" link to the right-column equivalent;
                   /residential is the homeowner catalogue overview. */}
@@ -324,16 +313,30 @@ export function Header() {
               <div className="text-eyebrow font-medium uppercase text-teal mb-5">
                 For institutions &amp; industry
               </div>
+
+              {/* Hero solution -- CWaaS gets a featured callout card per
+                  Rajat 2026-06-04 ("special linkage in navbar"). Sits
+                  ABOVE the regular item list so it reads as the headline
+                  I&I offering, not just one option among many. Uses the
+                  tint background + teal border to mirror the /industrial
+                  page's CWaaS teaser visual treatment. */}
+              <Link
+                href="/clean-water-as-a-service"
+                className="group block border border-teal/40 bg-tint/40 p-4 mb-5 transition-all duration-200 ease-calm hover:border-teal hover:bg-tint/70"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-teal">Hero solution</span>
+                    <span className="text-body font-medium text-navy">Clean Water as a Service</span>
+                    <span className="text-caption text-mute">Zero capex · Guaranteed spec · Fully managed</span>
+                  </div>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="shrink-0 text-teal transition-transform duration-200 ease-calm group-hover:translate-x-1">
+                    <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </Link>
+
               <ul className="flex flex-col gap-3">
-                <li>
-                  {/* CWaaS sits at the top of the commercial menu because
-                      it's the offering most institutional buyers should
-                      see first -- it changes the procurement frame from
-                      capex to subscription. */}
-                  <Link href="/clean-water-as-a-service" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
-                    Clean Water as a Service
-                  </Link>
-                </li>
                 <li>
                   <Link href="/industrial" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
                     Building &amp; society water plants

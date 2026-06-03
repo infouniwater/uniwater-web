@@ -139,39 +139,34 @@ export default function IndustrialPage() {
         </div>
       </section>
 
-      {/* Capacity range strip — light surface, alternates with the
-          dark hero per the dark/light cadence rule. */}
-      <Section padding="tight">
-        <div className="border-y border-hairline py-8 -my-8">
-          <Lede className="text-mute max-w-4xl">
-            From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM. Designed by engineers; serviced by engineers.
-          </Lede>
-        </div>
-      </Section>
-
-      {/* Clean Water as a Service teaser -- sits high on the page so the
-          visitor sees the subscription alternative before they read the
-          capex / BOM / RFQ track below. Same conversion path (Book a
-          free survey) so it doesn't fragment the funnel. */}
+      {/* Clean Water as a Service -- HERO SOLUTION, the first thing the
+          institutional visitor sees after the hero. CWaaS is the
+          headline offering for I&I per Rajat 2026-06-04; capex/RFQ
+          track sits below. Same conversion path (Book a free survey)
+          so the funnel stays unified. */}
       <Section padding="default" tone="subtle">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 flex flex-col gap-4">
-            <Eyebrow className="mb-2">Or buy the water, not the plant</Eyebrow>
+            <Eyebrow className="mb-2">Hero solution</Eyebrow>
             <Heading level={2}>Clean Water as a Service.</Heading>
+            <Lede className="text-mute mt-2">
+              Stop buying water plants. Buy water outcomes.
+            </Lede>
             <Body className="text-mute mt-2">
               We design, fund, own and run the plant. You pay one
               predictable fee for water held to specification, with a
-              monthly engineer visit included. Drinking, iron-free, soft,
-              RO process and DM — five water lines, one contract.
+              monthly preventive engineer visit included. Drinking,
+              iron-free, soft, RO process and DM — five water lines,
+              one contract.
             </Body>
-            <div className="mt-4">
+            <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
               <Link
                 href="/clean-water-as-a-service"
-                className="inline-flex items-center gap-2 text-teal text-caption font-medium"
+                className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
               >
-                See how it works
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                See Clean Water as a Service
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
             </div>
@@ -184,7 +179,7 @@ export default function IndustrialPage() {
               <div className="flex flex-col gap-4">
                 <Eyebrow className="text-teal">Zero capex · Guaranteed spec · Fully managed</Eyebrow>
                 <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
-                  Stop buying water plants. Buy water outcomes.
+                  One contract. Five water lines. Held to spec.
                 </h3>
                 <Body className="text-mute">
                   10 live deployments across India and Nepal. 400 homes on
@@ -195,6 +190,18 @@ export default function IndustrialPage() {
               </div>
             </Link>
           </div>
+        </div>
+      </Section>
+
+      {/* Capacity range strip — light surface, alternates with the
+          dark hero per the dark/light cadence rule. Sits below CWaaS
+          for the visitors who scroll past the subscription frame to
+          the capex/BOM track. */}
+      <Section padding="tight">
+        <div className="border-y border-hairline py-8 -my-8">
+          <Lede className="text-mute max-w-4xl">
+            From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM. Designed by engineers; serviced by engineers.
+          </Lede>
         </div>
       </Section>
 
