@@ -130,7 +130,12 @@ export function articleSchema(post: {
   description: string;
   publishedAt: string;
   readingMinutes: number;
+  /** Optional non-blog path. Defaults to `/blog/${slug}`; pillar pages
+   *  outside the blog (e.g. /kolkata-iron-water) pass their own path so
+   *  mainEntityOfPage resolves to the right URL. */
+  path?: string;
 }) {
+  const path = post.path ?? `/blog/${post.slug}`;
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -142,7 +147,7 @@ export function articleSchema(post: {
     publisher: { '@id': `${SITE_URL}#organization` },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${SITE_URL}/blog/${post.slug}`,
+      '@id': `${SITE_URL}${path}`,
     },
     timeRequired: `PT${post.readingMinutes}M`,
     inLanguage: 'en-IN',

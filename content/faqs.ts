@@ -54,6 +54,33 @@ export const CITY_FAQS: Record<string, Faq[]> = {
   ],
 };
 
+/** FAQs for /kolkata-iron-water pillar page. Verbatim from the Tier-1 SEO
+ *  brief 2026-06-03 -- DO NOT rewrite without checking against the brief.
+ *  These are also rendered into FAQPage JSON-LD on the pillar page, so a
+ *  silent edit here changes the search-result rich result too. */
+export const KOLKATA_IRON_PILLAR_FAQS: Faq[] = [
+  {
+    q: 'Does a water softener remove iron?',
+    a: 'No. A softener removes hardness — the calcium and magnesium that cause scale. Iron needs a dedicated iron-removal filter that oxidises the iron and backwashes it out. Most Kolkata borewell homes need both, which is why we test before we specify.',
+  },
+  {
+    q: 'Why does my water turn yellow or orange after it stands?',
+    a: 'That’s dissolved iron. Straight from the tap the water can look clear, but once it meets air the iron oxidises and turns yellow-brown — the stain you see on basins, tiles, and laundry. It’s iron in the supply, not dirt in your tank.',
+  },
+  {
+    q: 'How much does an iron filter cost in Kolkata?',
+    a: 'It depends on your iron level, water use, and how the system fits your home — which is why we survey before we quote, instead of pricing from a catalogue. The survey is free, and you get a fixed price for your home.',
+  },
+  {
+    q: 'Is borewell water in Salt Lake, New Town, or Rajarhat safe to use?',
+    a: 'These areas sit on the borewell belt, where iron and hardness run higher than in central KMC-supplied Kolkata. Untreated, it stains fittings and clothes and scales appliances. A whole-house iron filter and softener, sized to your reading, fixes it at the source.',
+  },
+  {
+    q: 'How often does an iron filter need servicing?',
+    a: 'The media needs regular backwashing and gradually loses capacity — skipped maintenance is why cheap units fail within months. We visit every month to backwash, inspect the media, spot-test iron and hardness, and leave a written report.',
+  },
+];
+
 /** FAQs for /solutions/[slug], keyed by solution slug. */
 export const SOLUTION_FAQS: Record<string, Faq[]> = {
   'iron-filter': [
