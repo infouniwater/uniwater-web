@@ -99,7 +99,7 @@ export default function ForArchitectsPage() {
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               Pre-tile design. DWG, BIM, install drawings. A single survey-led partner from villa-level treatment to mid-rise WTP. So the fittings you specified perform the way the brand intended.
             </p>
-            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href="/contact?audience=architect"
                 className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"

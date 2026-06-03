@@ -82,7 +82,7 @@ export default function ForPlumbersPage() {
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               A referral program built for the plumbers who already know the home. You bring the lead. We do the survey, the design, the install, and the monthly service. You earn &mdash; on day one and across the AMC relationship.
             </p>
-            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href="/contact?audience=plumber"
                 className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"

@@ -129,7 +129,7 @@ export default function BuildingOrRenovatingPage() {
               is a 15&nbsp;mm decision at design; after tile it&rsquo;s
               chiseled walls. Get the call in early.
             </p>
-            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href="/book-survey?context=pre-construction"
                 className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"

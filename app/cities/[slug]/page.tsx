@@ -97,7 +97,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
               Uniwater in {content.name}.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">{content.lede}</p>
-            <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+            <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href="/book-survey"
                 className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"

@@ -155,7 +155,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                 . Final price after the free survey.
               </p>
             )}
-            <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+            <div className="mt-3 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href={bookSurveyHref}
                 className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"

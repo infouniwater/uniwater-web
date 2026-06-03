@@ -147,7 +147,16 @@ export function EditorialHero() {
             <span>Serviced every month</span>
           </div>
 
-          <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline gap-5 sm:gap-7 max-w-full">
+          {/* CTA row -- items-center (not items-baseline) on the row so the
+              pill button and the underlined text link read as a single
+              inline pair. With items-baseline the two share a text
+              baseline, but the pill's py-3.5 padding pushes the pill ~14px
+              taller in BOTH directions; the text-only link then floats in
+              the upper third of the pill's visual range, which Rajat
+              flagged as "the text has to be inline" with the button.
+              items-center vertically centers both, restoring a balanced
+              row that still aligns either way on multi-line wrap. */}
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
             <Link
               href="/book-survey"
               className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
