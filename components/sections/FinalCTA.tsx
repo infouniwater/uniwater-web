@@ -45,7 +45,7 @@ export function FinalCTA({
         <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
           <Link
             href={cta.href}
-            className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
+            className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
           >
             {cta.label}
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">

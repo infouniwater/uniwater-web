@@ -151,7 +151,7 @@ export default function WaterCheckerPage() {
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href="/book-survey?context=water-test"
-                className="inline-flex items-center gap-2 self-start whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
+                className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
               >
                 Book a water test
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -160,7 +160,7 @@ export default function WaterCheckerPage() {
               </Link>
               <a
                 href={PRIMARY_PHONE_HREF}
-                className="group inline-flex self-start text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
+                className="group inline-flex self-start sm:self-center text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
               >
                 <span className="inline-flex items-center gap-1.5 border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
                   Or call {PRIMARY_PHONE}
@@ -243,7 +243,7 @@ export default function WaterCheckerPage() {
               <Body className="text-mute flex-grow">{opt.body}</Body>
               <Link
                 href={opt.cta.href}
-                className={`inline-flex items-center gap-2 self-start text-[15px] font-medium transition-colors duration-200 ease-calm ${
+                className={`inline-flex items-center gap-2 self-start sm:self-center text-[15px] font-medium transition-colors duration-200 ease-calm ${
                   opt.cta.primary
                     ? 'whitespace-nowrap bg-navy text-offwhite rounded-full px-6 py-3.5 hover:bg-teal'
                     : 'text-teal hover:text-navy border-b border-teal/30 hover:border-navy/50 pb-1'
