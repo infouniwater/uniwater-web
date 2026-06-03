@@ -253,6 +253,51 @@ export default function ResidentialPage() {
 
       <ServiceSection />
 
+      {/* Society-management bridge to CWaaS. Per Rajat 2026-06-04, CWaaS
+          is NOT sold to individual homeowners -- only to commercial,
+          industrial, and residential SOCIETY buyers. The /residential
+          page is for homeowners (BathSoft / HomeSoft / Drinking water),
+          but many of those visitors also sit on society committees;
+          this callout serves them without pushing the homeowner toward
+          a service they can't use. Honest framing: "for individual
+          homes we install X; if you're also responsible for a society,
+          we have a different model." */}
+      <Section padding="default" tone="subtle">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <Eyebrow className="mb-2">Beyond your home</Eyebrow>
+            <Heading level={2}>Are you on a society management committee?</Heading>
+            <Body className="text-mute mt-2">
+              BathSoft, HomeSoft, and drinking-water systems are for
+              individual homes. For a housing society or apartment
+              complex, the water problem is different scale &mdash; and
+              we solve it differently. We own and run the society
+              plant; the committee stops firefighting.
+            </Body>
+          </div>
+          <div className="lg:col-span-7">
+            <Link
+              href="/clean-water-as-a-service#for-residential-societies"
+              className="group block border border-teal/30 bg-offwhite p-6 md:p-8 transition-all duration-200 ease-calm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(5,69,95,0.06)]"
+            >
+              <div className="flex flex-col gap-4">
+                <Eyebrow className="text-teal">Clean Water as a Service · Residential societies</Eyebrow>
+                <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
+                  400 homes on managed soft water. Society committees out of the loop on plant maintenance.
+                </h3>
+                <Body className="text-mute">
+                  BSM Enclave (120 flats, 1 lakh L/day) and Starwood, Chinar
+                  Park (280 flats, 2.5 lakh L/day) already run on our
+                  service contract. Whole-society soft water; monthly
+                  preventive visit; one predictable bill instead of capex.
+                </Body>
+                <Caption className="text-teal font-medium mt-2">See Clean Water as a Service for societies →</Caption>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </Section>
+
       <FinalCTA />
     </>
   );

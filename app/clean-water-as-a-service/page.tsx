@@ -10,6 +10,7 @@ import { serviceSchema, breadcrumbSchema } from '@/lib/structured-data';
 import { buildMetadata } from '@/lib/seo';
 import { PRIMARY_PHONE, PRIMARY_PHONE_HREF } from '@/content/site';
 import {
+  AUDIENCE_TRACKS,
   PILLARS,
   SERVICE_LINES,
   PROCESS_STEPS,
@@ -25,6 +26,7 @@ import {
   HERO_SUB,
   META_TITLE,
   META_DESCRIPTION,
+  getProofForTrack,
   type WaterLineSlug,
 } from '@/content/cwaas';
 
@@ -44,10 +46,22 @@ import {
  * is silently dropped by the form today; once the survey gains a context
  * field, that param will pre-tag the lead as CWaaS-intent.
  *
- * Cadence: image-with-scrim hero -> pillars (D) -> service lines (L,
- * Iron-Free foregrounded for the Bengal market) -> process (D, image) ->
- * live deployments + stats (L) -> monthly-visit differentiator (D) ->
- * Final CTA (subtle).
+ * Cadence (restructured 2026-06-04 -- audience-led, proof-led):
+ *   hero (D image-with-scrim) -> three audience tracks (L, the new lead:
+ *   commercial / industrial / residential societies, each with named
+ *   live sites) -> the model: three pillars (D) -> five water lines (L,
+ *   Iron-Free foregrounded) -> process (D, image) -> deployments ledger
+ *   + derived stats (L) -> monthly-visit differentiator (D) -> Final CTA
+ *   (subtle).
+ *
+ * Why the reshuffle: the original cadence led with abstract pillars
+ * ("zero capex / guaranteed to spec / fully managed") and buried the
+ * proof at position 5. Per Rajat 2026-06-04, CWaaS sells to three
+ * specific audiences (commercial, industrial, residential societies --
+ * NOT individual homeowners), and the proof is what closes them.
+ * Audience tracks at position 2 name the buyer in the first scroll
+ * and show real deployments inline; pillars become "how the model
+ * works" further down.
  */
 
 const SURVEY_HREF = '/book-survey?context=cwaas';
@@ -164,7 +178,95 @@ export default function CleanWaterAsAServicePage() {
         </div>
       </section>
 
-      {/* Pillars -- DARK band, three cards. The model in one screen. */}
+      {/* Audience tracks -- LIGHT band, three cards with inline proof.
+          The new lead per Rajat 2026-06-04. Each track names the buyer
+          (commercial / industrial / residential societies), pitches the
+          deliverable in one sentence, then drops the actual live sites
+          beneath it so the proof is in the first scroll, not buried
+          five sections deep. */}
+      <Section padding="default">
+        <div className="mb-12 max-w-3xl flex flex-col gap-4">
+          <Eyebrow>Who CWaaS is for</Eyebrow>
+          <Heading level={2}>Three audiences. Three contracts. One model.</Heading>
+          <Body className="text-mute mt-2">
+            Clean Water as a Service is sold to commercial buyers,
+            industrial buyers, and residential society management
+            committees. Not to individual homeowners &mdash; for that we
+            install BathSoft, HomeSoft, or a kitchen drinking-water
+            system instead.
+          </Body>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {AUDIENCE_TRACKS.map((track) => {
+            const proof = getProofForTrack(track);
+            return (
+              <div
+                key={track.slug}
+                id={`for-${track.slug}`}
+                className="border border-hairline bg-offwhite p-6 md:p-7 flex flex-col gap-5"
+              >
+                <div className="flex flex-col gap-3">
+                  <Eyebrow className="text-teal">{track.eyebrow}</Eyebrow>
+                  <h3 className="text-h2-m font-light text-navy leading-snug [text-wrap:balance]">{track.headline}</h3>
+                  <Body className="text-mute">{track.body}</Body>
+                </div>
+
+                <div className="pt-4 border-t border-hairline">
+                  <Caption className="text-mute uppercase tracking-wide block mb-2">Water lines</Caption>
+                  <div className="flex flex-wrap gap-2">
+                    {track.lines.map((l) => (
+                      <Link
+                        key={l}
+                        href={`#line-${l}`}
+                        className="text-caption text-navy bg-subtle border border-hairline rounded-full px-3 py-1 hover:bg-tint/50 transition-colors duration-200 ease-calm"
+                      >
+                        {LINE_LABEL[l]}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-hairline flex-grow">
+                  <Caption className="text-mute uppercase tracking-wide block mb-3">Already running</Caption>
+                  {proof.length > 0 ? (
+                    <ul className="flex flex-col gap-2">
+                      {proof.map((site) => (
+                        <li key={site.slug} className="text-caption text-ink">
+                          <span className="font-medium text-navy">{site.name}</span>
+                          <span className="text-mute"> &mdash; {site.context}{site.volume ? `, ${site.volume}` : ''}</span>
+                          <span className="text-mute"> ({site.city}, {site.country})</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <Caption className="text-mute italic">
+                      First deployments signing now &mdash; we don&rsquo;t name reference sites that aren&rsquo;t live yet.
+                    </Caption>
+                  )}
+                </div>
+
+                <div className="pt-4 border-t border-hairline mt-auto">
+                  <Link
+                    href={track.ctaHref}
+                    className="inline-flex items-center gap-2 text-teal text-caption font-medium hover:text-navy transition-colors duration-200 ease-calm"
+                  >
+                    {track.ctaLabel}
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* Pillars -- DARK band, three cards. The model in one screen.
+          Moved DOWN from position 2 to position 3 as part of the
+          2026-06-04 audience-led restructure -- it now answers "how
+          does the model work" after the audience tracks have named
+          the buyer. */}
       <Section tone="navy" padding="default" image={{ stem: 'utility' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>The model</Eyebrow>

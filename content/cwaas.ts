@@ -251,6 +251,88 @@ export const LIVE_SITES: LiveSite[] = [
 // These two lines have NO live CWaaS references yet -- the page surfaces a
 // "first deployments under contract" caption rather than fabricating clients.
 
+// ----- Audience tracks ----------------------------------------------------
+
+/** The three audience segments CWaaS is available to. Per Rajat
+ *  2026-06-04: CWaaS is NOT sold to individual homeowners -- only to
+ *  commercial, industrial, and residential-society buyers. The page leads
+ *  with these tracks instead of the abstract three-pillar pitch so the
+ *  visitor's audience is named in the first scroll. */
+export interface AudienceTrack {
+  /** Stable slug for id="" and React keys. */
+  slug: 'commercial' | 'industrial' | 'residential-societies';
+  /** Eyebrow label above the headline. */
+  eyebrow: string;
+  /** H3 / track headline. */
+  headline: string;
+  /** Short pitch (1-2 sentences). */
+  body: string;
+  /** Water lines (slugs) this track typically uses. */
+  lines: WaterLineSlug[];
+  /** LIVE_SITES slugs that prove this track. Page renders the matching
+   *  site cards inline beneath the track headline. */
+  proofSites: string[];
+  /** CTA verb under the track card. */
+  ctaLabel: string;
+  /** Where the CTA goes -- existing /book-survey flow with a context
+   *  hint. The survey form ignores ?context today; once it gains a
+   *  context field, that token tags the lead. */
+  ctaHref: string;
+}
+
+export const AUDIENCE_TRACKS: AudienceTrack[] = [
+  {
+    slug: 'commercial',
+    eyebrow: 'Commercial',
+    headline: 'Offices, hospitality, healthcare, education.',
+    body:
+      'Drinking water on every floor that meets IS 10500. Soft water for hotels and laundries. The plant is ours; the building is yours.',
+    lines: ['drinking', 'soft', 'iron-free'],
+    proofSites: [
+      'techno-india-joka',
+      'techno-india-jhore',
+      'heritage-international-school',
+      'feel-good-restaurant',
+      'contour-furnitures',
+    ],
+    ctaLabel: 'Talk to us about commercial water',
+    ctaHref: '/book-survey?context=cwaas-commercial',
+  },
+  {
+    slug: 'industrial',
+    eyebrow: 'Industrial',
+    headline: 'Manufacturing, process, quality-controlled plants.',
+    body:
+      'DM water for boilers, plating, batteries, electronics. RO process water for F&B, pharma, beverage. Resin and membranes managed for you.',
+    lines: ['dm', 'ro-process', 'drinking'],
+    proofSites: [
+      'acme-moulders',
+      'kumar-plasto-platers',
+      'shivshakti-expellers',
+    ],
+    ctaLabel: 'Talk to us about industrial water',
+    ctaHref: '/book-survey?context=cwaas-industrial',
+  },
+  {
+    slug: 'residential-societies',
+    eyebrow: 'Residential societies',
+    headline: 'Housing societies, apartment complexes, gated communities.',
+    body:
+      'Whole-society soft water that protects every appliance in every flat. Centralised drinking water on tap. The committee stops firefighting plant problems.',
+    lines: ['soft', 'iron-free', 'drinking'],
+    proofSites: ['bsm-tulsidham', 'starwood-chinar-park'],
+    ctaLabel: 'Talk to us about society water',
+    ctaHref: '/book-survey?context=cwaas-society',
+  },
+];
+
+/** Lookup helper -- pulls the LiveSite records that prove a given track. */
+export function getProofForTrack(track: AudienceTrack): LiveSite[] {
+  return track.proofSites
+    .map((slug) => LIVE_SITES.find((s) => s.slug === slug))
+    .filter((s): s is LiveSite => Boolean(s));
+}
+
 // ----- Aggregate stats (derived) ------------------------------------------
 
 // These derive FROM LIVE_SITES rather than being asserted independently so
