@@ -96,25 +96,31 @@ export default function IndustrialPage() {
               Engineered water systems for industry, hospitality, healthcare, and institutions. Surveyed before sold. Serviced after handover. Year five, the system still meets spec.
             </p>
 
+            {/* Hero CTAs reordered 2026-06-04 -- CWaaS as primary, RFQ
+                as secondary. /industrial is the gateway: visitors land
+                here and pick a procurement model. Subscription comes
+                first because it's the model most institutional buyers
+                should consider; the traditional capex/RFQ path stays
+                one click away. */}
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
-                href="#rfq"
+                href="/clean-water-as-a-service"
                 className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
               >
-                Submit an RFQ
+                See Clean Water as a Service
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
                   <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
 
-              <a href={PRIMARY_PHONE_HREF} className="group inline-flex self-start sm:self-center text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full">
+              <Link href="#rfq" className="group inline-flex self-start sm:self-center text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full">
                 <span className="inline-flex items-center gap-1.5 border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
-                  Or talk to an engineer
+                  Or submit an RFQ
                   <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true" className="shrink-0">
-                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                    <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </span>
-              </a>
+              </Link>
             </div>
 
             <p className="text-caption text-offwhite/65 mt-2">
@@ -139,55 +145,72 @@ export default function IndustrialPage() {
         </div>
       </section>
 
-      {/* Clean Water as a Service -- HERO SOLUTION, the first thing the
-          institutional visitor sees after the hero. CWaaS is the
-          headline offering for I&I per Rajat 2026-06-04; capex/RFQ
-          track sits below. Same conversion path (Book a free survey)
-          so the funnel stays unified. */}
+      {/* Clean Water as a Service -- smart-funnel section, position 1
+          after the hero. Per Rajat 2026-06-04: /industrial is the
+          gateway and this section is the smart navigator to the CWaaS
+          page. Rather than just being a "click through" card, it
+          teaches the model in one screen: headline + lede + three
+          pillars (one line each) + proof tile + CTA. The visitor who
+          skims gets enough to decide; the visitor who deep-reads gets
+          the explainer; only the committed visitor needs to click
+          through for depth. */}
       <Section padding="default" tone="subtle">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            <Eyebrow className="mb-2">Hero solution</Eyebrow>
-            <Heading level={2}>Clean Water as a Service.</Heading>
-            <Lede className="text-mute mt-2">
-              Stop buying water plants. Buy water outcomes.
-            </Lede>
-            <Body className="text-mute mt-2">
-              We design, fund, own and run the plant. You pay one
-              predictable fee for water held to specification, with a
-              monthly preventive engineer visit included. Drinking,
-              iron-free, soft, RO process and DM — five water lines,
-              one contract.
-            </Body>
-            <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
-              <Link
-                href="/clean-water-as-a-service"
-                className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
-              >
-                See Clean Water as a Service
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
-                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
+        <div className="mb-10 max-w-3xl flex flex-col gap-4">
+          <Eyebrow className="mb-2">Or buy the water, not the plant</Eyebrow>
+          <Heading level={2}>Clean Water as a Service.</Heading>
+          <Lede className="text-mute mt-2">
+            We design, fund, own and run the plant. You pay one
+            predictable fee for water held to specification — with a
+            monthly preventive engineer visit included.
+          </Lede>
+        </div>
+
+        {/* Three pillars in one strip. Each is a single line so the
+            model lands in under five seconds; the CWaaS page carries
+            the full bodies. */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-hairline border border-hairline mb-10">
+          <div className="bg-offwhite p-6 flex flex-col gap-2">
+            <Eyebrow className="text-teal">Zero capital outlay</Eyebrow>
+            <Body className="text-navy">Nothing lands on your capex sheet. You start paying when the water meets spec.</Body>
+          </div>
+          <div className="bg-offwhite p-6 flex flex-col gap-2">
+            <Eyebrow className="text-teal">Guaranteed to spec</Eyebrow>
+            <Body className="text-navy">An agreed water-quality standard, backed by an SLA. Iron, hardness, TDS, conductivity — held to the line that matters.</Body>
+          </div>
+          <div className="bg-offwhite p-6 flex flex-col gap-2">
+            <Eyebrow className="text-teal">Fully managed</Eyebrow>
+            <Body className="text-navy">Monthly engineer visits, consumables, media, membranes, repairs — all included.</Body>
+          </div>
+        </div>
+
+        {/* Proof tile + CTA pair. The audience-track-led CWaaS page is
+            one click away; the visitor only commits if the model already
+            looks right. */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8">
+            <div className="border border-teal/30 bg-offwhite p-6 md:p-7 flex flex-col gap-3">
+              <Eyebrow className="text-teal">Already running</Eyebrow>
+              <Body className="text-ink">
+                <span className="font-medium text-navy">10 live deployments</span>{' '}
+                across India and Nepal.{' '}
+                <span className="font-medium text-navy">400 homes</span>{' '}
+                on managed soft water,{' '}
+                <span className="font-medium text-navy">2,000+ students</span>{' '}
+                on managed drinking water, and{' '}
+                <span className="font-medium text-navy">1 lakh L/month</span>{' '}
+                of DM water for manufacturing.
+              </Body>
             </div>
           </div>
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-4">
             <Link
               href="/clean-water-as-a-service"
-              className="group block border border-teal/30 bg-offwhite p-6 md:p-8 transition-all duration-200 ease-calm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(5,69,95,0.06)]"
+              className="group inline-flex items-center gap-2 whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
             >
-              <div className="flex flex-col gap-4">
-                <Eyebrow className="text-teal">Zero capex · Guaranteed spec · Fully managed</Eyebrow>
-                <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
-                  One contract. Five water lines. Held to spec.
-                </h3>
-                <Body className="text-mute">
-                  10 live deployments across India and Nepal. 400 homes on
-                  managed soft water; 2,000+ students on managed drinking
-                  water; DM water delivered monthly for manufacturing.
-                </Body>
-                <Caption className="text-teal font-medium mt-2">See Clean Water as a Service →</Caption>
-              </div>
+              See full audience tracks
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
         </div>

@@ -50,7 +50,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${path}`,
     lastModified,
     changeFrequency: 'monthly' as const,
-    priority: path === '/' ? 1 : 0.8,
+    // / = 1.0 (highest); /clean-water-as-a-service = 0.9 (flagship
+    // commercial offering, same priority as solution detail pages);
+    // every other static page = 0.8.
+    priority: path === '/' ? 1 : path === '/clean-water-as-a-service' ? 0.9 : 0.8,
   }));
 
   const solutionRoutes = SOLUTION_LIST.map((s) => ({

@@ -2,14 +2,17 @@ import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
 import { CONTACT, CITIES, SITE, WHATSAPP_HREF, COMPANY_REGISTRATION, SOCIAL_HANDLES, LAUNCH_FLAGS } from '@/content/site';
 
-const SOLUTIONS_LINKS = [
+// CWaaS moved to the TOP of the column 2026-06-04 (later same day) as
+// part of the "find better ways" pass -- it's the flagship for
+// commercial / industrial / society buyers and earns the top slot in
+// the Solutions list. The visual treatment (font-semibold) makes it
+// scan first; the rest of the list reads as the residential catalogue.
+const SOLUTIONS_LINKS: Array<{ href: string; label: string; featured?: boolean }> = [
+  { href: '/clean-water-as-a-service', label: 'Clean Water as a Service', featured: true },
   { href: '/solutions/bathroom-filter', label: 'BathSoft' },
   { href: '/solutions/whole-house-water-filter', label: 'HomeSoft' },
   { href: '/solutions/drinking-water-solution', label: 'Drinking water' },
   { href: '/industrial', label: 'Industrial / WTP' },
-  // CWaaS sits in the footer too -- second route for institutional
-  // visitors who scroll past the Header mega-menu.
-  { href: '/clean-water-as-a-service', label: 'Clean Water as a Service' },
 ];
 
 const RESOURCES_LINKS = [
@@ -107,7 +110,11 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-caption text-offwhite/80 hover:text-soft transition-colors duration-200 ease-calm"
+                    className={`text-caption transition-colors duration-200 ease-calm ${
+                      link.featured
+                        ? 'text-offwhite font-semibold hover:text-soft'
+                        : 'text-offwhite/80 hover:text-soft'
+                    }`}
                   >
                     {link.label}
                   </Link>

@@ -35,16 +35,17 @@ const AUDIENCES = [
     href: '/building-or-renovating',
   },
   {
-    // Re-pointed 2026-06-04 to /clean-water-as-a-service. The institutional
-    // visitor's first impression is now the subscription frame (Uniwater
-    // owns + runs the plant; you pay for water held to spec) rather than
-    // the capex/RFQ frame; the existing /industrial flow is still one
-    // click away from there.
+    // Re-pointed back to /industrial 2026-06-04 (later same day) per
+    // Rajat. /industrial is the gateway -- the visitor lands there,
+    // sees CWaaS as the primary hero CTA (and as the hero-solution
+    // section right after), and the smart funnel takes them through.
+    // The homepage AudienceRouter doesn't pre-commit them to the
+    // subscription frame; /industrial does the framing.
     label: 'I run a building, hotel, or factory.',
     body:
-      'Buy water outcomes, not water plants. We own and run the plant; you pay for water held to spec.',
-    cta: 'See Clean Water as a Service',
-    href: '/clean-water-as-a-service',
+      'Engineered water at scale. Subscribe to water on a service contract, or specify and buy a plant. We do both.',
+    cta: 'For institutions & industry',
+    href: '/industrial',
   },
   {
     label: 'I specify or install water systems.',

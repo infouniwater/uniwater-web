@@ -296,13 +296,26 @@ export function Header() {
                 </li>
               </ul>
               {/* Parallel "see all" link to the right-column equivalent;
-                  /residential is the homeowner catalogue overview. */}
-              <div className="mt-8 pt-6 border-t border-hairline">
+                  /residential is the homeowner catalogue overview.
+                  Cross-link to CWaaS added 2026-06-04 for society
+                  committee members -- CWaaS is not sold to individual
+                  homeowners but residential SOCIETIES can subscribe.
+                  Keeps the same audience in both menu columns. */}
+              <div className="mt-8 pt-6 border-t border-hairline flex flex-col gap-3">
                 <Link
                   href="/residential"
                   className="inline-flex items-center gap-2 text-teal text-caption font-medium"
                 >
                   See all residential solutions
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/clean-water-as-a-service#for-residential-societies"
+                  className="inline-flex items-center gap-2 text-mute hover:text-teal text-caption transition-colors duration-200 ease-calm"
+                >
+                  On a society committee? See CWaaS for societies
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
