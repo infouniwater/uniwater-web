@@ -268,10 +268,13 @@ export function Header() {
               <div className="text-eyebrow font-medium uppercase text-teal mb-5">
                 For your home
               </div>
-              {/* Single column matches the institutions side. A two-column
-                  grid for 3 items left a visible hole in the bottom-right
-                  cell (BathSoft / HomeSoft / Drinking water systems +
-                  empty), which Rajat flagged 2026-06-03. */}
+              {/* Single column matches the institutions side. 4 items
+                  on each side so the divider + see-more link land at
+                  the same horizontal position; the "Service & AMC for
+                  homes" entry mirrors the right column's "AMC services
+                  for institutions" line. Rajat flagged the earlier
+                  3-item left column as visibly short next to the
+                  4-item right column 2026-06-03. */}
               <ul className="flex flex-col gap-3">
                 {RESIDENTIAL_LINKS.map((link) => (
                   <li key={link.slug}>
@@ -283,6 +286,14 @@ export function Header() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/service"
+                    className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm"
+                  >
+                    Service &amp; AMC for homes
+                  </Link>
+                </li>
               </ul>
               {/* Parallel "see all" link to the right-column equivalent;
                   /residential is the homeowner catalogue overview. */}
