@@ -35,11 +35,16 @@ const AUDIENCES = [
     href: '/building-or-renovating',
   },
   {
+    // Re-pointed 2026-06-04 to /clean-water-as-a-service. The institutional
+    // visitor's first impression is now the subscription frame (Uniwater
+    // owns + runs the plant; you pay for water held to spec) rather than
+    // the capex/RFQ frame; the existing /industrial flow is still one
+    // click away from there.
     label: 'I run a building, hotel, or factory.',
     body:
-      'Engineered water at scale. Building plants to 50K LPH industrial RO. AMC priced at handover.',
-    cta: 'Submit an RFQ',
-    href: '/industrial#rfq',
+      'Buy water outcomes, not water plants. We own and run the plant; you pay for water held to spec.',
+    cta: 'See Clean Water as a Service',
+    href: '/clean-water-as-a-service',
   },
   {
     label: 'I specify or install water systems.',

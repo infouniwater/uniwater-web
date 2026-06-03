@@ -149,6 +149,55 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
+      {/* Clean Water as a Service teaser -- sits high on the page so the
+          visitor sees the subscription alternative before they read the
+          capex / BOM / RFQ track below. Same conversion path (Book a
+          free survey) so it doesn't fragment the funnel. */}
+      <Section padding="default" tone="subtle">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            <Eyebrow className="mb-2">Or buy the water, not the plant</Eyebrow>
+            <Heading level={2}>Clean Water as a Service.</Heading>
+            <Body className="text-mute mt-2">
+              We design, fund, own and run the plant. You pay one
+              predictable fee for water held to specification, with a
+              monthly engineer visit included. Drinking, iron-free, soft,
+              RO process and DM — five water lines, one contract.
+            </Body>
+            <div className="mt-4">
+              <Link
+                href="/clean-water-as-a-service"
+                className="inline-flex items-center gap-2 text-teal text-caption font-medium"
+              >
+                See how it works
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <Link
+              href="/clean-water-as-a-service"
+              className="group block border border-teal/30 bg-offwhite p-6 md:p-8 transition-all duration-200 ease-calm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(5,69,95,0.06)]"
+            >
+              <div className="flex flex-col gap-4">
+                <Eyebrow className="text-teal">Zero capex · Guaranteed spec · Fully managed</Eyebrow>
+                <h3 className="text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
+                  Stop buying water plants. Buy water outcomes.
+                </h3>
+                <Body className="text-mute">
+                  10 live deployments across India and Nepal. 400 homes on
+                  managed soft water; 2,000+ students on managed drinking
+                  water; DM water delivered monthly for manufacturing.
+                </Body>
+                <Caption className="text-teal font-medium mt-2">See Clean Water as a Service →</Caption>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </Section>
+
       <Section padding="tight">
         <div className="max-w-3xl">
           <PincodeCheck bookSurveyHref="/industrial#rfq" />

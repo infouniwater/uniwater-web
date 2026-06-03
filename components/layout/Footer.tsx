@@ -7,6 +7,9 @@ const SOLUTIONS_LINKS = [
   { href: '/solutions/whole-house-water-filter', label: 'HomeSoft' },
   { href: '/solutions/drinking-water-solution', label: 'Drinking water' },
   { href: '/industrial', label: 'Industrial / WTP' },
+  // CWaaS sits in the footer too -- second route for institutional
+  // visitors who scroll past the Header mega-menu.
+  { href: '/clean-water-as-a-service', label: 'Clean Water as a Service' },
 ];
 
 const RESOURCES_LINKS = [

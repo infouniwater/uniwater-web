@@ -294,6 +294,17 @@ export function Header() {
                     Service &amp; AMC for homes
                   </Link>
                 </li>
+                <li>
+                  {/* 5th item added 2026-06-04 to match the institutions
+                      column count after CWaaS landed there. Why Uniwater
+                      sits naturally in the home column. */}
+                  <Link
+                    href="/why-uniwater"
+                    className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm"
+                  >
+                    Why Uniwater
+                  </Link>
+                </li>
               </ul>
               {/* Parallel "see all" link to the right-column equivalent;
                   /residential is the homeowner catalogue overview. */}
@@ -314,6 +325,15 @@ export function Header() {
                 For institutions &amp; industry
               </div>
               <ul className="flex flex-col gap-3">
+                <li>
+                  {/* CWaaS sits at the top of the commercial menu because
+                      it's the offering most institutional buyers should
+                      see first -- it changes the procurement frame from
+                      capex to subscription. */}
+                  <Link href="/clean-water-as-a-service" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
+                    Clean Water as a Service
+                  </Link>
+                </li>
                 <li>
                   <Link href="/industrial" className="text-body text-ink hover:text-teal transition-colors duration-200 ease-calm">
                     Building &amp; society water plants
