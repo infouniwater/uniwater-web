@@ -167,24 +167,23 @@ export function EditorialHero() {
               </svg>
             </Link>
 
-            {/* Secondary CTA -- the SVG sits INSIDE the underlined span
-                so the bottom-border runs under both the text and the
-                arrow. Previously the arrow lived as a sibling of the
-                span, which left it floating 6px to the right of the
-                underline AND nudged 2px below the text baseline (the
-                outer Link used items-center while the inner span had
-                pb-1 padding). Visible "distorted" look in screenshots
-                came from those two combined offsets. */}
+            {/* Secondary CTA -- restyled 2026-06-03 to match the
+                primary pill's shape and height. Earlier attempts kept
+                this as an underlined text link with items-center on
+                the row, but the pill is ~28px taller than bare text,
+                so the two text Y positions never aligned -- Rajat
+                flagged it repeatedly. Both pills now share the same
+                py-3.5 / rounded-full / text-[15px] geometry; only the
+                fill differs (primary = bg-navy, secondary = border).
+                That guarantees text-on-one-line by construction. */}
             <Link
               href="/water-problem-checker"
-              className="group inline-flex self-start sm:self-center text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
+              className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap border border-offwhite/40 text-offwhite/90 hover:text-offwhite hover:border-offwhite/70 font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm"
             >
-              <span className="inline-flex items-center gap-1.5 border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
-                Take the 60-second water check
-                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true" className="shrink-0">
-                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
+              Take the 60-second water check
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
         </div>
