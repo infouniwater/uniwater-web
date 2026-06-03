@@ -184,6 +184,38 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         );
       })()}
 
+      {/* Pillar bridge -- the two iron-relevant journal posts get an
+          inbound link to /kolkata-iron-water. The pillar is the long-form
+          Kolkata-specific deep dive that subsumes both posts; from the
+          reader's perspective, this is the natural next step after the
+          short journal piece. */}
+      {(post.slug === 'borewell-water-yellow' || post.slug === 'iron-hardness-order') && (
+        <Section padding="tight">
+          <div className="max-w-reading mx-auto border border-teal/30 bg-tint/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="max-w-xl">
+              <div className="text-eyebrow font-medium uppercase text-teal mb-3">
+                Pillar guide
+              </div>
+              <h3 className="text-h3 font-semibold text-navy mb-2">
+                Iron in Kolkata water — stains, causes, and removal.
+              </h3>
+              <Caption className="text-mute">
+                Locality table, three-stage removal explainer, and the iron-vs-softener FAQs in one place.
+              </Caption>
+            </div>
+            <Link
+              href="/kolkata-iron-water"
+              className="inline-flex items-center gap-2 text-teal text-caption font-medium whitespace-nowrap"
+            >
+              <span>Read the pillar</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </div>
+        </Section>
+      )}
+
       <FinalCTA />
     </>
   );

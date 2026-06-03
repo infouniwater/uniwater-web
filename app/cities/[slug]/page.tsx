@@ -158,6 +158,47 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
           data (currently Kolkata); other cities render nothing here. */}
       <CityWaterTable citySlug={content.slug} cityName={content.name} />
 
+      {/* Pillar callout — Kolkata only. A visitor who has just read the
+          locality table is staring at iron values across the city; the
+          /kolkata-iron-water pillar is the natural follow-on (cause,
+          chemistry, removal). Other cities skip this entirely until
+          their own pillar pages land. */}
+      {content.slug === 'kolkata' && (
+        <Section padding="default" tone="subtle">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 flex flex-col gap-4">
+              <Eyebrow className="mb-2">Read further</Eyebrow>
+              <Heading level={2}>Iron in Kolkata water — the long read.</Heading>
+              <Body className="text-mute mt-2">
+                Why central KMC localities read low while Salt Lake, New
+                Town, and Rajarhat run high; how iron has to be removed
+                before softening; and why &ldquo;zero-maintenance&rdquo;
+                iron filters fail.
+              </Body>
+            </div>
+            <div className="lg:col-span-7">
+              <Link
+                href="/kolkata-iron-water"
+                className="group block border border-hairline bg-offwhite p-6 transition-all duration-200 ease-calm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(5,69,95,0.06)]"
+              >
+                <div className="flex flex-col gap-3">
+                  <Eyebrow className="text-teal">Pillar guide</Eyebrow>
+                  <Heading level={3}>
+                    Iron in Kolkata water &mdash; stains, causes, and removal.
+                  </Heading>
+                  <Body className="text-mute">
+                    Locality table (Park Street through Rajarhat), three-stage
+                    removal explainer, FAQs on iron-vs-softener and borewell
+                    safety.
+                  </Body>
+                  <Caption className="text-teal font-medium mt-2">Read the pillar →</Caption>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </Section>
+      )}
+
       {/* Local team */}
       <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
