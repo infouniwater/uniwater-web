@@ -7,6 +7,7 @@ import { InstallationVersatility } from '@/components/sections/InstallationVersa
 import { FourStepProcess } from '@/components/sections/FourStepProcess';
 import { ProofSection } from '@/components/sections/ProofSection';
 import { CitiesSection } from '@/components/sections/CitiesSection';
+import { CityGuides } from '@/components/sections/CityGuides';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { FOUR_STEPS } from '@/content/education';
 import { jsonLd, serviceSchema } from '@/lib/structured-data';
@@ -83,6 +84,10 @@ export default function HomePage() {
       <ProofSection />
       {/* 9. Cities */}
       <CitiesSection />
+      {/* 9b. City guides -- pillar pages, currently Kolkata iron. Data-
+              driven; future Guwahati / Noida / Salt Lake pillars append
+              to the array in CityGuides.tsx with no markup change. */}
+      <CityGuides />
 
       {/* Composite homeowner pull-quote previously rendered here was removed
           2026-05-22 per Part 5.3 of the homepage-restructure-2 brief.
