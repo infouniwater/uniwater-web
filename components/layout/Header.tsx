@@ -268,7 +268,11 @@ export function Header() {
               <div className="text-eyebrow font-medium uppercase text-teal mb-5">
                 For your home
               </div>
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-3">
+              {/* Single column matches the institutions side. A two-column
+                  grid for 3 items left a visible hole in the bottom-right
+                  cell (BathSoft / HomeSoft / Drinking water systems +
+                  empty), which Rajat flagged 2026-06-03. */}
+              <ul className="flex flex-col gap-3">
                 {RESIDENTIAL_LINKS.map((link) => (
                   <li key={link.slug}>
                     <Link
@@ -280,6 +284,19 @@ export function Header() {
                   </li>
                 ))}
               </ul>
+              {/* Parallel "see all" link to the right-column equivalent;
+                  /residential is the homeowner catalogue overview. */}
+              <div className="mt-8 pt-6 border-t border-hairline">
+                <Link
+                  href="/residential"
+                  className="inline-flex items-center gap-2 text-teal text-caption font-medium"
+                >
+                  See all residential solutions
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
             </div>
             <div>
               <div className="text-eyebrow font-medium uppercase text-teal mb-5">
