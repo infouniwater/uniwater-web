@@ -158,16 +158,24 @@ export function EditorialHero() {
               </svg>
             </Link>
 
+            {/* Secondary CTA -- the SVG sits INSIDE the underlined span
+                so the bottom-border runs under both the text and the
+                arrow. Previously the arrow lived as a sibling of the
+                span, which left it floating 6px to the right of the
+                underline AND nudged 2px below the text baseline (the
+                outer Link used items-center while the inner span had
+                pb-1 padding). Visible "distorted" look in screenshots
+                came from those two combined offsets. */}
             <Link
               href="/water-problem-checker"
-              className="group inline-flex items-center gap-1.5 self-start text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
+              className="group inline-flex self-start text-[15px] text-offwhite/75 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
             >
-              <span className="border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
+              <span className="inline-flex items-center gap-1.5 border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
                 Take the 60-second water check
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </span>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
-                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
             </Link>
           </div>
         </div>
