@@ -2,49 +2,96 @@ import type { Metadata } from 'next';
 import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
-import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
+import { Eyebrow, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
 import { SubmitButton } from '@/components/ui/SubmitButton';
-import { Card, StatTile } from '@/components/ui/Card';
+import { StatTile } from '@/components/ui/Card';
 import { Infographic } from '@/components/ui/Infographic';
 import { TextField, TextArea, SelectField } from '@/components/ui/Form';
 import { WHERE_WE_WORK, CAPACITY_BANDS, TECHNICAL_EDGE } from '@/content/industrial';
 import { COMPONENT_MANUFACTURERS, NAMED_CLIENTS, CLIENT_LOGOS, STATS, PRIMARY_PHONE_HREF } from '@/content/site';
+import { AUDIENCE_TRACKS, getProofForTrack, type AudienceTrack } from '@/content/cwaas';
 import Image from 'next/image';
 import { submitRFQ } from '@/app/actions/leads';
 import { PincodeCheck } from '@/components/ui/PincodeCheck';
+
+/**
+ * /industrial -- redesigned 2026-06-04 as a DECISION PAGE.
+ *
+ * Previous version tried to be everything (13 sections; CWaaS hero
+ * solution + the legacy capex/RFQ track + audience cards + applications
+ * + tech edge + components + track record + RFQ form). It overlapped
+ * heavily with /clean-water-as-a-service ("what we offer", "who we
+ * serve", proof), and visitors couldn't tell which page carried which
+ * truth.
+ *
+ * New role: /industrial is the GATEWAY. The visitor lands here, picks
+ * a procurement model (Subscribe = CWaaS, or Specify = RFQ), then
+ * deep-dives to the relevant page. /clean-water-as-a-service carries
+ * the depth on the subscription model; /industrial carries the depth
+ * on the capex/RFQ model and presents both options side-by-side.
+ *
+ * Cadence:
+ *   1. Hero (D image-with-scrim) -- engineered water at scale
+ *   2. Two paths (L) -- Subscribe vs Specify, equal-IA cards
+ *   3. Who we serve (D, image) -- 3 audience tracks reused from
+ *      content/cwaas.ts, but rendered briefly here (typical sites +
+ *      named-client proof) without the full track depth
+ *   4. What we install (L) -- 6 applications + engineering note
+ *   5. Capacity & sizing (D) -- 5 LPH bands + ladder infographic
+ *   6. The engineering edge (L) -- 4 technical USPs + named components
+ *      logo wall, consolidated into one section
+ *   7. Operating footprint (subtle) -- PincodeCheck for city
+ *      availability
+ *   8. Track record (D, image) -- stats + named clients
+ *   9. RFQ form (L) -- the Specify path; submitRFQ unchanged
+ *  10. Final CTA (tint) -- book a free survey (Subscribe path) or
+ *      submit an RFQ (Specify path)
+ *
+ * Content preserved verbatim: WHERE_WE_WORK (now folded into audience-
+ * track captions), CAPACITY_BANDS, TECHNICAL_EDGE, AUDIENCES (now
+ * folded into the typical-sites list per audience track), APPLICATIONS,
+ * COMPONENT_MANUFACTURERS, NAMED_CLIENTS, CLIENT_LOGOS, STATS,
+ * PincodeCheck, RFQ form, FinalCTA.
+ */
 
 export const metadata: Metadata = buildMetadata({
   path: '/industrial',
   title: 'Industrial & Institutional Water Treatment Plants',
   description:
-    'Engineered water systems for industry, hospitality, healthcare. 8,000 LPH building plants to 50,000 LPH industrial RO. AMC-priced.',
+    'Engineered water systems for industry, hospitality, healthcare, residential societies. Two procurement models: subscribe (Clean Water as a Service) or specify and buy a plant. 8,000 LPH building plants to 50,000 LPH industrial RO.',
   image: '/og/og-home.png',
 });
 
-const WHERE_WE_WORK_PHOTO: Record<string, { src: string; alt: string }> = {
-  '01': {
-    src: '/images/photography/commercial-ro-industrial-shed.jpg',
-    alt: 'Branded Uniwater commercial RO and softening plant installed inside an industrial shed',
-  },
-  '02': {
+// Photos already shipped for the WHERE_WE_WORK 3-category treatment.
+// Re-keyed by audience track slug so the new audience cards reuse the
+// existing imagery without sourcing new shots:
+//   commercial            -> rooftop enclosure (institutional context)
+//   industrial            -> industrial shed (manufacturing context)
+//   residential-societies -> WTP terrace (residential complex context)
+const AUDIENCE_PHOTO: Record<AudienceTrack['slug'], { src: string; alt: string }> = {
+  commercial: {
     src: '/images/photography/commercial-ro-rooftop-enclosure.jpg',
-    alt: 'Branded Uniwater commercial RO plant installed inside a rooftop polycarbonate enclosure',
+    alt: 'A Uniwater commercial RO plant installed inside a rooftop polycarbonate enclosure at an institutional site',
   },
-  '03': {
+  industrial: {
+    src: '/images/photography/commercial-ro-industrial-shed.jpg',
+    alt: 'A Uniwater commercial RO and softening plant installed inside an industrial shed',
+  },
+  'residential-societies': {
     src: '/images/photography/wtp-terrace.jpg',
-    alt: 'Centralised water-treatment plant on the rooftop of a residential complex with stainless vessels and instrumentation',
+    alt: 'A centralised water-treatment plant on the rooftop of a residential complex with stainless vessels and instrumentation',
   },
 };
 
-const AUDIENCES = [
-  { name: 'Hospitals & clinics', body: 'Drinking-water RO at point of use. DM for sterile process.' },
-  { name: 'Hotels & hospitality', body: 'WTP for whole-site treatment. RO for kitchen and laundry.' },
-  { name: 'Schools & campuses', body: 'Centralised drinking water. Sized for peak occupancy.' },
-  { name: 'Manufacturing', body: 'Process water, boiler feed, cooling-tower make-up, plating.' },
-  { name: 'Pharmaceutical', body: 'High-purity DM water below 1 \u00b5S/cm. Validated handover.' },
-  { name: 'Power & process', body: 'Boiler feed, condensate polishing, cooling-tower treatment.' },
-];
+// The WHERE_WE_WORK content (industries / institutions / communities) is
+// preserved by mapping each track to its closest match. This carries
+// forward the "typical sites" lists Rajat curated in content/industrial.ts.
+const TRACK_TO_WHERE_WE_WORK: Record<AudienceTrack['slug'], typeof WHERE_WE_WORK[number]> = {
+  commercial: WHERE_WE_WORK[1],            // Institutions
+  industrial: WHERE_WE_WORK[0],            // Industries
+  'residential-societies': WHERE_WE_WORK[2], // Communities
+};
 
 const APPLICATIONS = [
   'Drinking water at scale',
@@ -58,10 +105,8 @@ const APPLICATIONS = [
 export default function IndustrialPage() {
   return (
     <>
-      {/* Hero — image-with-scrim editorial register, matching the
-          homepage and /residential heroes. B2B audience reads the
-          same brand voice; only the eyebrow + heading + CTA verb
-          change. */}
+      {/* 1. Hero -- image-with-scrim editorial register. Two-path CTAs:
+              Subscribe (CWaaS) primary, Specify (RFQ) secondary. */}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[520px] md:h-[640px] lg:h-[calc(100vh-160px)] lg:min-h-[600px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
@@ -87,21 +132,15 @@ export default function IndustrialPage() {
         />
 
         <div className="relative h-full container-uw flex items-end lg:items-center">
-          <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
-            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Industrial &amp; institutional</p>
+          <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
+            <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Institutions &amp; industry</p>
             <h1 className="text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
               Water that holds up at scale.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Engineered water systems for industry, hospitality, healthcare, and institutions. Surveyed before sold. Serviced after handover. Year five, the system still meets spec.
+              Engineered water systems for industry, hospitality, healthcare, education, and residential societies. Two procurement models: subscribe to water as a service, or specify and buy a plant.
             </p>
 
-            {/* Hero CTAs reordered 2026-06-04 -- CWaaS as primary, RFQ
-                as secondary. /industrial is the gateway: visitors land
-                here and pick a procurement model. Subscription comes
-                first because it's the model most institutional buyers
-                should consider; the traditional capex/RFQ path stays
-                one click away. */}
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
                 href="/clean-water-as-a-service"
@@ -145,171 +184,173 @@ export default function IndustrialPage() {
         </div>
       </section>
 
-      {/* Clean Water as a Service -- smart-funnel section, position 1
-          after the hero. Per Rajat 2026-06-04: /industrial is the
-          gateway and this section is the smart navigator to the CWaaS
-          page. Rather than just being a "click through" card, it
-          teaches the model in one screen: headline + lede + three
-          pillars (one line each) + proof tile + CTA. The visitor who
-          skims gets enough to decide; the visitor who deep-reads gets
-          the explainer; only the committed visitor needs to click
-          through for depth. */}
+      {/* 2. Two paths -- the central decision moment. Side-by-side
+              cards present BOTH procurement models with equal IA;
+              Subscribe is visually elevated as the modern recommendation
+              (teal border + tint bg) but Specify gets equal narrative
+              weight. Each card answers: when it's right, what's
+              included, and where to go. */}
       <Section padding="default" tone="subtle">
         <div className="mb-10 max-w-3xl flex flex-col gap-4">
-          <Eyebrow className="mb-2">Or buy the water, not the plant</Eyebrow>
-          <Heading level={2}>Clean Water as a Service.</Heading>
+          <Eyebrow className="mb-2">Pick a procurement model</Eyebrow>
+          <Heading level={2}>Two paths to engineered water.</Heading>
           <Lede className="text-mute mt-2">
-            We design, fund, own and run the plant. You pay one
-            predictable fee for water held to specification — with a
-            monthly preventive engineer visit included.
+            Subscribe to water as a service and we own the plant. Specify it and you own the plant. The water spec is the same; the procurement model isn&rsquo;t.
           </Lede>
         </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        {/* Three pillars in one strip. Each is a single line so the
-            model lands in under five seconds; the CWaaS page carries
-            the full bodies. */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-hairline border border-hairline mb-10">
-          <div className="bg-offwhite p-6 flex flex-col gap-2">
-            <Eyebrow className="text-teal">Zero capital outlay</Eyebrow>
-            <Body className="text-navy">Nothing lands on your capex sheet. You start paying when the water meets spec.</Body>
-          </div>
-          <div className="bg-offwhite p-6 flex flex-col gap-2">
-            <Eyebrow className="text-teal">Guaranteed to spec</Eyebrow>
-            <Body className="text-navy">An agreed water-quality standard, backed by an SLA. Iron, hardness, TDS, conductivity — held to the line that matters.</Body>
-          </div>
-          <div className="bg-offwhite p-6 flex flex-col gap-2">
-            <Eyebrow className="text-teal">Fully managed</Eyebrow>
-            <Body className="text-navy">Monthly engineer visits, consumables, media, membranes, repairs — all included.</Body>
-          </div>
-        </div>
-
-        {/* Proof tile + CTA pair. The audience-track-led CWaaS page is
-            one click away; the visitor only commits if the model already
-            looks right. */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
-            <div className="border border-teal/30 bg-offwhite p-6 md:p-7 flex flex-col gap-3">
-              <Eyebrow className="text-teal">Already running</Eyebrow>
-              <Body className="text-ink">
-                <span className="font-medium text-navy">10 live deployments</span>{' '}
-                across India and Nepal.{' '}
-                <span className="font-medium text-navy">400 homes</span>{' '}
-                on managed soft water,{' '}
-                <span className="font-medium text-navy">2,000+ students</span>{' '}
-                on managed drinking water, and{' '}
-                <span className="font-medium text-navy">1 lakh L/month</span>{' '}
-                of DM water for manufacturing.
-              </Body>
+          {/* Subscribe -- CWaaS. Visually elevated. */}
+          <div className="border-2 border-teal bg-tint/30 p-6 md:p-8 flex flex-col gap-5">
+            <div className="flex items-center justify-between gap-3">
+              <Eyebrow className="text-teal">Subscribe</Eyebrow>
+              <Caption className="text-teal font-medium uppercase tracking-wide">Recommended</Caption>
+            </div>
+            <h3 className="text-h2-m md:text-h2 font-light text-navy leading-snug [text-wrap:balance]">
+              Clean Water as a Service.
+            </h3>
+            <Body className="text-mute">
+              We design, fund, own, install and run the plant. You pay one predictable fee for water held to specification, with a monthly preventive engineer visit included.
+            </Body>
+            <div className="pt-4 border-t border-teal/30">
+              <Caption className="text-mute uppercase tracking-wide block mb-2">Best for</Caption>
+              <ul className="flex flex-col gap-1.5">
+                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Predictable opex; nothing on the capex sheet.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>No procurement team to run a tender.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Operations and maintenance handled by us.</span></li>
+              </ul>
+            </div>
+            <div className="pt-4 mt-auto">
+              <Link
+                href="/clean-water-as-a-service"
+                className="inline-flex items-center gap-2 bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 py-3 transition-colors duration-200 ease-calm hover:bg-teal"
+              >
+                See the subscription model
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
           </div>
-          <div className="lg:col-span-4">
-            <Link
-              href="/clean-water-as-a-service"
-              className="group inline-flex items-center gap-2 whitespace-nowrap bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-teal"
-            >
-              See full audience tracks
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="shrink-0">
-                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
+
+          {/* Specify -- RFQ. Equal IA, subtler treatment. */}
+          <div className="border border-hairline bg-offwhite p-6 md:p-8 flex flex-col gap-5">
+            <div className="flex items-center justify-between gap-3">
+              <Eyebrow>Specify</Eyebrow>
+              <Caption className="text-mute uppercase tracking-wide">Traditional</Caption>
+            </div>
+            <h3 className="text-h2-m md:text-h2 font-light text-navy leading-snug [text-wrap:balance]">
+              Engineer it and buy it.
+            </h3>
+            <Body className="text-mute">
+              We design and quote a plant to your site. You buy it via capex, with a Bill of Materials and a written single-line diagram. AMC priced at handover, available year one onward.
+            </Body>
+            <div className="pt-4 border-t border-hairline">
+              <Caption className="text-mute uppercase tracking-wide block mb-2">Best for</Caption>
+              <ul className="flex flex-col gap-1.5">
+                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Capex budget approved; plant on your books.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Procurement team running a vendor tender.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Custom plant requirements outside our standard catalogue.</span></li>
+              </ul>
+            </div>
+            <div className="pt-4 mt-auto">
+              <Link
+                href="#rfq"
+                className="inline-flex items-center gap-2 border border-navy text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 py-3 transition-colors duration-200 ease-calm hover:bg-navy hover:text-offwhite"
+              >
+                Submit an RFQ
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
           </div>
+
         </div>
       </Section>
 
-      {/* Capacity range strip — light surface, alternates with the
-          dark hero per the dark/light cadence rule. Sits below CWaaS
-          for the visitors who scroll past the subscription frame to
-          the capex/BOM track. */}
-      <Section padding="tight">
-        <div className="border-y border-hairline py-8 -my-8">
-          <Lede className="text-mute max-w-4xl">
-            From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM. Designed by engineers; serviced by engineers.
-          </Lede>
-        </div>
-      </Section>
-
-      <Section padding="tight">
-        <div className="max-w-3xl">
-          <PincodeCheck bookSurveyHref="/industrial#rfq" />
-        </div>
-      </Section>
-
-      {/* Where we work — important section, kept dark per the rule. */}
+      {/* 3. Who we serve -- 3 audience tracks (reused from
+              content/cwaas.ts so the audience definitions stay in sync
+              with the CWaaS page). Brief version here: each card carries
+              audience name + typical sites (from WHERE_WE_WORK) + named
+              proof (from LIVE_SITES). The deep version with water lines
+              + per-track CTA lives on /clean-water-as-a-service. */}
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
-          <Eyebrow inverse>Where we work</Eyebrow>
-          <Heading level={2} inverse>Three categories. One protocol.</Heading>
+          <Eyebrow inverse>Who we serve</Eyebrow>
+          <Heading level={2} inverse>Three audiences. One protocol.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {WHERE_WE_WORK.map((category) => {
-            const photo = WHERE_WE_WORK_PHOTO[category.number];
+          {AUDIENCE_TRACKS.map((track) => {
+            const where = TRACK_TO_WHERE_WE_WORK[track.slug];
+            const photo = AUDIENCE_PHOTO[track.slug];
+            const proof = getProofForTrack(track).slice(0, 3);
             return (
-            <div key={category.title} className="border border-offwhite/15 flex flex-col bg-navy/40">
-              {photo && (
-                <div className="relative w-full overflow-hidden border-b border-offwhite/15" style={{ aspectRatio: '16 / 9' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="block w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <div key={track.slug} className="border border-offwhite/15 flex flex-col bg-navy/40">
+                {photo && (
+                  <div className="relative w-full overflow-hidden border-b border-offwhite/15" style={{ aspectRatio: '16 / 9' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="block w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+                <div className="p-7 flex flex-col gap-4 flex-1">
+                  <Eyebrow inverse>{where.number}</Eyebrow>
+                  <h3 className="text-h2-m font-light text-offwhite [text-wrap:balance]">{track.eyebrow}.</h3>
+                  <p className="text-soft text-caption italic">{where.subtitle}</p>
+                  <Body inverse className="text-offwhite/85">{where.body}</Body>
+
+                  <div className="mt-2 pt-4 border-t border-offwhite/15">
+                    <Eyebrow inverse className="mb-3">Typical sites</Eyebrow>
+                    <ul className="flex flex-col gap-1">
+                      {where.typicalSites.map((site) => (
+                        <li key={site} className="text-caption text-offwhite/85">
+                          {site}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {proof.length > 0 && (
+                    <div className="mt-2 pt-4 border-t border-offwhite/15 flex-grow">
+                      <Eyebrow inverse className="mb-3">Already running</Eyebrow>
+                      <ul className="flex flex-col gap-1.5">
+                        {proof.map((site) => (
+                          <li key={site.slug} className="text-caption text-offwhite/85">
+                            <span className="font-medium text-offwhite">{site.name}</span>
+                            <span className="text-offwhite/60"> &mdash; {site.city}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              )}
-              <div className="p-8 flex flex-col gap-4">
-              <Eyebrow inverse>{category.number}</Eyebrow>
-              <h3 className="text-h2-m font-light text-offwhite [text-wrap:balance]">{category.title}</h3>
-              <p className="text-soft text-caption italic">{category.subtitle}</p>
-              <Body inverse>{category.body}</Body>
-              <div className="mt-4 pt-4 border-t border-offwhite/15">
-                <Eyebrow inverse className="mb-3">Typical sites</Eyebrow>
-                <ul className="flex flex-col gap-1">
-                  {category.typicalSites.map((site) => (
-                    <li key={site} className="text-caption text-offwhite/85">
-                      {site}
-                    </li>
-                  ))}
-                </ul>
               </div>
-              </div>
-            </div>
             );
           })}
         </div>
       </Section>
 
-      {/* Audience cards — light surface to alternate with the dark
-          "Where we work" above and the dark "Applications" below. */}
+      {/* 4. What we install -- 6 applications + engineering note.
+              Carries the APPLICATIONS chips verbatim. */}
       <Section padding="default">
-        <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
-          <Eyebrow>Audience</Eyebrow>
-          <Heading level={2}>Who we work with.</Heading>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {AUDIENCES.map((audience) => (
-            <Card key={audience.name}>
-              <h3 className="text-h3 font-normal text-navy mb-3">{audience.name}</h3>
-              <Body className="text-mute">{audience.body}</Body>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      {/* Applications */}
-      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 flex flex-col gap-4">
-            <Eyebrow inverse>Applications</Eyebrow>
-            <Heading level={2} inverse>Engineered to the load.</Heading>
-            <Body inverse className="mt-2">
+            <Eyebrow>What we install</Eyebrow>
+            <Heading level={2}>Engineered to the load.</Heading>
+            <Body className="text-mute mt-2">
               Every BOM follows from a feed-water analysis. TDS, hardness, iron, silica, conductivity, microbiological. The wrong sequence is worse than no sequence.
             </Body>
           </div>
           <div className="lg:col-span-7">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-offwhite/15 border border-offwhite/15">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-hairline border border-hairline">
               {APPLICATIONS.map((app) => (
-                <li key={app} className="bg-navy p-6 text-body text-offwhite">
+                <li key={app} className="bg-offwhite p-6 text-body text-ink">
                   {app}
                 </li>
               ))}
@@ -318,18 +359,22 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Capacity ladder — light surface for alternation. */}
-      <Section padding="default">
+      {/* 5. Capacity & sizing -- CAPACITY_BANDS ladder + infographic.
+              Carries content verbatim. */}
+      <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
-          <Eyebrow>Capacity bands</Eyebrow>
-          <Heading level={2}>From boutique to industrial.</Heading>
+          <Eyebrow inverse>Capacity bands</Eyebrow>
+          <Heading level={2} inverse>From boutique to industrial.</Heading>
+          <Body inverse className="text-offwhite/80 mt-2">
+            From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM.
+          </Body>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-hairline border border-hairline">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-offwhite/15 border border-offwhite/15">
           {CAPACITY_BANDS.map((band) => (
-            <div key={band.capacity} className="bg-offwhite p-6 flex flex-col gap-3">
-              <div className="text-[28px] md:text-[32px] font-light text-teal leading-none font-numeric">{band.capacity}</div>
-              <div className="h-px w-10 bg-hairline" />
-              <Caption>{band.subtitle}</Caption>
+            <div key={band.capacity} className="bg-navy p-6 flex flex-col gap-3">
+              <div className="text-[28px] md:text-[32px] font-light text-soft leading-none font-numeric">{band.capacity}</div>
+              <div className="h-px w-10 bg-offwhite/30" />
+              <Caption className="text-offwhite/80">{band.subtitle}</Caption>
             </div>
           ))}
         </div>
@@ -340,24 +385,23 @@ export default function IndustrialPage() {
         />
       </Section>
 
-      {/* Technical edge — USP, kept dark per "important sections dark" rule. */}
-      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+      {/* 6. The engineering edge -- consolidates TECHNICAL_EDGE (4 USPs)
+              and COMPONENT_MANUFACTURERS (named-component logo wall)
+              into one section. The two pieces argue the same thing
+              ("we know what we're building") and now sit together. */}
+      <Section padding="default" tone="subtle">
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
-          <Eyebrow inverse>The technical edge</Eyebrow>
-          <Heading level={2} inverse>Four things commercial buyers should ask.</Heading>
+          <Eyebrow>The engineering edge</Eyebrow>
+          <Heading level={2}>Four things commercial buyers should ask. Two ways to verify.</Heading>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-offwhite/15 border border-offwhite/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline mb-12">
           {TECHNICAL_EDGE.map((item) => (
-            <div key={item.title} className="bg-navy p-8 flex flex-col gap-3">
-              <h3 className="text-h3 font-normal text-offwhite [text-wrap:balance]">{item.title}</h3>
-              <Body inverse>{item.body}</Body>
+            <div key={item.title} className="bg-offwhite p-7 flex flex-col gap-3">
+              <h3 className="text-h3 font-normal text-navy [text-wrap:balance]">{item.title}</h3>
+              <Body className="text-mute">{item.body}</Body>
             </div>
           ))}
         </div>
-      </Section>
-
-      {/* Component manufacturers — light surface for alternation. */}
-      <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-4 flex flex-col gap-4">
             <Eyebrow>Component supply</Eyebrow>
@@ -378,7 +422,18 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Track record — proof, kept dark per "important sections dark" rule. */}
+      {/* 7. Operating footprint -- PincodeCheck for city availability.
+              Bridges the engineering pitch to the conversion track:
+              "we said we're engineered; here's whether we're at your
+              door." */}
+      <Section padding="tight">
+        <div className="max-w-3xl">
+          <PincodeCheck bookSurveyHref="/industrial#rfq" />
+        </div>
+      </Section>
+
+      {/* 8. Track record -- stats + named-client logo wall. The proof
+              the procurement officer needs. */}
       <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Track record</Eyebrow>
@@ -414,11 +469,11 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* RFQ form — light surface for alternation. */}
+      {/* 9. RFQ form -- the Specify path. submitRFQ unchanged. */}
       <Section padding="loose" id="rfq">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 flex flex-col gap-4">
-            <Eyebrow>Submit an RFQ</Eyebrow>
+            <Eyebrow>Specify path · Submit an RFQ</Eyebrow>
             <Heading level={2}>Tell us the site, the application, the daily volume.</Heading>
             <Lede className="text-mute mt-2">
               We come back with a system layout, a bill of materials, and a price you can take to procurement.
@@ -429,6 +484,11 @@ export default function IndustrialPage() {
               <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> BOM &amp; quote within 5 working days of analysis</li>
               <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> 24-hour SLA on flagged faults, post-install</li>
             </ul>
+            <Caption className="text-mute italic mt-6">
+              Looking for the subscription model instead?{' '}
+              <Link href="/clean-water-as-a-service" className="text-teal underline underline-offset-4">See Clean Water as a Service</Link>{' '}
+              &mdash; we own and run the plant; you subscribe to the water.
+            </Caption>
           </div>
           <div className="lg:col-span-7">
             <form action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -478,23 +538,25 @@ export default function IndustrialPage() {
         </div>
       </Section>
 
-      {/* Final CTA — B2B verb */}
+      {/* 10. Final CTA -- both paths represented. Subscribe is primary
+               (matches the hero); Specify (RFQ) is the secondary phone
+               link. */}
       <Section tone="tint" padding="loose">
         <div className="max-w-3xl mx-auto text-center flex flex-col gap-6 items-center">
-          <Heading level={1} className="text-display-m font-light">
-            Ready to specify a system?
+          <Heading level={2} className="text-display-m font-light">
+            Ready to engineer a system?
           </Heading>
           <Lede className="text-mute">
-            Available across 7 cities in India and 2 in Nepal. We respond to RFQs within one business day.
+            Subscribe to water on a service contract, or specify and buy the plant. Available across 7 cities in India and 2 in Nepal.
           </Lede>
           <div className="flex flex-col sm:flex-row gap-4 items-center mt-4">
-            <Button href="#rfq">Submit an RFQ</Button>
-            <a
-              href={PRIMARY_PHONE_HREF}
+            <Button href="/clean-water-as-a-service">See Clean Water as a Service</Button>
+            <Link
+              href="#rfq"
               className="text-navy hover:text-teal transition-colors duration-200 ease-calm text-caption underline underline-offset-4"
             >
-              Or call +91 97487 45193
-            </a>
+              Or submit an RFQ
+            </Link>
           </div>
         </div>
       </Section>
