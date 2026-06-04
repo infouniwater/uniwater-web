@@ -72,18 +72,23 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
 
   return (
     <>
-      {/* Hero -- ad-page-grade image-with-scrim. Hero photo shows a
-          branded Uniwater 100 LPH RO + UV plant with its dispensing
-          tank at a commercial site (Rajat dropped the image
-          2026-06-05). Single PNG used across breakpoints for now;
-          TODO: convert to JPG and ship art-directed mobile/tablet/
-          desktop crops at /images/hero/nepal-waas-{m,t,d}.jpg for the
-          paid-traffic LCP budget. */}
+      {/* Hero -- ad-page-grade image-with-scrim. Money shot: a worker
+          drinking from a bottle just filled at the branded 100 LPH
+          RO + UV plant + dispensing tank in a factory setting. Product
+          + use case + person in one frame -- exactly the message-
+          match an ad-clicker needs in the first scroll. Replaced the
+          earlier clean-equipment shot on 2026-06-05 when Rajat
+          dropped this image; the prior hero is preserved on disk at
+          /images/photography/nepal-waas-plant-detail.png for a future
+          slot. Single PNG used across breakpoints for now; TODO:
+          convert to JPG and ship art-directed mobile/tablet/desktop
+          crops at /images/hero/nepal-waas-{m,t,d}.jpg for the paid-
+          traffic LCP budget. */}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[480px] md:h-[560px] lg:h-[calc(100vh-160px)] lg:min-h-[560px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/photography/nepal-waas-hero.png"
-          alt="A branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank installed at a commercial site -- the kind of system every DWaaS contract puts in."
+          alt="A worker drinking from a bottle filled at a branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank, in a commercial site -- exactly the system every DWaaS contract puts in."
           className="absolute inset-0 w-full h-full object-cover object-center"
           fetchPriority="high"
           decoding="async"
