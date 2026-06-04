@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: 'Journal',
   description:
     'Long-form writing on water chemistry, premium home engineering, and the practice of running a water system over the long term.',
+  openGraph: {
+    images: [{ url: '/og/og-blog.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-blog.jpg'],
+  },
 };
 
 export default function JournalIndex() {

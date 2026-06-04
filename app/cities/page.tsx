@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: 'Cities',
   description:
     'Where Uniwater operates: 7 cities across India and 2 in Nepal. Own service teams in every city, not subcontracted.',
+  openGraph: {
+    images: [{ url: '/og/og-cities.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-cities.jpg'],
+  },
 };
 
 export default function CitiesIndex() {

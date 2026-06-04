@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   title: 'Building or renovating',
   description:
     'Specify the water before the tile goes down. Uniwater surveys at the draft-drawing stage and routes the plumbing around the system, not the other way around. For homeowners building or renovating in India and Nepal.',
+  openGraph: {
+    images: [{ url: '/og/og-building-or-renovating.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-building-or-renovating.jpg'],
+  },
 };
 
 const WHY_NOW = [

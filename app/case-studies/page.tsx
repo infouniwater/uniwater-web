@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: 'Case studies',
   description:
     'Where Uniwater systems run today. Selected installations across healthcare, hospitality, education, manufacturing, and premium residential.',
+  openGraph: {
+    images: [{ url: '/og/og-case-studies.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-case-studies.jpg'],
+  },
 };
 
 export default function CaseStudiesIndex() {

@@ -25,6 +25,12 @@ const INSTITUTIONAL_CARDS = [
     title: 'Building & society water plants',
     description:
       '8,000 to 30,000 LPH inlet treatment for complexes, hotels, hospitals, schools, and townships.',
+  openGraph: {
+    images: [{ url: '/og/og-solutions.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-solutions.jpg'],
+  },
     photoDescription: 'WTP install in plant room of a gated complex',
     photoRef: 'building-wtp',
   },

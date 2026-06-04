@@ -25,7 +25,7 @@ export async function generateMetadata({
     path: `/case-studies/${cs.slug}`,
     title: `${cs.client} \u2014 Case study`,
     description: cs.brief ?? `Uniwater case study: ${cs.client}.`,
-    image: '/og/og-home.png',
+    image: '/og/og-case-studies.jpg',
   });
 }
 

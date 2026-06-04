@@ -60,7 +60,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Industrial & Institutional Water Treatment Plants',
   description:
     'Engineered water systems for industry, hospitality, healthcare, residential societies. Two procurement models: subscribe (Clean Water as a Service) or specify and buy a plant. 8,000 LPH building plants to 50,000 LPH industrial RO.',
-  image: '/og/og-home.png',
+  image: '/og/og-industrial.jpg',
 });
 
 // Photos already shipped for the WHERE_WE_WORK 3-category treatment.

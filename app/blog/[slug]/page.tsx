@@ -33,7 +33,9 @@ export async function generateMetadata({
     path: `/blog/${post.slug}`,
     title: post.title,
     description: post.description,
-    image: BLOG_OG_OVERRIDES[post.slug] ?? '/og/og-home.png',
+    // Per-post override wins; otherwise fall through to the dedicated
+    // /og/og-blog.jpg journal card built 2026-06-05 (was og-home.png).
+    image: BLOG_OG_OVERRIDES[post.slug] ?? '/og/og-blog.jpg',
   });
 }
 

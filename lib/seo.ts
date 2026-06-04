@@ -37,18 +37,24 @@ const OG_SLUG_ALIASES: Record<string, string> = {
  * render SVG og:image files. The brand cards ship as SVG and are rasterised
  * to PNG by scripts/og-svg-to-png.mjs; this resolver points at the PNG.
  *
- * Lookup order:
- *   1. /og/og-{slug}.{png,svg}            (per-page image, PNG first)
- *   2. /og/og-{category}.{png,svg}        (category default — og-cities / og-solutions)
- *   3. /og/og-home.png                    (sitewide fallback)
+ * Lookup order (2026-06-05: .jpg added FIRST in each tier because the
+ * batch-generated OG cards are JPG @ q87 -- smaller than the legacy
+ * hand-designed PNG/SVG cards and easier to refresh from photos):
+ *   1. /og/og-{slug}.{jpg,png,svg}        (per-page image)
+ *   2. /og/og-{category}.{jpg,png,svg}    (category default — og-cities / og-solutions)
+ *   3. /og/og-home.{jpg,png}              (sitewide fallback)
  */
 export function resolveOgImage(slug: string, category: 'cities' | 'solutions'): string {
   const stem = OG_SLUG_ALIASES[slug] ?? slug;
   const candidates = [
+    `og-${stem}.jpg`,
     `og-${stem}.png`,
     `og-${stem}.svg`,
+    `og-${category}.jpg`,
     `og-${category}.png`,
     `og-${category}.svg`,
+    'og-home.jpg',
+    'og-home.png',
   ];
   for (const file of candidates) {
     try {

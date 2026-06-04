@@ -15,7 +15,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Contact',
   description:
     'Talk to Uniwater. Two phones, two emails, head office in Kolkata. Nine cities across India and Nepal.',
-  image: '/og/og-home.png',
+  image: '/og/og-contact.jpg',
 });
 
 export default function ContactPage() {

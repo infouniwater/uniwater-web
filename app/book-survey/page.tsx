@@ -12,6 +12,12 @@ export const metadata: Metadata = {
   title: 'Book a free survey',
   description:
     'Tell us about your home. A Uniwater engineer will visit, test your water, and write a quote within 48 hours. Free, no obligation.',
+  openGraph: {
+    images: [{ url: '/og/og-book-survey.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-book-survey.jpg'],
+  },
 };
 
 const REASSURANCE = [

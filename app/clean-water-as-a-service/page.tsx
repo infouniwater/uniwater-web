@@ -78,7 +78,7 @@ export const metadata: Metadata = buildMetadata({
   path: '/clean-water-as-a-service',
   title: META_TITLE,
   description: META_DESCRIPTION,
-  image: '/og/og-home.png',
+  image: '/og/og-clean-water-as-a-service.jpg',
 });
 
 export default function CleanWaterAsAServicePage() {

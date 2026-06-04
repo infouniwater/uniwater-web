@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: 'Why Uniwater',
   description:
     'Engineered home water — the category between kitchen-purifier brands and industrial EPC firms. Surveyed, hidden, serviced monthly.',
+  openGraph: {
+    images: [{ url: '/og/og-why-uniwater.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-why-uniwater.jpg'],
+  },
 };
 
 const DECISION_TREE = [

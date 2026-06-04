@@ -38,7 +38,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Water test at home — TDS, hardness, iron, pH | Uniwater',
   description:
     'Book a 10-minute on-site water test: TDS, hardness, iron, pH, free chlorine — read at your tap by a Uniwater engineer. Free, no commitment, no system quote until you ask for one. Across nine Indian and Nepali cities.',
-  image: '/og/og-home.png',
+  image: '/og/og-water-problem-checker.jpg',
 });
 
 const WHAT_WE_TEST = [

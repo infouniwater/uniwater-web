@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: 'FAQ',
   description:
     'Frequently asked questions about Uniwater water systems, survey, install, and service.',
+  openGraph: {
+    images: [{ url: '/og/og-faq.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-faq.jpg'],
+  },
 };
 
 const CATEGORIES = [

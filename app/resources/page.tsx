@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: 'Resources',
   description:
     'Tools, guides, and references for understanding your water and choosing the right system. Download the homeowner and commercial catalogues.',
+  openGraph: {
+    images: [{ url: '/og/og-resources.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-resources.jpg'],
+  },
 };
 
 const RESOURCES = [

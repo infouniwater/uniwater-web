@@ -45,7 +45,10 @@ export function generateMetadata(): Metadata {
     path: PILLAR_PATH,
     title: PILLAR_TITLE,
     description: PILLAR_DESCRIPTION,
-    image: resolveOgImage('kolkata', 'cities'),
+    // Dedicated OG built 2026-06-05 -- "Yellow stains. Metallic taste.
+    // Removed." problem-led card. Previously fell back via
+    // resolveOgImage('kolkata', 'cities') which has no per-slug PNG.
+    image: '/og/og-kolkata-iron-water.jpg',
   });
 }
 

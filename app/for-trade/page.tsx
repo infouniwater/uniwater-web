@@ -25,7 +25,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'For the trade — dealers, architects, plumbers',
   description:
     'Three ways to work with Uniwater. Sanitary-ware dealers stock the bathroom filter customers ask for. Architects spec the system into the plan. Plumbers join the partner programme. Pick the lane that fits you.',
-  image: '/og/og-home.png',
+  image: '/og/og-for-trade.jpg',
 });
 
 interface TradeAudience {

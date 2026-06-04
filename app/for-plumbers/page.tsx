@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'For plumbers & installers',
   description:
     'Join the Uniwater plumber program. Earn for every install. Spec packs, install-day support, AMC handoff — you do the plumbing, we do the rest.',
-  image: '/og/og-home.png',
+  image: '/og/og-for-plumbers.jpg',
 });
 
 const BENEFITS = [

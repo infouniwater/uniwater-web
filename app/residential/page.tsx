@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Home Water Softeners, Iron Filters & RO',
   description:
     'BathSoft bathroom systems, HomeSoft whole-house systems, and drinking water for premium Indian homes. Surveyed, engineered, installed, and serviced monthly.',
-  image: '/og/og-home.png',
+  image: '/og/og-residential.jpg',
 });
 
 // Problems → solutions. Iron / softening / scale are all answered by the

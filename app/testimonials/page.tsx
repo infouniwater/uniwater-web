@@ -69,6 +69,12 @@ export const metadata: Metadata = {
   title: 'Testimonials',
   description:
     'What Uniwater customers say. Real homeowners and institutions, real installs, real cities.',
+  openGraph: {
+    images: [{ url: '/og/og-testimonials.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-testimonials.jpg'],
+  },
 };
 
 // Derived from published case studies — keeps testimonials and case-study
