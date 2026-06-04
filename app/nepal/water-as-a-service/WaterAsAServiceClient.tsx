@@ -120,85 +120,201 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
           <div className="container-uw section">
             <div className="mb-10 max-w-3xl">
               <Eyebrow className="mb-4">Plans</Eyebrow>
-              <Heading level={2}>Five plans. Pick the volume that fits.</Heading>
+              <Heading level={2}>Five plans. More volume, lower rate.</Heading>
               <Body className="text-mute mt-4">
                 Prices in NPR, excluding taxes. Refundable security deposit, not capex.
-                Monthly bill = max(consumption × rate, minimum bill). Tap a plan to
-                start a WhatsApp conversation with that tier pre-tagged.
+                Monthly bill = max(consumption × rate, minimum bill). Click any row
+                to start a WhatsApp chat with that plan tagged.
               </Body>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+
+            {/* Desktop / tablet: real comparison table. Lets the visitor
+                scan the rate ladder (Rs 3 -> Rs 1.5) and the deposit/
+                min-bill commitments side-by-side, which the previous
+                5-column card grid hid by spreading per-card density.
+                Popular row is teal-tinted; click on any row triggers a
+                WhatsApp deeplink (anchor wraps the whole row). */}
+            <div className="hidden md:block border border-hairline overflow-hidden bg-offwhite">
+              <table className="w-full border-collapse text-left">
+                <thead>
+                  <tr className="bg-subtle border-b border-hairline">
+                    <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Plan</th>
+                    <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Monthly volume</th>
+                    <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Rate / L</th>
+                    <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Min bill</th>
+                    <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Deposit</th>
+                    <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {DWAAS_PLANS.map((plan) => {
+                    const isSelected = selectedPlan === plan.slug;
+                    return (
+                      <tr
+                        key={plan.slug}
+                        onClick={() => setSelectedPlan(plan.slug)}
+                        className={`border-b border-hairline last:border-b-0 align-middle cursor-pointer transition-colors duration-200 ease-calm ${
+                          plan.popular
+                            ? 'bg-tint/40 hover:bg-tint/60'
+                            : 'bg-offwhite hover:bg-subtle/60'
+                        } ${isSelected ? 'ring-2 ring-inset ring-teal' : ''}`}
+                      >
+                        <td className="p-4 whitespace-nowrap">
+                          <div className="flex items-center gap-3">
+                            <span className="font-sans text-h3 font-medium text-navy">
+                              {plan.slug}
+                            </span>
+                            {plan.popular && (
+                              <span className="text-[11px] font-ui font-semibold uppercase tracking-wide text-teal bg-offwhite border border-teal rounded-sm px-2 py-0.5">
+                                Popular
+                              </span>
+                            )}
+                            {isSelected && !plan.popular && (
+                              <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-teal">
+                                ✓ Selected
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-4 whitespace-nowrap">
+                          <div className="font-numeric text-h3 text-navy leading-tight">
+                            {plan.monthlyLitres.toLocaleString('en-IN')} L
+                          </div>
+                          <Caption className="text-mute">{plan.jarsPerDay}</Caption>
+                        </td>
+                        <td className="p-4 whitespace-nowrap">
+                          <span className="font-numeric text-h3 text-navy">
+                            Rs {plan.ratePerLitre}
+                          </span>
+                        </td>
+                        <td className="p-4 whitespace-nowrap font-numeric text-body text-ink">
+                          Rs {plan.minBill.toLocaleString('en-IN')}
+                        </td>
+                        <td className="p-4 whitespace-nowrap font-numeric text-body text-ink">
+                          Rs {plan.deposit.toLocaleString('en-IN')}
+                        </td>
+                        <td className="p-4 whitespace-nowrap text-right">
+                          <a
+                            href={whatsappHrefForPlan(plan)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedPlan(plan.slug);
+                              pixelTrack('Contact', { content_name: `Plan ${plan.slug}`, source: 'plan-row' });
+                            }}
+                            className={`inline-flex items-center gap-2 font-ui font-medium text-caption tracking-[0.02em] rounded-full px-4 py-2 transition-colors duration-200 ease-calm ${
+                              plan.popular
+                                ? 'bg-teal text-offwhite hover:bg-navy'
+                                : 'bg-navy text-offwhite hover:bg-teal'
+                            }`}
+                          >
+                            WhatsApp
+                            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                              <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile: stacked cards, one plan per card. Bigger touch
+                targets than the previous cramped 5-col grid would
+                allow at small widths. Popular card visually elevated
+                with teal border + tint background. */}
+            <div className="md:hidden flex flex-col gap-3">
               {DWAAS_PLANS.map((plan) => {
                 const isSelected = selectedPlan === plan.slug;
                 return (
                   <div
                     key={plan.slug}
-                    className={`bg-offwhite p-5 flex flex-col gap-4 transition-all duration-200 ease-calm ${
+                    onClick={() => setSelectedPlan(plan.slug)}
+                    className={`relative p-5 flex flex-col gap-4 transition-all duration-200 ease-calm ${
                       plan.popular
-                        ? 'border-2 border-teal lg:row-span-1 relative'
-                        : 'border border-hairline'
-                    } ${isSelected ? 'ring-2 ring-teal ring-offset-2 ring-offset-subtle' : ''}`}
+                        ? 'bg-tint/40 border-2 border-teal'
+                        : 'bg-offwhite border border-hairline'
+                    } ${isSelected ? 'ring-2 ring-inset ring-teal' : ''}`}
                   >
                     {plan.popular && (
                       <span className="absolute -top-3 left-4 bg-teal text-offwhite text-[11px] font-ui font-semibold uppercase tracking-wide px-2.5 py-1 rounded-sm">
                         Popular
                       </span>
                     )}
-                    <div className="flex items-baseline justify-between">
-                      <Eyebrow className={plan.popular ? 'text-teal' : ''}>
-                        Plan {plan.slug}
-                      </Eyebrow>
-                      <span className="font-numeric text-[28px] leading-none text-navy">
-                        Rs {plan.ratePerLitre}
-                        <span className="text-caption text-mute font-sans"> /L</span>
-                      </span>
-                    </div>
-                    <div>
-                      <div className="font-numeric text-h2-m text-navy leading-tight">
-                        {plan.monthlyLitres.toLocaleString('en-IN')} L
-                        <span className="text-caption text-mute font-sans"> /month</span>
+
+                    {/* Headline: Plan letter + volume on one row,
+                        rate on the right. The rate ladder is the
+                        decision driver -- make it scan first. */}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-sans text-display-m text-navy leading-none">
+                          {plan.slug}
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="font-numeric text-h2-m text-navy leading-tight">
+                            {plan.monthlyLitres.toLocaleString('en-IN')} L
+                          </span>
+                          <Caption className="text-mute">
+                            per month · {plan.jarsPerDay}
+                          </Caption>
+                        </div>
                       </div>
-                      <Caption className="text-mute mt-1">{plan.jarsPerDay}</Caption>
+                      <div className="text-right">
+                        <div className="font-numeric text-h2 text-navy leading-none">
+                          Rs {plan.ratePerLitre}
+                        </div>
+                        <Caption className="text-mute">/ litre</Caption>
+                      </div>
                     </div>
-                    <div className="pt-4 border-t border-hairline flex flex-col gap-2">
-                      <div className="flex justify-between text-caption">
-                        <span className="text-mute">Min bill</span>
-                        <span className="font-medium text-navy font-numeric">
+
+                    {/* Commitments row */}
+                    <div className="grid grid-cols-2 gap-3 pt-3 border-t border-hairline">
+                      <div>
+                        <Caption className="text-mute uppercase tracking-wide block mb-1">Min bill</Caption>
+                        <span className="font-numeric text-body text-navy">
                           Rs {plan.minBill.toLocaleString('en-IN')}
                         </span>
                       </div>
-                      <div className="flex justify-between text-caption">
-                        <span className="text-mute">Deposit</span>
-                        <span className="font-medium text-navy font-numeric">
+                      <div>
+                        <Caption className="text-mute uppercase tracking-wide block mb-1">Deposit</Caption>
+                        <span className="font-numeric text-body text-navy">
                           Rs {plan.deposit.toLocaleString('en-IN')}
                         </span>
                       </div>
                     </div>
-                    <div className="mt-auto pt-4 flex flex-col gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setSelectedPlan(plan.slug)}
-                        className={`text-caption font-ui font-medium py-2 transition-colors duration-200 ease-calm ${
-                          isSelected
-                            ? 'text-teal'
-                            : 'text-mute hover:text-navy'
-                        }`}
-                      >
-                        {isSelected ? '✓ Selected for form' : 'Select for form'}
-                      </button>
-                      <a
-                        href={whatsappHrefForPlan(plan)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => pixelTrack('Contact', { content_name: `Plan ${plan.slug}`, source: 'plan-card' })}
-                        className="inline-flex items-center justify-center gap-2 bg-navy text-offwhite font-ui font-medium text-[14px] tracking-[0.02em] rounded-full px-4 py-2.5 transition-colors duration-200 ease-calm hover:bg-teal"
-                      >
-                        WhatsApp Plan {plan.slug}
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                          <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
-                    </div>
+
+                    {/* Single CTA: WhatsApp for this plan. Row tap
+                        already sets selectedPlan so the form picks
+                        it up; no second "Select for form" button
+                        needed. */}
+                    <a
+                      href={whatsappHrefForPlan(plan)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedPlan(plan.slug);
+                        pixelTrack('Contact', { content_name: `Plan ${plan.slug}`, source: 'plan-card-mobile' });
+                      }}
+                      className={`inline-flex items-center justify-center gap-2 font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-5 py-3 transition-colors duration-200 ease-calm ${
+                        plan.popular
+                          ? 'bg-teal text-offwhite hover:bg-navy'
+                          : 'bg-navy text-offwhite hover:bg-teal'
+                      }`}
+                    >
+                      WhatsApp Plan {plan.slug}
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
+                    {isSelected && (
+                      <Caption className="text-teal font-medium text-center">
+                        ✓ Selected — will pre-fill in the form below
+                      </Caption>
+                    )}
                   </div>
                 );
               })}
