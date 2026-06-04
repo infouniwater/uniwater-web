@@ -18,6 +18,7 @@ import {
   HERO_SUB,
   NEPAL_CALL_LINES,
   WHATSAPP_HREF_GENERIC,
+  COMPARISON_ROWS,
   META_TITLE,
   META_DESCRIPTION,
   type ServiceSlug,
@@ -91,8 +92,14 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         <picture>
           <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
           <source media="(min-width: 768px)" srcSet="/images/hero/nepal-waas-tablet.jpg" />
+          {/* Mobile JPG bumped to -2.jpg suffix 2026-06-05 to cache-bust:
+              next.config.js sets /images/* to Cache-Control: immutable,
+              max-age=1y, so browsers that visited the page before the
+              new shot landed would hold the original mobile JPG
+              indefinitely. The versioned filename forces a fresh fetch.
+              Old file removed from the repo. */}
           <img
-            src="/images/hero/nepal-waas-mobile.jpg"
+            src="/images/hero/nepal-waas-mobile-2.jpg"
             alt="A worker drinking from a bottle filled at a branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank, in a commercial site -- exactly the system every DWaaS contract puts in."
             className="absolute inset-0 w-full h-full object-cover object-center"
             fetchPriority="high"
@@ -109,16 +116,16 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 50%, rgba(4,69,95,0.25) 85%)' }}
           aria-hidden="true"
         />
-        <div className="relative h-full container-uw flex items-end lg:items-center">
-          {/* Hero text block: mobile gets a fatter bottom padding
-              (pb-14 = 56px) plus a small horizontal nudge (px-1 = 4px
-              over the container-uw's 24px sides). Visitors on small
-              phones were seeing the text pressed against the bottom
-              edge and the safe-area indicator; 56px is the standard
-              iOS home-bar clearance + breathing room. Padding zeroes
-              out at lg where the block sits vertically centered with
-              its own width cap. */}
-          <div className="w-full lg:max-w-[800px] px-1 sm:px-0 pb-14 sm:pb-10 lg:pb-0 lg:px-0 flex flex-col gap-5">
+        <div className="relative h-full container-uw flex items-center">
+          {/* Hero text block. 2026-06-05 fix: previously flex items-end
+              on mobile pushed the text against the hero's bottom edge,
+              so the eyebrow ended up touching the top of the visible
+              image area (the text block is tall and there was nowhere
+              to grow upward). Switched the parent to items-center and
+              added symmetric py-10 / sm:py-12 / lg:py-0 padding so
+              mobile sees comfortable breathing room above AND below
+              the text block. */}
+          <div className="w-full lg:max-w-[800px] py-10 sm:py-12 lg:py-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
               {HERO_EYEBROW}
             </p>
@@ -194,6 +201,91 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           initialPlan={initialPlan}
         />
       </Suspense>
+
+      {/* Comparison: DWaaS vs Buying equipment vs Water jars.
+          Added 2026-06-05 per Rajat. Desktop renders as a real
+          comparison table (columns = options, rows = dimensions);
+          mobile stacks one block per option for readability. The
+          DWaaS column is visually elevated (teal accent) on both
+          views so the visitor sees Uniwater's positioning at a
+          glance. */}
+      <Section padding="default" tone="subtle" id="comparison">
+        <div className="mb-10 max-w-3xl">
+          <Eyebrow className="mb-4">Three ways to get drinking water</Eyebrow>
+          <Heading level={2}>Why subscription beats jars and capex.</Heading>
+          <Body className="text-mute mt-4">
+            The water-jar economy adds up. Buying the plant is capex plus
+            your team running it. Subscribing means we own the plant,
+            run it, and bill against a meter — water held to spec, no
+            firefighting.
+          </Body>
+        </div>
+
+        {/* Desktop / tablet: real comparison table */}
+        <div className="hidden md:block border border-hairline overflow-hidden bg-offwhite">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className="bg-subtle border-b border-hairline">
+                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute w-1/4"></th>
+                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Water jars</th>
+                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Buying equipment</th>
+                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide bg-tint/40 text-teal">Uniwater DWaaS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON_ROWS.map((row, i) => (
+                <tr key={i} className="border-b border-hairline last:border-b-0 align-top">
+                  <td className="p-4 font-medium text-navy bg-subtle/40">{row.dimension}</td>
+                  <td className="p-4 text-caption text-mute leading-snug">{row.jars}</td>
+                  <td className="p-4 text-caption text-mute leading-snug">{row.buy}</td>
+                  <td className="p-4 text-caption text-navy leading-snug bg-tint/30 font-medium">{row.dwaas}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile: stacked columns (one per option, each block lists all
+            dimensions). DWaaS goes FIRST so the conversion-relevant
+            answer is what scrolls into view. */}
+        <div className="md:hidden flex flex-col gap-4">
+          {([
+            { label: 'Uniwater DWaaS', getValue: (r: typeof COMPARISON_ROWS[number]) => r.dwaas, featured: true },
+            { label: 'Buying equipment', getValue: (r: typeof COMPARISON_ROWS[number]) => r.buy, featured: false },
+            { label: 'Water jars',       getValue: (r: typeof COMPARISON_ROWS[number]) => r.jars, featured: false },
+          ] as const).map((opt) => (
+            <div
+              key={opt.label}
+              className={`p-5 flex flex-col gap-4 ${
+                opt.featured ? 'bg-tint/40 border-2 border-teal' : 'bg-offwhite border border-hairline'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <h3 className={`font-sans text-h3 font-medium ${opt.featured ? 'text-teal' : 'text-navy'}`}>
+                  {opt.label}
+                </h3>
+                {opt.featured && (
+                  <span className="text-[11px] font-ui font-semibold uppercase tracking-wide text-teal bg-offwhite border border-teal rounded-sm px-2 py-0.5">
+                    Recommended
+                  </span>
+                )}
+              </div>
+              <dl className="flex flex-col gap-3">
+                {COMPARISON_ROWS.map((row, i) => (
+                  <div key={i} className="border-t border-hairline pt-3 first:border-t-0 first:pt-0">
+                    <dt className="text-eyebrow font-ui font-medium uppercase tracking-wide text-mute mb-1">
+                      {row.dimension}
+                    </dt>
+                    <dd className={`text-caption leading-snug ${opt.featured ? 'text-navy font-medium' : 'text-mute'}`}>
+                      {opt.getValue(row)}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </div>
+      </Section>
 
       {/* Six benefit blocks (DRAFT in content/nepal-waas.ts -- pending
           reference file). */}
@@ -293,11 +385,8 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </Section>
 
-      {/* Regions -- where the service runs today. 2026-06-05: footprint
-          expanded from 4 East-Koshi towns to 9 along the East-West
-          Highway, spanning Koshi + Madhesh provinces, ending at Birgunj
-          at the Indian border. Grid now 3-up at sm+ (9 cities divides
-          cleanly into 3 rows of 3); mobile stays 2-up. */}
+      {/* Regions -- 10 towns now (Rajbiraj added 2026-06-05). Grid
+          flipped to 2-up mobile / 5-up tablet+ for two clean rows. */}
       <Section padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 flex flex-col gap-4">
@@ -308,10 +397,10 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             </Body>
           </div>
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-hairline border border-hairline">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-px bg-hairline border border-hairline">
               {REGIONS.map((region) => (
-                <div key={region} className="bg-offwhite p-6 flex flex-col gap-1 items-center text-center">
-                  <span className="font-sans text-h3 font-normal text-navy">{region}</span>
+                <div key={region} className="bg-offwhite p-5 flex flex-col gap-1 items-center text-center">
+                  <span className="font-sans text-body sm:text-h3 font-normal text-navy">{region}</span>
                   <Caption className="text-mute">Active</Caption>
                 </div>
               ))}

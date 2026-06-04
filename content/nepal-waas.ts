@@ -29,7 +29,10 @@ export const REGIONS = [
   'Biratnagar',
   'Dharan',
   'Damak',
-  // Madhesh Province (centre-east -> west, along the EW Highway)
+  // Madhesh Province (centre-east -> west, along the EW Highway).
+  // Rajbiraj added 2026-06-05 -- sits in Saptari district at the
+  // Koshi/Madhesh transition, just south of Lahan.
+  'Rajbiraj',
   'Lahan',
   'Janakpur',
   'Bardibas',
@@ -72,6 +75,9 @@ export const SERVICE_LABEL: Record<ServiceSlug, string> = {
 export interface DWaaSPlan {
   /** Stable slug used in id + WhatsApp message + Pixel events. */
   slug: 'A' | 'B' | 'C' | 'D' | 'E';
+  /** One-line "who this is for" tagline. Helps the visitor self-select.
+   *  DRAFT 2026-06-05 -- replace with reference copy when available. */
+  tagline: string;
   /** Monthly volume, displayed as "1,500 L/mo" etc. */
   monthlyLitres: number;
   /** Typical daily jar count (display range). */
@@ -86,12 +92,82 @@ export interface DWaaSPlan {
   popular?: boolean;
 }
 
+// DRAFT taglines added 2026-06-05 to give each tier a "who is this for"
+// hook -- the previous cards were visually identical so the visitor had
+// no scannable cue beyond the numbers. Reference copy from Rajat will
+// replace these verbatim when available.
 export const DWAAS_PLANS: DWaaSPlan[] = [
-  { slug: 'A', monthlyLitres: 1_500,  jarsPerDay: '2–3 jars/day',   ratePerLitre: 3,    minBill: 3_500,  deposit: 20_000 },
-  { slug: 'B', monthlyLitres: 2_500,  jarsPerDay: '4–5 jars/day',   ratePerLitre: 2.5,  minBill: 4_500,  deposit: 25_000 },
-  { slug: 'C', monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 2,    minBill: 5_500,  deposit: 35_000, popular: true },
-  { slug: 'D', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.6,  minBill: 7_500,  deposit: 45_000 },
-  { slug: 'E', monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 60_000 },
+  { slug: 'A', tagline: 'Starter — small office or boutique cafe.',           monthlyLitres: 1_500,  jarsPerDay: '2–3 jars/day',   ratePerLitre: 3,    minBill: 3_500,  deposit: 20_000 },
+  { slug: 'B', tagline: 'Growing team — mid-size office, busy clinic.',       monthlyLitres: 2_500,  jarsPerDay: '4–5 jars/day',   ratePerLitre: 2.5,  minBill: 4_500,  deposit: 25_000 },
+  { slug: 'C', tagline: 'Most chosen — restaurant, mid-size hotel, school.',  monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 2,    minBill: 5_500,  deposit: 35_000, popular: true },
+  { slug: 'D', tagline: 'High volume — large hotel, hospital wing, factory.', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.6,  minBill: 7_500,  deposit: 45_000 },
+  { slug: 'E', tagline: 'Maximum — large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 60_000 },
+];
+
+// ----- Comparison: DWaaS vs Buying equipment vs Water jars ---------------
+
+/** A single row in the three-way comparison. `dimension` is the question
+ *  on the left; each option column answers it. DRAFT 2026-06-05 -- the
+ *  positioning is honest (Uniwater's win column is highlighted) but
+ *  values benefit from Rajat's signoff before the ad goes live. */
+export interface ComparisonRow {
+  /** What this row measures. */
+  dimension: string;
+  /** Compact one-liner answer per option. */
+  jars: string;
+  buy: string;
+  dwaas: string;
+}
+
+export const COMPARISON_ROWS: ComparisonRow[] = [
+  {
+    dimension: 'Upfront cost',
+    jars:  'Rs 0 — but pay-as-you-go forever.',
+    buy:   'Rs 1.5–4 lakh capex.',
+    dwaas: 'Rs 20,000–60,000 refundable deposit.',
+  },
+  {
+    dimension: 'Monthly cost (typical office)',
+    jars:  'Rs 6,000–25,000 (per-jar prices add up).',
+    buy:   'Rs 1,000–3,000 (parts + service).',
+    dwaas: 'From Rs 3,500 — fixed, predictable.',
+  },
+  {
+    dimension: 'Who runs the plant',
+    jars:  'No plant — vendor handles delivery.',
+    buy:   'You. Or your facilities contractor.',
+    dwaas: 'We do. Named engineer, monthly.',
+  },
+  {
+    dimension: 'Water-quality testing',
+    jars:  'Vendor claim on the label.',
+    buy:   'You arrange a test lab.',
+    dwaas: 'TDS, iron, hardness, pH at every visit. Written report.',
+  },
+  {
+    dimension: 'Hygienic dispensing',
+    jars:  'Open jars — manual handling.',
+    buy:   'Your equipment, your discipline.',
+    dwaas: 'Sealed tap. Food-grade plumbing throughout.',
+  },
+  {
+    dimension: 'Maintenance burden',
+    jars:  'Track deliveries, store jars, lift weights.',
+    buy:   'Media changes, membrane swaps, salt top-up — your team.',
+    dwaas: 'Zero. Everything included in the service contract.',
+  },
+  {
+    dimension: 'Scale up or down',
+    jars:  'Order more jars (cost climbs linearly).',
+    buy:   'New capex if usage exceeds the plant.',
+    dwaas: 'Move to the next plan tier; we resize the system.',
+  },
+  {
+    dimension: 'After 3 years',
+    jars:  'Rs 2–9 lakh paid out, no equipment.',
+    buy:   'A depreciated plant + your service hours.',
+    dwaas: 'Still in spec, still monthly-serviced. Cancel and get the deposit back.',
+  },
 ];
 
 // ----- DM Water (no public price) ----------------------------------------
@@ -115,7 +191,7 @@ export const MODEL_LINE = 'zero equipment cost + refundable security deposit';
 export const HERO_EYEBROW = 'Across the Terai — Biratnagar to Birgunj';
 export const HERO_TITLE = 'Drinking water on tap. Charged by the litre.';
 export const HERO_SUB =
-  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across nine towns from Biratnagar to Birgunj along the East–West Highway.';
+  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across ten towns from Biratnagar to Birgunj along the East–West Highway.';
 
 // ----- DRAFT content (needs reference file) ------------------------------
 
@@ -189,7 +265,7 @@ export const WHY_UNIWATER: string[] = [
 ];
 
 // DRAFT — replace verbatim from _reference/water-as-a-service.page.tsx
-export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum monthly bill applies when monthly consumption is below the plan allowance. Security deposit refundable on contract close, subject to plant being returned in working condition. Monthly bill = max(consumption × rate, minimum bill). DM water pricing is quoted per site after feed-water analysis. Service available across Koshi and Madhesh provinces — Itahari, Biratnagar, Dharan, Damak, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj. Other locations along the East–West Highway corridor on request.`;
+export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum monthly bill applies when monthly consumption is below the plan allowance. Security deposit refundable on contract close, subject to plant being returned in working condition. Monthly bill = max(consumption × rate, minimum bill). DM water pricing is quoted per site after feed-water analysis. Service available across Koshi and Madhesh provinces — Itahari, Biratnagar, Dharan, Damak, Rajbiraj, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj. Other locations along the East–West Highway corridor on request.`;
 
 // ----- WhatsApp deeplink helpers -----------------------------------------
 
@@ -230,4 +306,4 @@ export const USE_CASE_OPTIONS = [
 
 export const META_TITLE = 'Drinking Water as a Service — Biratnagar · Janakpur · Birgunj | Uniwater Nepal';
 export const META_DESCRIPTION =
-  'Subscribe to drinking water from Uniwater Nepal. Zero equipment cost, refundable security deposit, monthly engineer visits, 24×7 service. From Rs 1.5/L. Plans A to E for offices, restaurants, hotels, schools, hospitals, and factories across nine Terai towns from Biratnagar to Birgunj along the East–West Highway.';
+  'Subscribe to drinking water from Uniwater Nepal. Zero equipment cost, refundable security deposit, monthly engineer visits, 24×7 service. From Rs 1.5/L. Plans A to E for offices, restaurants, hotels, schools, hospitals, and factories across ten Terai towns from Biratnagar to Birgunj along the East–West Highway.';
