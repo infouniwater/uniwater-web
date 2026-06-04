@@ -23,16 +23,18 @@ export const TAGLINE = 'Wellness starts with clean water.';
 
 // ----- Contact ------------------------------------------------------------
 
-/** Primary WhatsApp number for this campaign. Uses the existing sitewide
- *  WhatsApp (PRIMARY_PHONE_E164) but spelled out here so the ad page
- *  doesn't break if PRIMARY_PHONE changes (the ad URL is paid traffic). */
+/** Primary WhatsApp number -- the sitewide single number per Rajat
+ *  2026-06-05: "number should be 9748745193 everywhere". Same as
+ *  PRIMARY_PHONE_E164 from content/site.ts; spelled out here so the ad
+ *  page is self-contained and the call/wa.me URLs don't break if the
+ *  sitewide module is restructured. */
 export const NEPAL_WHATSAPP_E164 = '919748745193';
 
-/** Displayed call lines on the page. The +91 line is reinstated FOR THIS
- *  CAMPAIGN PAGE ONLY -- it was removed from the sitewide contact module
- *  earlier (CONTACT.phones in content/site.ts) but the brief explicitly
- *  lists both numbers for the Nepal ad. Flagged for Rajat to confirm. */
-export const NEPAL_CALL_LINES = ['+977-9819391754', '+91-9663245193'] as const;
+/** Displayed call line on the page. Single number sitewide.
+ *  The brief originally listed +977-9819391754 (Nepal local) and
+ *  +91-9663245193 (a second Indian line); Rajat consolidated to
+ *  +91-9748745193 only 2026-06-05. */
+export const NEPAL_CALL_LINES = ['+91-9748745193'] as const;
 
 // ----- Service tabs -------------------------------------------------------
 
