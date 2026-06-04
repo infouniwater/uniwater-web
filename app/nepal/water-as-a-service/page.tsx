@@ -76,23 +76,29 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           drinking from a bottle just filled at the branded 100 LPH
           RO + UV plant + dispensing tank in a factory setting. Product
           + use case + person in one frame -- exactly the message-
-          match an ad-clicker needs in the first scroll. Replaced the
-          earlier clean-equipment shot on 2026-06-05 when Rajat
-          dropped this image; the prior hero is preserved on disk at
-          /images/photography/nepal-waas-plant-detail.png for a future
-          slot. Single PNG used across breakpoints for now; TODO:
-          convert to JPG and ship art-directed mobile/tablet/desktop
-          crops at /images/hero/nepal-waas-{m,t,d}.jpg for the paid-
-          traffic LCP budget. */}
+          match an ad-clicker needs in the first scroll.
+          Art-directed crops (Rajat dropped 2026-06-05) shipped at:
+            mobile  1500x2000  3:4 portrait
+            tablet  2000x1500  4:3 landscape
+            desktop 3000x1800  5:3 landscape
+          JPG @ q82 via mozjpeg -- ~951 KB total across all 3 crops
+          (down from ~12 MB of source PNGs). Browser picks the right
+          crop via the <picture> media queries; the LCP path on the
+          paid-traffic landing is now lean enough for Meta's ad-
+          quality scoring. */}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[480px] md:h-[560px] lg:h-[calc(100vh-160px)] lg:min-h-[560px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/photography/nepal-waas-hero.png"
-          alt="A worker drinking from a bottle filled at a branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank, in a commercial site -- exactly the system every DWaaS contract puts in."
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          fetchPriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/nepal-waas-tablet.jpg" />
+          <img
+            src="/images/hero/nepal-waas-mobile.jpg"
+            alt="A worker drinking from a bottle filled at a branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank, in a commercial site -- exactly the system every DWaaS contract puts in."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
         <div
           className="absolute inset-0 lg:hidden"
           style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.78) 45%, rgba(4,69,95,0.30) 90%)' }}
@@ -213,7 +219,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         <div className="relative aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] w-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/photography/nepal-waas-engineer-dispensing.png"
+            src="/images/photography/nepal-waas-engineer-dispensing.jpg"
             alt="A Uniwater engineer in branded uniform dispensing drinking water from a wall-mounted 25 LPH RO + UV plant at a commercial site -- the monthly preventive visit in action."
             className="absolute inset-0 w-full h-full object-cover object-center"
             loading="lazy"
