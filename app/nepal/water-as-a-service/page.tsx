@@ -88,12 +88,13 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           crop via the <picture> media queries; the LCP path on the
           paid-traffic landing is now lean enough for Meta's ad-
           quality scoring. */}
-      {/* Hero height bumped on mobile 2026-06-05: was h-[480px] which
-          clipped the eyebrow + cropped the sub copy off the bottom when
-          the content stack added up to ~520px. min-h-[640px] gives
-          comfortable room for eyebrow + H1 + sub + CTAs without
-          touching the tablet / desktop heights. */}
-      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[640px] md:min-h-0 md:h-[560px] lg:h-[calc(100vh-160px)] lg:min-h-[560px] border-b border-offwhite/10">
+      {/* Hero height trimmed 50px across the board 2026-06-05 per
+          Rajat. Mobile 640->590, tablet 560->510, desktop
+          calc(100vh-160)->calc(100vh-210) with the desktop min-h
+          following suit. Content still fits comfortably (eyebrow +
+          H1 + sub + CTAs); the cut just lets the section below the
+          hero arrive sooner. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[590px] md:min-h-0 md:h-[510px] lg:h-[calc(100vh-210px)] lg:min-h-[510px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
           <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
