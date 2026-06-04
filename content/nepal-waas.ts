@@ -104,6 +104,47 @@ export const DWAAS_PLANS: DWaaSPlan[] = [
   { slug: 'E', tagline: 'Maximum — large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 60_000 },
 ];
 
+// ----- Live in Nepal -- trust signals on the landing -------------------
+
+/** Live deployments running in Nepal RIGHT NOW. Used as a trust-building
+ *  band before the plans/pricing block on the ad landing. Same two sites
+ *  also live in content/cwaas.ts LIVE_SITES (`heritage-international-school`
+ *  + `feel-good-restaurant`); the Nepal copy here is reworded for the
+ *  ad-page context (commercial-buyer voice, Biratnagar emphasis). */
+export interface NepalLiveSite {
+  /** Stable slug for React keys. Matches the cwaas LIVE_SITES slug where
+   *  the same site lives in both lists so cross-page reporting can link
+   *  them up. */
+  slug: string;
+  /** Display name. */
+  name: string;
+  /** City -- always Biratnagar for the first cohort. */
+  city: string;
+  /** Short type label (School / Restaurant & bar / etc). */
+  type: string;
+  /** One-line context: what we run there, in commercial voice. */
+  context: string;
+}
+
+export const NEPAL_LIVE_SITES: NepalLiveSite[] = [
+  {
+    slug: 'heritage-international-school',
+    name: 'Heritage International School',
+    city: 'Biratnagar',
+    type: 'School',
+    context:
+      'Managed drinking water for students, staff and the school kitchen — monthly engineer visit, written parameter report each time.',
+  },
+  {
+    slug: 'feel-good-restaurant',
+    name: 'Feel Good Bar and Restaurant',
+    city: 'Biratnagar',
+    type: 'Restaurant & bar',
+    context:
+      'Drinking water for guests, kitchen prep and bar service — sealed dispensing throughout, food-safe plumbing on every line.',
+  },
+];
+
 // ----- Comparison: DWaaS vs Buying equipment vs Water jars ---------------
 
 /** A single row in the three-way comparison. `dimension` is the question
@@ -189,23 +230,16 @@ export const MODEL_LINE = 'zero equipment cost + refundable security deposit';
 // ----- Hero --------------------------------------------------------------
 
 export const HERO_EYEBROW = 'Across the Terai — Biratnagar to Birgunj';
-// Shortened 2026-06-05 from "Drinking water on tap. Charged by the litre."
-// (41 chars, wraps to 3 lines on mobile, pushes the rest of the hero
-// content into a cramped column) to "Drinking water. By the litre."
-// (29 chars, wraps to 2 lines max). Keeps both anchor ideas: "drinking
-// water" (SEO keyword + ad message-match) and "by the litre"
-// (subscription pricing model).
-export const HERO_TITLE = 'Drinking water. By the litre.';
-// Shortened 2026-06-05: previous sub was 230 chars / 5 mobile lines,
-// which pushed the hero content past the 480px container and clipped
-// the eyebrow at the top. The "ten towns from Biratnagar to Birgunj"
-// detail is already in the regions section + the eyebrow; the
-// "deliver the water and keep it running" verbiage is covered by the
-// stats strip's MODEL_LINE. Keeping only the three things that
-// differentiate this from "buy a plant" or "use jars" on an ad page:
-// zero capex, monthly engineer, rate ladder.
+// Restored to the original copy 2026-06-05 (later same day) -- now that
+// the mobile hero container is min-h-[640px] (up from 480px), the
+// original 41-char two-sentence headline fits without clipping and reads
+// stronger than the trimmed version.
+export const HERO_TITLE = 'Drinking water on tap. Charged by the litre.';
+// Restored to the original sub 2026-06-05 (later same day). The
+// mobile hero is now min-h-[640px] (up from 480px), so the longer copy
+// has room to breathe without clipping the eyebrow.
 export const HERO_SUB =
-  'Zero equipment cost. Refundable deposit. Monthly engineer included. From Rs 1.5 per litre.';
+  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across ten towns from Biratnagar to Birgunj along the East–West Highway.';
 
 // ----- DRAFT content (needs reference file) ------------------------------
 

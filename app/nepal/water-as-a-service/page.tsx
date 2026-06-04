@@ -19,6 +19,7 @@ import {
   NEPAL_CALL_LINES,
   WHATSAPP_HREF_GENERIC,
   COMPARISON_ROWS,
+  NEPAL_LIVE_SITES,
   META_TITLE,
   META_DESCRIPTION,
   type ServiceSlug,
@@ -201,6 +202,44 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         <p className="text-center text-caption text-mute mt-4 italic">
           The model: {MODEL_LINE}.
         </p>
+      </Section>
+
+      {/* Live in Biratnagar -- Nepal-specific trust block (added 2026-06-05).
+          Sits AFTER the stats strip and BEFORE the plans / pricing so the
+          visitor sees a named-customer proof signal before the rate ladder
+          changes the conversation to money. Both sites in NEPAL_LIVE_SITES
+          also live in content/cwaas.ts as part of the wider CWaaS proof
+          set; the Nepal copy is reworded for the ad-page voice. */}
+      <Section padding="default">
+        <div className="mb-10 max-w-3xl flex flex-col gap-4">
+          <Eyebrow>Live in Biratnagar</Eyebrow>
+          <Heading level={2}>Already running. Both contracts in Biratnagar.</Heading>
+          <Body className="text-mute mt-2">
+            Two service contracts active in Biratnagar today — a school and a
+            restaurant. We installed the plants, we run them, and we visit
+            monthly. The same model is what your business signs up for.
+          </Body>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {NEPAL_LIVE_SITES.map((site) => (
+            <div
+              key={site.slug}
+              className="border border-hairline bg-offwhite p-6 md:p-7 flex flex-col gap-3"
+            >
+              <div className="flex items-center justify-between gap-3 pb-3 border-b border-hairline">
+                <Eyebrow className="text-teal">{site.type}</Eyebrow>
+                <Caption className="text-mute uppercase tracking-wide">{site.city}, Nepal</Caption>
+              </div>
+              <h3 className="font-sans text-h2-m font-normal text-navy leading-snug [text-wrap:balance]">
+                {site.name}
+              </h3>
+              <Body className="text-mute">{site.context}</Body>
+              <Caption className="text-teal font-medium mt-2">
+                ● Active contract
+              </Caption>
+            </div>
+          ))}
+        </div>
       </Section>
 
       {/* Client island -- service tabs + plans (or DM card) + lead form +
