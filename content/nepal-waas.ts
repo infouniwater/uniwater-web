@@ -48,11 +48,15 @@ export const TAGLINE = 'Wellness starts with clean water.';
  *  sitewide module is restructured. */
 export const NEPAL_WHATSAPP_E164 = '919748745193';
 
-/** Displayed call line on the page. Single number sitewide.
- *  The brief originally listed +977-9819391754 (Nepal local) and
- *  +91-9663245193 (a second Indian line); Rajat consolidated to
- *  +91-9748745193 only 2026-06-05. */
-export const NEPAL_CALL_LINES = ['+91-9748745193'] as const;
+/** Displayed call line on the page -- Nepal local number per Rajat
+ *  2026-06-05: "keep calling number to: +977 9819391754". The
+ *  WhatsApp deeplink number (NEPAL_WHATSAPP_E164) stays at the
+ *  Indian +91-9748745193 because that's the central WhatsApp
+ *  Business account handling the campaign; the displayed call
+ *  number is the Nepal local for trust + cheaper-to-dial on the
+ *  ground. Earlier today this was momentarily consolidated to the
+ *  +91 line; today's update splits call vs WhatsApp again. */
+export const NEPAL_CALL_LINES = ['+977-9819391754'] as const;
 
 // ----- Service tabs -------------------------------------------------------
 

@@ -110,7 +110,15 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           aria-hidden="true"
         />
         <div className="relative h-full container-uw flex items-end lg:items-center">
-          <div className="w-full lg:max-w-[800px] pb-10 lg:pb-0 flex flex-col gap-5">
+          {/* Hero text block: mobile gets a fatter bottom padding
+              (pb-14 = 56px) plus a small horizontal nudge (px-1 = 4px
+              over the container-uw's 24px sides). Visitors on small
+              phones were seeing the text pressed against the bottom
+              edge and the safe-area indicator; 56px is the standard
+              iOS home-bar clearance + breathing room. Padding zeroes
+              out at lg where the block sits vertically centered with
+              its own width cap. */}
+          <div className="w-full lg:max-w-[800px] px-1 sm:px-0 pb-14 sm:pb-10 lg:pb-0 lg:px-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
               {HERO_EYEBROW}
             </p>
