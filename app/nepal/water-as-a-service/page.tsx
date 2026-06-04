@@ -72,22 +72,22 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
 
   return (
     <>
-      {/* Hero -- ad-page-grade image-with-scrim, same vocabulary as the
-          rest of the site for visual consistency once the ad-clicker
-          lands. */}
+      {/* Hero -- ad-page-grade image-with-scrim. Hero photo shows a
+          branded Uniwater 100 LPH RO + UV plant with its dispensing
+          tank at a commercial site (Rajat dropped the image
+          2026-06-05). Single PNG used across breakpoints for now;
+          TODO: convert to JPG and ship art-directed mobile/tablet/
+          desktop crops at /images/hero/nepal-waas-{m,t,d}.jpg for the
+          paid-traffic LCP budget. */}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[480px] md:h-[560px] lg:h-[calc(100vh-160px)] lg:min-h-[560px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <picture>
-          <source media="(min-width: 1024px)" srcSet="/images/hero/utility-desktop.jpg" />
-          <source media="(min-width: 768px)" srcSet="/images/hero/utility-tablet.jpg" />
-          <img
-            src="/images/hero/utility-mobile.jpg"
-            alt="A Uniwater drinking-water plant being commissioned at a commercial site in East Nepal."
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </picture>
+        <img
+          src="/images/photography/nepal-waas-hero.png"
+          alt="A branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank installed at a commercial site -- the kind of system every DWaaS contract puts in."
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div
           className="absolute inset-0 lg:hidden"
           style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.78) 45%, rgba(4,69,95,0.30) 90%)' }}
@@ -195,6 +195,40 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           {/* DRAFT — replace verbatim from reference file */}
         </p>
       </Section>
+
+      {/* Behind the service -- inline photo band between benefits and
+          the 4-step process. Shows a branded Uniwater engineer dispensing
+          drinking water from one of the smaller (25 LPH) RO + UV plants
+          that ship under DWaaS Plans A/B. Single editorial caption
+          reinforces the "monthly engineer visit" differentiator without
+          repeating the benefits-list copy above. Image dropped by Rajat
+          2026-06-05; TODO: convert PNG -> JPG + add art-directed crops
+          for the mobile path. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden border-y border-offwhite/10">
+        <div className="relative aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] w-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/photography/nepal-waas-engineer-dispensing.png"
+            alt="A Uniwater engineer in branded uniform dispensing drinking water from a wall-mounted 25 LPH RO + UV plant at a commercial site -- the monthly preventive visit in action."
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            loading="lazy"
+            decoding="async"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.82) 0%, rgba(4,69,95,0.35) 55%, rgba(4,69,95,0.10) 100%)' }}
+            aria-hidden="true"
+          />
+          <div className="relative h-full container-uw flex items-center">
+            <div className="max-w-md md:max-w-lg flex flex-col gap-3">
+              <Eyebrow inverse>The work side</Eyebrow>
+              <p className="font-editorial italic text-2xl md:text-3xl lg:text-4xl text-offwhite leading-snug [text-wrap:balance]">
+                A named engineer. Same person. Same schedule. Written report on the spot.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* How it works -- 4 steps (DRAFT in content/nepal-waas.ts). */}
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
