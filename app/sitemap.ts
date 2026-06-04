@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/residential',
     '/industrial',
     '/clean-water-as-a-service',
+    '/nepal/water-as-a-service',
     '/how-it-works',
     '/why-uniwater',
     '/service',

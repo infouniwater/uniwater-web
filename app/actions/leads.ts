@@ -55,6 +55,7 @@ const META_VALUE_REMOTE_SURVEY = 100_000; // similar residential, just remote-ma
 const META_VALUE_INDUSTRIAL_RFQ = 400_000; // commercial scale — highest value
 const META_VALUE_CONTACT = 14_000;        // entry-tier interest, generic
 const META_VALUE_WATER_TEST = 25_000;
+const META_VALUE_NEPAL_WAAS = 200_000;    // Nepal DWaaS/DM-as-a-Service — ad-driven, commercial scale
 
 /**
  * Read what we can about the visitor from the request headers. Used to
@@ -218,6 +219,78 @@ export async function submitContact(formData: FormData): Promise<void> {
   });
 
   redirect('/thank-you?source=contact');
+}
+
+/**
+ * Nepal Water-as-a-Service ad-campaign form (East Nepal).
+ *
+ * Lands at /nepal/water-as-a-service. Submissions tag the Odoo lead with
+ * source: "meta-ads-east-nepal" so the sales pipeline can route them to the
+ * Biratnagar/Itahari team, and the Meta CAPI event fires with
+ * value=META_VALUE_NEPAL_WAAS so the ad-optimiser bids harder for the
+ * commercial-scale lead.
+ *
+ * Form fields:
+ *   - name, business, city (East Nepal regions or 'Other')
+ *   - service (drinking | dm)         -- driven by ?service= query param
+ *   - plan (A..E | empty if DM)        -- only for drinking; DM is enquiry-only
+ *   - phone, useCase, notes
+ *
+ * The page also fires fbq('track', 'Lead') browser-side on form submit AND
+ * on WhatsApp CTA clicks, in addition to the server-side CAPI event below.
+ * Duplicate events are de-duped by Meta via the event_id mechanism in
+ * sendMetaLeadEvent.
+ */
+export async function submitNepalWaaS(formData: FormData): Promise<void> {
+  const name = takeString(formData, 'name');
+  const business = takeString(formData, 'business');
+  const city = takeString(formData, 'city');
+  const service = takeString(formData, 'service');   // 'drinking' | 'dm'
+  const plan = takeString(formData, 'plan');         // A..E or undefined
+  const phone = takeString(formData, 'phone');
+  const useCase = takeString(formData, 'useCase');
+  const notes = takeString(formData, 'notes');
+
+  const serviceLabel =
+    service === 'dm' ? 'DM Water as a Service' : 'Drinking Water as a Service';
+
+  const fields: LeadFields = {
+    Name: name,
+    Business: business,
+    Mobile: phone,
+    City: city,
+    Service: serviceLabel,
+    Plan: plan,
+    'Use case': useCase,
+    Notes: notes,
+    Source: 'meta-ads-east-nepal',
+  };
+
+  const description = joinDescription([
+    'Source: meta-ads-east-nepal — /nepal/water-as-a-service',
+    business ? `Business: ${business}` : undefined,
+    `Service: ${serviceLabel}`,
+    plan ? `Plan: ${plan}` : undefined,
+    useCase ? `Use case: ${useCase}` : undefined,
+    notes ? `Notes: ${notes}` : undefined,
+  ]);
+
+  await fanOut({
+    odoo: {
+      name: `Nepal WaaS — ${business ?? name ?? 'unnamed'}${plan ? ` (Plan ${plan})` : ''}`,
+      contactName: name,
+      phone,
+      city,
+      description,
+    },
+    tab: 'nepal-waas',
+    formLabel: 'Nepal Water-as-a-Service (meta-ads-east-nepal)',
+    emailSubject: `Nepal WaaS lead — ${business ?? name ?? 'unnamed'}${city ? ` (${city})` : ''}`,
+    fields,
+    meta: { eventName: 'Lead', phone, name, city, value: META_VALUE_NEPAL_WAAS },
+  });
+
+  redirect('/thank-you?source=nepal-waas');
 }
 
 export async function submitRFQ(formData: FormData): Promise<void> {

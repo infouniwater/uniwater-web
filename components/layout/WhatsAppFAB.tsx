@@ -13,11 +13,15 @@ import { PRIMARY_PHONE_E164 } from '@/content/site';
  */
 
 // Hide on routes whose primary CTA is a structured form (BLUEPRINT §12.5 CTA verb discipline).
+// /nepal/water-as-a-service renders its own per-page sticky WhatsApp CTA
+// (campaign-tagged messages, browser-side Pixel events), so the global FAB
+// is hidden there to avoid a double-CTA stack at the bottom of the page.
 const HIDDEN_PATHS = [
   '/book-survey',
   '/remote-site-survey',
   '/water-problem-checker',
   '/industrial',
+  '/nepal/water-as-a-service',
 ];
 
 export function WhatsAppFAB() {
