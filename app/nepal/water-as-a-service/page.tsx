@@ -215,40 +215,36 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </p>
       </Section>
 
-      {/* Live in Biratnagar -- Nepal-specific trust block (added 2026-06-05).
-          Sits AFTER the stats strip and BEFORE the plans / pricing so the
-          visitor sees a named-customer proof signal before the rate ladder
-          changes the conversation to money. Both sites in NEPAL_LIVE_SITES
-          also live in content/cwaas.ts as part of the wider CWaaS proof
-          set; the Nepal copy is reworded for the ad-page voice. */}
-      <Section padding="default">
-        <div className="mb-10 max-w-3xl flex flex-col gap-4">
-          <Eyebrow>Live in Biratnagar</Eyebrow>
-          <Heading level={2}>Already running. Both contracts in Biratnagar.</Heading>
-          <Body className="text-mute mt-2">
-            Two service contracts active in Biratnagar today — a school and a
-            restaurant. We installed the plants, we run them, and we visit
-            monthly. The same model is what your business signs up for.
-          </Body>
+      {/* Live in Biratnagar -- compact testimonial band per Rajat
+          2026-06-05. Two named quotes from real customers (Varnika
+          Rathi @ Heritage International School, Nirjal Shrestha @ Feel
+          Good Bar and Grill), tight padding so the section reads as
+          a credibility row, not a full content slab. Sits AFTER the
+          stats strip and BEFORE the plans/pricing for max
+          trust-before-money lift. */}
+      <Section padding="tight">
+        <div className="mb-6 max-w-2xl">
+          <Eyebrow className="mb-2">Live in Biratnagar</Eyebrow>
+          <Heading level={2}>Two contracts already running, on the record.</Heading>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {NEPAL_LIVE_SITES.map((site) => (
-            <div
+            <figure
               key={site.slug}
-              className="border border-hairline bg-offwhite p-6 md:p-7 flex flex-col gap-3"
+              className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3"
             >
-              <div className="flex items-center justify-between gap-3 pb-3 border-b border-hairline">
-                <Eyebrow className="text-teal">{site.type}</Eyebrow>
-                <Caption className="text-mute uppercase tracking-wide">{site.city}, Nepal</Caption>
-              </div>
-              <h3 className="font-sans text-h2-m font-normal text-navy leading-snug [text-wrap:balance]">
-                {site.name}
-              </h3>
-              <Body className="text-mute">{site.context}</Body>
-              <Caption className="text-teal font-medium mt-2">
-                ● Active contract
-              </Caption>
-            </div>
+              <blockquote className="font-editorial italic text-h3 text-navy leading-snug [text-wrap:balance]">
+                &ldquo;{site.quote}&rdquo;
+              </blockquote>
+              <figcaption className="pt-3 border-t border-hairline flex flex-col gap-0.5">
+                <Caption className="font-medium text-navy">
+                  {site.personName} &middot; {site.personRole}
+                </Caption>
+                <Caption className="text-mute">
+                  {site.name} &middot; {site.city}, Nepal
+                </Caption>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </Section>

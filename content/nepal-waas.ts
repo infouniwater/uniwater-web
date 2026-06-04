@@ -106,24 +106,28 @@ export const DWAAS_PLANS: DWaaSPlan[] = [
 
 // ----- Live in Nepal -- trust signals on the landing -------------------
 
-/** Live deployments running in Nepal RIGHT NOW. Used as a trust-building
- *  band before the plans/pricing block on the ad landing. Same two sites
- *  also live in content/cwaas.ts LIVE_SITES (`heritage-international-school`
- *  + `feel-good-restaurant`); the Nepal copy here is reworded for the
- *  ad-page context (commercial-buyer voice, Biratnagar emphasis). */
+/** Named-attribution testimonials from two live Biratnagar deployments.
+ *  Used as a compact trust band before the plans/pricing on the ad
+ *  landing. Both sites also live in content/cwaas.ts LIVE_SITES
+ *  (`heritage-international-school` + `feel-good-restaurant`) -- the
+ *  slug match lets cross-page reporting link them up. */
 export interface NepalLiveSite {
-  /** Stable slug for React keys. Matches the cwaas LIVE_SITES slug where
-   *  the same site lives in both lists so cross-page reporting can link
-   *  them up. */
+  /** Stable slug for React keys. Matches the cwaas LIVE_SITES slug. */
   slug: string;
-  /** Display name. */
+  /** Display name of the site / business. */
   name: string;
   /** City -- always Biratnagar for the first cohort. */
   city: string;
   /** Short type label (School / Restaurant & bar / etc). */
   type: string;
-  /** One-line context: what we run there, in commercial voice. */
-  context: string;
+  /** Name of the person quoted. */
+  personName: string;
+  /** Role / title at the site. */
+  personRole: string;
+  /** Testimonial quote -- DRAFT 2026-06-05, replace verbatim from
+   *  reference when the real quotes come in. Keep to ~25 words for
+   *  card readability on mobile. */
+  quote: string;
 }
 
 export const NEPAL_LIVE_SITES: NepalLiveSite[] = [
@@ -132,16 +136,22 @@ export const NEPAL_LIVE_SITES: NepalLiveSite[] = [
     name: 'Heritage International School',
     city: 'Biratnagar',
     type: 'School',
-    context:
-      'Managed drinking water for students, staff and the school kitchen — monthly engineer visit, written parameter report each time.',
+    personName: 'Varnika Rathi',
+    personRole: 'Principal',
+    // DRAFT — replace verbatim from Rajat's reference quote
+    quote:
+      'The water on every floor is safe and tested. The monthly engineer visit and written report give us exactly the documentation our school health audit needs.',
   },
   {
     slug: 'feel-good-restaurant',
-    name: 'Feel Good Bar and Restaurant',
+    name: 'Feel Good Bar and Grill',
     city: 'Biratnagar',
     type: 'Restaurant & bar',
-    context:
-      'Drinking water for guests, kitchen prep and bar service — sealed dispensing throughout, food-safe plumbing on every line.',
+    personName: 'Nirjal Shrestha',
+    personRole: 'Owner',
+    // DRAFT — replace verbatim from Rajat's reference quote
+    quote:
+      'We stopped tracking jar deliveries. The plant runs in the back, an engineer turns up every month, and the tap pours clean every shift.',
   },
 ];
 
