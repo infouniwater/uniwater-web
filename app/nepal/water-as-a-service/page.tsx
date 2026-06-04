@@ -116,14 +116,21 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             decoding="async"
           />
         </picture>
+        {/* Scrim direction flipped 2026-06-05 per Rajat -- now dark
+            at the top, light at the bottom across all breakpoints
+            (previously dark-bottom/light-top on mobile and dark-
+            left/light-right on desktop). Reads better with the
+            header chrome (heavier shade behind the eyebrow + H1)
+            and lets the image's lower half come through more
+            clearly. */}
         <div
           className="absolute inset-0 lg:hidden"
-          style={{ background: 'linear-gradient(to top, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.78) 45%, rgba(4,69,95,0.30) 90%)' }}
+          style={{ background: 'linear-gradient(to bottom, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.78) 45%, rgba(4,69,95,0.30) 90%)' }}
           aria-hidden="true"
         />
         <div
           className="absolute inset-0 hidden lg:block"
-          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 50%, rgba(4,69,95,0.25) 85%)' }}
+          style={{ background: 'linear-gradient(to bottom, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 50%, rgba(4,69,95,0.25) 85%)' }}
           aria-hidden="true"
         />
         <div className="relative h-full container-uw flex items-center">
