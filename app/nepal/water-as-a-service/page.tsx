@@ -88,13 +88,16 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           crop via the <picture> media queries; the LCP path on the
           paid-traffic landing is now lean enough for Meta's ad-
           quality scoring. */}
-      {/* Hero height trimmed 50px across the board 2026-06-05 per
-          Rajat. Mobile 640->590, tablet 560->510, desktop
-          calc(100vh-160)->calc(100vh-210) with the desktop min-h
-          following suit. Content still fits comfortably (eyebrow +
-          H1 + sub + CTAs); the cut just lets the section below the
-          hero arrive sooner. */}
-      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[590px] md:min-h-0 md:h-[510px] lg:h-[calc(100vh-210px)] lg:min-h-[510px] border-b border-offwhite/10">
+      {/* Hero height trimmed iteratively per Rajat 2026-06-05:
+          first pass -50, this pass another -30 = -80 total.
+            mobile:  640 -> 590 -> 560
+            tablet:  560 -> 510 -> 480
+            desktop: calc(100vh-160) -> -210 -> -240 px header offset
+                     min-h 560 -> 510 -> 480
+          Content stack on mobile (eyebrow ~60 + H1 ~80 + sub 5 lines
+          ~125 + CTAs ~74 + gaps ~80 + py ~80 = ~499px) still fits
+          inside the 560px min-h with comfortable slack. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[560px] md:min-h-0 md:h-[480px] lg:h-[calc(100vh-240px)] lg:min-h-[480px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
           <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
