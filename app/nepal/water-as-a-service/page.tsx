@@ -285,18 +285,22 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </Section>
 
-      {/* Regions -- where the service runs today. */}
+      {/* Regions -- where the service runs today. 2026-06-05: footprint
+          expanded from 4 East-Koshi towns to 9 along the East-West
+          Highway, spanning Koshi + Madhesh provinces, ending at Birgunj
+          at the Indian border. Grid now 3-up at sm+ (9 cities divides
+          cleanly into 3 rows of 3); mobile stays 2-up. */}
       <Section padding="default">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 flex flex-col gap-4">
             <Eyebrow>Service area</Eyebrow>
-            <Heading level={2}>Live across East Nepal.</Heading>
+            <Heading level={2}>Live across the Terai. Biratnagar to Birgunj.</Heading>
             <Body className="text-mute mt-2">
-              {PROVINCE}. Other locations in East Nepal on request — drop your address in the form and we&rsquo;ll confirm coverage.
+              {PROVINCE} Other locations between these towns on request — drop your address in the form and we&rsquo;ll confirm coverage and arrive within the agreed window.
             </Body>
           </div>
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-hairline border border-hairline">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-hairline border border-hairline">
               {REGIONS.map((region) => (
                 <div key={region} className="bg-offwhite p-6 flex flex-col gap-1 items-center text-center">
                   <span className="font-sans text-h3 font-normal text-navy">{region}</span>

@@ -17,8 +17,26 @@
 
 // ----- Region targeting --------------------------------------------------
 
-export const REGIONS = ['Itahari', 'Biratnagar', 'Dharan', 'Damak'] as const;
-export const PROVINCE = 'Koshi Province, Nepal';
+/** Service footprint expanded 2026-06-05 from East Koshi only to the full
+ *  Eastern + Central Terai corridor along the East-West Highway, all the
+ *  way west to Birgunj at the Indian border. Cities are listed
+ *  geographically east -> west so a visitor reading the list traces the
+ *  highway. Janakpur and Birgunj are the major hubs west of Koshi;
+ *  Lahan / Bardibas / Lalbandi are the highway towns in between. */
+export const REGIONS = [
+  // Koshi Province (east)
+  'Itahari',
+  'Biratnagar',
+  'Dharan',
+  'Damak',
+  // Madhesh Province (centre-east -> west, along the EW Highway)
+  'Lahan',
+  'Janakpur',
+  'Bardibas',
+  'Lalbandi',
+  'Birgunj',
+] as const;
+export const PROVINCE = 'Koshi & Madhesh provinces, Nepal — along the East–West Highway.';
 export const TAGLINE = 'Wellness starts with clean water.';
 
 // ----- Contact ------------------------------------------------------------
@@ -90,10 +108,10 @@ export const MODEL_LINE = 'zero equipment cost + refundable security deposit';
 
 // ----- Hero --------------------------------------------------------------
 
-export const HERO_EYEBROW = 'For East Nepal — Itahari · Biratnagar · Dharan · Damak';
+export const HERO_EYEBROW = 'Across the Terai — Biratnagar to Birgunj';
 export const HERO_TITLE = 'Drinking water on tap. Charged by the litre.';
 export const HERO_SUB =
-  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre.';
+  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across nine towns from Biratnagar to Birgunj along the East–West Highway.';
 
 // ----- DRAFT content (needs reference file) ------------------------------
 
@@ -167,7 +185,7 @@ export const WHY_UNIWATER: string[] = [
 ];
 
 // DRAFT — replace verbatim from _reference/water-as-a-service.page.tsx
-export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum monthly bill applies when monthly consumption is below the plan allowance. Security deposit refundable on contract close, subject to plant being returned in working condition. Monthly bill = max(consumption × rate, minimum bill). DM water pricing is quoted per site after feed-water analysis. Service available in Itahari, Biratnagar, Dharan, and Damak; other locations on request.`;
+export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum monthly bill applies when monthly consumption is below the plan allowance. Security deposit refundable on contract close, subject to plant being returned in working condition. Monthly bill = max(consumption × rate, minimum bill). DM water pricing is quoted per site after feed-water analysis. Service available across Koshi and Madhesh provinces — Itahari, Biratnagar, Dharan, Damak, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj. Other locations along the East–West Highway corridor on request.`;
 
 // ----- WhatsApp deeplink helpers -----------------------------------------
 
@@ -206,6 +224,6 @@ export const USE_CASE_OPTIONS = [
 
 // ----- Metadata ----------------------------------------------------------
 
-export const META_TITLE = 'Drinking Water as a Service — Itahari · Biratnagar · Dharan · Damak | Uniwater Nepal';
+export const META_TITLE = 'Drinking Water as a Service — Biratnagar · Janakpur · Birgunj | Uniwater Nepal';
 export const META_DESCRIPTION =
-  'Subscribe to drinking water from Uniwater Nepal. Zero equipment cost, refundable security deposit, monthly engineer visits, 24×7 service. From Rs 1.5/L. Plans A to E for offices, restaurants, hotels, schools, hospitals, and factories across East Nepal.';
+  'Subscribe to drinking water from Uniwater Nepal. Zero equipment cost, refundable security deposit, monthly engineer visits, 24×7 service. From Rs 1.5/L. Plans A to E for offices, restaurants, hotels, schools, hospitals, and factories across nine Terai towns from Biratnagar to Birgunj along the East–West Highway.';
