@@ -55,7 +55,13 @@ export const metadata: Metadata = buildMetadata({
   path: '/nepal/water-as-a-service',
   title: META_TITLE,
   description: META_DESCRIPTION,
-  image: '/og/og-home.png',
+  // Dedicated 1200x630 OG card for this page (built 2026-06-05 from
+  // the desktop hero photo via Sharp + an SVG overlay). buildMetadata
+  // already wires this into <meta property="og:image">, <meta
+  // name="twitter:image">, and the OG width/height annotations, so
+  // WhatsApp, Facebook, LinkedIn, X, Slack, Telegram and Discord all
+  // pick it up when the URL is shared.
+  image: '/og/og-nepal-waas.jpg',
 });
 
 export default function NepalWaaSPage({ searchParams }: PageProps) {
