@@ -87,7 +87,12 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           crop via the <picture> media queries; the LCP path on the
           paid-traffic landing is now lean enough for Meta's ad-
           quality scoring. */}
-      <section className="relative w-full bg-navy text-offwhite overflow-hidden h-[480px] md:h-[560px] lg:h-[calc(100vh-160px)] lg:min-h-[560px] border-b border-offwhite/10">
+      {/* Hero height bumped on mobile 2026-06-05: was h-[480px] which
+          clipped the eyebrow + cropped the sub copy off the bottom when
+          the content stack added up to ~520px. min-h-[640px] gives
+          comfortable room for eyebrow + H1 + sub + CTAs without
+          touching the tablet / desktop heights. */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[640px] md:min-h-0 md:h-[560px] lg:h-[calc(100vh-160px)] lg:min-h-[560px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
           <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
@@ -135,7 +140,10 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             <p className="text-[15px] leading-relaxed text-offwhite/85 max-w-2xl">
               {HERO_SUB}
             </p>
-            <p className="text-caption text-offwhite/70 italic mt-2">{TAGLINE}</p>
+            {/* Italic brand tagline -- hidden on mobile so the hero
+                stack fits in the 640px container; still shown on
+                tablet+ where vertical room isn't a problem. */}
+            <p className="hidden sm:block text-caption text-offwhite/70 italic mt-2">{TAGLINE}</p>
 
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <a
@@ -162,7 +170,11 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
               </a>
             </div>
 
-            <p className="text-caption text-offwhite/70 mt-3">
+            {/* Call line hidden on mobile -- the sticky bottom
+                WhatsApp CTA + the form-section copy already carry the
+                "talk to us" path. Showing it on tablet+ where vertical
+                room is plentiful. */}
+            <p className="hidden sm:block text-caption text-offwhite/70 mt-3">
               Call: {NEPAL_CALL_LINES.map((line, i) => (
                 <span key={line}>
                   <a href={`tel:${line.replace(/[^\d+]/g, '')}`} className="text-offwhite/90 hover:text-offwhite underline underline-offset-4 decoration-offwhite/30">

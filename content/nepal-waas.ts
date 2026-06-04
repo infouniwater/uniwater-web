@@ -196,8 +196,16 @@ export const HERO_EYEBROW = 'Across the Terai — Biratnagar to Birgunj';
 // water" (SEO keyword + ad message-match) and "by the litre"
 // (subscription pricing model).
 export const HERO_TITLE = 'Drinking water. By the litre.';
+// Shortened 2026-06-05: previous sub was 230 chars / 5 mobile lines,
+// which pushed the hero content past the 480px container and clipped
+// the eyebrow at the top. The "ten towns from Biratnagar to Birgunj"
+// detail is already in the regions section + the eyebrow; the
+// "deliver the water and keep it running" verbiage is covered by the
+// stats strip's MODEL_LINE. Keeping only the three things that
+// differentiate this from "buy a plant" or "use jars" on an ad page:
+// zero capex, monthly engineer, rate ladder.
 export const HERO_SUB =
-  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across ten towns from Biratnagar to Birgunj along the East–West Highway.';
+  'Zero equipment cost. Refundable deposit. Monthly engineer included. From Rs 1.5 per litre.';
 
 // ----- DRAFT content (needs reference file) ------------------------------
 
