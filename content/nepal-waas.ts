@@ -189,7 +189,13 @@ export const MODEL_LINE = 'zero equipment cost + refundable security deposit';
 // ----- Hero --------------------------------------------------------------
 
 export const HERO_EYEBROW = 'Across the Terai — Biratnagar to Birgunj';
-export const HERO_TITLE = 'Drinking water on tap. Charged by the litre.';
+// Shortened 2026-06-05 from "Drinking water on tap. Charged by the litre."
+// (41 chars, wraps to 3 lines on mobile, pushes the rest of the hero
+// content into a cramped column) to "Drinking water. By the litre."
+// (29 chars, wraps to 2 lines max). Keeps both anchor ideas: "drinking
+// water" (SEO keyword + ad message-match) and "by the litre"
+// (subscription pricing model).
+export const HERO_TITLE = 'Drinking water. By the litre.';
 export const HERO_SUB =
   'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across ten towns from Biratnagar to Birgunj along the East–West Highway.';
 
