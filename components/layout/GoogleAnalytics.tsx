@@ -24,9 +24,15 @@ import { useEffect } from 'react';
  * <Suspense> so the parent stays a Server Component.
  */
 
-// Active GA4 stream: "Landing Page" (Stream ID 3843302977), wired
-// 2026-06-08. Set NEXT_PUBLIC_GA_MEASUREMENT_ID in the Vercel project
-// env to point at a different property.
+// Active GA4 stream:
+//   Name:           "Home Page"        (renamed from "Landing Page" 2026-06-08)
+//   URL:            https://uniwater.co.in
+//   Stream ID:      3843302977
+//   Measurement ID: G-9ZSTP2BXMR
+// Wired 2026-06-08. The Stream URL is just a label in GA's UI -- the
+// tracking code below fires across every path on the domain. Set
+// NEXT_PUBLIC_GA_MEASUREMENT_ID in Vercel env to point at a different
+// property if Rajat ever wires a second one.
 const DEFAULT_GA_ID = 'G-9ZSTP2BXMR';
 
 declare global {
