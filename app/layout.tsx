@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next';
+import { Suspense } from 'react';
 import localFont from 'next/font/local';
 import { Signika, Bodoni_Moda } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppFAB } from '@/components/layout/WhatsAppFAB';
 import { MetaPixel } from '@/components/layout/MetaPixel';
+import { GoogleAnalytics } from '@/components/layout/GoogleAnalytics';
 import { SITE } from '@/content/site';
 import { organizationSchema, websiteSchema, jsonLd } from '@/lib/structured-data';
 import './globals.css';
@@ -124,6 +126,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppFAB />
         <MetaPixel />
+        {/* GA4 needs useSearchParams() for route-change page_view
+            tracking, which forces it into a Suspense boundary on the
+            static-build path. Wrapping locally so the rest of the
+            layout stays a Server Component. */}
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
       </body>
     </html>
   );

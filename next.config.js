@@ -32,6 +32,10 @@ const nextConfig = {
       "'unsafe-inline'",
       isDev && "'unsafe-eval'",
       'https://connect.facebook.net',
+      // Google Analytics 4 / Tag Manager loader. The gtag.js file is
+      // served from googletagmanager.com; once it boots it streams
+      // events back through the same host plus *.google-analytics.com.
+      'https://www.googletagmanager.com',
     ].filter(Boolean).join(' ');
 
     const securityHeaders = [
@@ -53,7 +57,7 @@ const nextConfig = {
           // Meta Pixel loads from connect.facebook.net and posts events to
           // www.facebook.com/tr (handled by connect-src + img-src https:).
           scriptSrc,
-          "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com",
+          "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.analytics.google.com",
           "frame-ancestors 'none'",
           "base-uri 'self'",
           "form-action 'self' https://wa.me",
