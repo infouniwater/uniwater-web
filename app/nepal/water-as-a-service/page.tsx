@@ -23,6 +23,7 @@ import {
   type ServiceSlug,
 } from '@/content/nepal-waas';
 import { WaterAsAServiceClient } from './WaterAsAServiceClient';
+import { CompactPlansTable } from './CompactPlansTable';
 
 /**
  * /nepal/water-as-a-service -- Meta-ads landing page for the East Nepal
@@ -190,10 +191,19 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      {/* Trust band -- collapsed from two stacked sections (Stats strip +
-          Live in Biratnagar) into one above-the-fold credibility row.
-          Numbers anchor scale; quotes anchor real customers. Reads in one
-          breath, doesn't burn an extra scroll. */}
+      {/* Compact plans -- above-the-fold price answer. Moves the
+          conversion-critical numbers (volume, rate, min bill, deposit)
+          directly under the hero so ad clickers don't have to scroll
+          past trust signals to find them. Single table treatment at
+          all widths -- no parallel desktop-table / mobile-cards split.
+          Selecting a plan navigates to ?plan=<slug>#lead-form, which
+          the existing page already passes into WaterAsAServiceClient
+          as the form's pre-selected plan. */}
+      <CompactPlansTable />
+
+      {/* Trust band -- stats strip + Biratnagar quotes in one band.
+          Sits AFTER the plans so the visitor sees the price first, the
+          proof second, then the form. */}
       <Section padding="tight" tone="subtle">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-hairline border border-hairline mb-6">
           {STATS_STRIP.map((stat) => (
