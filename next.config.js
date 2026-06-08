@@ -57,7 +57,16 @@ const nextConfig = {
           // Meta Pixel loads from connect.facebook.net and posts events to
           // www.facebook.com/tr (handled by connect-src + img-src https:).
           scriptSrc,
-          "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.analytics.google.com",
+          // GA4 collection endpoints: the gtag.js runtime picks one of
+          // several /g/collect hosts based on region and fallback logic.
+          // Confirmed hits in DevTools:
+          //   www.google-analytics.com    (primary)
+          //   region1.google-analytics.com (regional, covered by *.google-analytics.com)
+          //   analytics.google.com         (fallback -- bare domain, NOT covered by *.analytics.google.com)
+          //   www.google.com               (secondary fallback)
+          // All four must be allowed or the page_view request is blocked
+          // before it leaves the browser and Realtime stays at zero.
+          "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.analytics.google.com https://www.google.com",
           "frame-ancestors 'none'",
           "base-uri 'self'",
           "form-action 'self' https://wa.me",
