@@ -104,16 +104,24 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           ~125 + CTAs ~74 + gaps ~80 + py ~80 = ~499px) still fits
           inside the 560px min-h with comfortable slack. */}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[560px] md:min-h-0 md:h-[480px] lg:h-[calc(100vh-240px)] lg:min-h-[480px] border-b border-offwhite/10">
+        {/* AVIF -> WebP -> JPG fallback for each breakpoint. Mobile-LCP
+            critical-path: Meta ad traffic is ~85% mobile, so the mobile
+            crop is the LCP element on most sessions. AVIF cuts the
+            mobile bytes from 255 KB to 73 KB (-71%), shaving ~1s off
+            the LCP slot on slow-4G. Browser walks the <source> list
+            top-down and picks the first one whose type AND media both
+            match -- so the per-breakpoint ordering is AVIF, WebP, JPG.
+            JPG sits in the <img src> as the universal last-resort. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
+          <source media="(min-width: 1024px)" type="image/avif" srcSet="/images/hero/nepal-waas-desktop.avif" />
+          <source media="(min-width: 1024px)" type="image/webp" srcSet="/images/hero/nepal-waas-desktop.webp" />
           <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
+          <source media="(min-width: 768px)" type="image/avif" srcSet="/images/hero/nepal-waas-tablet.avif" />
+          <source media="(min-width: 768px)" type="image/webp" srcSet="/images/hero/nepal-waas-tablet.webp" />
           <source media="(min-width: 768px)" srcSet="/images/hero/nepal-waas-tablet.jpg" />
-          {/* Mobile JPG bumped to -2.jpg suffix 2026-06-05 to cache-bust:
-              next.config.js sets /images/* to Cache-Control: immutable,
-              max-age=1y, so browsers that visited the page before the
-              new shot landed would hold the original mobile JPG
-              indefinitely. The versioned filename forces a fresh fetch.
-              Old file removed from the repo. */}
+          <source type="image/avif" srcSet="/images/hero/nepal-waas-mobile-2.avif" />
+          <source type="image/webp" srcSet="/images/hero/nepal-waas-mobile-2.webp" />
           <img
             src="/images/hero/nepal-waas-mobile-2.jpg"
             alt="A worker drinking from a bottle filled at a branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank, in a commercial site -- exactly the system every DWaaS contract puts in."

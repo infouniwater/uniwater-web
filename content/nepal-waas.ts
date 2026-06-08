@@ -239,17 +239,28 @@ export const MODEL_LINE = 'zero equipment cost + refundable security deposit';
 
 // ----- Hero --------------------------------------------------------------
 
-export const HERO_EYEBROW = 'Across the Terai — Biratnagar to Birgunj';
+// Eyebrow set verbatim to the ad creative's primary hook so the visitor's
+// first 1-second perception confirms "yes, this is the page I clicked
+// for". Message-match is the single strongest landing-page CVR lever for
+// paid social. Geography (Biratnagar / Birgunj) is moved into HERO_SUB.
+export const HERO_EYEBROW = 'Water jar prices went up again';
 // Restored to the original copy 2026-06-05 (later same day) -- now that
 // the mobile hero container is min-h-[640px] (up from 480px), the
 // original 41-char two-sentence headline fits without clipping and reads
 // stronger than the trimmed version.
-export const HERO_TITLE = 'Drinking water on tap. Charged by the litre.';
+// H1 mirrors the ad's secondary line ("SWITCH TO CLEAN WATER AS A
+// SERVICE"). Keeping the imperative verb ("Switch to") preserves the
+// ad's call-to-action energy in the landing's first paint.
+export const HERO_TITLE = 'Switch to clean water as a service.';
 // Restored to the original sub 2026-06-05 (later same day). The
 // mobile hero is now min-h-[640px] (up from 480px), so the longer copy
 // has room to breathe without clipping the eyebrow.
+// Sub-headline reuses the ad's price anchor ("Starting at NPR 1.5/Litre")
+// then layers on the why-this-isn't-jars proof points (fixed bill,
+// refundable deposit) and the geo (Terai). The visitor sees the offer in
+// one breath without scrolling.
 export const HERO_SUB =
-  'Zero equipment cost. Refundable security deposit. We install the plant, deliver the water, and keep it running. From Rs 1.5 per litre — across ten towns from Biratnagar to Birgunj along the East–West Highway.';
+  'Starting at NPR 1.5 per litre. Fixed monthly bill. Refundable security deposit. We install the plant, deliver the water, and keep it running — across ten towns from Biratnagar to Birgunj.';
 
 // ----- DRAFT content (needs reference file) ------------------------------
 
