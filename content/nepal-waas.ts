@@ -180,7 +180,7 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Monthly cost (typical office)',
     jars:  'Rs 6,000–25,000 (per-jar prices add up).',
-    buy:   'Rs 1,000–3,000 (parts + service).',
+    buy:   'Rs 2,000–10,000 / month (spares + service).',
     dwaas: 'From Rs 3,000 — fixed, predictable.',
   },
   {
