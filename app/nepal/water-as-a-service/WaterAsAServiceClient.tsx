@@ -43,6 +43,7 @@ import {
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -52,6 +53,21 @@ function pixelTrack(event: 'Contact' | 'Lead', payload?: Record<string, unknown>
     window.fbq('track', event, payload);
   } catch {
     /* silent -- pixel failures must never block the conversion path */
+  }
+}
+
+// GA4 event firing -- mirrors pixelTrack so the same conversion sites
+// report into both Meta and Google. Standard GA4 event names where one
+// exists (generate_lead, select_item); 'contact' is a custom event GA4
+// will just record under "All events" until marked as a Key Event in
+// the GA UI. Campaign attribution is handled by GA via the landing-
+// page UTMs on the session, so we don't pass utm_* in the event params.
+function gaTrack(event: 'generate_lead' | 'contact' | 'select_item', payload?: Record<string, unknown>) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  try {
+    window.gtag('event', event, payload);
+  } catch {
+    /* silent */
   }
 }
 
@@ -204,6 +220,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                               e.stopPropagation();
                               setSelectedPlan(plan.slug);
                               pixelTrack('Lead', { content_name: `Plan ${plan.slug}`, source: 'plan-row-select' });
+                              gaTrack('select_item', { item_name: `Plan ${plan.slug}`, item_category: 'dwaas-plan', source: 'plan-row-select' });
                             }}
                             className={`inline-flex items-center gap-2 font-ui font-medium text-caption tracking-[0.02em] rounded-full px-4 py-2 transition-colors duration-200 ease-calm ${
                               plan.popular
@@ -335,6 +352,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                         e.stopPropagation();
                         setSelectedPlan(plan.slug);
                         pixelTrack('Lead', { content_name: `Plan ${plan.slug}`, source: 'plan-card-mobile-select' });
+                        gaTrack('select_item', { item_name: `Plan ${plan.slug}`, item_category: 'dwaas-plan', source: 'plan-card-mobile-select' });
                       }}
                       className={`inline-flex items-center justify-center gap-2 font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-5 py-3 transition-colors duration-200 ease-calm ${t.cta}`}
                     >
@@ -384,7 +402,10 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     href={WHATSAPP_HREF_DM}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => pixelTrack('Contact', { content_name: 'DM Water', source: 'dm-card' })}
+                    onClick={() => {
+                      pixelTrack('Contact', { content_name: 'DM Water', source: 'dm-card' });
+                      gaTrack('contact', { method: 'whatsapp', source: 'dm-card', content_name: 'DM Water' });
+                    }}
                     className="mt-2 inline-flex items-center gap-2 self-start bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 py-3 transition-colors duration-200 ease-calm hover:bg-teal"
                   >
                     Enquire on WhatsApp
@@ -431,13 +452,24 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
             <div className="lg:col-span-7">
               <form
                 action={submitNepalWaaS}
-                onSubmit={() =>
+                onSubmit={() => {
                   pixelTrack('Lead', {
                     content_name: SERVICE_LABEL[service],
                     plan: selectedPlan,
                     source: 'meta-ads-east-nepal',
-                  })
-                }
+                  });
+                  // GA4 standard event for conversion-flagging in the GA UI.
+                  // currency + value let GA compute lead value / ROAS once
+                  // marked as a Key Event. INR 200,000 mirrors the Meta CAPI
+                  // value (META_VALUE_NEPAL_WAAS in app/actions/leads.ts).
+                  gaTrack('generate_lead', {
+                    currency: 'INR',
+                    value: 200000,
+                    content_name: SERVICE_LABEL[service],
+                    plan: selectedPlan ?? '',
+                    source: 'meta-ads-east-nepal',
+                  });
+                }}
                 className="bg-subtle border border-hairline p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-5"
               >
                 {/* Service + plan come from the live tab + selected-plan
@@ -506,7 +538,10 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
         href={WHATSAPP_HREF_GENERIC}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => pixelTrack('Contact', { source: 'sticky-mobile-cta' })}
+        onClick={() => {
+          pixelTrack('Contact', { source: 'sticky-mobile-cta' });
+          gaTrack('contact', { method: 'whatsapp', source: 'sticky-mobile-cta' });
+        }}
         className="md:hidden fixed inset-x-3 bottom-3 z-40 flex items-center justify-center gap-2 bg-teal text-offwhite font-ui font-medium text-[15px] rounded-full py-3.5 shadow-[0_8px_24px_rgba(5,69,95,0.25)]"
         style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom, 0px))' }}
         aria-label="Chat with Uniwater on WhatsApp"
