@@ -7,6 +7,7 @@ import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 import { TextField, TextArea, SelectField } from '@/components/ui/Form';
 import { SubmitButton } from '@/components/ui/SubmitButton';
 import { submitNepalWaaS } from '@/app/actions/leads';
+import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import {
   DWAAS_PLANS,
   DM_PRICING_LINE,
@@ -248,6 +249,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     doesn't have to re-pick. */}
                 <input type="hidden" name="service" value={service} />
                 <input type="hidden" name="plan" value={selectedPlan ?? ''} />
+                <RecaptchaField action="nepal_waas" />
 
                 <TextField label="Your name" name="name" required placeholder="Full name" />
                 <TextField label="Business / venue" name="business" required placeholder="Company, hotel, restaurant…" />

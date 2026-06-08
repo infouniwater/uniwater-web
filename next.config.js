@@ -36,6 +36,13 @@ const nextConfig = {
       // served from googletagmanager.com; once it boots it streams
       // events back through the same host plus *.google-analytics.com.
       'https://www.googletagmanager.com',
+      // Google reCAPTCHA v3. The loader api.js is served from
+      // www.google.com; once executed it dynamically injects scripts
+      // from www.gstatic.com (the recaptcha runtime + tokens) plus a
+      // hidden iframe back to www.google.com (the challenge frame, used
+      // only when the score is borderline).
+      'https://www.google.com',
+      'https://www.gstatic.com',
     ].filter(Boolean).join(' ');
 
     const securityHeaders = [
@@ -67,6 +74,11 @@ const nextConfig = {
           // All four must be allowed or the page_view request is blocked
           // before it leaves the browser and Realtime stays at zero.
           "connect-src 'self' https://wa.me https://*.odoo.com https://connect.facebook.net https://www.facebook.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.analytics.google.com https://www.google.com",
+          // reCAPTCHA v3 renders an invisible iframe back to
+          // www.google.com (the challenge surface, shown only when the
+          // score is borderline). Without this it's blocked silently
+          // and scoring falls back to a guess.
+          "frame-src https://www.google.com",
           "frame-ancestors 'none'",
           "base-uri 'self'",
           "form-action 'self' https://wa.me",

@@ -8,6 +8,7 @@ import { SubmitButton } from '@/components/ui/SubmitButton';
 import { AudiencePrefill } from '@/components/forms/AudiencePrefill';
 import { CONTACT, CITIES } from '@/content/site';
 import { submitContact } from '@/app/actions/leads';
+import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import { localBusinessSchema, jsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = buildMetadata({
@@ -129,6 +130,7 @@ export default function ContactPage() {
           {/* General enquiry form */}
           <div className="lg:col-span-7">
             <form action={submitContact} className="bg-offwhite border border-hairline p-8 md:p-10 flex flex-col gap-6">
+              <RecaptchaField action="contact" />
               <Suspense fallback={null}>
                 <AudiencePrefill />
               </Suspense>

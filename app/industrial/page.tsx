@@ -13,6 +13,7 @@ import { COMPONENT_MANUFACTURERS, NAMED_CLIENTS, CLIENT_LOGOS, STATS, PRIMARY_PH
 import { AUDIENCE_TRACKS, getProofForTrack, type AudienceTrack } from '@/content/cwaas';
 import Image from 'next/image';
 import { submitRFQ } from '@/app/actions/leads';
+import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import { PincodeCheck } from '@/components/ui/PincodeCheck';
 
 /**
@@ -492,6 +493,7 @@ export default function IndustrialPage() {
           </div>
           <div className="lg:col-span-7">
             <form action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <RecaptchaField action="rfq" />
               <div className="md:col-span-2">
                 <h3 className="font-sans text-h2-m font-light text-navy mb-2">RFQ details</h3>
                 <Caption className="text-mute">All fields marked * are required. Drawings, water test reports, and site photos can be sent to <a href="mailto:support@uniwater.co.in" className="text-teal underline underline-offset-4">support@uniwater.co.in</a> after submission.</Caption>

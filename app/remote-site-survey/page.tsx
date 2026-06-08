@@ -8,6 +8,7 @@ import { SubmitButton } from '@/components/ui/SubmitButton';
 import { TextField, TextArea, SelectField } from '@/components/ui/Form';
 import { cn } from '@/lib/cn';
 import { submitRemoteSurvey } from '@/app/actions/leads';
+import { RecaptchaField } from '@/components/forms/RecaptchaField';
 
 /**
  * Remote site survey — multi-step form per BLUEPRINT §7.10.
@@ -86,6 +87,7 @@ export default function RemoteSiteSurveyPage() {
           </div>
 
           <form action={submitRemoteSurvey}>
+            <RecaptchaField action="remote_survey" />
             {/* STEP 0 — About the property */}
             <div className={cn('flex flex-col gap-6', step !== 0 && 'hidden')}>
               <Heading level={2} className="font-light">About the property.</Heading>

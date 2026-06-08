@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { submitWaterTestRequest } from '@/app/actions/leads';
+import { RecaptchaField } from '@/components/forms/RecaptchaField';
 
 /**
  * Exit-intent water-test capture — Tier 3.10 of the §6.2 marketing benchmark.
@@ -125,6 +126,7 @@ export function ExitIntentCapture() {
 
         <form action={submitWaterTestRequest} className="flex flex-col gap-4">
           <input type="hidden" name="sourcePath" value={pathname ?? ''} />
+          <RecaptchaField action="water_test" />
           <label className="flex flex-col gap-2">
             <span className="text-caption text-mute uppercase tracking-wide text-eyebrow font-medium">
               Mobile (with country code)

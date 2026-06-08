@@ -6,6 +6,7 @@ import { createLead } from '@/lib/odoo';
 import { sendLeadNotification, type LeadFields } from '@/lib/email';
 import { appendLeadToSheet } from '@/lib/sheets';
 import { sendMetaLeadEvent, type MetaEventName } from '@/lib/meta-capi';
+import { verifyRecaptcha } from '@/lib/recaptcha-server';
 
 /**
  * Server actions for the five marketing-site lead surfaces.
@@ -22,6 +23,36 @@ import { sendMetaLeadEvent, type MetaEventName } from '@/lib/meta-capi';
  * visitor sees the "Try again" surface) because Odoo is the system of
  * record.
  */
+
+/**
+ * reCAPTCHA v3 gate for every form action.
+ *
+ * Reads the recaptcha_token field <RecaptchaField /> injects on the
+ * client and verifies it against Google's siteverify. If the token is
+ * missing or scores below the threshold, the visitor is silently
+ * redirected to /thank-you (so bots get no signal that they were
+ * blocked) and the rest of the action -- Odoo write, email,
+ * Sheets append, Meta CAPI event -- is short-circuited via the
+ * redirect's thrown signal. Real users (score >= 0.5) pass straight
+ * through. If RECAPTCHA_SECRET_KEY is unset (local dev), the verifier
+ * fails-open and submission proceeds normally.
+ */
+async function gateRecaptcha(
+  formData: FormData,
+  recaptchaAction: string,
+  thankYouSource: string,
+): Promise<void> {
+  const token = formData.get('recaptcha_token');
+  const tokenStr = typeof token === 'string' ? token : undefined;
+  const result = await verifyRecaptcha(tokenStr, recaptchaAction);
+  if (!result.success) {
+    console.warn(
+      `[recaptcha] ${recaptchaAction} blocked: ${result.reason}` +
+        (result.score !== undefined ? ` (score: ${result.score})` : ''),
+    );
+    redirect(`/thank-you?source=${thankYouSource}`);
+  }
+}
 
 function takeString(data: FormData, key: string): string | undefined {
   const v = data.get(key);
@@ -129,6 +160,7 @@ async function fanOut(input: {
 }
 
 export async function submitBookSurvey(formData: FormData): Promise<void> {
+  await gateRecaptcha(formData, 'book_survey', 'book-survey');
   const name = takeString(formData, 'name');
   const audience = takeString(formData, 'audience');
   const propertyType = takeString(formData, 'propertyType');
@@ -180,6 +212,7 @@ export async function submitBookSurvey(formData: FormData): Promise<void> {
 }
 
 export async function submitContact(formData: FormData): Promise<void> {
+  await gateRecaptcha(formData, 'contact', 'contact');
   const name = takeString(formData, 'name');
   const subject = takeString(formData, 'subject');
   const audience = takeString(formData, 'audience');
@@ -242,6 +275,7 @@ export async function submitContact(formData: FormData): Promise<void> {
  * sendMetaLeadEvent.
  */
 export async function submitNepalWaaS(formData: FormData): Promise<void> {
+  await gateRecaptcha(formData, 'nepal_waas', 'nepal-waas');
   const name = takeString(formData, 'name');
   const business = takeString(formData, 'business');
   const city = takeString(formData, 'city');
@@ -294,6 +328,7 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
 }
 
 export async function submitRFQ(formData: FormData): Promise<void> {
+  await gateRecaptcha(formData, 'rfq', 'industrial-rfq');
   const org = takeString(formData, 'org');
   const name = takeString(formData, 'name');
   const application = takeString(formData, 'application');
@@ -345,6 +380,7 @@ export async function submitRFQ(formData: FormData): Promise<void> {
 }
 
 export async function submitWaterTestRequest(formData: FormData): Promise<void> {
+  await gateRecaptcha(formData, 'water_test', 'water-test');
   const mobile = takeString(formData, 'mobile');
   const city = takeString(formData, 'city');
   const sourcePath = takeString(formData, 'sourcePath');
@@ -388,6 +424,7 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
 }
 
 export async function submitRemoteSurvey(formData: FormData): Promise<void> {
+  await gateRecaptcha(formData, 'remote_survey', 'remote-site-survey');
   const name = takeString(formData, 'name');
   const location = takeString(formData, 'location');
   const propertyType = takeString(formData, 'propertyType');

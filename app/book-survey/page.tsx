@@ -6,6 +6,7 @@ import { SubmitButton } from '@/components/ui/SubmitButton';
 import { Photo } from '@/components/ui/Photo';
 import { CITIES, CONTACT, STATS } from '@/content/site';
 import { submitBookSurvey } from '@/app/actions/leads';
+import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import { PROBLEM_LABEL, type ProblemToken } from '@/content/cross-links';
 
 export const metadata: Metadata = {
@@ -89,6 +90,7 @@ export default function BookSurveyPage({
           {/* Form */}
           <div className="lg:col-span-7">
             <form action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <RecaptchaField action="book_survey" />
               <div className="md:col-span-2">
                 <h2 className="font-sans text-h2-m font-light text-navy mb-2">Survey request</h2>
                 <Caption className="text-mute">Fields marked * are required.</Caption>
