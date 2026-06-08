@@ -97,11 +97,11 @@ export interface DWaaSPlan {
 // no scannable cue beyond the numbers. Reference copy from Rajat will
 // replace these verbatim when available.
 export const DWAAS_PLANS: DWaaSPlan[] = [
-  { slug: 'A', tagline: 'Starter — small office or boutique cafe.',           monthlyLitres: 1_500,  jarsPerDay: '2–3 jars/day',   ratePerLitre: 3,    minBill: 3_500,  deposit: 20_000 },
-  { slug: 'B', tagline: 'Growing team — mid-size office, busy clinic.',       monthlyLitres: 2_500,  jarsPerDay: '4–5 jars/day',   ratePerLitre: 2.5,  minBill: 4_500,  deposit: 25_000 },
-  { slug: 'C', tagline: 'Most chosen — restaurant, mid-size hotel, school.',  monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 2,    minBill: 5_500,  deposit: 35_000, popular: true },
-  { slug: 'D', tagline: 'High volume — large hotel, hospital wing, factory.', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.6,  minBill: 7_500,  deposit: 45_000 },
-  { slug: 'E', tagline: 'Maximum — large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 60_000 },
+  { slug: 'A', tagline: 'Starter — small office or boutique cafe.',           monthlyLitres: 1_500,  jarsPerDay: '2–3 jars/day',   ratePerLitre: 2.25, minBill: 3_000,  deposit: 30_000 },
+  { slug: 'B', tagline: 'Growing team — mid-size office, busy clinic.',       monthlyLitres: 2_500,  jarsPerDay: '4–5 jars/day',   ratePerLitre: 2,    minBill: 4_000,  deposit: 35_000 },
+  { slug: 'C', tagline: 'Most chosen — restaurant, mid-size hotel, school.',  monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 1.8,  minBill: 6_000,  deposit: 42_500, popular: true },
+  { slug: 'D', tagline: 'High volume — large hotel, hospital wing, factory.', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.65, minBill: 8_000,  deposit: 50_000 },
+  { slug: 'E', tagline: 'Maximum — large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 65_000 },
 ];
 
 // ----- Live in Nepal -- trust signals on the landing -------------------
@@ -175,13 +175,13 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
     dimension: 'Upfront cost',
     jars:  'Rs 0 — but pay-as-you-go forever.',
     buy:   'Rs 1.5–4 lakh capex.',
-    dwaas: 'Rs 20,000–60,000 refundable deposit.',
+    dwaas: 'Rs 30,000–65,000 refundable deposit.',
   },
   {
     dimension: 'Monthly cost (typical office)',
     jars:  'Rs 6,000–25,000 (per-jar prices add up).',
     buy:   'Rs 1,000–3,000 (parts + service).',
-    dwaas: 'From Rs 3,500 — fixed, predictable.',
+    dwaas: 'From Rs 3,000 — fixed, predictable.',
   },
   {
     dimension: 'Who runs the plant',
