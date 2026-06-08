@@ -514,7 +514,16 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     <SubmitButton>Get a callback</SubmitButton>
                     <Caption className="text-mute">
                       Or tap any{' '}
-                      <a href={WHATSAPP_HREF_GENERIC} target="_blank" rel="noopener noreferrer" className="text-teal underline underline-offset-4">
+                      <a
+                        href={WHATSAPP_HREF_GENERIC}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                          pixelTrack('Contact', { source: 'form-area-link', service });
+                          gaTrack('contact', { method: 'whatsapp', source: 'form-area-link', service });
+                        }}
+                        className="text-teal underline underline-offset-4"
+                      >
                         WhatsApp link
                       </a>{' '}
                       to skip the form.
