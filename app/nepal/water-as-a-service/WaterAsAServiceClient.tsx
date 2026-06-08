@@ -18,6 +18,7 @@ import {
   type ServiceSlug,
 } from '@/content/nepal-waas';
 import { useUtmCapture, appendUtmToWhatsAppHref } from './useUtmCapture';
+import { HeroCTAs } from './HeroCTAs';
 
 /**
  * Client island for the Nepal WaaS landing page.
@@ -197,21 +198,22 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     Feed-water TDS, daily volume, application &mdash; and we&rsquo;ll
                     come back with a contract and a price within one business day.
                   </Body>
-                  <a
-                    href={whatsappDmTagged}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => {
-                      pixelTrack('Contact', { content_name: 'DM Water', source: 'dm-card' });
-                      gaTrack('contact', { method: 'whatsapp', source: 'dm-card', content_name: 'DM Water' });
-                    }}
-                    className="mt-2 inline-flex items-center gap-2 self-start bg-navy text-offwhite font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 py-3 transition-colors duration-200 ease-calm hover:bg-teal"
-                  >
-                    Enquire on WhatsApp
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
+                  <div className="mt-2">
+                    {/* Same two-CTA grammar as the hero -- primary
+                        WhatsApp pill + secondary scroll-to-form. The
+                        WHATSAPP_HREF_DM is passed raw; HeroCTAs adds
+                        the UTM-source suffix client-side. */}
+                    <HeroCTAs
+                      theme="on-light"
+                      whatsappHref={WHATSAPP_HREF_DM}
+                      secondaryHref="#lead-form"
+                      primaryLabel="Enquire on WhatsApp"
+                      onPrimaryClick={() => {
+                        pixelTrack('Contact', { content_name: 'DM Water', source: 'dm-card' });
+                        gaTrack('contact', { method: 'whatsapp', source: 'dm-card', content_name: 'DM Water' });
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

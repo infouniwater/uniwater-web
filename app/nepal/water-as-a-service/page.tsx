@@ -26,6 +26,7 @@ import { WaterAsAServiceClient } from './WaterAsAServiceClient';
 import { CompactPlansTable } from './CompactPlansTable';
 import { StickyMobileCTABar } from './StickyMobileCTABar';
 import { NepalFAQ } from './NepalFAQ';
+import { HeroCTAs } from './HeroCTAs';
 
 /**
  * /nepal/water-as-a-service -- Meta-ads landing page for the East Nepal
@@ -138,29 +139,16 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             </p>
             <p className="hidden sm:block text-caption text-offwhite/70 italic mt-2">{TAGLINE}</p>
 
-            <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
-              <a
-                href={WHATSAPP_HREF_GENERIC}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] rounded-full px-6 sm:px-7 py-3.5 transition-colors duration-200 ease-calm hover:bg-soft"
-              >
-                Chat on WhatsApp
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="shrink-0">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
-                </svg>
-              </a>
-              <a
-                href="#lead-form"
-                className="group inline-flex self-start sm:self-center text-[15px] text-offwhite/85 hover:text-offwhite transition-colors duration-200 ease-calm max-w-full"
-              >
-                <span className="inline-flex items-center gap-1.5 border-b border-offwhite/30 group-hover:border-offwhite/60 pb-1 transition-colors duration-200 ease-calm">
-                  Or request a callback
-                  <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true" className="shrink-0">
-                    <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </a>
+            {/* Hero CTAs extracted into <HeroCTAs/> so the same pill +
+                arrow-link grammar is reused by the DM card and the
+                sticky bottom bar (theme switches handle the navy vs
+                light backgrounds). */}
+            <div className="mt-2">
+              <HeroCTAs
+                theme="on-navy"
+                whatsappHref={WHATSAPP_HREF_GENERIC}
+                secondaryHref="#lead-form"
+              />
             </div>
 
             <p className="hidden sm:block text-caption text-offwhite/70 mt-3">
@@ -199,7 +187,11 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       </Section>
 
       {/* ---------- 3. Comparison table ---------- */}
-      <Section padding="default" tone="subtle" id="comparison">
+      {/* tone="plain" (was "subtle") -- breaks the subtle->subtle
+          repeat that used to read as one long beige band running from
+          Stats through Comparison. Plain offwhite gives the
+          comparison its own visual frame. */}
+      <Section padding="default" tone="plain" id="comparison">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">Three ways to get drinking water</Eyebrow>
           <Heading level={2}>Why subscription beats jars and capex.</Heading>
@@ -306,28 +298,36 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       <CompactPlansTable />
 
       {/* ---------- 6. Testimonials ---------- */}
-      {/* Two named Biratnagar quotes -- split out from the stats band and
-          repositioned so the proof beat lands AFTER the price and BEFORE
-          the lead form (trust right before commitment). */}
-      <Section padding="tight">
+      {/* Navy band (was plain offwhite). The page now has TWO dark
+          beats: the Hero at the top and the Testimonials in the
+          middle. Pullquotes pop on dark navy (the editorial italic
+          face was designed for this kind of contrast), and the navy
+          band breaks the long light stretch between Comparison and
+          Lead form -- the rhythm convention the rest of the site uses
+          (~1-2 dark sections per page).
+
+          Card chrome inverted: border + figcaption divider use
+          offwhite/20, body bg is offwhite/5 (a subtle lifted panel),
+          and all text colours switch to offwhite. */}
+      <Section padding="tight" tone="inverse">
         <div className="max-w-2xl mb-6">
-          <Eyebrow className="mb-2">Live in Biratnagar</Eyebrow>
-          <Heading level={2}>Two contracts already running, on the record.</Heading>
+          <Eyebrow inverse className="mb-2">Live in Biratnagar</Eyebrow>
+          <Heading level={2} inverse>Two contracts already running, on the record.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {NEPAL_LIVE_SITES.map((site) => (
             <figure
               key={site.slug}
-              className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3"
+              className="border border-offwhite/20 bg-offwhite/5 p-5 md:p-6 flex flex-col gap-3"
             >
-              <blockquote className="font-editorial italic text-body md:text-h3 text-navy leading-snug [text-wrap:balance]">
+              <blockquote className="font-editorial italic text-body md:text-h3 text-offwhite leading-snug [text-wrap:balance]">
                 &ldquo;{site.quote}&rdquo;
               </blockquote>
-              <figcaption className="pt-3 border-t border-hairline flex flex-col gap-0.5">
-                <Caption className="font-medium text-navy">
+              <figcaption className="pt-3 border-t border-offwhite/20 flex flex-col gap-0.5">
+                <Caption className="font-medium text-offwhite">
                   {site.personName} &middot; {site.personRole}
                 </Caption>
-                <Caption className="text-mute">
+                <Caption className="text-offwhite/70">
                   {site.name} &middot; {site.city}, Nepal
                 </Caption>
               </figcaption>
@@ -351,8 +351,10 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           inside the "What's included" panel; now its own section so it
           can sit AFTER the lead form (operational reassurance is more
           useful as a closing beat than as an interruption between
-          benefits and price). */}
-      <Section padding="default">
+          benefits and price).
+          tone="subtle" (was plain) so it doesn't repeat the lead form's
+          offwhite -- creates a soft step into the closing beats. */}
+      <Section padding="default" tone="subtle">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-3">How we run it</Eyebrow>
           <Heading level={2}>Survey to running water in four steps.</Heading>
@@ -369,7 +371,10 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       </Section>
 
       {/* ---------- 9. Service area ---------- */}
-      <Section padding="default" tone="subtle">
+      {/* tone="plain" (was subtle) so it doesn't repeat the previous
+          subtle band -- the page now reads
+          subtle -> plain -> subtle -> plain across closing sections. */}
+      <Section padding="default" tone="plain">
         <div className="max-w-3xl mb-6">
           <Eyebrow className="mb-3">Service area</Eyebrow>
           <Heading level={2}>Live across the Terai &mdash; Biratnagar to Birgunj.</Heading>
@@ -381,7 +386,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           {REGIONS.map((region) => (
             <span
               key={region}
-              className="inline-flex items-center gap-1.5 border border-hairline bg-offwhite text-navy text-caption font-medium px-3.5 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1.5 border border-hairline bg-subtle text-navy text-caption font-medium px-3.5 py-1.5 rounded-full"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-teal" aria-hidden="true" />
               {region}
