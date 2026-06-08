@@ -3,6 +3,7 @@ import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Lede, Body } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
 import { CONTACT } from '@/content/site';
+import { ThankYouConversionFire } from './ThankYouConversionFire';
 
 export const metadata: Metadata = {
   title: 'Thank you',
@@ -51,6 +52,7 @@ export default function ThankYouPage({
 
   return (
     <Section padding="loose">
+      <ThankYouConversionFire source={source} />
       <div className="max-w-2xl mx-auto text-center flex flex-col gap-5 items-center">
         <Eyebrow>{m.eyebrow}</Eyebrow>
         <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] text-navy max-w-[22ch] [text-wrap:balance]">

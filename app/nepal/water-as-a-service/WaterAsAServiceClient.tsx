@@ -452,24 +452,19 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
             <div className="lg:col-span-7">
               <form
                 action={submitNepalWaaS}
-                onSubmit={() => {
+                onSubmit={() =>
                   pixelTrack('Lead', {
                     content_name: SERVICE_LABEL[service],
                     plan: selectedPlan,
                     source: 'meta-ads-east-nepal',
-                  });
-                  // GA4 standard event for conversion-flagging in the GA UI.
-                  // currency + value let GA compute lead value / ROAS once
-                  // marked as a Key Event. INR 200,000 mirrors the Meta CAPI
-                  // value (META_VALUE_NEPAL_WAAS in app/actions/leads.ts).
-                  gaTrack('generate_lead', {
-                    currency: 'INR',
-                    value: 200000,
-                    content_name: SERVICE_LABEL[service],
-                    plan: selectedPlan ?? '',
-                    source: 'meta-ads-east-nepal',
-                  });
-                }}
+                  })
+                  // NOTE: GA4 generate_lead is fired from /thank-you (see
+                  // app/thank-you/ThankYouConversionFire.tsx). Firing here
+                  // is unreliable because the Server Action redirect
+                  // unloads the page before gtag.js can flush /g/collect.
+                  // Meta's fbq uses sendBeacon and survives unload, so
+                  // pixelTrack stays.
+                }
                 className="bg-subtle border border-hairline p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-5"
               >
                 {/* Service + plan come from the live tab + selected-plan
