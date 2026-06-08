@@ -174,7 +174,7 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Upfront cost',
     jars:  'Rs 0 — but pay-as-you-go forever.',
-    buy:   'Rs 1.5–4 lakh capex.',
+    buy:   'Rs 0.6–2 lakh capex.',
     dwaas: 'Rs 30,000–65,000 refundable deposit.',
   },
   {
