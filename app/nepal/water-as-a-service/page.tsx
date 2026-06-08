@@ -206,67 +206,50 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           </Body>
         </div>
 
-        {/* Desktop / tablet: real comparison table */}
-        <div className="hidden md:block border border-hairline overflow-hidden bg-offwhite">
+        {/* Single comparison table at every breakpoint. The previous
+            mobile-only stacked-card layout was replaced because it
+            forced the visitor to re-scan the same dimension list three
+            times (one card per option) and lost the side-by-side
+            comparison that's the section's whole point.
+
+            Compact-mobile tactics:
+              - Tighter padding (p-2 mobile, p-4 md+).
+              - Smaller font on mobile (text-[11px] -> text-caption md+).
+              - Header row abbreviates "Buying equipment" -> "Capex" and
+                "Uniwater DWaaS" -> "DWaaS" on mobile so 4 columns fit
+                a 360px viewport without horizontal scroll.
+              - DWaaS column tinted at all widths so the recommended
+                option still reads at a glance.
+              - overflow-x-auto wrapper as a safety net for very narrow
+                viewports (<320px) -- they get horizontal scroll
+                rather than text-cramming. */}
+        <div className="border border-hairline overflow-x-auto bg-offwhite">
           <table className="w-full border-collapse text-left">
             <thead>
               <tr className="bg-subtle border-b border-hairline">
-                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute w-1/4"></th>
-                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Water jars</th>
-                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Buying equipment</th>
-                <th className="p-4 text-eyebrow font-ui font-medium uppercase tracking-wide bg-tint/40 text-teal">Uniwater DWaaS</th>
+                <th className="p-2 md:p-4 text-[10px] md:text-eyebrow font-ui font-medium uppercase tracking-wide text-mute w-[28%] md:w-1/4"></th>
+                <th className="p-2 md:p-4 text-[10px] md:text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">Jars</th>
+                <th className="p-2 md:p-4 text-[10px] md:text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">
+                  <span className="md:hidden">Capex</span>
+                  <span className="hidden md:inline">Buying equipment</span>
+                </th>
+                <th className="p-2 md:p-4 text-[10px] md:text-eyebrow font-ui font-medium uppercase tracking-wide bg-tint/40 text-teal">
+                  <span className="md:hidden">DWaaS</span>
+                  <span className="hidden md:inline">Uniwater DWaaS</span>
+                </th>
               </tr>
             </thead>
             <tbody>
               {COMPARISON_ROWS.map((row, i) => (
                 <tr key={i} className="border-b border-hairline last:border-b-0 align-top">
-                  <td className="p-4 font-medium text-navy bg-subtle/40">{row.dimension}</td>
-                  <td className="p-4 text-caption text-mute leading-snug">{row.jars}</td>
-                  <td className="p-4 text-caption text-mute leading-snug">{row.buy}</td>
-                  <td className="p-4 text-caption text-navy leading-snug bg-tint/30 font-medium">{row.dwaas}</td>
+                  <td className="p-2 md:p-4 text-[11px] md:text-body font-medium text-navy bg-subtle/40 leading-snug">{row.dimension}</td>
+                  <td className="p-2 md:p-4 text-[11px] md:text-caption text-mute leading-snug">{row.jars}</td>
+                  <td className="p-2 md:p-4 text-[11px] md:text-caption text-mute leading-snug">{row.buy}</td>
+                  <td className="p-2 md:p-4 text-[11px] md:text-caption text-navy leading-snug bg-tint/30 font-medium">{row.dwaas}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-
-        {/* Mobile: stacked columns (one per option). */}
-        <div className="md:hidden flex flex-col gap-4">
-          {([
-            { label: 'Uniwater DWaaS', getValue: (r: typeof COMPARISON_ROWS[number]) => r.dwaas, featured: true },
-            { label: 'Buying equipment', getValue: (r: typeof COMPARISON_ROWS[number]) => r.buy, featured: false },
-            { label: 'Water jars',       getValue: (r: typeof COMPARISON_ROWS[number]) => r.jars, featured: false },
-          ] as const).map((opt) => (
-            <div
-              key={opt.label}
-              className={`p-5 flex flex-col gap-4 ${
-                opt.featured ? 'bg-tint/40 border-2 border-teal' : 'bg-offwhite border border-hairline'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <h3 className={`font-sans text-h3 font-medium ${opt.featured ? 'text-teal' : 'text-navy'}`}>
-                  {opt.label}
-                </h3>
-                {opt.featured && (
-                  <span className="text-[11px] font-ui font-semibold uppercase tracking-wide text-teal bg-offwhite border border-teal rounded-sm px-2 py-0.5">
-                    Recommended
-                  </span>
-                )}
-              </div>
-              <dl className="flex flex-col gap-3">
-                {COMPARISON_ROWS.map((row, i) => (
-                  <div key={i} className="border-t border-hairline pt-3 first:border-t-0 first:pt-0">
-                    <dt className="text-eyebrow font-ui font-medium uppercase tracking-wide text-mute mb-1">
-                      {row.dimension}
-                    </dt>
-                    <dd className={`text-caption leading-snug ${opt.featured ? 'text-navy font-medium' : 'text-mute'}`}>
-                      {opt.getValue(row)}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          ))}
         </div>
       </Section>
 
