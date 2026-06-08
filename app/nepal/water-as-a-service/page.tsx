@@ -89,21 +89,32 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             desktop 1672x941 (16:9)   AVIF 63 KB
             tablet  1254x1254 (1:1)   AVIF 55 KB
             mobile  1086x1448 (3:4)   AVIF 67 KB */}
-      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[620px] md:min-h-0 md:h-[520px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
+      {/* Hero shape:
+            mobile  -> aspect-square with a content min-h floor (so the
+                       hero is a clean 1:1 square at every mobile width,
+                       matching the new 1:1 square crop the user
+                       requested; min-h-[520px] is a safety floor for
+                       very narrow phones where 1:1 would be too short
+                       to fit the headline + CTAs stack).
+            desktop -> fixed 520px tall (was previously 100vh-based;
+                       reduced because the page now puts plans
+                       above-the-fold, so trimming hero height pulls
+                       the price answer up the page faster). */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden aspect-square min-h-[520px] md:aspect-auto md:min-h-0 md:h-[520px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
+        {/* Mobile + tablet both serve the same 1:1 square crop
+            (nepal-hero-v3-tablet, originally a 1254x1254 product-on-
+            pedestal shot). Desktop keeps its 16:9 landscape crop. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
           <source media="(min-width: 1024px)" type="image/avif" srcSet="/images/hero/nepal-hero-v3-desktop.avif" />
           <source media="(min-width: 1024px)" type="image/webp" srcSet="/images/hero/nepal-hero-v3-desktop.webp" />
           <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-hero-v3-desktop.jpg" />
-          <source media="(min-width: 768px)" type="image/avif" srcSet="/images/hero/nepal-hero-v3-tablet.avif" />
-          <source media="(min-width: 768px)" type="image/webp" srcSet="/images/hero/nepal-hero-v3-tablet.webp" />
-          <source media="(min-width: 768px)" srcSet="/images/hero/nepal-hero-v3-tablet.jpg" />
-          <source type="image/avif" srcSet="/images/hero/nepal-hero-v3-mobile.avif" />
-          <source type="image/webp" srcSet="/images/hero/nepal-hero-v3-mobile.webp" />
+          <source type="image/avif" srcSet="/images/hero/nepal-hero-v3-tablet.avif" />
+          <source type="image/webp" srcSet="/images/hero/nepal-hero-v3-tablet.webp" />
           <img
-            src="/images/hero/nepal-hero-v3-mobile.jpg"
+            src="/images/hero/nepal-hero-v3-tablet.jpg"
             alt="Uniwater 100 LPH RO + UV drinking-water plant and dispensing tank on a circular pedestal, set against East Nepal's mountains and lake -- the on-site system every DWaaS contract installs."
-            className="absolute inset-0 w-full h-full object-cover object-[60%_center] md:object-[65%_center] lg:object-[70%_center]"
+            className="absolute inset-0 w-full h-full object-cover object-center md:object-[65%_center] lg:object-[70%_center]"
             fetchPriority="high"
             decoding="async"
           />

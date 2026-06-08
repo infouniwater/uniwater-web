@@ -41,7 +41,7 @@ export function CompactPlansTable() {
           <div className="hidden md:grid grid-cols-12 gap-3 px-5 py-3 bg-subtle border-b border-hairline text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">
             <div className="col-span-1">Plan</div>
             <div className="col-span-3">Best for</div>
-            <div className="col-span-2">Volume</div>
+            <div className="col-span-2">Consumption</div>
             <div className="col-span-1">NPR / L</div>
             <div className="col-span-2">Min bill</div>
             <div className="col-span-1">Deposit</div>
@@ -53,19 +53,25 @@ export function CompactPlansTable() {
               ? 'bg-tint/30 hover:bg-tint/50'
               : 'bg-offwhite hover:bg-subtle/60';
             const ctaCls = plan.popular
-              ? 'bg-teal text-offwhite'
-              : 'bg-navy text-offwhite';
+              ? 'bg-teal text-offwhite hover:bg-navy'
+              : 'bg-navy text-offwhite hover:bg-teal';
+            const planHref = `/nepal/water-as-a-service?plan=${plan.slug}#lead-form`;
+            const planAria = `Select Plan ${plan.slug} -- ${plan.monthlyLitres.toLocaleString('en-IN')} litres per month at NPR ${plan.ratePerLitre} per litre`;
 
             return (
-              <Link
+              <div
                 key={plan.slug}
-                href={`/nepal/water-as-a-service?plan=${plan.slug}#lead-form`}
-                scroll
-                className={`block border-b border-hairline last:border-b-0 transition-colors ${popularCls}`}
-                aria-label={`Select Plan ${plan.slug} -- ${plan.monthlyLitres.toLocaleString('en-IN')} litres per month at NPR ${plan.ratePerLitre} per litre`}
+                className={`border-b border-hairline last:border-b-0 transition-colors ${popularCls}`}
               >
-                {/* Tablet / desktop: one horizontal row per plan, 12-col grid. */}
-                <div className="hidden md:grid grid-cols-12 gap-3 px-5 py-4 items-center">
+                {/* Tablet / desktop: one horizontal row per plan, 12-col grid.
+                    The whole row is a single <Link> so clicking anywhere
+                    selects the plan -- no nested expand/collapse here. */}
+                <Link
+                  href={planHref}
+                  scroll
+                  aria-label={planAria}
+                  className="hidden md:grid grid-cols-12 gap-3 px-5 py-4 items-center"
+                >
                   <div className="col-span-1 flex items-center gap-1.5">
                     <span className="font-numeric text-h3 font-medium text-navy">{plan.slug}</span>
                     {plan.popular && (
@@ -102,18 +108,25 @@ export function CompactPlansTable() {
                       </svg>
                     </span>
                   </div>
-                </div>
+                </Link>
 
-                {/* Mobile: two-line compact row. Headline (slug + L + rate +
-                    Popular pill + CTA chip) lives on row 1; the supporting
-                    numbers (min bill, deposit) and tagline sit on row 2 in
-                    a single text run separated by dots. */}
-                <div className="md:hidden px-4 py-4 flex flex-col gap-2">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-baseline gap-2 flex-wrap min-w-0">
-                      <span className="font-numeric text-h2-m font-medium text-navy leading-none">{plan.slug}</span>
-                      <span className="font-numeric text-body text-navy">
-                        {plan.monthlyLitres.toLocaleString('en-IN')} L &middot; NPR {plan.ratePerLitre}/L
+                {/* Mobile: card layout.
+                    Header  : "A)  For 1,500 L consumption" + Popular pill
+                    Price   : "Price is NPR 2.25 per litre"
+                    CTA     : full-width Select Plan button (the primary
+                              conversion action; always visible).
+                    Details : native <details><summary> for "View more" --
+                              server-rendered, no client state, summary is
+                              outside the <Link> so tapping it expands
+                              instead of navigating. */}
+                <div className="md:hidden p-4 flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                      <span className="font-numeric text-h2-m font-medium text-navy leading-none">
+                        {plan.slug})
+                      </span>
+                      <span className="font-sans text-body text-navy">
+                        For {plan.monthlyLitres.toLocaleString('en-IN')} L consumption
                       </span>
                       {plan.popular && (
                         <span className="text-[10px] font-ui font-semibold uppercase tracking-wide text-teal">
@@ -121,22 +134,60 @@ export function CompactPlansTable() {
                         </span>
                       )}
                     </div>
-                    <span className={`inline-flex items-center gap-1 font-ui font-medium text-caption rounded-full px-3 py-1.5 shrink-0 ${ctaCls}`}>
-                      Select
-                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <div className="font-sans text-body text-navy">
+                      Price is <span className="font-numeric font-medium">NPR {plan.ratePerLitre}</span> per litre
+                    </div>
+                  </div>
+
+                  <Link
+                    href={planHref}
+                    scroll
+                    aria-label={planAria}
+                    className={`inline-flex items-center justify-center gap-2 font-ui font-medium text-[15px] rounded-full px-5 py-3 transition-colors ${ctaCls}`}
+                  >
+                    Select Plan {plan.slug}
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+
+                  <details className="group">
+                    <summary className="list-none cursor-pointer text-caption text-teal font-medium inline-flex items-center gap-1.5 select-none">
+                      <svg
+                        className="transition-transform group-open:rotate-90"
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path d="M3 2L7 5L3 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
-                    </span>
-                  </div>
-                  <div className="text-caption text-mute leading-snug">
-                    Min <span className="text-navy font-numeric">Rs {plan.minBill.toLocaleString('en-IN')}</span>
-                    {' · '}
-                    Dep <span className="text-navy font-numeric">Rs {plan.deposit.toLocaleString('en-IN')}</span>
-                    {' · '}
-                    <span className="italic">{plan.tagline}</span>
-                  </div>
+                      <span className="group-open:hidden">View more details</span>
+                      <span className="hidden group-open:inline">Hide details</span>
+                    </summary>
+                    <div className="mt-3 pt-3 border-t border-hairline flex flex-col gap-2 text-caption">
+                      <div className="flex justify-between gap-3">
+                        <span className="text-mute">Minimum billing</span>
+                        <span className="font-numeric text-navy font-medium">Rs {plan.minBill.toLocaleString('en-IN')}</span>
+                      </div>
+                      <div className="flex justify-between gap-3">
+                        <span className="text-mute">Security deposit</span>
+                        <span className="font-numeric text-navy font-medium">Rs {plan.deposit.toLocaleString('en-IN')}</span>
+                      </div>
+                      <div className="flex justify-between gap-3">
+                        <span className="text-mute">Typical use</span>
+                        <span className="text-navy">{plan.jarsPerDay}</span>
+                      </div>
+                      <p className="text-mute italic mt-1 leading-snug">{plan.tagline}</p>
+                      <p className="text-mute mt-1 leading-snug">
+                        Refundable deposit on cancellation. Monthly bill =
+                        max(consumption &times; rate, minimum bill).
+                      </p>
+                    </div>
+                  </details>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
