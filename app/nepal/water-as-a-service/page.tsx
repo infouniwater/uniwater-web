@@ -181,8 +181,13 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       {/* Trust beat directly below the hero -- 4 numeric tiles. Was
           previously merged with the Biratnagar testimonial quotes in one
           band; reordering brought them apart so the stats sit under the
-          hero and the named quotes follow the pricing section. */}
-      <Section padding="tight" tone="subtle">
+          hero and the named quotes follow the pricing section.
+
+          md:!pb-6 override: section-tight defaults to 5rem bottom padding
+          on desktop, which pushed the comparison table awkwardly far
+          below this trust beat. Trimmed to 1.5rem so the stats read as
+          a tight prelude to the comparison, not a standalone band. */}
+      <Section padding="tight" tone="subtle" className="md:!pb-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-hairline border border-hairline">
           {STATS_STRIP.map((stat) => (
             <div key={stat.label} className="bg-subtle p-5 md:p-6 flex flex-col gap-1 items-center text-center">
@@ -257,22 +262,41 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       {/* Six benefit cards (every contract bundles these). The 4-step
           "How we run it" process was merged here previously; it's now its
           own section below the lead form so visitors see the offer
-          (price + form) before the operational beat. */}
+          (price + form) before the operational beat.
+
+          Mobile compaction:
+            - 2-column grid (was 1-col) -- benefit titles are 3-5 words
+              and bodies are 1-2 short sentences, so they fit cleanly
+              in a half-width card. Total section height drops from ~6
+              full-width cards stacked to 3 rows of 2.
+            - Tighter card padding (p-3 vs p-5) and gap (gap-2 vs gap-4).
+            - Smaller h3 (text-body vs text-h3) on mobile only.
+            - Section intro mb trimmed (mb-6 vs mb-10) on mobile only.
+          Desktop layout (3-col grid, p-6 cards, full-size h3) is
+          unchanged.
+       */}
       <Section padding="default" tone="tint">
-        <div className="mb-10 max-w-3xl">
-          <Eyebrow className="mb-4">What&rsquo;s included</Eyebrow>
+        <div className="mb-6 md:mb-10 max-w-3xl">
+          <Eyebrow className="mb-3 md:mb-4">What&rsquo;s included</Eyebrow>
           <Heading level={2}>Plant to glass, on a fixed monthly bill.</Heading>
-          <Body className="text-mute mt-4">
+          <Body className="text-mute mt-3 md:mt-4">
             Every contract installs the plant on your site, pipes treated
             water to the dispensing tank, and runs a monthly preventive
             visit by a named engineer. You drink and pay by the litre.
           </Body>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-5">
           {BENEFIT_BLOCKS.map((b) => (
-            <div key={b.title} className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3">
-              <h3 className="font-sans text-h3 font-normal text-navy [text-wrap:balance]">{b.title}</h3>
-              <Body className="text-mute">{b.body}</Body>
+            <div
+              key={b.title}
+              className="border border-hairline bg-offwhite p-3 md:p-6 flex flex-col gap-1.5 md:gap-3"
+            >
+              <h3 className="font-sans text-body md:text-h3 font-medium md:font-normal text-navy leading-snug [text-wrap:balance]">
+                {b.title}
+              </h3>
+              <Body className="text-mute text-[12px] md:text-body leading-snug md:leading-normal">
+                {b.body}
+              </Body>
             </div>
           ))}
         </div>
