@@ -70,11 +70,23 @@ const baseMetadata = buildMetadata({
 // buildMetadata helper defaults to en_IN (correct for every other
 // page); en_NP is the right locale tag for a Nepal-targeted landing.
 // We spread the base so canonical / Twitter card / images stay intact.
+//
+// title.absolute: META_TITLE already ends with "| Uniwater Nepal", so
+// letting the root layout's template ("%s | Uniwater") append on top
+// of it produced "...Uniwater Nepal | Uniwater" -- redundant in both
+// the <title> tag AND every OG/Twitter share preview. Absolute opts
+// out of the template for this route only.
 export const metadata: Metadata = {
   ...baseMetadata,
+  title: { absolute: META_TITLE },
   openGraph: {
     ...baseMetadata.openGraph,
+    title: META_TITLE,
     locale: 'en_NP',
+  },
+  twitter: {
+    ...baseMetadata.twitter,
+    title: META_TITLE,
   },
 };
 
