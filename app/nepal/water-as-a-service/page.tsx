@@ -1,18 +1,16 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Section } from '@/components/ui/Section';
-import { Eyebrow, Heading, Body, Lede, Caption } from '@/components/ui/Typography';
+import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 import { buildMetadata } from '@/lib/seo';
 import {
   BENEFIT_BLOCKS,
   HOW_IT_WORKS,
-  WHY_UNIWATER,
   TERMS_NOTE,
   REGIONS,
   PROVINCE,
   TAGLINE,
   STATS_STRIP,
-  MODEL_LINE,
   HERO_EYEBROW,
   HERO_TITLE,
   HERO_SUB,
@@ -80,71 +78,49 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
 
   return (
     <>
-      {/* Hero -- ad-page-grade image-with-scrim. Money shot: a worker
-          drinking from a bottle just filled at the branded 100 LPH
-          RO + UV plant + dispensing tank in a factory setting. Product
-          + use case + person in one frame -- exactly the message-
-          match an ad-clicker needs in the first scroll.
-          Art-directed crops (Rajat dropped 2026-06-05) shipped at:
-            mobile  1500x2000  3:4 portrait
-            tablet  2000x1500  4:3 landscape
-            desktop 3000x1800  5:3 landscape
-          JPG @ q82 via mozjpeg -- ~951 KB total across all 3 crops
-          (down from ~12 MB of source PNGs). Browser picks the right
-          crop via the <picture> media queries; the LCP path on the
-          paid-traffic landing is now lean enough for Meta's ad-
-          quality scoring. */}
-      {/* Hero height trimmed iteratively per Rajat 2026-06-05:
-          first pass -50, this pass another -30 = -80 total.
-            mobile:  640 -> 590 -> 560
-            tablet:  560 -> 510 -> 480
-            desktop: calc(100vh-160) -> -210 -> -240 px header offset
-                     min-h 560 -> 510 -> 480
-          Content stack on mobile (eyebrow ~60 + H1 ~80 + sub 5 lines
-          ~125 + CTAs ~74 + gaps ~80 + py ~80 = ~499px) still fits
-          inside the 560px min-h with comfortable slack. */}
-      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[560px] md:min-h-0 md:h-[480px] lg:h-[calc(100vh-240px)] lg:min-h-[480px] border-b border-offwhite/10">
-        {/* AVIF -> WebP -> JPG fallback for each breakpoint. Mobile-LCP
-            critical-path: Meta ad traffic is ~85% mobile, so the mobile
-            crop is the LCP element on most sessions. AVIF cuts the
-            mobile bytes from 255 KB to 73 KB (-71%), shaving ~1s off
-            the LCP slot on slow-4G. Browser walks the <source> list
-            top-down and picks the first one whose type AND media both
-            match -- so the per-breakpoint ordering is AVIF, WebP, JPG.
-            JPG sits in the <img src> as the universal last-resort. */}
+      {/* Hero -- new v3 product shots dropped 2026-06-08. Branded 100 LPH
+          RO + UV plant + dispensing tank on a circular pedestal against a
+          Himalayan lake backdrop. Premium product-on-pedestal composition
+          (no people, no factory clutter) gives the eye a single subject;
+          the blue water + mountains carry "Nepal" without us having to
+          name the geography in the eyebrow. AVIF / WebP / JPG triple
+          for each breakpoint:
+            desktop 1672x941 (16:9)   AVIF 63 KB
+            tablet  1254x1254 (1:1)   AVIF 55 KB
+            mobile  1086x1448 (3:4)   AVIF 67 KB */}
+      <section className="relative w-full bg-navy text-offwhite overflow-hidden min-h-[620px] md:min-h-0 md:h-[520px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
-          <source media="(min-width: 1024px)" type="image/avif" srcSet="/images/hero/nepal-waas-desktop.avif" />
-          <source media="(min-width: 1024px)" type="image/webp" srcSet="/images/hero/nepal-waas-desktop.webp" />
-          <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-waas-desktop.jpg" />
-          <source media="(min-width: 768px)" type="image/avif" srcSet="/images/hero/nepal-waas-tablet.avif" />
-          <source media="(min-width: 768px)" type="image/webp" srcSet="/images/hero/nepal-waas-tablet.webp" />
-          <source media="(min-width: 768px)" srcSet="/images/hero/nepal-waas-tablet.jpg" />
-          <source type="image/avif" srcSet="/images/hero/nepal-waas-mobile-2.avif" />
-          <source type="image/webp" srcSet="/images/hero/nepal-waas-mobile-2.webp" />
+          <source media="(min-width: 1024px)" type="image/avif" srcSet="/images/hero/nepal-hero-v3-desktop.avif" />
+          <source media="(min-width: 1024px)" type="image/webp" srcSet="/images/hero/nepal-hero-v3-desktop.webp" />
+          <source media="(min-width: 1024px)" srcSet="/images/hero/nepal-hero-v3-desktop.jpg" />
+          <source media="(min-width: 768px)" type="image/avif" srcSet="/images/hero/nepal-hero-v3-tablet.avif" />
+          <source media="(min-width: 768px)" type="image/webp" srcSet="/images/hero/nepal-hero-v3-tablet.webp" />
+          <source media="(min-width: 768px)" srcSet="/images/hero/nepal-hero-v3-tablet.jpg" />
+          <source type="image/avif" srcSet="/images/hero/nepal-hero-v3-mobile.avif" />
+          <source type="image/webp" srcSet="/images/hero/nepal-hero-v3-mobile.webp" />
           <img
-            src="/images/hero/nepal-waas-mobile-2.jpg"
-            alt="A worker drinking from a bottle filled at a branded Uniwater 100 LPH RO + UV drinking-water plant with its dispensing tank, in a commercial site -- exactly the system every DWaaS contract puts in."
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            src="/images/hero/nepal-hero-v3-mobile.jpg"
+            alt="Uniwater 100 LPH RO + UV drinking-water plant and dispensing tank on a circular pedestal, set against East Nepal's mountains and lake -- the on-site system every DWaaS contract installs."
+            className="absolute inset-0 w-full h-full object-cover object-[60%_center] md:object-[65%_center] lg:object-[70%_center]"
             fetchPriority="high"
             decoding="async"
           />
         </picture>
-        {/* Scrim direction flipped 2026-06-05 per Rajat -- now dark
-            at the top, light at the bottom across all breakpoints
-            (previously dark-bottom/light-top on mobile and dark-
-            left/light-right on desktop). Reads better with the
-            header chrome (heavier shade behind the eyebrow + H1)
-            and lets the image's lower half come through more
-            clearly. */}
+        {/* Mobile + tablet: dark top -> partial transparency at bottom so
+            the HTML headline sits on solid navy and the product / mountain
+            backdrop reads underneath the lower half. Desktop: dark on the
+            LEFT (where the headline lives) and clear on the RIGHT (where
+            the product pedestal lives in the new shot) -- that lets the
+            product land as its own visual anchor without text overlap. */}
         <div
           className="absolute inset-0 lg:hidden"
-          style={{ background: 'linear-gradient(to bottom, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.78) 45%, rgba(4,69,95,0.30) 90%)' }}
+          style={{ background: 'linear-gradient(to bottom, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 45%, rgba(4,69,95,0.18) 90%)' }}
           aria-hidden="true"
         />
         <div
           className="absolute inset-0 hidden lg:block"
-          style={{ background: 'linear-gradient(to bottom, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 50%, rgba(4,69,95,0.25) 85%)' }}
+          style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.94) 0%, rgba(4,69,95,0.82) 35%, rgba(4,69,95,0.30) 65%, rgba(4,69,95,0.05) 100%)' }}
           aria-hidden="true"
         />
         <div className="relative h-full container-uw flex items-center">
@@ -214,32 +190,18 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      {/* Stats strip (committed copy). */}
+      {/* Trust band -- collapsed from two stacked sections (Stats strip +
+          Live in Biratnagar) into one above-the-fold credibility row.
+          Numbers anchor scale; quotes anchor real customers. Reads in one
+          breath, doesn't burn an extra scroll. */}
       <Section padding="tight" tone="subtle">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-hairline border border-hairline">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-hairline border border-hairline mb-6">
           {STATS_STRIP.map((stat) => (
-            <div key={stat.label} className="bg-subtle p-6 flex flex-col gap-1 items-center text-center">
+            <div key={stat.label} className="bg-subtle p-5 md:p-6 flex flex-col gap-1 items-center text-center">
               <span className="font-numeric text-h2-m md:text-h2 text-navy leading-none">{stat.value}</span>
               <span className="text-caption text-mute">{stat.label}</span>
             </div>
           ))}
-        </div>
-        <p className="text-center text-caption text-mute mt-4 italic">
-          The model: {MODEL_LINE}.
-        </p>
-      </Section>
-
-      {/* Live in Biratnagar -- compact testimonial band per Rajat
-          2026-06-05. Two named quotes from real customers (Varnika
-          Rathi @ Heritage International School, Nirjal Shrestha @ Feel
-          Good Bar and Grill), tight padding so the section reads as
-          a credibility row, not a full content slab. Sits AFTER the
-          stats strip and BEFORE the plans/pricing for max
-          trust-before-money lift. */}
-      <Section padding="tight">
-        <div className="mb-6 max-w-2xl">
-          <Eyebrow className="mb-2">Live in Biratnagar</Eyebrow>
-          <Heading level={2}>Two contracts already running, on the record.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {NEPAL_LIVE_SITES.map((site) => (
@@ -247,7 +209,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
               key={site.slug}
               className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3"
             >
-              <blockquote className="font-editorial italic text-h3 text-navy leading-snug [text-wrap:balance]">
+              <blockquote className="font-editorial italic text-body md:text-h3 text-navy leading-snug [text-wrap:balance]">
                 &ldquo;{site.quote}&rdquo;
               </blockquote>
               <figcaption className="pt-3 border-t border-hairline flex flex-col gap-0.5">
@@ -359,132 +321,81 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </Section>
 
-      {/* Six benefit blocks (DRAFT in content/nepal-waas.ts -- pending
-          reference file). */}
-      <Section padding="default">
+      {/* What's included + How we run it -- collapsed from three stacked
+          sections (Benefits, Engineer photo band, How-it-works, Why
+          Uniwater = ~4 scroll-screens) into one tint-accented "value +
+          process" panel. Benefits sit at the top in a 3-up grid (the
+          inclusions); the 4-step process runs beneath them as a tight
+          numbered row -- same content, half the scroll, no orphan photo
+          band. The 8-point Why-Uniwater list was dropped entirely; it
+          re-stated points already covered by the comparison table and
+          the benefit cards. */}
+      <Section padding="default" tone="tint">
         <div className="mb-10 max-w-3xl">
-          <Eyebrow className="mb-4">What you get</Eyebrow>
-          <Heading level={2}>Six things included in every contract.</Heading>
+          <Eyebrow className="mb-4">What&rsquo;s included</Eyebrow>
+          <Heading level={2}>Plant to glass, on a fixed monthly bill.</Heading>
+          <Body className="text-mute mt-4">
+            Every contract installs the plant on your site, pipes treated
+            water to the dispensing tank, and runs a monthly preventive
+            visit by a named engineer. You drink and pay by the litre.
+          </Body>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {BENEFIT_BLOCKS.map((b) => (
-            <div key={b.title} className="border border-hairline bg-offwhite p-6 flex flex-col gap-3">
+            <div key={b.title} className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3">
               <h3 className="font-sans text-h3 font-normal text-navy [text-wrap:balance]">{b.title}</h3>
               <Body className="text-mute">{b.body}</Body>
             </div>
           ))}
         </div>
-        <p className="text-caption text-mute italic mt-6">
-          {/* DRAFT — replace verbatim from reference file */}
-        </p>
-      </Section>
 
-      {/* Behind the service -- inline photo band between benefits and
-          the 4-step process. Shows a branded Uniwater engineer dispensing
-          drinking water from one of the smaller (25 LPH) RO + UV plants
-          that ship under DWaaS Plans A/B. Single editorial caption
-          reinforces the "monthly engineer visit" differentiator without
-          repeating the benefits-list copy above. Image dropped by Rajat
-          2026-06-05; TODO: convert PNG -> JPG + add art-directed crops
-          for the mobile path. */}
-      <section className="relative w-full bg-navy text-offwhite overflow-hidden border-y border-offwhite/10">
-        <div className="relative aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] w-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/photography/nepal-waas-engineer-dispensing.jpg"
-            alt="A Uniwater engineer in branded uniform dispensing drinking water from a wall-mounted 25 LPH RO + UV plant at a commercial site -- the monthly preventive visit in action."
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            loading="lazy"
-            decoding="async"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(to right, rgba(4,69,95,0.82) 0%, rgba(4,69,95,0.35) 55%, rgba(4,69,95,0.10) 100%)' }}
-            aria-hidden="true"
-          />
-          <div className="relative h-full container-uw flex items-center">
-            <div className="max-w-md md:max-w-lg flex flex-col gap-3">
-              <Eyebrow inverse>The work side</Eyebrow>
-              <p className="font-editorial italic text-2xl md:text-3xl lg:text-4xl text-offwhite leading-snug [text-wrap:balance]">
-                A named engineer. Same person. Same schedule. Written report on the spot.
-              </p>
-            </div>
+        {/* Process runs inside the same section as a tight 4-step row,
+            visually separated from the benefit cards by a hairline +
+            extra top margin -- one "what's included" block rather than
+            two competing sections. */}
+        <div className="mt-14 pt-10 border-t border-hairline">
+          <div className="mb-8 max-w-2xl">
+            <Eyebrow className="mb-3">How we run it</Eyebrow>
+            <Heading level={3}>Survey to running water in four steps.</Heading>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+            {HOW_IT_WORKS.map((step) => (
+              <div key={step.n} className="flex flex-col gap-2">
+                <div className="font-numeric text-[40px] md:text-[48px] font-light leading-none text-teal">{step.n}</div>
+                <h4 className="font-sans text-body font-medium text-navy [text-wrap:balance]">{step.title}</h4>
+                <Caption className="text-mute leading-relaxed">{step.body}</Caption>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* How it works -- 4 steps (DRAFT in content/nepal-waas.ts). */}
-      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
-        <div className="mb-12 max-w-3xl flex flex-col gap-4">
-          <Eyebrow inverse>How it works</Eyebrow>
-          <Heading level={2} inverse>Survey to running water in four steps.</Heading>
+      {/* Coverage + Terms -- shrunk from two full sections into a single
+          tight band. Cities render as inline pills (10 across one or two
+          rows) instead of a 10-cell card grid -- much less visual weight
+          for what's essentially a "you're covered" reassurance line.
+          Terms tag along beneath as a hairline-separated micro-note. */}
+      <Section padding="default">
+        <div className="max-w-3xl mb-6">
+          <Eyebrow className="mb-3">Service area</Eyebrow>
+          <Heading level={2}>Live across the Terai &mdash; Biratnagar to Birgunj.</Heading>
+          <Body className="text-mute mt-3">
+            {PROVINCE} Other locations between these towns on request &mdash; drop your address in the form and we&rsquo;ll confirm coverage.
+          </Body>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {HOW_IT_WORKS.map((step) => (
-            <div key={step.n} className="flex flex-col gap-3">
-              <div className="font-numeric text-[56px] md:text-[64px] font-light leading-none text-soft">{step.n}</div>
-              <Heading level={3} inverse>{step.title}</Heading>
-              <Body inverse className="text-offwhite/85">{step.body}</Body>
-            </div>
+        <div className="flex flex-wrap gap-2">
+          {REGIONS.map((region) => (
+            <span
+              key={region}
+              className="inline-flex items-center gap-1.5 border border-hairline bg-subtle text-navy text-caption font-medium px-3.5 py-1.5 rounded-full"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-teal" aria-hidden="true" />
+              {region}
+            </span>
           ))}
         </div>
-      </Section>
-
-      {/* Why Uniwater -- 8 points (DRAFT in content/nepal-waas.ts). */}
-      <Section padding="default" tone="subtle">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            <Eyebrow>Why Uniwater</Eyebrow>
-            <Heading level={2}>Eight reasons buyers pick the subscription.</Heading>
-            <Body className="text-mute mt-2">
-              Local team, refundable deposit, no surprise charges, monthly
-              engineer, written report. The plant is ours; you subscribe
-              to the water.
-            </Body>
-          </div>
-          <div className="lg:col-span-7">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-              {WHY_UNIWATER.map((point, i) => (
-                <li key={i} className="flex gap-3 text-caption">
-                  <span className="font-numeric text-teal font-medium w-5 shrink-0">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-ink">{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      {/* Regions -- 10 towns now (Rajbiraj added 2026-06-05). Grid
-          flipped to 2-up mobile / 5-up tablet+ for two clean rows. */}
-      <Section padding="default">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            <Eyebrow>Service area</Eyebrow>
-            <Heading level={2}>Live across the Terai. Biratnagar to Birgunj.</Heading>
-            <Body className="text-mute mt-2">
-              {PROVINCE} Other locations between these towns on request — drop your address in the form and we&rsquo;ll confirm coverage and arrive within the agreed window.
-            </Body>
-          </div>
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-px bg-hairline border border-hairline">
-              {REGIONS.map((region) => (
-                <div key={region} className="bg-offwhite p-5 flex flex-col gap-1 items-center text-center">
-                  <span className="font-sans text-body sm:text-h3 font-normal text-navy">{region}</span>
-                  <Caption className="text-mute">Active</Caption>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Terms note (DRAFT in content/nepal-waas.ts -- pending reference). */}
-      <Section padding="tight">
-        <div className="max-w-reading mx-auto">
-          <Eyebrow className="mb-4">Terms</Eyebrow>
+        <div className="mt-12 pt-8 border-t border-hairline max-w-reading">
+          <Eyebrow className="mb-3">Terms</Eyebrow>
           <Caption className="text-mute leading-relaxed">{TERMS_NOTE}</Caption>
         </div>
       </Section>
