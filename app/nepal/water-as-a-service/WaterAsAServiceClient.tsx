@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 import { TextField, TextArea, SelectField } from '@/components/ui/Form';
@@ -9,7 +8,6 @@ import { SubmitButton } from '@/components/ui/SubmitButton';
 import { submitNepalWaaS } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import {
-  DWAAS_PLANS,
   DM_PRICING_LINE,
   REGIONS,
   SERVICE_LABEL,
@@ -19,6 +17,7 @@ import {
   type DWaaSPlan,
   type ServiceSlug,
 } from '@/content/nepal-waas';
+import { useUtmCapture, appendUtmToWhatsAppHref } from './useUtmCapture';
 
 /**
  * Client island for the Nepal WaaS landing page.
@@ -34,8 +33,26 @@ import {
  * Pixel events fired browser-side (in addition to the server-side CAPI
  * event from submitNepalWaaS):
  *   - fbq('track', 'Contact')  on every WhatsApp-CTA click
- *   - fbq('track', 'Lead')     on form submit (pre-server-call)
- * Meta de-dupes via event_id; CAPI side is the source of truth.
+ *   - fbq('track', 'Lead')     on SUCCESSFUL submission only -- fired
+ *                              from /thank-you's ThankYouConversionFire
+ *                              when ?source=nepal-waas. The previous
+ *                              pre-click fire in this form's onSubmit
+ *                              was removed because it double-counted
+ *                              alongside the server-side CAPI event and
+ *                              fired even when the visitor abandoned
+ *                              mid-submit. Meta de-dupes by event_id;
+ *                              CAPI side stays the source of truth.
+ *
+ * UTM capture: useUtmCapture (./useUtmCapture.ts) reads utm_source /
+ * medium / campaign / content / term and fbclid from the URL on mount,
+ * persists to sessionStorage so they survive an in-page soft nav, and
+ * exposes the values for two purposes:
+ *   1. Hidden form fields piggy-backing the lead-form submit -- they
+ *      land in the server action and from there in Odoo / Sheets / the
+ *      Meta CAPI Lead event for ad attribution.
+ *   2. WhatsApp prefill suffix -- " (src: <campaign>)" appended to the
+ *      message so the inbound chat carries the source in the first
+ *      visible line of the conversation.
  */
 
 // Type-declaration for the Meta fbq global. Strictly optional -- the
@@ -96,6 +113,12 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
 
   const [service, setService] = useState<ServiceSlug>(startingService);
   const [selectedPlan, setSelectedPlan] = useState<DWaaSPlan['slug'] | undefined>(startingPlan);
+
+  // UTM + fbclid capture. Lazy reads + writes happen inside the hook;
+  // we just need the values for the hidden inputs + WhatsApp suffix.
+  const utms = useUtmCapture();
+  const whatsappGenericTagged = appendUtmToWhatsAppHref(WHATSAPP_HREF_GENERIC, utms);
+  const whatsappDmTagged = appendUtmToWhatsAppHref(WHATSAPP_HREF_DM, utms);
 
   // Keep state in sync if the user navigates back/forward with query
   // changes (Meta ads sometimes add UTM via client-side rewrites).
@@ -175,7 +198,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     come back with a contract and a price within one business day.
                   </Body>
                   <a
-                    href={WHATSAPP_HREF_DM}
+                    href={whatsappDmTagged}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
@@ -229,19 +252,6 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
             <div className="lg:col-span-7">
               <form
                 action={submitNepalWaaS}
-                onSubmit={() =>
-                  pixelTrack('Lead', {
-                    content_name: SERVICE_LABEL[service],
-                    plan: selectedPlan,
-                    source: 'meta-ads-east-nepal',
-                  })
-                  // NOTE: GA4 generate_lead is fired from /thank-you (see
-                  // app/thank-you/ThankYouConversionFire.tsx). Firing here
-                  // is unreliable because the Server Action redirect
-                  // unloads the page before gtag.js can flush /g/collect.
-                  // Meta's fbq uses sendBeacon and survives unload, so
-                  // pixelTrack stays.
-                }
                 className="bg-subtle border border-hairline p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-5"
               >
                 {/* Service + plan come from the live tab + selected-plan
@@ -249,10 +259,26 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     doesn't have to re-pick. */}
                 <input type="hidden" name="service" value={service} />
                 <input type="hidden" name="plan" value={selectedPlan ?? ''} />
+
+                {/* UTM + fbclid hidden fields. Captured by useUtmCapture
+                    on first mount (URL) or restored from sessionStorage
+                    on subsequent in-page navigations. Server action
+                    forwards them to Odoo + Sheets + Meta CAPI so each
+                    lead carries its ad attribution. */}
+                <input type="hidden" name="utm_source" value={utms.utm_source} />
+                <input type="hidden" name="utm_medium" value={utms.utm_medium} />
+                <input type="hidden" name="utm_campaign" value={utms.utm_campaign} />
+                <input type="hidden" name="utm_content" value={utms.utm_content} />
+                <input type="hidden" name="utm_term" value={utms.utm_term} />
+                <input type="hidden" name="fbclid" value={utms.fbclid} />
+
                 <RecaptchaField action="nepal_waas" />
 
                 <TextField label="Your name" name="name" required placeholder="Full name" />
-                <TextField label="Business / venue" name="business" required placeholder="Company, hotel, restaurant…" />
+                {/* Business / venue is OPTIONAL -- many ad clickers are
+                    individuals or unsure of a label at this stage; the
+                    sales engineer collects this on the callback. */}
+                <TextField label="Business / venue" name="business" placeholder="Company, hotel, restaurant…" />
                 <SelectField
                   label="City"
                   name="city"
@@ -265,11 +291,13 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                 />
                 <TextField label="Mobile / WhatsApp" name="phone" type="tel" required placeholder="+977 or +91" />
 
+                {/* Use case is OPTIONAL -- if the visitor doesn't pick,
+                    the callback will figure it out from notes / the
+                    conversation. Forcing it earlier just added friction. */}
                 <SelectField
                   label="Use case"
                   name="useCase"
-                  required
-                  placeholder="Pick the closest match"
+                  placeholder="Pick the closest match (optional)"
                   options={USE_CASE_OPTIONS.map((o) => ({ value: o.value, label: o.label }))}
                   className="md:col-span-2"
                 />
@@ -293,7 +321,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     <Caption className="text-mute">
                       Or tap any{' '}
                       <a
-                        href={WHATSAPP_HREF_GENERIC}
+                        href={whatsappGenericTagged}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => {
@@ -314,25 +342,9 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
         </div>
       </section>
 
-      {/* Sticky mobile WhatsApp CTA -- visible only on smaller screens.
-          Sits above the iOS home indicator with safe-area padding. */}
-      <Link
-        href={WHATSAPP_HREF_GENERIC}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => {
-          pixelTrack('Contact', { source: 'sticky-mobile-cta' });
-          gaTrack('contact', { method: 'whatsapp', source: 'sticky-mobile-cta' });
-        }}
-        className="md:hidden fixed inset-x-3 bottom-3 z-40 flex items-center justify-center gap-2 bg-teal text-offwhite font-ui font-medium text-[15px] rounded-full py-3.5 shadow-[0_8px_24px_rgba(5,69,95,0.25)]"
-        style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom, 0px))' }}
-        aria-label="Chat with Uniwater on WhatsApp"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
-        </svg>
-        <span>Chat on WhatsApp</span>
-      </Link>
+      {/* (Sticky mobile CTA bar lives in page.tsx now -- the new
+          dual-button StickyMobileCTABar component supersedes the old
+          single-WhatsApp pill that lived here.) */}
     </>
   );
 }

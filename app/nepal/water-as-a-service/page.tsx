@@ -24,23 +24,31 @@ import {
 } from '@/content/nepal-waas';
 import { WaterAsAServiceClient } from './WaterAsAServiceClient';
 import { CompactPlansTable } from './CompactPlansTable';
+import { StickyMobileCTABar } from './StickyMobileCTABar';
+import { NepalFAQ } from './NepalFAQ';
 
 /**
  * /nepal/water-as-a-service -- Meta-ads landing page for the East Nepal
  * Drinking Water as a Service + DM Water as a Service campaigns.
  *
- * Conversion target: WhatsApp deeplinks (per-plan tagged) + a form that
- * submits via the existing submitNepalWaaS server action (Odoo + email +
- * sheet + Meta CAPI fan-out).
+ * Section order (top to bottom):
+ *   1. Hero
+ *   2. Stats strip                 -- trust beat directly under hero
+ *   3. Comparison table            -- DWaaS vs jars vs capex
+ *   4. What's included             -- 6 benefit cards
+ *   5. CompactPlansTable           -- pricing tiers
+ *   6. Testimonials                -- 2 named Biratnagar quotes
+ *   7. Lead form                   -- WaterAsAServiceClient (tabs + DM card + form)
+ *   8. How we run it               -- 4-step process
+ *   9. Service area                -- 10 city pills
+ *  10. FAQ                         -- 6 Q&As with FAQPage JSON-LD
+ *  11. Terms                       -- short terms note
+ *  (Sticky mobile CTA bar mounted at the end -- fixed bottom, mobile only.)
  *
  * Architecture: this file is a Server Component handling metadata + static
  * content blocks. WaterAsAServiceClient is the "use client" island that
- * owns the service tabs, ?service= query handling, plan selection,
- * WhatsApp deeplink wiring, and browser-side Meta Pixel events.
- *
- * Reference file (_reference/water-as-a-service.page.tsx) was NOT in the
- * repo when this was built; sections marked DRAFT in content/nepal-waas.ts
- * need to be replaced verbatim from the reference when Rajat drops it.
+ * owns the service tabs, ?service= query handling, plan selection, the
+ * lead form (with UTM capture), and browser-side Meta Pixel events.
  */
 
 interface PageProps {
@@ -50,18 +58,24 @@ interface PageProps {
   };
 }
 
-export const metadata: Metadata = buildMetadata({
+const baseMetadata = buildMetadata({
   path: '/nepal/water-as-a-service',
   title: META_TITLE,
   description: META_DESCRIPTION,
-  // Dedicated 1200x630 OG card for this page (built 2026-06-05 from
-  // the desktop hero photo via Sharp + an SVG overlay). buildMetadata
-  // already wires this into <meta property="og:image">, <meta
-  // name="twitter:image">, and the OG width/height annotations, so
-  // WhatsApp, Facebook, LinkedIn, X, Slack, Telegram and Discord all
-  // pick it up when the URL is shared.
   image: '/og/og-nepal-waas.jpg',
 });
+
+// Override OG locale for this Nepal-specific route. The shared
+// buildMetadata helper defaults to en_IN (correct for every other
+// page); en_NP is the right locale tag for a Nepal-targeted landing.
+// We spread the base so canonical / Twitter card / images stay intact.
+export const metadata: Metadata = {
+  ...baseMetadata,
+  openGraph: {
+    ...baseMetadata.openGraph,
+    locale: 'en_NP',
+  },
+};
 
 export default function NepalWaaSPage({ searchParams }: PageProps) {
   // Parse ?service= server-side so the first paint matches the intent and
@@ -79,31 +93,13 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
 
   return (
     <>
+      {/* ---------- 1. Hero ---------- */}
       {/* Hero -- new v3 product shots dropped 2026-06-08. Branded 100 LPH
           RO + UV plant + dispensing tank on a circular pedestal against a
-          Himalayan lake backdrop. Premium product-on-pedestal composition
-          (no people, no factory clutter) gives the eye a single subject;
-          the blue water + mountains carry "Nepal" without us having to
-          name the geography in the eyebrow. AVIF / WebP / JPG triple
-          for each breakpoint:
-            desktop 1672x941 (16:9)   AVIF 63 KB
-            tablet  1254x1254 (1:1)   AVIF 55 KB
-            mobile  1086x1448 (3:4)   AVIF 67 KB */}
-      {/* Hero shape:
-            mobile  -> aspect-square with a content min-h floor (so the
-                       hero is a clean 1:1 square at every mobile width,
-                       matching the new 1:1 square crop the user
-                       requested; min-h-[520px] is a safety floor for
-                       very narrow phones where 1:1 would be too short
-                       to fit the headline + CTAs stack).
-            desktop -> fixed 520px tall (was previously 100vh-based;
-                       reduced because the page now puts plans
-                       above-the-fold, so trimming hero height pulls
-                       the price answer up the page faster). */}
+          Himalayan lake backdrop. AVIF / WebP / JPG triple for each
+          breakpoint. The mobile hero ships as 1:1 (aspect-square), tablet
+          + desktop fall back to fixed heights. */}
       <section className="relative w-full bg-navy text-offwhite overflow-hidden aspect-square min-h-[520px] md:aspect-auto md:min-h-0 md:h-[520px] lg:h-[calc(100vh-200px)] lg:min-h-[520px] border-b border-offwhite/10">
-        {/* Mobile + tablet both serve the same 1:1 square crop
-            (nepal-hero-v3-tablet, originally a 1254x1254 product-on-
-            pedestal shot). Desktop keeps its 16:9 landscape crop. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
           <source media="(min-width: 1024px)" type="image/avif" srcSet="/images/hero/nepal-hero-v3-desktop.avif" />
@@ -119,12 +115,6 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             decoding="async"
           />
         </picture>
-        {/* Mobile + tablet: dark top -> partial transparency at bottom so
-            the HTML headline sits on solid navy and the product / mountain
-            backdrop reads underneath the lower half. Desktop: dark on the
-            LEFT (where the headline lives) and clear on the RIGHT (where
-            the product pedestal lives in the new shot) -- that lets the
-            product land as its own visual anchor without text overlap. */}
         <div
           className="absolute inset-0 lg:hidden"
           style={{ background: 'linear-gradient(to bottom, rgba(4,69,95,0.92) 0%, rgba(4,69,95,0.72) 45%, rgba(4,69,95,0.18) 90%)' }}
@@ -136,14 +126,6 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           aria-hidden="true"
         />
         <div className="relative h-full container-uw flex items-center">
-          {/* Hero text block. 2026-06-05 fix: previously flex items-end
-              on mobile pushed the text against the hero's bottom edge,
-              so the eyebrow ended up touching the top of the visible
-              image area (the text block is tall and there was nowhere
-              to grow upward). Switched the parent to items-center and
-              added symmetric py-10 / sm:py-12 / lg:py-0 padding so
-              mobile sees comfortable breathing room above AND below
-              the text block. */}
           <div className="w-full lg:max-w-[800px] py-10 sm:py-12 lg:py-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
               {HERO_EYEBROW}
@@ -154,9 +136,6 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             <p className="text-[15px] leading-relaxed text-offwhite/85 max-w-2xl">
               {HERO_SUB}
             </p>
-            {/* Italic brand tagline -- hidden on mobile so the hero
-                stack fits in the 640px container; still shown on
-                tablet+ where vertical room isn't a problem. */}
             <p className="hidden sm:block text-caption text-offwhite/70 italic mt-2">{TAGLINE}</p>
 
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
@@ -184,10 +163,6 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
               </a>
             </div>
 
-            {/* Call line hidden on mobile -- the sticky bottom
-                WhatsApp CTA + the form-section copy already carry the
-                "talk to us" path. Showing it on tablet+ where vertical
-                room is plentiful. */}
             <p className="hidden sm:block text-caption text-offwhite/70 mt-3">
               Call: {NEPAL_CALL_LINES.map((line, i) => (
                 <span key={line}>
@@ -202,21 +177,13 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      {/* Compact plans -- above-the-fold price answer. Moves the
-          conversion-critical numbers (volume, rate, min bill, deposit)
-          directly under the hero so ad clickers don't have to scroll
-          past trust signals to find them. Single table treatment at
-          all widths -- no parallel desktop-table / mobile-cards split.
-          Selecting a plan navigates to ?plan=<slug>#lead-form, which
-          the existing page already passes into WaterAsAServiceClient
-          as the form's pre-selected plan. */}
-      <CompactPlansTable />
-
-      {/* Trust band -- stats strip + Biratnagar quotes in one band.
-          Sits AFTER the plans so the visitor sees the price first, the
-          proof second, then the form. */}
+      {/* ---------- 2. Stats strip ---------- */}
+      {/* Trust beat directly below the hero -- 4 numeric tiles. Was
+          previously merged with the Biratnagar testimonial quotes in one
+          band; reordering brought them apart so the stats sit under the
+          hero and the named quotes follow the pricing section. */}
       <Section padding="tight" tone="subtle">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-hairline border border-hairline mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-hairline border border-hairline">
           {STATS_STRIP.map((stat) => (
             <div key={stat.label} className="bg-subtle p-5 md:p-6 flex flex-col gap-1 items-center text-center">
               <span className="font-numeric text-h2-m md:text-h2 text-navy leading-none">{stat.value}</span>
@@ -224,46 +191,9 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {NEPAL_LIVE_SITES.map((site) => (
-            <figure
-              key={site.slug}
-              className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3"
-            >
-              <blockquote className="font-editorial italic text-body md:text-h3 text-navy leading-snug [text-wrap:balance]">
-                &ldquo;{site.quote}&rdquo;
-              </blockquote>
-              <figcaption className="pt-3 border-t border-hairline flex flex-col gap-0.5">
-                <Caption className="font-medium text-navy">
-                  {site.personName} &middot; {site.personRole}
-                </Caption>
-                <Caption className="text-mute">
-                  {site.name} &middot; {site.city}, Nepal
-                </Caption>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
       </Section>
 
-      {/* Client island -- service tabs + plans (or DM card) + lead form +
-          sticky mobile WhatsApp CTA. Wrapped in Suspense because
-          useSearchParams() in a Client Component requires it for the
-          static-build path. */}
-      <Suspense fallback={null}>
-        <WaterAsAServiceClient
-          initialService={initialService}
-          initialPlan={initialPlan}
-        />
-      </Suspense>
-
-      {/* Comparison: DWaaS vs Buying equipment vs Water jars.
-          Added 2026-06-05 per Rajat. Desktop renders as a real
-          comparison table (columns = options, rows = dimensions);
-          mobile stacks one block per option for readability. The
-          DWaaS column is visually elevated (teal accent) on both
-          views so the visitor sees Uniwater's positioning at a
-          glance. */}
+      {/* ---------- 3. Comparison table ---------- */}
       <Section padding="default" tone="subtle" id="comparison">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">Three ways to get drinking water</Eyebrow>
@@ -300,9 +230,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           </table>
         </div>
 
-        {/* Mobile: stacked columns (one per option, each block lists all
-            dimensions). DWaaS goes FIRST so the conversion-relevant
-            answer is what scrolls into view. */}
+        {/* Mobile: stacked columns (one per option). */}
         <div className="md:hidden flex flex-col gap-4">
           {([
             { label: 'Uniwater DWaaS', getValue: (r: typeof COMPARISON_ROWS[number]) => r.dwaas, featured: true },
@@ -342,15 +270,11 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </Section>
 
-      {/* What's included + How we run it -- collapsed from three stacked
-          sections (Benefits, Engineer photo band, How-it-works, Why
-          Uniwater = ~4 scroll-screens) into one tint-accented "value +
-          process" panel. Benefits sit at the top in a 3-up grid (the
-          inclusions); the 4-step process runs beneath them as a tight
-          numbered row -- same content, half the scroll, no orphan photo
-          band. The 8-point Why-Uniwater list was dropped entirely; it
-          re-stated points already covered by the comparison table and
-          the benefit cards. */}
+      {/* ---------- 4. What's included ---------- */}
+      {/* Six benefit cards (every contract bundles these). The 4-step
+          "How we run it" process was merged here previously; it's now its
+          own section below the lead form so visitors see the offer
+          (price + form) before the operational beat. */}
       <Section padding="default" tone="tint">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">What&rsquo;s included</Eyebrow>
@@ -369,34 +293,76 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             </div>
           ))}
         </div>
+      </Section>
 
-        {/* Process runs inside the same section as a tight 4-step row,
-            visually separated from the benefit cards by a hairline +
-            extra top margin -- one "what's included" block rather than
-            two competing sections. */}
-        <div className="mt-14 pt-10 border-t border-hairline">
-          <div className="mb-8 max-w-2xl">
-            <Eyebrow className="mb-3">How we run it</Eyebrow>
-            <Heading level={3}>Survey to running water in four steps.</Heading>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {HOW_IT_WORKS.map((step) => (
-              <div key={step.n} className="flex flex-col gap-2">
-                <div className="font-numeric text-[40px] md:text-[48px] font-light leading-none text-teal">{step.n}</div>
-                <h4 className="font-sans text-body font-medium text-navy [text-wrap:balance]">{step.title}</h4>
-                <Caption className="text-mute leading-relaxed">{step.body}</Caption>
-              </div>
-            ))}
-          </div>
+      {/* ---------- 5. Pricing (CompactPlansTable) ---------- */}
+      <CompactPlansTable />
+
+      {/* ---------- 6. Testimonials ---------- */}
+      {/* Two named Biratnagar quotes -- split out from the stats band and
+          repositioned so the proof beat lands AFTER the price and BEFORE
+          the lead form (trust right before commitment). */}
+      <Section padding="tight">
+        <div className="max-w-2xl mb-6">
+          <Eyebrow className="mb-2">Live in Biratnagar</Eyebrow>
+          <Heading level={2}>Two contracts already running, on the record.</Heading>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {NEPAL_LIVE_SITES.map((site) => (
+            <figure
+              key={site.slug}
+              className="border border-hairline bg-offwhite p-5 md:p-6 flex flex-col gap-3"
+            >
+              <blockquote className="font-editorial italic text-body md:text-h3 text-navy leading-snug [text-wrap:balance]">
+                &ldquo;{site.quote}&rdquo;
+              </blockquote>
+              <figcaption className="pt-3 border-t border-hairline flex flex-col gap-0.5">
+                <Caption className="font-medium text-navy">
+                  {site.personName} &middot; {site.personRole}
+                </Caption>
+                <Caption className="text-mute">
+                  {site.name} &middot; {site.city}, Nepal
+                </Caption>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </Section>
 
-      {/* Coverage + Terms -- shrunk from two full sections into a single
-          tight band. Cities render as inline pills (10 across one or two
-          rows) instead of a 10-cell card grid -- much less visual weight
-          for what's essentially a "you're covered" reassurance line.
-          Terms tag along beneath as a hairline-separated micro-note. */}
+      {/* ---------- 7. Lead form (+ service tabs + DM card) ---------- */}
+      {/* Wrapped in Suspense because useSearchParams() in a Client
+          Component requires it for the static-build path. */}
+      <Suspense fallback={null}>
+        <WaterAsAServiceClient
+          initialService={initialService}
+          initialPlan={initialPlan}
+        />
+      </Suspense>
+
+      {/* ---------- 8. How we run it ---------- */}
+      {/* 4-step process. Was previously inline beneath the benefit cards
+          inside the "What's included" panel; now its own section so it
+          can sit AFTER the lead form (operational reassurance is more
+          useful as a closing beat than as an interruption between
+          benefits and price). */}
       <Section padding="default">
+        <div className="mb-10 max-w-3xl">
+          <Eyebrow className="mb-3">How we run it</Eyebrow>
+          <Heading level={2}>Survey to running water in four steps.</Heading>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          {HOW_IT_WORKS.map((step) => (
+            <div key={step.n} className="flex flex-col gap-2">
+              <div className="font-numeric text-[40px] md:text-[48px] font-light leading-none text-teal">{step.n}</div>
+              <h3 className="font-sans text-body font-medium text-navy [text-wrap:balance]">{step.title}</h3>
+              <Caption className="text-mute leading-relaxed">{step.body}</Caption>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ---------- 9. Service area ---------- */}
+      <Section padding="default" tone="subtle">
         <div className="max-w-3xl mb-6">
           <Eyebrow className="mb-3">Service area</Eyebrow>
           <Heading level={2}>Live across the Terai &mdash; Biratnagar to Birgunj.</Heading>
@@ -408,18 +374,42 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           {REGIONS.map((region) => (
             <span
               key={region}
-              className="inline-flex items-center gap-1.5 border border-hairline bg-subtle text-navy text-caption font-medium px-3.5 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1.5 border border-hairline bg-offwhite text-navy text-caption font-medium px-3.5 py-1.5 rounded-full"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-teal" aria-hidden="true" />
               {region}
             </span>
           ))}
         </div>
-        <div className="mt-12 pt-8 border-t border-hairline max-w-reading">
+      </Section>
+
+      {/* ---------- 10. FAQ (with FAQPage JSON-LD) ---------- */}
+      <NepalFAQ />
+
+      {/* ---------- 11. Terms ---------- */}
+      <Section padding="tight">
+        <div className="max-w-reading">
           <Eyebrow className="mb-3">Terms</Eyebrow>
           <Caption className="text-mute leading-relaxed">{TERMS_NOTE}</Caption>
         </div>
       </Section>
+
+      {/* Mobile-only buffer so the sticky CTA bar at the very bottom of
+          the viewport never visually covers the Terms note as the user
+          scrolls to the page bottom. Calc accounts for the bar (two
+          buttons + 8px wrapper padding ~ 72px) plus the iOS home-
+          indicator safe-area inset. Tablet+ has no sticky bar and no
+          buffer. */}
+      <div
+        className="md:hidden"
+        aria-hidden="true"
+        style={{ height: 'calc(72px + env(safe-area-inset-bottom, 0px))' }}
+      />
+
+      {/* Sticky mobile CTA bar -- WhatsApp + Book-a-survey duo, fixed
+          bottom on <md. Reads captured UTMs from sessionStorage to tag
+          the WhatsApp prefill. */}
+      <StickyMobileCTABar />
     </>
   );
 }
