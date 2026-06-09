@@ -160,6 +160,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
                 theme="on-navy"
                 whatsappHref={WHATSAPP_HREF_GENERIC}
                 secondaryHref="#lead-form"
+                contactPayload={{ source: 'hero' }}
               />
             </div>
 

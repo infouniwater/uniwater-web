@@ -19,15 +19,24 @@ declare global {
  * mounts the navigation has completed, gtag is loaded, and the hit
  * lands cleanly.
  *
- * Nepal-WaaS additionally fires fbq('track', 'Lead') here (browser
- * pixel, on confirmed success only). The form-side onSubmit fire was
- * removed because it double-counted alongside the server-side CAPI
- * Lead event AND fired on every submit attempt regardless of whether
- * the action actually succeeded. The /thank-you redirect is the
- * single explicit success signal we have on the browser side; firing
- * fbq here keeps the browser pixel count honest and matches the
- * gtag pattern in this file. Other thank-you sources keep their
- * existing pre-redirect fbq behaviour (their own onSubmit handlers).
+ * Nepal-WaaS additionally fires fbq('track', 'Lead') AND
+ * fbq('track', 'Contact') here (browser pixel, on confirmed success
+ * only). Lead is the high-intent form-only signal; Contact is fired too
+ * because the ad campaign optimises for Contact, so both the WhatsApp-CTA
+ * path and a successful form submit must feed it. The form-side onSubmit
+ * fire was removed because it double-counted alongside the server-side
+ * CAPI Lead event AND fired on every submit attempt regardless of whether
+ * the action actually succeeded. The /thank-you redirect is the single
+ * explicit success signal we have on the browser side; firing fbq here
+ * keeps the browser pixel count honest and matches the gtag pattern in
+ * this file. Other thank-you sources keep their existing pre-redirect
+ * fbq behaviour (their own onSubmit handlers).
+ *
+ * Lead dedup: the server action mints an eventId, sends it to Meta CAPI
+ * with the server-side Lead, and forwards it through the redirect URL
+ * (?eventId=). We attach it to the browser Lead via fbq's { eventID }
+ * option so Meta collapses the CAPI + browser Lead into one conversion.
+ * Contact has no CAPI counterpart, so it's fired without an eventID.
  *
  * value INR is per-form to match META_VALUE_* on the CAPI side
  * (app/actions/leads.ts). GA4 sums these into total lead value for
@@ -48,46 +57,73 @@ const VALUE_INR: Record<string, number> = {
 // a default.
 const FBQ_LEAD_SOURCES: ReadonlySet<string> = new Set(['nepal-waas']);
 
-export function ThankYouConversionFire({ source }: { source?: string }) {
-  const fired = useRef(false);
+export function ThankYouConversionFire({
+  source,
+  eventId,
+}: {
+  source?: string;
+  eventId?: string;
+}) {
+  // Separate guards for the two trackers. They fire independently so a
+  // blocked GA (gtag never loads) can't suppress the Meta conversion, and
+  // vice-versa -- each fires exactly once.
+  const gaFired = useRef(false);
+  const fbqFired = useRef(false);
 
   useEffect(() => {
-    if (fired.current) return;
     if (typeof window === 'undefined') return;
+    const value = source && VALUE_INR[source] ? VALUE_INR[source] : 0;
+    // Only sources we've taken over from their form's onSubmit fire the
+    // browser pixel here (currently nepal-waas).
+    const wantsFbq = !!source && FBQ_LEAD_SOURCES.has(source);
 
+    // gtag.js / fbevents.js may not be ready the instant this mounts
+    // (Script afterInteractive timing), so poll briefly until each loads.
+    // GA and the pixel are guarded + fired independently: a blocked GA
+    // can't suppress the Meta conversion, and vice-versa, and each fires
+    // exactly once.
     let attempts = 0;
     const fire = () => {
-      if (typeof window.gtag !== 'function') {
-        if (attempts++ < 30) setTimeout(fire, 200);
-        return;
+      // GA4 generate_lead.
+      if (!gaFired.current && typeof window.gtag === 'function') {
+        gaFired.current = true;
+        window.gtag('event', 'generate_lead', {
+          currency: 'INR',
+          value,
+          source: source ?? 'unknown',
+        });
       }
-      fired.current = true;
-      const value = source && VALUE_INR[source] ? VALUE_INR[source] : 0;
-      window.gtag('event', 'generate_lead', {
-        currency: 'INR',
-        value,
-        source: source ?? 'unknown',
-      });
 
-      // Browser pixel: fire only for sources we've taken over from
-      // their form's onSubmit (currently nepal-waas). fbq is best-
-      // effort -- a missing pixel just silently skips this; the
-      // server-side CAPI Lead event continues to fire from the action.
-      if (source && FBQ_LEAD_SOURCES.has(source) && typeof window.fbq === 'function') {
+      // Browser pixel Lead + Contact.
+      if (wantsFbq && !fbqFired.current && typeof window.fbq === 'function') {
+        fbqFired.current = true;
         try {
-          window.fbq('track', 'Lead', {
-            currency: 'INR',
-            value,
-            source,
-          });
+          // Lead -- high-intent form signal. eventID (when present) is the
+          // shared dedup id from the server action so Meta merges this
+          // browser Lead with the CAPI Lead into one conversion.
+          window.fbq(
+            'track',
+            'Lead',
+            { currency: 'INR', value, source },
+            eventId ? { eventID: eventId } : undefined,
+          );
+          // Contact -- the campaign optimises for Contact, so a successful
+          // form submit feeds it alongside the WhatsApp-CTA path. No CAPI
+          // counterpart, so no eventID.
+          window.fbq('track', 'Contact');
         } catch {
           /* silent */
         }
       }
+
+      // Keep polling until both intended trackers have fired (or we give up).
+      const gaDone = gaFired.current;
+      const fbqDone = !wantsFbq || fbqFired.current;
+      if ((!gaDone || !fbqDone) && attempts++ < 30) setTimeout(fire, 200);
     };
 
     fire();
-  }, [source]);
+  }, [source, eventId]);
 
   return null;
 }

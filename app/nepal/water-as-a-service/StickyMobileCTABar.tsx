@@ -34,6 +34,7 @@ export function StickyMobileCTABar() {
           layout="row"
           whatsappHref={WHATSAPP_HREF_GENERIC}
           secondaryHref="#lead-form"
+          contactPayload={{ source: 'sticky-bar' }}
         />
       </div>
     </div>

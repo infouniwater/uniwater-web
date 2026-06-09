@@ -45,14 +45,14 @@ const DEFAULT_MESSAGE = {
 export default function ThankYouPage({
   searchParams,
 }: {
-  searchParams: { source?: string };
+  searchParams: { source?: string; eventId?: string };
 }) {
   const source = searchParams.source as Source | undefined;
   const m = source && source in MESSAGES ? MESSAGES[source] : DEFAULT_MESSAGE;
 
   return (
     <Section padding="loose">
-      <ThankYouConversionFire source={source} />
+      <ThankYouConversionFire source={source} eventId={searchParams.eventId} />
       <div className="max-w-2xl mx-auto text-center flex flex-col gap-5 items-center">
         <Eyebrow>{m.eyebrow}</Eyebrow>
         <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] text-navy max-w-[22ch] [text-wrap:balance]">

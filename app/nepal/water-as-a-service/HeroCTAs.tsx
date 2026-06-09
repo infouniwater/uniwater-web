@@ -1,6 +1,7 @@
 'use client';
 
 import { useUtmCapture, appendUtmToWhatsAppHref } from './useUtmCapture';
+import { trackWhatsAppContact } from './pixel';
 
 /**
  * Two-CTA primitive matching the hero's visual grammar: a rounded
@@ -43,10 +44,12 @@ interface HeroCTAsProps {
   /** "stack" = flex-col -> sm:flex-row (hero default). "row" = always
    *  horizontal (sticky bar). */
   layout?: 'stack' | 'row';
-  /** Optional click handler on the primary CTA -- typically used to
-   *  fire fbq/gtag Contact events from call-sites that already track
-   *  WhatsApp clicks. */
-  onPrimaryClick?: () => void;
+  /** Attribution merged into the Meta `Contact` + GA `contact` events
+   *  fired on the primary (WhatsApp) click -- e.g. { source: 'hero' }.
+   *  The primary CTA is always a wa.me deeplink, so this component fires
+   *  Contact itself via the shared trackWhatsAppContact util; call-sites
+   *  only supply where the click came from. */
+  contactPayload?: Record<string, unknown>;
 }
 
 export function HeroCTAs({
@@ -56,7 +59,7 @@ export function HeroCTAs({
   secondaryLabel = 'Or request a callback',
   theme,
   layout = 'stack',
-  onPrimaryClick,
+  contactPayload,
 }: HeroCTAsProps) {
   const utms = useUtmCapture();
   const taggedHref = appendUtmToWhatsAppHref(whatsappHref, utms);
@@ -92,7 +95,7 @@ export function HeroCTAs({
         href={taggedHref}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={onPrimaryClick}
+        onClick={() => trackWhatsAppContact(contactPayload)}
         className={`inline-flex items-center gap-2 self-start sm:self-center whitespace-nowrap font-ui font-medium text-[15px] tracking-[0.02em] rounded-full transition-colors duration-200 ease-calm ${pillPaddingCls} ${primaryCls}`}
       >
         {primaryLabel}

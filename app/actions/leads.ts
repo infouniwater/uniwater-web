@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
+import { randomUUID } from 'crypto';
 import { createLead } from '@/lib/odoo';
 import { sendLeadNotification, type LeadFields } from '@/lib/email';
 import { appendLeadToSheet } from '@/lib/sheets';
@@ -129,6 +130,10 @@ async function fanOut(input: {
     /** Indicative INR value for this lead — drives Meta value-based bid
      * optimisation. Pick one of META_VALUE_* constants per form. */
     value?: number;
+    /** Shared dedup id. When the browser pixel ALSO fires this event with
+     * the same id (e.g. the Nepal Lead re-fired on /thank-you), Meta
+     * collapses the CAPI + browser events into one conversion. */
+    eventId?: string;
   };
 }): Promise<void> {
   await createLead(input.odoo);
@@ -152,6 +157,7 @@ async function fanOut(input: {
       city: input.meta.city,
       value: input.meta.value,
       currency: 'INR',
+      eventId: input.meta.eventId,
       sourceUrl: sig.referer,
       clientIp: sig.ip,
       clientUserAgent: sig.userAgent,
@@ -269,10 +275,14 @@ export async function submitContact(formData: FormData): Promise<void> {
  *   - plan (A..E | empty if DM)        -- only for drinking; DM is enquiry-only
  *   - phone, useCase, notes
  *
- * The page also fires fbq('track', 'Lead') browser-side on form submit AND
- * on WhatsApp CTA clicks, in addition to the server-side CAPI event below.
- * Duplicate events are de-duped by Meta via the event_id mechanism in
- * sendMetaLeadEvent.
+ * Browser-side pixel events on this page complement the CAPI Lead below:
+ *   - Contact on each WhatsApp CTA click (./pixel trackWhatsAppContact)
+ *   - Lead + Contact on the /thank-you success page after this redirect
+ *     (ThankYouConversionFire, ?source=nepal-waas)
+ * The browser Lead reuses the eventId generated here (passed via the
+ * redirect URL) so Meta de-dupes it against this CAPI Lead into one
+ * conversion. The Contact events have no CAPI counterpart, so they need
+ * no dedup id.
  */
 export async function submitNepalWaaS(formData: FormData): Promise<void> {
   await gateRecaptcha(formData, 'nepal_waas', 'nepal-waas');
@@ -297,6 +307,12 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
   const utmContent = takeString(formData, 'utm_content');
   const utmTerm = takeString(formData, 'utm_term');
   const fbclid = takeString(formData, 'fbclid');
+
+  // Shared dedup id for the Lead conversion. The same id is sent to Meta
+  // CAPI (below) AND carried through the /thank-you redirect so the
+  // browser pixel re-fires Lead with it -- Meta then de-dupes the
+  // server + browser Lead into a single conversion.
+  const eventId = randomUUID();
 
   const serviceLabel =
     service === 'dm' ? 'DM Water as a Service' : 'Drinking Water as a Service';
@@ -346,10 +362,10 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     // attributes campaign on its own side via the ad-click fbp/fbc
     // cookies, so this is acceptable for now. The full UTM set still
     // lands in Odoo / Sheets / email via `fields` above.
-    meta: { eventName: 'Lead', phone, name, city, value: META_VALUE_NEPAL_WAAS },
+    meta: { eventName: 'Lead', phone, name, city, value: META_VALUE_NEPAL_WAAS, eventId },
   });
 
-  redirect('/thank-you?source=nepal-waas');
+  redirect(`/thank-you?source=nepal-waas&eventId=${eventId}`);
 }
 
 export async function submitRFQ(formData: FormData): Promise<void> {

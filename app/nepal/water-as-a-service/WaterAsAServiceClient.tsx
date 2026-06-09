@@ -19,6 +19,7 @@ import {
 } from '@/content/nepal-waas';
 import { useUtmCapture, appendUtmToWhatsAppHref } from './useUtmCapture';
 import { HeroCTAs } from './HeroCTAs';
+import { trackWhatsAppContact } from './pixel';
 
 /**
  * Client island for the Nepal WaaS landing page.
@@ -33,16 +34,23 @@ import { HeroCTAs } from './HeroCTAs';
  *
  * Pixel events fired browser-side (in addition to the server-side CAPI
  * event from submitNepalWaaS):
- *   - fbq('track', 'Contact')  on every WhatsApp-CTA click
- *   - fbq('track', 'Lead')     on SUCCESSFUL submission only -- fired
- *                              from /thank-you's ThankYouConversionFire
- *                              when ?source=nepal-waas. The previous
- *                              pre-click fire in this form's onSubmit
- *                              was removed because it double-counted
- *                              alongside the server-side CAPI event and
- *                              fired even when the visitor abandoned
- *                              mid-submit. Meta de-dupes by event_id;
- *                              CAPI side stays the source of truth.
+ *   - fbq('track', 'Contact')  on every WhatsApp-CTA click, via the
+ *                              shared trackWhatsAppContact util (./pixel)
+ *                              so the hero, DM card, sticky bar and the
+ *                              form-area link below all fire it the same
+ *                              guarded way.
+ *   - fbq('track', 'Lead')  +  fbq('track', 'Contact')  on SUCCESSFUL
+ *                              submission only -- both fired from
+ *                              /thank-you's ThankYouConversionFire when
+ *                              ?source=nepal-waas. Firing post-redirect
+ *                              (not in this form's onSubmit) is deliberate:
+ *                              the server action redirects only on success,
+ *                              and a pre-redirect fire would be lost when
+ *                              the action unloads the page before the
+ *                              beacon flushes. The browser Lead shares an
+ *                              event_id with the server-side CAPI Lead
+ *                              (passed through the redirect URL) so Meta
+ *                              de-dupes the two into one conversion.
  *
  * UTM capture: useUtmCapture (./useUtmCapture.ts) reads utm_source /
  * medium / campaign / content / term and fbclid from the URL on mount,
@@ -56,39 +64,10 @@ import { HeroCTAs } from './HeroCTAs';
  *      visible line of the conversation.
  */
 
-// Type-declaration for the Meta fbq global. Strictly optional -- the
-// helper bails silently if fbq isn't present (local dev without
-// NEXT_PUBLIC_META_PIXEL_ID set, or first paint before fbevents.js loads).
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
-function pixelTrack(event: 'Contact' | 'Lead', payload?: Record<string, unknown>) {
-  if (typeof window === 'undefined' || typeof window.fbq !== 'function') return;
-  try {
-    window.fbq('track', event, payload);
-  } catch {
-    /* silent -- pixel failures must never block the conversion path */
-  }
-}
-
-// GA4 event firing -- mirrors pixelTrack so the same conversion sites
-// report into both Meta and Google. Standard GA4 event names where one
-// exists (generate_lead, select_item); 'contact' is a custom event GA4
-// will just record under "All events" until marked as a Key Event in
-// the GA UI. Campaign attribution is handled by GA via the landing-
-// page UTMs on the session, so we don't pass utm_* in the event params.
-function gaTrack(event: 'generate_lead' | 'contact' | 'select_item', payload?: Record<string, unknown>) {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
-  try {
-    window.gtag('event', event, payload);
-  } catch {
-    /* silent */
-  }
-}
+// Browser-side Contact firing for the WhatsApp CTAs lives in the shared
+// ./pixel util (trackWhatsAppContact) so the hero, DM card, sticky bar
+// and the form-area link all fire the same Meta `Contact` + GA `contact`
+// pair through one guarded path. fbq / gtag globals are typed there.
 
 interface Props {
   initialService?: ServiceSlug;
@@ -208,10 +187,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                       whatsappHref={WHATSAPP_HREF_DM}
                       secondaryHref="#lead-form"
                       primaryLabel="Enquire on WhatsApp"
-                      onPrimaryClick={() => {
-                        pixelTrack('Contact', { content_name: 'DM Water', source: 'dm-card' });
-                        gaTrack('contact', { method: 'whatsapp', source: 'dm-card', content_name: 'DM Water' });
-                      }}
+                      contactPayload={{ source: 'dm-card', content_name: 'DM Water' }}
                     />
                   </div>
                 </div>
@@ -326,10 +302,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                         href={whatsappGenericTagged}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => {
-                          pixelTrack('Contact', { source: 'form-area-link', service });
-                          gaTrack('contact', { method: 'whatsapp', source: 'form-area-link', service });
-                        }}
+                        onClick={() => trackWhatsAppContact({ source: 'form-area-link', service })}
                         className="text-teal underline underline-offset-4"
                       >
                         WhatsApp link
