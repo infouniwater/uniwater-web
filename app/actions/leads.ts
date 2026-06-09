@@ -285,6 +285,19 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
   const useCase = takeString(formData, 'useCase');
   const notes = takeString(formData, 'notes');
 
+  // UTM + fbclid attribution. The hidden inputs are written client-side
+  // by useUtmCapture (Nepal page Client Component) from
+  // window.location.search on first mount and persisted in
+  // sessionStorage so they survive an in-page soft nav. Forwarding them
+  // into Odoo, Sheets, email and the Meta CAPI custom_data lets every
+  // downstream system attribute the lead to a specific ad campaign.
+  const utmSource = takeString(formData, 'utm_source');
+  const utmMedium = takeString(formData, 'utm_medium');
+  const utmCampaign = takeString(formData, 'utm_campaign');
+  const utmContent = takeString(formData, 'utm_content');
+  const utmTerm = takeString(formData, 'utm_term');
+  const fbclid = takeString(formData, 'fbclid');
+
   const serviceLabel =
     service === 'dm' ? 'DM Water as a Service' : 'Drinking Water as a Service';
 
@@ -298,6 +311,12 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     'Use case': useCase,
     Notes: notes,
     Source: 'meta-ads-east-nepal',
+    'UTM source': utmSource,
+    'UTM medium': utmMedium,
+    'UTM campaign': utmCampaign,
+    'UTM content': utmContent,
+    'UTM term': utmTerm,
+    fbclid,
   };
 
   const description = joinDescription([
@@ -307,6 +326,8 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     plan ? `Plan: ${plan}` : undefined,
     useCase ? `Use case: ${useCase}` : undefined,
     notes ? `Notes: ${notes}` : undefined,
+    utmCampaign || utmSource ? `UTM: ${[utmSource, utmMedium, utmCampaign, utmContent, utmTerm].filter(Boolean).join(' / ')}` : undefined,
+    fbclid ? `fbclid: ${fbclid}` : undefined,
   ]);
 
   await fanOut({
@@ -321,6 +342,10 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     formLabel: 'Nepal Water-as-a-Service (meta-ads-east-nepal)',
     emailSubject: `Nepal WaaS lead — ${business ?? name ?? 'unnamed'}${city ? ` (${city})` : ''}`,
     fields,
+    // Meta CAPI shape doesn't currently carry UTM custom_data; Meta
+    // attributes campaign on its own side via the ad-click fbp/fbc
+    // cookies, so this is acceptable for now. The full UTM set still
+    // lands in Odoo / Sheets / email via `fields` above.
     meta: { eventName: 'Lead', phone, name, city, value: META_VALUE_NEPAL_WAAS },
   });
 
