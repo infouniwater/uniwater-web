@@ -33,8 +33,8 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
     alt: 'Uniwater engineer drawing a water sample at the kitchen tap during the on-site test',
   },
   'soft-water-vs-salt-water': {
-    src: `${PHOTO}/hairfall.jpg`,
-    alt: 'A woman running her hands through wet hair after a shower — the daily moment hard water shows up on the body',
+    src: `${PHOTO}/bathroom-filter-under-basin.jpg`,
+    alt: 'A finished bathroom vanity — soft water changes how a shower feels on skin and hair',
   },
   'tds-isnt-a-quality-metric': {
     src: `${PHOTO}/service-testing-water.jpg`,
@@ -63,6 +63,10 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
   'premium-fittings-slow-disaster': {
     src: `${PHOTO}/bathroom-filter-hero.jpg`,
     alt: 'A premium marble bathroom with brass and chrome fittings — the kind of bathroom that ages badly when the water isn’t handled',
+  },
+  'can-hard-water-cause-hair-fall': {
+    src: `${PHOTO}/hairfall.jpg`,
+    alt: 'Wet hair after a shower — where hard, iron-rich water shows up first, as roughness and breakage',
   },
 };
 

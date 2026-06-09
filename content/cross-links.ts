@@ -35,6 +35,7 @@ export const BLOG_TO_SOLUTION: Partial<Record<BlogSlug, SolutionSlug>> = {
   'whole-house-vs-point-of-use': 'whole-house-water-filter',
   'remineralisation-after-ro': 'drinking-water-solution',
   'premium-fittings-slow-disaster': 'whole-house-water-filter',
+  'can-hard-water-cause-hair-fall': 'whole-house-water-filter',
   // 'inside-your-monthly-service-report' and 'amc-tiers-honestly' are service
   // pieces — no single solution maps. Left unmapped; the cross-link panel
   // will skip if the post is not in this map.
@@ -62,9 +63,9 @@ export const SOLUTION_TO_BLOGS: Record<SolutionSlug, BlogSlug[]> = {
     'how-to-read-a-water-test',
   ],
   'water-softener': [
+    'can-hard-water-cause-hair-fall',
     'soft-water-vs-salt-water',
     'iron-hardness-order',
-    'premium-fittings-slow-disaster',
   ],
 };
 
