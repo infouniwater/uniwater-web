@@ -12,6 +12,9 @@ import { FIVE_PLACES } from '@/content/education';
  * hidden / Serviced monthly. Tabs on desktop (ARIA tablist, arrow-key
  * operable), stacked accordion on mobile.
  *
+ * Dark band so /residential keeps its dark/light alternation:
+ * hero(D) → HomeSystemHero(L) → HomeSystemSpec(D) → PincodeCheck(L) → ProblemSelector(D).
+ *
  * The "Installed & hidden" tab REUSES the five install-location names from
  * content/education.ts (FIVE_PLACES) rather than re-typing them, and points to
  * the full InstallationVersatility section below instead of duplicating it.
@@ -56,16 +59,16 @@ function Panel({ tab }: { tab: Tab }) {
   return (
     <div className="flex flex-col gap-4 max-w-reading">
       {tab.paras.map((p, i) => (
-        <Body key={i} className="text-mute">{p}</Body>
+        <Body key={i} inverse className="text-offwhite/80">{p}</Body>
       ))}
       {tab.places && (
         <div className="flex flex-wrap items-center gap-2 pt-1">
           {tab.places.map((loc) => (
-            <span key={loc} className="text-caption text-navy bg-offwhite border border-hairline rounded-full px-3 py-1">
+            <span key={loc} className="text-caption text-offwhite bg-offwhite/10 border border-offwhite/20 rounded-full px-3 py-1">
               {loc}
             </span>
           ))}
-          <span className="text-caption text-mute">&mdash; shown in detail below.</span>
+          <span className="text-caption text-offwhite/60">&mdash; shown in detail below.</span>
         </div>
       )}
     </div>
@@ -90,15 +93,15 @@ export function HomeSystemSpec() {
   };
 
   return (
-    <Section padding="default">
+    <Section padding="default" tone="navy">
       <div className="mb-8 max-w-3xl flex flex-col gap-4">
-        <Eyebrow>The system, in three parts</Eyebrow>
-        <Heading level={2}>What is inside it, where it hides, and how it stays right.</Heading>
+        <Eyebrow inverse>The system, in three parts</Eyebrow>
+        <Heading level={2} inverse>What is inside it, where it hides, and how it stays right.</Heading>
       </div>
 
       {/* Desktop: tabs */}
       <div className="hidden md:block max-w-4xl">
-        <div role="tablist" aria-label="How the home system works" className="flex flex-wrap gap-1 border-b border-hairline">
+        <div role="tablist" aria-label="How the home system works" className="flex flex-wrap gap-1 border-b border-offwhite/15">
           {TABS.map((t, i) => (
             <button
               key={t.key}
@@ -113,7 +116,7 @@ export function HomeSystemSpec() {
               onClick={() => setActive(i)}
               onKeyDown={onKeyDown}
               className={`-mb-px border-b-2 px-5 py-3 text-caption font-medium transition-colors duration-200 ease-calm focus:outline-none focus-visible:ring-2 focus-visible:ring-teal ${
-                active === i ? 'border-teal text-navy' : 'border-transparent text-mute hover:text-navy'
+                active === i ? 'border-soft text-offwhite' : 'border-transparent text-offwhite/55 hover:text-offwhite'
               }`}
             >
               {t.title}
@@ -136,9 +139,9 @@ export function HomeSystemSpec() {
 
       {/* Mobile: accordion */}
       <div className="md:hidden max-w-2xl">
-        <Accordion>
+        <Accordion inverse>
           {TABS.map((t, i) => (
-            <AccordionItem key={t.key} question={t.title} defaultOpen={i === 0}>
+            <AccordionItem inverse key={t.key} question={t.title} defaultOpen={i === 0}>
               <Panel tab={t} />
             </AccordionItem>
           ))}

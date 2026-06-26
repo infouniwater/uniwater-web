@@ -39,8 +39,8 @@ export function VerdictGrid() {
               aria-pressed={active}
               className={`rounded-full border px-4 py-2 text-caption font-medium transition-colors duration-200 ease-calm focus:outline-none focus-visible:ring-2 focus-visible:ring-teal ${
                 active
-                  ? 'bg-navy text-offwhite border-navy'
-                  : 'bg-offwhite text-ink border-hairline hover:border-navy/40'
+                  ? 'bg-offwhite text-navy border-offwhite'
+                  : 'bg-transparent text-offwhite/80 border-offwhite/30 hover:border-offwhite/60'
               }`}
             >
               {c.label}

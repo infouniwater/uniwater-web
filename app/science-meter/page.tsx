@@ -84,28 +84,29 @@ export default function ScienceMeterPage() {
         </div>
       </Section>
 
-      {/* Verdict grid */}
-      <Section padding="default" tone="subtle">
+      {/* Verdict grid — DARK band (alternation: hero D → methodology L →
+          grid D → tie-in L). Light cards sit on navy like a gallery. */}
+      <Section padding="default" tone="navy">
         <div className="mb-10 max-w-3xl flex flex-col gap-4">
-          <Eyebrow>The verdicts</Eyebrow>
-          <Heading level={2}>What the evidence says, technology by technology.</Heading>
+          <Eyebrow inverse>The verdicts</Eyebrow>
+          <Heading level={2} inverse>What the evidence says, technology by technology.</Heading>
         </div>
         <VerdictGrid />
-        <Caption className="text-mute mt-8 block">
+        <Caption className="text-offwhite/60 mt-8 block">
           Study volumes shown on each card are indicative and reviewed periodically — a sense of how
           settled the evidence is, not an exact citation.
         </Caption>
       </Section>
 
-      {/* Tie-in */}
-      <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
+      {/* Tie-in — LIGHT band to close the alternation. */}
+      <Section tone="subtle" padding="default">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 flex flex-col gap-4">
-            <Eyebrow inverse>From verdict to system</Eyebrow>
-            <Heading level={2} inverse>
+            <Eyebrow>From verdict to system</Eyebrow>
+            <Heading level={2}>
               For every technology we endorse, we engineer it into a real system.
             </Heading>
-            <Body inverse className="text-offwhite/80">
+            <Body className="text-mute">
               Surveyed first, sized to your water. The verdict above is the easy part — building it to
               last is the work.
             </Body>
