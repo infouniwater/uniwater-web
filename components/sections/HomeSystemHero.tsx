@@ -30,8 +30,8 @@ export function HomeSystemHero() {
         <div className="lg:col-span-6">
           <div className="relative w-full overflow-hidden border border-hairline" style={{ aspectRatio: '4 / 3' }}>
             <Image
-              src="/images/photography/whole-house-hero.jpg"
-              alt="A HomeSoft whole-house water system integrated into the corner of a finished home"
+              src="/images/photography/bathroom-filter-floor-mounted.jpg"
+              alt="A floor-mounted Uniwater bathroom water filter installed in a finished bathroom"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
