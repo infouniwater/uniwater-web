@@ -6,6 +6,8 @@ import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/
 import { Button } from '@/components/ui/Button';
 import { Photo } from '@/components/ui/Photo';
 import { SolutionCard } from '@/components/ui/Card';
+import { HomeSystemHero } from '@/components/sections/HomeSystemHero';
+import { HomeSystemSpec } from '@/components/sections/HomeSystemSpec';
 import { InstallationVersatility } from '@/components/sections/InstallationVersatility';
 import { ServiceSection } from '@/components/sections/ServiceSection';
 import { CitiesSection } from '@/components/sections/CitiesSection';
@@ -114,6 +116,11 @@ export default function ResidentialPage() {
           </div>
         </div>
       </section>
+
+      {/* Hero-object — one graspable residential system before the SKU range,
+          then its three-part spec (inside / hidden / serviced monthly). */}
+      <HomeSystemHero />
+      <HomeSystemSpec />
 
       <Section padding="tight">
         <div className="max-w-3xl mx-auto">
