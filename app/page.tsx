@@ -2,6 +2,8 @@ import { EditorialHero } from '@/components/sections/EditorialHero';
 import { TrustStripe } from '@/components/sections/TrustStripe';
 import { AudienceRouter } from '@/components/sections/AudienceRouter';
 import { DayOneArc } from '@/components/sections/DayOneArc';
+import { SensoryBeat } from '@/components/sections/SensoryBeat';
+import { SymptomStrip } from '@/components/sections/SymptomStrip';
 import { SolutionsOverview } from '@/components/sections/SolutionsOverview';
 import { InstallationVersatility } from '@/components/sections/InstallationVersatility';
 import { FourStepProcess } from '@/components/sections/FourStepProcess';
@@ -70,6 +72,10 @@ export default function HomePage() {
       <div id="trust-strip">
         <TrustStripe />
       </div>
+      {/* 2b. Sensory beat — the felt layer before the engineering argument */}
+      <SensoryBeat />
+      {/* 2c. Symptom-led self-diagnosis → routes into the 60-second checker */}
+      <SymptomStrip />
       {/* 3. Audience picker — promoted from former position 4 */}
       <AudienceRouter />
       {/* 4. Cost-of-cheap-water timeline */}
