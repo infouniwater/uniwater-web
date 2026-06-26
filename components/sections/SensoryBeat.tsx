@@ -23,8 +23,8 @@ export function SensoryBeat() {
         <div className="lg:col-span-6">
           <div className="relative w-full overflow-hidden border border-hairline" style={{ aspectRatio: '4 / 5' }}>
             <Image
-              src="/images/photography/bathroom-filter-hero.jpg"
-              alt="A finished marble bathroom where soft, iron-free water keeps the stone, glass, and fittings clean"
+              src="/images/photography/bathroom-filter-floor-mounted.jpg"
+              alt="A floor-mounted Uniwater bathroom filter in a finished bathroom, where soft, iron-free water keeps the stone and fittings clean"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
