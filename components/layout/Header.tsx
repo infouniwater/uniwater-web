@@ -35,6 +35,7 @@ const NAV_ITEMS = [
   { label: 'Solutions', href: '/solutions', hasMega: true },
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Why Uniwater', href: '/why-uniwater' },
+  { label: 'Science Meter', href: '/science-meter' },
   { label: 'Journal', href: '/blog' },
   { label: 'Resources', href: '/resources', hasDropdown: true },
   { label: 'Contact', href: '/contact' },

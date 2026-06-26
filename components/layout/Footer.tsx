@@ -18,6 +18,7 @@ const SOLUTIONS_LINKS: Array<{ href: string; label: string; featured?: boolean }
 const RESOURCES_LINKS = [
   { href: '/how-it-works', label: 'How it works' },
   { href: '/why-uniwater', label: 'Why Uniwater' },
+  { href: '/science-meter', label: 'Science Meter' },
   { href: '/water-problem-checker', label: 'Water checker' },
   { href: '/remote-site-survey', label: 'Remote survey' },
   { href: '/case-studies', label: 'Case studies' },
