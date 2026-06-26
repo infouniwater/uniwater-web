@@ -28,7 +28,7 @@ export function HomeSystemHero() {
           </div>
         </div>
         <div className="lg:col-span-6">
-          <div className="relative w-full overflow-hidden border border-hairline" style={{ aspectRatio: '4 / 3' }}>
+          <div className="relative w-full overflow-hidden border border-hairline aspect-[16/10] lg:aspect-[4/3]">
             <Image
               src="/images/photography/bathroom-filter-floor-mounted.jpg"
               alt="A floor-mounted Uniwater bathroom water filter installed in a finished bathroom"

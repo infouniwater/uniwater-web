@@ -23,7 +23,7 @@ export function SensoryBeat() {
     <Section padding="default" tone="navy">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         <div className="lg:col-span-6">
-          <div className="relative w-full overflow-hidden border border-offwhite/15" style={{ aspectRatio: '4 / 5' }}>
+          <div className="relative w-full overflow-hidden border border-offwhite/15 aspect-[16/10] sm:aspect-[3/2] lg:aspect-[4/5]">
             <Image
               src="/images/photography/bathroom-filter-floor-mounted.jpg"
               alt="A floor-mounted Uniwater bathroom filter in a finished bathroom, where soft, iron-free water keeps the stone and fittings clean"
