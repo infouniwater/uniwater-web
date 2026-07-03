@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 
 import { Section } from '@/components/ui/Section';
 import { Display, Heading, Eyebrow, Lede, Body, Caption } from '@/components/ui/Typography';
@@ -63,7 +62,25 @@ const FEATURES: { title: string; body: string }[] = [
 
 export default async function QuotePage({ params }: { params: { token: string } }) {
   const q = await getQuote(params.token);
-  if (!q) notFound();
+
+  // Unknown / expired / mistyped link → a clear branded message, never a blank page.
+  if (!q) {
+    return (
+      <Section tone="plain" padding="loose">
+        <div className="container-uw max-w-reading text-center">
+          <Eyebrow>Uniwater</Eyebrow>
+          <Heading level={2} className="mt-3">This quote link isn&rsquo;t available</Heading>
+          <Body className="mt-3">
+            The link may have expired or is incorrect. Please contact us and we&rsquo;ll re-share
+            your quotation.
+          </Body>
+          <div className="mt-6 flex justify-center">
+            <Button href="/contact" variant="primary" size="lg">Contact Uniwater</Button>
+          </div>
+        </div>
+      </Section>
+    );
+  }
 
   const showOffer = q.offer_active && q.discount_pct > 0;
 
