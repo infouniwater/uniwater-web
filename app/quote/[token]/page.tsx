@@ -4,7 +4,10 @@ import { Section } from '@/components/ui/Section';
 import { Display, Heading, Eyebrow, Lede, Body, Caption } from '@/components/ui/Typography';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
+import { TrustStripe } from '@/components/sections/TrustStripe';
 import { Countdown } from './Countdown';
+
+const WHATSAPP = 'https://wa.me/919748745193';
 
 // Per-lead, time-sensitive (live countdown) → always render fresh, never index.
 export const dynamic = 'force-dynamic';
@@ -36,6 +39,7 @@ type QuoteData = {
   has_pdf: boolean;
   status: string;
   pdf_url: string | null;
+  solutions: { slug: string; title: string }[];
 };
 
 const inr = (n: number) =>
@@ -53,11 +57,20 @@ async function getQuote(token: string): Promise<QuoteData | null> {
   }
 }
 
-const FEATURES: { title: string; body: string }[] = [
-  { title: 'Water-tested design', body: 'Every system is sized to your actual water report and site survey — not a generic package.' },
-  { title: 'Certified installation', body: 'Installed and commissioned by trained Uniwater technicians, with a clean handover and demo.' },
-  { title: 'Warranty & AMC', body: 'Manufacturer warranty on all vessels, with optional annual maintenance so it keeps performing.' },
-  { title: 'One accountable partner', body: 'Design, supply, installation and service — all from Uniwater, tracked end to end.' },
+// A few real customer testimonials (from the site's case studies).
+const TESTIMONIALS: { quote: string; org: string; city: string }[] = [
+  {
+    quote: 'Before Uniwater, water was something we worried about every quarter. After Uniwater, it’s something we read in a monthly report.',
+    org: 'Charnock Hospital', city: 'Kolkata',
+  },
+  {
+    quote: 'We replaced four supplier relationships with one. The water is the same in the lecture halls, the ward, and the residences.',
+    org: 'Birat Medical College', city: 'Nepal',
+  },
+  {
+    quote: 'Boiler scaling went from a planned twice-yearly disruption to a non-event. We get a parameter report after every visit.',
+    org: 'Saburi Plywood', city: 'Kolkata',
+  },
 ];
 
 export default async function QuotePage({ params }: { params: { token: string } }) {
@@ -179,19 +192,39 @@ export default async function QuotePage({ params }: { params: { token: string } 
             )}
             <Button href="/contact" variant="primary" size="lg">Talk to us</Button>
           </div>
+
+          {q.solutions.length > 0 && (
+            <div className="mt-8">
+              <Caption>Explore what&rsquo;s in your system</Caption>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {q.solutions.map((sln) => (
+                  <a
+                    key={sln.slug}
+                    href={`/solutions/${sln.slug}`}
+                    className="inline-flex items-center rounded-full border border-hairline px-4 py-2 font-ui text-body text-navy transition-colors hover:bg-tint"
+                  >
+                    {sln.title} &rarr;
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </Section>
 
-      {/* Why Uniwater (static site features) */}
+      {/* Operating proof */}
+      <TrustStripe />
+
+      {/* Testimonials */}
       <Section tone="subtle" padding="default">
         <div className="container-uw">
-          <Eyebrow>Why Uniwater</Eyebrow>
-          <Heading level={2} className="mt-2">What you get with us</Heading>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {FEATURES.map((f) => (
-              <Card key={f.title}>
-                <Heading level={3}>{f.title}</Heading>
-                <Body className="!mb-0 mt-2">{f.body}</Body>
+          <Eyebrow>Trusted by</Eyebrow>
+          <Heading level={2} className="mt-2">What our customers say</Heading>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {TESTIMONIALS.map((t) => (
+              <Card key={t.org}>
+                <Body className="!mb-0">&ldquo;{t.quote}&rdquo;</Body>
+                <Caption className="mt-3">{t.org} &middot; {t.city}</Caption>
               </Card>
             ))}
           </div>
@@ -208,8 +241,9 @@ export default async function QuotePage({ params }: { params: { token: string } 
               ? 'Lock in your offer before it expires — our team will schedule installation at your convenience.'
               : 'Our team will schedule installation at your convenience.'}
           </Body>
-          <div className="mt-5 flex justify-center gap-3">
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Button href="/contact" variant="primary" size="lg">Confirm my order</Button>
+            <Button href={WHATSAPP} variant="secondary" size="lg">Chat on WhatsApp</Button>
           </div>
         </div>
       </Section>
