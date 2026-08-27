@@ -157,6 +157,25 @@ const nextConfig = {
         destination: '/cities/noida',
         permanent: true,
       },
+      {
+        // Pre-BLUEPRINT legacy site (WooCommerce-style catalogue on the old
+        // Hostinger host) — /product/* was never in the BLUEPRINT §4.2 old-
+        // slugs list, so it fell through the migration and has been 404ing
+        // since the Vercel cutover. Still indexed; send it somewhere live.
+        source: '/product/:slug*',
+        destination: '/solutions',
+        permanent: true,
+      },
+      {
+        source: '/arsenic-removal-filters',
+        destination: '/solutions/drinking-water-solution',
+        permanent: true,
+      },
+      {
+        source: '/ro-purifier',
+        destination: '/solutions/drinking-water-solution',
+        permanent: true,
+      },
     ];
   },
 };
