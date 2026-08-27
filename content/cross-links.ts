@@ -36,6 +36,7 @@ export const BLOG_TO_SOLUTION: Partial<Record<BlogSlug, SolutionSlug>> = {
   'remineralisation-after-ro': 'drinking-water-solution',
   'premium-fittings-slow-disaster': 'whole-house-water-filter',
   'can-hard-water-cause-hair-fall': 'whole-house-water-filter',
+  'best-water-treatment-company-kolkata': 'whole-house-water-filter',
   // 'inside-your-monthly-service-report' and 'amc-tiers-honestly' are service
   // pieces — no single solution maps. Left unmapped; the cross-link panel
   // will skip if the post is not in this map.

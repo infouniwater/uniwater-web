@@ -428,6 +428,25 @@ export default function KolkataIronWaterPage() {
         </div>
       </Section>
 
+      {/* "Preferred Sources" opt-in (Google, launched Aug 2026) — see the
+          identical block on /blog/[slug] for the full rationale/spec link. */}
+      <Section padding="tight">
+        <div className="max-w-reading mx-auto flex items-center justify-between gap-4 flex-wrap">
+          <Caption className="text-mute">Found this useful?</Caption>
+          <a
+            href="https://www.google.com/preferences/source?q=uniwater.co.in"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 text-teal text-caption font-medium whitespace-nowrap hover:text-navy transition-colors duration-200 ease-calm"
+          >
+            <span>Add Uniwater as a preferred source on Google</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </Section>
+
       {/* 9. CTA -- FinalCTA component. Kolkata-specific copy. */}
       {/* DRAFT — review */}
       <FinalCTA

@@ -158,6 +158,30 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         </article>
       </Section>
 
+      {/* "Preferred Sources" opt-in (Google, launched Aug 2026) — lets a
+          reader who found this useful flag uniwater.co.in as a source they
+          want to see more of in Top Stories / Discover / AI Overviews.
+          Deeplink per Google's own spec (no script, no CSP change needed):
+          https://developers.google.com/search/docs/appearance/preferred-sources
+          Eligibility is domain-level, so this links the whole site, not
+          just this post. */}
+      <Section padding="tight">
+        <div className="max-w-reading mx-auto flex items-center justify-between gap-4 flex-wrap">
+          <Caption className="text-mute">Found this useful?</Caption>
+          <a
+            href="https://www.google.com/preferences/source?q=uniwater.co.in"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 text-teal text-caption font-medium whitespace-nowrap hover:text-navy transition-colors duration-200 ease-calm"
+          >
+            <span>Add Uniwater as a preferred source on Google</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </Section>
+
       {/* Blog → relevant solution bridge. Skips silently for posts with no clean mapping. */}
       {(() => {
         const target = getSolutionForBlog(post.slug);
@@ -191,7 +215,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           Kolkata-specific deep dive that subsumes both posts; from the
           reader's perspective, this is the natural next step after the
           short journal piece. */}
-      {(post.slug === 'borewell-water-yellow' || post.slug === 'iron-hardness-order') && (
+      {(post.slug === 'borewell-water-yellow' || post.slug === 'iron-hardness-order' || post.slug === 'best-water-treatment-company-kolkata') && (
         <Section padding="tight">
           <div className="max-w-reading mx-auto border border-teal/30 bg-tint/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-xl">

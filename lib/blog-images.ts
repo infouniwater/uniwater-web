@@ -68,6 +68,10 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
     src: `${PHOTO}/hairfall.jpg`,
     alt: 'Wet hair after a shower — where hard, iron-rich water shows up first, as roughness and breakage',
   },
+  'best-water-treatment-company-kolkata': {
+    src: `${PHOTO}/residential-complex.jpg`,
+    alt: 'A residential apartment complex in Kolkata — the kind of multi-flat building a single building-inlet water plant serves',
+  },
 };
 
 const FALLBACK: BlogFeatureImage = {
