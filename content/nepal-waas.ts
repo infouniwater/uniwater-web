@@ -72,6 +72,17 @@ export const SERVICE_LABEL: Record<ServiceSlug, string> = {
 
 // ----- DWaaS plans (committed copy -- do not reword) ---------------------
 
+// Site-survey decision (2026-08-30, "bring in line"): the main
+// /clean-water-as-a-service page publishes billing methodology and levers
+// but never exact rates -- a firm rate is only given after survey. This
+// page's CompactPlansTable previously broke that standard by rendering
+// ratePerLitre / minBill / deposit for all five plans, publicly, indexed
+// by Google. The fields below are UNCHANGED and still real (they drive
+// whatsappHrefForPlan's prefilled message, which fires only after a
+// visitor selects a plan -- the equivalent of the survey-gated quote on
+// the main site). CompactPlansTable.tsx no longer renders them directly;
+// it shows PRICING_METHODOLOGY_NOTE instead. Do not re-add per-plan rate
+// columns to the visible table without revisiting that decision.
 export interface DWaaSPlan {
   /** Stable slug used in id + WhatsApp message + Pixel events. */
   slug: 'A' | 'B' | 'C' | 'D' | 'E';
@@ -82,15 +93,23 @@ export interface DWaaSPlan {
   monthlyLitres: number;
   /** Typical daily jar count (display range). */
   jarsPerDay: string;
-  /** Per-litre rate in NPR. */
+  /** Per-litre rate in NPR. Not rendered on the page -- feeds the WhatsApp
+   *  quote message after a visitor selects this plan. */
   ratePerLitre: number;
-  /** Minimum monthly bill in NPR. */
+  /** Minimum monthly bill in NPR. Not rendered on the page -- see above. */
   minBill: number;
-  /** Refundable security deposit in NPR. */
+  /** Refundable security deposit in NPR. Not rendered on the page -- see above. */
   deposit: number;
   /** Card-highlight flag. Set to true ONLY for plan C per brief. */
   popular?: boolean;
 }
+
+/** Methodology-only pricing explainer shown above CompactPlansTable, in
+ *  place of the five exact rate/deposit/min-bill figures it used to
+ *  render. Mirrors the mechanic language already used on the main CWaaS
+ *  page: how billing works and what moves the rate, not the rate itself. */
+export const PRICING_METHODOLOGY_NOTE =
+  'Every plan runs on the same mechanic: monthly bill = higher of (metered litres × your rate) or the minimum bill. Higher-volume plans carry a lower per-litre rate; the exact rate, minimum bill, and refundable deposit for your plan are confirmed at the free site survey — never a surprise, never guessed.';
 
 // DRAFT taglines added 2026-06-05 to give each tier a "who is this for"
 // hook -- the previous cards were visually identical so the visitor had
@@ -102,57 +121,6 @@ export const DWAAS_PLANS: DWaaSPlan[] = [
   { slug: 'C', tagline: 'Most chosen — restaurant, mid-size hotel, school.',  monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 1.8,  minBill: 6_000,  deposit: 42_500, popular: true },
   { slug: 'D', tagline: 'High volume — large hotel, hospital wing, factory.', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.65, minBill: 8_000,  deposit: 50_000 },
   { slug: 'E', tagline: 'Maximum — large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 65_000 },
-];
-
-// ----- Live in Nepal -- trust signals on the landing -------------------
-
-/** Named-attribution testimonials from two live Biratnagar deployments.
- *  Used as a compact trust band before the plans/pricing on the ad
- *  landing. Both sites also live in content/cwaas.ts LIVE_SITES
- *  (`heritage-international-school` + `feel-good-restaurant`) -- the
- *  slug match lets cross-page reporting link them up. */
-export interface NepalLiveSite {
-  /** Stable slug for React keys. Matches the cwaas LIVE_SITES slug. */
-  slug: string;
-  /** Display name of the site / business. */
-  name: string;
-  /** City -- always Biratnagar for the first cohort. */
-  city: string;
-  /** Short type label (School / Restaurant & bar / etc). */
-  type: string;
-  /** Name of the person quoted. */
-  personName: string;
-  /** Role / title at the site. */
-  personRole: string;
-  /** Testimonial quote -- DRAFT 2026-06-05, replace verbatim from
-   *  reference when the real quotes come in. Keep to ~25 words for
-   *  card readability on mobile. */
-  quote: string;
-}
-
-export const NEPAL_LIVE_SITES: NepalLiveSite[] = [
-  {
-    slug: 'heritage-international-school',
-    name: 'Heritage International School',
-    city: 'Biratnagar',
-    type: 'School',
-    personName: 'Varnika Rathi',
-    personRole: 'Principal',
-    // DRAFT — replace verbatim from Rajat's reference quote
-    quote:
-      'The water on every floor is safe and tested. The monthly engineer visit and written report give us exactly the documentation our school health audit needs.',
-  },
-  {
-    slug: 'feel-good-restaurant',
-    name: 'Feel Good Bar and Grill',
-    city: 'Biratnagar',
-    type: 'Restaurant & bar',
-    personName: 'Nirjal Shrestha',
-    personRole: 'Owner',
-    // DRAFT — replace verbatim from Rajat's reference quote
-    quote:
-      'We stopped tracking jar deliveries. The plant runs in the back, an engineer turns up every month, and the tap pours clean every shift.',
-  },
 ];
 
 // ----- Comparison: DWaaS vs Buying equipment vs Water jars ---------------

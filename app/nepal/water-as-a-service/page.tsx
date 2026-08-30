@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Heading, Body, Caption } from '@/components/ui/Typography';
 import { buildMetadata } from '@/lib/seo';
@@ -17,7 +18,6 @@ import {
   NEPAL_CALL_LINES,
   WHATSAPP_HREF_GENERIC,
   COMPARISON_ROWS,
-  NEPAL_LIVE_SITES,
   META_TITLE,
   META_DESCRIPTION,
   type ServiceSlug,
@@ -37,14 +37,19 @@ import { HeroCTAs } from './HeroCTAs';
  *   2. Stats strip                 -- trust beat directly under hero
  *   3. Comparison table            -- DWaaS vs jars vs capex
  *   4. What's included             -- 6 benefit cards
- *   5. CompactPlansTable           -- pricing tiers
- *   6. Testimonials                -- 2 named Biratnagar quotes
- *   7. Lead form                   -- WaterAsAServiceClient (tabs + DM card + form)
- *   8. How we run it               -- 4-step process
- *   9. Service area                -- 10 city pills
- *  10. FAQ                         -- 6 Q&As with FAQPage JSON-LD
- *  11. Terms                       -- short terms note
+ *   5. CompactPlansTable           -- pricing tiers (methodology-only, see that file)
+ *   6. Lead form                   -- WaterAsAServiceClient (tabs + DM card + form)
+ *   7. How we run it               -- 4-step process
+ *   8. Service area                -- 10 city pills
+ *   9. FAQ                         -- 6 Q&As with FAQPage JSON-LD
+ *  10. Terms                       -- short terms note
  *  (Sticky mobile CTA bar mounted at the end -- fixed bottom, mobile only.)
+ *
+ * Testimonials section removed 2026-08-30 (site-survey fix): both quotes
+ * were DRAFT/unverified copy attributed to real named people at real
+ * sites, running on a page taking live ad spend. Pull real, verified
+ * quotes before adding a replacement section -- do not restore the old
+ * copy from history.
  *
  * Architecture: this file is a Server Component handling metadata + static
  * content blocks. WaterAsAServiceClient is the "use client" island that
@@ -214,6 +219,18 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             run it, and bill against a meter — water held to spec, no
             firefighting.
           </Body>
+          {/* Site-survey fix (brand fragmentation): this page previously
+              never named or linked to Clean Water as a Service, running
+              as an island under its own "DWaaS" branding. DWaaS stays as
+              the specific drinking-water product name -- this line states
+              the relationship explicitly instead of leaving it implicit. */}
+          <Caption className="text-mute mt-4">
+            DWaaS is Uniwater&rsquo;s{' '}
+            <Link href="/clean-water-as-a-service" className="text-teal underline underline-offset-4 hover:text-navy">
+              Clean Water as a Service
+            </Link>{' '}
+            programme, sized for drinking water in Nepal — the same model running across India.
+          </Caption>
         </div>
 
         {/* Single comparison table at every breakpoint. The previous
@@ -310,46 +327,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       {/* ---------- 5. Pricing (CompactPlansTable) ---------- */}
       <CompactPlansTable />
 
-      {/* ---------- 6. Testimonials ---------- */}
-      {/* Navy band (was plain offwhite). The page now has TWO dark
-          beats: the Hero at the top and the Testimonials in the
-          middle. Pullquotes pop on dark navy (the editorial italic
-          face was designed for this kind of contrast), and the navy
-          band breaks the long light stretch between Comparison and
-          Lead form -- the rhythm convention the rest of the site uses
-          (~1-2 dark sections per page).
-
-          Card chrome inverted: border + figcaption divider use
-          offwhite/20, body bg is offwhite/5 (a subtle lifted panel),
-          and all text colours switch to offwhite. */}
-      <Section padding="tight" tone="inverse">
-        <div className="max-w-2xl mb-6">
-          <Eyebrow inverse className="mb-2">Live in Biratnagar</Eyebrow>
-          <Heading level={2} inverse>Two contracts already running, on the record.</Heading>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {NEPAL_LIVE_SITES.map((site) => (
-            <figure
-              key={site.slug}
-              className="border border-offwhite/20 bg-offwhite/5 p-5 md:p-6 flex flex-col gap-3"
-            >
-              <blockquote className="font-editorial italic text-body md:text-h3 text-offwhite leading-snug [text-wrap:balance]">
-                &ldquo;{site.quote}&rdquo;
-              </blockquote>
-              <figcaption className="pt-3 border-t border-offwhite/20 flex flex-col gap-0.5">
-                <Caption className="font-medium text-offwhite">
-                  {site.personName} &middot; {site.personRole}
-                </Caption>
-                <Caption className="text-offwhite/70">
-                  {site.name} &middot; {site.city}, Nepal
-                </Caption>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </Section>
-
-      {/* ---------- 7. Lead form (+ service tabs + DM card) ---------- */}
+      {/* ---------- 6. Lead form (+ service tabs + DM card) ---------- */}
       {/* Wrapped in Suspense because useSearchParams() in a Client
           Component requires it for the static-build path. */}
       <Suspense fallback={null}>
@@ -359,7 +337,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         />
       </Suspense>
 
-      {/* ---------- 8. How we run it ---------- */}
+      {/* ---------- 7. How we run it ---------- */}
       {/* 4-step process. Was previously inline beneath the benefit cards
           inside the "What's included" panel; now its own section so it
           can sit AFTER the lead form (operational reassurance is more
@@ -383,7 +361,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </Section>
 
-      {/* ---------- 9. Service area ---------- */}
+      {/* ---------- 8. Service area ---------- */}
       {/* tone="plain" (was subtle) so it doesn't repeat the previous
           subtle band -- the page now reads
           subtle -> plain -> subtle -> plain across closing sections. */}
@@ -408,10 +386,10 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
         </div>
       </Section>
 
-      {/* ---------- 10. FAQ (with FAQPage JSON-LD) ---------- */}
+      {/* ---------- 9. FAQ (with FAQPage JSON-LD) ---------- */}
       <NepalFAQ />
 
-      {/* ---------- 11. Terms ---------- */}
+      {/* ---------- 10. Terms ---------- */}
       <Section padding="tight">
         <div className="max-w-reading">
           <Eyebrow className="mb-3">Terms</Eyebrow>

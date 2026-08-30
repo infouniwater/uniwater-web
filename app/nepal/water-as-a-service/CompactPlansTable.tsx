@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Caption, Eyebrow, Heading } from '@/components/ui/Typography';
-import { DWAAS_PLANS } from '@/content/nepal-waas';
+import { Caption, Body, Eyebrow, Heading } from '@/components/ui/Typography';
+import { DWAAS_PLANS, PRICING_METHODOLOGY_NOTE } from '@/content/nepal-waas';
 
 /**
  * Compact single-table plan grid that lives directly under the hero.
@@ -22,6 +22,16 @@ import { DWAAS_PLANS } from '@/content/nepal-waas';
  * same visual treatment, no parallel desktop-table / mobile-cards
  * split. The popular tier gets a tint background; everything else
  * stays offwhite.
+ *
+ * Pricing disclosure (2026-08-30): this table used to render
+ * ratePerLitre / minBill / deposit for all five plans -- a full public
+ * rate card, indexed by Google, inconsistent with the methodology-only
+ * standard set for /clean-water-as-a-service (mechanic and levers
+ * public, exact rate given at survey). It now shows
+ * PRICING_METHODOLOGY_NOTE instead of per-plan figures; the "Select"
+ * action became "Get my rate" to match. DWAAS_PLANS still carries the
+ * real numbers -- they drive the WhatsApp message a visitor gets after
+ * choosing a plan, which is the equivalent gate to a survey-quote.
  */
 export function CompactPlansTable() {
   return (
@@ -30,22 +40,16 @@ export function CompactPlansTable() {
         <div className="mb-6 max-w-2xl flex flex-col gap-3">
           <Eyebrow>Pick your plan</Eyebrow>
           <Heading level={2}>Five tiers. From NPR 1.5 per litre.</Heading>
-          <Caption className="text-mute">
-            More volume, lower rate. Refundable deposit, not capex. Tap a plan
-            and we&rsquo;ll pre-fill the callback form below.
-          </Caption>
+          <Body className="text-mute">{PRICING_METHODOLOGY_NOTE}</Body>
         </div>
 
         <div className="border border-hairline overflow-hidden">
           {/* Desktop / tablet column header */}
           <div className="hidden md:grid grid-cols-12 gap-3 px-5 py-3 bg-subtle border-b border-hairline text-eyebrow font-ui font-medium uppercase tracking-wide text-mute">
             <div className="col-span-1">Plan</div>
-            <div className="col-span-3">Best for</div>
-            <div className="col-span-2">Consumption</div>
-            <div className="col-span-1">NPR / L</div>
-            <div className="col-span-2">Min bill</div>
-            <div className="col-span-1">Deposit</div>
-            <div className="col-span-2"></div>
+            <div className="col-span-4">Best for</div>
+            <div className="col-span-3">Consumption</div>
+            <div className="col-span-4"></div>
           </div>
 
           {DWAAS_PLANS.map((plan) => {
@@ -56,7 +60,7 @@ export function CompactPlansTable() {
               ? 'bg-teal text-offwhite hover:bg-navy'
               : 'bg-navy text-offwhite hover:bg-teal';
             const planHref = `/nepal/water-as-a-service?plan=${plan.slug}#lead-form`;
-            const planAria = `Select Plan ${plan.slug} -- ${plan.monthlyLitres.toLocaleString('en-IN')} litres per month at NPR ${plan.ratePerLitre} per litre`;
+            const planAria = `Get your rate for Plan ${plan.slug} -- ${plan.monthlyLitres.toLocaleString('en-IN')} litres per month`;
 
             return (
               <div
@@ -84,25 +88,16 @@ export function CompactPlansTable() {
                       </span>
                     )}
                   </div>
-                  <div className="col-span-3 min-w-0">
+                  <div className="col-span-4 min-w-0">
                     <Caption className="text-mute leading-snug">{plan.tagline}</Caption>
                   </div>
-                  <div className="col-span-2 font-numeric text-body text-navy">
+                  <div className="col-span-3 font-numeric text-body text-navy">
                     {plan.monthlyLitres.toLocaleString('en-IN')} L
                     <span className="text-mute text-caption ml-1 font-sans">({plan.jarsPerDay})</span>
                   </div>
-                  <div className="col-span-1 font-numeric text-body text-navy">
-                    {plan.ratePerLitre}
-                  </div>
-                  <div className="col-span-2 font-numeric text-body text-ink">
-                    Rs {plan.minBill.toLocaleString('en-IN')}
-                  </div>
-                  <div className="col-span-1 font-numeric text-body text-ink">
-                    Rs {plan.deposit.toLocaleString('en-IN')}
-                  </div>
-                  <div className="col-span-2 text-right">
+                  <div className="col-span-4 text-right">
                     <span className={`inline-flex items-center gap-1.5 font-ui font-medium text-caption rounded-full px-4 py-2 transition-colors ${ctaCls}`}>
-                      Select
+                      Get my rate
                       <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -112,8 +107,7 @@ export function CompactPlansTable() {
 
                 {/* Mobile: card layout.
                     Header  : "A)  For 1,500 L consumption" + Popular pill
-                    Price   : "Price is NPR 2.25 per litre"
-                    CTA     : full-width Select Plan button (the primary
+                    CTA     : full-width "Get my rate" button (the primary
                               conversion action; always visible).
                     Details : native <details><summary> for "View more" --
                               server-rendered, no client state, summary is
@@ -134,9 +128,6 @@ export function CompactPlansTable() {
                         </span>
                       )}
                     </div>
-                    <div className="font-sans text-body text-navy">
-                      Price is <span className="font-numeric font-medium">NPR {plan.ratePerLitre}</span> per litre
-                    </div>
                   </div>
 
                   <Link
@@ -145,7 +136,7 @@ export function CompactPlansTable() {
                     aria-label={planAria}
                     className={`inline-flex items-center justify-center gap-2 font-ui font-medium text-[15px] rounded-full px-5 py-3 transition-colors ${ctaCls}`}
                   >
-                    Select Plan {plan.slug}
+                    Get my rate for Plan {plan.slug}
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                       <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -169,11 +160,11 @@ export function CompactPlansTable() {
                     <div className="mt-3 pt-3 border-t border-hairline flex flex-col gap-2 text-caption">
                       <div className="flex justify-between gap-3">
                         <span className="text-mute">Minimum billing</span>
-                        <span className="font-numeric text-navy font-medium">Rs {plan.minBill.toLocaleString('en-IN')}</span>
+                        <span className="text-navy font-medium">Confirmed at survey</span>
                       </div>
                       <div className="flex justify-between gap-3">
                         <span className="text-mute">Security deposit</span>
-                        <span className="font-numeric text-navy font-medium">Rs {plan.deposit.toLocaleString('en-IN')}</span>
+                        <span className="text-navy font-medium">Refundable, sized to your plan</span>
                       </div>
                       <div className="flex justify-between gap-3">
                         <span className="text-mute">Typical use</span>
@@ -181,8 +172,8 @@ export function CompactPlansTable() {
                       </div>
                       <p className="text-mute italic mt-1 leading-snug">{plan.tagline}</p>
                       <p className="text-mute mt-1 leading-snug">
-                        Refundable deposit on cancellation. Monthly bill =
-                        max(consumption &times; rate, minimum bill).
+                        Monthly bill = higher of (consumption &times; rate) or the
+                        minimum bill. Deposit refunded in full on cancellation.
                       </p>
                     </div>
                   </details>
