@@ -48,7 +48,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/industrial',
     '/clean-water-as-a-service',
     '/clean-water-as-a-service/residential-societies',
-    '/nepal/water-as-a-service',
+    // '/nepal/water-as-a-service' removed 2026-08-30 -- ad campaign
+    // paused, route now 307-redirects to /clean-water-as-a-service (see
+    // next.config.js). Re-add when the redirect is removed.
     '/how-it-works',
     '/why-uniwater',
     '/service',

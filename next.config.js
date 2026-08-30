@@ -176,6 +176,18 @@ const nextConfig = {
         destination: '/solutions/drinking-water-solution',
         permanent: true,
       },
+      {
+        // Nepal DWaaS ad campaign paused 2026-08-30 -- "remove this page
+        // for now" (the campaign, not the page's usefulness, is what
+        // ended). permanent: false (307) deliberately, NOT true: a 301
+        // here would tell Google and browsers to forget the URL for
+        // good, which is wrong if the campaign restarts. The route,
+        // components, and content/nepal-waas.ts are untouched --
+        // reactivate by deleting this block, nothing else.
+        source: '/nepal/water-as-a-service',
+        destination: '/clean-water-as-a-service',
+        permanent: false,
+      },
     ];
   },
 };
