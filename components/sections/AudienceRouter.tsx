@@ -12,9 +12,35 @@ import Link from 'next/link';
  * behind a navy gradient, soft eyebrow, light-weight heading) so the
  * decision moment shares the hero's editorial gravity rather than
  * reading as a plain card list.
+ *
+ * 2026-08-30 restructure — site-survey critical fix (Zone A / Finding 1).
+ * The old flat 4-card grid gave the CWaaS subscribe-vs-specify choice
+ * and the homeowner intents equal weight, and buried "subscribe" one
+ * click into /industrial. Restructured into two doors:
+ *   - "For your home" groups the two homeowner cards that used to float
+ *     as separate tiles (water-problem-checker, building-or-renovating).
+ *   - "For your building or business" now shows Subscribe and Own
+ *     directly as two buttons, instead of one card pointing at
+ *     /industrial — the actual choice is visible here, not a click
+ *     downstream. The "10 live sites, 2 countries" proof line (from the
+ *     site survey's TrustStripe recommendation) lives on the Subscribe
+ *     button itself rather than the sitewide trust stripe, since it's
+ *     only relevant to a visitor already considering that path.
+ *   - The trade/install audience isn't a customer decision, so it drops
+ *     from a competing fourth tile to a strip beneath the two doors.
+ *
+ * CWAAS_BRAND_NAME is a placeholder. Trademark clearance on "Uniwater
+ * Prabhav" is still open (site-survey to-do, "Prabhav brand launch").
+ * Swap the constant once cleared — nothing else here should need to
+ * change.
  */
 
-const AUDIENCES = [
+// TODO(prabhav-clearance): swap to 'Prabhav by Uniwater' once trademark
+// clearance on "Uniwater Prabhav" is confirmed. Do not hardcode the name
+// elsewhere in this file — read it from here.
+const CWAAS_BRAND_NAME = 'Clean Water as a Service';
+
+const HOME_AUDIENCES = [
   {
     label: 'Something is wrong with my water.',
     body:
@@ -34,27 +60,34 @@ const AUDIENCES = [
     cta: 'Plan the system',
     href: '/building-or-renovating',
   },
-  {
-    // Re-pointed back to /industrial 2026-06-04 (later same day) per
-    // Rajat. /industrial is the gateway -- the visitor lands there,
-    // sees CWaaS as the primary hero CTA (and as the hero-solution
-    // section right after), and the smart funnel takes them through.
-    // The homepage AudienceRouter doesn't pre-commit them to the
-    // subscription frame; /industrial does the framing.
-    label: 'I run a building, hotel, or factory.',
-    body:
-      'Engineered water at scale. Subscribe to water on a service contract, or specify and buy a plant. We do both.',
-    cta: 'For institutions & industry',
-    href: '/industrial',
-  },
-  {
-    label: 'I specify or install water systems.',
-    body:
-      'Three lanes — dealer, designer, installer. Trade pricing, install support, lead routing.',
-    cta: 'See the trade programme',
-    href: '/for-trade',
-  },
 ];
+
+const TRADE_AUDIENCE = {
+  label: 'I specify or install water systems — dealer, architect, plumber.',
+  cta: 'See the trade programme',
+  href: '/for-trade',
+};
+
+function ArrowIcon({ stroke = 'currentColor' }: { stroke?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      className="transition-transform duration-200 ease-calm group-hover:translate-x-1 self-center shrink-0"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 8H13M13 8L9 4M13 8L9 12"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function AudienceRouter() {
   return (
@@ -112,34 +145,88 @@ export function AudienceRouter() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-          {AUDIENCES.map((audience) => (
-            <Link
-              key={audience.label}
-              href={audience.href}
-              className="group flex flex-col gap-4 p-6 md:p-7 bg-navy/30 border border-offwhite/15 backdrop-blur-[2px] transition-all duration-200 ease-calm hover:bg-navy/60 hover:border-offwhite/35"
-            >
-              <h3 className="font-sans text-body sm:text-[18px] font-normal text-offwhite leading-snug [text-wrap:balance]">
-                {audience.label}
-              </h3>
-              <p className="text-caption text-offwhite/70 leading-snug flex-grow">
-                {audience.body}
+        <div className="flex flex-col gap-5 md:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-4 md:gap-5 items-stretch">
+            {/* For your home */}
+            <div className="flex flex-col gap-4 p-6 md:p-7 bg-offwhite/5 border border-offwhite/15">
+              <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
+                For your home
               </p>
-              <div className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium mt-2 pt-4 border-t border-offwhite/15">
-                <span>{audience.cta}</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className="transition-transform duration-200 ease-calm group-hover:translate-x-1 self-center"
-                  aria-hidden="true"
-                >
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              <div className="flex flex-col gap-3 flex-grow">
+                {HOME_AUDIENCES.map((audience) => (
+                  <Link
+                    key={audience.label}
+                    href={audience.href}
+                    className="group flex flex-col gap-3 p-5 bg-navy/30 border border-offwhite/15 backdrop-blur-[2px] transition-all duration-200 ease-calm hover:bg-navy/60 hover:border-offwhite/35"
+                  >
+                    <h3 className="font-sans text-body sm:text-[16px] font-normal text-offwhite leading-snug [text-wrap:balance]">
+                      {audience.label}
+                    </h3>
+                    <p className="text-caption text-offwhite/70 leading-snug">
+                      {audience.body}
+                    </p>
+                    <div className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium pt-3 border-t border-offwhite/15">
+                      <span>{audience.cta}</span>
+                      <ArrowIcon />
+                    </div>
+                  </Link>
+                ))}
               </div>
-            </Link>
-          ))}
+            </div>
+
+            {/* For your building or business */}
+            <div className="flex flex-col gap-4 p-6 md:p-7 bg-offwhite/5 border border-offwhite/15">
+              <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
+                For your building or business
+              </p>
+              <p className="text-caption text-offwhite/70 leading-snug -mt-1">
+                Engineered water at scale, for societies, hotels, hospitals, and factories.
+              </p>
+              <div className="flex flex-col gap-3 mt-auto pt-2">
+                <Link
+                  href="/clean-water-as-a-service"
+                  className="group flex items-center justify-between gap-4 p-5 bg-teal transition-transform duration-200 ease-calm hover:translate-x-0.5"
+                >
+                  <span className="flex flex-col gap-1">
+                    <span className="font-ui font-semibold text-body text-navy">
+                      Subscribe — {CWAAS_BRAND_NAME}
+                    </span>
+                    <span className="text-caption text-navy/75">
+                      Zero capex, guaranteed to grade · 10 live sites, 2 countries
+                    </span>
+                  </span>
+                  <ArrowIcon stroke="#05455F" />
+                </Link>
+                <Link
+                  href="/industrial"
+                  className="group flex items-center justify-between gap-4 p-5 border border-offwhite/35 transition-transform duration-200 ease-calm hover:translate-x-0.5"
+                >
+                  <span className="flex flex-col gap-1">
+                    <span className="font-ui font-semibold text-body text-offwhite">
+                      Own it — specify &amp; buy
+                    </span>
+                    <span className="text-caption text-offwhite/75">
+                      Buy the plant, take an AMC
+                    </span>
+                  </span>
+                  <ArrowIcon />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Trade / partner strip — not a customer decision, so it
+              doesn't compete with the two doors above as an equal tile. */}
+          <Link
+            href={TRADE_AUDIENCE.href}
+            className="group flex items-center justify-between gap-4 flex-wrap p-5 bg-offwhite/[0.03] border border-offwhite/10 transition-colors duration-200 ease-calm hover:bg-offwhite/[0.06]"
+          >
+            <span className="text-caption text-offwhite/75">{TRADE_AUDIENCE.label}</span>
+            <span className="flex items-baseline gap-2 text-soft text-caption font-ui font-medium">
+              {TRADE_AUDIENCE.cta}
+              <ArrowIcon />
+            </span>
+          </Link>
         </div>
       </div>
     </section>
