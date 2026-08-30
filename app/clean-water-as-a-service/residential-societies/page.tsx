@@ -9,13 +9,14 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { serviceSchema, breadcrumbSchema } from '@/lib/structured-data';
 import { buildMetadata } from '@/lib/seo';
 import { PRIMARY_PHONE, PRIMARY_PHONE_HREF } from '@/content/site';
+import { CASE_STUDIES } from '@/content/case-studies';
 import {
   AUDIENCE_TRACKS,
   PILLARS,
   SERVICE_LINES,
   PROCESS_STEPS,
   HOMES_ON_SOFT_WATER,
-  SOFT_WATER_LAKH_LITRES_PER_DAY,
+  HOMES_ON_IRON_FREE_WATER,
   getProofForTrack,
   type WaterLineSlug,
 } from '@/content/cwaas';
@@ -49,7 +50,7 @@ const RELEVANT_LINES = SERVICE_LINES.filter((line) =>
 
 const TITLE = 'Water Treatment Subscription for Housing Societies | Uniwater';
 const DESCRIPTION =
-  'Clean Water as a Service for residential societies and gated communities. Uniwater designs, funds, owns, and runs the plant — soft, iron-free, and drinking water held to spec, on one monthly bill. Zero capex for the committee. Live at 2 Kolkata societies, 400 flats.';
+  'Clean Water as a Service for residential societies and gated communities. Uniwater designs, funds, owns, and runs the plant — soft, iron-free, and drinking water held to spec, on one monthly bill. Zero capex for the committee. Live at 2 Kolkata societies, 404 flats.';
 
 export const metadata: Metadata = buildMetadata({
   path: '/clean-water-as-a-service/residential-societies',
@@ -167,33 +168,56 @@ export default function ResidentialSocietiesPage() {
         </div>
       </Section>
 
-      {/* Proof -- the two named societies, and the derived stats. */}
+      {/* Proof -- the two named societies, and the derived stats. Site cards
+          below carry each site's own real water line and volume/capacity;
+          this heading states the combined flat count only -- it doesn't
+          blend the two different water lines into one figure, since BSM
+          runs soft and Starwood runs iron-free, at different capacities. */}
       <Section padding="default" tone="subtle">
         <div className="mb-10 max-w-3xl flex flex-col gap-4">
           <Eyebrow>Already running</Eyebrow>
           <Heading level={2}>
-            {HOMES_ON_SOFT_WATER} flats, two Kolkata societies, {SOFT_WATER_LAKH_LITRES_PER_DAY} lakh L a day.
+            {HOMES_ON_SOFT_WATER + HOMES_ON_IRON_FREE_WATER} flats, two Kolkata societies, on contract today.
           </Heading>
           <Body className="text-mute mt-2">
-            Both sites run on managed soft water today — real deployments under
-            contract, not projections.
+            {HOMES_ON_SOFT_WATER} flats on managed soft water, {HOMES_ON_IRON_FREE_WATER} on managed
+            iron-free water — real deployments under contract, not projections.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {PROOF_SITES.map((site) => (
-            <Card key={site.slug}>
-              <div className="flex flex-col gap-3">
-                <Caption className="text-mute uppercase tracking-wide">
-                  {site.city}, {site.country}
-                </Caption>
-                <h3 className="font-sans text-h3 font-normal text-navy leading-snug [text-wrap:balance]">
-                  {site.name}
-                </h3>
-                <Body className="text-mute">{site.context}</Body>
-                {site.volume && <Caption className="text-navy font-medium mt-1">{site.volume}</Caption>}
-              </div>
-            </Card>
-          ))}
+          {PROOF_SITES.map((site) => {
+            // Slugs are shared between LIVE_SITES and CASE_STUDIES by
+            // design (see content/case-studies.ts) -- when a full case
+            // study exists for this site, link to it instead of just
+            // stating the facts inline. Closes the "two proof ledgers"
+            // gap from the site survey for whichever sites have one.
+            const caseStudy = CASE_STUDIES.find((cs) => cs.slug === site.slug && cs.fullDetail);
+            return (
+              <Card key={site.slug}>
+                <div className="flex flex-col gap-3">
+                  <Caption className="text-mute uppercase tracking-wide">
+                    {site.city}, {site.country}
+                  </Caption>
+                  <h3 className="font-sans text-h3 font-normal text-navy leading-snug [text-wrap:balance]">
+                    {site.name}
+                  </h3>
+                  <Body className="text-mute">{site.context}</Body>
+                  {site.volume && <Caption className="text-navy font-medium mt-1">{site.volume}</Caption>}
+                  {caseStudy && (
+                    <Link
+                      href={`/case-studies/${caseStudy.slug}`}
+                      className="inline-flex items-center gap-2 text-teal text-caption font-medium hover:text-navy transition-colors duration-200 ease-calm mt-2 pt-3 border-t border-hairline"
+                    >
+                      Read the full case study
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  )}
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </Section>
 

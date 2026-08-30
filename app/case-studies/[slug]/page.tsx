@@ -77,6 +77,14 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
               <span className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">{cs.sector}</span>
               <span className="text-offwhite/40">&middot;</span>
               <span className="text-caption text-offwhite/70">{cs.city}</span>
+              {cs.model === 'subscription' && (
+                <>
+                  <span className="text-offwhite/40">&middot;</span>
+                  <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-navy bg-soft rounded-full px-2.5 py-0.5">
+                    Subscription
+                  </span>
+                </>
+              )}
             </div>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.1] max-w-[22ch] [text-wrap:balance]">
               {cs.client}
@@ -146,13 +154,19 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
         </div>
       </Section>
 
-      {/* Quote */}
-      <Section padding="default">
-        <div className="max-w-reading mx-auto text-center">
-          <EditorialAccent className="mx-auto">&ldquo;{content.quote}&rdquo;</EditorialAccent>
-          <Caption className="text-mute mt-6">&mdash; {content.attribution}</Caption>
-        </div>
-      </Section>
+      {/* Quote -- optional. Not every case study has a real, attributable
+          quote yet; the section is skipped rather than filled with
+          invented words. */}
+      {content.quote && (
+        <Section padding="default">
+          <div className="max-w-reading mx-auto text-center">
+            <EditorialAccent className="mx-auto">&ldquo;{content.quote}&rdquo;</EditorialAccent>
+            {content.attribution && (
+              <Caption className="text-mute mt-6">&mdash; {content.attribution}</Caption>
+            )}
+          </div>
+        </Section>
+      )}
 
       {/* Photo gallery placeholder */}
       <Section padding="default" tone="subtle">
@@ -196,10 +210,15 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
                   href={`/case-studies/${rel.slug}`}
                   className="group block bg-offwhite border border-hairline p-6 md:p-8 transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)]"
                 >
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <span className="text-eyebrow font-medium uppercase text-teal">{rel.sector}</span>
                     <span className="text-mute">&middot;</span>
                     <span className="text-caption text-mute">{rel.city}</span>
+                    {rel.model === 'subscription' && (
+                      <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-navy bg-tint/60 border border-teal/30 rounded-full px-2.5 py-0.5">
+                        Subscription
+                      </span>
+                    )}
                   </div>
                   <h3 className="font-sans text-h3 font-semibold text-navy mb-3">{rel.client}</h3>
                   <Body className="text-mute text-caption">{rel.outcome}</Body>

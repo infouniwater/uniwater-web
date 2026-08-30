@@ -51,7 +51,7 @@ export default function CaseStudiesIndex() {
               Where Uniwater systems run today.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Six case studies published so far &mdash; two healthcare campuses, three manufacturing plants, and a premium residential development. More installations across hospitality and education are being written up.
+              Seven case studies published so far &mdash; two healthcare campuses, three manufacturing plants, a premium residential development bought outright, and the first on Clean Water as a Service subscription. More are being written up as real detail comes in.
             </p>
           </div>
         </div>
@@ -71,10 +71,15 @@ export default function CaseStudiesIndex() {
                 aspect="sixteen-ten"
               />
               <div className="p-8 flex flex-col gap-3">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-eyebrow font-medium uppercase text-teal">{cs.sector}</span>
                   <span className="text-mute">&middot;</span>
                   <span className="text-caption text-mute">{cs.city}</span>
+                  {cs.model === 'subscription' && (
+                    <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-navy bg-tint/60 border border-teal/30 rounded-full px-2.5 py-0.5">
+                      Subscription
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-sans text-h2-m font-light text-navy">{cs.client}</h3>
                 <Body className="text-mute">{cs.outcome}</Body>

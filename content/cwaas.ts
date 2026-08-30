@@ -173,9 +173,15 @@ export const LIVE_SITES: LiveSite[] = [
     name: 'Starwood, Chinar Park',
     city: 'Kolkata',
     country: 'India',
-    context: 'Residential society, 280 flats',
-    lines: ['soft'],
-    volume: '2.5 lakh L/day',
+    // Corrected 2026-08-31 per Rajat: this site runs Iron-Free, not Soft
+    // -- was mis-tagged since the site was first added. Flat count also
+    // corrected 280 -> 284. Volume stated as plant capacity (two 30,000
+    // LPH trains, run in parallel for N+1 redundancy) since no daily
+    // consumption figure was given -- do not invent a "lakh L/day" number
+    // for this site.
+    context: 'Residential society, 284 flats',
+    lines: ['iron-free'],
+    volume: '30,000 LPH per train, two trains (N+1 redundant)',
   },
   {
     slug: 'acme-moulders',
@@ -246,10 +252,12 @@ export const LIVE_SITES: LiveSite[] = [
   },
 ];
 
-// TODO: add an Iron-Free reference site once a CWaaS deployment goes live.
+// Iron-Free now HAS a live reference (Starwood, corrected 2026-08-31 --
+// see the entry above). RO Process is still the one line with no live
+// CWaaS reference.
 // TODO: add an RO Process reference site once a CWaaS deployment goes live.
-// These two lines have NO live CWaaS references yet -- the page surfaces a
-// "first deployments under contract" caption rather than fabricating clients.
+// This line has NO live CWaaS reference yet -- the page surfaces a "first
+// deployments under contract" caption rather than fabricating a client.
 
 // ----- Audience tracks ----------------------------------------------------
 
@@ -318,8 +326,8 @@ export const AUDIENCE_TRACKS: AudienceTrack[] = [
     eyebrow: 'Residential societies',
     headline: 'Housing societies, apartment complexes, gated communities.',
     body:
-      'Whole-society soft water that protects every appliance in every flat. Centralised drinking water on tap. The committee stops firefighting plant problems.',
-    lines: ['soft', 'iron-free', 'drinking'],
+      'Whole-society iron-free and soft water that protects every appliance in every flat, even on borewells running heavy iron and silt. Centralised drinking water on tap. The committee stops firefighting plant problems.',
+    lines: ['iron-free', 'soft', 'drinking'],
     proofSites: ['bsm-tulsidham', 'starwood-chinar-park'],
     ctaLabel: 'Talk to us about society water',
     ctaHref: '/book-survey?context=cwaas-society',
@@ -346,13 +354,20 @@ export const LIVE_SITES_COUNT = LIVE_SITES.length;
 /** Countries represented across all sites. */
 export const LIVE_COUNTRIES_COUNT = new Set(LIVE_SITES.map((s) => s.country)).size;
 
-/** Combined flat count from the two managed-soft-water residential societies.
- *  Derived; not user-typed. */
-export const HOMES_ON_SOFT_WATER =
-  120 /* BSM Enclave Tulsidham */ + 280 /* Starwood Chinar Park */;
+/** Flat count on managed soft water. Corrected 2026-08-31: previously
+ *  included Starwood Chinar Park, which actually runs Iron-Free, not
+ *  Soft (see LIVE_SITES) -- BSM Enclave Tulsidham is the only soft-water
+ *  residential society today. */
+export const HOMES_ON_SOFT_WATER = 120 /* BSM Enclave Tulsidham */;
 
-/** Total daily soft-water delivery from the two managed residential societies. */
-export const SOFT_WATER_LAKH_LITRES_PER_DAY = 1 + 2.5;
+/** Total daily soft-water delivery from managed residential societies.
+ *  Corrected 2026-08-31 alongside HOMES_ON_SOFT_WATER above. */
+export const SOFT_WATER_LAKH_LITRES_PER_DAY = 1;
+
+/** Flat count on managed iron-free water. Added 2026-08-31 alongside the
+ *  Starwood correction -- real figure, not a daily-volume estimate (no
+ *  "lakh L/day" figure was given for this site; see LIVE_SITES). */
+export const HOMES_ON_IRON_FREE_WATER = 284 /* Starwood, Chinar Park */;
 
 /** Drinking-water served at the largest single site (Techno India college). */
 export const STUDENTS_ON_DRINKING_WATER = 2000;

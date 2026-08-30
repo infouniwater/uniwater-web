@@ -12,13 +12,25 @@
 
 export type CaseStudySector = 'Healthcare' | 'Hospitality' | 'Education' | 'Manufacturing' | 'Residential';
 
+/** Commercial model behind the deployment. Added 2026-08-31 alongside the
+ *  first Clean Water as a Service (Prabhav) case studies -- lets the list
+ *  page and detail page distinguish a subscription client from a
+ *  buy-and-AMC one instead of presenting them identically. Existing 6
+ *  entries left unset (all capex-amc); only new subscription entries set
+ *  this explicitly. */
+export type CaseStudyModel = 'subscription' | 'capex-amc';
+
 export interface CaseStudyBody {
   brief: string;
   challenge: string;
   solution: string;
   outcomes: Array<{ value: string; label: string }>;
-  quote: string;
-  attribution: string;
+  /** Optional 2026-08-31: a case study is real and publishable on the
+   *  strength of brief/challenge/solution/outcomes alone. Do not fill
+   *  these in with an invented quote to satisfy a UI slot -- leave both
+   *  undefined until a real, attributable quote exists. */
+  quote?: string;
+  attribution?: string;
 }
 
 export interface CaseStudyTestimonial {
@@ -38,6 +50,7 @@ export interface CaseStudy {
   outcome: string;
   brief: string;
   fullDetail?: boolean;  // whether the detail page is rendered with full content
+  model?: CaseStudyModel;
   body?: CaseStudyBody;
   testimonial?: CaseStudyTestimonial;
 }
@@ -227,6 +240,36 @@ export const CASE_STUDIES: CaseStudy[] = [
       quote:
         'One vendor across three plants means I can finally compare what good operations look like across sites. The dashboard is the same; the engineer is the same; the report is the same.',
       attribution: 'Group procurement lead, GM Group',
+    },
+  },
+  {
+    // Slug matches content/cwaas.ts LIVE_SITES['starwood-chinar-park'] --
+    // same site, one source of truth for the underlying facts (flats,
+    // line, capacity). Added 2026-08-31 from Rajat's account directly;
+    // no quote yet -- see CaseStudyBody.quote comment.
+    slug: 'starwood-chinar-park',
+    client: 'Starwood, Chinar Park',
+    sector: 'Residential',
+    city: 'Kolkata',
+    outcome: 'Whole-society iron-free water on subscription — two redundant filtration trains, 2.5 years running.',
+    brief: 'A 284-flat residential complex in Chinar Park, Kolkata, running on three borewells too iron-heavy to treat cost-effectively with the infrastructure the complex had. Uniwater has run a subscription iron-removal plant on site for two and a half years.',
+    fullDetail: true,
+    model: 'subscription',
+    body: {
+      brief:
+        'Starwood, a 284-flat residential complex in Chinar Park, Kolkata, draws its water from three borewells running high iron and heavy silt. The complex’s existing infrastructure wasn’t built to treat water like this cost-effectively. Uniwater has run a subscription iron-removal plant on site for two and a half years.',
+      challenge:
+        'All three borewells ran iron above 2 ppm, with mud and silt coming through at the tap — well past what makes a building livable. Treating water this difficult with the complex’s existing infrastructure wasn’t cost-effective, and the committee had no in-house way to size or run a plant built for genuinely hard raw water.',
+      solution:
+        'Uniwater installed a 30,000 LPH automatic iron-filtration system, run as two parallel trains rather than one — so a single train can be pulled for maintenance without the complex ever going without treated water. Zero capex to the committee; Uniwater owns, runs, and maintains the plant under the subscription.',
+      outcomes: [
+        { value: '284', label: 'Flats on iron-free water' },
+        { value: '> 99%', label: 'Uptime, on two redundant trains' },
+        { value: '2.5 yrs', label: 'Continuous service, same site' },
+        { value: '< 0.3 ppm', label: 'Iron held to the Uniwater spec' },
+      ],
+      // No quote yet -- ask Rajat whether someone at Starwood (committee
+      // member, facility staff) is willing to be quoted before adding one.
     },
   },
 ];

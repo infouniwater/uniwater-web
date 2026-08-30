@@ -80,8 +80,8 @@ export const metadata: Metadata = {
 // Derived from published case studies — keeps testimonials and case-study
 // quotes from drifting. As the post-install collection flow lands, additional
 // testimonials will surface here alongside these.
-const CASE_STUDY_QUOTES = CASE_STUDIES.filter((cs) => cs.body && cs.testimonial).map((cs) => ({
-  quote: cs.body!.quote,
+const CASE_STUDY_QUOTES = CASE_STUDIES.filter((cs) => cs.body?.quote && cs.testimonial).map((cs) => ({
+  quote: cs.body!.quote!,
   name: cs.testimonial!.name,
   org: cs.testimonial!.org,
   city: cs.testimonial!.city,
