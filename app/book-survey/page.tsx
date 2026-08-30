@@ -36,12 +36,27 @@ function getPrefilledProblemLabel(raw: string | string[] | undefined): string | 
   return PROBLEM_LABEL[token as ProblemToken] ?? null;
 }
 
+// Reads the raw ?context= value straight through as the Odoo "Audience"
+// field. Site-survey critical fix (Zone I / Finding 2): every CWaaS CTA
+// already appends ?context=cwaas / cwaas-commercial / cwaas-industrial /
+// cwaas-society (see content/cwaas.ts AUDIENCE_TRACKS.ctaHref and
+// AudienceRouter.tsx) but this page silently dropped it — the lead landed
+// in Odoo with no way to tell a CWaaS-sourced enquiry from a homeowner one.
+// submitBookSurvey already reads formData.get('audience') and writes it
+// into both the Audience field and the lead description, so the only gap
+// was getting the query param into a form field it submits.
+function getAudienceContext(raw: string | string[] | undefined): string | undefined {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  return value && value.trim().length > 0 ? value.trim() : undefined;
+}
+
 export default function BookSurveyPage({
   searchParams,
 }: {
-  searchParams?: { problem?: string | string[] };
+  searchParams?: { problem?: string | string[]; context?: string | string[] };
 }) {
   const prefilled = getPrefilledProblemLabel(searchParams?.problem);
+  const audienceContext = getAudienceContext(searchParams?.context);
 
   return (
     <>
@@ -91,6 +106,7 @@ export default function BookSurveyPage({
           <div className="lg:col-span-7">
             <form action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <RecaptchaField action="book_survey" />
+              {audienceContext && <input type="hidden" name="audience" value={audienceContext} />}
               <div className="md:col-span-2">
                 <h2 className="font-sans text-h2-m font-light text-navy mb-2">Survey request</h2>
                 <Caption className="text-mute">Fields marked * are required.</Caption>

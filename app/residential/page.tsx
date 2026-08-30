@@ -284,7 +284,7 @@ export default function ResidentialPage() {
           </div>
           <div className="lg:col-span-7">
             <Link
-              href="/clean-water-as-a-service#for-residential-societies"
+              href="/clean-water-as-a-service/residential-societies"
               className="group block border border-teal/30 bg-offwhite p-6 md:p-8 transition-all duration-200 ease-calm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(5,69,95,0.06)]"
             >
               <div className="flex flex-col gap-4">

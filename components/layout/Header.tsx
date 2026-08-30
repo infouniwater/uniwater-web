@@ -314,7 +314,7 @@ export function Header() {
                   </svg>
                 </Link>
                 <Link
-                  href="/clean-water-as-a-service#for-residential-societies"
+                  href="/clean-water-as-a-service/residential-societies"
                   className="inline-flex items-center gap-2 text-mute hover:text-teal text-caption transition-colors duration-200 ease-calm"
                 >
                   On a society committee? See CWaaS for societies
