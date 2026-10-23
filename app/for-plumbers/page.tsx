@@ -12,14 +12,14 @@ export const metadata: Metadata = buildMetadata({
   path: '/for-plumbers',
   title: 'For plumbers & installers',
   description:
-    'Join the Uniwater plumber program. Earn for every install. Spec packs, install-day support, AMC handoff — you do the plumbing, we do the rest.',
+    'Join the Uniwater plumber program and earn on every install you bring us. You get spec packs and install-day support. You do the plumbing and we do the rest.',
   image: '/og/og-for-plumbers.jpg',
 });
 
 const BENEFITS = [
   {
     title: 'Earn on every install.',
-    body: '20 points per qualified referral. 200 points per ₹50,000 of sales. Cash, vouchers, or product credit — your call.',
+    body: '20 points per qualified referral. 200 points per ₹50,000 of sales. Cash, vouchers or product credit, whichever you prefer.',
   },
   {
     title: 'Spec packs that survive procurement.',
@@ -27,14 +27,14 @@ const BENEFITS = [
   },
   {
     title: 'We handle AMC.',
-    body: 'Our engineer takes monthly service after handover. You earn the referral; the customer gets the discipline. No AMC schedule to run.',
+    body: 'Our engineer takes monthly service after handover. You earn the referral and the customer gets proper monthly service. No AMC schedule to run.',
   },
 ];
 
 const STEPS = [
   { n: '01', title: 'Register.', body: 'Name, mobile, business, city, service area. Two minutes.' },
   { n: '02', title: 'Refer.', body: 'Bring a homeowner with symptoms, a builder asking about whole-house, or a project at plumbing phase.' },
-  { n: '03', title: 'Install.', body: 'Our engineer surveys and quotes. You handle plumbing or refer to our team — your call.' },
+  { n: '03', title: 'Install.', body: 'Our engineer surveys and quotes. You handle the plumbing or leave it to our team. Your choice.' },
   { n: '04', title: 'Earn.', body: 'Points credit at handover. Redemption monthly. Statement by email; partner portal in development.' },
 ];
 
@@ -45,7 +45,7 @@ const FAQS = [
   },
   {
     q: 'When do I get paid?',
-    a: 'Points credit at handover. Redemption processes monthly — first week of the following month, into the account or vouchers you select.',
+    a: 'Points credit at handover. Redemption runs monthly, in the first week of the following month, into the account or vouchers you choose.',
   },
   {
     q: 'Do I have to do the install plumbing myself?',
@@ -53,7 +53,7 @@ const FAQS = [
   },
   {
     q: 'Can I see my points balance?',
-    a: 'WhatsApp statement from your partner manager on the first working day of each month — balance, referrals, redemption history.',
+    a: 'WhatsApp statement from your partner manager on the first working day of each month, with your balance, referrals and redemption history.',
   },
   {
     q: 'What if my referral chooses a competitor?',
@@ -80,7 +80,7 @@ export default function ForPlumbersPage() {
               Earn for every install you bring us.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              A referral program built for the plumbers who already know the home. You bring the lead. We do the survey, the design, the install, and the monthly service. You earn &mdash; on day one and across the AMC relationship.
+              A referral program built for the plumbers who already know the home. You bring the lead. We do the survey, the design, the install, and the monthly service. You earn on day one, and again across the AMC.
             </p>
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
@@ -165,12 +165,12 @@ export default function ForPlumbersPage() {
         <Caption className="mt-8 text-mute italic">
           Registration runs via{' '}
           <a href="/contact?audience=plumber" className="text-teal underline underline-offset-4">the contact form</a>{' '}
-          — we follow up by WhatsApp with your partner ID and your assigned partner manager.
+          and we follow up on WhatsApp with your partner ID and your assigned partner manager.
         </Caption>
       </Section>
 
       <FinalCTA
-        headline="Ready to start earning?"
+        headline="Register as a partner."
         sub="Send us your name, mobile, business name, and service area. Your partner manager calls within one business day."
         primaryCTA={{ label: 'Join the program', href: '/contact?audience=plumber' }}
       />
