@@ -23,7 +23,7 @@ const CATEGORIES = [
     items: [
       {
         q: 'Are you a water-purifier brand?',
-        a: 'No. We&rsquo;re an engineered home water company \u2014 surveys, installs, and monthly service of water systems sized to your specific home and water. We don\u2019t sell off-the-shelf kitchen RO.',
+        a: 'No. We survey your home, size a water system to your water, install it and service it every month. We don\u2019t sell off-the-shelf kitchen RO.',
       },
       {
         q: 'Where do you operate?',

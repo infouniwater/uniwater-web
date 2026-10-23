@@ -181,7 +181,7 @@ export default function ServicePage() {
           <Eyebrow inverse>AMC tiers</Eyebrow>
           <Heading level={2} inverse>Three tiers. Honest scope.</Heading>
           <Body inverse className="text-offwhite/80 mt-2">
-            We don&rsquo;t promise monthly service to every customer at every price point. The cadence is tiered \u2014 explicitly \u2014 so you choose what fits your home and your water.
+            We don&rsquo;t promise monthly service to every customer at every price point. How often we visit depends on the tier, and we say so upfront, so you choose what fits your home and your water.
           </Body>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
