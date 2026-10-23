@@ -33,7 +33,7 @@ export interface Technology {
 /** Tier display metadata. Text + icon carry the meaning so tiers read without colour. */
 export const TIER_META: Record<Tier, { label: string; icon: 'check' | 'eye' | 'cross'; note: string }> = {
   passed: { label: 'Endorsed', icon: 'check', note: 'The evidence supports it.' },
-  grey: { label: 'Worth watching', icon: 'eye', note: 'Conditional — real in part, oversold in part.' },
+  grey: { label: 'Worth watching', icon: 'eye', note: 'Conditional: real in part, oversold in part.' },
   failed: { label: 'Avoid', icon: 'cross', note: 'The claims do not hold up.' },
 };
 
@@ -54,7 +54,7 @@ export const TECHNOLOGIES: Technology[] = [
     tier: 'passed',
     relevanceRank: 1,
     whatItDoes: 'Pushes water through a semi-permeable membrane, leaving dissolved salts, heavy metals, and microbes behind.',
-    verdict: 'The global standard for drinking water where TDS is high. We size it to your measured TDS rather than overselling it — over-purified water on low-TDS supply is its own problem, which is why we survey first.',
+    verdict: 'The global standard for drinking water where TDS is high. We size it to your measured TDS rather than overselling it. Over-purified water on a low-TDS supply is its own problem, which is why we survey first.',
     evidenceStrength: 'strong',
     indicativeStudyVolume: 'Thousands of peer-reviewed papers; extensive clinical and field validation.',
     verifyBeforePublish: true,
@@ -66,7 +66,7 @@ export const TECHNOLOGIES: Technology[] = [
     tier: 'passed',
     relevanceRank: 2,
     whatItDoes: 'Swaps calcium and magnesium ions for sodium across a resin bed, removing the hardness that scales geysers and stiffens skin, hair, and laundry.',
-    verdict: 'The correct, proven answer to hard water. The variable is engineering, not principle — resin grade, vessel sizing, and regeneration design decide whether it lasts. This runs inside HomeSoft and BathSoft.',
+    verdict: 'The correct, proven answer to hard water. Whether it lasts comes down to engineering: resin grade, vessel sizing and regeneration design. This runs inside HomeSoft and BathSoft.',
     evidenceStrength: 'strong',
     indicativeStudyVolume: 'Hundreds of papers; decades of industrial and domestic use.',
     verifyBeforePublish: true,
@@ -138,7 +138,7 @@ export const TECHNOLOGIES: Technology[] = [
     tier: 'passed',
     relevanceRank: 8,
     whatItDoes: 'A membrane between UF and RO that removes hardness and larger organics while passing some monovalent salts.',
-    verdict: "A real, useful technology for specific chemistries. Note: this is genuine nanofiltration — not 'nano water', which is an unrelated marketing term with no defined meaning.",
+    verdict: "A real, useful technology for specific chemistries. Note: this is genuine nanofiltration. It has nothing to do with 'nano water', which is a marketing term with no defined meaning.",
     evidenceStrength: 'moderate',
     indicativeStudyVolume: 'Solid membrane-engineering evidence.',
     verifyBeforePublish: true,
@@ -205,7 +205,7 @@ export const TECHNOLOGIES: Technology[] = [
     tier: 'failed',
     relevanceRank: 14,
     whatItDoes: 'Showerhead cartridges claiming to soften water on the spot.',
-    verdict: 'Too little media, too high a flow rate. They cannot exchange enough hardness ions in the seconds water passes through. For soft water at the shower you treat upstream, at the feed — which is what BathSoft does.',
+    verdict: 'Too little media, too high a flow rate. They cannot exchange enough hardness ions in the seconds water passes through. For soft water at the shower you treat upstream, at the feed, which is what BathSoft does.',
     evidenceStrength: 'none',
     indicativeStudyVolume: 'No evidence of meaningful softening at shower flow.',
     verifyBeforePublish: true,

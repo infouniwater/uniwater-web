@@ -9,9 +9,9 @@ import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
   path: '/science-meter',
-  title: 'Science Meter — which water technologies actually work',
+  title: 'Science Meter: which water technologies actually work',
   description:
-    'Uniwater rates the water technologies people ask about — RO, softening, iron removal, magnetic descalers, alkaline and structured water — by what the evidence supports. Honest, engineering-led verdicts.',
+    'Uniwater rates the water technologies people ask about (RO, softening, iron removal, magnetic descalers, alkaline and structured water) by what the evidence supports, and says plainly which ones are not worth the money.',
   image: '/og/og-home.png',
 });
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Uniwater Science Meter — water technology verdicts',
+  name: 'Uniwater Science Meter: water technology verdicts',
   itemListElement: TECHNOLOGIES.map((t, i) => ({
     '@type': 'ListItem',
     position: i + 1,
@@ -31,11 +31,11 @@ const itemListSchema = {
 const LENSES = [
   {
     title: 'Validated research',
-    body: 'Does independent, peer-reviewed work support the claim — or only a brochure?',
+    body: 'Does independent, peer-reviewed work support the claim, or only a brochure?',
   },
   {
     title: 'Real-world benefit',
-    body: 'Does it solve a problem your supply actually has — hardness, iron, microbes — not a hypothetical one?',
+    body: 'Does it solve a problem your supply actually has, like hardness, iron or microbes, rather than a hypothetical one?',
   },
   {
     title: 'Measurable and testable',
@@ -60,7 +60,7 @@ export default function ScienceMeterPage() {
             The Science Meter
           </h1>
           <Lede inverse className="text-offwhite/80">
-            Uniwater rates the water technologies people ask us about — what the evidence supports,
+            Uniwater rates the water technologies people ask us about: what the evidence supports,
             what is conditional, and what is marketing. We will tell you when something is not worth
             your money, including things we could sell you.
           </Lede>
@@ -71,7 +71,7 @@ export default function ScienceMeterPage() {
       <Section padding="default">
         <div className="mb-10 md:mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>How we judge it</Eyebrow>
-          <Heading level={2}>Four lenses, every technology.</Heading>
+          <Heading level={2}>The four questions we ask of every technology.</Heading>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
           {LENSES.map((lens, i) => (
@@ -93,8 +93,8 @@ export default function ScienceMeterPage() {
         </div>
         <VerdictGrid />
         <Caption className="text-offwhite/60 mt-8 block">
-          Study volumes shown on each card are indicative and reviewed periodically — a sense of how
-          settled the evidence is, not an exact citation.
+          Study volumes shown on each card are indicative and reviewed periodically. They show how
+          settled the evidence is; they are not exact citations.
         </Caption>
       </Section>
 
@@ -104,11 +104,11 @@ export default function ScienceMeterPage() {
           <div className="lg:col-span-7 flex flex-col gap-4">
             <Eyebrow>From verdict to system</Eyebrow>
             <Heading level={2}>
-              For every technology we endorse, we engineer it into a real system.
+              Every technology we recommend, we also build into real systems.
             </Heading>
             <Body className="text-mute">
-              Surveyed first, sized to your water. The verdict above is the easy part — building it to
-              last is the work.
+              We survey first and size it to your water. The verdict above is the easy part. Building
+              it to last is the real work.
             </Body>
           </div>
           <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-4">

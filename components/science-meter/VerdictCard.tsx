@@ -51,7 +51,7 @@ export function VerdictCard({ tech }: { tech: Technology }) {
 
       <div className="mt-auto pt-4 border-t border-hairline flex flex-col gap-2">
         <Caption className="text-mute">
-          <span className="text-ink font-medium">What it does &mdash; </span>
+          <span className="text-ink font-medium">What it does: </span>
           {tech.whatItDoes}
         </Caption>
         <Caption className="text-mute">
