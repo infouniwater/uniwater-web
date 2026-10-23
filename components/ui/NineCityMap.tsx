@@ -41,7 +41,7 @@ const PINS: Pin[] = [
 export function NineCityMap() {
   return (
     <figure
-      aria-label="Nine Uniwater operating cities — Noida, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati in India; Kathmandu, Biratnagar in Nepal."
+      aria-label="Nine Uniwater operating cities: Noida, Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati in India; Kathmandu, Biratnagar in Nepal."
       className="w-full"
     >
       <svg

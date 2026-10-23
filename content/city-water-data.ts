@@ -204,7 +204,7 @@ const SILIGURI: LocalityWaterData[] = [
 // Source: "Integrated groundwater quality analysis, Guwahati City" (Springer,
 // Environmental Earth Sciences, 2022) + NIH Greater Guwahati trace-element report.
 const GUWAHATI: LocalityWaterData[] = [
-  { area: 'Beltola', hardnessPpm: [200, 420], ironPpm: [1.0, 5.0], tdsPpm: [200, 600], dominantIssue: 'High borewell iron — yellow/orange staining and a metallic, inky taste.', typicalSystem: 'Iron pre-treatment is the default first stage, then HomeSoft softening.', verified: false },
+  { area: 'Beltola', hardnessPpm: [200, 420], ironPpm: [1.0, 5.0], tdsPpm: [200, 600], dominantIssue: 'High borewell iron: yellow/orange staining and a metallic, inky taste.', typicalSystem: 'Iron pre-treatment is the default first stage, then HomeSoft softening.', verified: false },
   { area: 'Six Mile', hardnessPpm: [200, 450], ironPpm: [1.5, 5.0], tdsPpm: [200, 600], dominantIssue: 'Iron loads commonly above 1.5 ppm; staining and taste throughout.', typicalSystem: 'Sequenced iron removal → softening → carbon; the iron stage is essential.', verified: false },
   { area: 'Zoo Road', hardnessPpm: [180, 400], ironPpm: [1.0, 4.0], tdsPpm: [200, 550], dominantIssue: 'Borewell iron staining with high hardness.', typicalSystem: 'Iron filter ahead of softening; sized to the measured iron load.', verified: false },
   { area: 'Dispur', hardnessPpm: [180, 400], ironPpm: [1.0, 4.0], tdsPpm: [200, 550], dominantIssue: 'Iron and hardness; metallic taste on standing.', typicalSystem: 'Iron pre-treatment, then HomeSoft; kitchen RO on a TDS test.', verified: false },

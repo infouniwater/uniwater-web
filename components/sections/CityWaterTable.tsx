@@ -27,7 +27,7 @@ export function CityWaterTable({ citySlug, cityName, note }: CityWaterTableProps
   if (rows.length === 0) return null;
 
   const defaultNote =
-    'Indicative ranges only — Kolkata from our field experience, other cities from published regional groundwater studies. Groundwater varies borehole to borehole, so the number that sizes your system is the one our engineer measures at your address, not the band below.';
+    'Indicative ranges only. Kolkata figures come from our field experience, other cities from published regional groundwater studies. Groundwater varies borehole to borehole, so the number that sizes your system is the one our engineer measures at your address, not the band below.';
 
   // Render a Supply column only if any row in this city carries supply
   // metadata. Keeps cities that don't track supply yet (every city except

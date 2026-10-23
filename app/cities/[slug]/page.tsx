@@ -40,7 +40,7 @@ export async function generateMetadata({
   return buildMetadata({
     path: `/cities/${content.slug}`,
     title: `Water Softener & Iron Filter in ${content.name}`,
-    description: `Water softeners, iron-removal filters, and RO drinking-water systems in ${content.name}, ${content.country} \u2014 surveyed before sold and serviced monthly by Uniwater\u2019s local team.`,
+    description: `Water softeners, iron removal filters and RO drinking water systems in ${content.name}, ${content.country}. Surveyed before we quote and serviced monthly by Uniwater\u2019s local team.`,
     image: resolveOgImage(content.slug, 'cities'),
   });
 }
@@ -139,7 +139,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
           <Eyebrow className="mb-4">Service areas</Eyebrow>
           <Heading level={2}>Where we&rsquo;re active in {content.name}.</Heading>
           <Body className="text-mute mt-4">
-            Not an exhaustive list. If your locality isn&rsquo;t mentioned, we likely still serve it &mdash; the survey response is the same.
+            Not an exhaustive list. If your locality isn&rsquo;t mentioned, we probably still cover it, and the survey response time is the same.
           </Body>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
@@ -168,7 +168,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 flex flex-col gap-4">
               <Eyebrow className="mb-2">Read further</Eyebrow>
-              <Heading level={2}>Iron in Kolkata water — the long read.</Heading>
+              <Heading level={2}>Iron in Kolkata water: the full guide.</Heading>
               <Body className="text-mute mt-2">
                 Why central KMC localities read low while Salt Lake, New
                 Town, and Rajarhat run high; how iron has to be removed
@@ -184,14 +184,14 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
                 <div className="flex flex-col gap-3">
                   <Eyebrow className="text-teal">Pillar guide</Eyebrow>
                   <Heading level={3}>
-                    Iron in Kolkata water &mdash; stains, causes, and removal.
+                    Iron in Kolkata water: stains, causes and removal.
                   </Heading>
                   <Body className="text-mute">
                     Locality table (Park Street through Rajarhat), three-stage
                     removal explainer, FAQs on iron-vs-softener and borewell
                     safety.
                   </Body>
-                  <Caption className="text-teal font-medium mt-2">Read the pillar →</Caption>
+                  <Caption className="text-teal font-medium mt-2">Read the guide →</Caption>
                 </div>
               </Link>
             </div>
@@ -229,7 +229,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
             {[1, 2, 3].map((i) => (
               <div key={i} className="flex flex-col gap-4">
                 <Photo
-                  description={`${content.name} install #${i} — finished home with Uniwater system`}
+                  description={`${content.name} install #${i}: finished home with Uniwater system`}
                   assetRef={`city-${content.slug}-install-${i}`}
                   aspect="sixteen-nine"
                 />
@@ -299,7 +299,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
             <div className="border border-hairline bg-offwhite p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div className="max-w-xl">
                 <div className="text-eyebrow font-medium uppercase text-teal mb-3">
-                  {inThisCity ? `Case study in ${content.name}` : `Published case study — ${content.country}`}
+                  {inThisCity ? `Case study in ${content.name}` : `Published case study, ${content.country}`}
                 </div>
                 <h3 className="font-sans text-h3 font-semibold text-navy mb-2">{featured.client}</h3>
                 <Caption className="text-mute">{featured.outcome}</Caption>
@@ -330,7 +330,7 @@ export default function CityDetailPage({ params }: { params: { slug: string } })
       <ServiceSection />
 
       <FinalCTA
-        headline={`Ready for a free survey in ${content.name}?`}
+        headline={`Book a free survey in ${content.name}.`}
         sub="A Uniwater engineer will visit, test your water, and respond within one business day."
       />
     </>
