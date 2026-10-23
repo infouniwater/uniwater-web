@@ -45,7 +45,7 @@ const STUDY_PHOTO: Record<string, { src: string; alt: string }> = {
 const SECTOR_FALLBACK: Record<string, { src: string; alt: string }> = {
   Healthcare: {
     src: '/images/photography/commercial-ro-studio.jpg',
-    alt: 'A Uniwater commercial RO plant — representative of healthcare installs',
+    alt: 'A Uniwater commercial RO plant, representative of healthcare installs',
   },
   Manufacturing: {
     src: '/images/photography/wtp-terrace.jpg',
@@ -53,11 +53,11 @@ const SECTOR_FALLBACK: Record<string, { src: string; alt: string }> = {
   },
   Residential: {
     src: '/images/photography/residential-complex.jpg',
-    alt: 'A premium residential complex at dusk — representative of the gated communities Uniwater services',
+    alt: 'A residential complex at dusk, representative of the gated communities Uniwater services',
   },
   Hospitality: {
     src: '/images/photography/whole-house-terrace.jpg',
-    alt: 'Branded Uniwater vessels on a residential terrace — representative of hospitality installs',
+    alt: 'Branded Uniwater vessels on a residential terrace, representative of hospitality installs',
   },
 };
 const DEFAULT_FALLBACK = {
@@ -181,7 +181,7 @@ export default function TestimonialsPage() {
           <div className="lg:col-span-7">
             <div className="flex flex-col gap-4">
               <Body inverse>
-                Every install handover ends the same way: a written review request, with permission asked separately for naming and for using the response on this page. No incentive, no template &mdash; the customer&rsquo;s words, edited only for length where they consent.
+                Every install handover ends the same way: a written review request, with permission asked separately for naming and for using the response on this page. No incentive, no template. The customer&rsquo;s words, edited only for length where they consent.
               </Body>
               <Body inverse>
                 Reviews that name a person, organisation, or city are confirmed with that party before they appear here. Reviews that prefer to stay anonymous are published with sector and city only. The intent is what reads above: real homeowners and institutions, on the record, in their own language.
