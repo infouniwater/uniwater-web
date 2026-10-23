@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { EditorialHero } from '@/components/sections/EditorialHero';
 
 export const metadata: Metadata = {
-  title: 'Hero redesign — lab',
+  title: 'Hero redesign (lab)',
   robots: { index: false, follow: false },
 };
 
@@ -111,7 +111,7 @@ function VariantD() {
             Wellness starts with clean water
           </p>
           <h1 className="text-display-m md:text-display font-normal leading-[1.05] [text-wrap:balance]">
-            Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
+            Engineered, installed, and serviced, for the homes you don&rsquo;t get to redo.
           </h1>
 
           <div className="mt-2 flex flex-col gap-3">
@@ -120,7 +120,7 @@ function VariantD() {
                 href="/book-survey"
                 className="inline-flex items-center justify-center h-[52px] px-7 bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] transition-colors duration-200 ease-calm hover:bg-soft hover:text-navy"
               >
-                Book a free survey &mdash; engineer visits in 48&nbsp;hrs
+                Book a free survey: engineer visits in 48&nbsp;hrs
                 <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -227,7 +227,7 @@ function VariantE() {
             Wellness starts with clean water
           </p>
           <h1 className="text-display-m md:text-display font-normal leading-[1.05] [text-wrap:balance]">
-            Engineered, installed, and serviced &mdash; for the homes you don&rsquo;t get to redo.
+            Engineered, installed, and serviced, for the homes you don&rsquo;t get to redo.
           </h1>
 
           <div className="mt-2 flex flex-col gap-3">
@@ -236,7 +236,7 @@ function VariantE() {
                 href="/book-survey"
                 className="inline-flex items-center justify-center h-[52px] px-7 bg-offwhite text-navy font-ui font-medium text-[15px] tracking-[0.02em] transition-colors duration-200 ease-calm hover:bg-soft hover:text-navy"
               >
-                Book a free survey &mdash; engineer visits in 48&nbsp;hrs
+                Book a free survey: engineer visits in 48&nbsp;hrs
                 <svg className="ml-2" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -264,30 +264,30 @@ export default function HeroRedesignLab() {
     <>
       <div className="bg-navy text-offwhite border-b border-offwhite/15">
         <div className="container-uw py-10">
-          <p className="text-eyebrow font-ui font-medium uppercase text-soft mb-3">Lab &mdash; not indexed</p>
-          <h1 className="text-h2-m md:text-h2 font-normal mb-3">Homepage hero &mdash; redesign demo</h1>
+          <p className="text-eyebrow font-ui font-medium uppercase text-soft mb-3">Lab: not indexed</p>
+          <h1 className="text-h2-m md:text-h2 font-normal mb-3">Homepage hero: redesign demo</h1>
           <p className="text-caption text-offwhite/75 max-w-2xl">
-            Current hero first, then the proposed full-bleed image-with-overlay variant. Check on phone and desktop both &mdash; mobile is where the difference is starkest because the image and text share the same fold instead of stacking.
+            Current hero first, then the proposed full-bleed image-with-overlay variant. Check on phone and desktop both; mobile is where the difference is starkest because the image and text share the same fold instead of stacking.
           </p>
         </div>
       </div>
 
       <Label
-        tag="Variant 0 — Current (live on /)"
+        tag="Variant 0: Current (live on /)"
         title="Split layout: image on one side, text on the other."
         summary="On mobile this stacks and pushes the CTA below the fold. Four text blocks compete for attention."
       />
       <EditorialHero />
 
       <Label
-        tag="Variant D — Full-bleed image with overlay text"
+        tag="Variant D: Full-bleed image with overlay text"
         title="Image edge-to-edge. Text floats on a bottom-up navy scrim."
-        summary="One H1, one primary CTA with a benefit label (Book a free survey — engineer visits in 48 hrs), one micro-trust line (No obligation · ~30 min on site · Report in 48 hrs). Wellness tagline as a tiny eyebrow above the H1. Secondary water-check action drops to a text link. Image gets a slow Ken-Burns push so it feels alive without becoming a carousel."
+        summary="One H1, one primary CTA with a benefit label (Book a free survey: engineer visits in 48 hrs), one micro-trust line (No obligation · ~30 min on site · Report in 48 hrs). Wellness tagline as a tiny eyebrow above the H1. Secondary water-check action drops to a text link. Image gets a slow Ken-Burns push so it feels alive without becoming a carousel."
       />
       <VariantD />
 
       <Label
-        tag="Variant E — Same overlay, rotating background"
+        tag="Variant E: Same overlay, rotating background"
         title="Three install contexts crossfade behind fixed text and CTA."
         summary="Whole-house → bathroom → drinking water, 24-second cycle, ~6.8s per slide with 1.2s crossfades. Text and CTA never move. Scrim stays identical across slides so the contrast doesn't flicker. Respects prefers-reduced-motion: anyone who's asked the OS for less motion sees only the first image, no rotation."
       />
