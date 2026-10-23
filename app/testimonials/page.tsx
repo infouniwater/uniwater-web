@@ -6,7 +6,7 @@ import { Eyebrow, Display, Heading, Lede, Body, Caption, EditorialAccent } from 
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { reviewSchema } from '@/lib/structured-data';
-import { CASE_STUDIES } from '@/content/case-studies';
+import { VERIFIED_QUOTE_STUDIES } from '@/content/case-studies';
 
 // Per-case-study photo so no two testimonial tiles share the same image.
 // Previous version keyed by sector, which meant every Manufacturing or
@@ -65,22 +65,10 @@ const DEFAULT_FALLBACK = {
   alt: 'A representative Uniwater commercial install',
 };
 
-export const metadata: Metadata = {
-  title: 'Testimonials',
-  description:
-    'What Uniwater customers say. Real homeowners and institutions, real installs, real cities.',
-  openGraph: {
-    images: [{ url: '/og/og-testimonials.jpg', width: 1200, height: 630, alt: '' }],
-  },
-  twitter: {
-    images: ['/og/og-testimonials.jpg'],
-  },
-};
-
-// Derived from published case studies — keeps testimonials and case-study
-// quotes from drifting. As the post-install collection flow lands, additional
-// testimonials will surface here alongside these.
-const CASE_STUDY_QUOTES = CASE_STUDIES.filter((cs) => cs.body?.quote && cs.testimonial).map((cs) => ({
+// Only quotes the customer has confirmed are shown (see quoteVerified in
+// content/case-studies.ts). While none are confirmed the page stays up for
+// existing links but is kept out of search.
+const CASE_STUDY_QUOTES = VERIFIED_QUOTE_STUDIES().map((cs) => ({
   quote: cs.body!.quote!,
   name: cs.testimonial!.name,
   org: cs.testimonial!.org,
@@ -88,6 +76,19 @@ const CASE_STUDY_QUOTES = CASE_STUDIES.filter((cs) => cs.body?.quote && cs.testi
   sector: cs.sector,
   caseStudySlug: cs.slug,
 }));
+
+export const metadata: Metadata = {
+  title: 'Testimonials',
+  description:
+    'What Uniwater customers say about their water, published only after the customer has confirmed the quote.',
+  ...(CASE_STUDY_QUOTES.length === 0 ? { robots: { index: false, follow: true } } : {}),
+  openGraph: {
+    images: [{ url: '/og/og-testimonials.jpg', width: 1200, height: 630, alt: '' }],
+  },
+  twitter: {
+    images: ['/og/og-testimonials.jpg'],
+  },
+};
 
 export default function TestimonialsPage() {
   return (
@@ -115,7 +116,7 @@ export default function TestimonialsPage() {
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Testimonials</p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">What customers say.</h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Named customers, in their own words, on the record. Drawn from published case studies; the wider review set is collected systematically at every handover.
+              Customers in their own words. We publish a quote only after the customer has confirmed the wording and agreed to be named.
             </p>
           </div>
         </div>
@@ -125,6 +126,13 @@ export default function TestimonialsPage() {
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">From the case studies</Eyebrow>
           <Heading level={2}>Named, on the record.</Heading>
+          {CASE_STUDY_QUOTES.length === 0 && (
+            <Body className="text-mute mt-4">
+              We&rsquo;re confirming each customer quote before it goes up here. Until then, the{' '}
+              <Link href="/case-studies" className="text-teal underline underline-offset-4">case studies</Link>{' '}
+              show what we installed, where, and what changed.
+            </Body>
+          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {CASE_STUDY_QUOTES.map((t) => {
@@ -181,10 +189,10 @@ export default function TestimonialsPage() {
           <div className="lg:col-span-7">
             <div className="flex flex-col gap-4">
               <Body inverse>
-                Every install handover ends the same way: a written review request, with permission asked separately for naming and for using the response on this page. No incentive, no template. The customer&rsquo;s words, edited only for length where they consent.
+                At handover we ask for a written review, and ask separately for permission to name the customer and use their words on this page. No incentive, no template. The customer&rsquo;s words, edited only for length where they agree.
               </Body>
               <Body inverse>
-                Reviews that name a person, organisation, or city are confirmed with that party before they appear here. Reviews that prefer to stay anonymous are published with sector and city only. The intent is what reads above: real homeowners and institutions, on the record, in their own language.
+                Reviews that name a person, organisation, or city are confirmed with that party before they appear here. Reviews that prefer to stay anonymous are published with sector and city only.
               </Body>
               <EditorialAccent inverse className="mt-4">
                 Named. On the record. Or not at all.

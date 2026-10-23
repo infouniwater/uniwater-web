@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SOLUTION_LIST } from '@/content/solutions';
 import { CITIES } from '@/content/site';
-import { CASE_STUDIES } from '@/content/case-studies';
+import { CASE_STUDIES, VERIFIED_QUOTE_STUDIES } from '@/content/case-studies';
 import { BLOG_POSTS } from '@/content/blog';
 
 const BASE = 'https://uniwater.co.in';
@@ -61,7 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/case-studies',
     '/cities',
     '/blog',
-    '/testimonials',
+    // Listed only once a customer quote is confirmed (page is noindex until then).
+    ...(VERIFIED_QUOTE_STUDIES().length > 0 ? ['/testimonials'] : []),
     '/faq',
     '/contact',
     '/resources',

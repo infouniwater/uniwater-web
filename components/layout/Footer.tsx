@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
+import { VERIFIED_QUOTE_STUDIES } from '@/content/case-studies';
 import { CONTACT, CITIES, SITE, WHATSAPP_HREF, COMPANY_REGISTRATION, SOCIAL_HANDLES, LAUNCH_FLAGS } from '@/content/site';
 
 // CWaaS moved to the TOP of the column 2026-06-04 (later same day) as
@@ -32,7 +33,7 @@ const RESOURCES_LINKS = [
 const ABOUT_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/service', label: 'Service' },
-  { href: '/testimonials', label: 'Testimonials' },
+  ...(VERIFIED_QUOTE_STUDIES().length > 0 ? [{ href: '/testimonials', label: 'Testimonials' }] : []),
   { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },

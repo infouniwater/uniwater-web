@@ -31,7 +31,16 @@ export interface CaseStudyBody {
    *  undefined until a real, attributable quote exists. */
   quote?: string;
   attribution?: string;
+  /** 2026-10-24: a quote renders anywhere on the site only once this is
+   *  true, i.e. Rajat has confirmed the wording and permission with the
+   *  named party. The quotes below were drafted without that check, so
+   *  they stay in the data but off the site until each one is confirmed. */
+  quoteVerified?: boolean;
 }
+
+/** Case studies whose quote may be shown publicly. */
+export const VERIFIED_QUOTE_STUDIES = (): CaseStudy[] =>
+  CASE_STUDIES.filter((cs) => cs.body?.quote && cs.body.quoteVerified && cs.testimonial);
 
 export interface CaseStudyTestimonial {
   /** The role of the quoted person (e.g. "Facilities lead"). */

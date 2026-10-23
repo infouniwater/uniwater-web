@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { TrustStripe } from '@/components/sections/TrustStripe';
 import { Countdown } from './Countdown';
+import { VERIFIED_QUOTE_STUDIES } from '@/content/case-studies';
 
 const WHATSAPP = 'https://wa.me/919748745193';
 
@@ -57,21 +58,13 @@ async function getQuote(token: string): Promise<QuoteData | null> {
   }
 }
 
-// A few real customer testimonials (from the site's case studies).
-const TESTIMONIALS: { quote: string; org: string; city: string }[] = [
-  {
-    quote: 'Before Uniwater, water was something we worried about every quarter. After Uniwater, it’s something we read in a monthly report.',
-    org: 'Charnock Hospital', city: 'Kolkata',
-  },
-  {
-    quote: 'We replaced four supplier relationships with one. The water is the same in the lecture halls, the ward, and the residences.',
-    org: 'Birat Medical College', city: 'Nepal',
-  },
-  {
-    quote: 'Boiler scaling went from a planned twice-yearly disruption to a non-event. We get a parameter report after every visit.',
-    org: 'Saburi Plywood', city: 'Kolkata',
-  },
-];
+// Customer quotes come from the case studies, and only once confirmed
+// (quoteVerified in content/case-studies.ts).
+const TESTIMONIALS = VERIFIED_QUOTE_STUDIES().slice(0, 3).map((cs) => ({
+  quote: cs.body!.quote!,
+  org: cs.testimonial!.org,
+  city: cs.testimonial!.city,
+}));
 
 export default async function QuotePage({ params }: { params: { token: string } }) {
   const q = await getQuote(params.token);
@@ -218,16 +211,20 @@ export default async function QuotePage({ params }: { params: { token: string } 
       {/* Testimonials */}
       <Section tone="subtle" padding="default">
         <div className="container-uw">
-          <Eyebrow>Trusted by</Eyebrow>
-          <Heading level={2} className="mt-2">What our customers say</Heading>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
-              <Card key={t.org}>
-                <Body className="!mb-0">&ldquo;{t.quote}&rdquo;</Body>
-                <Caption className="mt-3">{t.org} &middot; {t.city}</Caption>
-              </Card>
-            ))}
-          </div>
+          {TESTIMONIALS.length > 0 && (
+            <>
+              <Eyebrow>Trusted by</Eyebrow>
+              <Heading level={2} className="mt-2">What our customers say</Heading>
+              <div className="mt-8 grid gap-5 md:grid-cols-3">
+                {TESTIMONIALS.map((t) => (
+                  <Card key={t.org}>
+                    <Body className="!mb-0">&ldquo;{t.quote}&rdquo;</Body>
+                    <Caption className="mt-3">{t.org} &middot; {t.city}</Caption>
+                  </Card>
+                ))}
+              </div>
+            </>
+          )}
           {q.warranty_note && <Caption className="mt-6">{q.warranty_note}</Caption>}
         </div>
       </Section>

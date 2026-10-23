@@ -157,7 +157,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
       {/* Quote -- optional. Not every case study has a real, attributable
           quote yet; the section is skipped rather than filled with
           invented words. */}
-      {content.quote && (
+      {content.quote && content.quoteVerified && (
         <Section padding="default">
           <div className="max-w-reading mx-auto text-center">
             <EditorialAccent className="mx-auto">&ldquo;{content.quote}&rdquo;</EditorialAccent>
