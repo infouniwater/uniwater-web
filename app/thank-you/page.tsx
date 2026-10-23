@@ -22,7 +22,7 @@ const MESSAGES: Record<Source, { eyebrow: string; headline: string; body: string
   contact: {
     eyebrow: 'Enquiry received',
     headline: 'Thank you. We will be in touch.',
-    body: 'Your enquiry has reached the right inbox. We respond within one business day. For anything urgent, the two phone numbers below get straight to the team.',
+    body: 'Your enquiry has reached the right inbox. We respond within one business day. For anything urgent, call the number below and you’ll reach the team directly.',
   },
   'industrial-rfq': {
     eyebrow: 'RFQ submitted',
@@ -39,7 +39,7 @@ const MESSAGES: Record<Source, { eyebrow: string; headline: string; body: string
 const DEFAULT_MESSAGE = {
   eyebrow: 'Thank you',
   headline: 'We have your details.',
-  body: 'We respond within one business day. If anything is urgent, the two phone numbers below get straight to the team.',
+  body: 'We respond within one business day. If anything is urgent, call the number below and you’ll reach the team directly.',
 };
 
 export default function ThankYouPage({

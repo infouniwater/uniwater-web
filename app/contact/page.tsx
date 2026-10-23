@@ -16,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
   path: '/contact',
   title: 'Contact',
   description:
-    'Talk to Uniwater. Two phones, two emails, head office in Kolkata. Nine cities across India and Nepal.',
+    'Talk to Uniwater by phone, WhatsApp or email. Head office in Kolkata, service teams in nine cities across India and Nepal.',
   image: '/og/og-contact.jpg',
 });
 
@@ -59,7 +59,7 @@ export default function ContactPage() {
               Let&rsquo;s begin.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Two phones, two emails, head office in Kolkata. Service teams in nine cities. We respond within one business day.
+              Call, WhatsApp or email us. Head office in Kolkata, service teams in nine cities. We respond within one business day.
             </p>
           </div>
         </div>
