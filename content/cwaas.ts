@@ -26,19 +26,19 @@ export interface Pillar {
 
 export const PILLARS: Pillar[] = [
   {
-    title: 'Zero capital outlay.',
+    title: 'No capital cost.',
     body:
-      'We design, fund, own and install the plant. Nothing lands on your capex sheet. You start paying when the water meets spec.',
+      'We design, fund, own and install the plant. Nothing goes on your capex sheet, and you start paying only when the water meets spec.',
   },
   {
     title: 'Guaranteed to spec.',
     body:
-      'An agreed water-quality standard, backed by an SLA. Iron, hardness, TDS, conductivity — held to the line that matters for your application.',
+      'We agree a water-quality standard with you and back it with an SLA. Whichever number matters for your use (iron, hardness, TDS or conductivity) is held to that line.',
   },
   {
-    title: 'Fully managed.',
+    title: 'We run it.',
     body:
-      'Monthly preventive engineer visits, consumables, media, membranes, repairs — all included. The system is ours to keep running.',
+      'Monthly preventive visits, consumables, media, membranes and repairs are all included. Keeping the plant running is our job, not yours.',
   },
 ];
 
@@ -64,36 +64,36 @@ export interface ServiceLine {
 export const SERVICE_LINES: ServiceLine[] = [
   {
     slug: 'drinking',
-    name: 'Drinking Water',
-    promise: 'Safe, great-tasting potable water on tap, across every floor.',
+    name: 'Drinking water',
+    promise: 'Potable water on tap on every floor.',
     bestFor: ['Offices', 'IT parks', 'Campuses', 'Hospitals', 'Hotels', 'Cafeterias'],
     guarantee: ['IS 10500 potability', 'Monitored TDS', 'Hygienic dispensing'],
   },
   {
     slug: 'iron-free',
-    name: 'Iron-Free Water',
-    promise: 'Clear, odour-free water with zero rust staining.',
+    name: 'Iron-free water',
+    promise: 'Clear water with no smell and no rust stains.',
     bestFor: ['Laundries', 'Hospitality', 'Food processing', 'Groundwater-fed real estate'],
     guarantee: ['Iron below 0.3 ppm', 'No staining', 'Automated backwash'],
     featured: true,
   },
   {
     slug: 'soft',
-    name: 'Soft Water',
-    promise: 'Scale-free soft water that protects every appliance and surface.',
+    name: 'Soft water',
+    promise: 'Soft water, so appliances and surfaces stop scaling up.',
     bestFor: ['Hotels', 'Salons & spas', 'Boilers', 'Cooling towers', 'RO pre-treatment'],
     guarantee: ['Hardness held to target', 'Scale protection', 'Self-regenerating'],
   },
   {
     slug: 'ro-process',
-    name: 'RO Process Water',
+    name: 'RO process water',
     promise: 'Consistent low-TDS process water, on demand, to spec.',
     bestFor: ['F&B and beverage', 'Pharma', 'Manufacturing', 'Labs', 'Central kitchens'],
     guarantee: ['TDS / conductivity to spec', 'Assured flow', 'Managed membranes'],
   },
   {
     slug: 'dm',
-    name: 'DM Water',
+    name: 'DM water',
     promise: 'Ultra-pure demineralised water, polished to a conductivity target.',
     bestFor: ['Boiler feed', 'Pharma', 'Electronics', 'Batteries', 'Plating', 'Labs'],
     guarantee: ['Conductivity to spec', 'Continuous supply', 'Resin managed for you'],
@@ -161,7 +161,7 @@ export interface LiveSite {
 export const LIVE_SITES: LiveSite[] = [
   {
     slug: 'bsm-tulsidham',
-    name: 'BSM Enclave — Tulsidham Society',
+    name: 'BSM Enclave, Tulsidham Society',
     city: 'Kolkata',
     country: 'India',
     context: 'Residential society, 120 flats',
@@ -194,7 +194,7 @@ export const LIVE_SITES: LiveSite[] = [
   },
   {
     slug: 'techno-india-joka',
-    name: 'Techno India Group — College, Joka',
+    name: 'Techno India Group College, Joka',
     city: 'Kolkata',
     country: 'India',
     context: '2,000+ students',
@@ -202,7 +202,7 @@ export const LIVE_SITES: LiveSite[] = [
   },
   {
     slug: 'techno-india-jhore',
-    name: 'Techno India Group — Resort “Jhore Jole Jongole”',
+    name: 'Techno India Group: “Jhore Jole Jongole” resort',
     city: 'Kolkata',
     country: 'India',
     context: 'Sundarbans resort',
@@ -378,10 +378,10 @@ export const DM_WATER_LAKH_LITRES_PER_MONTH = 1;
 // ----- Hero / metadata copy ----------------------------------------------
 
 export const HERO_EYEBROW = 'Clean Water as a Service';
-export const HERO_TITLE = 'Stop buying water plants. Buy water outcomes.';
+export const HERO_TITLE = 'We own and run the water plant. You pay for the water.';
 export const HERO_SUB =
-  'Uniwater designs, funds, owns, installs, operates and maintains the entire treatment system. You pay one predictable fee for water held to specification. Zero capital, zero downtime, zero operational burden.';
+  'Uniwater designs, funds, installs, runs and maintains the whole treatment plant. You pay one predictable monthly fee for water held to an agreed spec, with no capital cost and no plant for your team to manage.';
 
 export const META_TITLE = 'Clean Water as a Service | Uniwater';
 export const META_DESCRIPTION =
-  'Clean Water as a Service from Uniwater — we design, fund, own and run the treatment plant; you pay for water held to spec. Soft, drinking, iron-free, RO process and DM water lines, with monthly preventive engineer visits. Live across India and Nepal.';
+  'Clean Water as a Service from Uniwater: we design, fund, own and run the treatment plant, and you pay for water held to spec. Soft, drinking, iron-free, RO process and DM water, with a preventive engineer visit every month. Live in India and Nepal.';

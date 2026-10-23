@@ -188,11 +188,11 @@ export default function CleanWaterAsAServicePage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>Who CWaaS is for</Eyebrow>
-          <Heading level={2}>Three audiences. Three contracts. One model.</Heading>
+          <Heading level={2}>For businesses, factories and housing societies.</Heading>
           <Body className="text-mute mt-2">
             Clean Water as a Service is sold to commercial buyers,
             industrial buyers, and residential society management
-            committees. Not to individual homeowners &mdash; for that we
+            committees. Not to individual homeowners. For a home, we
             install BathSoft, HomeSoft, or a kitchen drinking-water
             system instead.
           </Body>
@@ -234,14 +234,14 @@ export default function CleanWaterAsAServicePage() {
                       {proof.map((site) => (
                         <li key={site.slug} className="text-caption text-ink">
                           <span className="font-medium text-navy">{site.name}</span>
-                          <span className="text-mute"> &mdash; {site.context}{site.volume ? `, ${site.volume}` : ''}</span>
+                          <span className="text-mute"> · {site.context}{site.volume ? `, ${site.volume}` : ''}</span>
                           <span className="text-mute"> ({site.city}, {site.country})</span>
                         </li>
                       ))}
                     </ul>
                   ) : (
                     <Caption className="text-mute italic">
-                      First deployments signing now &mdash; we don&rsquo;t name reference sites that aren&rsquo;t live yet.
+                      First deployments are signing now. We don&rsquo;t name reference sites until they&rsquo;re live.
                     </Caption>
                   )}
                 </div>
@@ -271,7 +271,7 @@ export default function CleanWaterAsAServicePage() {
       <Section tone="navy" padding="default" image={{ stem: 'utility' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>The model</Eyebrow>
-          <Heading level={2} inverse>Three things change when water is a service.</Heading>
+          <Heading level={2} inverse>What changes when water is a service.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15">
           {PILLARS.map((pillar, i) => (
@@ -289,9 +289,9 @@ export default function CleanWaterAsAServicePage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>The five lines</Eyebrow>
-          <Heading level={2}>One contract. Five water lines, sized to what you need.</Heading>
+          <Heading level={2}>Five water lines under one contract, each sized to what you need.</Heading>
           <Body className="text-mute mt-2">
-            Drinking, iron-free, soft, RO process, and DM — each carries its
+            Drinking, iron-free, soft, RO process and DM. Each one carries its
             own SLA, sized at survey to your demand and your supply chemistry.
           </Body>
         </div>
@@ -348,7 +348,7 @@ export default function CleanWaterAsAServicePage() {
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>How it works</Eyebrow>
-          <Heading level={2} inverse>Survey to running water, one decision at a time.</Heading>
+          <Heading level={2} inverse>From survey to running water.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {PROCESS_STEPS.map((step) => (
@@ -371,7 +371,7 @@ export default function CleanWaterAsAServicePage() {
             Every site below is a real deployment under contract. Soft,
             drinking and DM lines have running references; the iron-free and
             RO-process lines are signing their first deployments now and will
-            appear here once commissioned — we don&rsquo;t name reference
+            appear here once commissioned. We don&rsquo;t name reference
             sites that don&rsquo;t exist yet.
           </Body>
         </div>
@@ -432,7 +432,7 @@ export default function CleanWaterAsAServicePage() {
           </div>
           <div className="lg:col-span-7">
             <EditorialAccent inverse className="text-h2-m md:text-h2 leading-snug">
-              Owning a plant is a project. Subscribing to water held to spec is a decision.
+              If you own the plant, running it is your problem. If you subscribe, it&rsquo;s ours.
             </EditorialAccent>
           </div>
         </div>

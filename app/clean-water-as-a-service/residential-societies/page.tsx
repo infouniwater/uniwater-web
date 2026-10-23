@@ -49,9 +49,9 @@ const RELEVANT_LINES = SERVICE_LINES.filter((line) =>
   TRACK.lines.includes(line.slug as WaterLineSlug)
 );
 
-const TITLE = 'Water Treatment Subscription for Housing Societies | Uniwater';
+const TITLE = 'Water treatment subscription for housing societies | Uniwater';
 const DESCRIPTION =
-  'Clean Water as a Service for residential societies and gated communities. Uniwater designs, funds, owns, and runs the plant — soft, iron-free, and drinking water held to spec, on one monthly bill. Zero capex for the committee. Live at 2 Kolkata societies, 404 flats.';
+  'Clean Water as a Service for housing societies and gated communities. Uniwater designs, funds, owns and runs the plant and supplies soft, iron-free and drinking water held to spec, on one monthly bill. No capital cost for the committee. Live at 2 Kolkata societies, 404 flats.';
 
 export const metadata: Metadata = buildMetadata({
   path: '/clean-water-as-a-service/residential-societies',
@@ -182,7 +182,7 @@ export default function ResidentialSocietiesPage() {
           </Heading>
           <Body className="text-mute mt-2">
             {HOMES_ON_SOFT_WATER} flats on managed soft water, {HOMES_ON_IRON_FREE_WATER} on managed
-            iron-free water — real deployments under contract, not projections.
+            iron-free water. These are real deployments under contract, not projections.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -226,7 +226,7 @@ export default function ResidentialSocietiesPage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>For your society</Eyebrow>
-          <Heading level={2}>Three lines cover a residential complex end to end.</Heading>
+          <Heading level={2}>Three water lines cover a whole residential complex.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {RELEVANT_LINES.map((line) => (
@@ -261,7 +261,7 @@ export default function ResidentialSocietiesPage() {
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>How it works</Eyebrow>
           <Heading level={2} inverse>
-            Survey to running water, one decision at a time.
+            From survey to running water.
           </Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
