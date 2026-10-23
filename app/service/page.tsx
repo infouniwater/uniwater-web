@@ -13,7 +13,7 @@ import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = buildMetadata({
   path: '/service',
-  title: 'Water System Service & AMC',
+  title: 'Water system service & AMC',
   description:
     'How Uniwater services home water systems: monthly preventive visits, a written report the same day and a 24-hour SLA on flagged faults.',
   image: '/og/og-service.png',
