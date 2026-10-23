@@ -29,7 +29,7 @@ export function WhatsAppFAB() {
   const [pageLabel, setPageLabel] = useState('this page');
 
   useEffect(() => {
-    const title = document.title.replace(/\s*[|—-]\s*Uniwater\s*$/, '').trim();
+    const title = document.title.replace(/\s*[|\u2014-]\s*Uniwater\s*$/, '').trim();
     setPageLabel(title || 'this page');
   }, [pathname]);
 
