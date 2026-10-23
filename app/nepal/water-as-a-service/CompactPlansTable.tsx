@@ -39,7 +39,7 @@ export function CompactPlansTable() {
       <div className="container-uw section-tight">
         <div className="mb-6 max-w-2xl flex flex-col gap-3">
           <Eyebrow>Pick your plan</Eyebrow>
-          <Heading level={2}>Five tiers. From NPR 1.5 per litre.</Heading>
+          <Heading level={2}>Five plans, starting at NPR 1.5 per litre.</Heading>
           <Body className="text-mute">{PRICING_METHODOLOGY_NOTE}</Body>
         </div>
 
