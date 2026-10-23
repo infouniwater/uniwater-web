@@ -13,21 +13,21 @@ export const metadata: Metadata = buildMetadata({
   path: '/for-architects',
   title: 'For architects & interior designers',
   description:
-    'Engineered home water specified into your projects — vessel footprints, BIM blocks, install drawings, technical PDFs. One survey-led partner across every build.',
+    'Specify home water treatment into your projects. We supply vessel footprints, BIM blocks, install drawings and technical PDFs, and survey every site ourselves.',
   image: '/og/og-for-architects.png',
 });
 
 const BENEFITS = [
   {
     title: 'Spec into the plan, not after tile.',
-    body: 'Designed during construction, the system routes cleanly and stays invisible. Specified after tile is repair work.',
+    body: 'Designed during construction, the system routes cleanly and stays invisible. Specified after tile, it becomes repair work.',
   },
   {
     title: 'A single supplier across the build.',
-    body: 'One survey, one BOM, one handover, one AMC — from BathSoft to building-inlet WTP. Not three vendors.',
+    body: 'One survey, one BOM, one handover and one AMC, from BathSoft up to a building-inlet WTP. You deal with us, not three vendors.',
   },
   {
-    title: 'Documentation that holds up to scrutiny.',
+    title: 'Drawings that hold up in review.',
     body: 'DWG, BIM, install drawings, submittal-grade PDFs. Version-controlled, available before tender.',
   },
 ];
@@ -35,17 +35,17 @@ const BENEFITS = [
 const SPEC_LIBRARY = [
   { label: 'Vessel footprints', detail: 'DWG and PDF, every capacity from BathSoft Mono to HomeSoft 6K and the 8K–30K LPH building bands.' },
   { label: 'BIM blocks', detail: 'Revit families for the residential and building plant capacities. Layered for plumbing, electrical, structural.' },
-  { label: 'Install-location drawings', detail: 'Architectural sections of the five install patterns — false ceiling, plumbing shaft, wall recess, under-counter, utility room.' },
+  { label: 'Install-location drawings', detail: 'Architectural sections of the five install patterns: false ceiling, plumbing shaft, wall recess, under-counter and utility room.' },
   { label: 'Pre-construction water checklist', detail: 'What to test, when to test, what plumbing routes to leave open, what utility-room dimensions to plan for.' },
   { label: 'Technical PDFs', detail: 'Per-product data sheets with capacities, materials, dimensions, AMC scope. Submittal-ready.' },
-  { label: 'Project-mode spec packs', detail: 'Bundled assets per project type — villa, mid-rise, gated complex, boutique hotel.' },
+  { label: 'Project-mode spec packs', detail: 'Drawings and sheets bundled for each project type: villa, mid-rise, gated complex, boutique hotel.' },
 ];
 
 const PROCESS = [
   {
     n: '01',
     title: 'Brief us early.',
-    body: 'A 15-minute call at DD or early CD. Share bathrooms, water source, project location — we send back a tentative system spec.',
+    body: 'A 15-minute call at DD or early CD. Tell us the bathrooms, water source and project location, and we send back a tentative system spec.',
   },
   {
     n: '02',
@@ -94,10 +94,10 @@ export default function ForArchitectsPage() {
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">For architects &amp; interior designers</p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
-              Engineered home water, specified into the build.
+              Water treatment, specified into the build.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Pre-tile design. DWG, BIM, install drawings. A single survey-led partner from villa-level treatment to mid-rise WTP. So the fittings you specified perform the way the brand intended.
+              Design it in before tile. We supply DWG, BIM and install drawings, survey the site ourselves, and handle everything from a villa system to a mid-rise WTP. The fittings you specify then perform the way the brand intended.
             </p>
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
@@ -131,7 +131,7 @@ export default function ForArchitectsPage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">Why specify Uniwater</Eyebrow>
-          <Heading level={2}>Three things specifiers actually need.</Heading>
+          <Heading level={2}>What a specifier actually needs from us.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {BENEFITS.map((b) => (
@@ -206,14 +206,14 @@ export default function ForArchitectsPage() {
       <Section padding="default" tone="subtle">
         <div className="max-w-reading mx-auto text-center">
           <EditorialAccent className="mx-auto">
-            The fittings you specified deserve the water they were engineered for.
+            Your fittings were designed for treated water. We make sure they get it.
           </EditorialAccent>
         </div>
       </Section>
 
       <FinalCTA
         headline="Specify Uniwater into your next project."
-        sub="Send your brief — bathrooms, water source, project location. We respond within one business day with a tentative system spec for your drawings."
+        sub="Send your brief: bathrooms, water source, project location. We respond within one business day with a tentative system spec for your drawings."
         primaryCTA={{ label: 'Join the program', href: '/contact?audience=architect' }}
       />
     </>
