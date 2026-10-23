@@ -18,9 +18,9 @@ import { CITIES } from '@/content/site';
 
 export const metadata: Metadata = buildMetadata({
   path: '/residential',
-  title: 'Home Water Softeners, Iron Filters & RO',
+  title: 'Home water softeners, iron filters and RO',
   description:
-    'BathSoft bathroom systems, HomeSoft whole-house systems, and drinking water for premium Indian homes. Surveyed, engineered, installed, and serviced monthly.',
+    'BathSoft bathroom filters, HomeSoft whole-house systems and drinking water systems for Indian homes. We survey, install and service them every month.',
   image: '/og/og-residential.jpg',
 });
 
@@ -34,7 +34,7 @@ const PROBLEM_SELECTOR = [
   { problem: 'Dry skin, dull hair, hard-water feel', solution: 'whole-house-water-filter' },
   { problem: 'Drinking water taste, kitchen tap', solution: 'drinking-water-solution' },
   { problem: 'Scale on fittings, geyser failing early', solution: 'whole-house-water-filter' },
-  { problem: 'Bathroom shower water — skin, hair, tile', solution: 'bathroom-filter' },
+  { problem: 'Bathroom shower water: skin, hair, tiles', solution: 'bathroom-filter' },
 ] as const;
 
 const RESIDENTIAL_SLUGS = [
@@ -75,10 +75,10 @@ export default function ResidentialPage() {
           <div className="w-full lg:max-w-[720px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">For your home</p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
-              Water systems for the home.
+              Water systems for your home.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              For the homes you don&rsquo;t get to redo. Surveyed before the tile goes down. Hidden after.
+              For the homes you don&rsquo;t get to redo. Best planned before the tiles go down: we survey, fit the system out of sight and service it every month.
             </p>
 
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
@@ -182,7 +182,7 @@ export default function ResidentialPage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>What we install</Eyebrow>
-          <Heading level={2}>Three engineered families. One survey to decide.</Heading>
+          <Heading level={2}>Three systems for the home. The survey tells us which one you need.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {RESIDENTIAL_SLUGS.map((slug) => {
@@ -239,9 +239,9 @@ export default function ResidentialPage() {
       <Section tone="subtle" padding="default">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">Where we install</Eyebrow>
-          <Heading level={2}>Nine cities. Own teams.</Heading>
+          <Heading level={2}>Where our engineers work.</Heading>
           <Body className="text-mute mt-4">
-            Every install, every service visit, delivered by our own engineers. No subcontracting after the sale.
+            Our own engineers do every install and every service visit. We don&rsquo;t subcontract after the sale.
           </Body>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-hairline border border-hairline">
@@ -275,11 +275,11 @@ export default function ResidentialPage() {
             <Eyebrow className="mb-2">Beyond your home</Eyebrow>
             <Heading level={2}>Are you on a society management committee?</Heading>
             <Body className="text-mute mt-2">
-              BathSoft, HomeSoft, and drinking-water systems are for
-              individual homes. For a housing society or apartment
-              complex, the water problem is different scale &mdash; and
-              we solve it differently. We own and run the society
-              plant; the committee stops firefighting.
+              BathSoft, HomeSoft and drinking-water systems are for
+              individual homes. A housing society or apartment complex
+              is a bigger problem, so we handle it differently: we own
+              and run the society&rsquo;s plant, and the committee
+              stops firefighting.
             </Body>
           </div>
           <div className="lg:col-span-7">
@@ -290,13 +290,14 @@ export default function ResidentialPage() {
               <div className="flex flex-col gap-4">
                 <Eyebrow className="text-teal">Clean Water as a Service · Residential societies</Eyebrow>
                 <h3 className="font-sans text-h2-m md:text-h2 font-light text-navy [text-wrap:balance]">
-                  400 homes on managed soft water. Society committees out of the loop on plant maintenance.
+                  400 homes on managed soft water. The committee no longer has to deal with plant maintenance.
                 </h3>
                 <Body className="text-mute">
                   BSM Enclave (120 flats, 1 lakh L/day) and Starwood, Chinar
                   Park (280 flats, 2.5 lakh L/day) already run on our
-                  service contract. Whole-society soft water; monthly
-                  preventive visit; one predictable bill instead of capex.
+                  service contract: treated water for the whole society,
+                  a preventive visit every month and one predictable bill
+                  instead of capex.
                 </Body>
                 <Caption className="text-teal font-medium mt-2">See Clean Water as a Service for societies →</Caption>
               </div>

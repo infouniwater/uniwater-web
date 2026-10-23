@@ -117,7 +117,7 @@ export function PincodeCheck({ tone = 'light', bookSurveyHref = '/book-survey' }
       {checked && match && match.status === 'core' && (
         <div className="flex flex-col gap-3">
           <div className={`text-eyebrow font-medium uppercase tracking-wide ${labelClass}`}>
-            ✓ Yes — we service {match.zone.cityName}
+            ✓ Yes, we service {match.zone.cityName}
           </div>
           <p className={`text-body ${isDark ? 'text-offwhite/90' : 'text-navy'}`}>
             We have a local engineering team in {match.zone.cityName}. We&rsquo;ll be at your address within 48 hours of booking a free survey.
@@ -146,7 +146,7 @@ export function PincodeCheck({ tone = 'light', bookSurveyHref = '/book-survey' }
             ↗ We extend to your area from {match.zone.cityName}
           </div>
           <p className={`text-body ${isDark ? 'text-offwhite/90' : 'text-navy'}`}>
-            Your pincode sits within the {match.zone.nearbyLabel} corridor. We send the {match.zone.cityName} team out here on request — survey within 5–7 working days instead of 48 hours.
+            Your pincode sits within the {match.zone.nearbyLabel} corridor. We send the {match.zone.cityName} team out here on request. The survey takes 5–7 working days instead of 48 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-1">
             <a
@@ -169,10 +169,10 @@ export function PincodeCheck({ tone = 'light', bookSurveyHref = '/book-survey' }
       {checked && !match && (
         <div className="flex flex-col gap-3">
           <div className={`text-eyebrow font-medium uppercase tracking-wide ${labelClass}`}>
-            We don&rsquo;t have a local team at your pincode — yet.
+            We don&rsquo;t have a local team at your pincode yet.
           </div>
           <p className={`text-body ${isDark ? 'text-offwhite/90' : 'text-navy'}`}>
-            We currently service 9 cities directly: Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida, Kathmandu, Biratnagar &mdash; and the surrounding corridors. For everywhere else, our <span className="font-medium">Remote Site Survey</span> covers system design and quote by correspondence; install is then routed through trade-partner installers we&rsquo;ve qualified.
+            We currently service 9 cities directly: Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida, Kathmandu and Biratnagar, plus the areas around them. For everywhere else, our <span className="font-medium">Remote Site Survey</span> covers system design and quote by correspondence; install is then routed through trade-partner installers we&rsquo;ve qualified.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-1">
             <a

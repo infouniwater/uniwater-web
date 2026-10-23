@@ -34,14 +34,14 @@ const TABS: Tab[] = [
     title: 'What’s inside',
     paras: [
       'Iron removal where the borewell needs it, ion-exchange softening for hardness, carbon polishing for chlorine and taste, and drinking-water treatment sized to your TDS.',
-      'Configured from 100+ engineered options — not one box for every home. The survey decides the stages, the order, and the size.',
+      'We build it from 100+ engineered configurations, so not every home gets the same box. The survey decides the stages, their order and the size.',
     ],
   },
   {
     key: 'hidden',
     title: 'Installed & hidden',
     paras: [
-      'Decided at survey, specified before tile, and installed by the same engineers who designed it. Once it is in, you stop seeing it.',
+      'We decide where it goes at the survey, before the tiles go in, and the engineers who designed it install it. Once it’s in, you stop seeing it.',
     ],
     places: PLACES,
   },
@@ -49,8 +49,8 @@ const TABS: Tab[] = [
     key: 'serviced',
     title: 'Serviced monthly',
     paras: [
-      'A relationship, not a sale-and-vanish. A named engineer visits every month to inspect, clean, backwash, and verify — not only when something breaks.',
-      'Own teams across nine cities, never subcontracted. A written report lands the same day.',
+      'A named engineer visits every month to inspect, clean, backwash and check the readings, whether or not anything has gone wrong.',
+      'Our own engineers in all nine cities, no subcontractors. You get a written report the same day.',
     ],
   },
 ];
@@ -68,7 +68,7 @@ function Panel({ tab }: { tab: Tab }) {
               {loc}
             </span>
           ))}
-          <span className="text-caption text-offwhite/60">&mdash; shown in detail below.</span>
+          <span className="text-caption text-offwhite/60">(shown in detail below)</span>
         </div>
       )}
     </div>
@@ -96,7 +96,7 @@ export function HomeSystemSpec() {
     <Section padding="default" tone="navy">
       <div className="mb-8 max-w-3xl flex flex-col gap-4">
         <Eyebrow inverse>The system, in three parts</Eyebrow>
-        <Heading level={2} inverse>What is inside it, where it hides, and how it stays right.</Heading>
+        <Heading level={2} inverse>What&rsquo;s inside, where it goes, and how we keep it working.</Heading>
       </div>
 
       {/* Desktop: tabs */}

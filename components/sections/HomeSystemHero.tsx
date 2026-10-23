@@ -17,11 +17,11 @@ export function HomeSystemHero() {
     <Section padding="default" tone="subtle">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         <div className="lg:col-span-6 flex flex-col gap-5">
-          <Eyebrow>One system, not a catalogue</Eyebrow>
+          <Eyebrow>For your home</Eyebrow>
           <Heading level={2}>One engineered system, hidden in your home and serviced every month.</Heading>
           <Body className="text-mute">
-            Surveyed first, then matched to your water chemistry and your architecture — and
-            maintained every month by the engineers who designed it. No two homes get the same box.
+            We survey first, then match the system to your water and your house. The engineers
+            who design it service it every month. No two homes get the same box.
           </Body>
           <div className="mt-2">
             <Button href="/book-survey">Book a free survey</Button>
