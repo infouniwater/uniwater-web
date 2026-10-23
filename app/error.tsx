@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Lede } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
+import { PRIMARY_PHONE, PRIMARY_PHONE_HREF, WHATSAPP_HREF } from '@/content/site';
 
 /**
  * Global error boundary. Catches any unhandled error thrown in the route tree
@@ -33,6 +34,17 @@ export default function GlobalError({
         <Display>This page hit an unexpected snag.</Display>
         <Lede className="text-mute">
           We have logged the error and our team will look into it. In the meantime, try again or take one of the routes below.
+        </Lede>
+        <Lede className="text-mute">
+          Need us now? Call{' '}
+          <a href={PRIMARY_PHONE_HREF} className="text-teal underline underline-offset-4 whitespace-nowrap">
+            {PRIMARY_PHONE}
+          </a>{' '}
+          or{' '}
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="text-teal underline underline-offset-4">
+            WhatsApp us
+          </a>
+          .
         </Lede>
         {error?.digest && (
           <p className="text-caption text-mute font-mono">Reference: {error.digest}</p>

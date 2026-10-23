@@ -4,55 +4,72 @@ import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import { randomUUID } from 'crypto';
 import { createLead } from '@/lib/odoo';
-import { sendLeadNotification, type LeadFields } from '@/lib/email';
+import { sendLeadNotification, sendAlertEmail, type LeadFields } from '@/lib/email';
 import { appendLeadToSheet } from '@/lib/sheets';
 import { sendMetaLeadEvent, type MetaEventName } from '@/lib/meta-capi';
 import { verifyRecaptcha } from '@/lib/recaptcha-server';
+import type { LeadFormState } from '@/lib/lead-form-state';
 
 /**
- * Server actions for the five marketing-site lead surfaces.
+ * Server actions for the marketing-site lead surfaces.
  *
- * Each action fans out the submission to four sinks in parallel:
- *   1. Odoo CRM (crm.lead via JSON-RPC)             — primary, awaited
- *   2. Email notification to LEAD_NOTIFY_TO         — visibility
- *   3. Google Sheet tab via Apps Script             — backup + audit trail
- *   4. Meta Conversions API (Pixel server-side)     — ads attribution
+ * Each lead is saved to three places IN PARALLEL, and counts as saved if
+ * ANY of them succeeds:
+ *   1. Odoo CRM (crm.lead via JSON-RPC)             — system of record
+ *   2. Google Sheet tab via Apps Script             — backup + audit trail
+ *   3. Email notification to LEAD_NOTIFY_TO         — visibility
+ * plus a full copy in the runtime log ([lead-backup] line) as a last resort.
  *
- * Promise.allSettled covers sinks 2-4 so a Resend/Sheets/Meta outage cannot
- * block the Odoo write or the /thank-you redirect. Failures are logged in
- * the sink modules. If Odoo fails the error bubbles to app/error.tsx (the
- * visitor sees the "Try again" surface) because Odoo is the system of
- * record.
+ * Until 2026-10 Odoo was awaited first and a failure there threw before the
+ * Sheet or email were written — an expired Odoo API key silently lost every
+ * lead from 2026-06-19 on. Never make one sink a gate for the others again.
+ *
+ * Any failed sink triggers a same-day alert (email + 'alerts' Sheet tab)
+ * carrying the lead's details. Saved leads redirect to /thank-you and fire
+ * the Meta CAPI event. If nothing could be saved, the action returns
+ * { status: 'error' } and components/forms/LeadForm.tsx keeps the visitor's
+ * input and shows a phone / WhatsApp fallback.
  */
 
 /**
  * reCAPTCHA v3 gate for every form action.
  *
  * Reads the recaptcha_token field <RecaptchaField /> injects on the
- * client and verifies it against Google's siteverify. If the token is
- * missing or scores below the threshold, the visitor is silently
- * redirected to /thank-you (so bots get no signal that they were
- * blocked) and the rest of the action -- Odoo write, email,
- * Sheets append, Meta CAPI event -- is short-circuited via the
- * redirect's thrown signal. Real users (score >= 0.5) pass straight
- * through. If RECAPTCHA_SECRET_KEY is unset (local dev), the verifier
- * fails-open and submission proceeds normally.
+ * client and verifies it against Google's siteverify. Returns false if the
+ * token is missing or scores below the threshold; the caller then
+ * redirects to /thank-you so bots get no signal that they were blocked.
+ *
+ * A blocked submission is NOT discarded: it is written to the
+ * 'recaptcha-blocked' Sheet tab (no Odoo / email / Meta), because real
+ * people get blocked too — an ad-blocker or a slow 3G connection can stop
+ * the token from being minted, and v3 scores some mobile users low. Review
+ * that tab for genuine customers. If RECAPTCHA_SECRET_KEY is unset (local
+ * dev), the verifier fails open.
  */
-async function gateRecaptcha(
+async function passesRecaptcha(
   formData: FormData,
   recaptchaAction: string,
-  thankYouSource: string,
-): Promise<void> {
+  tab: string,
+  fields: LeadFields,
+): Promise<boolean> {
   const token = formData.get('recaptcha_token');
   const tokenStr = typeof token === 'string' ? token : undefined;
   const result = await verifyRecaptcha(tokenStr, recaptchaAction);
-  if (!result.success) {
-    console.warn(
-      `[recaptcha] ${recaptchaAction} blocked: ${result.reason}` +
-        (result.score !== undefined ? ` (score: ${result.score})` : ''),
-    );
-    redirect(`/thank-you?source=${thankYouSource}`);
+  if (result.success) return true;
+
+  const reason =
+    result.reason + (result.score !== undefined ? ` (score: ${result.score})` : '');
+  console.warn(`[recaptcha] ${recaptchaAction} blocked: ${reason}`);
+  try {
+    await appendLeadToSheet({
+      tab: 'recaptcha-blocked',
+      fields: { Form: tab, 'Blocked because': reason, ...fields },
+    });
+  } catch (err) {
+    console.error('[recaptcha] could not record blocked submission:', err);
+    console.log(`[lead-backup] ${JSON.stringify({ tab, recaptchaBlocked: reason, fields })}`);
   }
+  return false;
 }
 
 function takeString(data: FormData, key: string): string | undefined {
@@ -108,12 +125,14 @@ function getRequestSignals(): { ip?: string; userAgent?: string; referer?: strin
   }
 }
 
+function describeError(reason: unknown): string {
+  return reason instanceof Error ? reason.message : String(reason);
+}
+
 /**
- * Fan-out: send the same lead to email + sheet + Meta alongside the Odoo
- * write. Odoo is awaited first because it's the system of record; if it
- * throws, none of the non-primary sinks fire and the user gets the error
- * page. The other three run via Promise.allSettled so any one of them can
- * fail without blocking the others or the redirect.
+ * Fan-out: save the lead to Odoo, the Sheet and email in parallel. Returns
+ * true if at least one of them succeeded. Every failure raises an alert;
+ * Meta CAPI fires only for saved leads.
  */
 async function fanOut(input: {
   odoo: Parameters<typeof createLead>[0];
@@ -135,21 +154,53 @@ async function fanOut(input: {
      * collapses the CAPI + browser events into one conversion. */
     eventId?: string;
   };
-}): Promise<void> {
-  await createLead(input.odoo);
-
+}): Promise<boolean> {
   const sig = getRequestSignals();
-  await Promise.allSettled([
+
+  // Last-resort copy: the whole lead in the runtime log, before any sink
+  // runs, so it is recoverable from Vercel logs even if all three fail.
+  console.log(
+    `[lead-backup] ${JSON.stringify({ tab: input.tab, at: new Date().toISOString(), page: sig.referer, fields: input.fields })}`,
+  );
+
+  const sinks = ['Odoo CRM', 'Google Sheet', 'Lead email'] as const;
+  const results = await Promise.allSettled([
+    createLead(input.odoo),
+    appendLeadToSheet({ tab: input.tab, fields: input.fields }),
     sendLeadNotification({
       formLabel: input.formLabel,
       subject: input.emailSubject,
       fields: input.fields,
     }),
-    appendLeadToSheet({
-      tab: input.tab,
-      fields: input.fields,
-    }),
-    sendMetaLeadEvent({
+  ]);
+
+  const failures = results.flatMap((r, i) =>
+    r.status === 'rejected' ? [`${sinks[i]}: ${describeError(r.reason)}`] : [],
+  );
+  const saved = failures.length < sinks.length;
+
+  if (failures.length > 0) {
+    console.error(`[lead] ${input.tab} sink failures: ${failures.join(' | ')}`);
+    const alertFields: LeadFields = {
+      Form: input.formLabel,
+      'Lead saved?': saved
+        ? `Yes, in: ${sinks.filter((_, i) => results[i].status === 'fulfilled').join(', ')}`
+        : 'NO. The visitor was shown the "call or WhatsApp us" message. Details below are from the server log.',
+      'What failed': failures.join(' | '),
+      Page: sig.referer,
+      ...input.fields,
+    };
+    await Promise.allSettled([
+      sendAlertEmail({
+        subject: `ALERT: website form problem (${input.formLabel})${saved ? '' : ' - LEAD NOT SAVED'}`,
+        fields: alertFields,
+      }),
+      appendLeadToSheet({ tab: 'alerts', fields: alertFields }),
+    ]);
+  }
+
+  if (saved) {
+    await sendMetaLeadEvent({
       eventName: input.meta.eventName,
       email: input.meta.email,
       phone: input.meta.phone,
@@ -161,12 +212,16 @@ async function fanOut(input: {
       sourceUrl: sig.referer,
       clientIp: sig.ip,
       clientUserAgent: sig.userAgent,
-    }),
-  ]);
+    }).catch((err) => console.error('[meta] CAPI failed:', err));
+  }
+
+  return saved;
 }
 
-export async function submitBookSurvey(formData: FormData): Promise<void> {
-  await gateRecaptcha(formData, 'book_survey', 'book-survey');
+export async function submitBookSurvey(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
   const name = takeString(formData, 'name');
   const audience = takeString(formData, 'audience');
   const propertyType = takeString(formData, 'propertyType');
@@ -189,6 +244,10 @@ export async function submitBookSurvey(formData: FormData): Promise<void> {
     Notes: notes,
   };
 
+  if (!(await passesRecaptcha(formData, 'book_survey', 'book-survey', fields))) {
+    redirect('/thank-you?source=book-survey');
+  }
+
   const description = joinDescription([
     'Source: /book-survey',
     audience ? `Audience: ${audience}` : undefined,
@@ -198,7 +257,7 @@ export async function submitBookSurvey(formData: FormData): Promise<void> {
     notes ? `Notes: ${notes}` : undefined,
   ]);
 
-  await fanOut({
+  const saved = await fanOut({
     odoo: {
       name: `Book Survey — ${name ?? 'Unnamed lead'}`,
       contactName: name,
@@ -214,11 +273,15 @@ export async function submitBookSurvey(formData: FormData): Promise<void> {
     meta: { eventName: 'Schedule', email, phone: mobile, name, city, value: META_VALUE_BOOK_SURVEY },
   });
 
+  if (!saved) return { status: 'error' };
+
   redirect('/thank-you?source=book-survey');
 }
 
-export async function submitContact(formData: FormData): Promise<void> {
-  await gateRecaptcha(formData, 'contact', 'contact');
+export async function submitContact(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
   const name = takeString(formData, 'name');
   const subject = takeString(formData, 'subject');
   const audience = takeString(formData, 'audience');
@@ -235,6 +298,10 @@ export async function submitContact(formData: FormData): Promise<void> {
     Message: message,
   };
 
+  if (!(await passesRecaptcha(formData, 'contact', 'contact', fields))) {
+    redirect('/thank-you?source=contact');
+  }
+
   const description = joinDescription([
     'Source: /contact',
     audience ? `Audience: ${audience}` : undefined,
@@ -242,7 +309,7 @@ export async function submitContact(formData: FormData): Promise<void> {
     message ? `Message: ${message}` : undefined,
   ]);
 
-  await fanOut({
+  const saved = await fanOut({
     odoo: {
       name: `Contact — ${subject ?? name ?? 'General enquiry'}`,
       contactName: name,
@@ -256,6 +323,8 @@ export async function submitContact(formData: FormData): Promise<void> {
     fields,
     meta: { eventName: 'Contact', email, phone: mobile, name, value: META_VALUE_CONTACT },
   });
+
+  if (!saved) return { status: 'error' };
 
   redirect('/thank-you?source=contact');
 }
@@ -284,8 +353,10 @@ export async function submitContact(formData: FormData): Promise<void> {
  * conversion. The Contact events have no CAPI counterpart, so they need
  * no dedup id.
  */
-export async function submitNepalWaaS(formData: FormData): Promise<void> {
-  await gateRecaptcha(formData, 'nepal_waas', 'nepal-waas');
+export async function submitNepalWaaS(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
   const name = takeString(formData, 'name');
   const business = takeString(formData, 'business');
   const city = takeString(formData, 'city');
@@ -335,6 +406,10 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     fbclid,
   };
 
+  if (!(await passesRecaptcha(formData, 'nepal_waas', 'nepal-waas', fields))) {
+    redirect('/thank-you?source=nepal-waas');
+  }
+
   const description = joinDescription([
     'Source: meta-ads-east-nepal — /nepal/water-as-a-service',
     business ? `Business: ${business}` : undefined,
@@ -346,7 +421,7 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     fbclid ? `fbclid: ${fbclid}` : undefined,
   ]);
 
-  await fanOut({
+  const saved = await fanOut({
     odoo: {
       name: `Nepal WaaS — ${business ?? name ?? 'unnamed'}${plan ? ` (Plan ${plan})` : ''}`,
       contactName: name,
@@ -365,11 +440,15 @@ export async function submitNepalWaaS(formData: FormData): Promise<void> {
     meta: { eventName: 'Lead', phone, name, city, value: META_VALUE_NEPAL_WAAS, eventId },
   });
 
+  if (!saved) return { status: 'error' };
+
   redirect(`/thank-you?source=nepal-waas&eventId=${eventId}`);
 }
 
-export async function submitRFQ(formData: FormData): Promise<void> {
-  await gateRecaptcha(formData, 'rfq', 'industrial-rfq');
+export async function submitRFQ(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
   const org = takeString(formData, 'org');
   const name = takeString(formData, 'name');
   const application = takeString(formData, 'application');
@@ -392,6 +471,10 @@ export async function submitRFQ(formData: FormData): Promise<void> {
     Notes: notes,
   };
 
+  if (!(await passesRecaptcha(formData, 'rfq', 'industrial-rfq', fields))) {
+    redirect('/thank-you?source=industrial-rfq');
+  }
+
   const description = joinDescription([
     'Source: /industrial RFQ',
     org ? `Organisation: ${org}` : undefined,
@@ -401,7 +484,7 @@ export async function submitRFQ(formData: FormData): Promise<void> {
     notes ? `Notes: ${notes}` : undefined,
   ]);
 
-  await fanOut({
+  const saved = await fanOut({
     odoo: {
       name: `RFQ — ${org ?? name ?? 'Unnamed'} — ${application ?? 'application not specified'}`,
       contactName: name,
@@ -417,11 +500,15 @@ export async function submitRFQ(formData: FormData): Promise<void> {
     meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location, value: META_VALUE_INDUSTRIAL_RFQ },
   });
 
+  if (!saved) return { status: 'error' };
+
   redirect('/thank-you?source=industrial-rfq');
 }
 
-export async function submitWaterTestRequest(formData: FormData): Promise<void> {
-  await gateRecaptcha(formData, 'water_test', 'water-test');
+export async function submitWaterTestRequest(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
   const mobile = takeString(formData, 'mobile');
   const city = takeString(formData, 'city');
   const sourcePath = takeString(formData, 'sourcePath');
@@ -433,6 +520,10 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
     Request: 'Free water-test report via WhatsApp',
   };
 
+  if (!(await passesRecaptcha(formData, 'water_test', 'water-test', fields))) {
+    redirect('/thank-you?source=water-test');
+  }
+
   const description = joinDescription([
     'Source: exit-intent water-test capture',
     sourcePath ? `Triggered on: ${sourcePath}` : undefined,
@@ -440,7 +531,7 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
     'Requested: free water-test report by WhatsApp.',
   ]);
 
-  await fanOut({
+  const saved = await fanOut({
     odoo: {
       name: `Water-test request — ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
       phone: mobile,
@@ -454,6 +545,8 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
     meta: { eventName: 'Lead', phone: mobile, city, value: META_VALUE_WATER_TEST },
   });
 
+  if (!saved) return { status: 'error' };
+
   // Bounce the visitor straight to WhatsApp with a pre-filled message.
   // The lead is already in Odoo by this point, so even if the visitor never
   // sends the WhatsApp message the engineer has the mobile to follow up.
@@ -464,8 +557,10 @@ export async function submitWaterTestRequest(formData: FormData): Promise<void> 
   redirect(`https://wa.me/${phoneE164}?text=${waMsg}`);
 }
 
-export async function submitRemoteSurvey(formData: FormData): Promise<void> {
-  await gateRecaptcha(formData, 'remote_survey', 'remote-site-survey');
+export async function submitRemoteSurvey(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
   const name = takeString(formData, 'name');
   const location = takeString(formData, 'location');
   const propertyType = takeString(formData, 'propertyType');
@@ -492,6 +587,10 @@ export async function submitRemoteSurvey(formData: FormData): Promise<void> {
     Notes: notes,
   };
 
+  if (!(await passesRecaptcha(formData, 'remote_survey', 'remote-site-survey', fields))) {
+    redirect('/thank-you?source=remote-site-survey');
+  }
+
   const description = joinDescription([
     'Source: /remote-site-survey',
     propertyType ? `Property type: ${propertyType}` : undefined,
@@ -504,7 +603,7 @@ export async function submitRemoteSurvey(formData: FormData): Promise<void> {
     'Photos and water-test report to follow by email per the step-2 instructions.',
   ]);
 
-  await fanOut({
+  const saved = await fanOut({
     odoo: {
       name: `Remote site survey — ${name ?? 'Unnamed'} (${location ?? 'location pending'})`,
       contactName: name,
@@ -519,6 +618,8 @@ export async function submitRemoteSurvey(formData: FormData): Promise<void> {
     fields,
     meta: { eventName: 'Schedule', email, phone: mobile, name, city: location, value: META_VALUE_REMOTE_SURVEY },
   });
+
+  if (!saved) return { status: 'error' };
 
   redirect('/thank-you?source=remote-site-survey');
 }

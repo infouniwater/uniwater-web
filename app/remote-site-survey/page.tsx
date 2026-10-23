@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body, Caption } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
@@ -9,6 +9,7 @@ import { TextField, TextArea, SelectField } from '@/components/ui/Form';
 import { cn } from '@/lib/cn';
 import { submitRemoteSurvey } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
+import { LeadForm } from '@/components/forms/LeadForm';
 
 /**
  * Remote site survey — multi-step form per BLUEPRINT §7.10.
@@ -47,6 +48,23 @@ const UPLOAD_ITEMS = [
 
 export default function RemoteSiteSurveyPage() {
   const [step, setStep] = useState<Step>(0);
+  const stepRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  // Validate the visible step before moving on. Every step stays in the
+  // DOM, so a required field skipped here would otherwise sit hidden and
+  // invalid, and the final Submit would silently do nothing.
+  const continueFrom = (from: Step, to: Step) => {
+    const fields = stepRefs.current[from]?.querySelectorAll<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >('input, select, textarea');
+    for (const el of Array.from(fields ?? [])) {
+      if (!el.checkValidity()) {
+        el.reportValidity();
+        return;
+      }
+    }
+    setStep(to);
+  };
 
   return (
     <>
@@ -86,10 +104,10 @@ export default function RemoteSiteSurveyPage() {
             />
           </div>
 
-          <form action={submitRemoteSurvey}>
+          <LeadForm action={submitRemoteSurvey}>
             <RecaptchaField action="remote_survey" />
             {/* STEP 0 — About the property */}
-            <div className={cn('flex flex-col gap-6', step !== 0 && 'hidden')}>
+            <div ref={(el) => { stepRefs.current[0] = el; }} className={cn('flex flex-col gap-6', step !== 0 && 'hidden')}>
               <Heading level={2} className="font-light">About the property.</Heading>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <SelectField
@@ -139,12 +157,12 @@ export default function RemoteSiteSurveyPage() {
                 />
               </div>
               <div className="flex justify-end mt-6">
-                <Button type="button" onClick={() => setStep(1)}>Continue</Button>
+                <Button type="button" onClick={() => continueFrom(0, 1)}>Continue</Button>
               </div>
             </div>
 
             {/* STEP 1 — Symptoms */}
-            <div className={cn('flex flex-col gap-6', step !== 1 && 'hidden')}>
+            <div ref={(el) => { stepRefs.current[1] = el; }} className={cn('flex flex-col gap-6', step !== 1 && 'hidden')}>
               <Heading level={2} className="font-light">Symptoms.</Heading>
               <Caption className="text-mute -mt-3">Select all that apply.</Caption>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -162,12 +180,12 @@ export default function RemoteSiteSurveyPage() {
                 <Button type="button" variant="tertiary" onClick={() => setStep(0)}>
                   &larr; Back
                 </Button>
-                <Button type="button" onClick={() => setStep(2)}>Continue</Button>
+                <Button type="button" onClick={() => continueFrom(1, 2)}>Continue</Button>
               </div>
             </div>
 
             {/* STEP 2 — Photos & water test (email-based until upload backend ships) */}
-            <div className={cn('flex flex-col gap-6', step !== 2 && 'hidden')}>
+            <div ref={(el) => { stepRefs.current[2] = el; }} className={cn('flex flex-col gap-6', step !== 2 && 'hidden')}>
               <Heading level={2} className="font-light">Photos &amp; water test.</Heading>
               <Body className="text-mute">
                 Email the items below to{' '}
@@ -193,12 +211,12 @@ export default function RemoteSiteSurveyPage() {
                 <Button type="button" variant="tertiary" onClick={() => setStep(1)}>
                   &larr; Back
                 </Button>
-                <Button type="button" onClick={() => setStep(3)}>Continue</Button>
+                <Button type="button" onClick={() => continueFrom(2, 3)}>Continue</Button>
               </div>
             </div>
 
             {/* STEP 3 — Contact details + submit */}
-            <div className={cn('flex flex-col gap-6', step !== 3 && 'hidden')}>
+            <div ref={(el) => { stepRefs.current[3] = el; }} className={cn('flex flex-col gap-6', step !== 3 && 'hidden')}>
               <Heading level={2} className="font-light">Your contact details.</Heading>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <TextField label="Name" name="name" required />
@@ -222,7 +240,7 @@ export default function RemoteSiteSurveyPage() {
                 </div>
               </div>
             </div>
-          </form>
+          </LeadForm>
         </div>
       </Section>
     </>

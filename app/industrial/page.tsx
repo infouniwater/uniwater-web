@@ -14,6 +14,7 @@ import { AUDIENCE_TRACKS, getProofForTrack, type AudienceTrack } from '@/content
 import Image from 'next/image';
 import { submitRFQ } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
+import { LeadForm } from '@/components/forms/LeadForm';
 import { PincodeCheck } from '@/components/ui/PincodeCheck';
 
 /**
@@ -492,7 +493,7 @@ export default function IndustrialPage() {
             </Caption>
           </div>
           <div className="lg:col-span-7">
-            <form action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <LeadForm action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <RecaptchaField action="rfq" />
               <div className="md:col-span-2">
                 <h3 className="font-sans text-h2-m font-light text-navy mb-2">RFQ details</h3>
@@ -535,7 +536,7 @@ export default function IndustrialPage() {
                   An engineer will respond within 1 business day.
                 </Caption>
               </div>
-            </form>
+            </LeadForm>
           </div>
         </div>
       </Section>

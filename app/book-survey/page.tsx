@@ -7,6 +7,7 @@ import { Photo } from '@/components/ui/Photo';
 import { CITIES, CONTACT, STATS } from '@/content/site';
 import { submitBookSurvey } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
+import { LeadForm } from '@/components/forms/LeadForm';
 import { PROBLEM_LABEL, type ProblemToken } from '@/content/cross-links';
 
 export const metadata: Metadata = {
@@ -104,7 +105,7 @@ export default function BookSurveyPage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Form */}
           <div className="lg:col-span-7">
-            <form action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <LeadForm action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <RecaptchaField action="book_survey" />
               {audienceContext && <input type="hidden" name="audience" value={audienceContext} />}
               <div className="md:col-span-2">
@@ -200,7 +201,7 @@ export default function BookSurveyPage({
                   </Caption>
                 </div>
               </div>
-            </form>
+            </LeadForm>
           </div>
 
           {/* Reassurance aside */}

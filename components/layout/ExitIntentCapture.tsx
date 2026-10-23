@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { submitWaterTestRequest } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
+import { LeadForm } from '@/components/forms/LeadForm';
 
 /**
  * Exit-intent water-test capture — Tier 3.10 of the §6.2 marketing benchmark.
@@ -124,7 +125,7 @@ export function ExitIntentCapture() {
           Tell us your mobile number. An engineer will WhatsApp you a sampler kit and a written analysis within 48 hours. No call back unless you ask for one.
         </p>
 
-        <form action={submitWaterTestRequest} className="flex flex-col gap-4">
+        <LeadForm action={submitWaterTestRequest} className="flex flex-col gap-4">
           <input type="hidden" name="sourcePath" value={pathname ?? ''} />
           <RecaptchaField action="water_test" />
           <label className="flex flex-col gap-2">
@@ -171,7 +172,7 @@ export function ExitIntentCapture() {
           <p className="text-caption text-mute/80 leading-snug mt-1">
             We use the number only to send your report. No spam, no automated calls.
           </p>
-        </form>
+        </LeadForm>
       </div>
     </dialog>
   );

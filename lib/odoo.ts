@@ -41,6 +41,9 @@ async function jsonRpc<T>(service: string, method: string, args: JsonRpcArgs): P
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     cache: 'no-store',
+    // A slow Odoo must not hang the form; the lead is also written to the
+    // Sheet and email in parallel (app/actions/leads.ts).
+    signal: AbortSignal.timeout(7000),
     body: JSON.stringify({
       jsonrpc: '2.0',
       method: 'call',
@@ -65,6 +68,11 @@ let cachedUid: number | null = null;
 
 async function authenticate(): Promise<number> {
   if (cachedUid !== null) return cachedUid;
+  cachedUid = await authenticateFresh();
+  return cachedUid;
+}
+
+async function authenticateFresh(): Promise<number> {
   const uid = await jsonRpc<number | false>('common', 'authenticate', [
     env('ODOO_DB'),
     env('ODOO_USERNAME'),
@@ -72,10 +80,20 @@ async function authenticate(): Promise<number> {
     {},
   ]);
   if (!uid || typeof uid !== 'number') {
-    throw new Error('Odoo authentication failed. Check ODOO_USERNAME and ODOO_API_KEY.');
+    throw new Error(
+      'Odoo authentication failed. The API key has most likely expired or been revoked — generate a new one in Odoo (Preferences → Account Security → New API Key) and update ODOO_API_KEY in Vercel.',
+    );
   }
-  cachedUid = uid;
   return uid;
+}
+
+/**
+ * Health check for app/api/health/leads: authenticates without the uid
+ * cache, so an expired or revoked API key is caught even on a warm
+ * instance. Throws on failure.
+ */
+export async function checkOdooAuth(): Promise<void> {
+  await authenticateFresh();
 }
 
 /**

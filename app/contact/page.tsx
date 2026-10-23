@@ -9,6 +9,7 @@ import { AudiencePrefill } from '@/components/forms/AudiencePrefill';
 import { CONTACT, CITIES } from '@/content/site';
 import { submitContact } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
+import { LeadForm } from '@/components/forms/LeadForm';
 import { localBusinessSchema, jsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = buildMetadata({
@@ -129,7 +130,7 @@ export default function ContactPage() {
 
           {/* General enquiry form */}
           <div className="lg:col-span-7">
-            <form action={submitContact} className="bg-offwhite border border-hairline p-8 md:p-10 flex flex-col gap-6">
+            <LeadForm action={submitContact} className="bg-offwhite border border-hairline p-8 md:p-10 flex flex-col gap-6">
               <RecaptchaField action="contact" />
               <Suspense fallback={null}>
                 <AudiencePrefill />
@@ -159,7 +160,7 @@ export default function ContactPage() {
                 <Caption className="text-mute">We respond within one business day.</Caption>
                 <SubmitButton>Send message</SubmitButton>
               </div>
-            </form>
+            </LeadForm>
           </div>
         </div>
       </Section>

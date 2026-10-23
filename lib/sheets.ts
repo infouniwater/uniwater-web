@@ -16,12 +16,16 @@
  * The Apps Script writes header row on first hit per tab, then appends rows
  * matched by header name. New fields create new columns automatically.
  *
- * If GOOGLE_SHEETS_WEBAPP_URL is not set, the function is a no-op so local
- * dev works without configuration. Errors are logged, never thrown — a
- * Sheets outage must not block /thank-you.
+ * The Sheet is the backup copy of every lead (app/actions/leads.ts writes it
+ * in parallel with Odoo), so this function THROWS on any failure — including
+ * the env var being unset and the script answering HTTP 200 with
+ * {"ok":false} — so the caller can tell whether the lead actually landed and
+ * raise an alert when it did not.
  */
 
 import type { LeadFields } from './email';
+
+const TIMEOUT_MS = 7000;
 
 export async function appendLeadToSheet(input: {
   tab: string;
@@ -29,7 +33,7 @@ export async function appendLeadToSheet(input: {
 }): Promise<void> {
   const url = process.env.GOOGLE_SHEETS_WEBAPP_URL;
   if (!url) {
-    return;
+    throw new Error('Sheets: GOOGLE_SHEETS_WEBAPP_URL is not set');
   }
 
   const cleanFields: Record<string, string> = {};
@@ -37,22 +41,23 @@ export async function appendLeadToSheet(input: {
     if (v !== undefined && v !== '') cleanFields[k] = String(v);
   }
 
-  try {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      cache: 'no-store',
-      body: JSON.stringify({
-        tab: input.tab,
-        timestamp: new Date().toISOString(),
-        fields: cleanFields,
-      }),
-    });
-    if (!res.ok) {
-      const body = await res.text().catch(() => '');
-      console.error(`[sheets] Apps Script ${res.status}: ${body.slice(0, 300)}`);
-    }
-  } catch (err) {
-    console.error('[sheets] Apps Script request failed:', err);
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    cache: 'no-store',
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+    body: JSON.stringify({
+      tab: input.tab,
+      timestamp: new Date().toISOString(),
+      fields: cleanFields,
+    }),
+  });
+  const body = await res.text().catch(() => '');
+  if (!res.ok) {
+    throw new Error(`Sheets: Apps Script HTTP ${res.status}: ${body.slice(0, 300)}`);
+  }
+  // The script reports its own errors as HTTP 200 + {"ok":false,"error":...}.
+  if (!body.includes('"ok":true')) {
+    throw new Error(`Sheets: Apps Script did not confirm the write: ${body.slice(0, 300)}`);
   }
 }

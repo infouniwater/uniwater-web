@@ -7,6 +7,7 @@ import { TextField, TextArea, SelectField } from '@/components/ui/Form';
 import { SubmitButton } from '@/components/ui/SubmitButton';
 import { submitNepalWaaS } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
+import { LeadForm } from '@/components/forms/LeadForm';
 import {
   DM_PRICING_LINE,
   REGIONS,
@@ -228,7 +229,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
               </ul>
             </div>
             <div className="lg:col-span-7">
-              <form
+              <LeadForm
                 action={submitNepalWaaS}
                 className="bg-subtle border border-hairline p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-5"
               >
@@ -311,7 +312,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     </Caption>
                   </div>
                 </div>
-              </form>
+              </LeadForm>
             </div>
           </div>
         </div>
