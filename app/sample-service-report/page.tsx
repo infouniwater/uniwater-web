@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = {
   title: 'Sample monthly service report',
@@ -106,12 +107,12 @@ export default function SampleServiceReportPage() {
             <section className="mb-10">
               <h2 className="font-sans text-h3 font-semibold text-navy mb-4">Work performed</h2>
               <ul className="flex flex-col gap-2 text-body text-navy">
-                <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Inlet sediment pre-filter inspected, backwashed. No replacement needed.</span></li>
-                <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Iron filter regen cycle verified. Media bed depth measured at 320 mm (target 300–350). No top-up required this visit.</span></li>
-                <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Activated carbon filter — chlorine breakthrough test passed (post-stage residual &lt; 0.05 ppm). Carbon life remaining ~9 months.</span></li>
-                <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Softener resin — hardness leakage test passed. Salt tank checked, refilled 22 kg (next refill ~ Aug 2026).</span></li>
-                <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Multiport valve seal inspected, lubricated. No leak.</span></li>
-                <li className="flex gap-3"><span className="text-teal flex-shrink-0">—</span><span>Drain line clear. Bypass valve operates correctly.</span></li>
+                <li className="flex gap-3"><ListBar /><span>Inlet sediment pre-filter inspected, backwashed. No replacement needed.</span></li>
+                <li className="flex gap-3"><ListBar /><span>Iron filter regen cycle verified. Media bed depth measured at 320 mm (target 300–350). No top-up required this visit.</span></li>
+                <li className="flex gap-3"><ListBar /><span>Activated carbon filter — chlorine breakthrough test passed (post-stage residual &lt; 0.05 ppm). Carbon life remaining ~9 months.</span></li>
+                <li className="flex gap-3"><ListBar /><span>Softener resin — hardness leakage test passed. Salt tank checked, refilled 22 kg (next refill ~ Aug 2026).</span></li>
+                <li className="flex gap-3"><ListBar /><span>Multiport valve seal inspected, lubricated. No leak.</span></li>
+                <li className="flex gap-3"><ListBar /><span>Drain line clear. Bypass valve operates correctly.</span></li>
               </ul>
             </section>
 

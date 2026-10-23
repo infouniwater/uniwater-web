@@ -16,6 +16,7 @@ import { submitRFQ } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import { LeadForm } from '@/components/forms/LeadForm';
 import { PincodeCheck } from '@/components/ui/PincodeCheck';
+import { ListBar } from '@/components/ui/ListBar';
 
 /**
  * /industrial -- redesigned 2026-06-04 as a DECISION PAGE.
@@ -217,9 +218,9 @@ export default function IndustrialPage() {
             <div className="pt-4 border-t border-teal/30">
               <Caption className="text-mute uppercase tracking-wide block mb-2">Best for</Caption>
               <ul className="flex flex-col gap-1.5">
-                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Predictable opex; nothing on the capex sheet.</span></li>
-                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>No procurement team to run a tender.</span></li>
-                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Operations and maintenance handled by us.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><ListBar /><span>Predictable opex; nothing on the capex sheet.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><ListBar /><span>No procurement team to run a tender.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><ListBar /><span>Operations and maintenance handled by us.</span></li>
               </ul>
             </div>
             <div className="pt-4 mt-auto">
@@ -250,9 +251,9 @@ export default function IndustrialPage() {
             <div className="pt-4 border-t border-hairline">
               <Caption className="text-mute uppercase tracking-wide block mb-2">Best for</Caption>
               <ul className="flex flex-col gap-1.5">
-                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Capex budget approved; plant on your books.</span></li>
-                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Procurement team running a vendor tender.</span></li>
-                <li className="flex gap-2 text-caption text-ink"><span className="text-teal shrink-0">—</span><span>Custom plant requirements outside our standard catalogue.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><ListBar /><span>Capex budget approved; plant on your books.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><ListBar /><span>Procurement team running a vendor tender.</span></li>
+                <li className="flex gap-2 text-caption text-ink"><ListBar /><span>Custom plant requirements outside our standard catalogue.</span></li>
               </ul>
             </div>
             <div className="pt-4 mt-auto">
@@ -481,10 +482,10 @@ export default function IndustrialPage() {
               We come back with a system layout, a bill of materials, and a price you can take to procurement.
             </Lede>
             <ul className="mt-8 flex flex-col gap-3 text-mute">
-              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> Engineer assigned within 1 business day</li>
-              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> Site visit and water analysis within 5 working days</li>
-              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> BOM &amp; quote within 5 working days of analysis</li>
-              <li className="flex gap-3 text-caption"><span className="text-teal">&mdash;</span> 24-hour SLA on flagged faults, post-install</li>
+              <li className="flex gap-3 text-caption"><ListBar /> Engineer assigned within 1 business day</li>
+              <li className="flex gap-3 text-caption"><ListBar /> Site visit and water analysis within 5 working days</li>
+              <li className="flex gap-3 text-caption"><ListBar /> BOM &amp; quote within 5 working days of analysis</li>
+              <li className="flex gap-3 text-caption"><ListBar /> 24-hour SLA on flagged faults, post-install</li>
             </ul>
             <Caption className="text-mute italic mt-6">
               Looking for the subscription model instead?{' '}

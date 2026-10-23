@@ -9,6 +9,7 @@ import { submitBookSurvey } from '@/app/actions/leads';
 import { RecaptchaField } from '@/components/forms/RecaptchaField';
 import { LeadForm } from '@/components/forms/LeadForm';
 import { PROBLEM_LABEL, type ProblemToken } from '@/content/cross-links';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = {
   title: 'Book a free survey',
@@ -219,7 +220,7 @@ export default function BookSurveyPage({
               <ul className="flex flex-col gap-3">
                 {REASSURANCE.map((item) => (
                   <li key={item} className="text-body text-ink flex gap-3">
-                    <span className="text-teal flex-shrink-0">&mdash;</span>
+                    <ListBar />
                     <span>{item}</span>
                   </li>
                 ))}

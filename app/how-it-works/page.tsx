@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/Card';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { CustomerJourneyTimeline } from '@/components/sections/CustomerJourneyTimeline';
 import { FOUR_STEPS } from '@/content/education';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = buildMetadata({
   path: '/how-it-works',
@@ -225,7 +226,7 @@ export default function HowItWorksPage() {
                 <ul className="flex flex-col gap-2">
                   {stage.aside.items.map((item) => (
                     <li key={item} className="text-caption text-ink flex gap-3">
-                      <span className="text-teal flex-shrink-0">&mdash;</span>
+                      <ListBar />
                       <span>{item}</span>
                     </li>
                   ))}

@@ -63,7 +63,7 @@ export function CityWaterTable({ citySlug, cityName, note }: CityWaterTableProps
               <tr key={row.area} className="border-b border-hairline last:border-b-0 bg-offwhite align-top">
                 <td className="p-4 text-ink font-medium whitespace-nowrap">{row.area}</td>
                 {showSupply && (
-                  <td className="p-4 text-mute whitespace-nowrap">{row.supply ?? '—'}</td>
+                  <td className="p-4 text-mute whitespace-nowrap">{row.supply ?? 'Not recorded'}</td>
                 )}
                 <td className="p-4 text-ink whitespace-nowrap">{formatPpmRange(row.ironPpm)}</td>
                 <td className="p-4 text-ink whitespace-nowrap">{formatPpmRange(row.hardnessPpm)}</td>

@@ -20,6 +20,7 @@ import {
   getProofForTrack,
   type WaterLineSlug,
 } from '@/content/cwaas';
+import { ListBar } from '@/components/ui/ListBar';
 
 /**
  * /clean-water-as-a-service/residential-societies
@@ -244,7 +245,7 @@ export default function ResidentialSocietiesPage() {
                 <ul className="flex flex-col gap-1.5">
                   {line.guarantee.map((g) => (
                     <li key={g} className="flex gap-2 text-caption text-ink">
-                      <span className="text-teal shrink-0">—</span>
+                      <ListBar />
                       <span>{g}</span>
                     </li>
                   ))}

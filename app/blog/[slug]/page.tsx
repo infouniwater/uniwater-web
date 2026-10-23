@@ -11,6 +11,7 @@ import { getSolutionForBlog } from '@/content/cross-links';
 import { articleSchema, breadcrumbSchema, jsonLd } from '@/lib/structured-data';
 import { featureImageFor } from '@/lib/blog-images';
 import { buildMetadata } from '@/lib/seo';
+import { ListBar } from '@/components/ui/ListBar';
 
 export async function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
@@ -146,7 +147,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 <ul key={i} className="flex flex-col gap-2 list-none pl-0">
                   {block.items.map((item, j) => (
                     <li key={j} className="text-body text-mute flex gap-3">
-                      <span className="text-teal flex-shrink-0">&mdash;</span>
+                      <ListBar />
                       <span>{item}</span>
                     </li>
                   ))}

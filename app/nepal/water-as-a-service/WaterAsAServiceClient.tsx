@@ -21,6 +21,7 @@ import {
 import { useUtmCapture, appendUtmToWhatsAppHref } from './useUtmCapture';
 import { HeroCTAs } from './HeroCTAs';
 import { trackWhatsAppContact } from './pixel';
+import { ListBar } from '@/components/ui/ListBar';
 
 /**
  * Client island for the Nepal WaaS landing page.
@@ -215,15 +216,15 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
               </Body>
               <ul className="mt-6 flex flex-col gap-3">
                 <li className="flex gap-3 text-caption text-mute">
-                  <span className="text-teal">—</span>
+                  <ListBar />
                   <span>Same-day callback in Itahari and Biratnagar.</span>
                 </li>
                 <li className="flex gap-3 text-caption text-mute">
-                  <span className="text-teal">—</span>
+                  <ListBar />
                   <span>Site survey within five working days.</span>
                 </li>
                 <li className="flex gap-3 text-caption text-mute">
-                  <span className="text-teal">—</span>
+                  <ListBar />
                   <span>Plant commissioned within agreed timeline.</span>
                 </li>
               </ul>

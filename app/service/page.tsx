@@ -9,6 +9,7 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { ServiceSection } from '@/components/sections/ServiceSection';
 import { SERVICE_PROTOCOL, AMC_TIERS, TWELVE_MONTHS } from '@/content/service';
 import { cn } from '@/lib/cn';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = buildMetadata({
   path: '/service',
@@ -213,7 +214,7 @@ export default function ServicePage() {
               <ul className="flex flex-col gap-2 mt-4 pt-4 border-t border-offwhite/15">
                 {tier.inclusions.map((inc) => (
                   <li key={inc} className="text-caption text-offwhite/85 flex gap-3">
-                    <span className="text-soft flex-shrink-0">&mdash;</span>
+                    <ListBar tone="soft" />
                     <span>{inc}</span>
                   </li>
                 ))}

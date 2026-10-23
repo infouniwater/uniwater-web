@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = {
   title: 'Sample BOM — building inlet WTP',
@@ -201,21 +202,21 @@ export default function SampleBomPage() {
               <div>
                 <div className="text-eyebrow text-mute uppercase mb-2 text-xs">Bundled in the line items</div>
                 <ul className="text-caption text-navy leading-snug flex flex-col gap-1">
-                  <li>— Vessel + media + automatic multiport valve</li>
-                  <li>— Floor stand, mounting bracket</li>
-                  <li>— Inlet/outlet unions + bypass valve</li>
-                  <li>— 1 m connecting hose between adjacent vessels</li>
-                  <li>— Installation manual + commissioning report</li>
+                  <li><ListBar inline />Vessel + media + automatic multiport valve</li>
+                  <li><ListBar inline />Floor stand, mounting bracket</li>
+                  <li><ListBar inline />Inlet/outlet unions + bypass valve</li>
+                  <li><ListBar inline />1 m connecting hose between adjacent vessels</li>
+                  <li><ListBar inline />Installation manual + commissioning report</li>
                 </ul>
               </div>
               <div>
                 <div className="text-eyebrow text-mute uppercase mb-2 text-xs">Excluded (customer scope)</div>
                 <ul className="text-caption text-mute leading-snug flex flex-col gap-1">
-                  <li>— Raw / treated water storage tanks</li>
-                  <li>— Distribution piping beyond the plant room</li>
-                  <li>— Civil work / plant room construction</li>
-                  <li>— Power supply to the plant room</li>
-                  <li>— Building approvals / pollution-board NOC if required</li>
+                  <li><ListBar inline />Raw / treated water storage tanks</li>
+                  <li><ListBar inline />Distribution piping beyond the plant room</li>
+                  <li><ListBar inline />Civil work / plant room construction</li>
+                  <li><ListBar inline />Power supply to the plant room</li>
+                  <li><ListBar inline />Building approvals / pollution-board NOC if required</li>
                 </ul>
               </div>
             </section>

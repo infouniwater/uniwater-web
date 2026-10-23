@@ -4,6 +4,7 @@ import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Lede, Body } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { ListBar } from '@/components/ui/ListBar';
 
 /**
  * /for-trade — trade triage page. Audience-routing layer that the
@@ -138,7 +139,7 @@ export default function ForTradePage() {
               <ul className="flex flex-col gap-2 mt-1 flex-grow">
                 {a.bullets.map((b) => (
                   <li key={b} className="flex gap-3 text-caption text-mute leading-snug">
-                    <span className="text-teal flex-shrink-0 mt-[2px]">&mdash;</span>
+                    <ListBar />
                     <span>{b}</span>
                   </li>
                 ))}
