@@ -60,7 +60,7 @@ import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = buildMetadata({
   path: '/industrial',
-  title: 'Industrial & Institutional Water Treatment Plants',
+  title: 'Industrial and institutional water treatment plants',
   description:
     'Engineered water systems for industry, hospitality, healthcare, residential societies. Two procurement models: subscribe (Clean Water as a Service) or specify and buy a plant. 8,000 LPH building plants to 50,000 LPH industrial RO.',
   image: '/og/og-industrial.jpg',
@@ -281,7 +281,7 @@ export default function IndustrialPage() {
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Who we serve</Eyebrow>
-          <Heading level={2} inverse>Three audiences. One protocol.</Heading>
+          <Heading level={2} inverse>Who we build for.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {AUDIENCE_TRACKS.map((track) => {
