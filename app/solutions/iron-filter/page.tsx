@@ -48,7 +48,7 @@ export default function Page() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 flex flex-col gap-4">
               <Eyebrow className="mb-2">In your city</Eyebrow>
-              <Heading level={2}>Iron in Kolkata water — the long read.</Heading>
+              <Heading level={2}>Iron in Kolkata water: the full guide.</Heading>
               <Body className="text-mute mt-2">
                 Why borewell-fed neighbourhoods east of the EM Bypass see iron,
                 where it concentrates by locality, and the order treatment
@@ -62,7 +62,7 @@ export default function Page() {
               >
                 <Eyebrow className="text-teal">Pillar guide</Eyebrow>
                 <Heading level={3}>
-                  Iron in Kolkata water — stains, causes, and removal.
+                  Iron in Kolkata water: stains, causes and removal.
                 </Heading>
                 <Body className="text-mute">
                   Locality table (Park Street through Rajarhat), three-stage

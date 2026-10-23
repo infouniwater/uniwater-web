@@ -52,7 +52,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     navLabel: 'BathSoft',
     wordmark: 'BathSoft',
     shortHeadline:
-      'A bathroom filter has to do three things at once: treat the water, fit the space, not announce itself.',
+      'A bathroom filter has to treat the water, fit the space and stay out of sight.',
     // Problem bands tightened 2026-06-02 -- each band is one
     // punchy sentence now (was 40-55 words each). Per Rajat's
     // feedback the previous version read as four paragraphs;
@@ -61,11 +61,11 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       // 01 \u00b7 TREAT
       'Removes hardness, particulate, and chlorine residual at the bathroom feed.',
       // 02 \u00b7 FIT
-      'Engineered for 200 mm ceilings, 150 mm shafts, retro-fit niches \u2014 not the other way around.',
+      'Built to fit 200 mm ceilings, 150 mm shafts and retro-fit niches.',
       // 03 \u00b7 HIDE
       'Inside cabinets, ceiling voids, wall recesses. Once installed, you stop seeing it.',
       // 04 \u00b7 SERVE
-      'Monthly engineer visit. Same person. Named, for the life of the contract.',
+      'An engineer visits every month, and it\u2019s the same named person for the life of the contract.',
     ],
     // priceFromINR removed 2026-06-02 -- the per-tier "from \u20b9X"
     // anchors now live inside each configuration subtitle (Mono \u20b914k
@@ -74,18 +74,18 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     configurations: [
       {
         name: 'Mono',
-        subtitle: 'Single cylinder \u2014 from \u20b914,000',
+        subtitle: 'Single cylinder, from \u20b914,000',
         description: 'Single shower, standard fittings. ~1,200 LPH peak.',
       },
       {
         name: 'Duo',
-        subtitle: 'Double cylinder \u2014 from \u20b924,000',
+        subtitle: 'Double cylinder, from \u20b924,000',
         description: 'Rain shower + body jets, or two showers in parallel. ~1,800 LPH peak.',
       },
       {
         name: 'Trio',
-        subtitle: 'Triple cylinder \u2014 from \u20b942,000',
-        description: 'Master suite \u2014 steam, jacuzzi, multiple high-flow outlets. ~2,400 LPH peak.',
+        subtitle: 'Triple cylinder, from \u20b942,000',
+        description: 'Master suite with steam, jacuzzi and several high-flow outlets. ~2,400 LPH peak.',
       },
     ],
     installContext: 'bathroom-five-places',
@@ -96,12 +96,12 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     navLabel: 'HomeSoft',
     wordmark: 'HomeSoft',
     shortHeadline:
-      'One softened, filtered supply for the whole house. Every shower, every sink, every appliance.',
+      'One softened, filtered supply for the whole house, from the showers to the washing machine.',
     problemBands: [
       'Treating water tap-by-tap means six service contracts. Treating at the inlet means one.',
       'Geysers, washing machines, dishwashers fail early on hard or iron-bearing water.',
       'BathSoft helps the bathroom. The kitchen sink, the washing machine, the garden tap still get raw supply.',
-      'Borewell-fed homes need iron removal upstream of everything else. Or everything else fails faster.',
+      'Borewell-fed homes need iron removal ahead of everything else, or everything after it fails sooner.',
     ],
     priceFromINR: 50000,
     configurations: [
@@ -136,7 +136,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     slug: 'drinking-water-solution',
     navLabel: 'Drinking water systems',
     shortHeadline:
-      'The one tap where chemistry beats every other concern. RO or UF + UV is a 10-minute test, not a sales decision.',
+      'At the drinking tap, chemistry matters more than anything else. Whether you need RO or UF + UV comes from a 10-minute test, not a sales pitch.',
     problemBands: [
       // 01 · CHEMISTRY CALL
       'Drinking water is a chemistry call: TDS above 500 ppm calls for RO; below 200, UF + UV. Anything in between needs a test, not a guess.',
@@ -174,9 +174,9 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
     slug: 'iron-filter',
     navLabel: 'Iron removal filter',
     shortHeadline:
-      'Iron is the stain you can see and the taste you can’t ignore — and it has to come out before anything else does.',
+      'Iron leaves stains you can see and a taste you can’t ignore. It has to come out before any other treatment.',
     problemBands: [
-      'Dissolved iron looks clear at the tap, then turns water yellow or orange the moment it meets air — staining basins, tiles, and white laundry.',
+      'Dissolved iron looks clear at the tap, then turns the water yellow or orange once it meets air. That is what stains basins, tiles and white laundry.',
       'Iron fouls softening resin and clogs RO membranes. Left untreated upstream, it shortens the life of everything after it.',
       'Borewell-fed homes carry iron more often than the municipal record suggests. Treat it first, or rebuild the softener inside a year.',
       'An iron filter is a media bed, not a cartridge. Sized to the iron load and backwashed on cycle, it runs for years.',
@@ -189,7 +189,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       },
       {
         name: 'Whole-house',
-        subtitle: '2,000 — 4,000 LPH',
+        subtitle: '2,000–4,000 LPH',
         description: 'Iron pre-treatment ahead of the HomeSoft train, so iron never reaches the softening resin. Automatic backwash on larger loads.',
       },
       {
@@ -210,7 +210,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       'Hard water scales every fitting, geyser, and appliance it touches. A softener takes the hardness out at the source.',
     problemBands: [
       'Hardness is calcium and magnesium. It furs up geyser elements, blocks shower heads, clouds glassware, and leaves white scale on every fitting.',
-      'A softener swaps that hardness for sodium on an ion-exchange resin — the standard, proven fix for scale.',
+      'A softener swaps that hardness for sodium on an ion-exchange resin. It is the standard, proven fix for scale.',
       'It does not remove iron. On borewell supply, iron has to be filtered out upstream first, or it fouls the resin.',
       'Resin is regenerated with salt on cycle. Sized to your draw and hardness, it runs for years with routine service.',
     ],
@@ -222,7 +222,7 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
       },
       {
         name: 'Whole-house',
-        subtitle: '2,000 — 6,000 LPH',
+        subtitle: '2,000–6,000 LPH',
         description: 'Softens every tap from the inlet. Brine tank for automatic regeneration.',
       },
       {
@@ -245,31 +245,31 @@ export const SOLUTIONS: Record<SolutionSlug, Solution> = {
  */
 export const SOLUTION_SEO: Record<SolutionSlug, { title: string; description: string; anchor: string }> = {
   'bathroom-filter': {
-    title: 'Bathroom Water Filter & Softener (BathSoft)',
+    title: 'Bathroom water filter & softener (BathSoft)',
     description:
-      'BathSoft bathroom water filters remove hardness, iron, and chlorine at the shower feed — hidden in the ceiling, niche, or cabinet. Surveyed, installed, and serviced monthly across India & Nepal.',
+      'BathSoft bathroom water filters remove hardness, iron and chlorine at the shower feed, hidden in the ceiling, a niche or a cabinet. Surveyed, installed and serviced monthly across India and Nepal.',
     anchor: 'bathroom water filter',
   },
   'whole-house-water-filter': {
-    title: 'Whole-House Water Softener & Filter (HomeSoft)',
+    title: 'Whole-house water softener & filter (HomeSoft)',
     description:
-      'HomeSoft whole-house water softeners and four-stage filtration — sediment, iron, carbon, softening — treat every tap from a single inlet. Surveyed, installed, and serviced monthly by Uniwater.',
+      'HomeSoft whole-house water softeners use four-stage filtration (sediment, iron, carbon, softening) to treat every tap from a single inlet. Surveyed, installed and serviced monthly by Uniwater.',
     anchor: 'whole-house water filter',
   },
   'drinking-water-solution': {
-    title: 'Drinking Water RO & UV Purifier Systems',
+    title: 'Drinking water RO & UV purifier systems',
     description:
-      'Kitchen RO and UF + UV drinking-water systems sized by a free TDS test — re-mineralised, under-sink or centralised. Engineered and serviced by Uniwater across India & Nepal.',
+      'Kitchen RO and UF + UV drinking-water systems sized by a free TDS test. Re-mineralised, under-sink or centralised, and serviced by Uniwater across India and Nepal.',
     anchor: 'drinking water system',
   },
   'iron-filter': {
-    title: 'Iron Removal Filter for Borewell Water',
+    title: 'Iron removal filter for borewell water',
     description:
       'Iron-removal filters that clear yellow/orange staining and metallic taste from borewell water, fitted upstream of softening. Surveyed, installed, and serviced by Uniwater.',
     anchor: 'iron removal filter',
   },
   'water-softener': {
-    title: 'Water Softener for Hard Water',
+    title: 'Water softener for hard water',
     description:
       'Water softeners that stop scale on geysers, fittings, and glassware by removing hardness at the source. Sized at survey; iron handled upstream. Installed and serviced by Uniwater.',
     anchor: 'water softener',

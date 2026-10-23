@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Solutions',
   description:
-    'What we install. From a single bathroom to a 30,000 LPH building plant — surveyed before sold, hidden after, serviced monthly. Residential + B2B.',
+    'What we install, from a single bathroom filter to a 30,000 LPH building plant. Surveyed before we quote, hidden in the building and serviced monthly. Homes and businesses.',
 };
 
 export default function SolutionsLayout({ children }: { children: React.ReactNode }) {

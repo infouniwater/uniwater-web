@@ -65,7 +65,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               priceFromINR: solution.priceFromINR,
             }),
             serviceSchema({
-              name: `${solution.navLabel} — survey, install, and service`,
+              name: `${solution.navLabel}: survey, install and service`,
               description: solution.shortHeadline,
               url: `/solutions/${solution.slug}`,
             }),
@@ -108,7 +108,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         ) : (
           <div className="absolute inset-0">
             <Photo
-              description={`Hero — ${solution.navLabel} installed in a finished home`}
+              description={`Hero: ${solution.navLabel} installed in a finished home`}
               assetRef={`solution-${solution.slug}-hero`}
               aspect="five-six"
               mobileAspect="sixteen-nine"
@@ -207,7 +207,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
           <Heading level={2} inverse>
             {solution.installContext === 'point-of-use'
               ? 'TDS decides the chemistry. The kitchen decides the rest.'
-              : 'Sized to the water, the house, and the people in it.'}
+              : 'Sized to the water, the house and the people who live in it.'}
           </Heading>
         </div>
         <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-offwhite/15 border border-offwhite/15 max-w-4xl">
@@ -232,7 +232,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         <EditorialAccent inverse className="mt-10 md:mt-14">
           {solution.installContext === 'point-of-use'
             ? 'A water test, not a sales pitch.'
-            : 'Engineered, not bought off a shelf.'}
+            : 'Built for your house, not taken off a shelf.'}
         </EditorialAccent>
       </Section>
 
@@ -244,7 +244,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               <Eyebrow className="mb-4">Inside the vessel</Eyebrow>
               <Heading level={2}>The engineering, in section.</Heading>
               <Body className="text-mute mt-4">
-                What the system looks like on the cutaway. Media bed, distributor, freeboard, control head &mdash; the visible engineering that decides what the water does over the next fifteen years.
+                This is the system in cutaway: media bed, distributor, freeboard and control head. These parts decide what the water does for the next fifteen years.
               </Body>
             </div>
             <div className="hidden md:block lg:col-span-8 bg-offwhite border border-hairline p-6 md:p-8">
@@ -254,7 +254,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/images/product-cutaways/${cutawaySlug}/landscape.svg`}
-                alt={`${solution.navLabel} — engineering cross-section showing vessel internals, media bed, distributor, and control head`}
+                alt={`${solution.navLabel} engineering cross-section showing vessel internals, media bed, distributor and control head`}
                 className="block w-full h-auto"
                 loading="lazy"
                 decoding="async"
@@ -285,7 +285,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       <Section padding="default">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">What&rsquo;s included</Eyebrow>
-          <Heading level={2}>Everything to put it in. Everything to keep it running.</Heading>
+          <Heading level={2}>What comes with it, and what keeps it running.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {getIncludedItems(solution).map((item) => (
@@ -343,7 +343,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                   </div>
                 ) : (
                   <Photo
-                    description={`${card.title} — install context`}
+                    description={`${card.title}: install context`}
                     assetRef={`${solution.slug}-install-${i + 1}`}
                     aspect="four-three"
                   />
@@ -377,7 +377,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow>Configurations</Eyebrow>
           <Heading level={2}>
-            Three or four sizes. Decided by load, not by SKU.
+            Three or four sizes. Your load decides which one, not a SKU list.
           </Heading>
           <Body className="text-mute mt-2">
             We don&rsquo;t expose part numbers. The configuration is decided at survey based on bathroom count, household draw, and water chemistry.
@@ -417,7 +417,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
             <Eyebrow inverse>Technical specifications</Eyebrow>
             <Heading level={2} inverse>For the architect, plumber, or engineer.</Heading>
             <Body inverse className="text-offwhite/80 mt-2">
-              Surface what matters; collapse what doesn&rsquo;t. Open the rows below for the engineering detail.
+              Open the rows below for the engineering detail.
             </Body>
             <div className="mt-6">
               <Eyebrow inverse className="mb-3">Components from</Eyebrow>
@@ -528,7 +528,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
                 </div>
               ) : (
                 <Photo
-                  description={`Real install — ${solution.navLabel} at a customer home`}
+                  description={`Real install: ${solution.navLabel} at a customer home`}
                   assetRef={`${solution.slug}-real-install-${i + 1}`}
                   aspect="sixteen-nine"
                 />
@@ -552,7 +552,7 @@ export function SolutionDetailTemplate({ solution, slotBeforeFinalCTA }: Props) 
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Related</Eyebrow>
-          <Heading level={2} inverse>You may also want to look at &mdash;</Heading>
+          <Heading level={2} inverse>You may also want to look at these.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {solution.related.slice(0, 3).map((relSlug) => {
@@ -649,25 +649,25 @@ const BATHROOM_DRAWINGS: InstallDrawing[] = [
     file: '/images/install-drawings/bathroom/01-false-ceiling.svg',
     title: '01 · False-ceiling',
     body: 'Vessels in the void above the suspended ceiling. Equipment hidden until access panel removed.',
-    alt: 'Bathroom false-ceiling install — section view of vessels in ceiling void',
+    alt: 'Bathroom false-ceiling install: section view of vessels in the ceiling void',
   },
   {
     file: '/images/install-drawings/bathroom/04-plumbing-duct.svg',
     title: '04 · Plumbing duct',
     body: 'Vertical install in concealed riser shaft. Routes within existing infrastructure, no architectural intervention.',
-    alt: 'Bathroom plumbing-duct install — section view of vessels in riser',
+    alt: 'Bathroom plumbing-duct install: section view of vessels in the riser',
   },
   {
     file: '/images/install-drawings/bathroom/06-wall-cabinet.svg',
     title: '06 · Wall cabinet',
     body: 'Cabinet mounted ON the wall with serviceable doors. Finished interior, no construction needed.',
-    alt: 'Bathroom wall-cabinet install — section view of vessels behind cabinet',
+    alt: 'Bathroom wall-cabinet install: section view of vessels behind the cabinet',
   },
   {
     file: '/images/install-drawings/bathroom/07-wall-niche.svg',
     title: '07 · Wall niche',
-    body: 'Recess cut INTO the wall, flush with tile. Architecture-grade — vessels become part of the wall.',
-    alt: 'Bathroom wall-niche install — section view of recessed vessels',
+    body: 'A recess cut into the wall, flush with the tile, so the vessels become part of the wall.',
+    alt: 'Bathroom wall-niche install: section view of recessed vessels',
   },
 ];
 
@@ -676,19 +676,19 @@ const WHOLE_HOUSE_DRAWINGS: InstallDrawing[] = [
     file: '/images/install-drawings/whole-house/02-utility-room.svg',
     title: '02 · Utility room',
     body: 'Indoor controlled environment. Easiest service access, full 4-stage train fits.',
-    alt: 'Whole-house utility-room install — plant in dedicated indoor space',
+    alt: 'Whole-house utility-room install: plant in a dedicated indoor space',
   },
   {
     file: '/images/install-drawings/whole-house/03-terrace.svg',
     title: '03 · Terrace',
     body: 'Rooftop install with weather hood. Uses existing OHT gravity-feed, exposed to elements.',
-    alt: 'Whole-house terrace install — rooftop plant with weather hood',
+    alt: 'Whole-house terrace install: rooftop plant with weather hood',
   },
   {
     file: '/images/install-drawings/whole-house/04-basement.svg',
     title: '04 · Basement',
     body: 'Villa basement plant room. Centralised, sump pit handles backwash, full 4-stage train fits.',
-    alt: 'Whole-house basement install — full 4-stage plant in plant room',
+    alt: 'Whole-house basement install: full 4-stage plant in the plant room',
   },
 ];
 
@@ -697,7 +697,7 @@ const DRINKING_WATER_DRAWINGS: InstallDrawing[] = [
     file: '/images/install-drawings/bathroom/05-under-basin.svg',
     title: '05 · Under-basin',
     body: 'Point-of-use install under the kitchen vanity. Service via cabinet door, no impact on finishes.',
-    alt: 'Under-basin install — section view of compact unit under vanity',
+    alt: 'Under-basin install: section view of compact unit under the vanity',
   },
 ];
 
@@ -734,7 +734,7 @@ function getHeroPhotoForSolution(slug: string): PhotoAsset | null {
     case 'whole-house-water-filter':
       return {
         src: `${PHOTO_BASE}/whole-house-hero.jpg`,
-        alt: 'HomeSoft whole-house water filter — two branded Uniwater vessels installed in a finished home corner near windows and plants',
+        alt: 'HomeSoft whole-house water filter: two branded Uniwater vessels installed in a finished home corner near windows and plants',
       };
     case 'drinking-water-solution':
       return {
@@ -753,7 +753,7 @@ function getInstallPhotosForSolution(slug: string): PhotoAsset[] {
     // InstallationVersatility on the homepage.
     return [
       { src: `${PHOTO_BASE}/bathroom-filter-ceiling-installation.jpg`, alt: 'Stainless cylinder mounted in the suspended-ceiling void of a finished bathroom, accessed via a removable panel' },
-      { src: `${PHOTO_BASE}/bathroom-filter-hero.jpg`, alt: 'Two stainless cylinders recessed in a wall niche behind a marble shower glass — part of the bathroom architecture, not bolted onto it' },
+      { src: `${PHOTO_BASE}/bathroom-filter-hero.jpg`, alt: 'Two stainless cylinders recessed in a wall niche behind a marble shower glass, built into the bathroom wall' },
       { src: `${PHOTO_BASE}/bathroom-filter-wall-cabinet.jpg`, alt: 'Stainless vessel housed inside a wall cabinet behind a finish door, flush with the bathroom wall' },
       { src: `${PHOTO_BASE}/bathroom-filter-under-basin.jpg`, alt: 'Compact vessels installed under the vanity counter beside the trap, hidden behind the cabinet door' },
       { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater vessels floor-mounted in the home utility area beside the washing machine' },
@@ -767,7 +767,7 @@ function getInstallPhotosForSolution(slug: string): PhotoAsset[] {
     // frame reads as the joinery-cabinet aesthetic.
     return [
       { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'Two branded Uniwater HomeSoft vessels floor-mounted in a finished home utility area beside the washing machine' },
-      { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Three branded Uniwater HomeSoft vessels installed against a finished joinery wall on a luxury villa terrace -- balcony-aesthetic service install' },
+      { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'Three branded Uniwater HomeSoft vessels installed against a finished joinery wall on a luxury villa terrace' },
       { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'Two branded Uniwater HomeSoft vessels on a residential terrace, beachfront villas behind' },
       { src: `${PHOTO_BASE}/wtp-basement.jpg`, alt: 'Branded Uniwater HomeSoft train installed in a villa basement plant room with overhead piping and concrete walls' },
       { src: `${PHOTO_BASE}/whole-house-hero.jpg`, alt: 'Branded Uniwater HomeSoft vessels in a custom joinery-grade enclosure in a finished home corner near tall windows and planting' },
@@ -786,7 +786,7 @@ function getRealInstallPhotosForSolution(slug: string): PhotoAsset[] {
       ];
     case 'whole-house-water-filter':
       return [
-        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Premium apartment, Salt Lake, Kolkata. Utility-room install.' },
+        { src: `${PHOTO_BASE}/whole-house-utility-area.jpg`, alt: 'HomeSoft in the utility area', caption: 'Apartment, Salt Lake, Kolkata. Utility-room install.' },
         { src: `${PHOTO_BASE}/whole-house-luxury-villa.jpg`, alt: 'HomeSoft in a luxury villa', caption: 'Independent villa, Patia, Bhubaneswar. Basement plant.' },
         { src: `${PHOTO_BASE}/whole-house-terrace.jpg`, alt: 'HomeSoft on the terrace', caption: 'Penthouse, New Town, Kolkata. Terrace install with gravity feed.' },
       ];
@@ -840,7 +840,7 @@ function getIncludedItems(solution: Solution): IncludedItem[] {
   };
   const warranty: IncludedItem = {
     title: 'One-year warranty',
-    body: 'All system components covered. Replacement, not repair-by-letter.',
+    body: 'Every system component is covered. We replace the part; you don\u2019t write letters to get it repaired.',
     icon: 'certificate.svg',
   };
 
@@ -862,7 +862,7 @@ function getIncludedItems(solution: Solution): IncludedItem[] {
         warranty,
         {
           title: 'One-year AMC',
-          body: 'Monthly engineer visit on Comprehensive. Same person, named, for the contract.',
+          body: 'A monthly engineer visit on Comprehensive, by the same named engineer for the whole contract.',
           icon: 'monitor.svg',
         },
       ];
@@ -967,7 +967,7 @@ function getIncludedItems(solution: Solution): IncludedItem[] {
         warranty,
         {
           title: 'One-year AMC',
-          body: 'Institutional cadence. SLA on flagged faults built into the contract.',
+          body: 'Visits on an institutional schedule, with an SLA on flagged faults written into the contract.',
           icon: 'clipboard.svg',
         },
       ];
@@ -978,9 +978,9 @@ function getInstallContent(solution: Solution) {
   switch (solution.installContext) {
     case 'bathroom-five-places':
       return {
-        headline: 'Five places it disappears.',
+        headline: 'Five places it can go in a bathroom.',
         body:
-          'BathSoft is engineered for real Indian bathrooms \u2014 tight shafts, low ceilings, finished interiors. Specified at site survey. Decided before tile.',
+          'BathSoft is built for Indian bathrooms as they really are: tight shafts, low ceilings, finished interiors. We pick the spot at the site survey, before the tiles go in.',
         cards: FIVE_PLACES.map((p) => ({ title: p.location, body: p.description })),
         // BathSoft is a single-point bathroom product family. The
         // four-stage HomeSoft infographic belongs to whole-house
@@ -992,7 +992,7 @@ function getInstallContent(solution: Solution) {
       return {
         headline: 'Five places it goes.',
         body:
-          'HomeSoft treats every tap from a single point. Five canonical install locations -- decided at survey, against the house.',
+          'HomeSoft treats every tap from a single point. There are five standard places to put it, and we choose one at the survey based on your house.',
         cards: HOMESOFT_PLACES.map((p) => ({ title: p.location, body: p.description })),
         infographic: {
           eyebrow: 'The four-stage train',
@@ -1026,7 +1026,7 @@ function getInstallContent(solution: Solution) {
       return {
         headline: 'Upstream of everything else.',
         body:
-          'Iron, sediment, and chlorine are pretreatment stages. They protect downstream resin, membranes, and softening media \u2014 or those systems fail faster.',
+          'Iron, sediment and chlorine removal are pre-treatment stages. They protect the resin, membranes and softening media downstream. Skip them and those parts fail sooner.',
         cards: [
           { title: 'Inlet', body: 'Treats every tap from a single point.' },
           { title: 'Pre-softener', body: 'Sits ahead of softening resin to prevent fouling.' },
@@ -1040,8 +1040,8 @@ function getInstallContent(solution: Solution) {
         body:
           'General sediment and carbon filtration will not remove dissolved minerals or trace metals. A specialised media filter does one thing well.',
         cards: [
-          { title: 'Resin selection', body: 'SAC, SBA, or mixed-bed \u2014 chosen by what needs to leave.' },
-          { title: 'Vessel grade', body: 'FRP for residential. SS316 for premium and institutional.' },
+          { title: 'Resin selection', body: 'SAC, SBA or mixed-bed, chosen by what has to come out of the water.' },
+          { title: 'Vessel grade', body: 'FRP for most homes. SS316 for high-end homes and institutions.' },
           { title: 'Regeneration', body: 'Manual on simple installs. Brine-automatic on larger loads.' },
         ],
         infographic: undefined,
@@ -1054,7 +1054,7 @@ function getInstallContent(solution: Solution) {
         cards: [
           { title: 'Skid', body: 'Pre-piped, factory-tested, transported as one unit.' },
           { title: 'Instrumentation', body: 'Pressure, flow, conductivity at every relevant stage.' },
-          { title: 'Bypass', body: 'For service. Built in, not bolted on.' },
+          { title: 'Bypass', body: 'Built in from the start, so the plant can be serviced without cutting the supply.' },
         ],
         infographic: undefined,
       };
@@ -1069,17 +1069,17 @@ function getTechSpecs(solution: Solution) {
         label: 'Capacity range',
         value:
           solution.slug === 'whole-house-water-filter'
-            ? '2,000 \u2014 6,000 LPH'
+            ? '2,000\u20136,000 LPH'
             : solution.slug === 'drinking-water-solution'
-            ? '15 \u2014 100 LPH'
-            : '500 \u2014 6,000 LPH (sized per bathroom or whole-house)',
+            ? '15\u2013100 LPH'
+            : '500\u20136,000 LPH (sized per bathroom or whole-house)',
       },
       { label: 'Service flow', value: 'Sized to peak household draw' },
       { label: 'Backwash flow', value: '1.5\u00d7 service flow' },
     ],
     materials: [
       { label: 'Vessel', value: 'FRP / SS316 (Plastic or Stainless Steel)' },
-      { label: 'Media', value: 'Per-solution — selected at survey' },
+      { label: 'Media', value: 'Selected at survey for each solution' },
       { label: 'Internal piping', value: 'CPVC / SS316' },
     ],
     controls: [
@@ -1088,7 +1088,7 @@ function getTechSpecs(solution: Solution) {
       { label: 'Indicators', value: 'Pressure gauges; flow indicator on Automatic models' },
     ],
     install: [
-      { label: 'Inlet pressure', value: '1.5 \u2014 4.5 kg/cm\u00b2' },
+      { label: 'Inlet pressure', value: '1.5\u20134.5 kg/cm\u00b2' },
       { label: 'Power', value: '230V AC for Automatic models; none for Manual' },
       { label: 'Drain', value: 'Adjacent to install location' },
       { label: 'Space', value: 'Sized per configuration; see install diagram' },
@@ -1133,33 +1133,33 @@ function getSolutionSpecificFaqs(solution: Solution): Array<{ q: string; a: stri
       return [
         {
           q: 'How does the system stay hidden after the bathroom is finished?',
-          a: 'Five canonical install patterns: false ceiling void, plumbing duct, wall cabinet, wall niche, under-counter. The pattern is chosen at site survey, before tile goes down. Once installed, there is no visible vessel on a wall.',
+          a: 'There are five standard install patterns: false ceiling void, plumbing duct, wall cabinet, wall niche and under-counter. The pattern is chosen at site survey, before tile goes down. Once installed, there is no visible vessel on a wall.',
         },
         {
           q: 'Why a per-bathroom system instead of one whole-house system?',
-          a: 'Whole-house treatment is the right answer for most homes \u2014 and the right place to spend \u20b91 lakh+. BathSoft makes sense when the architecture is already finished, when only one or two bathrooms have issues, or when the homeowner wants to start with the bathroom they actually use.',
+          a: 'Whole-house treatment is the right answer for most homes, and the right place to spend \u20b91 lakh+. BathSoft makes sense when the architecture is already finished, when only one or two bathrooms have issues, or when the homeowner wants to start with the bathroom they actually use.',
         },
       ];
     case 'whole-house-water-filter':
       return [
         {
           q: 'What are the four stages of the HomeSoft train?',
-          a: 'Sediment removes particulate; iron removes dissolved iron and manganese; carbon adsorbs chlorine and organics; softening swaps calcium and magnesium for sodium. Order matters \u2014 sediment first protects everything downstream. Each stage is optional; the four together are the canonical residential build.',
+          a: 'Sediment removes particulate; iron removes dissolved iron and manganese; carbon adsorbs chlorine and organics; softening swaps calcium and magnesium for sodium. Order matters: sediment first protects everything downstream. Each stage is optional; the four together are our standard residential build.',
         },
         {
           q: 'How much space does a 2K / 4K / 6K LPH plant need?',
-          a: 'A 2K LPH plant fits in about 6\u00d74 ft. A 4K LPH in 8\u00d74 ft. A 6K LPH in 10\u00d75 ft. Plant rooms, utility corners, terraces, garden corners \u2014 five canonical install locations, decided at site survey.',
+          a: 'A 2K LPH plant fits in about 6\u00d74 ft. A 4K LPH in 8\u00d74 ft. A 6K LPH in 10\u00d75 ft. It can go in a plant room, utility corner, terrace or garden corner. We decide which at the site survey.',
         },
       ];
     case 'drinking-water-solution':
       return [
         {
           q: 'How do I know whether I need RO or UF + UV?',
-          a: 'TDS decides. Above 500 ppm, RO is the right answer \u2014 followed by re-mineralisation so the water doesn\u2019t taste flat. Below 500 ppm, UF + UV preserves natural minerals while removing pathogens. The survey includes a free TDS test on the spot.',
+          a: 'TDS decides. Above 500 ppm, RO is the right answer, followed by re-mineralisation so the water doesn\u2019t taste flat. Below 500 ppm, UF + UV preserves natural minerals while removing pathogens. The survey includes a free TDS test on the spot.',
         },
         {
           q: 'What does "re-mineralised post-RO" mean? Is it healthier?',
-          a: 'RO strips everything \u2014 including the calcium and magnesium that give water its taste and contribute to mineral intake. A re-mineralisation cartridge after the RO membrane adds back trace minerals at controlled levels. Yes, it\u2019s healthier than bare RO water.',
+          a: 'RO strips everything out, including the calcium and magnesium that give water its taste and add to your mineral intake. A re-mineralisation cartridge after the RO membrane adds back trace minerals at controlled levels. Yes, it\u2019s healthier than bare RO water.',
         },
       ];
     default:
@@ -1180,7 +1180,7 @@ function getFaqs(solution: Solution) {
     },
     {
       q: 'What if my supply chemistry changes over the years?',
-      a: 'Monthly service includes parameter testing. If the chemistry drifts \u2014 borewells often do over years \u2014 we recalibrate media, regeneration cycles, and dosing.',
+      a: 'Monthly service includes parameter testing. If the chemistry drifts, as borewells often do over the years, we recalibrate the media, regeneration cycles and dosing.',
     },
     {
       q: 'Can I see what the system would cost before the survey?',

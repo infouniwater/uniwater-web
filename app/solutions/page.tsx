@@ -38,7 +38,7 @@ const INSTITUTIONAL_CARDS = [
     href: '/industrial',
     title: 'Industrial RO plants',
     description:
-      '500 \u2014 50,000 LPH. Drinking water, process water, boiler make-up, beverage.',
+      '500\u201350,000 LPH. Drinking water, process water, boiler make-up, beverage.',
     photoDescription: 'Industrial RO skid with FRP vessels and instrumentation',
     photoRef: 'industrial-ro',
   },
@@ -46,7 +46,7 @@ const INSTITUTIONAL_CARDS = [
     href: '/industrial',
     title: 'Industrial DM plants',
     description:
-      '100 \u2014 10,000 LPH. Boiler feed, pharma, lab water, battery manufacturing.',
+      '100\u201310,000 LPH. Boiler feed, pharma, lab water, battery manufacturing.',
     photoDescription: 'DM plant with SAC/SBA columns and conductivity meters',
     photoRef: 'industrial-dm',
   },
@@ -143,7 +143,7 @@ export default function SolutionsHub() {
           <div className="mb-12 max-w-3xl">
             <Heading level={2} className="mb-4">For your home.</Heading>
             <Body className="text-mute">
-              Three engineered families, each sized to the water and the home. Not sure which? Take the 60-second water check.
+              Three systems, each sized to the water and the home. Not sure which one you need? Take the 60-second water check.
             </Body>
             <div className="mt-6">
               <Button href="/water-problem-checker" variant="secondary">
