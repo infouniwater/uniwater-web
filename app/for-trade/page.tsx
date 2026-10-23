@@ -23,9 +23,9 @@ import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = buildMetadata({
   path: '/for-trade',
-  title: 'For the trade — dealers, architects, plumbers',
+  title: 'For the trade: dealers, architects, plumbers',
   description:
-    'Three ways to work with Uniwater. Sanitary-ware dealers stock the bathroom filter customers ask for. Architects spec the system into the plan. Plumbers join the partner programme. Pick the lane that fits you.',
+    'Three ways to work with Uniwater. Sanitary-ware dealers stock the bathroom filter customers ask for. Architects spec the system into the plan. Plumbers join the partner programme. Pick the one that fits you.',
   image: '/og/og-for-trade.jpg',
 });
 
@@ -41,13 +41,13 @@ interface TradeAudience {
 const AUDIENCES: ReadonlyArray<TradeAudience> = [
   {
     eyebrow: 'Dealer & retailer',
-    heading: 'Sell the water that completes the bathroom.',
+    heading: 'Sell the filter your bathroom customers ask about.',
     body:
-      'Stock BathSoft as the wellness layer your customers ask for after the marble, the brass, and the rain shower.',
+      'Your customers spend lakhs on marble, brass and a rain shower. BathSoft stops the water from ruining them.',
     bullets: [
       'Trade pricing on BathSoft Mono, Duo, and Trio.',
-      'Install handled by a Uniwater engineer in your city — no plumbing risk for you.',
-      'Lead routing within your service area — enquiries we receive in your city come back to you first.',
+      'A Uniwater engineer in your city does the install, so you carry no plumbing risk.',
+      'Enquiries we get from your service area come to you first.',
       'No inventory risk on commercial enquiries. We engineer the system; you keep the customer relationship.',
     ],
     cta: 'Open the dealer enquiry',
@@ -60,7 +60,7 @@ const AUDIENCES: ReadonlyArray<TradeAudience> = [
     eyebrow: 'Architect & interior designer',
     heading: 'Spec into the plan, not after tile.',
     body:
-      'Documentation that survives a submittal review. DWG, BIM, install drawings — designed for the way you actually work.',
+      'Drawings that get through a submittal review: DWG, BIM and install drawings, in the formats your office already uses.',
     bullets: [
       'Submittal-grade footprints and Revit families.',
       'Section drawings for the five install patterns.',
@@ -77,7 +77,7 @@ const AUDIENCES: ReadonlyArray<TradeAudience> = [
     bullets: [
       'Plumber partner pricing with documented per-SKU margin.',
       'Install library and on-site engineering on first city installs.',
-      'Service tier — own the AMC, or train into ours.',
+      'Service tier: run the AMC yourself, or train into ours.',
     ],
     cta: 'Open the partner programme',
     href: '/for-plumbers',
@@ -117,7 +117,7 @@ export default function ForTradePage() {
               Three ways to work with Uniwater.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Whether you sell the bathroom, draw the plan, or do the install &mdash; there&rsquo;s a Uniwater partnership shaped to your work. Pick the lane that fits.
+              Whether you sell the bathroom, draw the plan or do the install, there&rsquo;s a way to work with us. Pick the one that fits.
             </p>
           </div>
         </div>
@@ -161,16 +161,16 @@ export default function ForTradePage() {
             Why three lanes, not one.
           </Heading>
           <Body className="text-mute mb-4">
-            A sanitary-ware dealer needs trade pricing and an install partner. An architect needs documentation that survives a submittal review. A plumber needs lead routing and margin clarity. Same brand; three different commercial conversations.
+            A sanitary-ware dealer needs trade pricing and an install partner. An architect needs documentation that survives a submittal review. A plumber needs lead routing and margin clarity. Same company, three different commercial conversations.
           </Body>
           <Body className="text-mute">
-            Across all three, the engineering, the install standards, and the monthly service are the same. The relationship is what shifts.
+            Across all three, the engineering, the install standards, and the monthly service are the same. Only the commercial relationship changes.
           </Body>
         </div>
       </Section>
 
       <FinalCTA
-        headline="Not sure which lane?"
+        headline="Not sure which one fits?"
         sub="Tell us about your business in a sentence. We&rsquo;ll route you to the right desk."
         primaryCTA={{ label: 'Contact us', href: '/contact' }}
       />
