@@ -11,7 +11,7 @@ const TOOLS = [
   {
     label: 'Water-problem checker',
     title: 'Take the 60-second water check.',
-    body: 'Tell us what you\u2019ve noticed. Get a sized recommendation and the right next step \u2014 no contact details required until the result.',
+    body: 'Tell us what you\u2019ve noticed and get a sized recommendation with the right next step. No contact details needed until you see the result.',
     href: '/water-problem-checker',
     cta: 'Start the check',
     photo: 'Hands holding a TDS meter at a kitchen tap',

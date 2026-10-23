@@ -12,17 +12,17 @@ interface Problem {
 const PROBLEMS: Problem[] = [
   {
     imgSrc: '/images/photography/hairfall.jpg',
-    imgAlt: 'A woman in the shower with her hands running through wet hair — the daily moment hard water shows up',
+    imgAlt: 'A woman in the shower with her hands running through wet hair, where hard water shows up every morning',
     title: 'Hair, skin, and the morning shower.',
     body:
       'Hard water and dissolved iron leave residue you can’t see. Scale in the geyser turns a 50°C shower into 35°C.',
   },
   {
     imgSrc: '/images/photography/scaling-on-taps.jpg',
-    imgAlt: 'Close-up of a chrome bathroom tap with heavy scale and rust corrosion on the spout — what untreated water does to premium fittings',
+    imgAlt: 'Close-up of a chrome bathroom tap with heavy scale and rust corrosion on the spout after years of untreated water',
     title: 'The fittings you spent money on.',
     body:
-      'Imported chrome, marble, stone — they tarnish, stain, pit. Their spec assumes feed water that, in most Indian cities, doesn’t actually arrive.',
+      'Imported chrome, marble and stone tarnish, stain and pit. Their spec assumes feed water that, in most Indian cities, doesn’t actually arrive.',
   },
   {
     imgSrc: '/images/photography/scaling-inside-geyser.jpg',
@@ -33,7 +33,7 @@ const PROBLEMS: Problem[] = [
   },
   {
     imgSrc: '/images/photography/jars-stacked.jpg',
-    imgAlt: 'Stacks of blue 20-litre water jars in the utility area beside the washing machine — the ongoing cost of bottled drinking water',
+    imgAlt: 'Stacks of blue 20-litre water jars in the utility area beside the washing machine',
     title: 'The drinking water you already pay for.',
     body:
       'Bottled-jar deliveries cost ₹12,000–18,000 a year. A properly designed home system pays for itself in eighteen months.',

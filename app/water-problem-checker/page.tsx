@@ -35,9 +35,9 @@ import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
   path: '/water-problem-checker',
-  title: 'Water test at home — TDS, hardness, iron, pH | Uniwater',
+  title: 'Water test at home: TDS, hardness, iron, pH | Uniwater',
   description:
-    'Book a 10-minute on-site water test: TDS, hardness, iron, pH, free chlorine — read at your tap by a Uniwater engineer. Free, no commitment, no system quote until you ask for one. Across nine Indian and Nepali cities.',
+    'Book a 10-minute water test at home. A Uniwater engineer reads TDS, hardness, iron, pH and free chlorine at your tap. Free, no commitment, and no system quote unless you ask for one. Available in nine cities across India and Nepal.',
   image: '/og/og-water-problem-checker.jpg',
 });
 
@@ -116,7 +116,7 @@ export default function WaterCheckerPage() {
           <source media="(min-width: 768px)" srcSet="/images/hero/utility-tablet.jpg" />
           <img
             src="/images/hero/utility-mobile.jpg"
-            alt="A Uniwater engineer arriving at a customer home with a portable water-testing kit -- the lighter alternative to a full site survey."
+            alt="A Uniwater engineer arriving at a customer home with a portable water-testing kit for the 10-minute test."
             className="absolute inset-0 w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="async"
@@ -135,7 +135,7 @@ export default function WaterCheckerPage() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">
-              Water test &mdash; lighter than a survey
+              Water test: lighter than a survey
             </p>
             {/* DRAFT — review */}
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
@@ -144,7 +144,7 @@ export default function WaterCheckerPage() {
             {/* DRAFT — review */}
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               A trained engineer arrives at your tap with a portable kit and
-              reads the chemistry on the spot &mdash; TDS, hardness, iron,
+              reads the chemistry on the spot: TDS, hardness, iron,
               pH, free chlorine. Free. No quote unless you ask for one. The
               answer tells you whether you need a full home survey or not.
             </p>
@@ -203,7 +203,7 @@ export default function WaterCheckerPage() {
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>How the test happens</Eyebrow>
-          <Heading level={2} inverse>Booked, kit on site, read in front of you.</Heading>
+          <Heading level={2} inverse>You book it, we bring the kit, you watch the readings.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-8">
           {HOW_IT_WORKS.map((step) => (
@@ -225,7 +225,7 @@ export default function WaterCheckerPage() {
       <Section padding="default" tone="subtle">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">Test vs full survey</Eyebrow>
-          <Heading level={2}>Two ways in. Pick the one that fits where you are.</Heading>
+          <Heading level={2}>Water test or full survey: pick the one that fits.</Heading>
           <Body className="text-mute mt-4">
             The water test is faster and lighter. The full survey is what
             you book when you already know you want a system and want the
