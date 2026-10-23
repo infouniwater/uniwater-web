@@ -81,7 +81,7 @@ async function authenticateFresh(): Promise<number> {
   ]);
   if (!uid || typeof uid !== 'number') {
     throw new Error(
-      'Odoo authentication failed. The API key has most likely expired or been revoked — generate a new one in Odoo (Preferences → Account Security → New API Key) and update ODOO_API_KEY in Vercel.',
+      'Odoo authentication failed. The API key has most likely expired or been revoked. Generate a new one in Odoo (Preferences → Account Security → New API Key) and update ODOO_API_KEY in Vercel.',
     );
   }
   return uid;

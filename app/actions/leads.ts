@@ -259,7 +259,7 @@ export async function submitBookSurvey(
 
   const saved = await fanOut({
     odoo: {
-      name: `Book Survey — ${name ?? 'Unnamed lead'}`,
+      name: `Book Survey: ${name ?? 'Unnamed lead'}`,
       contactName: name,
       email,
       phone: mobile,
@@ -268,7 +268,7 @@ export async function submitBookSurvey(
     },
     tab: 'book-survey',
     formLabel: 'Book a free survey',
-    emailSubject: `New survey request — ${name ?? 'Unnamed'}${city ? ` (${city})` : ''}`,
+    emailSubject: `New survey request: ${name ?? 'Unnamed'}${city ? ` (${city})` : ''}`,
     fields,
     meta: { eventName: 'Schedule', email, phone: mobile, name, city, value: META_VALUE_BOOK_SURVEY },
   });
@@ -311,7 +311,7 @@ export async function submitContact(
 
   const saved = await fanOut({
     odoo: {
-      name: `Contact — ${subject ?? name ?? 'General enquiry'}`,
+      name: `Contact: ${subject ?? name ?? 'General enquiry'}`,
       contactName: name,
       email,
       phone: mobile,
@@ -319,7 +319,7 @@ export async function submitContact(
     },
     tab: 'contact',
     formLabel: 'Contact form',
-    emailSubject: `New contact — ${subject ?? name ?? 'General enquiry'}`,
+    emailSubject: `New contact: ${subject ?? name ?? 'General enquiry'}`,
     fields,
     meta: { eventName: 'Contact', email, phone: mobile, name, value: META_VALUE_CONTACT },
   });
@@ -411,7 +411,7 @@ export async function submitNepalWaaS(
   }
 
   const description = joinDescription([
-    'Source: meta-ads-east-nepal — /nepal/water-as-a-service',
+    'Source: meta-ads-east-nepal, /nepal/water-as-a-service',
     business ? `Business: ${business}` : undefined,
     `Service: ${serviceLabel}`,
     plan ? `Plan: ${plan}` : undefined,
@@ -423,7 +423,7 @@ export async function submitNepalWaaS(
 
   const saved = await fanOut({
     odoo: {
-      name: `Nepal WaaS — ${business ?? name ?? 'unnamed'}${plan ? ` (Plan ${plan})` : ''}`,
+      name: `Nepal WaaS: ${business ?? name ?? 'unnamed'}${plan ? ` (Plan ${plan})` : ''}`,
       contactName: name,
       phone,
       city,
@@ -431,7 +431,7 @@ export async function submitNepalWaaS(
     },
     tab: 'nepal-waas',
     formLabel: 'Nepal Water-as-a-Service (meta-ads-east-nepal)',
-    emailSubject: `Nepal WaaS lead — ${business ?? name ?? 'unnamed'}${city ? ` (${city})` : ''}`,
+    emailSubject: `Nepal WaaS lead: ${business ?? name ?? 'unnamed'}${city ? ` (${city})` : ''}`,
     fields,
     // Meta CAPI shape doesn't currently carry UTM custom_data; Meta
     // attributes campaign on its own side via the ad-click fbp/fbc
@@ -486,7 +486,7 @@ export async function submitRFQ(
 
   const saved = await fanOut({
     odoo: {
-      name: `RFQ — ${org ?? name ?? 'Unnamed'} — ${application ?? 'application not specified'}`,
+      name: `RFQ: ${org ?? name ?? 'Unnamed'} · ${application ?? 'application not specified'}`,
       contactName: name,
       email,
       phone: mobile,
@@ -495,7 +495,7 @@ export async function submitRFQ(
     },
     tab: 'industrial-rfq',
     formLabel: 'Industrial RFQ',
-    emailSubject: `New RFQ — ${org ?? name ?? 'Unnamed'}${application ? ` · ${application}` : ''}`,
+    emailSubject: `New RFQ: ${org ?? name ?? 'Unnamed'}${application ? ` · ${application}` : ''}`,
     fields,
     meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location, value: META_VALUE_INDUSTRIAL_RFQ },
   });
@@ -533,14 +533,14 @@ export async function submitWaterTestRequest(
 
   const saved = await fanOut({
     odoo: {
-      name: `Water-test request — ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
+      name: `Water-test request: ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
       phone: mobile,
       city,
       description,
     },
     tab: 'water-test',
     formLabel: 'Free water-test request',
-    emailSubject: `Water-test request — ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
+    emailSubject: `Water-test request: ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
     fields,
     meta: { eventName: 'Lead', phone: mobile, city, value: META_VALUE_WATER_TEST },
   });
@@ -551,7 +551,7 @@ export async function submitWaterTestRequest(
   // The lead is already in Odoo by this point, so even if the visitor never
   // sends the WhatsApp message the engineer has the mobile to follow up.
   const waMsg = encodeURIComponent(
-    "Hi Uniwater — I'd like a free water-test report. (Sent from the home-page popup.)"
+    "Hi Uniwater, I'd like the free water-test report for my home. (Sent from the home-page popup.)"
   );
   const phoneE164 = '919748745193';
   redirect(`https://wa.me/${phoneE164}?text=${waMsg}`);
@@ -605,7 +605,7 @@ export async function submitRemoteSurvey(
 
   const saved = await fanOut({
     odoo: {
-      name: `Remote site survey — ${name ?? 'Unnamed'} (${location ?? 'location pending'})`,
+      name: `Remote site survey: ${name ?? 'Unnamed'} (${location ?? 'location pending'})`,
       contactName: name,
       email,
       phone: mobile,
@@ -614,7 +614,7 @@ export async function submitRemoteSurvey(
     },
     tab: 'remote-site-survey',
     formLabel: 'Remote site survey',
-    emailSubject: `Remote site survey — ${name ?? 'Unnamed'}${location ? ` (${location})` : ''}`,
+    emailSubject: `Remote site survey: ${name ?? 'Unnamed'}${location ? ` (${location})` : ''}`,
     fields,
     meta: { eventName: 'Schedule', email, phone: mobile, name, city: location, value: META_VALUE_REMOTE_SURVEY },
   });

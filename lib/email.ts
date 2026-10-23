@@ -63,7 +63,7 @@ function renderText(formLabel: string, fields: LeadFields): string {
   const lines = Object.entries(fields)
     .filter(([, v]) => v !== undefined && v !== '')
     .map(([k, v]) => `${k}: ${v}`);
-  return `New lead — ${formLabel}\n\n${lines.join('\n')}\n\n--\nuniwater.co.in`;
+  return `New lead: ${formLabel}\n\n${lines.join('\n')}\n\n--\nuniwater.co.in`;
 }
 
 const TIMEOUT_MS = 7000;
