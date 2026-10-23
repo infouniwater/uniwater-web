@@ -9,7 +9,7 @@ export const SITE = {
   domain: 'uniwater.co.in',
   tagline: 'Wellness starts with clean water.',
   description:
-    'Engineered home water — surveyed, installed, serviced monthly. For the homes you don\u2019t get to redo. 9 cities across India and Nepal.',
+    'Water systems for iron, hardness and drinking water. We survey first, install, and service every month. 9 cities across India and Nepal.',
 } as const;
 
 export const CONTACT = {

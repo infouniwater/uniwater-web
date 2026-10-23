@@ -119,10 +119,10 @@ export function ExitIntentCapture() {
           id="exit-intent-heading"
           className="font-sans text-h2-m md:text-h2 font-light text-navy leading-snug mb-4 [text-wrap:balance]"
         >
-          A free water-test report &mdash; sent to your WhatsApp.
+          A free water-test report, sent to your WhatsApp.
         </h2>
         <p className="text-mute text-body leading-relaxed mb-6">
-          Tell us your mobile number. An engineer will WhatsApp you a sampler kit and a written analysis within 48 hours. No call back unless you ask for one.
+          Give us your mobile number. An engineer will WhatsApp you about a sampler kit and send a written analysis within 48 hours. We won&rsquo;t call unless you ask us to.
         </p>
 
         <LeadForm action={submitWaterTestRequest} className="flex flex-col gap-4">

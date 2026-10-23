@@ -63,17 +63,17 @@ export const metadata: Metadata = {
     // Keyword-led, not brand-led: someone searching "water softener" or
     // "iron filter" needs the query reflected in the title. The H1 and
     // on-page voice are untouched — titles are invisible to visitors.
-    default: 'Water Softeners, Iron Filters & RO — Surveyed & Serviced | Uniwater',
+    default: 'Water softeners, iron filters & RO, surveyed and serviced | Uniwater',
     template: `%s | ${SITE.name}`,
   },
   description:
-    'Whole-house water softeners, iron-removal filters, and RO drinking-water systems — surveyed before sold, installed, and serviced monthly. Engineered home water across Kolkata and 8 cities in India & Nepal.',
+    'Whole-house water softeners, iron removal filters and RO drinking water systems. We test your water before we quote, install the system and service it every month. Kolkata plus 8 more cities in India and Nepal.',
   // Canonical is emitted per-route by middleware.ts via an HTTP `Link`
   // header (read by Google Search). Not declared statically here, because
   // Next.js would otherwise resolve a root-level alternates.canonical to
   // the same URL on every child route — actively harmful for SEO.
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} | ${SITE.tagline}`,
     description: SITE.description,
     url: 'https://uniwater.co.in',
     siteName: SITE.name,
@@ -84,13 +84,13 @@ export const metadata: Metadata = {
         url: '/og/og-home.jpg',
         width: 1200,
         height: 630,
-        alt: `${SITE.name} — ${SITE.tagline}`,
+        alt: `${SITE.name} | ${SITE.tagline}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} | ${SITE.tagline}`,
     description: SITE.description,
     images: ['/og/og-home.jpg'],
   },

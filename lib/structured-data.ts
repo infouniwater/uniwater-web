@@ -89,7 +89,7 @@ export function localBusinessSchema(opts: {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': id,
-    name: opts.cityName ? `Uniwater — ${opts.cityName}` : SITE.name,
+    name: opts.cityName ? `Uniwater, ${opts.cityName}` : SITE.name,
     image: `${SITE_URL}/images/installs/hero-duo-iron-softener-ss316.jpg`,
     url: opts.citySlug ? `${SITE_URL}/cities/${opts.citySlug}` : SITE_URL,
     telephone: CONTACT.phones[0],
@@ -187,7 +187,7 @@ export function serviceSchema(opts: {
   if (opts.steps && opts.steps.length > 0) {
     fields.hasOfferCatalog = {
       '@type': 'OfferCatalog',
-      name: `${opts.name} — process`,
+      name: `${opts.name}: how it works`,
       itemListElement: opts.steps.map((step, i) => ({
         '@type': 'Offer',
         position: i + 1,

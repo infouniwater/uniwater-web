@@ -35,7 +35,7 @@ export function Logo({ inverse = false, showTagline = false, className }: LogoPr
     >
       <Image
         src={inverse ? '/brand/uniwater-horizontal-white.png' : '/brand/uniwater-horizontal-coloured.png'}
-        alt="Uniwater — Wellness starts with clean water"
+        alt="Uniwater: Wellness starts with clean water"
         width={2182}
         height={1080}
         priority={!showTagline}

@@ -29,7 +29,7 @@ export function WhatsAppFAB() {
   const [pageLabel, setPageLabel] = useState('this page');
 
   useEffect(() => {
-    const title = document.title.replace(/\s*[—-]\s*Uniwater\s*$/, '').trim();
+    const title = document.title.replace(/\s*[|—-]\s*Uniwater\s*$/, '').trim();
     setPageLabel(title || 'this page');
   }, [pathname]);
 
@@ -39,7 +39,7 @@ export function WhatsAppFAB() {
   const inSolutionDetail = pathname.startsWith('/solutions/');
   if (inFormOrB2BFlow || inSolutionDetail) return null;
 
-  const message = `Hi Uniwater, I have a question about ${pageLabel}`;
+  const message = `Hi Uniwater, I was reading your page on ${pageLabel} and have a question.`;
   const href = `https://wa.me/${PRIMARY_PHONE_E164}?text=${encodeURIComponent(message)}`;
 
   return (

@@ -1,9 +1,9 @@
 # Uniwater
 
-> Uniwater Solutions Pvt Ltd is an engineered home-water company serving 9 cities across India and Nepal. We survey each home's actual water, then design, install, and monthly-service whole-house water softeners, iron-removal filters, bathroom filters, and RO/UV drinking-water systems. We engineer and install — we do not retail off-the-shelf purifiers.
+> Uniwater Solutions Pvt Ltd is an engineered home-water company serving 9 cities across India and Nepal. We survey each home's actual water, then design, install, and monthly-service whole-house water softeners, iron-removal filters, bathroom filters, and RO/UV drinking-water systems. We engineer and install. We do not retail off-the-shelf purifiers.
 
 ## Solutions
-- [Whole-house water softener & filter (HomeSoft)](https://uniwater.co.in/solutions/whole-house-water-filter): four-stage train — sediment, iron, carbon, softening — treating every tap from one inlet.
+- [Whole-house water softener & filter (HomeSoft)](https://uniwater.co.in/solutions/whole-house-water-filter): four-stage train (sediment, iron, carbon, softening) treating every tap from one inlet.
 - [Bathroom water filter & softener (BathSoft)](https://uniwater.co.in/solutions/bathroom-filter): hardness, iron, and chlorine removal at the bathroom feed, hidden in ceiling/niche/cabinet.
 - [Iron removal filter](https://uniwater.co.in/solutions/iron-filter): clears yellow/orange staining and metallic taste from borewell water; fitted upstream of softening.
 - [Water softener](https://uniwater.co.in/solutions/water-softener): removes hardness to stop scale on geysers, fittings, and glassware.
@@ -15,7 +15,7 @@ India: [Kolkata](https://uniwater.co.in/cities/kolkata), [Bhubaneswar](https://u
 
 ## Key facts (commonly asked)
 - A water softener removes hardness (scale); it does NOT remove iron. Iron needs a dedicated iron-removal filter fitted upstream of the softener, or it fouls the resin.
-- Yellow/orange staining and a metallic taste are dissolved iron oxidising on contact with air — common in borewell-fed supply, treatable with an iron filter.
+- Yellow/orange staining and a metallic taste are dissolved iron oxidising on contact with air. It is common in borewell-fed supply and an iron filter treats it.
 - Every system is sized from a free on-site water survey (hardness, iron, TDS, pH tested on the spot), not sold off a catalogue.
 - Drinking water: TDS above ~500 ppm calls for RO; below ~200 ppm, UF + UV. Re-mineralisation follows RO.
 - Year-one AMC is included with every install; service is monthly preventive, not on-complaint.

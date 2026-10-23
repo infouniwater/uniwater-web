@@ -341,9 +341,9 @@ export function Header() {
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex flex-col gap-1">
-                    <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-teal">Hero solution</span>
+                    <span className="text-[11px] font-ui font-medium uppercase tracking-wide text-teal">For buildings</span>
                     <span className="text-body font-medium text-navy">Clean Water as a Service</span>
-                    <span className="text-caption text-mute">Zero capex · Guaranteed spec · Fully managed</span>
+                    <span className="text-caption text-mute">No capital cost · Water to an agreed spec · We run the plant</span>
                   </div>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="shrink-0 text-teal transition-transform duration-200 ease-calm group-hover:translate-x-1">
                     <path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
