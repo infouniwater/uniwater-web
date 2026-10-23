@@ -36,9 +36,9 @@ import { KOLKATA_IRON_PILLAR_FAQS } from '@/content/faqs';
  */
 
 const PILLAR_PATH = '/kolkata-iron-water';
-const PILLAR_TITLE = 'Iron in Kolkata Water: Stains, Causes & Removal | Uniwater';
+const PILLAR_TITLE = 'Iron in Kolkata water: stains, causes & removal | Uniwater';
 const PILLAR_DESCRIPTION =
-  'Why Kolkata homes get iron in their water — yellow stains, metallic taste, scale — and how Uniwater removes it: a surveyed, sized, and serviced iron filter, often paired with a softener. Locality-level water bands included.';
+  'Why so many Kolkata homes get iron in their water (yellow stains, metallic taste, scale) and how Uniwater removes it with an iron filter sized to your reading, often paired with a softener. Includes water ranges by locality.';
 
 export function generateMetadata(): Metadata {
   return buildMetadata({
@@ -70,7 +70,7 @@ export default function KolkataIronWaterPage() {
           breadcrumbSchema([
             { name: 'Home', url: '/' },
             { name: 'Kolkata', url: '/cities/kolkata' },
-            { name: 'Iron in Kolkata Water', url: PILLAR_PATH },
+            { name: 'Iron in Kolkata water', url: PILLAR_PATH },
           ]),
         ]}
       />
@@ -82,7 +82,7 @@ export default function KolkataIronWaterPage() {
             items={[
               { label: 'Home', href: '/' },
               { label: 'Kolkata', href: '/cities/kolkata' },
-              { label: 'Iron in Kolkata Water' },
+              { label: 'Iron in Kolkata water' },
             ]}
           />
         </div>
@@ -98,7 +98,7 @@ export default function KolkataIronWaterPage() {
           <source media="(min-width: 768px)" srcSet="/images/hero/terrace-tablet.jpg" />
           <img
             src="/images/hero/terrace-mobile.jpg"
-            alt="A Kolkata residential terrace where borewell-fed taps deliver iron-bearing water — the chemistry context for this article."
+            alt="A Kolkata residential terrace. Homes like this often run on borewell water that carries iron."
             className="absolute inset-0 w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="async"
@@ -121,7 +121,7 @@ export default function KolkataIronWaterPage() {
             </p>
             {/* DRAFT — review */}
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
-              Iron in Kolkata&rsquo;s water &mdash; what it does, and how to get it out.
+              Iron in Kolkata&rsquo;s water: what it does, and how to get it out.
             </h1>
             {/* DRAFT — review */}
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-2xl">
@@ -175,7 +175,7 @@ export default function KolkataIronWaterPage() {
           </Body>
           <Body className="text-mute mb-4">
             That is iron oxidising. Water that looks perfectly clear at the
-            tap can leave a yellow-brown deposit once it meets air &mdash; on
+            tap can leave a yellow-brown deposit once it meets air: on
             the side of the basin, inside the kettle, on the towel rail. The
             stain is rust. The fittings, the laundry, and the appliances are
             the visible record of what the water actually carries.
@@ -201,8 +201,8 @@ export default function KolkataIronWaterPage() {
           </div>
           <div className="lg:col-span-8 max-w-reading">
             <Body inverse className="text-offwhite/85 mb-4">
-              Central Kolkata &mdash; Park Street, Alipore, Ballygunge,
-              Hindustan Park &mdash; runs largely on KMC treated municipal
+              Central Kolkata (Park Street, Alipore, Ballygunge,
+              Hindustan Park) runs largely on KMC treated municipal
               supply. Iron is usually below the BIS aesthetic limit of 0.3
               mg/L at the tap; the lived problem is mild hardness scale and
               the occasional chlorine taste, not staining.
@@ -210,8 +210,8 @@ export default function KolkataIronWaterPage() {
             <Body inverse className="text-offwhite/85 mb-4">
               Cross the EM Bypass and the picture changes. Salt Lake, New
               Town, Rajarhat, and the Behala stretch sit on the city&rsquo;s
-              borewell belt &mdash; either fed wholly from groundwater or
-              augmented when the KMC line is short. Borewell water in this
+              borewell belt. Buildings here are either fed wholly from
+              groundwater or topped up from bores when the KMC line is short. Borewell water in this
               belt commonly carries iron of 0.5&ndash;3.5 mg/L, well above
               the BIS limit, with hardness and TDS climbing alongside it.
             </Body>
@@ -220,7 +220,7 @@ export default function KolkataIronWaterPage() {
               towers come online with private bores. The shallow water table
               is dropping, drawing iron-rich deeper aquifer water into more
               boreholes. Many homes that were on municipal-only supply five
-              years ago now run on a mixed line &mdash; and that is when the
+              years ago now run on a mixed line, and that is when the
               first yellow stains appear.
             </Body>
             <EditorialAccent inverse className="mt-8">
@@ -235,7 +235,7 @@ export default function KolkataIronWaterPage() {
         <CityWaterTable
           citySlug="kolkata"
           cityName="Kolkata"
-          note="Indicative ranges based on Uniwater survey data — confirmed on site."
+          note="Indicative ranges from Uniwater survey data. We confirm your actual numbers on site."
         />
       </div>
 
@@ -248,7 +248,7 @@ export default function KolkataIronWaterPage() {
             &ldquo;Does a water softener remove iron?&rdquo;
           </Heading>
           <Body inverse className="text-offwhite/85 mb-4">
-            No. A softener targets hardness &mdash; the calcium and magnesium
+            No. A softener targets hardness: the calcium and magnesium
             that cause scale. Iron is a different problem with a different
             answer: a dedicated iron-removal filter that oxidises the iron
             and backwashes it out.
@@ -257,7 +257,7 @@ export default function KolkataIronWaterPage() {
             On most Kolkata borewell-fed homes the right answer is both, in
             the correct order: iron filter first, softener second. Skip the
             iron stage and dissolved iron coats the softener resin within
-            months &mdash; the softener stops softening, and the homeowner
+            months. The softener stops softening, and the homeowner
             ends up replacing resin instead of fixing the supply. The full
             answer is in the FAQ below.
           </Body>
@@ -269,7 +269,7 @@ export default function KolkataIronWaterPage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">How iron removal works</Eyebrow>
-          <Heading level={2}>Oxidation. Media filtration. Backwash.</Heading>
+          <Heading level={2}>Three steps: oxidise, filter, backwash.</Heading>
           <Body className="text-mute mt-4">
             Dissolved iron is invisible. The filter has to convert it into a
             solid before it can catch it.
@@ -280,8 +280,8 @@ export default function KolkataIronWaterPage() {
             <div className="text-[48px] font-light leading-none text-teal">01</div>
             <Heading level={3}>Oxidise.</Heading>
             <Body className="text-mute">
-              Dissolved iron is exposed to an oxidising medium &mdash;
-              catalytic manganese-oxide bed, or aeration upstream &mdash; and
+              Dissolved iron is exposed to an oxidising medium (a
+              catalytic manganese-oxide bed, or aeration upstream) and
               converts to insoluble iron particles.
             </Body>
           </div>
@@ -313,21 +313,21 @@ export default function KolkataIronWaterPage() {
         <div className="max-w-reading">
           <Eyebrow inverse className="mb-4">Why cheap iron filters fail</Eyebrow>
           <Heading level={2} inverse className="mb-6">
-            &ldquo;Zero-maintenance&rdquo; is marketing, not engineering.
+            There&rsquo;s no such thing as a zero-maintenance iron filter.
           </Heading>
           <Body inverse className="text-offwhite/85 mb-4">
             Iron filters need backwashing on a schedule, and the media has a
             finite life. A unit sold as zero-maintenance is one whose owner
-            stops being told what to do &mdash; not one that does not need
-            doing. Skipped backwash compacts the bed. Compacted bed channels
-            the flow; iron passes straight through.
+            simply isn&rsquo;t told what to do. The work still needs doing.
+            Skip the backwash and the bed compacts. A compacted bed channels
+            the flow, and iron passes straight through.
           </Body>
           <Body inverse className="text-offwhite/85">
             The visible failure is the same as the original problem: yellow
             water, stained basins, metallic taste. The owner assumes the
             filter is broken and replaces the unit. The real fix was a
-            backwash cycle and a media check &mdash; a five-minute job, every
-            month, that none of the catalogue-grade units commit to.
+            backwash cycle and a media check. It&rsquo;s a five-minute job
+            every month, and none of the catalogue-grade units commit to it.
           </Body>
         </div>
       </Section>
@@ -352,7 +352,7 @@ export default function KolkataIronWaterPage() {
             >
               <Eyebrow className="text-teal">Iron-removal filter</Eyebrow>
               <Heading level={3}>
-                Stage one upstream of everything else.
+                The first stage, ahead of everything else.
               </Heading>
               <Body className="text-mute">
                 Oxidising media in a vessel sized to your iron load. Monthly
@@ -388,7 +388,7 @@ export default function KolkataIronWaterPage() {
       <FaqSection
         items={KOLKATA_IRON_PILLAR_FAQS}
         eyebrow="Frequently asked"
-        heading="Iron in Kolkata water — common questions."
+        heading="Iron in Kolkata water: common questions."
         inverse
         imageStem="bathroom"
       />
@@ -398,7 +398,7 @@ export default function KolkataIronWaterPage() {
       <Section padding="default">
         <div className="mb-10 max-w-3xl">
           <Eyebrow className="mb-4">Related reading</Eyebrow>
-          <Heading level={2}>Two journal pieces alongside this one.</Heading>
+          <Heading level={2}>Two more journal pieces on this.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link
@@ -406,7 +406,7 @@ export default function KolkataIronWaterPage() {
             className="group border border-hairline bg-offwhite p-6 flex flex-col gap-3 transition-all duration-200 ease-calm hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(5,69,95,0.06)]"
           >
             <Eyebrow className="text-teal">Journal</Eyebrow>
-            <Heading level={3}>Iron, then hardness — the right order.</Heading>
+            <Heading level={3}>Iron first, then hardness.</Heading>
             <Body className="text-mute">
               Why iron pre-treatment has to come before softening on every
               borewell-fed train, and what happens when it doesn’t.
@@ -420,8 +420,8 @@ export default function KolkataIronWaterPage() {
             <Eyebrow className="text-teal">Journal</Eyebrow>
             <Heading level={3}>The five-year cost of doing nothing.</Heading>
             <Body className="text-mute">
-              Geysers replaced, basins re-glazed, laundry written off — the
-              compounding cost of untreated borewell water on a luxury home.
+              Geysers replaced, basins re-glazed, laundry written off. What
+              untreated borewell water costs a well-finished home over five years.
             </Body>
             <Caption className="text-teal font-medium mt-2">Read the journal →</Caption>
           </Link>
