@@ -10,7 +10,7 @@ import { CITY_CONTENT } from '@/content/cities';
 export const metadata: Metadata = {
   title: 'Cities',
   description:
-    'Where Uniwater operates: 7 cities across India and 2 in Nepal. Own service teams in every city, not subcontracted.',
+    'Uniwater works in 7 cities in India and 2 in Nepal, with our own service team in each one.',
   openGraph: {
     images: [{ url: '/og/og-cities.jpg', width: 1200, height: 630, alt: '' }],
   },
@@ -34,9 +34,9 @@ export default function CitiesIndex() {
         <div className="relative h-full container-uw flex items-end lg:items-center">
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Where we work</p>
-            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">Nine cities. Own teams.</h1>
+            <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">Nine cities, our own engineers in each.</h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Every Uniwater survey, install, and monthly service visit is delivered by our own engineers. No subcontracting after the sale.
+              Our own engineers do every survey, install and monthly service visit. We don&rsquo;t subcontract after the sale.
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function CitiesIndex() {
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-12 flex flex-col gap-4">
           <Eyebrow inverse>India</Eyebrow>
-          <Heading level={2} inverse>Seven cities, growing.</Heading>
+          <Heading level={2} inverse>Seven cities in India.</Heading>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {CITIES.filter((c) => c.country === 'India').map((c) => {
@@ -83,7 +83,7 @@ export default function CitiesIndex() {
       <Section padding="default" tone="subtle">
         <div className="mb-12 flex flex-col gap-4">
           <Eyebrow>Nepal</Eyebrow>
-          <Heading level={2}>Two cities. Growing fast.</Heading>
+          <Heading level={2}>Two cities in Nepal.</Heading>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {CITIES.filter((c) => c.country === 'Nepal').map((c) => {
