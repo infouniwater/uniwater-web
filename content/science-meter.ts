@@ -219,7 +219,7 @@ export const TECHNOLOGIES: Technology[] = [
     whatItDoes: 'Electrically raises water pH on claims of changing body pH.',
     verdict: 'The body tightly regulates its own pH; drinking alkaline water does not override it. As a health technology it does not hold up. (Correcting genuinely acidic supply is a separate, legitimate engineering question.)',
     evidenceStrength: 'weak',
-    indicativeStudyVolume: 'Claims unsupported by robust human evidence.',
+    indicativeStudyVolume: 'Claims not supported by solid human evidence.',
     verifyBeforePublish: true,
   },
   {
