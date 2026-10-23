@@ -114,7 +114,7 @@ export default function ForPlumbersPage() {
       <Section padding="default">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">What you earn</Eyebrow>
-          <Heading level={2}>Three things, every install.</Heading>
+          <Heading level={2}>What you get on every install.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {BENEFITS.map((b) => (
@@ -129,7 +129,7 @@ export default function ForPlumbersPage() {
       <Section padding="default" tone="subtle" id="how-it-works">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">How it works</Eyebrow>
-          <Heading level={2}>Register. Refer. Install. Earn.</Heading>
+          <Heading level={2}>How the program works.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {STEPS.map((step) => (
