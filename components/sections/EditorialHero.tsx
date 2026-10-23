@@ -137,14 +137,10 @@ export function EditorialHero() {
             Wellness starts with clean water
           </p>
           <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
-            Integrated water systems &mdash; for the home you only build once.
+            We test your water first. Then we build the system for it.
           </h1>
           <div className="text-[15px] leading-relaxed text-offwhite/80 flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline">
-            <span>Matched to your water chemistry</span>
-            <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
-            <span>Fitted to your architecture</span>
-            <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
-            <span>Serviced every month</span>
+            <span>Iron filters, softeners and drinking water systems for homes in Kolkata and eight other cities. Serviced every month.</span>
           </div>
 
           {/* CTA row -- items-center (not items-baseline) on the row so the

@@ -41,8 +41,8 @@ const STAGES: Stage[] = [
     marker: '01',
     label: 'Day one',
     cost: 'Customised.',
-    costLabel: 'engineered for your home',
-    body: 'Plumber recommends Uniwater. Water tested, system specced, install engineered — decided on chemistry, not catalogue price.',
+    costLabel: 'sized to your home and water',
+    body: 'Your plumber recommends Uniwater. We test the water, spec the system and plan the install around the chemistry, not a catalogue price.',
     tone: 'invested',
   },
   {
@@ -51,7 +51,7 @@ const STAGES: Stage[] = [
     cost: '₹1',
     unit: 'lakh',
     costLabel: 'saved',
-    body: 'Appliances pristine. Marble unstained. Skin and hair notice the difference. No emergency service calls.',
+    body: 'The geyser element is still clean and the marble has no orange line. Skin and hair feel the difference. No emergency call-outs.',
     tone: 'saved',
   },
   {
@@ -59,8 +59,8 @@ const STAGES: Stage[] = [
     label: 'Ten years',
     cost: '₹10–12',
     unit: 'lakh',
-    costLabel: 'saved — plus what money can’t buy',
-    body: 'Appliances on their original lifespan. Marble and fittings as they came. The family’s skin, hair, and the years they keep.',
+    costLabel: 'saved',
+    body: 'Appliances last their full rated life. Marble and fittings look the way they did on handover day.',
     tone: 'protected',
   },
 ];
@@ -80,10 +80,10 @@ export function DayOneArc() {
       <div className="flex flex-col gap-3 sm:gap-4 mb-8 md:mb-14 max-w-3xl">
         <Eyebrow>The decision</Eyebrow>
         <Heading level={2}>
-          Day one decisions, decade-long returns.
+          Get the water right before the tiles go in.
         </Heading>
         <Body className="text-mute text-lede font-light mt-2">
-          The right system on day one compounds &mdash; lakhs saved over the years, plus the wellness money can&rsquo;t replace.
+          Treating water from day one costs far less than fixing stained marble and scaled geysers later.
         </Body>
       </div>
 
@@ -138,7 +138,7 @@ export function DayOneArc() {
 
       <div className="mt-8 md:mt-16 max-w-reading">
         <EditorialAccent>
-          Water treatment is the choice that runs underneath everything else. Done properly, it protects the fittings, the appliances &mdash; and the things money can&rsquo;t replace: the family&rsquo;s skin, hair, and the years they keep.
+          Water touches every fitting, every appliance and everyone in the house. Treat it properly and the geyser lasts its full life, the marble keeps its colour and nobody complains about dry skin after a bath.
         </EditorialAccent>
       </div>
     </Section>

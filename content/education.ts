@@ -76,7 +76,7 @@ export const FIVE_PLACES = [
   },
   {
     location: 'Hidden niche',
-    description: 'Recessed behind tile or shower glass \u2014 part of the bathroom, not on it.',
+    description: 'Recessed behind tile or shower glass, so it sits inside the bathroom wall.',
   },
   {
     location: 'Wall cabinet',
@@ -88,7 +88,7 @@ export const FIVE_PLACES = [
   },
   {
     location: 'Utility room',
-    description: 'For whole-house systems \u2014 plant area or garden corner.',
+    description: 'For whole-house systems: plant area or garden corner.',
   },
 ] as const;
 
@@ -114,7 +114,7 @@ export const HOMESOFT_PLACES = [
   },
   {
     location: 'Custom cabinet',
-    description: 'Joinery-grade enclosure designed with the architect — the plant fits the house.',
+    description: 'A joinery-grade enclosure designed with your architect, so the plant fits the house.',
   },
 ] as const;
 
@@ -127,7 +127,7 @@ export const HOMESOFT_PLACES = [
 export const DRINKING_PLACES = [
   {
     location: 'Wall-mounted, kitchen counter',
-    description: 'Beside the kitchen sink, on the wall above the platform. Visible by design — the dedicated tap sits next to the sink mixer.',
+    description: 'Beside the kitchen sink, on the wall above the platform. This one is meant to be seen: the dedicated tap sits next to the sink mixer.',
   },
   {
     location: 'Under the sink',
@@ -167,24 +167,24 @@ export const FOUR_STEPS = [
     n: '01',
     title: 'Survey.',
     body:
-      'An engineer visits, tests the water, and maps plumbing, pressure, and space — no quote until this is done.',
+      'An engineer visits, tests the water and checks your plumbing, pressure and space. No quote until this is done.',
   },
   {
     n: '02',
     title: 'Design.',
     body:
-      'Your system is configured from a library of 100+ engineered options \u2014 the right capacity, the right media, the right vessel grade for your water and your home.',
+      'We build your system from 100+ engineered configurations, picking the capacity, media and vessel grade that suit your water and your home.',
   },
   {
     n: '03',
     title: 'Install.',
     body:
-      'Equipment goes in false ceilings, plumbing shafts, behind cabinets, under counters, or outside windows \u2014 wherever it disappears.',
+      'Equipment goes in false ceilings, plumbing shafts, behind cabinets, under counters or outside windows, wherever it stays out of sight and can still be serviced.',
   },
   {
     n: '04',
     title: 'Service.',
     body:
-      'An engineer visits monthly to inspect, clean, and verify the system is working \u2014 not just when something breaks.',
+      'An engineer visits every month to inspect, clean and check the system, whether or not anything has gone wrong.',
   },
 ] as const;

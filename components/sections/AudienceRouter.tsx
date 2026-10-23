@@ -56,14 +56,14 @@ const HOME_AUDIENCES = [
     // /for-architects for the architect's side.
     label: 'I’m building or renovating.',
     body:
-      'Specify the water before the tile goes down. Survey at draft drawings; the plumbing routes around the system.',
+      'Plan the water before the tiles go down. We survey from your draft drawings so the plumbing can be routed around the system.',
     cta: 'Plan the system',
     href: '/building-or-renovating',
   },
 ];
 
 const TRADE_AUDIENCE = {
-  label: 'I specify or install water systems — dealer, architect, plumber.',
+  label: 'I’m a dealer, architect or plumber.',
   cta: 'See the trade programme',
   href: '/for-trade',
 };
@@ -180,7 +180,7 @@ export function AudienceRouter() {
                 For your building or business
               </p>
               <p className="text-caption text-offwhite/70 leading-snug -mt-1">
-                Engineered water at scale, for societies, hotels, hospitals, and factories.
+                Water plants for housing societies, hotels, hospitals and factories.
               </p>
               <div className="flex flex-col gap-3 mt-auto pt-2">
                 <Link
@@ -189,10 +189,10 @@ export function AudienceRouter() {
                 >
                   <span className="flex flex-col gap-1">
                     <span className="font-ui font-semibold text-body text-navy">
-                      Subscribe — {CWAAS_BRAND_NAME}
+                      Subscribe to {CWAAS_BRAND_NAME}
                     </span>
                     <span className="text-caption text-navy/75">
-                      Zero capex, guaranteed to grade · 10 live sites, 2 countries
+                      No capital cost. Water held to an agreed spec · 10 live sites, 2 countries
                     </span>
                   </span>
                   <ArrowIcon stroke="#05455F" />
@@ -203,10 +203,10 @@ export function AudienceRouter() {
                 >
                   <span className="flex flex-col gap-1">
                     <span className="font-ui font-semibold text-body text-offwhite">
-                      Own it — specify &amp; buy
+                      Buy and own the plant
                     </span>
                     <span className="text-caption text-offwhite/75">
-                      Buy the plant, take an AMC
+                      We spec it, you buy it, and an AMC covers the service.
                     </span>
                   </span>
                   <ArrowIcon />

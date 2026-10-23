@@ -39,10 +39,10 @@ export function ProofSection() {
       <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
         <Eyebrow>Selected clients</Eyebrow>
         <Heading level={2}>
-          Hospitals. Hotels. Universities. Premium homes.
+          Some of the places our systems run.
         </Heading>
         <Body className="text-mute mt-2">
-          Hospitals, hotels, factories, schools, universities, and premium residential developments across India and Nepal. A partial list of named clients:
+          Hospitals, hotels, factories, schools, universities and residential developments across India and Nepal. A few of the names:
         </Body>
       </div>
 

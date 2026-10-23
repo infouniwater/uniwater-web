@@ -17,7 +17,7 @@ const CHECK = '/water-problem-checker';
 const SYMPTOMS: Array<{ label: string; cause: string }> = [
   { label: 'Yellow or rust stains', cause: 'Dissolved iron oxidising on contact with air.' },
   { label: 'Marble turning orange', cause: 'Iron settling into porous stone and fittings.' },
-  { label: 'Scale on the geyser', cause: 'Hardness — calcium and magnesium baking onto the element.' },
+  { label: 'Scale on the geyser', cause: 'Hardness: calcium and magnesium baking onto the heating element.' },
   { label: 'Soap won’t lather', cause: 'Hardness binding the soap before it can work.' },
   { label: 'Stiff, dull laundry', cause: 'Minerals locking into the fibres wash after wash.' },
   { label: 'Tight skin, coated hair', cause: 'Mineral residue left behind after every rinse.' },
@@ -27,9 +27,9 @@ export function SymptomStrip() {
   return (
     <Section padding="default">
       <div className="mb-10 md:mb-12 max-w-3xl flex flex-col gap-4">
-        <Heading level={2}>If your water is doing any of this, it is telling you something.</Heading>
+        <Heading level={2}>Common signs, and what&rsquo;s causing them.</Heading>
         <Body className="text-mute">
-          Pick what you are seeing. The 60-second check tells you why &mdash; and what order to fix it in.
+          Pick what you&rsquo;re seeing. The 60-second check tells you the cause and which problem to fix first.
         </Body>
       </div>
 
@@ -38,7 +38,7 @@ export function SymptomStrip() {
           <li key={s.label}>
             <Link
               href={CHECK}
-              aria-label={`${s.label} — take the 60-second water check`}
+              aria-label={`${s.label}: take the 60-second water check`}
               className="group h-full bg-offwhite p-6 md:p-8 flex flex-col gap-2 transition-colors duration-200 ease-calm hover:bg-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-inset"
             >
               <h3 className="text-h3 font-medium text-navy">{s.label}</h3>

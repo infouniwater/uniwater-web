@@ -32,8 +32,7 @@ export function FourStepProcess({ id }: { id?: string }) {
           <span>Install</span>
           <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&middot;</span>
           <span>Service</span>
-          <span aria-hidden="true" className="hidden sm:inline text-offwhite/40 mx-2">&mdash;</span>
-          <span className="italic">the same team, end to end.</span>
+          <span className="italic sm:ml-3">One team does all four.</span>
         </div>
       </div>
 

@@ -37,7 +37,7 @@ const CITY_GUIDES: CityGuide[] = [
     cityName: 'Kolkata',
     pillarHref: '/kolkata-iron-water',
     topic: 'Iron',
-    title: 'Iron in Kolkata water — stains, causes, removal.',
+    title: 'Iron in Kolkata water: stains, causes and removal.',
     description:
       'Why central KMC localities read low while Salt Lake, New Town, and Rajarhat run high; locality-level water bands; the order treatment has to go in to actually work.',
   },
@@ -58,7 +58,7 @@ export function CityGuides() {
         {/* Left -- editorial framing. */}
         <div className="lg:col-span-4 flex flex-col gap-4">
           <Eyebrow className="mb-2">City guides</Eyebrow>
-          <Heading level={2}>Deep reads, written for one city at a time.</Heading>
+          <Heading level={2}>Longer guides to one city&rsquo;s water.</Heading>
           <Body className="text-mute mt-2">
             Water chemistry changes block to block. These guides go deeper
             than a city page: what the supply actually carries, where it

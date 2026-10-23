@@ -50,9 +50,9 @@ import { jsonLd, serviceSchema } from '@/lib/structured-data';
  */
 export default function HomePage() {
   const homeService = serviceSchema({
-    name: 'Engineered home water — survey, design, install, service',
+    name: 'Home water treatment: survey, design, install, service',
     description:
-      'Uniwater surveys, designs, installs, and monthly-services whole-house, bathroom, and drinking-water systems. The same team owns the system from first water test onward.',
+      'Uniwater surveys, designs, installs and services whole-house, bathroom and drinking-water systems every month. The same team looks after the system from the first water test onward.',
     url: '/',
     steps: FOUR_STEPS.map((step) => ({
       name: step.title.replace(/\.$/, ''),

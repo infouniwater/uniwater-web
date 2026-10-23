@@ -19,8 +19,8 @@ interface FinalCTAProps {
  * the image-with-scrim canvas.
  */
 export function FinalCTA({
-  headline = 'Ready when you are.',
-  sub = 'Tell us about your home. We’ll come to you.',
+  headline = 'Start with a free water survey.',
+  sub = 'Tell us about your home and an engineer will come and test the water.',
   primaryCTA,
   audience = 'residential',
 }: FinalCTAProps) {

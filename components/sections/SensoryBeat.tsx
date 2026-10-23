@@ -13,9 +13,8 @@ import { Eyebrow, Heading, Body } from '@/components/ui/Typography';
  * Image is an existing repo photograph; no new imagery generated.
  */
 const LINES = [
-  'Soft, iron-free water rinses clean — soap actually lathers, then leaves. Skin stops feeling tight. Hair stops feeling coated.',
+  'Soft, iron-free water rinses clean. Soap lathers properly and then washes off. Skin stops feeling tight and hair stops feeling coated.',
   'The marble keeps its colour. The geyser stops furring up. Laundry comes out soft instead of stiff.',
-  'Nothing on the surface looks different. Everything that touches the water does.',
 ];
 
 export function SensoryBeat() {
@@ -34,8 +33,8 @@ export function SensoryBeat() {
           </div>
         </div>
         <div className="lg:col-span-6 flex flex-col gap-5">
-          <Eyebrow inverse>What changes</Eyebrow>
-          <Heading level={2} inverse>You feel it before you can explain it.</Heading>
+          <Eyebrow inverse>After the install</Eyebrow>
+          <Heading level={2} inverse>What changes once the water is treated.</Heading>
           <div className="flex flex-col gap-4 max-w-reading">
             {LINES.map((line, i) => (
               <Body key={i} inverse className="text-offwhite/80">{line}</Body>

@@ -11,7 +11,7 @@ const INSTALL_PHOTOS: Array<{ src: string; alt: string }> = [
   },
   {
     src: '/images/photography/bathroom-filter-hero.jpg',
-    alt: 'Two stainless cylinders recessed in a wall niche behind a marble shower glass — part of the bathroom architecture, not bolted onto it',
+    alt: 'Two stainless cylinders recessed in a wall niche behind a marble shower glass, built into the bathroom wall',
   },
   {
     src: '/images/photography/bathroom-filter-wall-cabinet.jpg',
@@ -40,12 +40,12 @@ export function InstallationVersatility() {
   return (
     <Section padding="default">
       <div className="mb-8 md:mb-14 max-w-3xl flex flex-col gap-4">
-        <Eyebrow>What makes us different</Eyebrow>
+        <Eyebrow>Hidden installs</Eyebrow>
         <Heading level={2}>
-          Five places we&rsquo;ve put a water system &mdash; engineered into the architecture, not bolted to it.
+          Where the system goes in your house.
         </Heading>
         <Body className="text-mute text-lede font-light mt-2">
-          Most water companies bolt a vessel to a wall and call it done. Uniwater engineers the install into the building &mdash; false ceilings, shafts, niches, under-counter cavities, plant rooms. The system fits the house, not the other way around.
+          We decide where the vessels go at the survey: false ceiling, plumbing shaft, wall niche, under the counter or the plant room. Planned early, nobody sees them and our engineer can still reach them for service.
         </Body>
       </div>
 
@@ -74,7 +74,7 @@ export function InstallationVersatility() {
       </div>
 
       <EditorialAccent className="mt-14 md:mt-20 text-xl md:text-2xl">
-        Decided at site survey. Specified before tile. Installed by the engineers who designed it.
+        The engineers who plan the install are the ones who do it.
       </EditorialAccent>
     </Section>
   );

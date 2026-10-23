@@ -23,22 +23,22 @@ interface TrustItem {
 const ITEMS: TrustItem[] = [
   {
     value: STATS.homesServiced,
-    label: 'Homes enjoying clean water',
+    label: 'Homes we service',
     caveat: 'Across 9 cities in India & Nepal',
   },
   {
     value: `${STATS.citiesTotal}+`,
-    label: 'Cities, own teams',
-    caveat: 'Not subcontracted',
+    label: 'Cities, our own engineers',
+    caveat: 'We don’t subcontract installs',
   },
   {
     value: `${STATS.yearsOperating} years`,
-    label: 'Delivering engineered pristine water',
-    caveat: 'Surveyed before quoted',
+    label: `In business since ${STATS.founded}`,
+    caveat: 'Every quote follows a survey',
   },
   {
     value: `${SURVEYS_BOOKED_TRAILING_12M.toLocaleString('en-IN')}+`,
-    label: 'Surveys delivered',
+    label: 'Surveys booked in the last 12 months',
     caveat: 'Free of cost',
   },
 ];
@@ -46,7 +46,7 @@ const ITEMS: TrustItem[] = [
 export function TrustStripe() {
   return (
     <section
-      aria-label="Operating proof — homes, cities, years, demand"
+      aria-label="Uniwater in numbers: homes, cities, years, surveys"
       className="bg-offwhite border-b border-hairline"
     >
       <div className="container-uw py-8 md:py-14">

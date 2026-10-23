@@ -20,10 +20,10 @@ export function CitiesSection() {
         <div className="lg:col-span-2 flex flex-col gap-4">
           <Eyebrow inverse>Where we work</Eyebrow>
           <Heading level={2} inverse>
-            Nine cities. Own teams. Not subcontracted.
+            Nine cities, each with our own engineers.
           </Heading>
           <Body inverse className="text-offwhite/80 mt-2">
-            Every Uniwater survey, install, and monthly service visit is delivered by our own engineers. We don&rsquo;t hand off to local contractors after the sale.
+            Our own engineers do every survey, install and service visit. We don&rsquo;t hand the job to a local contractor once the sale is done.
           </Body>
 
           <div className="mt-6 flex flex-col gap-3">
