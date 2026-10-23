@@ -111,15 +111,15 @@ const EXACT_MAP: Record<string, PhotoAsset> = {
   },
   'for-plumbers-hero': {
     src: `${INSTALLS}/utility-room-01.jpg`,
-    alt: 'Uniwater system installed in a customer utility room — the kind of finish trade partners help deliver',
+    alt: 'Uniwater system installed in a customer’s utility room',
   },
   'for-architects-hero': {
     src: `${PHOTO}/bathroom-filter-ceiling-installation.jpg`,
-    alt: 'Bathroom filter integrated into a false ceiling — the kind of architectural integration Uniwater delivers',
+    alt: 'Bathroom filter built into a false ceiling',
   },
   'residential-hero': {
     src: `${PHOTO}/whole-house-luxury-villa.jpg`,
-    alt: 'A premium Indian villa with a Uniwater whole-house system installed',
+    alt: 'An Indian villa with a Uniwater whole-house system installed',
   },
   'book-survey-aside': {
     src: `${PHOTO}/service-testing-water.jpg`,
@@ -127,7 +127,7 @@ const EXACT_MAP: Record<string, PhotoAsset> = {
   },
   'founder-portrait': {
     src: `${PHOTO}/service-installing.jpg`,
-    alt: 'A Uniwater engineer at work — the team that owns the system end to end',
+    alt: 'A Uniwater engineer at work on a customer’s system',
   },
   'team-office': {
     src: `${PHOTO}/service-checkups.jpg`,
@@ -172,13 +172,13 @@ const PATTERN_RULES: PatternRule[] = [
   },
   {
     test: /^city-[a-z0-9-]+-hero$/,
-    resolve: () => ({ src: `${PHOTO}/residential-complex.jpg`, alt: 'A premium residential context — the kind of homes Uniwater serves in this city' }),
+    resolve: () => ({ src: `${PHOTO}/residential-complex.jpg`, alt: 'Residential buildings of the kind Uniwater serves in this city' }),
   },
 
   // Case studies — install numbered photos, hero, then index card (most generic)
   {
     test: /^case-[a-z0-9-]+-hero$/,
-    resolve: () => ({ src: `${PHOTO}/commercial-ro-industrial-shed.jpg`, alt: 'A Uniwater commercial RO and softening plant — representative install' }),
+    resolve: () => ({ src: `${PHOTO}/commercial-ro-industrial-shed.jpg`, alt: 'A Uniwater commercial RO and softening plant (representative install)' }),
   },
   {
     test: /^case-[a-z0-9-]+-(\d+)$/,
