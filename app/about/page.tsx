@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
   path: '/about',
   title: 'About Uniwater',
   description:
-    'A water company built for premium homes. Founded 2020 in Kolkata. Now in 9 cities across India and Nepal.',
+    'Uniwater is a Kolkata water treatment company, started in 2020. We survey, install and service water systems in 9 cities across India and Nepal.',
   image: '/og/og-about.png',
 });
 
@@ -23,7 +23,7 @@ const MILESTONES = [
   { year: '2023', body: 'Expanded to Bhubaneswar, Ranchi, Rourkela.' },
   { year: '2024', body: 'Crossed 100 commercial installs. Opened Nepal operations in Kathmandu and Biratnagar.' },
   { year: '2025', body: 'Reached 200+ residential homes serviced across India and Nepal.' },
-  { year: '2026', body: '110-SKU catalogue published. Marketing site relaunch; customer portal under development as a separate product.' },
+  { year: '2026', body: 'Published the 110-SKU catalogue and relaunched this website. A customer portal is in development.' },
 ];
 
 export default function AboutPage() {
@@ -58,10 +58,10 @@ export default function AboutPage() {
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">About</p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
-              A water company built for premium homes.
+              A Kolkata water company, started in {STATS.founded}.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Founded in Kolkata in {STATS.founded}. Now in {STATS.citiesTotal} cities across India and Nepal. We design, install, and service water systems for the homes you don&rsquo;t get to redo.
+              Now in {STATS.citiesTotal} cities across India and Nepal. We test the water, design the system, install it and service it every month.
             </p>
           </div>
         </div>
@@ -82,13 +82,13 @@ export default function AboutPage() {
             </EditorialAccent>
             <div className="flex flex-col gap-5">
               <Body className="text-mute">
-                Kitchen got an Aquaguard or Kent. Bathroom got nothing. Two years later the geyser was scaled, the marble had an orange line, the Hansgrohe shower was dulling &mdash; and nobody quite knew why.
+                Kitchen got an Aquaguard or Kent. Bathroom got nothing. Two years later the geyser was scaled, the marble had an orange line, the Hansgrohe shower was dulling, and nobody quite knew why.
               </Body>
               <Body className="text-mute">
-                The fix isn&rsquo;t a better kitchen RO. It&rsquo;s a survey before the sale, a system sized to the house, and an engineer who comes back every month. That&rsquo;s the company we built in 2020. Same one today.
+                A better kitchen RO was never going to fix that. What fixes it is a survey before the sale, a system sized to the house, and an engineer who comes back every month. That&rsquo;s the company we started in 2020, and it hasn&rsquo;t changed.
               </Body>
               <Caption className="text-mute italic mt-4">
-                &mdash; The Uniwater team
+                The Uniwater team
               </Caption>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
       <Section tone="navy" padding="default" image={{ stem: 'plant-room' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>By the numbers</Eyebrow>
-          <Heading level={2} inverse>Six years in. Compounding.</Heading>
+          <Heading level={2} inverse>Where we are after six years.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           <StatTile inverse value={STATS.homesServiced} label="Homes serviced" />
@@ -129,7 +129,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-6">
             <Photo
-              description="Team or office photograph — Uniwater operations in Kolkata"
+              description="Team or office photograph: Uniwater operations in Kolkata"
               assetRef="team-office"
               aspect="five-six"
               mobileAspect="sixteen-nine"
@@ -144,7 +144,7 @@ export default function AboutPage() {
           <Eyebrow inverse>Selected clients</Eyebrow>
           <Heading level={2} inverse>Where Uniwater systems run today.</Heading>
           <Body inverse className="text-offwhite/80 mt-2">
-            Hospitals, hotels, factories, schools, universities, premium residential complexes. A partial list, in no particular order:
+            Hospitals, hotels, factories, schools, universities and residential complexes. A few of them, in no particular order:
           </Body>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-4">
@@ -180,7 +180,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-8 max-w-reading flex flex-col gap-5">
             <Body className="text-mute">
-              To make clean water effortless, dependable, and sustainable for every home, institution, and business we serve &mdash; by combining engineering, automation, and service into a single long-term partnership.
+              Get the water right in every building we work on, and keep it right for as long as the customer stays with us.
             </Body>
             <Body className="text-mute">
               We measure success not by units shipped, but by AMC retention. The customer whose water has been right for five years is the customer we&rsquo;re building for.
