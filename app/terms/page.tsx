@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Body, Caption } from '@/components/ui/Typography';
 import { SITE, CONTACT } from '@/content/site';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = {
   title: 'Terms of service',
@@ -51,72 +52,72 @@ export default function TermsPage() {
           <div>
             <Heading level={2} className="mb-3">3. The free water survey.</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— The survey is free of cost and creates no obligation to purchase.</li>
-              <li>— A Uniwater engineer will visit at a scheduled time, test your water (TDS, hardness, iron, pH at minimum, plus parameters relevant to your reported symptoms), audit your plumbing and available installation space, and prepare a system recommendation.</li>
-              <li>— The survey is valid for 30 days from the visit date. After 30 days, water chemistry and household needs can change; we may request a re-survey at no additional cost.</li>
-              <li>— You are not obliged to share the survey report with any third party, and we will not without your consent.</li>
-              <li>— If we determine that you do not need a Uniwater system, we will tell you so plainly.</li>
+              <li><ListBar inline />The survey is free of cost and creates no obligation to purchase.</li>
+              <li><ListBar inline />A Uniwater engineer will visit at a scheduled time, test your water (TDS, hardness, iron, pH at minimum, plus parameters relevant to your reported symptoms), audit your plumbing and available installation space, and prepare a system recommendation.</li>
+              <li><ListBar inline />The survey is valid for 30 days from the visit date. After 30 days, water chemistry and household needs can change; we may request a re-survey at no additional cost.</li>
+              <li><ListBar inline />You are not obliged to share the survey report with any third party, and we will not without your consent.</li>
+              <li><ListBar inline />If we determine that you do not need a Uniwater system, we will tell you so plainly.</li>
             </ul>
           </div>
 
           <div>
             <Heading level={2} className="mb-3">4. Quote, order, and payment.</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— Quotes are valid for 30 days from issue, unless explicitly extended in writing.</li>
-              <li>— All prices on this website are indicative starting prices for residential systems. The final price is set after the survey and depends on your water chemistry, household demand, and install constraints.</li>
-              <li>— Prices include GST at the prevailing rate (currently 18% for water-treatment systems) unless otherwise stated.</li>
-              <li>— On order confirmation, we require 50% advance to schedule the installation. The balance is payable on the day of handover. Commercial / industrial / institutional payment milestones are agreed in writing per project.</li>
-              <li>— Acceptable payment methods: UPI, Razorpay (cards, net banking), and direct bank transfer to the account named on the invoice. We do not accept cash for orders above ₹2,00,000 (per Income Tax Act §269ST).</li>
+              <li><ListBar inline />Quotes are valid for 30 days from issue, unless explicitly extended in writing.</li>
+              <li><ListBar inline />All prices on this website are indicative starting prices for residential systems. The final price is set after the survey and depends on your water chemistry, household demand, and install constraints.</li>
+              <li><ListBar inline />Prices include GST at the prevailing rate (currently 18% for water-treatment systems) unless otherwise stated.</li>
+              <li><ListBar inline />On order confirmation, we require 50% advance to schedule the installation. The balance is payable on the day of handover. Commercial / industrial / institutional payment milestones are agreed in writing per project.</li>
+              <li><ListBar inline />Acceptable payment methods: UPI, Razorpay (cards, net banking), and direct bank transfer to the account named on the invoice. We do not accept cash for orders above ₹2,00,000 (per Income Tax Act §269ST).</li>
             </ul>
           </div>
 
           <div>
             <Heading level={2} className="mb-3">5. Installation.</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— Installation is carried out by Uniwater-employed engineers, not subcontracted. Timeline depends on system complexity (typically 1&ndash;7 working days for residential; longer for commercial).</li>
-              <li>— You are responsible for: (a) safe site access; (b) civil readiness (plant-room construction, plumbing routes, electrical points, drain availability); (c) any building approvals or society consents required.</li>
-              <li>— Where the design depends on inputs you provide (e.g. drawings, pipe layouts), accuracy is your responsibility; modifications during install due to wrong-input may incur additional charges.</li>
-              <li>— On commissioning, you and the engineer sign a handover document confirming the system meets the spec.</li>
+              <li><ListBar inline />Installation is carried out by Uniwater-employed engineers, not subcontracted. Timeline depends on system complexity (typically 1&ndash;7 working days for residential; longer for commercial).</li>
+              <li><ListBar inline />You are responsible for: (a) safe site access; (b) civil readiness (plant-room construction, plumbing routes, electrical points, drain availability); (c) any building approvals or society consents required.</li>
+              <li><ListBar inline />Where the design depends on inputs you provide (e.g. drawings, pipe layouts), accuracy is your responsibility; modifications during install due to wrong-input may incur additional charges.</li>
+              <li><ListBar inline />On commissioning, you and the engineer sign a handover document confirming the system meets the spec.</li>
             </ul>
           </div>
 
           <div>
             <Heading level={2} className="mb-3">6. Warranty.</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— Standard product warranty: 12 months from the date of handover, against manufacturing defect in vessels, control heads, pumps, and Uniwater-supplied components.</li>
-              <li>— Extended warranties: available on selected products as written addenda to the order.</li>
-              <li>— Excluded from warranty: damage from upstream water-quality changes (e.g. switching from municipal to borewell after install) without notifying us; consumables (media, resin, cartridges, filters) which are time- and use-based; damage from unauthorised tampering or modification; force majeure events.</li>
-              <li>— Component manufacturers&rsquo; own warranties (e.g. Wilo pumps, Hydranautics membranes) pass through to you on standard manufacturer terms.</li>
-              <li>— Warranty claims: write to <a href={`mailto:${CONTACT.emails.support}`} className="text-teal underline underline-offset-4">{CONTACT.emails.support}</a> with order number, photo, and description. We&rsquo;ll send an engineer within 5 working days (24 hours on Premium AMC).</li>
+              <li><ListBar inline />Standard product warranty: 12 months from the date of handover, against manufacturing defect in vessels, control heads, pumps, and Uniwater-supplied components.</li>
+              <li><ListBar inline />Extended warranties: available on selected products as written addenda to the order.</li>
+              <li><ListBar inline />Excluded from warranty: damage from upstream water-quality changes (e.g. switching from municipal to borewell after install) without notifying us; consumables (media, resin, cartridges, filters) which are time- and use-based; damage from unauthorised tampering or modification; force majeure events.</li>
+              <li><ListBar inline />Component manufacturers&rsquo; own warranties (e.g. Wilo pumps, Hydranautics membranes) pass through to you on standard manufacturer terms.</li>
+              <li><ListBar inline />Warranty claims: write to <a href={`mailto:${CONTACT.emails.support}`} className="text-teal underline underline-offset-4">{CONTACT.emails.support}</a> with order number, photo, and description. We&rsquo;ll send an engineer within 5 working days (24 hours on Premium AMC).</li>
             </ul>
           </div>
 
           <div>
             <Heading level={2} className="mb-3">7. Annual Maintenance Contract (AMC).</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— Three AMC tiers are offered: Standard (quarterly visit), Comprehensive (monthly visit), Premium (monthly visit with 24-hour fault response and remote alerts). Indicative prices are published on /service and confirmed at handover.</li>
-              <li>— AMC starts on day 31 after handover. The first 30 days are covered free under installation warranty.</li>
-              <li>— You may upgrade or downgrade AMC tier annually at renewal. Mid-year changes are pro-rated.</li>
-              <li>— AMC obliges us to perform the scheduled service visits and supply consumables per the tier&rsquo;s scope. You are responsible for granting safe site access and being available (or nominating someone) at the scheduled visit time.</li>
-              <li>— Missed visits due to your unavailability are not made up at no cost; rescheduling fees may apply if the engineer was already dispatched.</li>
+              <li><ListBar inline />Three AMC tiers are offered: Standard (quarterly visit), Comprehensive (monthly visit), Premium (monthly visit with 24-hour fault response and remote alerts). Indicative prices are published on /service and confirmed at handover.</li>
+              <li><ListBar inline />AMC starts on day 31 after handover. The first 30 days are covered free under installation warranty.</li>
+              <li><ListBar inline />You may upgrade or downgrade AMC tier annually at renewal. Mid-year changes are pro-rated.</li>
+              <li><ListBar inline />AMC obliges us to perform the scheduled service visits and supply consumables per the tier&rsquo;s scope. You are responsible for granting safe site access and being available (or nominating someone) at the scheduled visit time.</li>
+              <li><ListBar inline />Missed visits due to your unavailability are not made up at no cost; rescheduling fees may apply if the engineer was already dispatched.</li>
             </ul>
           </div>
 
           <div>
             <Heading level={2} className="mb-3">8. Cancellation and refund.</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— Order cancellation before installation begins: full refund of advance, less 5% processing fee.</li>
-              <li>— Cancellation after installation has begun but before commissioning: refund of advance, less actual costs incurred (materials ordered, labour deployed, system already installed) — itemised and shared with you.</li>
-              <li>— Once a system is commissioned and handed over, the sale is complete. Returns are not accepted unless the warranty clauses (section 6) apply.</li>
-              <li>— AMC cancellation: 30 days&rsquo; written notice. Refund of any unused portion, pro-rated.</li>
-              <li>— Refunds are processed within 14 working days of approval, to the original payment instrument.</li>
+              <li><ListBar inline />Order cancellation before installation begins: full refund of advance, less 5% processing fee.</li>
+              <li><ListBar inline />Cancellation after installation has begun but before commissioning: refund of advance, less actual costs incurred (materials ordered, labour deployed, system already installed), itemised and shared with you.</li>
+              <li><ListBar inline />Once a system is commissioned and handed over, the sale is complete. Returns are not accepted unless the warranty clauses (section 6) apply.</li>
+              <li><ListBar inline />AMC cancellation: 30 days&rsquo; written notice. Refund of any unused portion, pro-rated.</li>
+              <li><ListBar inline />Refunds are processed within 14 working days of approval, to the original payment instrument.</li>
             </ul>
           </div>
 
           <div>
             <Heading level={2} className="mb-3">9. Website use.</Heading>
             <Body className="text-mute">
-              You may use this website for personal, non-commercial purposes and to engage Uniwater. You may not: (a) scrape or systematically extract content; (b) interfere with the site&rsquo;s operation; (c) use the site or any form to send unsolicited communications; (d) reverse-engineer, decompile, or attempt to access any non-public part of the site. All content on this website &mdash; copy, images, infographics, brand marks &mdash; is the property of {SITE.legalName} unless attributed otherwise, and is protected by Indian copyright and trademark law.
+              You may use this website for personal, non-commercial purposes and to engage Uniwater. You may not: (a) scrape or systematically extract content; (b) interfere with the site&rsquo;s operation; (c) use the site or any form to send unsolicited communications; (d) reverse-engineer, decompile, or attempt to access any non-public part of the site. All content on this website (copy, images, infographics, brand marks) is the property of {SITE.legalName} unless attributed otherwise, and is protected by Indian copyright and trademark law.
             </Body>
           </div>
 

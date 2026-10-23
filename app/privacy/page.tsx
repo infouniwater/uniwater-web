@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Section } from '@/components/ui/Section';
 import { Eyebrow, Display, Heading, Body, Caption } from '@/components/ui/Typography';
 import { SITE, CONTACT } from '@/content/site';
+import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = {
   title: 'Privacy policy',
@@ -39,12 +40,12 @@ export default function PrivacyPage() {
               We collect the following categories of personal data, only when you choose to share them with us:
             </Body>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— <span className="text-navy font-medium">Identity:</span> name, salutation, profession (when relevant).</li>
-              <li>— <span className="text-navy font-medium">Contact:</span> mobile number, email address, postal address, locality, pincode.</li>
-              <li>— <span className="text-navy font-medium">Property &amp; water context:</span> property type (apartment / villa / institutional), bedrooms, bathrooms, water source (municipal / borewell / mixed), reported symptoms, and any water-test results you share.</li>
-              <li>— <span className="text-navy font-medium">B2B / RFQ data:</span> organisation name, application, capacity required, site location, project timeline, drawings or test reports you email to us.</li>
-              <li>— <span className="text-navy font-medium">Service history:</span> once you become a customer, the date, parameters, and outcome of every monthly service visit; the engineer assigned; the AMC tier in force.</li>
-              <li>— <span className="text-navy font-medium">Technical:</span> IP address, browser type, device, pages viewed, referring URL. Collected via cookies and analytics (see section 8).</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Identity:</span> name, salutation, profession (when relevant).</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Contact:</span> mobile number, email address, postal address, locality, pincode.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Property &amp; water context:</span> property type (apartment / villa / institutional), bedrooms, bathrooms, water source (municipal / borewell / mixed), reported symptoms, and any water-test results you share.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">B2B / RFQ data:</span> organisation name, application, capacity required, site location, project timeline, drawings or test reports you email to us.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Service history:</span> once you become a customer, the date, parameters, and outcome of every monthly service visit; the engineer assigned; the AMC tier in force.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Technical:</span> IP address, browser type, device, pages viewed, referring URL. Collected via cookies and analytics (see section 8).</li>
             </ul>
             <Body className="text-mute mt-4">
               We do not knowingly collect personal data from children under the age of 18. If a child&rsquo;s data has been provided to us, please contact our Grievance Officer (section 11) and we will delete it.
@@ -57,14 +58,14 @@ export default function PrivacyPage() {
               We process personal data for the following specific, lawful purposes, in line with Section 4 of the DPDP Act:
             </Body>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— To schedule and conduct your free water survey at your property.</li>
-              <li>— To prepare a tailored system design, bill of materials, and quote.</li>
-              <li>— To install, commission, and hand over the water system you purchase.</li>
-              <li>— To provide monthly service visits, prepare service reports, and maintain your system over the life of the contract.</li>
-              <li>— To respond to enquiries, RFQs, and remote-survey submissions.</li>
-              <li>— To send service confirmations, renewal reminders, and AMC notices.</li>
-              <li>— To comply with applicable Indian tax, accounting, consumer-protection, and legal-record-keeping requirements.</li>
-              <li>— To improve the website and our service quality (analytics, anonymised).</li>
+              <li><ListBar inline />To schedule and conduct your free water survey at your property.</li>
+              <li><ListBar inline />To prepare a tailored system design, bill of materials, and quote.</li>
+              <li><ListBar inline />To install, commission, and hand over the water system you purchase.</li>
+              <li><ListBar inline />To provide monthly service visits, prepare service reports, and maintain your system over the life of the contract.</li>
+              <li><ListBar inline />To respond to enquiries, RFQs, and remote-survey submissions.</li>
+              <li><ListBar inline />To send service confirmations, renewal reminders, and AMC notices.</li>
+              <li><ListBar inline />To comply with applicable Indian tax, accounting, consumer-protection, and legal-record-keeping requirements.</li>
+              <li><ListBar inline />To improve the website and our service quality (analytics, anonymised).</li>
             </ul>
             <Body className="text-mute mt-4">
               We will not use your data for any purpose materially different from the one for which it was collected without your specific consent.
@@ -81,10 +82,10 @@ export default function PrivacyPage() {
           <div>
             <Heading level={2} className="mb-3">4. How long we keep your data (retention).</Heading>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— <span className="text-navy font-medium">Form submissions where no customer relationship follows:</span> 24 months from submission, after which they are deleted or anonymised.</li>
-              <li>— <span className="text-navy font-medium">Customer records and service history:</span> for the life of the service contract plus 7 years (to comply with Indian tax, accounting, and consumer-protection record-keeping requirements).</li>
-              <li>— <span className="text-navy font-medium">Marketing communication preferences:</span> until you withdraw consent or 24 months from the last interaction.</li>
-              <li>— <span className="text-navy font-medium">Analytics and cookie data:</span> aggregated and retained for a maximum of 26 months.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Form submissions where no customer relationship follows:</span> 24 months from submission, after which they are deleted or anonymised.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Customer records and service history:</span> for the life of the service contract plus 7 years (to comply with Indian tax, accounting, and consumer-protection record-keeping requirements).</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Marketing communication preferences:</span> until you withdraw consent or 24 months from the last interaction.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Analytics and cookie data:</span> aggregated and retained for a maximum of 26 months.</li>
             </ul>
           </div>
 
@@ -94,12 +95,12 @@ export default function PrivacyPage() {
               We do not sell, rent, or trade personal information. We share data only with the following parties, only as needed for the purposes in section 2:
             </Body>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— <span className="text-navy font-medium">Odoo SaaS (CRM):</span> our customer-relationship system. Lead, customer, and service-visit data is stored here. Odoo S.A. (Belgium) is the data processor; data is stored in Odoo&rsquo;s data centres. <span className="italic">Cross-border transfer note:</span> data may be processed outside India. By submitting a form you consent to this transfer.</li>
-              <li>— <span className="text-navy font-medium">Vercel and Cloudflare:</span> website hosting and CDN. They process technical metadata (IP, request headers); no form-submission data is stored on their infrastructure.</li>
-              <li>— <span className="text-navy font-medium">Google Analytics 4 and Google Tag Manager:</span> aggregated website analytics. No PII shared (see section 8).</li>
-              <li>— <span className="text-navy font-medium">WhatsApp Business (Meta):</span> when you initiate a chat with us via the WhatsApp link, the conversation is governed by WhatsApp&rsquo;s own privacy policy.</li>
-              <li>— <span className="text-navy font-medium">Legal authorities:</span> if compelled by a valid Indian court order, government notice, or law-enforcement request.</li>
-              <li>— <span className="text-navy font-medium">Field engineers and service partners:</span> only the data needed for them to deliver your service visit (your address, contact, system configuration, service history).</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Odoo SaaS (CRM):</span> our customer-relationship system. Lead, customer, and service-visit data is stored here. Odoo S.A. (Belgium) is the data processor; data is stored in Odoo&rsquo;s data centres. <span className="italic">Cross-border transfer note:</span> data may be processed outside India. By submitting a form you consent to this transfer.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Vercel and Cloudflare:</span> website hosting and CDN. They process technical metadata (IP, request headers); no form-submission data is stored on their infrastructure.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Google Analytics 4 and Google Tag Manager:</span> aggregated website analytics. No PII shared (see section 8).</li>
+              <li><ListBar inline /><span className="text-navy font-medium">WhatsApp Business (Meta):</span> when you initiate a chat with us via the WhatsApp link, the conversation is governed by WhatsApp&rsquo;s own privacy policy.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Legal authorities:</span> if compelled by a valid Indian court order, government notice, or law-enforcement request.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Field engineers and service partners:</span> only the data needed for them to deliver your service visit (your address, contact, system configuration, service history).</li>
             </ul>
           </div>
 
@@ -109,15 +110,15 @@ export default function PrivacyPage() {
               You have the following rights with respect to your personal data:
             </Body>
             <ul className="flex flex-col gap-3 text-body text-mute pl-5">
-              <li>— <span className="text-navy font-medium">Right to access:</span> request a copy of the personal data we hold about you.</li>
-              <li>— <span className="text-navy font-medium">Right to correction:</span> ask us to correct inaccurate or incomplete data.</li>
-              <li>— <span className="text-navy font-medium">Right to erasure:</span> ask us to delete your data, subject to our retention obligations under section 4.</li>
-              <li>— <span className="text-navy font-medium">Right to withdraw consent:</span> withdraw consent for any processing you previously authorised.</li>
-              <li>— <span className="text-navy font-medium">Right to nominate:</span> nominate another person to exercise your rights in the event of death or incapacity.</li>
-              <li>— <span className="text-navy font-medium">Right to grievance redressal:</span> raise a grievance with our Grievance Officer (section 11). If unresolved within 30 days, you may approach the Data Protection Board of India.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Right to access:</span> request a copy of the personal data we hold about you.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Right to correction:</span> ask us to correct inaccurate or incomplete data.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Right to erasure:</span> ask us to delete your data, subject to our retention obligations under section 4.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Right to withdraw consent:</span> withdraw consent for any processing you previously authorised.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Right to nominate:</span> nominate another person to exercise your rights in the event of death or incapacity.</li>
+              <li><ListBar inline /><span className="text-navy font-medium">Right to grievance redressal:</span> raise a grievance with our Grievance Officer (section 11). If unresolved within 30 days, you may approach the Data Protection Board of India.</li>
             </ul>
             <Body className="text-mute mt-4">
-              To exercise any right, email <a href={`mailto:${CONTACT.emails.support}`} className="text-teal underline underline-offset-4">{CONTACT.emails.support}</a> with the subject &ldquo;DPDP request — [your name]&rdquo;. We will respond within 30 days.
+              To exercise any right, email <a href={`mailto:${CONTACT.emails.support}`} className="text-teal underline underline-offset-4">{CONTACT.emails.support}</a> with the subject &ldquo;DPDP request: [your name]&rdquo;. We will respond within 30 days.
             </Body>
           </div>
 
@@ -131,7 +132,7 @@ export default function PrivacyPage() {
           <div>
             <Heading level={2} className="mb-3">8. Cookies and analytics.</Heading>
             <Body className="text-mute">
-              We use essential cookies to maintain session state (e.g. the pincode-serviceability check, the exit-intent state). We use analytics cookies via Google Analytics 4 to understand aggregated visitor behaviour — these can be declined via your browser&rsquo;s cookie controls. We do not use behavioural-advertising cookies or third-party retargeting pixels. We do not transfer your IP address in identifiable form to Google; IP anonymisation is enabled.
+              We use essential cookies to maintain session state (e.g. the pincode-serviceability check, the exit-intent state). We use analytics cookies via Google Analytics 4 to understand aggregated visitor behaviour; these can be declined via your browser&rsquo;s cookie controls. We do not use behavioural-advertising cookies or third-party retargeting pixels. We do not transfer your IP address in identifiable form to Google; IP anonymisation is enabled.
             </Body>
           </div>
 
@@ -155,7 +156,7 @@ export default function PrivacyPage() {
               Designated under Section 8(9) of the DPDP Act, 2023:
             </Body>
             <ul className="mt-3 flex flex-col gap-1 text-body text-navy">
-              <li>Grievance Officer — {SITE.legalName}</li>
+              <li>Grievance Officer, {SITE.legalName}</li>
               <li>{CONTACT.address.line1}</li>
               <li>{CONTACT.address.city} {CONTACT.address.pin}, India</li>
               <li>Email: <a href={`mailto:${CONTACT.emails.support}`} className="text-teal underline underline-offset-4">{CONTACT.emails.support}</a></li>
