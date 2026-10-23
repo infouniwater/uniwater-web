@@ -18,7 +18,7 @@ India: [Kolkata](https://uniwater.co.in/cities/kolkata), [Bhubaneswar](https://u
 - Yellow/orange staining and a metallic taste are dissolved iron oxidising on contact with air. It is common in borewell-fed supply and an iron filter treats it.
 - Every system is sized from a free on-site water survey (hardness, iron, TDS, pH tested on the spot), not sold off a catalogue.
 - Drinking water: TDS above ~500 ppm calls for RO; below ~200 ppm, UF + UV. Re-mineralisation follows RO.
-- Year-one AMC is included with every install; service is monthly preventive, not on-complaint.
+- The first 30 days after handover are covered free; the AMC starts on day 31. On the Comprehensive and Premium tiers, service is a monthly preventive visit, not on-complaint.
 
 ## Resources
 - [Solutions overview](https://uniwater.co.in/solutions)

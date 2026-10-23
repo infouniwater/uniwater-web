@@ -78,7 +78,7 @@ const CATEGORIES = [
     items: [
       {
         q: 'What\u2019s included in the AMC?',
-        a: 'Standard tier: quarterly preventive visits with documented reports. Comprehensive: monthly preventive visits. Premium: monthly plus named engineer, customer portal access, 12-hour flagged-fault SLA. Year one is included with every install.',
+        a: 'Standard tier: quarterly preventive visits with documented reports. Comprehensive: monthly preventive visits. Premium: monthly plus named engineer, customer portal access, 12-hour flagged-fault SLA. The first 30 days after handover are covered free; the AMC starts on day 31.',
       },
       {
         q: 'What does a service engineer actually do?',

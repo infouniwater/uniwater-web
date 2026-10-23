@@ -78,7 +78,7 @@ const STEP_DETAIL = [
     label: 'Stage 04: Service',
     headline: 'Every month, with a day’s notice and the same checklist.',
     paragraphs: [
-      'Year one AMC included. Monthly visits on Comprehensive; quarterly on Standard. 24-hour notice; written report filed before the engineer leaves.',
+      'The first 30 days after handover are free; the AMC starts on day 31. Monthly visits on Comprehensive; quarterly on Standard. 24-hour notice; written report filed before the engineer leaves.',
       'SLA on flagged faults: 24 hours on Comprehensive, 12 hours on Premium. The job doesn’t end at installation.',
     ],
     aside: {

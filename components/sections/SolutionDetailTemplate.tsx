@@ -1191,7 +1191,7 @@ function getFaqs(solution: Solution) {
     },
     {
       q: 'Is the AMC included? What does it cover?',
-      a: 'Year one of AMC is included with every install. Standard tier is quarterly, Comprehensive is monthly. Both include parameter testing, media inspection, and a same-day written report.',
+      a: 'The first 30 days after handover are covered free, and the AMC starts on day 31. Standard tier is quarterly, Comprehensive is monthly. Both include parameter testing, media inspection, and a same-day written report.',
     },
   ];
 }

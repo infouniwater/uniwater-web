@@ -40,7 +40,7 @@ const BOREWELL_SAFE: Faq = {
 
 const SERVICING: Faq = {
   q: 'How often does the system need servicing?',
-  a: 'Year one of AMC is included with every install. Comprehensive tier is a monthly engineer visit; Standard tier is quarterly. Each visit covers parameter testing (hardness, iron, TDS, pH), backwash and regeneration checks, salt top-up where applicable, and a same-day written report. Iron filters and softeners are media-based, so periodic backwash verification is what keeps them performing.',
+  a: 'The first 30 days after handover are covered free, and the AMC starts on day 31. Comprehensive tier is a monthly engineer visit; Standard tier is quarterly. Each visit covers parameter testing (hardness, iron, TDS, pH), backwash and regeneration checks, salt top-up where applicable, and a same-day written report. Iron filters and softeners are media-based, so periodic backwash verification is what keeps them performing.',
 };
 
 /** FAQs for /cities/[slug], keyed by city slug. Kolkata seeded. */

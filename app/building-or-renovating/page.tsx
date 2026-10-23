@@ -87,7 +87,7 @@ const STAGES = [
   {
     n: '04',
     title: 'Monthly service from month one.',
-    body: 'Parameter testing, media check, salt top-up, same-day written report. Year one is included; AMC starts after.',
+    body: 'Parameter testing, media check, salt top-up, same-day written report. The first 30 days after handover are free; the AMC starts on day 31.',
   },
 ];
 
