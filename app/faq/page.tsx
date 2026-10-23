@@ -27,7 +27,7 @@ const CATEGORIES = [
       },
       {
         q: 'Where do you operate?',
-        a: 'Seven cities in India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two in Nepal (Kathmandu, Biratnagar). Service teams in every city, not subcontracted.',
+        a: 'Seven cities in India (Kolkata, Bhubaneswar, Ranchi, Rourkela, Siliguri, Guwahati, Noida) and two in Nepal (Kathmandu, Biratnagar). We have our own service team in every city and don\u2019t subcontract.',
       },
       {
         q: 'How is Uniwater different from Aquaguard, Kent, Eureka Forbes?',
@@ -44,7 +44,7 @@ const CATEGORIES = [
       },
       {
         q: 'How fast can someone visit?',
-        a: 'Within 48 hours of booking, across our nine cities. Faster in Kolkata. Newer city teams run on a 5–7 day window while their local base is ramping up.',
+        a: 'Within 48 hours of booking, across our nine cities. Faster in Kolkata. Newer city teams run on a 5–7 day window while their local base is being set up.',
       },
       {
         q: 'How long does installation take?',
@@ -99,7 +99,7 @@ const CATEGORIES = [
     items: [
       {
         q: 'What\u2019s the warranty?',
-        a: 'One year on all system components from install date. Replacement, not repair-by-letter.',
+        a: 'One year on all system components from the install date. If a part fails, we replace it.',
       },
       {
         q: 'What if my system fails inside the warranty?',

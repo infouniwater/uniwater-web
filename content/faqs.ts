@@ -20,17 +20,17 @@ export interface Faq {
 // iron-vs-softener distinction reads identically wherever it appears.
 const SOFTENER_REMOVES_IRON: Faq = {
   q: 'Does a water softener remove iron?',
-  a: 'No. A softener targets hardness — it swaps calcium and magnesium for sodium on an ion-exchange resin. Iron is a different problem: dissolved iron fouls and coats softening resin, so it has to be taken out upstream by a dedicated iron-removal filter. On borewell-fed supply the correct sequence is iron pre-treatment first, softening second.',
+  a: 'No. A softener targets hardness: it swaps calcium and magnesium for sodium on an ion-exchange resin. Iron is a different problem: dissolved iron fouls and coats softening resin, so it has to be taken out upstream by a dedicated iron-removal filter. On borewell-fed supply the correct sequence is iron pre-treatment first, softening second.',
 };
 
 const YELLOW_WATER: Faq = {
   q: 'Why does my water turn yellow / orange after standing?',
-  a: 'That is dissolved iron oxidising. Water from a borewell can look clear at the tap, but once it sits and meets air the iron turns to rust and the water goes yellow or orange — the same stain you see on basins, tiles, and white laundry, often with a metallic taste. It is a treatable water-chemistry issue, removed by an iron filter sized to the iron load.',
+  a: 'That is dissolved iron oxidising. Water from a borewell can look clear at the tap, but once it sits and meets air the iron turns to rust and the water goes yellow or orange. It is the same stain you see on basins, tiles and white laundry, often with a metallic taste. It is a treatable water-chemistry issue, removed by an iron filter sized to the iron load.',
 };
 
 const IRON_VS_SOFTENER: Faq = {
-  q: 'Iron remover vs water softener — which do I need?',
-  a: 'It depends on what your water actually carries, which is why we test before we size. Iron staining (yellow/orange marks, metallic taste) calls for an iron-removal filter. Scale on geysers, fittings, and glassware calls for a softener. Borewell-fed homes usually need both, in that order — iron filter first to protect the softener resin. The free survey test tells you which.',
+  q: 'Iron remover or water softener: which do I need?',
+  a: 'It depends on what your water actually carries, which is why we test before we size. Iron staining (yellow/orange marks, metallic taste) calls for an iron-removal filter. Scale on geysers, fittings, and glassware calls for a softener. Borewell-fed homes usually need both, in that order: the iron filter first, to protect the softener resin. The free survey test tells you which.',
 };
 
 const BOREWELL_SAFE: Faq = {
@@ -61,15 +61,15 @@ export const CITY_FAQS: Record<string, Faq[]> = {
 export const KOLKATA_IRON_PILLAR_FAQS: Faq[] = [
   {
     q: 'Does a water softener remove iron?',
-    a: 'No. A softener removes hardness — the calcium and magnesium that cause scale. Iron needs a dedicated iron-removal filter that oxidises the iron and backwashes it out. Most Kolkata borewell homes need both, which is why we test before we specify.',
+    a: 'No. A softener removes hardness, meaning the calcium and magnesium that cause scale. Iron needs a dedicated iron-removal filter that oxidises the iron and backwashes it out. Most Kolkata borewell homes need both, which is why we test before we specify.',
   },
   {
     q: 'Why does my water turn yellow or orange after it stands?',
-    a: 'That’s dissolved iron. Straight from the tap the water can look clear, but once it meets air the iron oxidises and turns yellow-brown — the stain you see on basins, tiles, and laundry. It’s iron in the supply, not dirt in your tank.',
+    a: 'That’s dissolved iron. Straight from the tap the water can look clear, but once it meets air the iron oxidises and turns yellow-brown. That is the stain you see on basins, tiles and laundry. It’s iron in the supply, not dirt in your tank.',
   },
   {
     q: 'How much does an iron filter cost in Kolkata?',
-    a: 'It depends on your iron level, water use, and how the system fits your home — which is why we survey before we quote, instead of pricing from a catalogue. The survey is free, and you get a fixed price for your home.',
+    a: 'It depends on your iron level, your water use and how the system fits your home. That is why we survey before we quote instead of pricing from a catalogue. The survey is free, and you get a fixed price for your home.',
   },
   {
     q: 'Is borewell water in Salt Lake, New Town, or Rajarhat safe to use?',
@@ -77,7 +77,7 @@ export const KOLKATA_IRON_PILLAR_FAQS: Faq[] = [
   },
   {
     q: 'How often does an iron filter need servicing?',
-    a: 'The media needs regular backwashing and gradually loses capacity — skipped maintenance is why cheap units fail within months. We visit every month to backwash, inspect the media, spot-test iron and hardness, and leave a written report.',
+    a: 'The media needs regular backwashing and slowly loses capacity. Skipped maintenance is why cheap units fail within months. We visit every month to backwash, inspect the media, spot-test iron and hardness, and leave a written report.',
   },
 ];
 
@@ -94,7 +94,7 @@ export const SOLUTION_FAQS: Record<string, Faq[]> = {
     IRON_VS_SOFTENER,
     {
       q: 'Will a softener stop scale on my geyser and fittings?',
-      a: 'Yes — that is exactly what it does. By removing the calcium and magnesium that cause hardness, a softener stops the scale that furs up geyser elements, blocks shower heads, and clouds glassware. It does not remove iron staining, taste, or odour; those need carbon or iron stages alongside it, sized at survey.',
+      a: 'Yes, that is exactly what it does. By removing the calcium and magnesium that cause hardness, a softener stops the scale that furs up geyser elements, blocks shower heads, and clouds glassware. It does not remove iron staining, taste, or odour; those need carbon or iron stages alongside it, sized at survey.',
     },
     SERVICING,
   ],
