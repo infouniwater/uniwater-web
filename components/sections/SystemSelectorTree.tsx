@@ -36,7 +36,7 @@ const BRANCHES: ReadonlyArray<Branch> = [
   {
     num: '01',
     heading: 'Drinking water only',
-    tag: 'The kitchen tap. The water people drink, not the water they shower in.',
+    tag: 'The kitchen tap only: the water you drink, not the water you bathe in.',
     subForks: [
       {
         label: 'One family, one kitchen',
@@ -59,16 +59,16 @@ const BRANCHES: ReadonlyArray<Branch> = [
     below: {
       cat: 'Point-of-use cartridge filters',
       body:
-        'e.g. tap-mount and shower-head filters on Amazon (₹1K–4K). They don’t reduce TDS or hardness; they sequester it. DIY install, 6-month cartridge swap. Honest about what they can’t do.',
+        'For example, tap-mount and shower-head filters on Amazon (₹1K–4K). They don’t reduce TDS or hardness; they sequester it. You fit them yourself and change the cartridge every six months. Fine for what they are.',
     },
   },
   {
     num: '02',
     heading: 'Whole bathroom, whole house',
-    tag: 'Soft water at every shower, every sink, every appliance.',
+    tag: 'Soft water wherever it’s used: showers, basins, the geyser, the washing machine.',
     subForks: [
       {
-        label: 'One bathroom — high demand or visible install',
+        label: 'One bathroom, with high demand or a visible install',
         body: 'Sized to the bathroom’s load.',
         leaves: [
           { product: 'BathSoft Mono', detail: 'Single shower. Standard CP.' },
@@ -77,7 +77,7 @@ const BRANCHES: ReadonlyArray<Branch> = [
         ],
       },
       {
-        label: 'Whole house — villa, multi-bath, borewell or variable supply',
+        label: 'Whole house: villa, several bathrooms, borewell or variable supply',
         body: 'Sediment → iron → carbon → softener. Sized to the home.',
         leaves: [
           { product: 'HomeSoft 2K', detail: '3–4 bathrooms.' },
@@ -89,13 +89,13 @@ const BRANCHES: ReadonlyArray<Branch> = [
     below: {
       cat: 'Mass-market residential softeners',
       body:
-        'e.g. dealer-sold ion-exchange softeners from large home-appliance brands (₹15K–60K). Real softening. Service depends on the dealer. Often not tuned for borewell-fed homes or multi-stage treatment.',
+        'For example, dealer-sold ion-exchange softeners from large home-appliance brands (₹15K–60K). Real softening. Service depends on the dealer. Often not tuned for borewell-fed homes or multi-stage treatment.',
     },
   },
   {
     num: '03',
     heading: 'A building, a hotel, a hospital, a complex',
-    tag: 'Every flat, every room, every floor. Treated once, at the inlet.',
+    tag: 'Treated once at the inlet, so every flat and every floor gets the same water.',
     subForks: [
       {
         label: 'Sized for the load',
@@ -131,7 +131,7 @@ function SubForkBlock({ sub }: { sub: SubFork }) {
     <div className="flex flex-col gap-3">
       <div>
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-teal mb-2">
-          Sub-fork
+          Option
         </div>
         <h4 className="text-body font-normal text-navy leading-snug">{sub.label}</h4>
         <p className="text-caption text-mute leading-snug mt-1">{sub.body}</p>
@@ -150,7 +150,7 @@ function BranchColumn({ branch }: { branch: Branch }) {
     <div className="flex flex-col gap-5">
       <div>
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-teal mb-2">
-          Branch {branch.num}
+          Need {branch.num}
         </div>
         <h3 className="font-sans text-h3 font-normal text-navy leading-tight">{branch.heading}</h3>
         <p className="font-editorial italic text-body text-navy/70 leading-snug mt-2">
@@ -165,7 +165,7 @@ function BranchColumn({ branch }: { branch: Branch }) {
       </div>
       <div className="mt-auto pt-5 border-t border-hairline">
         <div className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-mute mb-2">
-          Below this need
+          If you need less than this
         </div>
         <div className="text-body font-normal text-navy leading-snug mb-2">
           {branch.below.cat}
@@ -184,7 +184,7 @@ export function SystemSelectorTree() {
       {/* Root question — card-style header above the three branches */}
       <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto border border-hairline bg-offwhite px-6 py-5 sm:px-8 sm:py-6">
         <div className="text-eyebrow font-semibold uppercase tracking-[0.22em] text-teal mb-2">
-          The root question
+          Start here
         </div>
         <div className="text-h2-m md:text-h2 font-normal text-navy leading-tight">
           What does your water need treated?

@@ -12,7 +12,7 @@ import { THREE_CLAIMS, STATS, COMPONENT_MANUFACTURERS } from '@/content/site';
 export const metadata: Metadata = {
   title: 'Why Uniwater',
   description:
-    'Engineered home water — the category between kitchen-purifier brands and industrial EPC firms. Surveyed, hidden, serviced monthly.',
+    'Uniwater sits between kitchen purifier brands and industrial EPC firms. We survey your water, hide the system in the house and service it every month.',
   openGraph: {
     images: [{ url: '/og/og-why-uniwater.jpg', width: 1200, height: 630, alt: '' }],
   },
@@ -29,18 +29,18 @@ const DECISION_TREE = [
   },
   {
     scenario: 'Hair / skin / fittings problems, no kitchen drinking-water issue',
-    answer: 'BathSoft or HomeSoft — Uniwater is the right fit.',
-    why: 'Kitchen-purifier brands don\u2019t address bathroom water. Whole-house and bathroom-level treatment is our category.',
+    answer: 'BathSoft or HomeSoft. This is where Uniwater fits.',
+    why: 'Kitchen-purifier brands don\u2019t treat bathroom water. Whole-house and bathroom treatment is what we do.',
   },
   {
     scenario: 'Borewell water with iron, hardness, and orange staining',
-    answer: 'HomeSoft 2K–6K LPH, with iron pre-treatment — Uniwater.',
+    answer: 'HomeSoft 2K–6K LPH with iron pre-treatment, from Uniwater.',
     why: 'Borewell chemistry needs sequence: iron first, then softening, then carbon. Kent / Aquaguard don\u2019t sell this.',
   },
   {
     scenario: 'You want monthly service with documented reports',
     answer: 'Uniwater. Comprehensive AMC.',
-    why: 'Eureka Forbes offers AMC tiers but doesn\u2019t include monthly visits. Zero B services on demand. Monthly proactive service is our differentiator.',
+    why: 'Eureka Forbes offers AMC tiers but doesn\u2019t include monthly visits. Zero B services on demand. Monthly service is where we\u2019re different.',
   },
   {
     scenario: 'Building / hotel / hospital / factory water requirement',
@@ -50,7 +50,7 @@ const DECISION_TREE = [
   {
     scenario: 'Lowest price, online order, no install or service expected',
     answer: 'Mass-market online brand. Not Uniwater.',
-    why: 'We don\u2019t sell off-the-shelf. Every system is surveyed and sized. Survey-led is friction by design \u2014 it\u2019s the wrong brand if you don\u2019t want it.',
+    why: 'We don\u2019t sell off-the-shelf. Every system is surveyed and sized first. That takes more of your time, and if you don\u2019t want that, we\u2019re the wrong company.',
   },
 ];
 
@@ -90,7 +90,7 @@ export default function WhyUniwaterPage() {
               The water company that stays.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              We&rsquo;re not a kitchen-purifier brand. We&rsquo;re not an industrial EPC firm. We sit in between &mdash; engineered home water for the homes you don&rsquo;t get to redo.
+              Kent and Aquaguard sell a purifier for the kitchen tap. Industrial firms build plants for factories. We do the part in between: the whole house, every tap, tested and serviced by the same team.
             </p>
           </div>
         </div>
@@ -100,16 +100,16 @@ export default function WhyUniwaterPage() {
       <Section padding="default">
         <div className="max-w-reading">
           <Eyebrow className="mb-4">The category</Eyebrow>
-          <Heading level={2} className="mb-6">Between two categories that don&rsquo;t fit.</Heading>
+          <Heading level={2} className="mb-6">Between the purifier brands and the industrial firms.</Heading>
           <div className="flex flex-col gap-5">
             <Body className="text-mute">
-              India has two visible water-treatment categories: kitchen-purifier brands (Aquaguard, Kent, Zero B, Eureka Forbes) and industrial EPC firms. Mass-distributed single-tap on one end; project-based, unnamed install teams on the other.
+              India has two visible water-treatment categories: kitchen-purifier brands (Aquaguard, Kent, Zero B, Eureka Forbes) and industrial EPC firms. One sells a single-tap unit through dealers. The other runs projects with install teams you never meet.
             </Body>
             <Body className="text-mute">
-              Neither serves the premium homeowner who wants every tap, every appliance, and the next decade of upkeep handled by one team. That&rsquo;s the gap Uniwater built into.
+              Neither looks after the homeowner who wants every tap, every appliance and the next ten years of upkeep handled by one team. That&rsquo;s the gap we work in.
             </Body>
             <EditorialAccent className="mt-6">
-              Engineered home water. Surveyed, installed, and serviced for the long term.
+              We survey, we install, and we keep coming back for the life of the contract.
             </EditorialAccent>
           </div>
         </div>
@@ -122,13 +122,13 @@ export default function WhyUniwaterPage() {
           treatment matches its weight. */}
       <Section padding="default" tone="navy" image={{ stem: 'utility' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
-          <Eyebrow inverse>The three claims</Eyebrow>
-          <Heading level={2} inverse>Three things. We repeat them across every page.</Heading>
+          <Eyebrow inverse>How we work</Eyebrow>
+          <Heading level={2} inverse>What we do differently.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {THREE_CLAIMS.map((claim, i) => (
             <div key={claim.label} className="bg-navy/40 border border-offwhite/15 p-8 flex flex-col gap-4">
-              <Eyebrow inverse>Claim {String(i + 1).padStart(2, '0')}</Eyebrow>
+              <Eyebrow inverse>{String(i + 1).padStart(2, '0')}</Eyebrow>
               <h3 className="font-sans text-h3 font-normal text-offwhite [text-wrap:balance]">{claim.label}</h3>
               <Body inverse>{claim.body}</Body>
             </div>
@@ -148,7 +148,7 @@ export default function WhyUniwaterPage() {
           <Eyebrow className="mb-4">System selector</Eyebrow>
           <Heading level={2}>Which Uniwater system does your water need?</Heading>
           <Body className="text-mute mt-4">
-            Three branches by water need. Every leaf is a real Uniwater product. Categories that fit below each need are named in the footnotes &mdash; we&rsquo;re honest about when we&rsquo;re not the right answer.
+            Three branches, one for each kind of need. Every product at the end of a branch is a real Uniwater product. Under each branch we also name the cheaper option that may suit you better, because sometimes we aren&rsquo;t the right answer.
           </Body>
         </div>
         <SystemSelectorTree />
@@ -171,7 +171,7 @@ export default function WhyUniwaterPage() {
           <Eyebrow inverse>How we compare</Eyebrow>
           <Heading level={2} inverse>Which brand is right for which problem?</Heading>
           <Body inverse className="text-offwhite/80 mt-2">
-            We&rsquo;ll be honest. Uniwater is not the right answer for every household. Here&rsquo;s a frank decision tree.
+            Uniwater isn&rsquo;t the right answer for every household. Here&rsquo;s who we&rsquo;d send you to instead.
           </Body>
         </div>
         <div className="bg-offwhite border border-hairline p-6 md:p-8">
@@ -193,19 +193,18 @@ export default function WhyUniwaterPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-4">What we don&rsquo;t claim</Eyebrow>
-            <Heading level={2} className="mb-6">The things you won&rsquo;t hear from us.</Heading>
+            <Heading level={2} className="mb-6">Things you won&rsquo;t hear from us.</Heading>
             <Body className="text-mute">
-              A premium-positioned brand earns trust partly by what it refuses to say. Here&rsquo;s our list.
+              You&rsquo;ll hear these from other water companies. Not from us.
             </Body>
           </div>
           <div className="lg:col-span-7">
             <ul className="border-t border-hairline">
               {[
-                ['Lowest price.', 'Wrong audience. Premium homeowners expect good things to cost money.'],
-                ['Largest range.', 'Internal pride. Translates to: 100+ engineered configurations \u2014 surveyed to your home.'],
-                ['Patented technology.', 'Engineer-led brands don\u2019t lead with branded acronyms. We use technical names where they earn trust.'],
-                ['#1 in India.', 'Aquaguard owns that category claim. We don\u2019t compete on it.'],
-                ['Exchange offers / 20% off.', 'Mass-market signalling. We don\u2019t discount; we survey.'],
+                ['The cheapest.', 'We aren\u2019t. A system sized for your water costs what it costs.'],
+                ['The biggest range.', 'We have 100+ engineered configurations, but you only need the one your survey points to.'],
+                ['Patented technology.', 'We use resin, media and membranes from named manufacturers, and we tell you which ones. No made-up acronyms.'],
+                ['Number one in India.', 'We\u2019re a Kolkata company working in nine cities. We don\u2019t need the title.'],
               ].map(([label, body]) => (
                 <li key={label} className="border-b border-hairline py-5 flex flex-col gap-2">
                   <div className="text-h3 font-semibold text-navy">{label}</div>
@@ -224,7 +223,7 @@ export default function WhyUniwaterPage() {
             <Eyebrow className="mb-4">Components from</Eyebrow>
             <Heading level={2} className="mb-4">The names on the parts.</Heading>
             <Body className="text-mute">
-              We don&rsquo;t make pumps, resin, or membranes. We integrate from vendors the industry trusts &mdash; and we name them on every quote.
+              We don&rsquo;t make pumps, resin or membranes. We buy them from the manufacturers below and name them on every quote.
             </Body>
           </div>
           <div className="lg:col-span-8">
@@ -239,7 +238,7 @@ export default function WhyUniwaterPage() {
               ))}
             </div>
             <Caption className="text-mute mt-4">
-              Pumps, resin, media, membranes, controls &mdash; specified per system at survey, never substituted post-quote.
+              Pumps, resin, media, membranes and controls are specified for each system at survey. We don&rsquo;t swap them after the quote.
             </Caption>
           </div>
         </div>
@@ -274,7 +273,7 @@ export default function WhyUniwaterPage() {
               Since {STATS.founded}
             </div>
             <div className="h-px w-12 bg-hairline" />
-            <Caption className="uppercase tracking-wide text-eyebrow font-medium">Built for premium homes</Caption>
+            <Caption className="uppercase tracking-wide text-eyebrow font-medium">In business</Caption>
           </div>
         </div>
       </Section>

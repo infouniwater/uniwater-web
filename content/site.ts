@@ -250,19 +250,19 @@ export const OPERATIONAL_TRUTHS = [
 // Three claims — Blueprint §3.2 of Strategy.
 export const THREE_CLAIMS = [
   {
-    label: 'Engineered, not bought off a shelf.',
+    label: 'We size it to your water.',
     body:
-      'Every Uniwater system starts from a survey of your actual water, pressure, usage, and space. Catalogue sizes are starting points, not the sale.',
+      'Every system starts with a survey of your water, pressure, usage and space. Catalogue sizes are where we start, not what we sell you.',
   },
   {
-    label: 'Hidden, not displayed.',
+    label: 'We hide it in the house.',
     body:
-      'Equipment goes in false ceilings, plumbing shafts, behind cabinets, below counters, or outside windows \u2014 wherever it disappears.',
+      'False ceiling, plumbing shaft, behind a cabinet, under the counter or outside a window. We pick the spot at survey so nobody sees the system and our engineer can still reach it.',
   },
   {
-    label: 'Serviced monthly, not on complaint.',
+    label: 'We come back every month.',
     body:
-      'An engineer visits every month for the life of the contract. Automation handles routine cycles; humans handle inspection, calibration, and the unexpected.',
+      'An engineer visits every month for the life of the contract. The system runs its own backwash and regeneration; our engineer does the inspection, the calibration and anything unexpected.',
   },
 ] as const;
 

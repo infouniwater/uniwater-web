@@ -20,30 +20,30 @@ const ROWS: Row[] = [
   {
     topic: 'How they price',
     market:
-      'Quote first. Fit the catalogue SKU to the buyer. The water analysis comes after the sale, if at all.',
+      'They quote first and fit a catalogue SKU to the buyer. The water gets tested after the sale, if at all.',
     uniwater:
-      'Survey first. Test the water, map the plumbing, size the household. Then quote — to the specific water, not a generic SKU.',
+      'We survey first: test the water, map the plumbing, size for the household. The quote is for your water, not a generic SKU.',
   },
   {
     topic: 'Who installs',
     market:
-      'Local plumbers on commission, swapped each visit. The sales person never sees the install.',
+      'Local plumbers on commission, a different one each visit. The salesperson never sees the install.',
     uniwater:
       'A Uniwater engineer designs the system and the same team installs it. The person who quoted is on site at handover.',
   },
   {
     topic: 'After handover',
     market:
-      'AMC at a flat rate. Service when something breaks. The engineer is a stranger to your system.',
+      'A flat-rate AMC and a visit when something breaks, from an engineer who has never seen your system.',
     uniwater:
-      'Monthly visit, every month, for the life of the contract. The same team owns the system. Service is the system.',
+      'An engineer visits every month for the life of the contract. The same team looks after the system throughout.',
   },
   {
     topic: 'When water chemistry changes',
     market:
-      'Resin clogs in year two. Output drops. You assume the unit failed. Buy a new one.',
+      'Resin clogs in year two and output drops. You assume the unit failed and buy a new one.',
     uniwater:
-      'Monthly report flags the drift. Media swapped, settings adjusted, sequence verified — under the contract, not as an extra.',
+      'The monthly report shows the drift. We swap media, adjust settings and check the sequence, all under the contract and not billed as extras.',
   },
 ];
 
@@ -53,10 +53,10 @@ export function ComparisonBlock() {
       <div className="mb-8 md:mb-12 max-w-3xl">
         <Eyebrow className="mb-4">Why we&rsquo;re different</Eyebrow>
         <Heading level={2}>
-          What most water companies do. What we do.
+          How most water companies work, and how we do it.
         </Heading>
         <Body className="text-mute mt-4">
-          The market sells systems. We sell the four things a system actually needs over its lifetime &mdash; a survey, the right design, an install that fits the house, and a service crew that does not change.
+          Most companies sell you a box and leave. A system needs four things over its life: a proper survey, the right design, an install that fits the house and regular service from people who know it. We do all four.
         </Body>
       </div>
 
