@@ -221,10 +221,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           <div className="max-w-reading mx-auto border border-teal/30 bg-tint/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-xl">
               <div className="text-eyebrow font-medium uppercase text-teal mb-3">
-                Pillar guide
+                Kolkata guide
               </div>
               <h3 className="font-sans text-h3 font-semibold text-navy mb-2">
-                Iron in Kolkata water — stains, causes, and removal.
+                Iron in Kolkata water: stains, causes and removal.
               </h3>
               <Caption className="text-mute">
                 Locality table, three-stage removal explainer, and the iron-vs-softener FAQs in one place.

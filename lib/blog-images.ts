@@ -18,15 +18,15 @@ export interface BlogFeatureImage {
 const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
   'borewell-water-yellow': {
     src: `${PHOTO}/scaling-on-taps.jpg`,
-    alt: 'Iron and scale residue on a chrome bathroom tap — the visible signature of untreated borewell water',
+    alt: 'Iron and scale residue on a chrome bathroom tap, the visible mark of untreated borewell water',
   },
   'iron-hardness-order': {
     src: `${PHOTO}/scaling-inside-geyser.jpg`,
-    alt: 'Heavy white scale buildup on a geyser heating element — what hardness and iron leave behind when treated in the wrong order',
+    alt: 'Heavy white scale on a geyser heating element, left by hardness and iron treated in the wrong order',
   },
   'hansgrohe-spec-vs-indian-water': {
     src: `${PHOTO}/bathroom-filter-floor-mounted.jpg`,
-    alt: 'A premium chrome tap in a finished bathroom — the kind of fitting that needs the water spec checked before the install',
+    alt: 'A chrome tap in a finished bathroom, the kind of fitting that needs the water spec checked before the install',
   },
   'how-to-read-a-water-test': {
     src: `${PHOTO}/service-testing-water.jpg`,
@@ -34,11 +34,11 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
   },
   'soft-water-vs-salt-water': {
     src: `${PHOTO}/bathroom-filter-under-basin.jpg`,
-    alt: 'A finished bathroom vanity — soft water changes how a shower feels on skin and hair',
+    alt: 'A finished bathroom vanity. Soft water changes how a shower feels on skin and hair',
   },
   'tds-isnt-a-quality-metric': {
     src: `${PHOTO}/service-testing-water.jpg`,
-    alt: 'A water analysis in progress — TDS is one number on a much longer test report',
+    alt: 'A water analysis in progress. TDS is one number on a much longer test report',
   },
   'five-year-cost-of-doing-nothing': {
     src: `${PHOTO}/geyser-scaling.jpg`,
@@ -54,23 +54,23 @@ const FEATURE_BY_SLUG: Record<string, BlogFeatureImage> = {
   },
   'amc-tiers-honestly': {
     src: `${PHOTO}/service-installing.jpg`,
-    alt: 'A Uniwater engineer at work — the team that owns the system through the life of the contract',
+    alt: 'A Uniwater engineer at work. The same team looks after the system for the life of the contract',
   },
   'remineralisation-after-ro': {
     src: `${PHOTO}/drinking-water-home.jpg`,
-    alt: 'A glass of Uniwater drinking water on a marble kitchen counter — remineralised, not stripped',
+    alt: 'A glass of re-mineralised Uniwater drinking water on a marble kitchen counter',
   },
   'premium-fittings-slow-disaster': {
     src: `${PHOTO}/bathroom-filter-hero.jpg`,
-    alt: 'A premium marble bathroom with brass and chrome fittings — the kind of bathroom that ages badly when the water isn’t handled',
+    alt: 'A marble bathroom with brass and chrome fittings, the kind that ages badly when the water isn’t treated',
   },
   'can-hard-water-cause-hair-fall': {
     src: `${PHOTO}/hairfall.jpg`,
-    alt: 'Wet hair after a shower — where hard, iron-rich water shows up first, as roughness and breakage',
+    alt: 'Wet hair after a shower. Hard, iron-rich water shows up here first, as roughness and breakage',
   },
   'best-water-treatment-company-kolkata': {
     src: `${PHOTO}/residential-complex.jpg`,
-    alt: 'A residential apartment complex in Kolkata — the kind of multi-flat building a single building-inlet water plant serves',
+    alt: 'A residential apartment complex in Kolkata, the kind of building one inlet water plant can serve',
   },
 };
 
