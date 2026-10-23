@@ -4,7 +4,7 @@ import { ListBar } from '@/components/ui/ListBar';
 export const metadata: Metadata = {
   title: 'Sample monthly service report',
   description:
-    'A representative Uniwater monthly service report — Before, On site, After. The parameters logged, the work performed, the discipline that decides year four.',
+    'A sample Uniwater monthly service report: the readings we log before and after a visit, and the work done on site.',
 };
 
 /**
@@ -109,8 +109,8 @@ export default function SampleServiceReportPage() {
               <ul className="flex flex-col gap-2 text-body text-navy">
                 <li className="flex gap-3"><ListBar /><span>Inlet sediment pre-filter inspected, backwashed. No replacement needed.</span></li>
                 <li className="flex gap-3"><ListBar /><span>Iron filter regen cycle verified. Media bed depth measured at 320 mm (target 300–350). No top-up required this visit.</span></li>
-                <li className="flex gap-3"><ListBar /><span>Activated carbon filter — chlorine breakthrough test passed (post-stage residual &lt; 0.05 ppm). Carbon life remaining ~9 months.</span></li>
-                <li className="flex gap-3"><ListBar /><span>Softener resin — hardness leakage test passed. Salt tank checked, refilled 22 kg (next refill ~ Aug 2026).</span></li>
+                <li className="flex gap-3"><ListBar /><span>Activated carbon filter: chlorine breakthrough test passed (post-stage residual &lt; 0.05 ppm). Carbon life remaining ~9 months.</span></li>
+                <li className="flex gap-3"><ListBar /><span>Softener resin: hardness leakage test passed. Salt tank checked, refilled 22 kg (next refill ~ Aug 2026).</span></li>
                 <li className="flex gap-3"><ListBar /><span>Multiport valve seal inspected, lubricated. No leak.</span></li>
                 <li className="flex gap-3"><ListBar /><span>Drain line clear. Bypass valve operates correctly.</span></li>
               </ul>
@@ -120,14 +120,14 @@ export default function SampleServiceReportPage() {
             <section className="mb-10">
               <h2 className="font-sans text-h3 font-semibold text-navy mb-4">Flags raised</h2>
               <p className="text-body text-mute leading-relaxed">
-                None this visit. Carbon filter life is projected to fall below 6 months by the next visit — we&rsquo;ll plan the replacement on visit #15 in line with the AMC schedule. No customer action required.
+                None this visit. Carbon filter life is projected to fall below 6 months by the next visit, so we&rsquo;ll plan the replacement on visit #15 in line with the AMC schedule. No customer action required.
               </p>
             </section>
 
             {/* Next visit */}
             <section className="mb-10 border-t border-hairline pt-6">
               <h2 className="font-sans text-h3 font-semibold text-navy mb-3">Next visit</h2>
-              <p className="text-body text-navy"><span className="font-medium">Visit #15 — scheduled 2026-06-17</span></p>
+              <p className="text-body text-navy"><span className="font-medium">Visit #15, scheduled 2026-06-17</span></p>
               <p className="text-caption text-mute mt-1">Same engineer. Same time slot. We&rsquo;ll WhatsApp you the day before to confirm.</p>
             </section>
 

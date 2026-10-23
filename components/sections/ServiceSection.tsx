@@ -13,15 +13,15 @@ import { Button } from '@/components/ui/Button';
 const SERVICE_PILLARS = [
   {
     title: 'Automated.',
-    body: 'Backwash, regeneration, flush \u2014 the system handles routine cycles on a schedule. No valves to turn.',
+    body: 'Backwash, regeneration and flush run on a timer. Nobody has to turn a valve.',
   },
   {
     title: 'Verified by an engineer.',
-    body: 'Monthly site visit. Pressure check, media inspection, hardness/iron spot test, written report.',
+    body: 'A site visit every month: pressure check, media inspection, hardness and iron spot test, and a written report.',
   },
   {
     title: 'Owned by us.',
-    body: 'If something needs replacement or recalibration, we do it. No customer chasing parts.',
+    body: 'If a part needs replacing or recalibrating, we do it. You don’t chase anyone for parts.',
   },
 ];
 
@@ -41,9 +41,9 @@ export function ServiceSection({ light = false }: Props = {}) {
       image={light ? undefined : { stem: 'utility' }}
     >
       <div className="max-w-3xl mb-8 md:mb-12">
-        <Eyebrow inverse={inverse} className="mb-5">Service is the system</Eyebrow>
+        <Eyebrow inverse={inverse} className="mb-5">Service</Eyebrow>
         <Heading level={2} inverse={inverse} className="text-display-m md:text-[56px] font-light leading-tight">
-          Most water companies show up when something breaks. We show up every month.
+          Most water companies come when something breaks. We come every month.
         </Heading>
       </div>
 
@@ -61,7 +61,7 @@ export function ServiceSection({ light = false }: Props = {}) {
           How our service works
         </Button>
         <p className={`text-caption italic ${inverse ? 'text-offwhite/60' : 'text-mute'}`}>
-          The discipline that decides year four.
+          Service is what keeps a system working in year four.
         </p>
       </div>
     </Section>

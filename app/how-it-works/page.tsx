@@ -11,18 +11,18 @@ import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = buildMetadata({
   path: '/how-it-works',
-  title: 'How It Works — Survey, Design, Install, Service',
+  title: 'How it works: survey, design, install, service',
   description:
-    'From first water test to monthly service: the four-step Uniwater process. Surveyed, designed, installed, and serviced by one team.',
+    'From the first water test to monthly service, this is how Uniwater works. One team surveys, designs, installs and services your system.',
   image: '/og/og-how-it-works.png',
 });
 
 const STEP_DETAIL = [
   {
-    label: 'Stage 01 — Survey',
+    label: 'Stage 01: Survey',
     headline: '30 minutes on site. 48 hours to a quote.',
     paragraphs: [
-      'Engineer visits with a water-testing kit. Reads chemistry, maps plumbing, pressure, storage, and viable install locations.',
+      'An engineer comes with a water-testing kit, reads the chemistry and maps your plumbing, pressure, storage and the places the system could go.',
       'No quote until the survey is complete. If a smaller system fits, we say so.',
     ],
     aside: {
@@ -37,10 +37,10 @@ const STEP_DETAIL = [
     },
   },
   {
-    label: 'Stage 02 — Design',
-    headline: 'Configured from 100+ engineered options. Not pulled off a shelf.',
+    label: 'Stage 02: Design',
+    headline: 'Built from 100+ engineered configurations to match your readings.',
     paragraphs: [
-      'Your readings go into the 17-rule auto-suggest engine. It generates a BOM specific to your water, draw, and install location \u2014 not a generic SKU.',
+      'Your readings decide the design: which treatment stages, which media, what capacity and where it goes. You get a bill of materials for your water, your daily use and your house, not a generic SKU.',
       'Residential proposals are a single-line price. B2B proposals include the full itemised BOM.',
     ],
     aside: {
@@ -57,14 +57,14 @@ const STEP_DETAIL = [
     },
   },
   {
-    label: 'Stage 03 — Install',
-    headline: 'In a day. Or three. Wherever it disappears.',
+    label: 'Stage 03: Install',
+    headline: 'One to two days for most homes.',
     paragraphs: [
-      'Equipment goes false ceiling, plumbing shaft, behind cabinet, under counter \u2014 wherever it disappears. The architecture stays intact.',
+      'Equipment goes in a false ceiling, a plumbing shaft, behind a cabinet or under the counter, wherever it sits out of sight and can still be reached for service.',
       'One to two days residential. One to four weeks B2B. Commissioned and parameter-tested before handover.',
     ],
     aside: {
-      title: 'On-site discipline',
+      title: 'On site',
       items: [
         'Branded uniform, named engineer',
         'Plumbing, electrical, mounting, commissioning',
@@ -75,11 +75,11 @@ const STEP_DETAIL = [
     },
   },
   {
-    label: 'Stage 04 — Service',
-    headline: 'Every month. 24-hour notice. Same window. Same protocol.',
+    label: 'Stage 04: Service',
+    headline: 'Every month, with a day’s notice and the same checklist.',
     paragraphs: [
       'Year one AMC included. Monthly visits on Comprehensive; quarterly on Standard. 24-hour notice; written report filed before the engineer leaves.',
-      'SLA on flagged faults: 24 hours Comprehensive, 12 hours Premium. Not a sale we made \u2014 a relationship we maintain.',
+      'SLA on flagged faults: 24 hours on Comprehensive, 12 hours on Premium. The job doesn’t end at installation.',
     ],
     aside: {
       title: 'What an engineer does',
@@ -134,7 +134,7 @@ export default function HowItWorksPage() {
               How a Uniwater system gets into your home.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              One company. Four stages. From first water test to monthly service, the same Uniwater team owns the system for the life of the contract.
+              Four stages, one company. From the first water test to the monthly visits, the same Uniwater team looks after your system for the life of the contract.
             </p>
           </div>
         </div>
@@ -150,10 +150,10 @@ export default function HowItWorksPage() {
         <div className="max-w-4xl mx-auto">
           <Eyebrow className="mb-5">Why this matters</Eyebrow>
           <EditorialAccent className="text-h2-m md:text-h2 leading-snug font-light">
-            One engineer surveys your water, designs the system, installs it, and comes back every month &mdash; by name, for the life of the contract.
+            One engineer surveys your water, designs the system, installs it and comes back every month for the life of the contract. You&rsquo;ll know them by name.
           </EditorialAccent>
           <p className="text-caption text-mute mt-6 max-w-2xl">
-            Most water companies sell systems and outsource service. We sell the four things a system actually needs over its lifetime &mdash; survey, design, install, service.
+            Most water companies sell the system and hand service to someone else. We do all four stages ourselves: survey, design, install and service.
           </p>
         </div>
       </Section>
@@ -186,8 +186,8 @@ export default function HowItWorksPage() {
           breakpoint without fragile hand-tuned positions. */}
       <Section padding="default">
         <div className="mb-10 max-w-3xl">
-          <Eyebrow className="mb-4">The journey, on one line</Eyebrow>
-          <Heading level={2}>From the first survey to monthly service for life.</Heading>
+          <Eyebrow className="mb-4">Timeline</Eyebrow>
+          <Heading level={2}>From the first survey to the monthly visits.</Heading>
         </div>
         <CustomerJourneyTimeline />
       </Section>

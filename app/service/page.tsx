@@ -15,7 +15,7 @@ export const metadata: Metadata = buildMetadata({
   path: '/service',
   title: 'Water System Service & AMC',
   description:
-    'The discipline that decides year four. Monthly preventive visits, same-day reports, 24-hour SLA on flagged faults. Uniwater\u2019s service protocol explained.',
+    'How Uniwater services home water systems: monthly preventive visits, a written report the same day and a 24-hour SLA on flagged faults.',
   image: '/og/og-service.png',
 });
 
@@ -35,10 +35,10 @@ export default function ServicePage() {
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Service</p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
-              The discipline that decides year four.
+              Service is what keeps a system working in year four.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              In our experience, most premium-home water systems quietly stop performing within three to four years &mdash; rarely because of the equipment. The absence of service discipline is what compounds.
+              In our experience, most home systems that stop working by year three or four weren&rsquo;t badly made. Nobody serviced them.
             </p>
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 max-w-full">
               <Link
@@ -74,9 +74,9 @@ export default function ServicePage() {
       <Section padding="default" tone="plain">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">The protocol</Eyebrow>
-          <Heading level={2}>What&rsquo;s in a service visit?</Heading>
+          <Heading level={2}>What happens on a service visit.</Heading>
           <Body className="text-mute mt-4 text-lede font-light">
-            Plenty &mdash; if you know what to look for. Before. On site. After.
+            Here&rsquo;s what the engineer does before, during and after every visit.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-hairline border border-hairline">
@@ -119,18 +119,18 @@ export default function ServicePage() {
             <Eyebrow inverse>Documented from day one</Eyebrow>
             <Heading level={2} inverse>What you receive in writing.</Heading>
             <Body inverse className="text-offwhite/80 mt-2">
-              Six artifacts over the contract. None depend on the customer asking.
+              Six documents over the life of the contract. You don&rsquo;t have to ask for any of them.
             </Body>
           </div>
           <div className="lg:col-span-7">
             <ul className="border-t border-offwhite/15">
               {[
-                ['Pre-install water test', 'TDS, hardness, iron, pH, FRC — filed with the quote.'],
+                ['Pre-install water test', 'TDS, hardness, iron, pH and FRC, filed with the quote.'],
                 ['Install diagram', 'Single-line drawing. Vessel sizes, media, pipe routes.'],
-                ['Post-install parameter reading', 'Five-parameter repeat. The improvement, on paper, on day one.'],
-                ['Monthly service report (PDF)', 'Parameters in/out, work performed, flags raised. Same day. Every visit.'],
+                ['Post-install parameter reading', 'The same five readings again, so you see the improvement on paper on day one.'],
+                ['Monthly service report (PDF)', 'Readings in and out, work done, flags raised. Sent the same day, every visit.'],
                 ['Twelve-month parameter trend', 'Year-end chart of hardness, iron, TDS at the tap.'],
-                ['Annual independent water analysis', 'Premium tier. Third-party lab analysis alongside the in-house record.'],
+                ['Annual independent water analysis', 'On the Premium tier, a third-party lab analysis alongside our own record.'],
               ].map(([label, body]) => (
                 <li key={label} className="border-b border-offwhite/15 py-5 flex flex-col gap-2">
                   <div className="text-h3 font-normal text-offwhite [text-wrap:balance]">{label}</div>
@@ -149,10 +149,10 @@ export default function ServicePage() {
             <Eyebrow className="mb-4">Cadence</Eyebrow>
             <Heading level={2} className="mb-4">Twelve visits a year.</Heading>
             <Body className="text-mute mb-4">
-              Monthly on Comprehensive. Quarterly on Standard. Same window, same protocol, same engineer where geography allows.
+              Monthly on Comprehensive, quarterly on Standard. Same time window and same checklist every visit, and the same engineer wherever the location allows.
             </Body>
             <EditorialAccent className="mt-6">
-              We show up every month. Not when something breaks.
+              We come every month, whether something&rsquo;s wrong or not.
             </EditorialAccent>
           </div>
           <div className="lg:col-span-7">
@@ -170,7 +170,7 @@ export default function ServicePage() {
               ))}
             </div>
             <Caption className="mt-4 text-mute italic">
-              24-hour notice. Date. Window. Engineer name. The visit happens when promised.
+              You get 24 hours&rsquo; notice with the date, time window and engineer&rsquo;s name, and the visit happens when we said it would.
             </Caption>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function ServicePage() {
       <Section tone="navy" padding="default" image={{ stem: 'bathroom' }}>
         <div className="mb-12 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>AMC tiers</Eyebrow>
-          <Heading level={2} inverse>Three tiers. Honest scope.</Heading>
+          <Heading level={2} inverse>Three AMC tiers, and what each one covers.</Heading>
           <Body inverse className="text-offwhite/80 mt-2">
             We don&rsquo;t promise monthly service to every customer at every price point. How often we visit depends on the tier, and we say so upfront, so you choose what fits your home and your water.
           </Body>
@@ -248,10 +248,10 @@ export default function ServicePage() {
             <Heading level={2}>What an engineer actually does.</Heading>
             <div className="flex flex-col gap-4 mt-2">
               <Body className="text-mute">
-                Pressure gauge, backwash, salt top-up, resin check, iron-spot test, TDS + hardness, leak inspection. Written report filed same day.
+                Pressure gauge, backwash, salt top-up, resin check, iron-spot test, TDS and hardness, leak inspection. The written report goes out the same day.
               </Body>
               <Body className="text-mute">
-                If a flag is raised, the SLA kicks in: 24 hours Comprehensive, 12 hours Premium &mdash; we don&rsquo;t wait for the next monthly.
+                If a flag is raised, the SLA starts: 24 hours on Comprehensive, 12 hours on Premium. We don&rsquo;t wait for the next monthly visit.
               </Body>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function ServicePage() {
               See a sample service report.
             </h3>
             <Body inverse>
-              One anonymised real report from a Kolkata install. Parameters in, parameters out, work performed, flags raised.
+              One anonymised real report from a Kolkata install: readings in and out, work done and flags raised.
             </Body>
           </div>
           <a

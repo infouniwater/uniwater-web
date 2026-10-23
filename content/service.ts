@@ -7,17 +7,17 @@ export const SERVICE_PROTOCOL = [
   {
     label: 'Before.',
     body:
-      '24-hour notice. Date. Window. Engineer name. The visit happens when promised.',
+      'You get 24 hours’ notice with the date, time window and engineer’s name. The visit happens when we said it would.',
   },
   {
     label: 'On site.',
     body:
-      'Parameter testing \u2014 TDS, hardness, iron, pH, FRC \u2014 against design specification. Backwash verification. Salt top-up. Resin assessment. Leak inspection. Pressure check.',
+      'We test TDS, hardness, iron, pH and FRC against the design spec, check the backwash, top up salt, assess the resin, look for leaks and check the pressure.',
   },
   {
     label: 'After.',
     body:
-      'A documented report, same day. Parameters in. Parameters out. Work performed. Flags raised. The customer keeps the record. So do we.',
+      'A written report the same day: readings in and out, work done and any flags raised. You keep a copy and so do we.',
   },
 ] as const;
 
@@ -61,7 +61,7 @@ export const AMC_TIERS = [
     name: 'Premium',
     cadence: 'Monthly visits + priority response',
     summary:
-      'Institutions and customers who treat water as infrastructure. Named engineer + dashboard.',
+      'For institutions, and homes that want the closest watch on their water. Named engineer and a dashboard.',
     annualFromINR: 30000,
     inclusions: [
       'Everything in Comprehensive',
