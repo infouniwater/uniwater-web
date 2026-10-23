@@ -85,5 +85,9 @@ export function RecaptchaField({ action }: Props) {
     };
   }, [action]);
 
-  return <input ref={inputRef} type="hidden" name="recaptcha_token" defaultValue="" />;
+  // No value/defaultValue prop: on a hidden input React treats defaultValue
+  // as the live value and resets it on every re-render, which wiped the
+  // token whenever the parent form re-rendered (e.g. each "Continue" on
+  // /remote-site-survey) and got real submissions blocked as 'no-token'.
+  return <input ref={inputRef} type="hidden" name="recaptcha_token" />;
 }

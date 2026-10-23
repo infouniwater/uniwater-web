@@ -36,9 +36,12 @@ export async function appendLeadToSheet(input: {
     throw new Error('Sheets: GOOGLE_SHEETS_WEBAPP_URL is not set');
   }
 
+  // A leading = + - @ makes Sheets parse the cell as a formula: a mobile
+  // typed "+91 98300 12345" became #ERROR!. The apostrophe forces plain text
+  // (and stops spam from injecting formulas).
   const cleanFields: Record<string, string> = {};
   for (const [k, v] of Object.entries(input.fields)) {
-    if (v !== undefined && v !== '') cleanFields[k] = String(v);
+    if (v !== undefined && v !== '') cleanFields[k] = /^[=+\-@]/.test(v) ? `'${v}` : String(v);
   }
 
   const res = await fetch(url, {
