@@ -138,7 +138,7 @@ export default function IndustrialPage() {
           <div className="w-full lg:max-w-[760px] pb-10 lg:pb-0 flex flex-col gap-5">
             <p className="text-eyebrow font-ui font-medium uppercase tracking-[0.18em] text-soft">Institutions &amp; industry</p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[19ch] [text-wrap:balance]">
-              Water that holds up at scale.
+              Water treatment plants for buildings and industry.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               Engineered water systems for industry, hospitality, healthcare, education, and residential societies. Two procurement models: subscribe to water as a service, or specify and buy a plant.
@@ -196,7 +196,7 @@ export default function IndustrialPage() {
       <Section padding="default" tone="subtle">
         <div className="mb-10 max-w-3xl flex flex-col gap-4">
           <Eyebrow className="mb-2">Pick a procurement model</Eyebrow>
-          <Heading level={2}>Two paths to engineered water.</Heading>
+          <Heading level={2}>Two ways to buy: subscribe, or own the plant.</Heading>
           <Lede className="text-mute mt-2">
             Subscribe to water as a service and we own the plant. Specify it and you own the plant. The water spec is the same; the procurement model isn&rsquo;t.
           </Lede>
@@ -326,7 +326,7 @@ export default function IndustrialPage() {
                         {proof.map((site) => (
                           <li key={site.slug} className="text-caption text-offwhite/85">
                             <span className="font-medium text-offwhite">{site.name}</span>
-                            <span className="text-offwhite/60"> &mdash; {site.city}</span>
+                            <span className="text-offwhite/60"> · {site.city}</span>
                           </li>
                         ))}
                       </ul>
@@ -367,7 +367,7 @@ export default function IndustrialPage() {
       <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Capacity bands</Eyebrow>
-          <Heading level={2} inverse>From boutique to industrial.</Heading>
+          <Heading level={2} inverse>From small buildings to factories.</Heading>
           <Body inverse className="text-offwhite/80 mt-2">
             From 8,000 LPH building plants to 50,000 LPH industrial RO. Up to 10,000 LPH DM.
           </Body>
@@ -383,7 +383,7 @@ export default function IndustrialPage() {
         </div>
         <Infographic
           assetName="building-wtp-ladder.svg"
-          description="Capacity ladder diagram — 8K to 30K LPH bands with site-type captions."
+          description="Capacity ladder diagram: 8K to 30K LPH bands with site-type captions."
           className="mt-12"
         />
       </Section>
@@ -395,7 +395,7 @@ export default function IndustrialPage() {
       <Section padding="default" tone="subtle">
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow>The engineering edge</Eyebrow>
-          <Heading level={2}>Four things commercial buyers should ask. Two ways to verify.</Heading>
+          <Heading level={2}>What to check before you buy a plant.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline mb-12">
           {TECHNICAL_EDGE.map((item) => (
@@ -440,7 +440,7 @@ export default function IndustrialPage() {
       <Section tone="navy" padding="default" image={{ stem: 'industrial' }}>
         <div className="mb-10 md:mb-14 max-w-3xl flex flex-col gap-4">
           <Eyebrow inverse>Track record</Eyebrow>
-          <Heading level={2} inverse>What we&rsquo;ve put in. Where it runs.</Heading>
+          <Heading level={2} inverse>What we&rsquo;ve installed, and where.</Heading>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16 pb-16 border-b border-offwhite/15">
           <StatTile value={STATS.yearsOperating} label="Years operating" inverse />
@@ -489,8 +489,8 @@ export default function IndustrialPage() {
             </ul>
             <Caption className="text-mute italic mt-6">
               Looking for the subscription model instead?{' '}
-              <Link href="/clean-water-as-a-service" className="text-teal underline underline-offset-4">See Clean Water as a Service</Link>{' '}
-              &mdash; we own and run the plant; you subscribe to the water.
+              <Link href="/clean-water-as-a-service" className="text-teal underline underline-offset-4">See Clean Water as a Service</Link>
+              . We own and run the plant, and you pay for the water.
             </Caption>
           </div>
           <div className="lg:col-span-7">
@@ -548,7 +548,7 @@ export default function IndustrialPage() {
       <Section tone="tint" padding="loose">
         <div className="max-w-3xl mx-auto text-center flex flex-col gap-6 items-center">
           <Heading level={2} className="text-display-m font-light">
-            Ready to engineer a system?
+            Send us your site details.
           </Heading>
           <Lede className="text-mute">
             Subscribe to water on a service contract, or specify and buy the plant. Available across 7 cities in India and 2 in Nepal.

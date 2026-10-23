@@ -25,7 +25,7 @@ export const WHERE_WE_WORK = [
     title: 'Communities.',
     subtitle: 'Treated at source, distributed clean.',
     body:
-      'Treated once at the inlet — turbidity, hardness, iron. Every flat gets the same water.',
+      'Treated once at the inlet for turbidity, hardness and iron, so every flat gets the same water.',
     typicalSites: ['Gated residential complexes', 'Townships, mid-rise', 'Cooperative housing', 'Plotted developments'],
   },
 ] as const;
@@ -52,7 +52,7 @@ export const TECHNICAL_EDGE = [
   {
     title: 'Operations from day one.',
     body:
-      'AMC priced at handover. Same-day reports after every visit. 24-hour SLA on flagged faults. Year five, the system still meets spec.',
+      'AMC priced at handover. Same-day reports after every visit. 24-hour SLA on flagged faults. In year five, the system still meets spec.',
   },
   {
     title: 'Designed for the load.',

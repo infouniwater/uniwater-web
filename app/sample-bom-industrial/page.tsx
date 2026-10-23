@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { ListBar } from '@/components/ui/ListBar';
 
 export const metadata: Metadata = {
-  title: 'Sample BOM — building inlet WTP',
+  title: 'Sample BOM: building inlet WTP',
   description:
-    'A representative Uniwater bill of materials for a 12,000 LPH building WTP. Vessels, media, controls, piping — every line transparent. Sample reference.',
+    'A sample Uniwater bill of materials for a 12,000 LPH building WTP, with every line shown: vessels, media, controls and piping.',
 };
 
 /**
@@ -223,7 +223,7 @@ export default function SampleBomPage() {
 
             {/* AMC */}
             <section className="mb-10 border-t border-hairline pt-6">
-              <h2 className="font-sans text-h3 font-semibold text-navy mb-3">Annual Maintenance Contract — priced at handover</h2>
+              <h2 className="font-sans text-h3 font-semibold text-navy mb-3">Annual Maintenance Contract, priced at handover</h2>
               <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
               <table className="w-full text-caption border-collapse min-w-[560px] sm:min-w-0">
                 <thead>
@@ -260,7 +260,7 @@ export default function SampleBomPage() {
 
           <div className="no-print max-w-4xl mx-auto mt-10 text-caption text-mute">
             <p>
-              This is a representative BOM. The real BOM your project receives carries (a) your project name, (b) survey-confirmed source-water parameters, and (c) line-item pricing valid for 30 days from the survey date. Every component is named — no &quot;package&quot; line items, no &quot;misc.&quot; bundling.
+              This is a representative BOM. The real BOM your project receives carries (a) your project name, (b) survey-confirmed source-water parameters, and (c) line-item pricing valid for 30 days from the survey date. Every component is named. No &quot;package&quot; line items and no &quot;misc.&quot; bundling.
             </p>
           </div>
         </div>
