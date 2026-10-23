@@ -51,7 +51,7 @@ export default function CaseStudiesIndex() {
               Where Uniwater systems run today.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
-              Seven case studies published so far &mdash; two healthcare campuses, three manufacturing plants, a premium residential development bought outright, and the first on Clean Water as a Service subscription. More are being written up as real detail comes in.
+              Seven case studies so far: two healthcare campuses, three manufacturing plants, a residential development that bought its plant outright, and our first Clean Water as a Service subscription. More will follow as we get the details down.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function CaseStudiesIndex() {
               className="group block bg-offwhite border border-hairline transition-all duration-200 ease-calm hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(5,69,95,0.08)]"
             >
               <Photo
-                description={`${cs.client} install — ${cs.sector.toLowerCase()} sector, ${cs.city}`}
+                description={`${cs.client} install: ${cs.sector.toLowerCase()} sector, ${cs.city}`}
                 assetRef={`case-${cs.slug}`}
                 aspect="sixteen-ten"
               />
@@ -100,7 +100,7 @@ export default function CaseStudiesIndex() {
 
       <FinalCTA
         audience="industrial"
-        headline="Have a similar challenge?"
+        headline="If your site sounds similar, send us the details."
         sub="Submit an RFQ with site details and we'll respond within one business day."
       />
     </>

@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!cs) return { title: 'Case study' };
   return buildMetadata({
     path: `/case-studies/${cs.slug}`,
-    title: `${cs.client} \u2014 Case study`,
+    title: `${cs.client}: case study`,
     description: cs.brief ?? `Uniwater case study: ${cs.client}.`,
     image: '/og/og-case-studies.jpg',
   });
@@ -162,7 +162,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
           <div className="max-w-reading mx-auto text-center">
             <EditorialAccent className="mx-auto">&ldquo;{content.quote}&rdquo;</EditorialAccent>
             {content.attribution && (
-              <Caption className="text-mute mt-6">&mdash; {content.attribution}</Caption>
+              <Caption className="text-mute mt-6">{content.attribution}</Caption>
             )}
           </div>
         </Section>
@@ -237,7 +237,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
 
       <FinalCTA
         audience="industrial"
-        headline="Have a similar challenge?"
+        headline="If your site sounds similar, send us the details."
         sub="Submit an RFQ with your site details. We'll respond within one business day."
       />
     </>

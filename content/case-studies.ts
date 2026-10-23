@@ -73,7 +73,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       brief:
         'A multi-specialty hospital in Kolkata required a unified water programme: drinking-water RO at point of use across wards and OPDs, plus building-inlet treatment to protect the campus’ long-running plumbing and equipment.',
       challenge:
-        'The existing setup was fragmented — jar deliveries for drinking water, no inlet treatment, scale and iron staining accumulating in laundry and CSSD. AMC was on-call, not preventive. Equipment downtime was rising with no early-warning visibility.',
+        'The existing setup was fragmented: jar deliveries for drinking water, no inlet treatment, and scale and iron staining building up in the laundry and CSSD. AMC was on-call, not preventive. Equipment downtime was rising with no early-warning visibility.',
       solution:
         'Uniwater installed a building inlet WTP (sediment, iron-removal, carbon, softening) sized to peak occupancy, and centralised drinking-water RO with re-mineralisation distributed to point-of-use at ward and OPD level. Comprehensive AMC was contracted from handover: monthly preventive visits, same-day documented reports, 24-hour SLA on flagged faults.',
       outcomes: [
@@ -102,7 +102,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     body: {
       brief:
-        'A medical college campus in Biratnagar needed unified water across teaching blocks, the attached hospital, and faculty and student residences — drinking-water RO at every tap, inlet treatment for the building plumbing, and a single service relationship across the lot.',
+        'A medical college campus in Biratnagar needed unified water across teaching blocks, the attached hospital, and faculty and student residences. That meant drinking-water RO at every tap, inlet treatment for the building plumbing, and one service relationship for all of it.',
       challenge:
         'Mixed feeds (municipal supply with borewell augmentation), inconsistent hardness and iron between blocks, ad-hoc jar deliveries for drinking water, and no preventive service infrastructure. Four supplier relationships, none of them the same.',
       solution:
@@ -135,7 +135,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       brief:
         'Shyam Steel’s integrated TMT plant in Durgapur runs continuous boilers and process lines that depend on conductivity-controlled feed water. Existing treatment was a patchwork of vendor systems with no single ownership of outcomes.',
       challenge:
-        'Variable bore-well chemistry, silica spiking in monsoon, and inconsistent AMC across three suppliers meant boilers were being blowed-down twice the design frequency. Maintenance cost was rising every quarter; nobody owned the trend.',
+        'Variable bore-well chemistry, silica spiking in monsoon, and inconsistent AMC across three suppliers meant boilers were being blown down at twice the design frequency. Maintenance cost was rising every quarter; nobody owned the trend.',
       solution:
         'Replaced the patchwork with a single Uniwater train: 30,000 LPH commercial RO (pre-treatment + dosing + membranes) feeding a 6,000 LPH DM plant for boiler feed; cooling-tower make-up taken from the RO permeate. One AMC, monthly engineer visit, parameter trend reviewed by the plant team in person.',
       outcomes: [
@@ -166,7 +166,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       brief:
         'Saburi Plywood’s manufacturing plant near Kolkata operates steam-cured presses for the marine and block-board lines. Boiler feed and cooling-tower make-up were drawn from bore-wells with high hardness and inconsistent iron.',
       challenge:
-        'Boiler scaling was forcing an unplanned chemical descaling every six months. The cooling-tower fouling rate was high enough that the operations team was budgeting tower-fill replacements annually — abnormal for a plant of this size.',
+        'Boiler scaling was forcing an unplanned chemical descaling every six months. The cooling-tower fouling rate was high enough that the operations team was budgeting tower-fill replacements every year, which is abnormal for a plant of this size.',
       solution:
         'Installed a 4,000 LPH DM plant for boiler feed (acid-cation + base-anion + mixed-bed polish) and a 10,000 LPH commercial RO for cooling-tower make-up. Antiscalant dosing on the RO; monthly conductivity and silica checks on the DM. Both lines covered by a single Comprehensive AMC.',
       outcomes: [
@@ -186,7 +186,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     sector: 'Residential',
     city: 'Kolkata',
     outcome: 'Building inlet WTP for a premium residential development.',
-    brief: 'Building inlet WTP for a premium residential development \u2014 every flat gets the same softened, filtered water.',
+    brief: 'Building inlet WTP for a premium residential development, so every flat gets the same softened, filtered water.',
     fullDetail: true,
     testimonial: {
       name: 'Project lead',
@@ -195,11 +195,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     body: {
       brief:
-        'A premium residential development in Kolkata needed single-system water across every flat \u2014 every resident drinking, bathing, and washing in the same softened, filtered supply, without per-flat service. Specified during construction; commissioned at handover.',
+        'A premium residential development in Kolkata needed one water system for every flat, with every resident drinking, bathing and washing in the same softened, filtered supply and no per-flat service. Specified during construction; commissioned at handover.',
       challenge:
         'Per-flat point-of-use systems would have meant dozens of separate service contracts, inconsistent water across flats, and routine maintenance disruption inside finished homes. The Malani build standard required uniform quality at handover.',
       solution:
-        'A building inlet WTP at the apartment block \u2014 four-stage train (sediment \u2192 iron \u2192 carbon \u2192 softening) sized to peak draw across all flats \u2014 with centralised distribution from the plant room to every riser. AMC contracted at the building level, not per flat. Architects coordinated the install during construction.',
+        'A building inlet WTP at the apartment block: a four-stage train (sediment \u2192 iron \u2192 carbon \u2192 softening) sized to peak draw across all flats, with centralised distribution from the plant room to every riser. AMC contracted at the building level, not per flat. Architects coordinated the install during construction.',
       outcomes: [
         { value: '1', label: 'Inlet plant, every flat served' },
         { value: '< 30 ppm', label: 'Hardness at every tap' },
@@ -251,7 +251,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     client: 'Starwood, Chinar Park',
     sector: 'Residential',
     city: 'Kolkata',
-    outcome: 'Whole-society iron-free water on subscription — two redundant filtration trains, 2.5 years running.',
+    outcome: 'Whole-society iron-free water on subscription: two redundant filtration trains, 2.5 years running.',
     brief: 'A 284-flat residential complex in Chinar Park, Kolkata, running on three borewells too iron-heavy to treat cost-effectively with the infrastructure the complex had. Uniwater has run a subscription iron-removal plant on site for two and a half years.',
     fullDetail: true,
     model: 'subscription',
@@ -259,9 +259,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       brief:
         'Starwood, a 284-flat residential complex in Chinar Park, Kolkata, draws its water from three borewells running high iron and heavy silt. The complex’s existing infrastructure wasn’t built to treat water like this cost-effectively. Uniwater has run a subscription iron-removal plant on site for two and a half years.',
       challenge:
-        'All three borewells ran iron above 2 ppm, with mud and silt coming through at the tap — well past what makes a building livable. Treating water this difficult with the complex’s existing infrastructure wasn’t cost-effective, and the committee had no in-house way to size or run a plant built for genuinely hard raw water.',
+        'All three borewells ran iron above 2 ppm, with mud and silt coming through at the tap, well past what makes a building livable. Treating water this difficult with the complex’s existing infrastructure wasn’t cost-effective, and the committee had no in-house way to size or run a plant built for genuinely hard raw water.',
       solution:
-        'Uniwater installed a 30,000 LPH automatic iron-filtration system, run as two parallel trains rather than one — so a single train can be pulled for maintenance without the complex ever going without treated water. Zero capex to the committee; Uniwater owns, runs, and maintains the plant under the subscription.',
+        'Uniwater installed a 30,000 LPH automatic iron-filtration system, run as two parallel trains rather than one, so a single train can be pulled for maintenance without the complex ever going without treated water. Zero capex to the committee; Uniwater owns, runs, and maintains the plant under the subscription.',
       outcomes: [
         { value: '284', label: 'Flats on iron-free water' },
         { value: '> 99%', label: 'Uptime, on two redundant trains' },
