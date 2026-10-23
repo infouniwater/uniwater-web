@@ -30,7 +30,7 @@ const NEPAL_FAQS: ReadonlyArray<FaqEntry> = [
   {
     q: 'Is the security deposit really refundable?',
     a:
-      'Yes — it is refunded in full when the contract ends, subject to the plant being returned in working condition.',
+      'Yes. It is refunded in full when the contract ends, subject to the plant being returned in working condition.',
   },
   {
     q: 'How is my monthly bill calculated?',
@@ -50,7 +50,7 @@ const NEPAL_FAQS: ReadonlyArray<FaqEntry> = [
   {
     q: 'Which areas do you serve?',
     a:
-      'Itahari, Biratnagar, Dharan, Damak, Rajbiraj, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj — with other locations along the East–West Highway corridor on request.',
+      'Itahari, Biratnagar, Dharan, Damak, Rajbiraj, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj, plus other locations along the East–West Highway corridor on request.',
   },
 ];
 

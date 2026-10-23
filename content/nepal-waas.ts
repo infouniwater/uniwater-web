@@ -39,7 +39,7 @@ export const REGIONS = [
   'Lalbandi',
   'Birgunj',
 ] as const;
-export const PROVINCE = 'Koshi & Madhesh provinces, Nepal — along the East–West Highway.';
+export const PROVINCE = 'Koshi & Madhesh provinces, Nepal, along the East–West Highway.';
 export const TAGLINE = 'Wellness starts with clean water.';
 
 // ----- Contact ------------------------------------------------------------
@@ -109,18 +109,18 @@ export interface DWaaSPlan {
  *  render. Mirrors the mechanic language already used on the main CWaaS
  *  page: how billing works and what moves the rate, not the rate itself. */
 export const PRICING_METHODOLOGY_NOTE =
-  'Every plan runs on the same mechanic: monthly bill = higher of (metered litres × your rate) or the minimum bill. Higher-volume plans carry a lower per-litre rate; the exact rate, minimum bill, and refundable deposit for your plan are confirmed at the free site survey — never a surprise, never guessed.';
+  'Every plan runs on the same mechanic: monthly bill = higher of (metered litres × your rate) or the minimum bill. Higher-volume plans carry a lower per-litre rate; the exact rate, minimum bill, and refundable deposit for your plan are confirmed at the free site survey, so nothing is guessed and nothing comes as a surprise.';
 
 // DRAFT taglines added 2026-06-05 to give each tier a "who is this for"
 // hook -- the previous cards were visually identical so the visitor had
 // no scannable cue beyond the numbers. Reference copy from Rajat will
 // replace these verbatim when available.
 export const DWAAS_PLANS: DWaaSPlan[] = [
-  { slug: 'A', tagline: 'Starter — small office or boutique cafe.',           monthlyLitres: 1_500,  jarsPerDay: '2–3 jars/day',   ratePerLitre: 2.25, minBill: 3_000,  deposit: 30_000 },
-  { slug: 'B', tagline: 'Growing team — mid-size office, busy clinic.',       monthlyLitres: 2_500,  jarsPerDay: '4–5 jars/day',   ratePerLitre: 2,    minBill: 4_000,  deposit: 35_000 },
-  { slug: 'C', tagline: 'Most chosen — restaurant, mid-size hotel, school.',  monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 1.8,  minBill: 6_000,  deposit: 42_500, popular: true },
-  { slug: 'D', tagline: 'High volume — large hotel, hospital wing, factory.', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.65, minBill: 8_000,  deposit: 50_000 },
-  { slug: 'E', tagline: 'Maximum — large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 65_000 },
+  { slug: 'A', tagline: 'Starter: small office or boutique cafe.',           monthlyLitres: 1_500,  jarsPerDay: '2–3 jars/day',   ratePerLitre: 2.25, minBill: 3_000,  deposit: 30_000 },
+  { slug: 'B', tagline: 'Growing team: mid-size office, busy clinic.',       monthlyLitres: 2_500,  jarsPerDay: '4–5 jars/day',   ratePerLitre: 2,    minBill: 4_000,  deposit: 35_000 },
+  { slug: 'C', tagline: 'Most chosen: restaurant, mid-size hotel, school.',  monthlyLitres: 4_000,  jarsPerDay: '6–7 jars/day',   ratePerLitre: 1.8,  minBill: 6_000,  deposit: 42_500, popular: true },
+  { slug: 'D', tagline: 'High volume: large hotel, hospital wing, factory.', monthlyLitres: 6_000,  jarsPerDay: '~10 jars/day',   ratePerLitre: 1.65, minBill: 8_000,  deposit: 50_000 },
+  { slug: 'E', tagline: 'Maximum: large school, hospital, big factory.',     monthlyLitres: 10_000, jarsPerDay: '15–20 jars/day', ratePerLitre: 1.5,  minBill: 10_000, deposit: 65_000 },
 ];
 
 // ----- Comparison: DWaaS vs Buying equipment vs Water jars ---------------
@@ -141,7 +141,7 @@ export interface ComparisonRow {
 export const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Upfront cost',
-    jars:  'Rs 0 — but pay-as-you-go forever.',
+    jars:  'Rs 0, but you pay per jar forever.',
     buy:   'Rs 0.6–2 lakh capex.',
     dwaas: 'Rs 30,000–65,000 refundable deposit.',
   },
@@ -149,11 +149,11 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
     dimension: 'Monthly cost (typical office)',
     jars:  'Rs 6,000–25,000 (per-jar prices add up).',
     buy:   'Rs 2,000–10,000 / month (spares + service).',
-    dwaas: 'From Rs 3,000 — fixed, predictable.',
+    dwaas: 'From Rs 3,000, fixed every month.',
   },
   {
     dimension: 'Who runs the plant',
-    jars:  'No plant — vendor handles delivery.',
+    jars:  'No plant. The vendor handles delivery.',
     buy:   'You. Or your facilities contractor.',
     dwaas: 'We do. Named engineer, monthly.',
   },
@@ -165,14 +165,14 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
   },
   {
     dimension: 'Hygienic dispensing',
-    jars:  'Open jars — manual handling.',
+    jars:  'Open jars, handled by hand.',
     buy:   'Your equipment, your discipline.',
     dwaas: 'Sealed tap. Food-grade plumbing throughout.',
   },
   {
     dimension: 'Maintenance burden',
     jars:  'Track deliveries, store jars, lift weights.',
-    buy:   'Media changes, membrane swaps, salt top-up — your team.',
+    buy:   'Media changes, membrane swaps, salt top-up: all on your team.',
     dwaas: 'Zero. Everything included in the service contract.',
   },
   {
@@ -192,7 +192,7 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
 // ----- DM Water (no public price) ----------------------------------------
 
 export const DM_PRICING_LINE =
-  'Pricing on request — your per-litre rate depends on feed-water TDS and target spec.';
+  'Pricing on request. Your per-litre rate depends on feed-water TDS and the target spec.';
 
 // ----- Stats strip (committed copy) --------------------------------------
 
@@ -228,7 +228,7 @@ export const HERO_TITLE = 'Switch to clean water as a service.';
 // refundable deposit) and the geo (Terai). The visitor sees the offer in
 // one breath without scrolling.
 export const HERO_SUB =
-  'Starting at NPR 1.5 per litre. Fixed monthly bill. Refundable security deposit. We install the plant, deliver the water, and keep it running — across ten towns from Biratnagar to Birgunj.';
+  'Starting at NPR 1.5 per litre. Fixed monthly bill. Refundable security deposit. We install the plant, deliver the water, and keep it running, in ten towns from Biratnagar to Birgunj.';
 
 // ----- DRAFT content (needs reference file) ------------------------------
 
@@ -256,7 +256,7 @@ export const BENEFIT_BLOCKS: Array<{ title: string; body: string }> = [
   },
   {
     title: 'Predictable monthly bill.',
-    body: 'One invoice per month against metered consumption — minimum bill clarified upfront. No surprise media-change charges.',
+    body: 'One invoice a month against metered use, with the minimum bill agreed upfront. No surprise media-change charges.',
   },
 ];
 
@@ -291,18 +291,18 @@ export const HOW_IT_WORKS: ProcessStep[] = [
 
 // DRAFT — replace verbatim from _reference/water-as-a-service.page.tsx
 export const WHY_UNIWATER: string[] = [
-  'Local Nepal team — Biratnagar and Itahari coverage on the same day, Dharan and Damak next-day.',
-  'Already running across India and Nepal — schools, restaurants, factories, residential societies.',
-  'Refundable security deposit, not a sale — the plant is ours; you subscribe to the water.',
-  'No surprise charges — media, membranes, pumps, repairs included in the service contract.',
-  'Named engineer for your site — same person every visit, not a rotating queue.',
+  'Local Nepal team: same-day coverage in Biratnagar and Itahari, next day in Dharan and Damak.',
+  'Already running in India and Nepal at schools, restaurants, factories and residential societies.',
+  'A refundable security deposit, not a sale. The plant is ours and you subscribe to the water.',
+  'No surprise charges. Media, membranes, pumps and repairs are in the service contract.',
+  'A named engineer for your site: the same person every visit, not whoever is free that day.',
   'Same-day written report after every visit, archived for compliance audits.',
   'Drinking water meets IS 10500 / NDWQS; DM water held to your conductivity target.',
   'Cancel anytime after 12 months, deposit returned in full.',
 ];
 
 // DRAFT — replace verbatim from _reference/water-as-a-service.page.tsx
-export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum monthly bill applies when monthly consumption is below the plan allowance. Security deposit refundable on contract close, subject to plant being returned in working condition. Monthly bill = max(consumption × rate, minimum bill). DM water pricing is quoted per site after feed-water analysis. Service available across Koshi and Madhesh provinces — Itahari, Biratnagar, Dharan, Damak, Rajbiraj, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj. Other locations along the East–West Highway corridor on request.`;
+export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum monthly bill applies when monthly consumption is below the plan allowance. Security deposit refundable on contract close, subject to plant being returned in working condition. Monthly bill = max(consumption × rate, minimum bill). DM water pricing is quoted per site after feed-water analysis. Service available across Koshi and Madhesh provinces: Itahari, Biratnagar, Dharan, Damak, Rajbiraj, Lahan, Janakpur, Bardibas, Lalbandi, and Birgunj. Other locations along the East–West Highway corridor on request.`;
 
 // ----- WhatsApp deeplink helpers -----------------------------------------
 
@@ -311,19 +311,19 @@ export const TERMS_NOTE = `Prices in NPR, excluding applicable taxes. Minimum mo
  *  caller's location so the sales engineer has it in the first reply. */
 export function whatsappHrefForPlan(plan: DWaaSPlan): string {
   const text = encodeURIComponent(
-    `Hi Uniwater — I'm interested in DWaaS Plan ${plan.slug} (${plan.monthlyLitres.toLocaleString('en-IN')} L/mo, Rs ${plan.ratePerLitre}/L). Please share details. Location: `,
+    `Hi Uniwater, I'm interested in DWaaS Plan ${plan.slug} (${plan.monthlyLitres.toLocaleString('en-IN')} L/mo, Rs ${plan.ratePerLitre}/L). Please send me the details. My location: `,
   );
   return `https://wa.me/${NEPAL_WHATSAPP_E164}?text=${text}`;
 }
 
 /** WhatsApp deeplink for the DM water enquire-only CTA. */
 export const WHATSAPP_HREF_DM = `https://wa.me/${NEPAL_WHATSAPP_E164}?text=${encodeURIComponent(
-  `Hi Uniwater — I'd like to enquire about DM Water as a Service. My target spec / TDS is: `,
+  `Hi Uniwater, I want to ask about DM water as a service. Our target spec / TDS is: `,
 )}`;
 
 /** Generic WhatsApp deeplink (header, sticky CTA, hero secondary). */
 export const WHATSAPP_HREF_GENERIC = `https://wa.me/${NEPAL_WHATSAPP_E164}?text=${encodeURIComponent(
-  `Hi Uniwater — I'm interested in Clean Water as a Service for my business. Service needed: `,
+  `Hi Uniwater, I'm interested in Clean Water as a Service for my business. The service we need: `,
 )}`;
 
 // ----- Form use-case dropdown options ------------------------------------
@@ -341,6 +341,6 @@ export const USE_CASE_OPTIONS = [
 
 // ----- Metadata ----------------------------------------------------------
 
-export const META_TITLE = 'Drinking Water as a Service — Biratnagar · Janakpur · Birgunj | Uniwater Nepal';
+export const META_TITLE = 'Drinking water as a service in Biratnagar, Janakpur, Birgunj | Uniwater Nepal';
 export const META_DESCRIPTION =
   'Subscribe to drinking water from Uniwater Nepal. Zero equipment cost, refundable security deposit, monthly engineer visits, 24×7 service. From Rs 1.5/L. Plans A to E for offices, restaurants, hotels, schools, hospitals, and factories across ten Terai towns from Biratnagar to Birgunj along the East–West Highway.';

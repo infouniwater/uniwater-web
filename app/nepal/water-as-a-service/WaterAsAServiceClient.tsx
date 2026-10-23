@@ -176,7 +176,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
                     Pricing is per-site. Tell us your target spec.
                   </h3>
                   <Body className="text-mute">
-                    Feed-water TDS, daily volume, application &mdash; and we&rsquo;ll
+                    Send us the feed-water TDS, daily volume and application, and we&rsquo;ll
                     come back with a contract and a price within one business day.
                   </Body>
                   <div className="mt-2">

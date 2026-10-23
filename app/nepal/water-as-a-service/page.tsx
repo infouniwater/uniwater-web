@@ -127,7 +127,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           <source type="image/webp" srcSet="/images/hero/nepal-hero-v3-tablet.webp" />
           <img
             src="/images/hero/nepal-hero-v3-tablet.jpg"
-            alt="Uniwater 100 LPH RO + UV drinking-water plant and dispensing tank on a circular pedestal, set against East Nepal's mountains and lake -- the on-site system every DWaaS contract installs."
+            alt="Uniwater 100 LPH RO + UV drinking-water plant and dispensing tank on a circular pedestal, with East Nepal's mountains and a lake behind it. This is the on-site system every DWaaS contract installs."
             className="absolute inset-0 w-full h-full object-cover object-center md:object-[65%_center] lg:object-[70%_center]"
             fetchPriority="high"
             decoding="async"
@@ -216,8 +216,8 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
           <Body className="text-mute mt-4">
             The water-jar economy adds up. Buying the plant is capex plus
             your team running it. Subscribing means we own the plant,
-            run it, and bill against a meter — water held to spec, no
-            firefighting.
+            run it, and bill against a meter. The water stays at spec and
+            nobody on your side has to firefight.
           </Body>
           {/* Site-survey fix (brand fragmentation): this page previously
               never named or linked to Clean Water as a Service, running
@@ -229,7 +229,7 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
             <Link href="/clean-water-as-a-service" className="text-teal underline underline-offset-4 hover:text-navy">
               Clean Water as a Service
             </Link>{' '}
-            programme, sized for drinking water in Nepal — the same model running across India.
+            programme, sized for drinking water in Nepal. It is the same model we run across India.
           </Caption>
         </div>
 
@@ -368,9 +368,9 @@ export default function NepalWaaSPage({ searchParams }: PageProps) {
       <Section padding="default" tone="plain">
         <div className="max-w-3xl mb-6">
           <Eyebrow className="mb-3">Service area</Eyebrow>
-          <Heading level={2}>Live across the Terai &mdash; Biratnagar to Birgunj.</Heading>
+          <Heading level={2}>Live across the Terai, from Biratnagar to Birgunj.</Heading>
           <Body className="text-mute mt-3">
-            {PROVINCE} Other locations between these towns on request &mdash; drop your address in the form and we&rsquo;ll confirm coverage.
+            {PROVINCE} Other locations between these towns on request. Put your address in the form and we&rsquo;ll confirm coverage.
           </Body>
         </div>
         <div className="flex flex-wrap gap-2">

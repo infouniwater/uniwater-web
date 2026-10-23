@@ -60,7 +60,7 @@ export function CompactPlansTable() {
               ? 'bg-teal text-offwhite hover:bg-navy'
               : 'bg-navy text-offwhite hover:bg-teal';
             const planHref = `/nepal/water-as-a-service?plan=${plan.slug}#lead-form`;
-            const planAria = `Get your rate for Plan ${plan.slug} -- ${plan.monthlyLitres.toLocaleString('en-IN')} litres per month`;
+            const planAria = `Get your rate for Plan ${plan.slug}: ${plan.monthlyLitres.toLocaleString('en-IN')} litres per month`;
 
             return (
               <div
@@ -185,7 +185,7 @@ export function CompactPlansTable() {
 
         <p className="text-caption text-mute mt-4 italic">
           Prices in NPR, excluding taxes. Monthly bill = max(consumption &times; rate, minimum bill).
-          Deposit refunded in full when the contract ends. Need DM (industrial) water? Scroll to the form &mdash; switch the service tab.
+          Deposit refunded in full when the contract ends. Need DM (industrial) water? Scroll down to the form and switch the service tab.
         </p>
       </div>
     </section>
