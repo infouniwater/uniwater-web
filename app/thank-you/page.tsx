@@ -32,7 +32,7 @@ const MESSAGES: Record<Source, { eyebrow: string; headline: string; body: string
   'remote-site-survey': {
     eyebrow: 'Remote brief submitted',
     headline: 'Thank you. We have your brief.',
-    body: 'We respond within 48 hours with a remote design and quote. To complete the picture, please email your bathroom layout, plumbing photos, and (if available) a recent water-test report to support@uniwater.co.in — reference the email address you provided so the brief and the attachments land together.',
+    body: 'We respond within 48 hours with a remote design and quote. To complete the picture, please email your bathroom layout, plumbing photos, and (if available) a recent water-test report to support@uniwater.co.in. Send it from the email address you gave us so the brief and the attachments land together.',
   },
 };
 
