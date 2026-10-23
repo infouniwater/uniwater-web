@@ -1,12 +1,13 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { randomUUID } from 'crypto';
-import { createLead } from '@/lib/odoo';
+import { isCrmConfigured, sendLeadToCrm, type CrmLead } from '@/lib/crm';
 import { sendLeadNotification, sendAlertEmail, type LeadFields } from '@/lib/email';
 import { appendLeadToSheet } from '@/lib/sheets';
 import { sendMetaLeadEvent, type MetaEventName } from '@/lib/meta-capi';
+import { measurementId, sendGenerateLead } from '@/lib/ga-mp';
 import { verifyRecaptcha } from '@/lib/recaptcha-server';
 import type { LeadFormState } from '@/lib/lead-form-state';
 
@@ -15,10 +16,12 @@ import type { LeadFormState } from '@/lib/lead-form-state';
  *
  * Each lead is saved to three places IN PARALLEL, and counts as saved if
  * ANY of them succeeds:
- *   1. Odoo CRM (crm.lead via JSON-RPC)             — system of record
+ *   1. Uniwater CRM (crm.uniwater.in, lib/crm.ts)   — where the team works it
  *   2. Google Sheet tab via Apps Script             — backup + audit trail
  *   3. Email notification to LEAD_NOTIFY_TO         — visibility
  * plus a full copy in the runtime log ([lead-backup] line) as a last resort.
+ * The CRM joins only once WEB_LEAD_TOKEN is set. It replaced Odoo
+ * (2026-10-24).
  *
  * Until 2026-10 Odoo was awaited first and a failure there threw before the
  * Sheet or email were written — an expired Odoo API key silently lost every
@@ -26,7 +29,8 @@ import type { LeadFormState } from '@/lib/lead-form-state';
  *
  * Any failed sink triggers a same-day alert (email + 'alerts' Sheet tab)
  * carrying the lead's details. Saved leads redirect to /thank-you and fire
- * the Meta CAPI event. If nothing could be saved, the action returns
+ * the Meta CAPI event and GA4 generate_lead (Measurement Protocol, so a bot
+ * redirected to /thank-you never counts). If nothing could be saved, the action returns
  * { status: 'error' } and components/forms/LeadForm.tsx keeps the visitor's
  * input and shows a phone / WhatsApp fallback.
  */
@@ -40,7 +44,7 @@ import type { LeadFormState } from '@/lib/lead-form-state';
  * redirects to /thank-you so bots get no signal that they were blocked.
  *
  * A blocked submission is NOT discarded: it is written to the
- * 'recaptcha-blocked' Sheet tab (no Odoo / email / Meta), because real
+ * 'recaptcha-blocked' Sheet tab (no CRM / email / Meta / GA), because real
  * people get blocked too — an ad-blocker or a slow 3G connection can stop
  * the token from being minted, and v3 scores some mobile users low. Review
  * that tab for genuine customers. If RECAPTCHA_SECRET_KEY is unset (local
@@ -130,12 +134,13 @@ function describeError(reason: unknown): string {
 }
 
 /**
- * Fan-out: save the lead to Odoo, the Sheet and email in parallel. Returns
- * true if at least one of them succeeded. Every failure raises an alert;
- * Meta CAPI fires only for saved leads.
+ * Fan-out: save the lead to the CRM, the Sheet and email in parallel.
+ * Returns true if at least one of them succeeded. Every failure raises an
+ * alert; Meta CAPI and GA4 generate_lead fire only for saved leads.
  */
 async function fanOut(input: {
-  odoo: Parameters<typeof createLead>[0];
+  /** What the CRM needs beyond `fields`; leadId, form and page are added here. */
+  lead: Omit<CrmLead, 'leadId' | 'form' | 'page'>;
   tab: string;
   formLabel: string;
   emailSubject: string;
@@ -163,16 +168,24 @@ async function fanOut(input: {
     `[lead-backup] ${JSON.stringify({ tab: input.tab, at: new Date().toISOString(), page: sig.referer, fields: input.fields })}`,
   );
 
-  const sinks = ['Odoo CRM', 'Google Sheet', 'Lead email'] as const;
-  const results = await Promise.allSettled([
-    createLead(input.odoo),
-    appendLeadToSheet({ tab: input.tab, fields: input.fields }),
-    sendLeadNotification({
+  const jobs: Array<[string, () => Promise<void>]> = [
+    ['Google Sheet', () => appendLeadToSheet({ tab: input.tab, fields: input.fields })],
+    ['Lead email', () => sendLeadNotification({
       formLabel: input.formLabel,
       subject: input.emailSubject,
       fields: input.fields,
-    }),
-  ]);
+    })],
+  ];
+  if (isCrmConfigured()) {
+    jobs.unshift(['Uniwater CRM', () => sendLeadToCrm({
+      ...input.lead,
+      leadId: randomUUID(),
+      form: input.tab,
+      page: sig.referer,
+    })]);
+  }
+  const sinks = jobs.map(([label]) => label);
+  const results = await Promise.allSettled(jobs.map(([, run]) => run()));
 
   const failures = results.flatMap((r, i) =>
     r.status === 'rejected' ? [`${sinks[i]}: ${describeError(r.reason)}`] : [],
@@ -200,7 +213,18 @@ async function fanOut(input: {
   }
 
   if (saved) {
-    await sendMetaLeadEvent({
+    const jar = cookies();
+    await Promise.allSettled([
+      sendGenerateLead({
+        form: input.tab,
+        value: input.meta.value,
+        cookies: {
+          ga: jar.get('_ga')?.value,
+          gaSession: jar.get(`_ga_${measurementId().replace(/^G-/, '')}`)?.value,
+        },
+        debug: (input.meta.name ?? '').toUpperCase().startsWith('TEST - IGNORE'),
+      }),
+      sendMetaLeadEvent({
       eventName: input.meta.eventName,
       email: input.meta.email,
       phone: input.meta.phone,
@@ -212,7 +236,8 @@ async function fanOut(input: {
       sourceUrl: sig.referer,
       clientIp: sig.ip,
       clientUserAgent: sig.userAgent,
-    }).catch((err) => console.error('[meta] CAPI failed:', err));
+      }).catch((err) => console.error('[meta] CAPI failed:', err)),
+    ]);
   }
 
   return saved;
@@ -258,14 +283,7 @@ export async function submitBookSurvey(
   ]);
 
   const saved = await fanOut({
-    odoo: {
-      name: `Book Survey: ${name ?? 'Unnamed lead'}`,
-      contactName: name,
-      email,
-      phone: mobile,
-      city,
-      description,
-    },
+    lead: { name, email, phone: mobile, city, propertyType, message: description },
     tab: 'book-survey',
     formLabel: 'Book a free survey',
     emailSubject: `New survey request: ${name ?? 'Unnamed'}${city ? ` (${city})` : ''}`,
@@ -310,13 +328,7 @@ export async function submitContact(
   ]);
 
   const saved = await fanOut({
-    odoo: {
-      name: `Contact: ${subject ?? name ?? 'General enquiry'}`,
-      contactName: name,
-      email,
-      phone: mobile,
-      description,
-    },
+    lead: { name, email, phone: mobile, message: description },
     tab: 'contact',
     formLabel: 'Contact form',
     emailSubject: `New contact: ${subject ?? name ?? 'General enquiry'}`,
@@ -332,7 +344,7 @@ export async function submitContact(
 /**
  * Nepal Water-as-a-Service ad-campaign form (East Nepal).
  *
- * Lands at /nepal/water-as-a-service. Submissions tag the Odoo lead with
+ * Lands at /nepal/water-as-a-service. Submissions tag the lead with
  * source: "meta-ads-east-nepal" so the sales pipeline can route them to the
  * Biratnagar/Itahari team, and the Meta CAPI event fires with
  * value=META_VALUE_NEPAL_WAAS so the ad-optimiser bids harder for the
@@ -370,7 +382,7 @@ export async function submitNepalWaaS(
   // by useUtmCapture (Nepal page Client Component) from
   // window.location.search on first mount and persisted in
   // sessionStorage so they survive an in-page soft nav. Forwarding them
-  // into Odoo, Sheets, email and the Meta CAPI custom_data lets every
+  // into the CRM, Sheets, email and the Meta CAPI custom_data lets every
   // downstream system attribute the lead to a specific ad campaign.
   const utmSource = takeString(formData, 'utm_source');
   const utmMedium = takeString(formData, 'utm_medium');
@@ -422,13 +434,7 @@ export async function submitNepalWaaS(
   ]);
 
   const saved = await fanOut({
-    odoo: {
-      name: `Nepal WaaS: ${business ?? name ?? 'unnamed'}${plan ? ` (Plan ${plan})` : ''}`,
-      contactName: name,
-      phone,
-      city,
-      description,
-    },
+    lead: { name, phone, city, company: business, message: description },
     tab: 'nepal-waas',
     formLabel: 'Nepal Water-as-a-Service (meta-ads-east-nepal)',
     emailSubject: `Nepal WaaS lead: ${business ?? name ?? 'unnamed'}${city ? ` (${city})` : ''}`,
@@ -436,7 +442,7 @@ export async function submitNepalWaaS(
     // Meta CAPI shape doesn't currently carry UTM custom_data; Meta
     // attributes campaign on its own side via the ad-click fbp/fbc
     // cookies, so this is acceptable for now. The full UTM set still
-    // lands in Odoo / Sheets / email via `fields` above.
+    // lands in the CRM / Sheets / email via `fields` above.
     meta: { eventName: 'Lead', phone, name, city, value: META_VALUE_NEPAL_WAAS, eventId },
   });
 
@@ -485,14 +491,7 @@ export async function submitRFQ(
   ]);
 
   const saved = await fanOut({
-    odoo: {
-      name: `RFQ: ${org ?? name ?? 'Unnamed'} · ${application ?? 'application not specified'}`,
-      contactName: name,
-      email,
-      phone: mobile,
-      city: location,
-      description,
-    },
+    lead: { name, email, phone: mobile, city: location, company: org, application, message: description },
     tab: 'industrial-rfq',
     formLabel: 'Industrial RFQ',
     emailSubject: `New RFQ: ${org ?? name ?? 'Unnamed'}${application ? ` · ${application}` : ''}`,
@@ -532,12 +531,7 @@ export async function submitWaterTestRequest(
   ]);
 
   const saved = await fanOut({
-    odoo: {
-      name: `Water-test request: ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
-      phone: mobile,
-      city,
-      description,
-    },
+    lead: { phone: mobile, city, message: description },
     tab: 'water-test',
     formLabel: 'Free water-test request',
     emailSubject: `Water-test request: ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
@@ -548,7 +542,7 @@ export async function submitWaterTestRequest(
   if (!saved) return { status: 'error' };
 
   // Bounce the visitor straight to WhatsApp with a pre-filled message.
-  // The lead is already in Odoo by this point, so even if the visitor never
+  // The lead is already saved by this point, so even if the visitor never
   // sends the WhatsApp message the engineer has the mobile to follow up.
   const waMsg = encodeURIComponent(
     "Hi Uniwater, I'd like the free water-test report for my home. (Sent from the home-page popup.)"
@@ -604,14 +598,7 @@ export async function submitRemoteSurvey(
   ]);
 
   const saved = await fanOut({
-    odoo: {
-      name: `Remote site survey: ${name ?? 'Unnamed'} (${location ?? 'location pending'})`,
-      contactName: name,
-      email,
-      phone: mobile,
-      city: location,
-      description,
-    },
+    lead: { name, email, phone: mobile, city: location, propertyType, message: description },
     tab: 'remote-site-survey',
     formLabel: 'Remote site survey',
     emailSubject: `Remote site survey: ${name ?? 'Unnamed'}${location ? ` (${location})` : ''}`,

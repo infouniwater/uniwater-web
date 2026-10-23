@@ -494,7 +494,7 @@ export default function IndustrialPage() {
             </Caption>
           </div>
           <div className="lg:col-span-7">
-            <LeadForm action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <LeadForm name="industrial-rfq" action={submitRFQ} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <RecaptchaField action="rfq" />
               <div className="md:col-span-2">
                 <h3 className="font-sans text-h2-m font-light text-navy mb-2">RFQ details</h3>

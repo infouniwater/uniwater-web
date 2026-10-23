@@ -10,45 +10,29 @@ declare global {
 }
 
 /**
- * Fires GA4 generate_lead on the /thank-you page after a successful
- * form submission redirect. Living here (not in the form's onSubmit)
- * is deliberate: when the form posts via Server Action and the action
- * calls redirect(), the page unloads BEFORE gtag.js can flush its
- * /g/collect beacon, and the event is silently dropped. The redirect
- * URL carries ?source=<form-slug>, so by the time this component
- * mounts the navigation has completed, gtag is loaded, and the hit
- * lands cleanly.
+ * Browser-side conversion fires on /thank-you.
  *
- * Nepal-WaaS additionally fires fbq('track', 'Lead') AND
- * fbq('track', 'Contact') here (browser pixel, on confirmed success
- * only). Lead is the high-intent form-only signal; Contact is fired too
- * because the ad campaign optimises for Contact, so both the WhatsApp-CTA
- * path and a successful form submit must feed it. The form-side onSubmit
- * fire was removed because it double-counted alongside the server-side
- * CAPI Lead event AND fired on every submit attempt regardless of whether
- * the action actually succeeded. The /thank-you redirect is the single
- * explicit success signal we have on the browser side; firing fbq here
- * keeps the browser pixel count honest and matches the gtag pattern in
- * this file. Other thank-you sources keep their existing pre-redirect
- * fbq behaviour (their own onSubmit handlers).
+ * GA4 generate_lead is NOT fired here any more. reCAPTCHA-blocked bots are
+ * redirected to /thank-you too (so they get no signal that they were
+ * blocked), which made most of the browser-fired generate_lead count bots.
+ * It is now sent server-side by app/actions/leads.ts (lib/ga-mp.ts), only for
+ * a lead that was actually saved.
+ *
+ * Nepal-WaaS fires fbq('track', 'Lead') AND fbq('track', 'Contact') here
+ * (browser pixel, on the success redirect only). Lead is the high-intent
+ * form-only signal; Contact is fired too because the ad campaign optimises
+ * for Contact, so both the WhatsApp-CTA path and a successful form submit
+ * must feed it. The /thank-you redirect is the single explicit success
+ * signal we have on the browser side.
  *
  * Lead dedup: the server action mints an eventId, sends it to Meta CAPI
  * with the server-side Lead, and forwards it through the redirect URL
  * (?eventId=). We attach it to the browser Lead via fbq's { eventID }
  * option so Meta collapses the CAPI + browser Lead into one conversion.
  * Contact has no CAPI counterpart, so it's fired without an eventID.
- *
- * value INR is per-form to match META_VALUE_* on the CAPI side
- * (app/actions/leads.ts). GA4 sums these into total lead value for
- * cost-per-lead and ROAS reporting once 'generate_lead' is marked as
- * a Key Event in the GA admin.
  */
 const VALUE_INR: Record<string, number> = {
   'nepal-waas': 200000,
-  'industrial-rfq': 200000,
-  'book-survey': 25000,
-  'remote-site-survey': 25000,
-  contact: 10000,
 };
 
 // Sources whose browser-side fbq('Lead') is owned by this component
@@ -64,38 +48,18 @@ export function ThankYouConversionFire({
   source?: string;
   eventId?: string;
 }) {
-  // Separate guards for the two trackers. They fire independently so a
-  // blocked GA (gtag never loads) can't suppress the Meta conversion, and
-  // vice-versa -- each fires exactly once.
-  const gaFired = useRef(false);
   const fbqFired = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const value = source && VALUE_INR[source] ? VALUE_INR[source] : 0;
-    // Only sources we've taken over from their form's onSubmit fire the
-    // browser pixel here (currently nepal-waas).
-    const wantsFbq = !!source && FBQ_LEAD_SOURCES.has(source);
+    if (!source || !FBQ_LEAD_SOURCES.has(source)) return;
+    const value = VALUE_INR[source] ?? 0;
 
-    // gtag.js / fbevents.js may not be ready the instant this mounts
-    // (Script afterInteractive timing), so poll briefly until each loads.
-    // GA and the pixel are guarded + fired independently: a blocked GA
-    // can't suppress the Meta conversion, and vice-versa, and each fires
-    // exactly once.
+    // fbevents.js may not be ready the instant this mounts (Script
+    // afterInteractive timing), so poll briefly until it loads.
     let attempts = 0;
     const fire = () => {
-      // GA4 generate_lead.
-      if (!gaFired.current && typeof window.gtag === 'function') {
-        gaFired.current = true;
-        window.gtag('event', 'generate_lead', {
-          currency: 'INR',
-          value,
-          source: source ?? 'unknown',
-        });
-      }
-
-      // Browser pixel Lead + Contact.
-      if (wantsFbq && !fbqFired.current && typeof window.fbq === 'function') {
+      if (!fbqFired.current && typeof window.fbq === 'function') {
         fbqFired.current = true;
         try {
           // Lead -- high-intent form signal. eventID (when present) is the
@@ -115,11 +79,7 @@ export function ThankYouConversionFire({
           /* silent */
         }
       }
-
-      // Keep polling until both intended trackers have fired (or we give up).
-      const gaDone = gaFired.current;
-      const fbqDone = !wantsFbq || fbqFired.current;
-      if ((!gaDone || !fbqDone) && attempts++ < 30) setTimeout(fire, 200);
+      if (!fbqFired.current && attempts++ < 30) setTimeout(fire, 200);
     };
 
     fire();

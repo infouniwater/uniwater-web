@@ -106,7 +106,7 @@ export default function BookSurveyPage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Form */}
           <div className="lg:col-span-7">
-            <LeadForm action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <LeadForm name="book-survey" action={submitBookSurvey} className="bg-offwhite border border-hairline p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <RecaptchaField action="book_survey" />
               {audienceContext && <input type="hidden" name="audience" value={audienceContext} />}
               <div className="md:col-span-2">

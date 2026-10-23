@@ -130,7 +130,7 @@ export default function ContactPage() {
 
           {/* General enquiry form */}
           <div className="lg:col-span-7">
-            <LeadForm action={submitContact} className="bg-offwhite border border-hairline p-8 md:p-10 flex flex-col gap-6">
+            <LeadForm name="contact" action={submitContact} className="bg-offwhite border border-hairline p-8 md:p-10 flex flex-col gap-6">
               <RecaptchaField action="contact" />
               <Suspense fallback={null}>
                 <AudiencePrefill />

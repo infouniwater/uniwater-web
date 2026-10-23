@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { useFormState } from 'react-dom';
 import { PRIMARY_PHONE, PRIMARY_PHONE_HREF, WHATSAPP_HREF } from '@/content/site';
 import type { LeadFormState } from '@/lib/lead-form-state';
@@ -12,16 +12,25 @@ import type { LeadFormState } from '@/lib/lead-form-state';
  * could not be saved anywhere, the action returns { status: 'error' }
  * instead of throwing, so the visitor stays on the page with everything
  * they typed still in the fields, and sees a direct phone / WhatsApp
- * fallback under the form.
+ * fallback under the form, and GA4 gets form_error { form } so a failing
+ * form shows up in analytics the same day (skipped for automated browsers).
  */
 interface Props {
+  /** The form's slug for analytics, matching the Sheet tab (e.g. 'book-survey'). */
+  name: string;
   action: (state: LeadFormState, formData: FormData) => Promise<LeadFormState>;
   className?: string;
   children: ReactNode;
 }
 
-export function LeadForm({ action, className, children }: Props) {
+export function LeadForm({ name, action, className, children }: Props) {
   const [state, formAction] = useFormState<LeadFormState, FormData>(action, { status: 'idle' });
+
+  // A new state object per submission, so every failed attempt is counted.
+  useEffect(() => {
+    if (state.status !== 'error' || navigator.webdriver) return;
+    window.gtag?.('event', 'form_error', { form: name });
+  }, [state, name]);
 
   return (
     <form action={formAction} className={className}>

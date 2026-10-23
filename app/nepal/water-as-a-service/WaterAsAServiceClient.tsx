@@ -230,7 +230,7 @@ export function WaterAsAServiceClient({ initialService, initialPlan }: Props) {
               </ul>
             </div>
             <div className="lg:col-span-7">
-              <LeadForm
+              <LeadForm name="nepal-waas"
                 action={submitNepalWaaS}
                 className="bg-subtle border border-hairline p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-5"
               >

@@ -1,4 +1,4 @@
-# Daily check that website leads can reach Odoo. A failing run makes
+# Daily check that website leads can reach the Uniwater CRM. A failing run makes
 # GitHub email the repo owner. See app/api/health/leads/route.ts.
 name: Lead pipeline health
 
@@ -11,5 +11,5 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Odoo reachable with current API key
+      - name: CRM reachable with the website lead key
         run: curl --fail --silent --show-error --max-time 30 https://uniwater.co.in/api/health/leads

@@ -125,7 +125,7 @@ export function ExitIntentCapture() {
           Give us your mobile number. An engineer will WhatsApp you about a sampler kit and send a written analysis within 48 hours. We won&rsquo;t call unless you ask us to.
         </p>
 
-        <LeadForm action={submitWaterTestRequest} className="flex flex-col gap-4">
+        <LeadForm name="water-test" action={submitWaterTestRequest} className="flex flex-col gap-4">
           <input type="hidden" name="sourcePath" value={pathname ?? ''} />
           <RecaptchaField action="water_test" />
           <label className="flex flex-col gap-2">

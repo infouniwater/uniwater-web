@@ -104,7 +104,7 @@ export default function RemoteSiteSurveyPage() {
             />
           </div>
 
-          <LeadForm action={submitRemoteSurvey}>
+          <LeadForm name="remote-site-survey" action={submitRemoteSurvey}>
             <RecaptchaField action="remote_survey" />
             {/* STEP 0 — About the property */}
             <div ref={(el) => { stepRefs.current[0] = el; }} className={cn('flex flex-col gap-6', step !== 0 && 'hidden')}>
