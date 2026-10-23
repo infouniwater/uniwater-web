@@ -174,28 +174,6 @@ SOLUTIONS = [
         ],
     },
     {
-        "slug": "arsenic-filter",
-        "title": "ARSENIC FILTER",
-        "wordmark": None,
-        "intro": [
-            "A locality-led problem. West Bengal, Bihar, parts of Assam and UP. The",
-            "most-overlooked Indian water risk. Tasteless, odourless, colourless.",
-        ],
-        "configurations": [
-            ("Point-of-use kitchen", "Drinking + cooking only", "For the tap that feeds chai, dal, the drinking glass."),
-            ("Whole-house pre-treatment", "Inlet", "For affected boreholes. Sized to household draw."),
-        ],
-        "price_from": "Rs. 18,000",
-        "tech": [
-            ("Capacity range", "15 - 6,000 LPH"),
-            ("Media", "Specialised arsenic-adsorbent media (specific to As)"),
-            ("Output target", "< 10 ppb (WHO guideline)"),
-            ("Pre-treatment", "Sediment + carbon recommended upstream"),
-            ("Inlet pressure", "1.5 - 4.5 kg/cm2"),
-            ("Power", "230V AC for Automatic models"),
-        ],
-    },
-    {
         "slug": "sediment-filter",
         "title": "SEDIMENT FILTER",
         "wordmark": None,

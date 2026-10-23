@@ -35,7 +35,7 @@ const IRON_VS_SOFTENER: Faq = {
 
 const BOREWELL_SAFE: Faq = {
   q: 'Is borewell water in Salt Lake / New Town / Rajarhat safe?',
-  a: 'These areas run largely on borewell augmentation, and borewell chemistry varies block to block. Iron and hardness are common and visible; some suburban boreholes also carry arsenic, which you cannot see or taste. That is exactly why a free on-site water test is part of every survey — we read your specific borehole before sizing anything, rather than assuming a city-wide number.',
+  a: 'These areas run largely on borewell augmentation, and borewell chemistry varies block to block. Iron and hardness are common, and the levels change from one borehole to the next. That is why every survey includes a free water test at your tap. We read your borehole before sizing anything instead of assuming a city-wide number.',
 };
 
 const SERVICING: Faq = {

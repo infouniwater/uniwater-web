@@ -16,8 +16,9 @@
  *   this, and no row claims to be a confirmed Uniwater measurement.
  *
  *   For borewell-fed localities the dominant issue foregrounds IRON staining
- *   (yellow/orange stains, metallic taste) — the lived, visible problem — not
- *   arsenic, which is a testing matter handled at survey.
+ *   (yellow/orange stains, metallic taste), the lived, visible problem.
+ *   Do not name other contaminants here; see the hard rule in
+ *   content/science-meter.ts.
  *
  *   TODO(Rajat): replace any city's indicative block with real on-site survey
  *   figures as they accumulate, and flip those rows to `verified: true`.
@@ -190,12 +191,12 @@ const ROURKELA: LocalityWaterData[] = [
 
 // Siliguri — indicative, verified:false. No city-specific published study was
 // found; ranges reflect the sub-Himalayan / Terai-margin belt — moderate
-// hardness, iron in some boreholes, arsenic risk in suburban borewells (West
-// Bengal groundwater record). Treat as a placeholder until surveyed on site.
+// hardness, iron in some boreholes (West Bengal groundwater record). Treat as
+// a placeholder until surveyed on site.
 const SILIGURI: LocalityWaterData[] = [
-  { area: 'Pradhan Nagar', hardnessPpm: [80, 200], ironPpm: [0.3, 1.2], tdsPpm: [120, 350], dominantIssue: 'Moderate hardness; iron in some boreholes; arsenic risk in suburban supply.', typicalSystem: 'Whole-house softening + iron stage where needed; free arsenic test at survey.', verified: false },
+  { area: 'Pradhan Nagar', hardnessPpm: [80, 200], ironPpm: [0.3, 1.2], tdsPpm: [120, 350], dominantIssue: 'Moderate hardness; iron in some boreholes.', typicalSystem: 'Whole-house softening + iron stage where needed.', verified: false },
   { area: 'Sevoke Road', hardnessPpm: [80, 200], ironPpm: [0.3, 1.2], tdsPpm: [120, 350], dominantIssue: 'Mostly stable chemistry; localised iron staining.', typicalSystem: 'HomeSoft softening; drinking-water UF + UV at the kitchen.', verified: false },
-  { area: 'Matigara', hardnessPpm: [90, 220], ironPpm: [0.4, 1.5], tdsPpm: [150, 400], dominantIssue: 'Borewell iron; arsenic risk in some suburban boreholes.', typicalSystem: 'Iron pre-treatment, then softening; arsenic confirmed by test before sizing.', verified: false },
+  { area: 'Matigara', hardnessPpm: [90, 220], ironPpm: [0.4, 1.5], tdsPpm: [150, 400], dominantIssue: 'Borewell iron.', typicalSystem: 'Iron pre-treatment, then softening.', verified: false },
 ];
 
 // Guwahati — indicative, verified:false. Studies of Greater Guwahati report
@@ -234,13 +235,12 @@ const KATHMANDU: LocalityWaterData[] = [
 ];
 
 // Biratnagar (Morang) — indicative, verified:false. A Morang-district study
-// reports iron 0.45–3.67 mg/L and arsenic up to ~0.17 mg/L in some wards;
-// arsenic is a recognised Terai groundwater risk. Source: "Groundwater Quality
-// in Biratnagar of Morang District" (Granthaalayah) + Terai arsenic overviews.
+// reports iron 0.45–3.67 mg/L in some wards. Source: "Groundwater Quality
+// in Biratnagar of Morang District" (Granthaalayah).
 const BIRATNAGAR: LocalityWaterData[] = [
-  { area: 'Main Road', hardnessPpm: [120, 300], ironPpm: [0.5, 3.5], tdsPpm: [200, 600], dominantIssue: 'Borewell iron staining; arsenic risk in some wards (not visible — tested).', typicalSystem: 'Iron pre-treatment, then softening; arsenic-specific RO stage if a test confirms it.', verified: false },
-  { area: 'Hospital Chowk', hardnessPpm: [120, 300], ironPpm: [0.5, 3.0], tdsPpm: [200, 600], dominantIssue: 'Iron and metallic taste; arsenic risk near the southern belt.', typicalSystem: 'Iron removal + a free water test for arsenic before sizing.', verified: false },
-  { area: 'Rangeli Road', hardnessPpm: [120, 320], ironPpm: [0.6, 3.7], tdsPpm: [200, 650], dominantIssue: 'Higher iron loads; arsenic risk in adjacent boreholes.', typicalSystem: 'Iron pre-treatment, softening, and arsenic-specific RO where confirmed.', verified: false },
+  { area: 'Main Road', hardnessPpm: [120, 300], ironPpm: [0.5, 3.5], tdsPpm: [200, 600], dominantIssue: 'Borewell iron staining.', typicalSystem: 'Iron pre-treatment, then softening.', verified: false },
+  { area: 'Hospital Chowk', hardnessPpm: [120, 300], ironPpm: [0.5, 3.0], tdsPpm: [200, 600], dominantIssue: 'Iron and metallic taste.', typicalSystem: 'Iron removal, sized after a free water test.', verified: false },
+  { area: 'Rangeli Road', hardnessPpm: [120, 320], ironPpm: [0.6, 3.7], tdsPpm: [200, 650], dominantIssue: 'Higher iron loads.', typicalSystem: 'Iron pre-treatment, then softening.', verified: false },
 ];
 
 /**
