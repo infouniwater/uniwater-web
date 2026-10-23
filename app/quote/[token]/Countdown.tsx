@@ -22,7 +22,7 @@ export function Countdown({ expiresAt }: { expiresAt: string }) {
 
   if (expired) {
     return (
-      <p className="font-ui text-body text-offwhite/80">This offer has expired — talk to us for current pricing.</p>
+      <p className="font-ui text-body text-offwhite/80">This offer has expired. Talk to us for current pricing.</p>
     );
   }
 

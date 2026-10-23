@@ -105,7 +105,7 @@ export default async function QuotePage({ params }: { params: { token: string } 
           <Eyebrow inverse>Your Uniwater proposal</Eyebrow>
           <Display className="text-offwhite mt-2">Prepared for {q.customer_name}</Display>
           <Lede inverse className="mt-3">
-            {q.city ? `${q.city} · ` : ''}Quotation {q.reference ? `#${q.reference}` : ''} — everything your
+            {q.city ? `${q.city} · ` : ''}Quotation {q.reference ? `#${q.reference}` : ''}: everything your
             water solution includes, in one place.
           </Lede>
         </div>
@@ -119,11 +119,11 @@ export default async function QuotePage({ params }: { params: { token: string } 
               <div>
                 <Eyebrow inverse>Limited-time offer</Eyebrow>
                 <Heading level={2} inverse className="mt-2">
-                  Save {inr(q.savings)} — {Math.round(q.discount_pct)}% off if you confirm this week
+                  Save {inr(q.savings)} ({Math.round(q.discount_pct)}% off) if you confirm this week
                 </Heading>
                 <Body inverse className="mt-2">
                   Special price <span className="font-numeric">{inr(q.discounted_total)}</span>{' '}
-                  <span className="line-through opacity-70">{inr(q.grand_total)}</span> — inclusive of GST.
+                  <span className="line-through opacity-70">{inr(q.grand_total)}</span>, inclusive of GST.
                 </Body>
               </div>
               <div className="shrink-0">
@@ -238,7 +238,7 @@ export default async function QuotePage({ params }: { params: { token: string } 
           <Heading level={2}>Ready to move ahead?</Heading>
           <Body className="mt-2">
             {showOffer
-              ? 'Lock in your offer before it expires — our team will schedule installation at your convenience.'
+              ? 'Confirm before the offer expires and our team will schedule the installation at a time that suits you.'
               : 'Our team will schedule installation at your convenience.'}
           </Body>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
