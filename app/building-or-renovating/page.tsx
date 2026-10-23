@@ -18,7 +18,7 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 export const metadata: Metadata = {
   title: 'Building or renovating',
   description:
-    'Specify the water before the tile goes down. Uniwater surveys at the draft-drawing stage and routes the plumbing around the system, not the other way around. For homeowners building or renovating in India and Nepal.',
+    'Plan the water before the tiles go down. Uniwater surveys at the draft-drawing stage so the plumbing can be routed around the system. For homeowners building or renovating in India and Nepal.',
   openGraph: {
     images: [{ url: '/og/og-building-or-renovating.jpg', width: 1200, height: 630, alt: '' }],
   },
@@ -36,7 +36,7 @@ const WHY_NOW = [
   {
     title: 'The plumbing routes around the system.',
     body:
-      'False-ceiling void, plumbing shaft, utility-room corner — decided WITH the plumber, not after. Service access is built in, not negotiated later. We work from your draft drawings, not photos.',
+      'False-ceiling void, plumbing shaft or utility-room corner: we decide it with the plumber, not after. Service access is planned in from the start. We work from your draft drawings, not photos.',
   },
   {
     title: 'Architect-friendly, not architect-dependent.',
@@ -56,11 +56,11 @@ const SURVEY_DELIVERABLES = [
   },
   {
     label: 'Install-location options',
-    body: 'Where the vessels can go given your plan -- utility room, balcony, terrace, basement, custom cabinet. Trade-offs spelt out.',
+    body: 'Where the vessels can go in your plan: utility room, balcony, terrace, basement or a custom cabinet. Trade-offs spelt out.',
   },
   {
     label: 'Plumbing routing notes',
-    body: 'What the plumber needs to leave open before tile -- inlet line, bypass, drain provision, electrical for the control head.',
+    body: 'What the plumber needs to leave open before tile: inlet line, bypass, drain provision and electrical for the control head.',
   },
   {
     label: 'Written quote',
@@ -127,7 +127,7 @@ export default function BuildingOrRenovatingPage() {
               Building or renovating
             </p>
             <h1 className="font-sans text-[clamp(2rem,4vw+1rem,3.5rem)] font-medium leading-[1.15] max-w-[22ch] [text-wrap:balance]">
-              Specify the water before the tile goes down.
+              Plan the water before the tiles go down.
             </h1>
             <p className="text-[15px] leading-relaxed text-offwhite/80 max-w-xl">
               We survey at draft drawings. The plumbing routes around the
@@ -162,7 +162,7 @@ export default function BuildingOrRenovatingPage() {
       <Section padding="default" id="what-changes">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">Why now, not later</Eyebrow>
-          <Heading level={2}>Three things change when the system goes in before tile.</Heading>
+          <Heading level={2}>Why it pays to put the system in before tile.</Heading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {WHY_NOW.map((item) => (
@@ -182,7 +182,7 @@ export default function BuildingOrRenovatingPage() {
           <Eyebrow inverse>When to engage us</Eyebrow>
           <Heading level={2} inverse>Earlier is better. There is no &ldquo;too early.&rdquo;</Heading>
           <Body inverse className="text-offwhite/80 mt-2">
-            The four stages of a construction-mode engagement. We have done useful work as late as a week before handover &mdash; but the same survey done four months earlier gives the architect and plumber room to route the system properly.
+            The four stages of a construction-mode engagement. We have done useful work as late as a week before handover, but the same survey done four months earlier gives the architect and plumber room to route the system properly.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
@@ -200,9 +200,9 @@ export default function BuildingOrRenovatingPage() {
       <Section padding="default" tone="subtle">
         <div className="mb-12 max-w-3xl">
           <Eyebrow className="mb-4">What you get at the survey</Eyebrow>
-          <Heading level={2}>Five deliverables. No quote without all five.</Heading>
+          <Heading level={2}>Five things you get before we quote.</Heading>
           <Body className="text-mute mt-4">
-            The survey is free. The deliverables below are the same whether you build now or in eighteen months &mdash; we don&rsquo;t hide the water test behind a deposit.
+            The survey is free. The deliverables below are the same whether you build now or in eighteen months. We don&rsquo;t hide the water test behind a deposit.
           </Body>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -224,7 +224,7 @@ export default function BuildingOrRenovatingPage() {
             <Eyebrow inverse>Working with your architect</Eyebrow>
             <Heading level={2} inverse>Your architect can call us directly.</Heading>
             <Body inverse className="text-offwhite/80">
-              We ship DWG vessel footprints, BIM blocks for the residential and building capacities, install-location drawings for the five canonical install patterns, and submittal-grade technical PDFs &mdash; everything a specifier needs to put the system on the plan. Send your architect to the trade program or have us send them the pack.
+              We ship DWG vessel footprints, BIM blocks for the residential and building capacities, install-location drawings for the five standard install patterns, and submittal-grade technical PDFs. That is everything a specifier needs to put the system on the plan. Send your architect to the trade program or have us send them the pack.
             </Body>
             <div className="mt-4">
               <Link
