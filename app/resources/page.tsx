@@ -32,7 +32,7 @@ const RESOURCES = [
   {
     href: '/blog',
     title: 'Journal',
-    body: 'Long-form writing on water chemistry, premium home engineering, and the practice of running a water system.',
+    body: 'Longer pieces on water chemistry, home water engineering and what it takes to run a water system.',
   },
   {
     href: '/faq',
@@ -42,12 +42,12 @@ const RESOURCES = [
   {
     href: '/case-studies',
     title: 'Case studies',
-    body: 'Where Uniwater systems run today — hospitals, hotels, factories, schools, premium homes.',
+    body: 'Where Uniwater systems run today: hospitals, hotels, factories, schools and homes.',
   },
   {
     href: '/why-uniwater',
     title: 'Why Uniwater',
-    body: 'Brand positioning, what we don’t claim, and a frank decision tree against other categories.',
+    body: 'How we compare with other kinds of water company, what we won’t claim, and when we aren’t the right choice.',
   },
 ];
 
