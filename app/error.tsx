@@ -33,7 +33,7 @@ export default function GlobalError({
         <Eyebrow>Something went wrong</Eyebrow>
         <Display>This page hit an unexpected snag.</Display>
         <Lede className="text-mute">
-          We have logged the error and our team will look into it. In the meantime, try again or take one of the routes below.
+          Something broke on our side. Try again, or take one of the routes below.
         </Lede>
         <Lede className="text-mute">
           Need us now? Call{' '}
