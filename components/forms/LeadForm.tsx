@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useFormState } from 'react-dom';
 import { PRIMARY_PHONE, PRIMARY_PHONE_HREF, WHATSAPP_HREF } from '@/content/site';
 import type { LeadFormState } from '@/lib/lead-form-state';
+import { getAttribution, type Attribution } from '@/lib/attribution';
 
 /**
  * <form> for the lead server actions in app/actions/leads.ts.
@@ -14,6 +15,9 @@ import type { LeadFormState } from '@/lib/lead-form-state';
  * they typed still in the fields, and sees a direct phone / WhatsApp
  * fallback under the form, and GA4 gets form_error { form } so a failing
  * form shows up in analytics the same day (skipped for automated browsers).
+ *
+ * Every form also carries where the visitor came from (lib/attribution.ts)
+ * in hidden attr_* fields, which app/actions/leads.ts saves with the lead.
  */
 interface Props {
   /** The form's slug for analytics, matching the Sheet tab (e.g. 'book-survey'). */
@@ -26,6 +30,10 @@ interface Props {
 export function LeadForm({ name, action, className, children }: Props) {
   const [state, formAction] = useFormState<LeadFormState, FormData>(action, { status: 'idle' });
 
+  // Filled in after mount: the source lives in the browser, not on the server.
+  const [attr, setAttr] = useState<Attribution | null>(null);
+  useEffect(() => setAttr(getAttribution()), []);
+
   // A new state object per submission, so every failed attempt is counted.
   useEffect(() => {
     if (state.status !== 'error' || navigator.webdriver) return;
@@ -35,6 +43,14 @@ export function LeadForm({ name, action, className, children }: Props) {
   return (
     <form action={formAction} className={className}>
       {children}
+      {attr && (
+        <>
+          <input type="hidden" name="attr_source" value={attr.source} />
+          <input type="hidden" name="attr_medium" value={attr.medium} />
+          <input type="hidden" name="attr_campaign" value={attr.campaign} />
+          <input type="hidden" name="attr_landing" value={attr.landing} />
+        </>
+      )}
       {state.status === 'error' && (
         <div
           role="alert"

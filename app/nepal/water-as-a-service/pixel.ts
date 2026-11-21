@@ -65,5 +65,15 @@ export function trackWhatsAppContact(payload?: Record<string, unknown>): void {
   lastContactFiredAt = now;
 
   metaTrack('Contact', payload);
-  gaTrack('contact', { method: 'whatsapp', ...payload });
+
+  // GA4 reads an event parameter called `source` (also `medium`,
+  // `campaign`) as the session's traffic source, so sending
+  // { source: 'sticky-bar' } replaced the visitor's real source with
+  // "sticky-bar" in every acquisition report. GA gets it as cta_location.
+  const { source, ...rest } = payload ?? {};
+  gaTrack('contact', {
+    method: 'whatsapp',
+    ...rest,
+    ...(source !== undefined ? { cta_location: source } : {}),
+  });
 }

@@ -100,6 +100,11 @@ const nextConfig = {
   // 301 redirects from legacy slugs per BLUEPRINT §4.2
   async redirects() {
     return [
+      // URLs from the old site that still get visits (GA4, Jun-Nov 2026)
+      // and were answering 404.
+      { source: '/termsconditions', destination: '/terms', permanent: true },
+      { source: '/small-large-scale-industries', destination: '/industrial', permanent: true },
+      { source: '/checkout', destination: '/', permanent: true },
       {
         source: '/book-water-test',
         destination: '/book-survey',

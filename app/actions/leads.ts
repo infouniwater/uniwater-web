@@ -129,6 +129,27 @@ function getRequestSignals(): { ip?: string; userAgent?: string; referer?: strin
   }
 }
 
+/**
+ * Where the visitor came from, from the hidden attr_* fields LeadForm adds
+ * (lib/attribution.ts). Typed by the browser, so clipped and flattened.
+ */
+function readAttribution(formData: FormData): { fields: LeadFields; note?: string } {
+  const clean = (key: string) => takeString(formData, key)?.replace(/\s+/g, ' ').slice(0, 200);
+  const source = clean('attr_source');
+  const medium = clean('attr_medium');
+  const campaign = clean('attr_campaign');
+  const landing = clean('attr_landing');
+  if (!source && !landing) return { fields: {} };
+
+  const cameFrom = [source, medium, campaign].filter(Boolean).join(' / ');
+  return {
+    fields: { 'Came from': cameFrom || undefined, 'First page': landing },
+    note: [cameFrom ? `Came from: ${cameFrom}` : undefined, landing ? `First page: ${landing}` : undefined]
+      .filter(Boolean)
+      .join('\n'),
+  };
+}
+
 function describeError(reason: unknown): string {
   return reason instanceof Error ? reason.message : String(reason);
 }
@@ -145,6 +166,8 @@ async function fanOut(input: {
   formLabel: string;
   emailSubject: string;
   fields: LeadFields;
+  /** The submitted form, read here for the visitor's source (attr_* fields). */
+  formData: FormData;
   meta: {
     eventName: MetaEventName;
     email?: string;
@@ -161,6 +184,17 @@ async function fanOut(input: {
   };
 }): Promise<boolean> {
   const sig = getRequestSignals();
+
+  // Add the visitor's source to every copy of the lead: its own columns in
+  // the Sheet and email, and the end of the notes in the CRM.
+  const attribution = readAttribution(input.formData);
+  input = {
+    ...input,
+    fields: { ...input.fields, ...attribution.fields },
+    lead: attribution.note
+      ? { ...input.lead, message: [input.lead.message, attribution.note].filter(Boolean).join('\n\n') }
+      : input.lead,
+  };
 
   // Last-resort copy: the whole lead in the runtime log, before any sink
   // runs, so it is recoverable from Vercel logs even if all three fail.
@@ -288,6 +322,7 @@ export async function submitBookSurvey(
     formLabel: 'Book a free survey',
     emailSubject: `New survey request: ${name ?? 'Unnamed'}${city ? ` (${city})` : ''}`,
     fields,
+    formData,
     meta: { eventName: 'Schedule', email, phone: mobile, name, city, value: META_VALUE_BOOK_SURVEY },
   });
 
@@ -333,6 +368,7 @@ export async function submitContact(
     formLabel: 'Contact form',
     emailSubject: `New contact: ${subject ?? name ?? 'General enquiry'}`,
     fields,
+    formData,
     meta: { eventName: 'Contact', email, phone: mobile, name, value: META_VALUE_CONTACT },
   });
 
@@ -439,6 +475,7 @@ export async function submitNepalWaaS(
     formLabel: 'Nepal Water-as-a-Service (meta-ads-east-nepal)',
     emailSubject: `Nepal WaaS lead: ${business ?? name ?? 'unnamed'}${city ? ` (${city})` : ''}`,
     fields,
+    formData,
     // Meta CAPI shape doesn't currently carry UTM custom_data; Meta
     // attributes campaign on its own side via the ad-click fbp/fbc
     // cookies, so this is acceptable for now. The full UTM set still
@@ -496,6 +533,7 @@ export async function submitRFQ(
     formLabel: 'Industrial RFQ',
     emailSubject: `New RFQ: ${org ?? name ?? 'Unnamed'}${application ? ` · ${application}` : ''}`,
     fields,
+    formData,
     meta: { eventName: 'SubmitApplication', email, phone: mobile, name, city: location, value: META_VALUE_INDUSTRIAL_RFQ },
   });
 
@@ -536,6 +574,7 @@ export async function submitWaterTestRequest(
     formLabel: 'Free water-test request',
     emailSubject: `Water-test request: ${mobile ?? 'unknown mobile'}${city ? ` (${city})` : ''}`,
     fields,
+    formData,
     meta: { eventName: 'Lead', phone: mobile, city, value: META_VALUE_WATER_TEST },
   });
 
@@ -603,6 +642,7 @@ export async function submitRemoteSurvey(
     formLabel: 'Remote site survey',
     emailSubject: `Remote site survey: ${name ?? 'Unnamed'}${location ? ` (${location})` : ''}`,
     fields,
+    formData,
     meta: { eventName: 'Schedule', email, phone: mobile, name, city: location, value: META_VALUE_REMOTE_SURVEY },
   });
 

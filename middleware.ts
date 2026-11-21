@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
 
 /**
  * Edge middleware — runs on every request before it hits a route handler.
@@ -26,9 +26,51 @@ import type { NextRequest } from 'next/server';
 
 const SITE_ORIGIN = 'https://uniwater.co.in';
 
-export function middleware(req: NextRequest) {
+/**
+ * AI assistants' fetchers. GPTBot / ClaudeBot / PerplexityBot crawl for
+ * training and indexing; OAI-SearchBot builds ChatGPT's search index; the
+ * "-User" agents fetch a page live because a person just asked a question
+ * the assistant is answering with it. That last group is the nearest thing
+ * to "which pages does ChatGPT read out to customers".
+ */
+const AI_AGENTS =
+  /GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-User|Claude-SearchBot|PerplexityBot|Perplexity-User/i;
+
+/**
+ * Appends one row per AI fetch to the 'ai-crawlers' tab of the leads Sheet
+ * (same Apps Script as lib/sheets.ts). Vercel keeps request logs for
+ * minutes, so without this there is no record of what the assistants read.
+ * Runs after the response is sent and never throws.
+ */
+async function logAiFetch(agent: string, path: string, userAgent: string): Promise<void> {
+  const url = process.env.GOOGLE_SHEETS_WEBAPP_URL;
+  if (!url) return;
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      cache: 'no-store',
+      signal: AbortSignal.timeout(5000),
+      body: JSON.stringify({
+        tab: 'ai-crawlers',
+        timestamp: new Date().toISOString(),
+        fields: { Agent: agent, Path: path, 'User agent': userAgent.slice(0, 300) },
+      }),
+    });
+  } catch {
+    /* a missed log row must never affect the page */
+  }
+}
+
+export function middleware(req: NextRequest, event: NextFetchEvent) {
   const { pathname, searchParams } = req.nextUrl;
   const res = NextResponse.next();
+
+  const userAgent = req.headers.get('user-agent') ?? '';
+  const aiAgent = userAgent.match(AI_AGENTS)?.[0];
+  if (aiAgent && process.env.VERCEL_ENV === 'production') {
+    event.waitUntil(logAiFetch(aiAgent, pathname, userAgent));
+  }
 
   // Canonical URL — strip query params, trailing slash (except root).
   let canonicalPath = pathname || '/';

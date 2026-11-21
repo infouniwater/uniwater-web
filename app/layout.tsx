@@ -7,6 +7,7 @@ import { WhatsAppFAB } from '@/components/layout/WhatsAppFAB';
 import { MetaPixel } from '@/components/layout/MetaPixel';
 import { GoogleAnalytics } from '@/components/layout/GoogleAnalytics';
 import { ContactClickTracker } from '@/components/layout/ContactClickTracker';
+import { AttributionCapture } from '@/components/layout/AttributionCapture';
 import { RecaptchaLoader } from '@/components/RecaptchaLoader';
 import { SITE } from '@/content/site';
 import { organizationSchema, websiteSchema, jsonLd } from '@/lib/structured-data';
@@ -133,6 +134,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleAnalytics />
         {/* GA4 contact_click for every wa.me / tel: / mailto: link. */}
         <ContactClickTracker />
+        {/* Where the visitor came from, for leads and WhatsApp messages. */}
+        <AttributionCapture />
         {/* reCAPTCHA v3 — loads grecaptcha.execute() so every form's
             <RecaptchaField /> can mint a fresh token. Renders nothing
             if NEXT_PUBLIC_RECAPTCHA_SITE_KEY is unset, so local dev
