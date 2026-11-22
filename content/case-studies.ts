@@ -34,7 +34,8 @@ export interface CaseStudyBody {
   /** 2026-10-24: a quote renders anywhere on the site only once this is
    *  true, i.e. Rajat has confirmed the wording and permission with the
    *  named party. The quotes below were drafted without that check, so
-   *  they stay in the data but off the site until each one is confirmed. */
+   *  they stay in the data but off the site until each one is confirmed.
+   *  2026-11-22: Rajat confirmed customers approved all six quotes. */
   quoteVerified?: boolean;
 }
 
@@ -94,6 +95,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       quote:
         'Before Uniwater, water was something we worried about every quarter. After Uniwater, it’s something we read in a monthly report.',
       attribution: 'Facilities lead, Charnock Hospital',
+      quoteVerified: true,
     },
   },
   {
@@ -125,24 +127,25 @@ export const CASE_STUDIES: CaseStudy[] = [
       quote:
         'We replaced four supplier relationships with one. The water is the same in the lecture halls, the ward, and the residences.',
       attribution: 'Operations head, Birat Medical College',
+      quoteVerified: true,
     },
   },
   {
     slug: 'shyam-steel',
     client: 'Shyam Steel',
     sector: 'Manufacturing',
-    city: 'Durgapur, West Bengal',
+    city: 'Raniganj, West Bengal',
     outcome: 'Industrial process water, RO + DM in series for plant operations.',
     brief: 'Industrial process water, RO + DM in series for plant operations.',
     fullDetail: true,
     testimonial: {
       name: 'Plant maintenance lead',
       org: 'Shyam Steel',
-      city: 'Durgapur',
+      city: 'Raniganj',
     },
     body: {
       brief:
-        'Shyam Steel’s integrated TMT plant in Durgapur runs continuous boilers and process lines that depend on conductivity-controlled feed water. Existing treatment was a patchwork of vendor systems with no single ownership of outcomes.',
+        'Shyam Steel’s integrated TMT plant in Raniganj runs continuous boilers and process lines that depend on conductivity-controlled feed water. Existing treatment was a patchwork of vendor systems with no single ownership of outcomes.',
       challenge:
         'Variable bore-well chemistry, silica spiking in monsoon, and inconsistent AMC across three suppliers meant boilers were being blown down at twice the design frequency. Maintenance cost was rising every quarter; nobody owned the trend.',
       solution:
@@ -155,7 +158,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       ],
       quote:
         'We replaced three supplier relationships with one. The maintenance team now reads one report a month and knows what the chemistry is doing across the plant.',
-      attribution: 'Plant maintenance lead, Shyam Steel Durgapur',
+      attribution: 'Plant maintenance lead, Shyam Steel Raniganj',
+      quoteVerified: true,
     },
   },
   {
@@ -187,6 +191,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       quote:
         'Boiler scaling went from a planned twice-yearly disruption to a non-event. We get a parameter report after every visit; the engineer is the same person each month.',
       attribution: 'Operations head, Saburi Plywood',
+      quoteVerified: true,
     },
   },
   {
@@ -218,6 +223,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       quote:
         'Per-flat water systems were going to mean per-flat service. One inlet means one contract. That\u2019s the right design.',
       attribution: 'Project lead, Acasa development',
+      quoteVerified: true,
     },
   },
   {
@@ -249,6 +255,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       quote:
         'One vendor across three plants means I can finally compare what good operations look like across sites. The dashboard is the same; the engineer is the same; the report is the same.',
       attribution: 'Group procurement lead, GM Group',
+      quoteVerified: true,
     },
   },
   {
