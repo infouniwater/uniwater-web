@@ -4,7 +4,7 @@ import { ListBar } from '@/components/ui/ListBar';
 export const metadata: Metadata = {
   title: 'Sample monthly service report',
   description:
-    'A sample Uniwater monthly service report: the readings we log before and after a visit, and the work done on site.',
+    'A sample Uniwater monthly service report with example readings: the format of what we log before and after a visit, and the work done on site.',
 };
 
 /**
@@ -46,8 +46,9 @@ export default function SampleServiceReportPage() {
             {/* Header */}
             <header className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between border-b border-hairline pb-4 mb-8">
               <div>
-                <div className="text-eyebrow font-medium uppercase text-teal tracking-wide">Monthly service report</div>
+                <div className="text-eyebrow font-medium uppercase text-teal tracking-wide">Sample monthly service report</div>
                 <div className="text-h3 font-semibold text-navy mt-1">Visit #14</div>
+                <div className="text-caption text-mute mt-1">Example readings to show the format. Not a customer record.</div>
               </div>
               <div className="text-caption text-mute sm:text-right">
                 <div className="font-medium text-navy">Uniwater</div>
